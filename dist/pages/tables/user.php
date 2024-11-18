@@ -302,6 +302,7 @@ if ($result->num_rows > 0) {
                         }
                     </script>
 
+
                     <!-- Notifikasi delete -->
                     <?php if (isset($_GET['messagedelete'])): ?>
                         <script>
@@ -350,7 +351,13 @@ if ($result->num_rows > 0) {
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+
+                    <script>
+                        function setDeleteUserId(id) {
+                            document.getElementById('delete_user_id').value = id;
+                        }
+                    </script>
 
                     <div class="card">
                         <div class="card-header">
@@ -404,9 +411,10 @@ if ($result->num_rows > 0) {
                                                     </a>
                                                     &nbsp;
                                                     <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
-                                                        onclick="setDeleteId(<?= $user['id'] ?>)">
+                                                        onclick="setDeleteUserId(<?= $user['id'] ?>)">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
+
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
