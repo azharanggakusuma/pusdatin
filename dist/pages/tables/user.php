@@ -351,7 +351,7 @@ if ($result->num_rows > 0) {
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
                     <script>
                         function setDeleteUserId(id) {
