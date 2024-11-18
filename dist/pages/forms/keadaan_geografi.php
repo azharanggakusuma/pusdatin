@@ -265,10 +265,10 @@ include "../../config/session.php";
                                     </div>
                                     <!-- /.col -->
                                 </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
-                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
@@ -393,10 +393,10 @@ include "../../config/session.php";
                                     
                                     <!-- /.col -->
                                 </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
-                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
