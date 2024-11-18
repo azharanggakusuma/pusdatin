@@ -197,8 +197,8 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="name" class="form-label">Nama</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" required>
+                                            <label for="name" class="form-label">Nama Desa</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Desa" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
@@ -264,7 +264,7 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="edit_name" class="form-label">Nama</label>
+                                            <label for="edit_name" class="form-label">Nama Desa</label>
                                             <input type="text" class="form-control" id="edit_name" name="name" required>
                                         </div>
                                         <div class="mb-3">
