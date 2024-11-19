@@ -77,15 +77,105 @@ include "config/session.php";
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="./pages/forms/Desa.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Desa</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="./pages/forms/keadaan_geografi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="./pages/forms/wilayah_administratif.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Wilayah Administratif</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/sumber_daya_manusia.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sumber Daya Manusia</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/kelembagaan_dan_keuangan_desa.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Kelembagaan Dan Keungan Desa</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/pendudukan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Penduduk</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="./pages/forms/pendidikan.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Pendidikan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/kesehatan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Kesehatan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/fasilitas_umum.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Fasilitas Umum</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/sosial.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sosial</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/pariwisata.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Pariwisata</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/transportasi.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Transportasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/komunikasi.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Komunikasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/lembaga_keuangan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Lembaga Keuangan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/sarana_perdagangan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sarana Perdagangan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/infrastruktur.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Infrastruktur</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/lingkungan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Lingkungan</p>
                                     </a>
                                 </li>
                             </ul>
