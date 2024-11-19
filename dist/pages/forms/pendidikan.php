@@ -93,7 +93,7 @@ include "../../config/session.php";
                                         <p>Keadaan Geografi</p>
                                     </a> 
                                 </li>
-                               <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
@@ -150,7 +150,7 @@ include "../../config/session.php";
                                 <li class="nav-item">
                                     <a href="transportasi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Transportasi</p> 
+                                        <p>Transportasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -219,7 +219,7 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Keadaan Geografi</h3>
+                            <h3 class="mb-0">Pendidikan</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
@@ -356,10 +356,10 @@ include "../../config/session.php";
                                     </div>
                                     <!-- /.col -->
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
+                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
@@ -484,10 +484,10 @@ include "../../config/session.php";
                                     
                                     <!-- /.col -->
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
+                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->

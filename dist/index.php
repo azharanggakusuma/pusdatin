@@ -82,6 +82,12 @@ include "config/session.php";
                                         <p>Keadaan Geografi</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="./pages/forms/pendidikan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Pendidikan</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
