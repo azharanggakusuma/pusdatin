@@ -89,15 +89,11 @@ include "../../config/session.php";
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./desa.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Desa</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
-                                    </a>
+                                    </a> 
                                 </li>
-                                <li class="nav-item">
+                               <li class="nav-item">
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
@@ -154,7 +150,7 @@ include "../../config/session.php";
                                 <li class="nav-item">
                                     <a href="transportasi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Transportasi</p>
+                                        <p>Transportasi</p> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -223,13 +219,13 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Pendidikan</h3>
+                            <h3 class="mb-0">Lembaga Keuangan</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Keadaan Geografi
+                                    Lembaga Keuangan
                                 </li>
                             </ol>
                         </div>
@@ -239,47 +235,69 @@ include "../../config/session.php";
             <div class="app-content"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
 
-                <!-- begin:: top form -->
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Sekolah/Lembaga Pendidikan Formal</h3>
+                            <h3 class="card-title">Banyaknya Bank Pemerintah, Bank Swasta dan BPR</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    <h2 class="card-title mb-3">Nama Sekolah Ke 1</h2>
+                                    
+
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Bank Umum Pemerintah</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
                                     <div>
+                                        <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Sekolah</label>
-                                            <input id="nama_sekolah_ke1" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jenjang Pendidikan</label>
-                                            <select id="jenjang_sekolah_ke1" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" disabled selected>Pilih Jenjang Pendidikan</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
-                                            </select>
+                                            <label class="mb-2">Bank Umum Swasta</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
-
-
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Bank Perkreditan Rakyat (BPR)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
                                 </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
-                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
-                <!-- end:: top form -->
 
-                <!-- bgin:: Nama Sekolah Ke 2 -->
-                    <div class="card card1 card-primary card-outline mb-4">
+                    <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h2 class="card-title">Nama Sekolah Ke 2</h2>
+                            <h3 class="card-title">Banyaknya Koperasi Aktif</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
@@ -288,7 +306,7 @@ include "../../config/session.php";
                                     $(document).ready(function() {
                                         $(".batas-wilayah").on("click", function() {
                                             var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card1").find(".card-body1"); // Ambil elemen card-body
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
                                             $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
                                             $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
@@ -298,171 +316,65 @@ include "../../config/session.php";
                             </div>
                         </div>
                         <!-- /.card-header -->
-
-                        <!-- begin container:: Sekolah Ke 2 -->
-                        <div class="card-body1 card-body">
-                            <!-- begin :: form Sekolah Ke 2 -->
+                        <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    <div class="row">
-                                        <div>
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama Sekolah</label>
-                                                <input id="nama_sekolah_ke2" type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jenjang Pendidikan</label>
-                                                <select id="jenjang_sekolah_ke2" class="form-control select2bs4" style="width: 100%;">
-                                                    <option value="">Pilih Jenjang Pendidikan</option>
-                                                    <option value="">Paud</option>
-                                                    <option value="">Sekolah Dasar</option>
-                                                    <option value="">Sekolah Menengah Pertama</option>
-                                                    <option value="">Sekolah Menengah Atas</option>
-                                                </select>
-                                            </div>
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koperasi Unit Desa (KUD)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
-
-
                                     </div>
-
-
+                                    
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koperasi Simpan Pinjam (Kospin)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koperasi Serba Usaha</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div> 
+                                    </div>
+                                    
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koperasi Lainnya</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- /.col -->
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
-                            <!-- end:: Form Sekolah Ke 2 -->
                             <!-- /.row -->
                         </div>
-                        <!-- end Container:: Sekolah  -->
-                    </div>
-                <!-- end:: Nama Sekolah Ke 2 -->
-
-                <!-- begin:: Nama Sekolah Ke 3 -->
-                    <div class="card card2 card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h2 class="card-title">Nama Sekolah Ke 3</h2>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card2").find(".card-body2"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        }); 
-                                    }); 
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-
-                        <!-- begin container:: Sekolah Ke 2 -->
-                        <div class="card-body2 card-body">
-                            <!-- begin :: form Sekolah Ke 2 -->
-                            <form action="" method="post">
-                                <div class="row">
-                                    <div class="row">
-                                        <div>
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama Sekolah</label>
-                                                <input id="nama_sekolah_ke3" type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jenjang Pendidikan</label>
-                                                <select id="jenjang_sekolah_ke3" class="form-control select2bs4" style="width: 100%;">
-                                                    <option value="">Pilih Jenjang Pendidikan</option>
-                                                    <option value="">Paud</option>
-                                                    <option value="">Sekolah Dasar</option>
-                                                    <option value="">Sekolah Menengah Pertama</option>
-                                                    <option value="">Sekolah Menengah Atas</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                            </form>
-                            <!-- end:: Form Sekolah Ke 2 -->
-                            <!-- /.row -->
-                        </div>
-                        <!-- end Container:: Sekolah  -->
-                    </div>
-                <!-- end:: Nama Sekolah ke 3 -->
-                
-                <!-- begin:: Nama Sekolah Ke 4 -->
-                    <div class="card card3 card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h2 class="card-title">Nama Sekolah Ke 4</h2>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card3").find(".card-body3"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-
-                        <!-- begin container:: Sekolah Ke 2 -->
-                        <div class="card-body3 card-body">
-                            <!-- begin :: form Sekolah Ke 2 -->
-                            <form action="" method="post">
-                                <div class="row">
-                                    <div class="row">
-                                        <div>
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama Sekolah</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jenjang Pendidikan</label>
-                                                <select id="jenjang_sekolah" class="form-control select2bs4" style="width: 100%;">
-                                                    <option value="">Pilih Jenjang Pendidikan</option>
-                                                    <option value="">Paud</option>
-                                                    <option value="">Sekolah Dasar</option>
-                                                    <option value="">Sekolah Menengah Pertama</option>
-                                                    <option value="">Sekolah Menengah Atas</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                            </form>
-                            <!-- end:: Form Sekolah Ke 2 -->
-                            <!-- /.row -->
-                        </div>
-                        <!-- end Container:: Sekolah  -->
-                    </div>
-                <!-- end:: Nama Sekolah Ke 4 -->
                 </div> <!--end::Container-->
-
-
-
-
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
 
