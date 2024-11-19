@@ -3,7 +3,7 @@
 include '../config/conn.php';
 
 // Periksa apakah data dikirim melalui POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
     // Ambil data dari form
     $kode_desa = isset($_POST['kode_desa']) ? mysqli_real_escape_string($conn, $_POST['kode_desa']) : '';
     $nama_desa = isset($_POST['nama_desa']) ? mysqli_real_escape_string($conn, $_POST['nama_desa']) : '';
