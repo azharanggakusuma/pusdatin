@@ -1,6 +1,6 @@
 <?php
 // Include koneksi database
-include '../config/conn.php';
+include '../config/conn.php'; 
 
 // Periksa apakah data dikirim melalui POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

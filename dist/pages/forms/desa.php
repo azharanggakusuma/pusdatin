@@ -238,7 +238,7 @@ include "../../config/session.php";
                         <div class="card-header mb-3">
                             <h3 class="card-title">Luas Wilayah Desa</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form">
+                                <button type="button" class="btn btn-tool toggle-form"> 
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <script>
