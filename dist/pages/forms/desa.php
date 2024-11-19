@@ -6,18 +6,23 @@ include "../../config/session.php";
 
 <?php
 
-// Ambil ID pengguna yang sedang login
+// Ambil data pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
+
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
 // Cek apakah form sudah terkunci
-$query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'desa'";
-$result_progress = mysqli_query($conn, $query_progress);
-$progress = mysqli_fetch_assoc($result_progress);
-$is_locked = $progress['is_locked'] ?? false;
+$is_locked = false; // Default tidak terkunci
+if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'desa'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +84,7 @@ $is_locked = $progress['is_locked'] ?? false;
                                 </p>
                             </li> <!--end::User Image-->
                     </li> <!--begin::Menu Footer-->
-                    <li class="user-footer d-grid gap-2"><a href="#" class="btn btn-danger btn-flat">Sign out</a> </li> <!--end::Menu Footer-->
+                    <li class="user-footer d-grid gap-2"><a href="../../auth/logout.php" class="btn btn-danger btn-flat">Sign out</a> </li> <!--end::Menu Footer-->
                 </ul>
                 </li> <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
@@ -106,7 +111,11 @@ $is_locked = $progress['is_locked'] ?? false;
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="./desa.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Desa</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
                                     </a>
                                 </li>
@@ -236,13 +245,13 @@ $is_locked = $progress['is_locked'] ?? false;
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Keadaan Geografi</h3>
+                            <h3 class="mb-0">Desa</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Keadaan Geografi
+                                    Desa
                                 </li>
                             </ol>
                         </div>
@@ -253,7 +262,7 @@ $is_locked = $progress['is_locked'] ?? false;
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Luas Wilayah Desa</h3>
+                            <h3 class="card-title">Data Desa</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -279,7 +288,7 @@ $is_locked = $progress['is_locked'] ?? false;
                                     <i class="fas fa-lock me-2"></i>
                                     <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div> 
+                                </div>
 
                                 <!-- SweetAlert dengan Kustomisasi -->
                                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
