@@ -1,31 +1,36 @@
 <?php
-// Include koneksi database
-include '../config/conn.php'; 
+include '../config/conn.php';
+session_start();
 
-// Periksa apakah data dikirim melalui POST
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ambil data dari form
-    $kode_desa = isset($_POST['kode_desa']) ? mysqli_real_escape_string($conn, $_POST['kode_desa']) : '';
-    $nama_desa = isset($_POST['nama_desa']) ? mysqli_real_escape_string($conn, $_POST['nama_desa']) : '';
+    $kode_desa = mysqli_real_escape_string($conn, $_POST['kode_desa']);
+    $nama_desa = mysqli_real_escape_string($conn, $_POST['nama_desa']);
 
-    // Validasi data
     if (!empty($kode_desa) && !empty($nama_desa)) {
-        // Query untuk menambahkan data ke database
         $sql = "INSERT INTO tb_desa (kode_desa, nama_desa) VALUES ('$kode_desa', '$nama_desa')";
 
         if (mysqli_query($conn, $sql)) {
-            // Redirect ke desa.php dengan status sukses
+            // Tambahkan atau perbarui progres pengguna
+            $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked) 
+                                VALUES ('$user_id', 'desa', TRUE)
+                                ON DUPLICATE KEY UPDATE is_locked = TRUE";
+            mysqli_query($conn, $query_progress);
+
             header("Location: ../pages/forms/desa.php?status=success");
             exit();
         } else {
-            // Redirect ke desa.php dengan status error
             header("Location: ../pages/forms/desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
             exit();
         }
     } else {
-        // Redirect ke desa.php dengan status warning
         header("Location: ../pages/forms/desa.php?status=warning");
         exit();
     }
 }
-?>

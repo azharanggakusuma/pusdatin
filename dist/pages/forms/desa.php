@@ -3,6 +3,23 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+
+<?php
+
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Cek apakah form sudah terkunci
+$query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'desa'";
+$result_progress = mysqli_query($conn, $query_progress);
+$progress = mysqli_fetch_assoc($result_progress);
+$is_locked = $progress['is_locked'] ?? false;
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -238,7 +255,7 @@ include "../../config/session.php";
                         <div class="card-header mb-3">
                             <h3 class="card-title">Luas Wilayah Desa</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form"> 
+                                <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <script>
@@ -256,34 +273,70 @@ include "../../config/session.php";
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="../../handlers/add_desa.php" method="post">
-                                <div class="row">
-                                    <!-- Kode Desa -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Kode Desa</label>
-                                        <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                            <option value="" selected>Otomatis Terisi</option>
-                                        </select>
-                                        <!-- Hidden Input untuk Kode Desa -->
-                                        <input type="hidden" name="kode_desa" id="kodeDesaHidden">
-                                    </div>
-
-                                    <!-- Nama Desa -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Nama Desa</label>
-                                        <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
-                                            <option value="" selected>Cari Nama Desa</option>
-                                        </select>
-                                        <!-- Hidden Input untuk Nama Desa -->
-                                        <input type="hidden" name="nama_desa" id="namaDesaHidden">
-                                    </div>
+                            <?php if ($is_locked): ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
 
-                                <!-- Tombol Simpan -->
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
+                                <!-- SweetAlert dengan Kustomisasi -->
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        Swal.fire({
+                                            title: "⚠️ Form Terkunci!",
+                                            text: "Anda sudah mengisi form ini dan tidak dapat diubah kembali.",
+                                            icon: "info",
+
+                                            confirmButtonText: "OK",
+                                            timer: 5000,
+                                            background: "#f8f9fa",
+                                            backdrop: `
+                                                rgba(0,0,123,0.4)
+                                                url('https://i.gifer.com/ZZ5H.gif') // GIF animasi latar belakang
+                                                left top
+                                                no-repeat
+                                            `,
+                                            buttonsStyling: false,
+                                            customClass: {
+                                                confirmButton: 'btn btn-primary btn-lg px-4 py-2',
+                                                popup: 'rounded shadow-lg'
+                                            }
+                                        });
+                                    });
+                                </script>
+                            <?php else: ?>
+                                <form action="../../handlers/add_desa.php" method="post">
+                                    <div class="row">
+                                        <!-- Kode Desa -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kode Desa</label>
+                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
+                                                <option value="" selected>Otomatis Terisi</option>
+                                            </select>
+                                            <!-- Hidden Input untuk Kode Desa -->
+                                            <input type="hidden" name="kode_desa" id="kodeDesaHidden">
+                                        </div>
+
+                                        <!-- Nama Desa -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama Desa</label>
+                                            <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
+                                                <option value="" selected>Cari Nama Desa</option>
+                                            </select>
+                                            <!-- Hidden Input untuk Nama Desa -->
+                                            <input type="hidden" name="nama_desa" id="namaDesaHidden">
+                                        </div>
+                                    </div>
+
+                                    <!-- Tombol Simpan -->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            <?php endif; ?>
                         </div>
 
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
