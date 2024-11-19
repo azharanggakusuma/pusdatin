@@ -1,9 +1,6 @@
 <?php
-// Start output buffering
-ob_start();
-
 // Include koneksi database
-include '../config/conn.php';
+include '../config/conn.php'; 
 
 // Periksa apakah data dikirim melalui POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,6 +28,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
-
-// End output buffering 
-ob_end_flush();
+?>
