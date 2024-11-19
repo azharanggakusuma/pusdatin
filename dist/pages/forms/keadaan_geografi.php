@@ -150,7 +150,7 @@ include "../../config/session.php";
                                 <li class="nav-item">
                                     <a href="transportasi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Transportasi</p>
+                                        <p>Transportasi</p> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
