@@ -77,7 +77,7 @@ include "config/session.php";
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./pages/forms/Desa.php" class="nav-link">
+                                    <a href="./pages/forms/desa.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Desa</p> 
                                     </a>
