@@ -279,7 +279,7 @@ $is_locked = $progress['is_locked'] ?? false;
                                     <i class="fas fa-lock me-2"></i>
                                     <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
+                                </div> 
 
                                 <!-- SweetAlert dengan Kustomisasi -->
                                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
