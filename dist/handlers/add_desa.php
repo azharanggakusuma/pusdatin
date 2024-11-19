@@ -1,7 +1,4 @@
 <?php
-// Start output buffering
-ob_start();
-
 // Include koneksi database
 include '../config/conn.php';
 
@@ -31,6 +28,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
-
-// End output buffering 
-ob_end_flush();
+?>

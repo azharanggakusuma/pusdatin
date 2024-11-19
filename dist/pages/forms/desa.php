@@ -234,7 +234,6 @@ include "../../config/session.php";
             </div> <!--end::App Content Header--> <!--begin::App Content-->
             <div class="app-content"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
-
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Luas Wilayah Desa</h3>
@@ -299,7 +298,7 @@ include "../../config/session.php";
                                         icon: "success",
                                         timer: 3000,
                                         showConfirmButton: false
-                                    }).then(() => { 
+                                    }).then(() => {
                                         window.location.href = "desa.php";
                                     });
                                 } else if (status === 'error') {
