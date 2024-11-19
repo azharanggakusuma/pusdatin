@@ -357,7 +357,7 @@ include "../../config/session.php";
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div> 
                                     </div>
-                                     
+                                    
                                     <!-- /.col -->
                                     <!-- /.col -->
                                     <div class>
