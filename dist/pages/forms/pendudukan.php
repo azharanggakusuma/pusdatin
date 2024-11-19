@@ -363,7 +363,7 @@ include "../../config/session.php";
                                 <script>
                                     $(document).ready(function() {
                                         $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $icon = $(this).find("i"); // Ambil ikon tombo l
                                             var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
                                             $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi

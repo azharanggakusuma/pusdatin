@@ -101,7 +101,7 @@ include "../../config/session.php";
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
-                                    </a>
+                                    </a> 
                                 </li>
                                 <li class="nav-item">
                                     <a href="sumber_daya_manusia.php" class="nav-link">

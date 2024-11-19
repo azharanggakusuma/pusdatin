@@ -79,7 +79,7 @@ include "config/session.php";
                                 <li class="nav-item">
                                     <a href="./pages/forms/Desa.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Desa</p>
+                                        <p>Desa</p> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
