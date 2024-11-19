@@ -353,7 +353,7 @@ include "../../config/session.php";
 
                                             $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
                                             $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
+                                        }); 
                                     }); 
                                 </script>
                             </div>
