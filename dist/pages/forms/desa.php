@@ -299,7 +299,7 @@ include "../../config/session.php";
                                         icon: "success",
                                         timer: 3000,
                                         showConfirmButton: false
-                                    }).then(() => {
+                                    }).then(() => { 
                                         window.location.href = "desa.php";
                                     });
                                 } else if (status === 'error') {
