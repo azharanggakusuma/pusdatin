@@ -219,13 +219,13 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Lembaga Keuangan</h3>
+                            <h3 class="mb-0">Sarana Perdagangan</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Lembaga Keuangan
+                                   Sarana Perdagangan
                                 </li>
                             </ol>
                         </div>
@@ -237,7 +237,7 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Banyaknya Bank Pemerintah, Bank Swasta dan BPR</h3>
+                            <h3 class="card-title">Banyaknya Sarana Perdagangan</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -265,7 +265,7 @@ include "../../config/session.php";
                                     <div class=>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Bank Umum Pemerintah</label>
+                                            <label class="mb-2">Kelompok Pertokoanh</label>
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
@@ -274,7 +274,7 @@ include "../../config/session.php";
                                     <div>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Bank Umum Swasta</label>
+                                            <label class="mb-2">Pasar dengan Bangunan Permanen</label>
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
@@ -283,7 +283,34 @@ include "../../config/session.php";
                                     <div class=>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Bank Perkreditan Rakyat (BPR)</label>
+                                            <label class="mb-2">Pasar dengan Bangunan Semi Permanen</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Pasar tanpa Bangunan</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Mini Market/Swalayan/ Supermarket</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Restoran/Rumah Makan Permanen</label>
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
@@ -297,7 +324,7 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Banyaknya Koperasi Aktif</h3>
+                            <h3 class="card-title">Keberadaan Pangkalan Minyak Tanah dan LPG</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
@@ -323,8 +350,11 @@ include "../../config/session.php";
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Unit Desa (KUD)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <label class="mb-2">Keberadaan pangkalan/agen/penjual minyak tanah (termasuk penjual minyak tanah keliling)</label>
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
                                         </div>
                                     </div>
                                     
@@ -333,41 +363,13 @@ include "../../config/session.php";
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <label class="mb-2">Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)</label>
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Simpan Pinjam (Kospin)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Serba Usaha</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Lainnya</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
