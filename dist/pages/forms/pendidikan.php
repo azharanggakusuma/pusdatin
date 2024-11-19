@@ -93,7 +93,7 @@ include "../../config/session.php";
                                         <p>Keadaan Geografi</p>
                                     </a> 
                                 </li>
-                               <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
@@ -219,7 +219,7 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Keadaan Geografi</h3>
+                            <h3 class="mb-0">Pendidikan</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
