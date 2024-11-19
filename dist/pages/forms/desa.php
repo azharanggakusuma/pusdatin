@@ -287,7 +287,44 @@ include "../../config/session.php";
                             </form>
                         </div>
 
-                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                        <?php if (isset($_GET['status'])): ?>
+                            <script>
+                                let status = "<?= $_GET['status'] ?>";
+                                if (status === 'success') {
+                                    Swal.fire({
+                                        title: "Berhasil!",
+                                        text: "Data berhasil ditambahkan.",
+                                        icon: "success",
+                                        timer: 3000,
+                                        showConfirmButton: false
+                                    }).then(() => {
+                                        window.location.href = "desa.php";
+                                    });
+                                } else if (status === 'error') {
+                                    Swal.fire({
+                                        title: "Gagal!",
+                                        text: "Terjadi kesalahan saat menambahkan data.",
+                                        icon: "error",
+                                        timer: 3000,
+                                        showConfirmButton: false
+                                    }).then(() => {
+                                        window.location.href = "desa.php";
+                                    });
+                                } else if (status === 'warning') {
+                                    Swal.fire({
+                                        title: "Peringatan!",
+                                        text: "Mohon lengkapi semua data.",
+                                        icon: "warning",
+                                        timer: 3000,
+                                        showConfirmButton: false
+                                    }).then(() => {
+                                        window.location.href = "desa.php";
+                                    });
+                                }
+                            </script>
+                        <?php endif; ?>
 
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {

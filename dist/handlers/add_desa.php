@@ -1,9 +1,12 @@
 <?php
+// Start output buffering
+ob_start();
+
 // Include koneksi database
 include '../config/conn.php';
 
 // Periksa apakah data dikirim melalui POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ambil data dari form
     $kode_desa = isset($_POST['kode_desa']) ? mysqli_real_escape_string($conn, $_POST['kode_desa']) : '';
     $nama_desa = isset($_POST['nama_desa']) ? mysqli_real_escape_string($conn, $_POST['nama_desa']) : '';
@@ -15,17 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (mysqli_query($conn, $sql)) {
             // Redirect ke desa.php dengan status sukses
-            header("Location: ../pages/form/desa.php?status=success");
+            header("Location: ../pages/forms/desa.php?status=success");
             exit();
         } else {
             // Redirect ke desa.php dengan status error
-            header("Location: ../pages/form/desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
+            header("Location: ../pages/forms/desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
             exit();
         }
     } else {
         // Redirect ke desa.php dengan status warning
-        header("Location: ../pages/form/desa.php?status=warning");
+        header("Location: ../pages/forms/desa.php?status=warning");
         exit();
     }
 }
-?>
+
+// End output buffering
+ob_end_flush();
