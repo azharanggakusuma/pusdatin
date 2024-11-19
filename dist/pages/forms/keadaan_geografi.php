@@ -89,7 +89,11 @@ include "../../config/session.php";
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                 <li class="nav-item"> <a href="./desa.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Desa</p>
+                                    </a> 
+                                </li>
+                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
                                     </a> 
                                 </li>

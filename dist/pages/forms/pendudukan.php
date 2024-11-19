@@ -89,11 +89,7 @@ include "../../config/session.php";
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./desa.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Desa</p>
-                                    </a> 
-                                </li>
-                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
                                     </a> 
                                 </li>
@@ -101,7 +97,7 @@ include "../../config/session.php";
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
-                                    </a> 
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="sumber_daya_manusia.php" class="nav-link">
@@ -223,7 +219,7 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Pendidikan</h3>
+                            <h3 class="mb-0">Penduduk</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
@@ -241,7 +237,7 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Luas Wilayah Desa</h3>
+                            <h3 class="card-title">Desa</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -263,7 +259,7 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Kode Desa</label>
                                             <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
@@ -350,25 +346,16 @@ include "../../config/session.php";
                                         </script>
                                     </div>
 
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
-                                            <input type="text" class="form-control" placeholder="234,47 Ha" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
                                 </div>
+                                 <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                             </form>
                             <!-- /.row -->
                         </div>
-                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Batas Wilayah Desa</h3>
+                            <h3 class="card-title">Penduduk</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
@@ -376,7 +363,7 @@ include "../../config/session.php";
                                 <script>
                                     $(document).ready(function() {
                                         $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $icon = $(this).find("i"); // Ambil ikon tombo l
                                             var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
                                             $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
@@ -390,21 +377,17 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div >
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Kode Desa</label>
-                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                                <option value="" selected>Otomatis Terisi</option>
-                                            </select>
+                                            <label class="mb-2">Jumlah Penduduk Belum Tercatat di Kartu Keluarga (orang)</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                         <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Penduduk Belum Merekam e-KTP (orang)</label>
+                                            <input type="text" class="form-control">
                                         </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Desa</label>
-                                            <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected>Cari Nama Desa</option>
-                                            </select>
-                                        </div>
-
+                                       
                                         <script>
                                             document.addEventListener("DOMContentLoaded", function() {
                                                 const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
@@ -476,22 +459,11 @@ include "../../config/session.php";
                                             });
                                         </script>
                                     </div>
-
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
-                                            <input type="text" class="form-control" placeholder="234,47 Ha" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
                                 </div>
+                                 <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                             </form>
                             <!-- /.row -->
                         </div>
-                        <div class="card-footer mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                     </div>
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
