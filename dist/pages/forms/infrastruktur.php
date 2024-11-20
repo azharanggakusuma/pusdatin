@@ -454,7 +454,7 @@ include "../../config/session.php";
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <!-- /.col -->
+                                    <!-- /.col -->   
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
