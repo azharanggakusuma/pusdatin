@@ -486,6 +486,8 @@ include "../../config/session.php";
                                         <p>Lorem ipsum dolor</>
                                         <ul>
                                             <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
