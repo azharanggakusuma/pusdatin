@@ -252,7 +252,7 @@ if ($result->num_rows > 0) {
                             }
                         </script>
                     <?php endif; ?>
-
+ 
                     <!-- Modal Edit User -->
                     <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

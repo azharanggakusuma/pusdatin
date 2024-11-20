@@ -44,6 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['id'])) {
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../pages/tables/user.php");
+    header("Location: ../pages/tables/user.php"); 
 }
 ?>
