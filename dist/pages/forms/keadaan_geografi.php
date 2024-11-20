@@ -474,7 +474,7 @@ include "../../config/session.php";
                             <!-- /.row -->
                         </div>
 
-                        <!-- Modal Bootstrap -->
+                        <!-- Modal Info -->
                         <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
