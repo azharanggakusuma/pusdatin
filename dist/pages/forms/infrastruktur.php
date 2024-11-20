@@ -266,7 +266,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Panjang Jalan Desa (Kilometer)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/panjang" min="0" step="1" style="width: 100%;">
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/panjang" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -306,7 +306,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Embung (buah)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
                                     
@@ -316,7 +316,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Mata Air (lokasi)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/panjang" min="0" step="1" style="width: 100%;">
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/panjang" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -368,7 +368,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                         <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 1</label>
-                                        <input type="text" id="nama-danau/waduk/situ-1" class="form-control" placeholder="Isi nama danau/waduk/situ" required>   
+                                        <input type="text" id="nama-danau/waduk/situ-1" class="form-control" placeholder="Masukkan nama danau/waduk/situ" required>   
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -377,7 +377,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                         <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 2</label>
-                                        <input type="text" id="nama-danau/waduk/situ-2" class="form-control" placeholder="Isi nama danau/waduk/situ" required>   
+                                        <input type="text" id="nama-danau/waduk/situ-2" class="form-control" placeholder="Masukkan nama danau/waduk/situ" required>   
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -386,7 +386,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                         <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 3</label>
-                                        <input type="text" id="nama-danau/waduk/situ-3" class="form-control" placeholder="Isi nama danau/waduk/situ" required>   
+                                        <input type="text" id="nama-danau/waduk/situ-3" class="form-control" placeholder="Masukkan nama danau/waduk/situ" required>   
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -426,7 +426,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Banyaknya Tempat Pembuangan Sementara (TPS)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -435,7 +435,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Banyaknya Tempat Pembuangan Akhir (TPA)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -444,7 +444,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah kendaraan pengangkut sampah dimiliki desa</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
                                     <!-- /.col -->

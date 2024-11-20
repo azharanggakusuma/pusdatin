@@ -464,7 +464,12 @@ include "../../config/session.php";
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Topografi Terluas Wilayah Desa</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan topografi terluas" style="width: 100%;" required>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">LERENG/PUNCAK</option>
+                                            <option value="">LEMBAH</option>
+                                            <option value="">DATARAN</option>
+                                            <option value="">PESISIR PANTAI</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -473,7 +478,55 @@ include "../../config/session.php";
                             </form>
                             <!-- /.row -->
                         </div>
+                    </div>
+                    
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Luas Tanah Kas Desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row"> <!-- /.col -->
+                                    <!-- /.form-group -->
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Tanah Bengkok</label>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Tanah Titi Sara</label>
+                                        <input type="number" class="form-control" placeholder="MAsukkan angka/luas" style="width: 100%;" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Kebun Desa</label>
+                                        <input type="number" class="form-control" placeholder="MAsukkan angka/luas" style="width: 100%;" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Sawah Desa</label>
+                                        <input type="number" class="form-control" placeholder="MAsukkan angka/luas" style="width: 100%;" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
                         <!-- Modal Info -->
                         <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
