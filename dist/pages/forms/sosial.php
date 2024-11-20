@@ -259,93 +259,6 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Kode Desa</label>
-                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                                <option value="" selected>Otomatis Terisi</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Desa</label>
-                                            <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected>Cari Nama Desa</option>
-                                            </select>
-                                        </div>
-
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
-
-                                                fetch(apiUrl)
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        if (!data || !data.data || !Array.isArray(data.data)) {
-                                                            throw new Error("Data dari API tidak valid");
-                                                        }
-
-                                                        const villages = data.data;
-                                                        const villageCodeSelect = $("#villageCodeSelect");
-                                                        const villageNameSelect = $("#villageNameSelect");
-
-                                                        // Bersihkan opsi lama
-                                                        villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                        villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
-
-                                                        // Sort data berdasarkan Nama Desa
-                                                        villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
-
-                                                        // Isi dropdown Nama Desa
-                                                        villages.forEach(village => {
-                                                            villageNameSelect.append(
-                                                                new Option(village['Nama_Desa'], village['Kode_Desa'])
-                                                            );
-                                                        });
-
-                                                        // Inisialisasi Select2
-                                                        villageNameSelect.select2({
-                                                            theme: "bootstrap4" // Pastikan tema sesuai jika menggunakan select2bs4
-                                                        });
-
-                                                        // Event listener untuk Nama Desa
-                                                        villageNameSelect.on("change", function() {
-                                                            const selectedKodeDesa = $(this).val();
-
-                                                            // Temukan pasangan Kode Desa
-                                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
-
-                                                            // Update dropdown Kode Desa
-                                                            if (selectedVillage) {
-                                                                villageCodeSelect.empty().append(
-                                                                    new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
-                                                                );
-                                                            } else {
-                                                                villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                            }
-                                                        });
-
-                                                        // Event listener untuk Kode Desa
-                                                        villageCodeSelect.on("change", function() {
-                                                            const selectedKodeDesa = $(this).val();
-
-                                                            // Update Nama Desa sesuai Kode Desa
-                                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
-
-                                                            if (selectedVillage) {
-                                                                villageNameSelect.val(selectedVillage['Kode_Desa']).trigger("change");
-                                                            } else {
-                                                                villageNameSelect.val("").trigger("change");
-                                                            }
-                                                        });
-                                                    })
-                                                    .catch(error => {
-                                                        console.error("Terjadi kesalahan saat memuat data desa:", error);
-                                                    });
-                                            });
-                                        </script>
-                                    </div>
-
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <!-- /.form-group -->
@@ -479,7 +392,7 @@ include "../../config/session.php";
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
-                            
+
                             <!-- /.row -->
                         </div>
                     </div>
