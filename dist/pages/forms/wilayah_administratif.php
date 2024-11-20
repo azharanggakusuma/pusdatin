@@ -874,7 +874,7 @@ include "../../config/session.php";
                                                 <option value="">JARANG DIGUNAKAN</option>
                                                 <option value="">TIDAK DIGUNAKAN</option>
                                                 <option value="">TIDAK ADA</option>
-                                            </select>
+                                            </select>   
                                         </div>
                                     </div>
                                     <!-- /.col -->
