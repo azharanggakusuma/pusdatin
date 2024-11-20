@@ -261,16 +261,16 @@ include "../../config/session.php";
                                 <div id="potensi-container">
                                     <!-- Potensi Wisata 1 -->
                                     <div class="potensi-item border p-3 mb-3">
-                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">#1</span></h5>
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">1</span></h5>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="nama-wisata-1">Nama Potensi Wisata Desa</label>
-                                                    <input type="text" id="nama-wisata-1" name="nama_potensi[]" class="form-control" placeholder="Isi nama potensi" required>
+                                                    <input type="text" id="nama-wisata-1" class="form-control" placeholder="Isi nama potensi" required>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-1">Jenis Wisata Desa</label>
-                                                    <select id="jenis-wisata-1" name="jenis_wisata[]" class="form-control" required>
+                                                    <select id="jenis-wisata-1" class="form-control" required>
                                                         <option disabled selected>Isi Jenis Wisata</option>
                                                         <option value="alam">Wisata Alam</option>
                                                         <option value="buatan">Wisata Buatan</option>
@@ -285,11 +285,353 @@ include "../../config/session.php";
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <label class="mb-2" for="lintang-wisata-1">Koordinat Lintang</label>
-                                                            <input type="text" id="lintang-wisata-1" name="koordinat_lintang[]" class="form-control" placeholder="Isi koordinat lintang" style="width: 100%;" required>
+                                                            <input type="text" id="lintang-wisata-1" class="form-control" placeholder="-6.8796 LS" style="width: 100%;" required>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label class="mb-2" for="bujur-wisata-1">Koordinat Bujur</label>
-                                                            <input type="text" id="bujur-wisata-1" name="koordinat_bujur[]" class="form-control" placeholder="Isi koordinat bujur" style="width: 100%;" required>
+                                                            <input type="text" id="bujur-wisata-1" class="form-control" placeholder="108.5538 BT" style="width: 100%;" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 2 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">2</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-2">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-2" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-2">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-2" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-2">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-2" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-2">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-2" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 3 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">3</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-3">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-3" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-3">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-3" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-3">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-3" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-3">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-3" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 3 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">4</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-4">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-4" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-4">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-4" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-4">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-4" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-4">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-4" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 5 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">5</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-5">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-5" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-5">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-5" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-5">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-5" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-5">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-5" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 6 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">6</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-6">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-6" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-6">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-6" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-6">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-6" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-6">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-6" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 7 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">7</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-7">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-7" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-7">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-7" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-7">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-7" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-7">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-7" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 8 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">8</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-8">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-8" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-8">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-8" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-8">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-8" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-8">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-8" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 9 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">9</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-9">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-9" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-9">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-9" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-9">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-9" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-9">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-9" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Potensi Wisata 10 -->
+                                    <div class="potensi-item border p-3 mb-3">
+                                        <h5 class="mb-3">Potensi Wisata <span class="potensi-id">10</span></h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="nama-wisata-10">Nama Potensi Wisata Desa</label>
+                                                    <input type="text" id="nama-wisata-10" class="form-control" placeholder="Isi nama potensi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2" for="jenis-wisata-10">Jenis Wisata Desa</label>
+                                                    <select id="jenis-wisata-10" class="form-control">
+                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option value="alam">Wisata Alam</option>
+                                                        <option value="buatan">Wisata Buatan</option>
+                                                        <option value="religi">Wisata Religi</option>
+                                                        <option value="budaya">Wisata Budaya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <label class="mb-2">Titik Koordinat</label>
+                                                <div class="form-group mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="lintang-wisata-10">Koordinat Lintang</label>
+                                                            <input type="text" id="lintang-wisata-10" class="form-control" placeholder="-6.8796 LS" style="width: 100%;">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="mb-2" for="bujur-wisata-10">Koordinat Bujur</label>
+                                                            <input type="text" id="bujur-wisata-10" class="form-control" placeholder="108.5538 BT" style="width: 100%;">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,194 +640,77 @@ include "../../config/session.php";
                                     </div>
                                 </div>
                                 <div>
-                                    <button type="button" id="add-potensi" class="btn btn-success mb-3">Tambah Potensi Wisata</button>
                                     <button type="submit" class="btn btn-primary mb-3">Simpan Semua</button>
                                 </div>
                             </form>
                         </div>
+                    </div>
 
-                        <script>
-                            let potensiCounter = 1;
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Jumlah Usaha Jasa Akomodasi</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toogle-form-1">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toogle-form-1").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                            document.getElementById('add-potensi').addEventListener('click', () => {
-                                potensiCounter++;
-                                const potensiContainer = document.getElementById('potensi-container');
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 150px;">Hotel (unit)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1"  required>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center " style="width:100%">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 150px;">Penginapan (unit)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" required>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
 
-                                // Buat elemen baru
-                                const newPotensi = document.createElement('div');
-                                newPotensi.classList.add('potensi-item', 'border', 'p-3', 'mb-3');
-                                newPotensi.innerHTML = `
-            <h5 class="mb-3">Potensi Wisata <span class="potensi-id">#${potensiCounter}</span></h5>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label class="mb-2" for="nama-wisata-${potensiCounter}">Nama Potensi Wisata Desa</label>
-                        <input type="text" id="nama-wisata-${potensiCounter}" name="nama_potensi[]" class="form-control" placeholder="Isi nama potensi" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-2" for="jenis-wisata-${potensiCounter}">Jenis Wisata Desa</label>
-                        <select id="jenis-wisata-${potensiCounter}" name="jenis_wisata[]" class="form-control" required>
-                            <option disabled selected>Isi Jenis Wisata</option>
-                            <option value="alam">Wisata Alam</option>
-                            <option value="buatan">Wisata Buatan</option>
-                            <option value="religi">Wisata Religi</option>
-                            <option value="budaya">Wisata Budaya</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label class="mb-2">Titik Koordinat</label>
-                    <div class="form-group mb-3">
-                        <label class="mb-2" for="lintang-wisata-${potensiCounter}">Koordinat Lintang</label>
-                        <input type="text" id="lintang-wisata-${potensiCounter}" name="koordinat_lintang[]" class="form-control" placeholder="Isi koordinat lintang" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-2" for="bujur-wisata-${potensiCounter}">Koordinat Bujur</label>
-                        <input type="text" id="bujur-wisata-${potensiCounter}" name="koordinat_bujur[]" class="form-control" placeholder="Isi koordinat bujur" required>
-                    </div>
+
+
+                    </form>
+
+                    <!-- /.row -->
                 </div>
             </div>
-        `;
-                                potensiContainer.appendChild(newPotensi);
-                            });
-                        </script>
+    </div> <!--end::Container-->
+    </div> <!--end::App Content-->
+    </main> <!--end::App Main--> <!--begin::Footer-->
 
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Kepala Keluarga Penerima BLT Dana Desa</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah BLT Dana Desa (Kepala Keluarga)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Kepala Keluarga Penerima Bantuan Pangan Non Tunai (BPNT)</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Penerima BPNT (Kepala Keluarga)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Kepala Keluarga Penerima Jaminan Kesehatan Daerah</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Penerima Jamkesda (Kepala Keluarga)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-
-                            <!-- /.row -->
-                        </div>
-                    </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
-
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
+    <footer class="app-footer"> <!--begin::To the end-->
+        <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+        <strong>
+            Copyright &copy; 2024&nbsp;
+            <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+        </strong>
+        All rights reserved.
+        <!--end::Copyright-->
+    </footer> <!--end::Footer-->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
 

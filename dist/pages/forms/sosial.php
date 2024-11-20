@@ -91,9 +91,9 @@ include "../../config/session.php";
                             <ul class="nav nav-treeview">
                                 <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
-                                    </a> 
+                                    </a>
                                 </li>
-                               <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
@@ -150,7 +150,7 @@ include "../../config/session.php";
                                 <li class="nav-item">
                                     <a href="transportasi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Transportasi</p> 
+                                        <p>Transportasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -279,12 +279,12 @@ include "../../config/session.php";
                         <div class="card-header mb-3">
                             <h3 class="card-title">Jumlah Kepala Keluarga Penerima BLT Dana Desa</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
+                                <button type="button" class="btn btn-tool toggle-form-1">
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <script>
                                     $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
+                                        $(".toggle-form-1").on("click", function() {
                                             var $icon = $(this).find("i"); // Ambil ikon tombol
                                             var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -307,7 +307,7 @@ include "../../config/session.php";
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
-                                    
+
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -360,12 +360,12 @@ include "../../config/session.php";
                         <div class="card-header mb-3">
                             <h3 class="card-title">Jumlah Kepala Keluarga Penerima Jaminan Kesehatan Daerah</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
+                                <button type="button" class="btn btn-tool toggle-form-2">
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <script>
                                     $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
+                                        $(".toggle-form-2").on("click", function() {
                                             var $icon = $(this).find("i"); // Ambil ikon tombol
                                             var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
