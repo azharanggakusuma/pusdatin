@@ -364,11 +364,29 @@ include "../../config/session.php";
                                     
                                     <!-- /.col -->
                                     <!-- /.col -->
+                                     <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                        <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 1</label>
+                                        <input type="text" id="nama-danau/waduk/situ-1" class="form-control" placeholder="Isi nama danau/waduk/situ" required>   
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/panjang" min="0" step="1" style="width: 100%;">
+                                        <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 2</label>
+                                        <input type="text" id="nama-danau/waduk/situ-2" class="form-control" placeholder="Isi nama danau/waduk/situ" required>   
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                        <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 3</label>
+                                        <input type="text" id="nama-danau/waduk/situ-3" class="form-control" placeholder="Isi nama danau/waduk/situ" required>   
                                         </div>
                                     </div>
                                     <!-- /.col -->
