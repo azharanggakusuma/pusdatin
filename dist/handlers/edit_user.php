@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['id'])) {
 
     // Eksekusi query dan periksa hasilnya
     if ($stmt->execute()) {
-        header("Location: ../pages/tables/user.php?messageadd=success");
+        header("Location: ../pages/tables/user.php?messageedit=success");
     } else {
         echo "Error: " . $stmt->error;
-        header("Location: ../pages/tables/user.php?messageadd=error");
+        header("Location: ../pages/tables/user.php?messageedit=error");
     }
 
     // Tutup statement dan koneksi
