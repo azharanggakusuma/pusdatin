@@ -290,6 +290,28 @@ include "../../config/session.php";
                                                     <option value="">Sekolah Menengah Atas</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Status Sekolah</label>
+                                                <select id="status_sekolah1" class="form-control select2bs4" style="width: 100%;">
+                                                    <option value="" disabled selected>Pilih Status Sekolah</option>
+                                                    <option value="">Negeri</option>
+                                                    <option value="">Swasta</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Sekolah</label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_sekolah_ke1" type="text" class="form-control">
+                                            </div>
+                                            <div class="">
+
+                                            </div>
                                         </div>
                                     </div>
 
@@ -320,7 +342,7 @@ include "../../config/session.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end:: form sekolah ke 2 -->
+                                <!-- end:: form sekolah ke 2 --> 
 
 
                                 <!-- begin:: form sekolah ke 3 -->
@@ -373,7 +395,11 @@ include "../../config/session.php";
                                 </div>
                                 <!-- end:: form Sekolah ke 4 -->
 
-                                <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
+                                <div class="col-md-6">
+
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
+
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -391,7 +417,7 @@ include "../../config/session.php";
                 Copyright &copy; 2024&nbsp;
                 <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
             </strong>
-            All rights reserved. 
+            All rights reserved.
             <!--end::Copyright-->
         </footer> <!--end::Footer-->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->

@@ -263,6 +263,10 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Data Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -291,7 +295,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 </div>
 
                                 <!-- SweetAlert dengan Kustomisasi -->
-                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                <!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         Swal.fire({
@@ -315,7 +319,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             }
                                         });
                                     });
-                                </script>
+                                </script>-->
                             <?php else: ?>
                                 <form action="../../handlers/add_desa.php" method="post">
                                     <div class="row">
@@ -346,6 +350,27 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     </div>
                                 </form>
                             <?php endif; ?>
+                        </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi nama desa</li>
+                                            <li>Untuk kode desa akan terisi otomatis setelah memilih nama desa</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

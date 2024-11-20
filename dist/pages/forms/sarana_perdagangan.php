@@ -260,7 +260,6 @@ include "../../config/session.php";
                             <form action="" method="post">
                                 <div class="row">
                                     
-
                                     <!-- /.col -->
                                     <div class=>
                                         <!-- /.form-group -->

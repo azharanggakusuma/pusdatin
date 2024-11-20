@@ -219,13 +219,13 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Infrastruktur</h3>
+                            <h3 class="mb-0">Wilayah Administratif</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                   Infrastruktur
+                                    Wilayah Administratif
                                 </li>
                             </ol>
                         </div>
@@ -237,7 +237,7 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Panjang Jalan Desa</h3>
+                            <h3 class="card-title">Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -265,130 +265,136 @@ include "../../config/session.php";
                                     <div class=>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Panjang Jalan Desa (Kilometer)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/panjang" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Banyaknya Embung</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Embung (buah)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Mata Air (lokasi)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/panjang" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Nama danau/waduk/situ</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Keberadaan Danau/Waduk/Situ</label>
-                                            <select name="" id="" class="form-control"> 
-                                                <option value="">Ada</option>
-                                                <option value="">Tidak Ada</option>
+                                            <label class="mb-2">Klasifikasi Desa (Swasembada/ Swakarya/ Swadaya)</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">SWASEMBADA</option>
+                                                <option value="">SWAKARYA</option>
+                                                <option value="">SWADAYA</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <!-- /.col -->
+                                     <!-- /.col -->
+                                     <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">DESA</option>
+                                                <option value="">KELURAHAN</option>
+                                                <option value="">KAMPUNG</option>
+                                                <option value="">NAGARI</option>
+                                                <option value="">GAMPONG</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Banyaknya Dusun, Rukun Tetangga dan Rukun Warga </h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Banyaknya RW</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Banyaknya RT</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Alamat Balai Desa/Kantor Kelurahan </h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat Balai Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan alamat balai/kantor" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
                                     
                                     <!-- /.col -->
                                     <!-- /.col -->
-                                     <div class>
+                                   <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                        <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 1</label>
-                                        <input type="text" id="nama-danau/waduk/situ-1" class="form-control" placeholder="Masukkan nama danau/waduk/situ" required>   
+                                            <label class="mb-2">Kecamatan</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan kecamatan" min="0" step="1" style="width: 100%;">
                                         </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                        <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 2</label>
-                                        <input type="text" id="nama-danau/waduk/situ-2" class="form-control" placeholder="Masukkan nama danau/waduk/situ" required>   
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                        <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 3</label>
-                                        <input type="text" id="nama-danau/waduk/situ-3" class="form-control" placeholder="Masukkan nama danau/waduk/situ" required>   
-                                        </div>
-                                    </div>
+                                    </div>                                
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -399,7 +405,7 @@ include "../../config/session.php";
                     </div> <!--end::Container-->
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Sarana Prasarana Kebersihan</h3>
+                            <h3 class="card-title">Dasar hukum pembentukan Pemerintah Desa / Kelurahan </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
@@ -425,37 +431,10 @@ include "../../config/session.php";
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Banyaknya Tempat Pembuangan Sementara (TPS)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Banyaknya Tempat Pembuangan Akhir (TPA)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah kendaraan pengangkut sampah dimiliki desa</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alat penghancur sampah/incinerator (Ada/Tidak)</label>
-                                            <select name="" id="" class="form-control"> 
-                                                <option value="">Ada</option>
-                                                <option value="">Tidak Ada</option>
+                                            <label class="mb-2">Ketersediaan Dasar Hukum Pembentukan Pemerintah Desa / Kelurahan</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">ADA</option>
+                                                <option value="">TIDAK ADA</option>
                                             </select>
                                         </div>
                                     </div>
@@ -464,23 +443,437 @@ include "../../config/session.php";
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Tempat pengelolaan sampah (Ada / Tidak)</label>
-                                            <select name="" id="" class="form-control"> 
-                                                <option value="">Ada</option>
-                                                <option value="">Tidak Ada</option>
+                                            <label class="mb-2">Jika Kolom di atas Ada, No Peraturan/Keputusan Pendirian Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Dasar hukum pembentukan Badan Permusyawaratan Desa (BPD)</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Ketersediaan Dasar Hukum Badan Permusyawaratan Desa (BPD)</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">ADA</option>
+                                                <option value="">TIDAK ADA</option>
                                             </select>
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <!-- /.col -->   
+                                    <!-- /.col -->
                                     <div class>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Jika kolom di atas Ada, Pengelolaan sampah lingkungan dilakukan oleh (Pemerintah/Swasta/Swadaya)</label>
-                                            <select name="" id="" class="form-control"> 
-                                                <option value="">Pemerintah</option>
-                                                <option value="">Swadaya</option>
-                                                <option value="">Swasta</option>
+                                            <label class="mb-2">Jika kolom di atas Ada, Nomor Peraturan/Keputusan Badan Permusyawaratan Desa (BPD)</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Ketersediaan Penetapan Batas dan Peta Desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Penetapan Batas Desa (Sudah ada/Belum ada)</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">ADA</option>
+                                                <option value="">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jika kolom di atas Ada, No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Ketersediaan Peta Desa (Ada/Tidak)</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">ADA</option>
+                                                <option value="">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jika Kolom di atas Ada, No SK/Perbup/Perda tentang Peta Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Alamat website dan media sosial</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat Website Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat Email Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat Facebook Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat Twitter Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat Youtube Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Kepemilikan Kantor Kepala Desa/Balai Desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Aset Desa/Bukan Aset Desa</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">ASET DESA</option>
+                                                <option value="">BUKAN ASET DESA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Kondisi Kantor Kepala Desa/Balai Desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kondisi Kantor Kepala Desa/Balai Desa</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">ADA, LAYAK</option>
+                                                <option value="">ADA, TIDAK LAYAK</option>
+                                                <option value="">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Perkembangan Status Indeks Desa Membangun (IDM) di Kantor Desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2024</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">MANDIRI</option>
+                                                <option value="">MAJU</option>
+                                                <option value="">BERKEMBANG</option>
+                                                <option value="">TERTINGGAL</option>
+                                                <option value="">SANGAT TERTINGGAL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                     <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2025</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">MANDIRI</option>
+                                                <option value="">MAJU</option>
+                                                <option value="">BERKEMBANG</option>
+                                                <option value="">TERTINGGAL</option>
+                                                <option value="">SANGAT TERTINGGAL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Ketersediaan Internet</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">BERFUNGSI</option>
+                                                <option value="">JARANG BERFUNGSI</option>
+                                                <option value="">TIDAK BERFUNGSI</option>
+                                                <option value="">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kecepatan akses internet</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">CEPAT</option>
+                                                <option value="">SEDANG</option>
+                                                <option value="">LAMBAT</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Komputer/PC/laptop di Kantor Desa</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Frekuensi Penggunaan Komputer/PC/laptop di Kantor Desa</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">DIGUNAKAN</option>
+                                                <option value="">JARANG DIGUNAKAN</option>
+                                                <option value="">TIDAK DIGUNAKAN</option>
+                                                <option value="">TIDAK ADA</option>
                                             </select>
                                         </div>
                                     </div>
