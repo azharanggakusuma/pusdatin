@@ -398,7 +398,6 @@ include "../../config/session.php";
                                 <div class="col-md-6">
 
                                     <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-                                    <button type="submit" class="btn btn-primary mt-3">Aturan pengisian</button>
 
                                 </div>
                             </form>
