@@ -3,28 +3,6 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
-
-<?php
-
-// Ambil data pengguna yang sedang login
-$username = $_SESSION['username'] ?? '';
-$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
-
-$query_user = "SELECT id FROM users WHERE username = '$username'";
-$result_user = mysqli_query($conn, $query_user);
-$user = mysqli_fetch_assoc($result_user);
-$user_id = $user['id'] ?? 0;
-
-// Cek apakah form sudah terkunci
-$is_locked = false; // Default tidak terkunci
-if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
-    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'desa'";
-    $result_progress = mysqli_query($conn, $query_progress);
-    $progress = mysqli_fetch_assoc($result_progress);
-    $is_locked = $progress['is_locked'] ?? false;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -84,7 +62,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 </p>
                             </li> <!--end::User Image-->
                     </li> <!--begin::Menu Footer-->
-                    <li class="user-footer d-grid gap-2"><a href="../../auth/logout.php" class="btn btn-danger btn-flat">Sign out</a> </li> <!--end::Menu Footer-->
+                    <li class="user-footer d-grid gap-2"><a href="#" class="btn btn-danger btn-flat">Sign out</a> </li> <!--end::Menu Footer-->
                 </ul>
                 </li> <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
@@ -111,15 +89,11 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./desa.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Desa</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
-                                    </a>
+                                    </a> 
                                 </li>
-                                <li class="nav-item">
+                               <li class="nav-item">
                                     <a href="wilayah_administratif.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Wilayah Administratif</p>
@@ -176,7 +150,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 <li class="nav-item">
                                     <a href="transportasi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Transportasi</p>
+                                        <p>Transportasi</p> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -245,13 +219,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Desa</h3>
+                            <h3 class="mb-0">Infrastruktur</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Desa
+                                   Infrastruktur
                                 </li>
                             </ol>
                         </div>
@@ -260,9 +234,10 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
             </div> <!--end::App Content Header--> <!--begin::App Content-->
             <div class="app-content"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
+
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Data Desa</h3>
+                            <h3 class="card-title">Panjang Jalan Desa</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -282,175 +257,223 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <?php if ($is_locked): ?>
-                                <!-- Alert Bootstrap dengan Inovasi -->
-                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-                                    <i class="fas fa-lock me-2"></i>
-                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <form action="" method="post">
+                                <div class="row">
+                                    
+
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Panjang Jalan Desa (Kilometer)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/panjang" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
                                 </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
 
-                                <!-- SweetAlert dengan Kustomisasi -->
-                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Banyaknya Embung</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
                                 <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        Swal.fire({
-                                            title: "⚠️ Form Terkunci!",
-                                            text: "Anda sudah mengisi form ini dan tidak dapat diubah kembali.",
-                                            icon: "info",
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                            confirmButtonText: "OK",
-                                            timer: 5000,
-                                            background: "#f8f9fa",
-                                            backdrop: `
-                                                rgba(0,0,123,0.4)
-                                                url('https://i.gifer.com/ZZ5H.gif') // GIF animasi latar belakang
-                                                left top
-                                                no-repeat
-                                            `,
-                                            buttonsStyling: false,
-                                            customClass: {
-                                                confirmButton: 'btn btn-primary btn-lg px-4 py-2',
-                                                popup: 'rounded shadow-lg'
-                                            }
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
                                         });
                                     });
                                 </script>
-                            <?php else: ?>
-                                <form action="../../handlers/add_desa.php" method="post">
-                                    <div class="row">
-                                        <!-- Kode Desa -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Kode Desa</label>
-                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                                <option value="" selected>Otomatis Terisi</option>
-                                            </select>
-                                            <!-- Hidden Input untuk Kode Desa -->
-                                            <input type="hidden" name="kode_desa" id="kodeDesaHidden">
-                                        </div>
-
-                                        <!-- Nama Desa -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Desa</label>
-                                            <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected>Cari Nama Desa</option>
-                                            </select>
-                                            <!-- Hidden Input untuk Nama Desa -->
-                                            <input type="hidden" name="nama_desa" id="namaDesaHidden">
-                                        </div>
-                                    </div>
-
-                                    <!-- Tombol Simpan -->
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                    </div>
-                                </form>
-                            <?php endif; ?>
+                            </div>
                         </div>
-
-                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-                        <?php if (isset($_GET['status'])): ?>
-                            <script>
-                                let status = "<?= $_GET['status'] ?>";
-                                if (status === 'success') {
-                                    Swal.fire({
-                                        title: "Berhasil!",
-                                        text: "Data berhasil ditambahkan.",
-                                        icon: "success",
-                                        timer: 3000,
-                                        showConfirmButton: false
-                                    }).then(() => {
-                                        window.location.href = "desa.php";
-                                    });
-                                } else if (status === 'error') {
-                                    Swal.fire({
-                                        title: "Gagal!",
-                                        text: "Terjadi kesalahan saat menambahkan data.",
-                                        icon: "error",
-                                        timer: 3000,
-                                        showConfirmButton: false
-                                    }).then(() => {
-                                        window.location.href = "desa.php";
-                                    });
-                                } else if (status === 'warning') {
-                                    Swal.fire({
-                                        title: "Peringatan!",
-                                        text: "Mohon lengkapi semua data.",
-                                        icon: "warning",
-                                        timer: 3000,
-                                        showConfirmButton: false
-                                    }).then(() => {
-                                        window.location.href = "desa.php";
-                                    });
-                                }
-                            </script>
-                        <?php endif; ?>
-
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
-
-                                fetch(apiUrl)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (!data || !data.data || !Array.isArray(data.data)) {
-                                            throw new Error("Data dari API tidak valid");
-                                        }
-
-                                        const villages = data.data;
-                                        const villageCodeSelect = $("#villageCodeSelect");
-                                        const villageNameSelect = $("#villageNameSelect");
-                                        const kodeDesaHidden = $("#kodeDesaHidden");
-                                        const namaDesaHidden = $("#namaDesaHidden");
-
-                                        // Bersihkan opsi lama
-                                        villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                        villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
-
-                                        // Sort data berdasarkan Nama Desa
-                                        villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
-
-                                        // Isi dropdown Nama Desa
-                                        villages.forEach(village => {
-                                            villageNameSelect.append(
-                                                new Option(village['Nama_Desa'], village['Kode_Desa'])
-                                            );
-                                        });
-
-                                        // Inisialisasi Select2
-                                        villageNameSelect.select2({
-                                            theme: "bootstrap4"
-                                        });
-
-                                        // Event listener untuk Nama Desa
-                                        villageNameSelect.on("change", function() {
-                                            const selectedKodeDesa = $(this).val();
-                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
-
-                                            // Update dropdown Kode Desa dan input tersembunyi
-                                            if (selectedVillage) {
-                                                villageCodeSelect.empty().append(
-                                                    new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
-                                                );
-                                                kodeDesaHidden.val(selectedVillage['Kode_Desa']); // Set nilai ke hidden input Kode Desa
-                                                namaDesaHidden.val(selectedVillage['Nama_Desa']); // Set nilai ke hidden input Nama Desa
-                                            } else {
-                                                villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                kodeDesaHidden.val("");
-                                                namaDesaHidden.val("");
-                                            }
-                                        });
-                                    })
-                                    .catch(error => {
-                                        console.error("Terjadi kesalahan saat memuat data desa:", error);
-                                    });
-                            });
-                        </script>
-
-
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Embung (buah)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Mata Air (lokasi)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/panjang" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
                     </div>
-                </div> <!--end::Container-->
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Nama danau/waduk/situ</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Keberadaan Danau/Waduk/Situ</label>
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/panjang" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>  
+                                  
+                    </div> <!--end::Container-->
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Jumlah Sarana Prasarana Kebersihan</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Banyaknya Tempat Pembuangan Sementara (TPS)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Banyaknya Tempat Pembuangan Akhir (TPA)</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah kendaraan pengangkut sampah dimiliki desa</label>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alat penghancur sampah/incinerator (Ada/Tidak)</label>
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Tempat pengelolaan sampah (Ada / Tidak)</label>
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->   
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jika kolom di atas Ada, Pengelolaan sampah lingkungan dilakukan oleh (Pemerintah/Swasta/Swadaya)</label>
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Pemerintah</option>
+                                                <option value="">Swadaya</option>
+                                                <option value="">Swasta</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>          
+                    </div> <!--end::Container-->
+                
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
 
