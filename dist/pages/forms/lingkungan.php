@@ -259,14 +259,51 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    
-
                                     <!-- /.col -->
                                     <div class=>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Keberadaan Sungai yang melintasi</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            <select name="" id="" class="form-control"> 
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                        <label class="mb-2">Nama sungai yang melintasi 1</label>
+                                        <input type="text" id="nama-sungai-1" class="form-control" placeholder="Isi nama sungai" required>   
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                        <label class="mb-2">Nama sungai yang melintasi 2</label>
+                                        <input type="text" id="nama-sungai-2" class="form-control" placeholder="Isi nama sungai" required>   
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                        <label class="mb-2">Nama sungai yang melintasi 3</label>
+                                        <input type="text" id="nama-sungai-3" class="form-control" placeholder="Isi nama sungai" required>   
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                        <label class="mb-2">Nama sungai yang melintasi 4</label>
+                                        <input type="text" id="nama-sungai-4" class="form-control" placeholder="Isi nama sungai" required>   
                                         </div>
                                     </div>
                                     <!-- /.col -->
