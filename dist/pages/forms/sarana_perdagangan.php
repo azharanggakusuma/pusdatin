@@ -265,7 +265,7 @@ include "../../config/session.php";
                                     <div class=>
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Kelompok Pertokoanh</label>
+                                            <label class="mb-2">Kelompok Pertokoan</label>
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                     </div>
