@@ -567,7 +567,7 @@ include "../../config/session.php";
                             <form action="" method="post">
                                 <div class="row"> <!-- /.col -->
                                     <!-- /.form-group -->
-                                    <div class="form-group mb-3">
+                                    <div class="form-group mb-3"> 
                                         <label class="mb-2">Banyaknya Linmas/Hansip (orang)</label>
                                         <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
