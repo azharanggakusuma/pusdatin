@@ -373,7 +373,7 @@ include "../../config/session.php";
                                     </div>
                                     <!-- /.col -->
                                     <!-- /.col -->
-                                    <div class>
+                                    <div class>    
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                         <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa 2</label>
