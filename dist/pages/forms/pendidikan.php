@@ -342,7 +342,7 @@ include "../../config/session.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end:: form sekolah ke 2 -->
+                                <!-- end:: form sekolah ke 2 --> 
 
 
                                 <!-- begin:: form sekolah ke 3 -->
