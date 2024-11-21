@@ -321,7 +321,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     });
                                 </script>-->
                             <?php else: ?>
-                                <form action="../../handlers/add_desa.php" method="post">
+                                <form action="../../handlers/form_desa.php" method="post">
                                     <div class="row">
                                         <!-- Kode Desa -->
                                         <div class="form-group mb-3">
