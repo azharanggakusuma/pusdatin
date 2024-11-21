@@ -5,7 +5,6 @@ include "../../config/session.php";
 
 <?php
 require __DIR__ . '/../../../vendor/autoload.php';
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -53,13 +52,13 @@ if ($type === 'excel') {
     $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
 
     /// Style untuk header
-    $headerStyle = [
-        'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
-        'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
-        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
-        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-    ];
-    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
+$headerStyle = [
+    'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
+    'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
+    'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+    'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+];
+$sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 
 
     // Data dari database
@@ -81,6 +80,11 @@ if ($type === 'excel') {
     // Auto-size kolom
     foreach (range('A', 'C') as $column) {
         $sheet->getColumnDimension($column)->setAutoSize(true);
+    }
+
+     // Membersihkan buffer output
+     if (ob_get_level()) {
+        ob_end_clean();
     }
 
     // Kirim file Excel ke browser
@@ -122,7 +126,7 @@ if ($type === 'pdf') {
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>PUSDATIN | Data User</title><!--begin::Primary Meta Tags-->
+    <title>PUSDATIN | Rekap Data</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE 4 | General Form Elements">
     <meta name="author" content="ColorlibHQ">

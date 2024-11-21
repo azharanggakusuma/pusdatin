@@ -3,7 +3,7 @@
         'name' => 'almasaeed2010/adminlte',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'e4d266e0740c05c5b41224495f59ea3177916a78',
+        'reference' => '05fd8a5bfee59b901d4ff952a88aabe47b869725',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'almasaeed2010/adminlte' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'e4d266e0740c05c5b41224495f59ea3177916a78',
+            'reference' => '05fd8a5bfee59b901d4ff952a88aabe47b869725',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
