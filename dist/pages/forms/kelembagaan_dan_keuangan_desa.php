@@ -1194,7 +1194,7 @@ include "../../config/session.php";
                                             <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
                                         </div>
-                                    </div>
+                                    </div>     
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                 </div>
