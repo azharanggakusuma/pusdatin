@@ -1,19 +1,119 @@
 <?php
 include_once('../../config/conn.php');
 include "../../config/session.php";
+?>
 
-// Query untuk mengambil data dari tabel `users`
-$query = "SELECT * FROM users";
-$result = $conn->query($query);
+<?php
+require __DIR__ . '/../../../vendor/autoload.php';
 
-if ($result->num_rows > 0) {
-    // Menyimpan data dalam array
-    $users = [];
-    while ($row = $result->fetch_assoc()) {
-        $users[] = $row;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use Mpdf\Mpdf;
+
+// Cek apakah koneksi ke database berhasil
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Ambil parameter jenis ekspor dan kode desa
+$type = $_GET['type'] ?? null;
+$kode_desa = $_GET['kode_desa'] ?? null;
+
+// Query untuk mengambil data desa
+$query = "
+    SELECT
+        tb_desa.kode_desa,
+        tb_desa.nama_desa,
+        tb_luas_wilayah_desa.luas_wilayah_desa
+    FROM
+        tb_desa
+    LEFT JOIN
+        tb_luas_wilayah_desa
+    ON
+        tb_desa.id_desa = tb_luas_wilayah_desa.desa_id
+";
+if ($kode_desa) {
+    $query .= " WHERE tb_desa.kode_desa = '$kode_desa'";
+}
+
+// Menjalankan query
+$result = mysqli_query($conn, $query);
+
+// Fungsi untuk ekspor Excel
+if ($type === 'excel') {
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Header tabel
+    $sheet->setCellValue('A1', 'Kode Desa');
+    $sheet->setCellValue('B1', 'Nama Desa');
+    $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
+
+    /// Style untuk header
+    $headerStyle = [
+        'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
+        'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
+        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+    ];
+    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
+
+
+    // Data dari database
+    $rowNumber = 2;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
+        $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
+        $sheet->setCellValue('C' . $rowNumber, $row['luas_wilayah_desa']);
+        $rowNumber++;
     }
-} else {
-    $users = []; // Jika tidak ada data, array kosong
+
+    // Style untuk semua tabel
+    $tableStyle = [
+        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+    ];
+    $sheet->getStyle('A1:C' . ($rowNumber - 1))->applyFromArray($tableStyle);
+
+    // Auto-size kolom
+    foreach (range('A', 'C') as $column) {
+        $sheet->getColumnDimension($column)->setAutoSize(true);
+    }
+
+    // Kirim file Excel ke browser
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="data_desa.xlsx"');
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('php://output');
+    exit;
+}
+
+// Fungsi untuk ekspor PDF
+if ($type === 'pdf') {
+    $mpdf = new Mpdf();
+
+    $html = '<h1 style="text-align: center;">Data Desa dan Luas Wilayah</h1>';
+    $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
+    $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
+    $html .= '<th>Kode Desa</th><th>Desa/Kelurahan</th><th>Luas Wilayah Desa(Hektar)</th>';
+    $html .= '</tr></thead><tbody>';
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $html .= '<tr>';
+        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
+        $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
+        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
+        $html .= '</tr>';
+    }
+
+    $html .= '</tbody></table>';
+
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('data_desa.pdf', 'D');
+    exit;
 }
 ?>
 
@@ -114,7 +214,7 @@ if ($result->num_rows > 0) {
                                 <li class="nav-item">
                                     <a href="../forms/desa.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
-                                        <p>Desa</p> 
+                                        <p>Desa</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -228,13 +328,13 @@ if ($result->num_rows > 0) {
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="./user.php" class="nav-link active">
+                                        <a href="./user.php" class="nav-link">
                                             <i class="nav-icon bi bi-circle"></i>
                                             <p>Data User</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./rekap.php" class="nav-link">
+                                        <a href="./rekap.php" class="nav-link active">
                                             <i class="nav-icon bi bi-circle"></i>
                                             <p>Rekap Data</p>
                                         </a>
@@ -252,13 +352,13 @@ if ($result->num_rows > 0) {
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Data User</h3>
+                            <h3 class="mb-0">Rekap Data</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Master Data</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Data User
+                                    Rekap data
                                 </li>
                             </ol>
                         </div>
@@ -268,215 +368,13 @@ if ($result->num_rows > 0) {
 
             <div class="app-content"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
-                    <!-- Notifikasi Add -->
-                    <?php if (isset($_GET['messageadd'])): ?>
-                        <script>
-                            let messageadd = "<?= $_GET['messageadd'] ?>";
-                            if (messageadd === 'success') {
-                                swal({
-                                    title: "Berhasil!",
-                                    text: "Data user berhasil ditambahkan.",
-                                    icon: "success",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "user.php";
-                                });
-                            } else if (messageadd === 'error') {
-                                swal({
-                                    title: "Gagal!",
-                                    text: "Terjadi kesalahan saat menambahkan data.",
-                                    icon: "error",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "user.php";
-                                });
-                            }
-                        </script>
-                    <?php endif; ?>
-
-                    <!-- Modal Tambah User -->
-                    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="../../handlers/add_user.php" method="POST">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="addUserModalLabel">Tambah User</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label for="name" class="form-label">Nama</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="level" class="form-label">Level</label>
-                                            <select class="form-select" id="level" name="level" required>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">User</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Notifikasi edit -->
-                    <?php if (isset($_GET['messageedit'])): ?>
-                        <script>
-                            let messageedit = "<?= $_GET['messageedit'] ?>";
-                            if (messageedit === 'success') {
-                                swal({
-                                    title: "Berhasil!",
-                                    text: "Data user berhasil diubah.",
-                                    icon: "success",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "user.php";
-                                });
-                            } else if (messageedit === 'error') {
-                                swal({
-                                    title: "Gagal!",
-                                    text: "Terjadi kesalahan saat mengubah data.",
-                                    icon: "error",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "user.php";
-                                });
-                            }
-                        </script>
-                    <?php endif; ?>
- 
-                    <!-- Modal Edit User -->
-                    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="../../handlers/edit_user.php" method="POST" enctype="multipart/form-data">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label for="edit_name" class="form-label">Nama</label>
-                                            <input type="text" class="form-control" id="edit_name" name="name" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="edit_username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="edit_username" name="username" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="edit_password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="edit_password" name="password" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="edit_level" class="form-label">Level</label>
-                                            <select class="form-select" id="edit_level" name="level" required>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">User</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script>
-                        function editUser(id, name, username, password, level) {
-                            document.getElementById('edit_name').value = name;
-                            document.getElementById('edit_username').value = username;
-                            document.getElementById('edit_password').value = password;
-                            document.getElementById('edit_level').value = level;
-                            document.querySelector('#editUserModal form').action = `../../handlers/edit_user.php?id=${id}`;
-                        }
-                    </script>
-
-
-                    <!-- Notifikasi delete -->
-                    <?php if (isset($_GET['messagedelete'])): ?>
-                        <script>
-                            let messagedelete = "<?= $_GET['messagedelete'] ?>";
-                            if (messagedelete === 'success') {
-                                swal({
-                                    title: "Berhasil!",
-                                    text: "Data user berhasil dihapus.",
-                                    icon: "success",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "user.php";
-                                });
-                            } else if (messagedelete === 'error') {
-                                swal({
-                                    title: "Gagal!",
-                                    text: "Terjadi kesalahan saat menghapus data.",
-                                    icon: "error",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "user.php";
-                                });
-                            }
-                        </script>
-                    <?php endif; ?>
-
-                    <!-- Modal Delete User -->
-                    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="../../handlers/delete_user.php" method="POST">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteUserModalLabel">Hapus User</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Apakah Anda yakin ingin menghapus user ini?</p>
-                                        <input type="hidden" id="delete_user_id" name="id">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <script>
-                        function setDeleteUserId(id) {
-                            document.getElementById('delete_user_id').value = id;
-                        }
-                    </script>
-
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Manage Users</h3>
+                            <h3 class="card-title">Rekap Data</h3>
 
                             <div class="card-tools">
-                                <!-- Button Tambah User -->
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                                    <i class="fas fa-plus"></i>
+                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#exportModal">
+                                    <i class="fas fa-download"></i>
                                 </button>
                             </div>
                         </div>
@@ -484,55 +382,26 @@ if ($result->num_rows > 0) {
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="width: 3%" class="text-center">
-                                            #
-                                        </th>
-                                        <th>
-                                            User
-                                        </th>
-                                        <th>
-                                            Username
-                                        </th>
-                                        <th>
-                                            Password
-                                        </th>
-                                        <th>
-                                            Level
-                                        </th>
-                                        <th>
-
-                                        </th>
+                                        <th>Kode Desa</th>
+                                        <th>Nama Desa</th>
+                                        <th>Luas Wilayah Desa (Hektar)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (!empty($users)): ?>
-                                        <?php foreach ($users as $index => $user): ?>
-                                            <tr>
-                                                <td><?= $index + 1 ?></td>
-                                                <td><?= htmlspecialchars($user['name']) ?></td>
-                                                <td><?= htmlspecialchars($user['username']) ?></td>
-                                                <td><?= htmlspecialchars($user['password']) ?></td>
-                                                <td><?= htmlspecialchars($user['level']) ?></td>
-
-                                                <td class="project-actions text-center">
-                                                    <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"
-                                                        onclick="editUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                    &nbsp;
-                                                    <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
-                                                        onclick="setDeleteUserId(<?= $user['id'] ?>)">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        tr>
-                                        <td colspan="5" class="text-center">Tidak ada data</td>
-                                        </tr>
-                                    <?php endif; ?>
+                                    <?php
+                                    mysqli_data_seek($result, 0);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<tr>";
+                                            echo "<td>" . htmlspecialchars($row['kode_desa']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['nama_desa']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['luas_wilayah_desa']) . "</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='3'>Tidak ada data.</td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -540,6 +409,41 @@ if ($result->num_rows > 0) {
                     </div>
                     <!-- /.card -->
                 </div> <!--end::Container-->
+
+                <!-- Modal Export -->
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="GET">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="kode_desa">Pilih Desa:</label>
+                                    <select name="kode_desa" id="kode_desa" class="form-control">
+                                        <option value="">Semua Desa</option>
+                                        <?php
+                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_desa");
+                                        while ($desa = mysqli_fetch_assoc($desaResult)) {
+                                            echo "<option value='{$desa['kode_desa']}'>{$desa['nama_desa']}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <!-- Untuk Ekspor Excel -->
+                                    <button type="submit" name="type" value="excel" class="btn btn-success">Export Excel</button>
+                                    <!-- Untuk Ekspor PDF -->
+                                    <button type="submit" name="type" value="pdf" class="btn btn-danger">Export PDF</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
 
