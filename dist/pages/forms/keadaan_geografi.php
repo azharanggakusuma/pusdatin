@@ -218,6 +218,10 @@ include "../../config/session.php";
             </div> <!--end::Sidebar Wrapper-->
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
 
+        <?php
+        include "../../config/form_config.php"
+        ?>
+
         <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
