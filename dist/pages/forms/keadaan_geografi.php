@@ -3,6 +3,27 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Cek apakah form sudah terkunci
+$is_locked = false; // Default tidak terkunci
+if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Luas Wilayah Desa'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -110,7 +131,7 @@ include "../../config/session.php";
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="kelembagaan_dan_keuangan_desa.php" class="nav-link">
+                                    <a href="kelembagaan_dan_keuangan_keadaan_geografi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Kelembagaan Dan Keungan Desa</p>
                                     </a>
@@ -218,9 +239,44 @@ include "../../config/session.php";
             </div> <!--end::Sidebar Wrapper-->
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
 
-        <?php
-        include "../../config/form_config.php"
-        ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <?php if (isset($_GET['status'])): ?>
+            <script>
+                let status = "<?= $_GET['status'] ?>";
+                if (status === 'success') {
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "Data berhasil ditambahkan.",
+                        icon: "success",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "keadaan_geografi.php";
+                    });
+                } else if (status === 'error') {
+                    Swal.fire({
+                        title: "Gagal!",
+                        text: "Terjadi kesalahan saat menambahkan data.",
+                        icon: "error",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "keadaan_geografi.php";
+                    });
+                } else if (status === 'warning') {
+                    Swal.fire({
+                        title: "Peringatan!",
+                        text: "Mohon lengkapi semua data.",
+                        icon: "warning",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "keadaan_geografi.php";
+                    });
+                }
+            </script>
+        <?php endif; ?>
 
         <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
@@ -269,16 +325,25 @@ include "../../config/session.php";
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;" required>
-                                    </div>
+                            <?php if ($is_locked): ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            <?php else: ?>
+                                <form action="../../handlers/form_luas_wilayah_desa.php" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
+                                            <input type="text" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
 
