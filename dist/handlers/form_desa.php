@@ -1,7 +1,7 @@
 <?php
 include '../config/conn.php';
 session_start();
- 
+
 // Ambil ID pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
 $query_user = "SELECT id FROM users WHERE username = '$username'";
@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama_desa = mysqli_real_escape_string($conn, $_POST['nama_desa']);
 
     if (!empty($kode_desa) && !empty($nama_desa)) {
-        $sql = "INSERT INTO tb_desa (kode_desa, nama_desa) VALUES ('$kode_desa', '$nama_desa')";
+        // Tambahkan data desa beserta user_id
+        $sql = "INSERT INTO tb_desa (kode_desa, nama_desa, user_id) VALUES ('$kode_desa', '$nama_desa', '$user_id')";
 
         if (mysqli_query($conn, $sql)) {
             // Tambahkan atau perbarui progres pengguna
