@@ -47,16 +47,17 @@ if ($type === 'excel') {
     // Header tabel
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
-    $sheet->setCellValue('C1', 'Luas Wilayah Desa (m²)');
+    $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
 
-    // Style untuk header
-    $headerStyle = [
-        'font' => ['bold' => true, 'color' => ['rgb' => 'FFFFFF']],
-        'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => '4CAF50']],
-        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-    ];
-    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
+    /// Style untuk header
+$headerStyle = [
+    'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
+    'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
+    'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+    'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+];
+$sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
+
 
     // Data dari database
     $rowNumber = 2;
@@ -93,15 +94,15 @@ if ($type === 'pdf') {
 
     $html = '<h1 style="text-align: center;">Data Desa dan Luas Wilayah</h1>';
     $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
-    $html .= '<thead><tr style="background-color: #f2f2f2;">';
-    $html .= '<th>Kode Desa</th><th>Nama Desa</th><th>Luas Wilayah Desa (m²)</th>';
+    $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
+    $html .= '<th>Kode Desa</th><th>Desa/Kelurahan</th><th>Luas Wilayah Desa(Hektar)</th>';
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
-        $html .= '<td style="text-align: right;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
+        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
         $html .= '</tr>';
     }
 
@@ -136,7 +137,7 @@ if ($type === 'pdf') {
         <tr>
             <th>Kode Desa</th>
             <th>Nama Desa</th>
-            <th>Luas Wilayah Desa (m²)</th>
+            <th>Luas Wilayah Desa (Hektar)</th>
         </tr>
         </thead>
         <tbody>
