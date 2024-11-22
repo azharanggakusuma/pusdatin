@@ -596,7 +596,7 @@ include "../../config/session.php";
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="anggaranDesaForm" method="post">
+                            <form id="anggaranDesaForm" method="post">  
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
