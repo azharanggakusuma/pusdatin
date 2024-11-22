@@ -601,8 +601,10 @@ include "../../config/session.php";
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="dana_desa_apbn" class="mb-2">1. Dana Desa bersumber dari APBN</label>
+                                            <input type="hidden" name="label_dana_desa_apbn" value="1. Dana Desa bersumber dari APBN">
                                             <div class="input-group">
                                                 <span class="input-group-text">Rupiah</span>
+                                                <input type="hidden" name="rupiah" value="Rupiah">
                                                 <input type="text" id="dana_desa_apbn" name="dana_desa_apbn" class="form-control" placeholder="Masukkan anggaran" required>
                                             </div>
                                         </div>
