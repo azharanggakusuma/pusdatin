@@ -84,35 +84,143 @@ if ($result->num_rows > 0) {
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
 
-        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="../../index.php" class="brand-link"> <!--begin::Brand Image--> <img src="../../img/kominfo.png" alt="Pusdatin" class="brand-image"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-bold">PUSDATIN v1.0</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+            <div class="sidebar-brand">
+                <a href="./index.php" class="brand-link">
+                    <img src="../../img/kominfo.png" alt="Pusdatin" class="brand-image">
+                    <span class="brand-text fw-bold">PUSDATIN v1.0</span>
+                </a>
+            </div>
             <div class="sidebar-wrapper">
-                <nav class="mt-2"> <!--begin::Sidebar Menu-->
+                <nav class="mt-2">
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                        <!--<li class="nav-header">MENU</li>-->
-                        <li class="nav-item"> <a href="../../index.php" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
-                                <p>
-                                    Dashboard
-                                </p>
+                        <li class="nav-item menu-open">
+                            <a href="../../index.php" class="nav-link">
+                                <i class="nav-icon bi bi-speedometer"></i>
+                                <p>Dashboard</p>
                             </a>
                         </li>
 
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                        <!-- Menu formulir hanya untuk user dan admin -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-pencil-square"></i>
                                 <p>
                                     Formulir
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="../forms/keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item">
+                                    <a href="../forms/desa.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Desa</p> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/keadaan_geografi.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
-                                    </a> </li>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/wilayah_administratif.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Wilayah Administratif</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/sumber_daya_manusia.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sumber Daya Manusia</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/kelembagaan_dan_keuangan_desa.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Kelembagaan Dan Keungan Desa</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/pendudukan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Penduduk</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/pendidikan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Pendidikan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/kesehatan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Kesehatan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/fasilitas_umum.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Fasilitas Umum</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/sosial.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sosial</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/pariwisata.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Pariwisata</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/transportasi.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Transportasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/komunikasi.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Komunikasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/lembaga_keuangan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Lembaga Keuangan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/sarana_perdagangan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sarana Perdagangan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/infrastruktur.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Infrastruktur</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/lingkungan.php" class="nav-link">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p>Lingkungan</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
+                        <!-- Jika level pengguna admin, tampilkan menu Master Data -->
                         <?php if ($level == 'admin') { ?>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon bi bi-table"></i>
                                     <p>
                                         Master Data
                                         <i class="nav-arrow bi bi-chevron-right"></i>
@@ -120,21 +228,23 @@ if ($result->num_rows > 0) {
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="user.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <a href="./user.php" class="nav-link active">
+                                            <i class="nav-icon bi bi-circle"></i>
                                             <p>Data User</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="rekap.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <a href="./rekap.php" class="nav-link">
+                                            <i class="nav-icon bi bi-circle"></i>
                                             <p>Rekap Data</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         <?php } ?>
-                    </ul> <!--end::Sidebar Menu-->
+                    </ul>
                 </nav>
-            </div> <!--end::Sidebar Wrapper-->
+            </div>
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
 
         <main class="app-main"> <!--begin::App Content Header-->
@@ -197,8 +307,8 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="name" class="form-label">Nama Desa</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Desa" required>
+                                            <label for="name" class="form-label">Nama</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
@@ -252,7 +362,7 @@ if ($result->num_rows > 0) {
                             }
                         </script>
                     <?php endif; ?>
-
+ 
                     <!-- Modal Edit User -->
                     <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -264,7 +374,7 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="edit_name" class="form-label">Nama Desa</label>
+                                            <label for="edit_name" class="form-label">Nama</label>
                                             <input type="text" class="form-control" id="edit_name" name="name" required>
                                         </div>
                                         <div class="mb-3">

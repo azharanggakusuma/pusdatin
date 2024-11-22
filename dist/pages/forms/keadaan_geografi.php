@@ -3,6 +3,27 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Cek apakah form sudah terkunci
+$is_locked = false; // Default tidak terkunci
+if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Luas Wilayah Desa'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -89,11 +110,11 @@ include "../../config/session.php";
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./desa.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="./desa.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Desa</p>
                                     </a>
                                 </li>
-                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="./keadaan_geografi.php" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Keadaan Geografi</p>
                                     </a>
                                 </li>
@@ -110,7 +131,7 @@ include "../../config/session.php";
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="kelembagaan_dan_keuangan_desa.php" class="nav-link">
+                                    <a href="kelembagaan_dan_keuangan_keadaan_geografi.php" class="nav-link">
                                         <i class="nav-icon bi bi-circle"></i>
                                         <p>Kelembagaan Dan Keungan Desa</p>
                                     </a>
@@ -218,6 +239,45 @@ include "../../config/session.php";
             </div> <!--end::Sidebar Wrapper-->
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <?php if (isset($_GET['status'])): ?>
+            <script>
+                let status = "<?= $_GET['status'] ?>";
+                if (status === 'success') {
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "Data berhasil ditambahkan.",
+                        icon: "success",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "keadaan_geografi.php";
+                    });
+                } else if (status === 'error') {
+                    Swal.fire({
+                        title: "Gagal!",
+                        text: "Terjadi kesalahan saat menambahkan data.",
+                        icon: "error",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "keadaan_geografi.php";
+                    });
+                } else if (status === 'warning') {
+                    Swal.fire({
+                        title: "Peringatan!",
+                        text: "Mohon lengkapi semua data.",
+                        icon: "warning",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "keadaan_geografi.php";
+                    });
+                }
+            </script>
+        <?php endif; ?>
+
         <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
@@ -242,6 +302,10 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Luas Wilayah Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalLuasDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -261,23 +325,56 @@ include "../../config/session.php";
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;" required>
+                            <?php if ($is_locked): ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php else: ?>
+                                <form action="../../handlers/form_luas_wilayah_desa.php" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
+                                            <input type="text" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
+                            <!-- /.row -->
+                        </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalLuasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi angka/luas desa</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
+                            </div>
                         </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Batas Wilayah Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBatasDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
@@ -349,11 +446,36 @@ include "../../config/session.php";
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi nama desa yang berbatasan</li>
+                                            <li>Isi nama kecamatan yang berbatasan</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Jarak Kantor Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalJarakKantorDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -390,11 +512,34 @@ include "../../config/session.php";
                             </form>
                             <!-- /.row -->
                         </div>
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalJarakKantorDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi dengan angka</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Jarak Kantor Desa</h3>
+                            <h3 class="card-title">Titik Koordinat Kantor Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTitikKoordinatKantorDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -431,13 +576,33 @@ include "../../config/session.php";
                             </form>
                             <!-- /.row -->
                         </div>
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalTitikKoordinatKantorDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Pengisian titik kordinat menggunakan derajat desimal, <br> contoh: <strong>-6.8796 LS</strong></li>
+                                            <li>Pengisian titik kordinat menggunakan derajat desimal, <br> contoh: <strong>108.5538 BT</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Topografi Terluas Wilayah Desa</h3>
                             <!-- Aturan Pengisian Button -->
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModal">
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTopografiTerluas">
                                 <i class="fas fa-info-circle"></i>
                             </button>
                             <div class="card-tools">
@@ -465,6 +630,7 @@ include "../../config/session.php";
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Topografi Terluas Wilayah Desa</label>
                                         <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>Silakkan Pilih</option>
                                             <option value="">LERENG/PUNCAK</option>
                                             <option value="">LEMBAH</option>
                                             <option value="">DATARAN</option>
@@ -478,11 +644,34 @@ include "../../config/session.php";
                             </form>
                             <!-- /.row -->
                         </div>
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalTopografiTerluas" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Pilih salah satu yang ada dipilihan</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
+
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Luas Tanah Kas Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalLuasTanahKasDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -511,24 +700,23 @@ include "../../config/session.php";
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Tanah Titi Sara</label>
-                                        <input type="number" class="form-control" placeholder="MAsukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Kebun Desa</label>
-                                        <input type="number" class="form-control" placeholder="MAsukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Sawah Desa</label>
-                                        <input type="number" class="form-control" placeholder="MAsukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
-                    </div>
                         <!-- Modal Info -->
-                        <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalLuasTanahKasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -536,11 +724,8 @@ include "../../config/session.php";
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Lorem ipsum dolor</>
                                         <ul>
-                                            <li>...</li>
-                                            <li>...</li>
-                                            <li>...</li>
+                                            <li>Isi dengan angka/luas</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -550,19 +735,21 @@ include "../../config/session.php";
                             </div>
                         </div>
                     </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
+                </div>
+            </div> <!--end::Container-->
+            <footer class="app-footer"> <!--begin::To the end-->
+                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                <strong>
+                    Copyright &copy; 2024&nbsp;
+                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                </strong>
+                All rights reserved.
+                <!--end::Copyright-->
+            </footer> <!--end::Footer-->
+    </div> <!--end::App Content-->
+    </main> <!--end::App Main--> <!--begin::Footer-->
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
+
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
 
