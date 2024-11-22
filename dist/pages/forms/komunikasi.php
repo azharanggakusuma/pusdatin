@@ -258,12 +258,12 @@ include "../../config/session.php";
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form action="" method="post">
-                            <div class="row">
+                                <div class="row">
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Jumlah menara Base Transceiver Station (BTS)</label>
+                                            <label class="mb-2">Jumlah menara Base Transceiver Station (BTS)</label>
                                             <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                                         </div>
                                     </div>
@@ -274,12 +274,225 @@ include "../../config/session.php";
                                 </div>
                             </form>
                         </div>
+                    </div>
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Operator layanan komunikasi telepon seluler/handphone yang menjangkau wilayah desa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toogle-form1">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toogle-form1").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">1. Telkomsel/Halo/Loop/As</label>
+                                            <input type="hidden" value="1. Telkomsel/Halo/Loop/As">
+                                            <div class="me-3" style="width: 50%;">
+                                                <label>Sinyal di sebagian besar wilayah</label>
+                                                <select class="form-control me-3 mt-3" required>
+                                                    <option disabled selected>Pilih opsi</option>
+                                                    <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                    <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                    <option value="tidak-ada">SINYAL LEMAH</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                            </div>
+                                            <div style="width: 50%;">
+                                                <label>Sinyal di sebagian besar wilayah</label>
+                                                <select class="form-control mt-3 ml-5" required>
+                                                    <option disabled selected>Pilih opsi</option>
+                                                    <option value="trayek-tetap">4G/LTE2</option>
+                                                    <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                    <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">2. Indosat</label>
+                                            <select class="form-control me-3" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                <option value="tidak-ada">SINYAL LEMAH</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                            <select class="form-control" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">4G/LTE2</option>
+                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">3. XL/Axis</label>
+                                            <select class="form-control me-3" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                <option value="tidak-ada">SINYAL LEMAH</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                            <select class="form-control" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">4G/LTE2</option>
+                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">4. Hutchison 3</label>
+                                            <select class="form-control me-3" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                <option value="tidak-ada">SINYAL LEMAH</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                            <select class="form-control" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">4G/LTE2</option>
+                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">5. Smartfren</label>
+                                            <select class="form-control me-3" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                <option value="tidak-ada">SINYAL LEMAH</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                            <select class="form-control" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">4G/LTE2</option>
+                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">6. Bakrie Telecom</label>
+                                            <select class="form-control me-3" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                <option value="tidak-ada">SINYAL LEMAH</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                            <select class="form-control" style="width: 50%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">4G/LTE2</option>
+                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toogle-form1">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toogle-form1").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Kantor Pos/Pos Pembantu/Rumah Pos</label>
+                                            <select class="form-control me-3" style="width: 100%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">ADA, BEROPERASI</option>
+                                                <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
+                                                <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
+                                                <option value="tidak-ada">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Pos Keliling</label>
+                                            <select class="form-control me-3" style="width: 100%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">ADA</option>
+                                                <option value="tanpa-trayek-tetap">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3 d-flex align-items-center">
+                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Perusahaan/Agen Jasa Ekspedisi Swasta</label>
+                                            <select class="form-control me-3" style="width: 10 0%;" required>
+                                                <option disabled selected>Pilih opsi</option>
+                                                <option value="trayek-tetap">ADA, BEROPERASI</option>
+                                                <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
+                                                <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
+                                                <option value="tidak-ada">TIDAK ADA</option>
+                                            </select>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                            </form>
+
+                        </div>
 
                     </div>
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
-        
+
         <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
             <strong>
