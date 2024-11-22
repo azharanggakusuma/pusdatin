@@ -628,7 +628,7 @@ include "../../config/session.php";
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="card card-primary card-outline mb-4 card0">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar PUSKESMA Pembantu (PUSTU) </h3>
+                            <h3 class="card-title">Daftar PUSKESMA Pembantu (PUSTU) </h3> 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool addButton3">
                                     <i class="fas fa-minus"></i>
