@@ -623,7 +623,7 @@ include "../../config/session.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end:: form Sekolah ke 5 -->
+                                <!-- end:: form Sekolah ke 5  -->
 
                                 <!-- begin:: form sekolah ke 6 -->
                                 <div class="border p-3 mb-3">
