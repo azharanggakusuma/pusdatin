@@ -893,7 +893,7 @@ include "../../config/session.php";
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            </form> 
                             <!-- /.row -->
                         </div>          
                     </div> <!--end::Container-->
