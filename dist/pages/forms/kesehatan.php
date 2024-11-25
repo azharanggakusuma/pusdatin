@@ -1550,9 +1550,9 @@ include "../../config/session.php";
                                             var $icon = $(this).find("i"); // Ambil ikon tombol
                                             var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
 
-                                            // Toggle antara fa-plus dan fa-minus
+                                            // Toggle antara fa-plus dan fa-minus  
                                             if ($icon.hasClass("fa-plus")) {
                                                 $icon.removeClass("fa-plus").addClass("fa-minus");
                                             } else {
