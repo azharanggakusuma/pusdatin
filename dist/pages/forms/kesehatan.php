@@ -2251,7 +2251,7 @@ include "../../config/session.php";
 
                                     </div>
                                 </div>
-                                <!-- end:: form POSYANDU  ke 7 -->
+                                <!-- end:: form POSYANDU ke 7 -->
 
                                 <div class="col-md-6">
 
