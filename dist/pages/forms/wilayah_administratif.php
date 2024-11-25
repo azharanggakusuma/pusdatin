@@ -272,7 +272,7 @@ include "../../config/session.php";
                                                 <option value="">SWAKARYA</option>
                                                 <option value="">SWADAYA</option>
                                             </select>
-                                        </div>
+                                        </div> 
                                     </div>
                                     <!-- /.col -->
                                      <!-- /.col -->
