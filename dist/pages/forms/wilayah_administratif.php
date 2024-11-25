@@ -435,6 +435,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Ketersediaan Dasar Hukum Pembentukan Pemerintah Desa / Kelurahan</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Ketersediaan Dasar Hukum --</option>
                                                 <option value="">ADA</option>
                                                 <option value="">TIDAK ADA</option>
                                             </select>
@@ -487,6 +488,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Ketersediaan Dasar Hukum Badan Permusyawaratan Desa (BPD)</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Ketersediaan Dasar Hukum --</option>
                                                 <option value="">ADA</option>
                                                 <option value="">TIDAK ADA</option>
                                             </select>
@@ -539,6 +541,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Penetapan Batas Desa (Sudah ada/Belum ada)</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
                                                 <option value="">ADA</option>
                                                 <option value="">TIDAK ADA</option>
                                             </select>
@@ -560,6 +563,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Ketersediaan Peta Desa (Ada/Tidak)</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
                                                 <option value="">ADA</option>
                                                 <option value="">TIDAK ADA</option>
                                             </select>
@@ -688,6 +692,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Aset Desa/Bukan Aset Desa</label>
                                             <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Aset Desa/Bukan Aset Desa --</option>
                                                 <option value="">ASET DESA</option>
                                                 <option value="">BUKAN ASET DESA</option>
                                             </select>
@@ -731,6 +736,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Kondisi Kantor Kepala Desa/Balai Desa</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
                                                 <option value="">ADA, LAYAK</option>
                                                 <option value="">ADA, TIDAK LAYAK</option>
                                                 <option value="">TIDAK ADA</option>
@@ -775,6 +781,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2024</label>
                                             <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
                                                 <option value="">MANDIRI</option>
                                                 <option value="">MAJU</option>
                                                 <option value="">BERKEMBANG</option>
@@ -790,6 +797,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2025</label>
                                             <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Status Desa Membangun 2025 --</option>
                                                 <option value="">MANDIRI</option>
                                                 <option value="">MAJU</option>
                                                 <option value="">BERKEMBANG</option>
@@ -836,6 +844,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Ketersediaan Internet</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Ketersedian Internet --</option>
                                                 <option value="">BERFUNGSI</option>
                                                 <option value="">JARANG BERFUNGSI</option>
                                                 <option value="">TIDAK BERFUNGSI</option>
@@ -850,6 +859,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Kecepatan akses internet</label>
                                             <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Kecepatan Akses Internet --</option>
                                                 <option value="">CEPAT</option>
                                                 <option value="">SEDANG</option>
                                                 <option value="">LAMBAT</option>
@@ -872,6 +882,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Frekuensi Penggunaan Komputer/PC/laptop di Kantor Desa</label>
                                             <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Frekuensi Penggunaan Komputer --</option>
                                                 <option value="">DIGUNAKAN</option>
                                                 <option value="">JARANG DIGUNAKAN</option>
                                                 <option value="">TIDAK DIGUNAKAN</option>
