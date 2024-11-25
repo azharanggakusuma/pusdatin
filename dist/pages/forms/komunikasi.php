@@ -329,6 +329,7 @@ include "../../config/session.php";
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">2. Indosat</label>
+                                            <input type="hidden" value="2. Indosat">
                                             <select class="form-control me-3" style="width: 50%;" required>
                                                 <option disabled selected>Pilih opsi</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
@@ -346,6 +347,7 @@ include "../../config/session.php";
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">3. XL/Axis</label>
+                                            <input type="hidden" value="3. XL/Axis">
                                             <select class="form-control me-3" style="width: 50%;" required>
                                                 <option disabled selected>Pilih opsi</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
@@ -363,6 +365,7 @@ include "../../config/session.php";
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">4. Hutchison 3</label>
+                                            <input type="hidden" value="4. Hutchison 3">
                                             <select class="form-control me-3" style="width: 50%;" required>
                                                 <option disabled selected>Pilih opsi</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
@@ -380,6 +383,7 @@ include "../../config/session.php";
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">5. Smartfren</label>
+                                            <input type="hidden" value="5. Smartfren">
                                             <select class="form-control me-3" style="width: 50%;" required>
                                                 <option disabled selected>Pilih opsi</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
@@ -397,6 +401,7 @@ include "../../config/session.php";
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">6. Bakrie Telecom</label>
+                                            <input type="hidden" value="6. Bakrie Telecom">
                                             <select class="form-control me-3" style="width: 50%;" required>
                                                 <option disabled selected>Pilih opsi</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
