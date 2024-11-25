@@ -267,11 +267,12 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Klasifikasi Desa (Swasembada/ Swakarya/ Swadaya)</label>
                                             <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Klasifikasi Desa --</option>
                                                 <option value="">SWASEMBADA</option>
                                                 <option value="">SWAKARYA</option>
                                                 <option value="">SWADAYA</option>
                                             </select>
-                                        </div>
+                                        </div>  
                                     </div>
                                     <!-- /.col -->
                                      <!-- /.col -->
@@ -280,6 +281,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
                                             <select name="" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
                                                 <option value="">DESA</option>
                                                 <option value="">KELURAHAN</option>
                                                 <option value="">KAMPUNG</option>
