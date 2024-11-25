@@ -424,9 +424,7 @@ include "../../config/session.php";
                                     <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                 </div>
                             </form>
-
                         </div>
-
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
