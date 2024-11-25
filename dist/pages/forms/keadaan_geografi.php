@@ -371,7 +371,6 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Batas Wilayah Desa</h3>
-                            <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBatasDesa">
                                 <i class="fas fa-info-circle"></i>
                             </button>
@@ -381,72 +380,79 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 </button>
                             </div>
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
-                            <form id="batasDesaForm" method="post">
-                                <div class="row">
-                                    <!-- Sebelah Utara -->
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Sebelah Utara</label>
-                                            <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan batas desa" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="kec-utara" class="mb-2">Kecamatan</label>
-                                            <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan kecamatan" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Sebelah Selatan -->
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="batas-selatan" class="mb-2">Sebelah Selatan</label>
-                                            <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan batas desa" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="kec-selatan" class="mb-2">Kecamatan</label>
-                                            <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan kecamatan" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Sebelah Timur -->
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="batas-timur" class="mb-2">Sebelah Timur</label>
-                                            <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan batas desa" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="kec-timur" class="mb-2">Kecamatan</label>
-                                            <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan kecamatan" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Sebelah Barat -->
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="batas-barat" class="mb-2">Sebelah Barat</label>
-                                            <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan batas desa" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="kec-barat" class="mb-2">Kecamatan</label>
-                                            <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan kecamatan" required>
-                                        </div>
-                                    </div>
+                            <?php if ($is_locked): ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
+                            <?php else: ?>
+                                <form id="batasDesaForm" method="post" action="../../handlers/form_batas_wilayah_desa.php">
+                                    <div class="row">
+                                        <!-- Sebelah Utara -->
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="batas-utara" class="mb-2">Sebelah Utara</label>
+                                                <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan batas desa" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="kec-utara" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan kecamatan" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sebelah Selatan -->
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="batas-selatan" class="mb-2">Sebelah Selatan</label>
+                                                <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan batas desa" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="kec-selatan" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan kecamatan" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sebelah Timur -->
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="batas-timur" class="mb-2">Sebelah Timur</label>
+                                                <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan batas desa" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="kec-timur" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan kecamatan" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sebelah Barat -->
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="batas-barat" class="mb-2">Sebelah Barat</label>
+                                                <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan batas desa" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="kec-barat" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan kecamatan" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            <?php endif; ?>
                         </div>
-
                         <!-- Modal Info -->
                         <div class="modal fade" id="modalBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -621,7 +627,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     });
                                 </script>
                             </div>
-                        </div> 
+                        </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form action="" method="post">
