@@ -621,7 +621,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     });
                                 </script>
                             </div>
-                        </div>
+                        </div> 
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form action="" method="post">
@@ -630,7 +630,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Topografi Terluas Wilayah Desa</label>
                                         <select name="" id="" class="form-control">
-                                            <option value="" disabled selected>Silakkan Pilih</option>
+                                            <option value="" disabled selected>-- Silakkan Pilih --</option>
                                             <option value="">LERENG/PUNCAK</option>
                                             <option value="">LEMBAH</option>
                                             <option value="">DATARAN</option>
