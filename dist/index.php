@@ -22,14 +22,14 @@ include "config/session.php";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
 
     <link rel="shortcut icon" href="./img/kominfo.png" type="image/x-icon">
-    
+
     <!-- Animate.css CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
 
-    <?php include "components/loading.php"; ?>
+    <?php include "components/loading.php"; ?> 
 
     <div class="page animate__animated animate__fadeIn">
         <div class="app-wrapper"> <!--begin::Header-->

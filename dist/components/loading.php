@@ -11,7 +11,6 @@
         justify-content: center;
         z-index: 9999;
         background-color: #ffffff;
-        /* Background putih solid */
     }
 
     /* Loader Animation */
