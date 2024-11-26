@@ -243,7 +243,7 @@ include "config/session.php";
                                 <div class="small-box text-bg-primary">
                                     <div class="inner">
                                         <h3>422</h3>
-                                        <p>Desa</p>
+                                        <p>Desa / Kelurahan</p>
                                     </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path d="M12 3.172l9 9V20a1 1 0 01-1 1h-6a1 1 0 01-1-1v-4H11v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-7.828l9-9zm-7 9.414V19h4v-5a1 1 0 011-1h4a1 1 0 011 1v5h4v-6.414L12 5.586l-7 7z" />
                                     </svg>
@@ -303,10 +303,16 @@ include "config/session.php";
                         </div> <!--end::Row--> <!--begin::Row-->
                         <div class="row">
                             <!-- Start col -->
-                            <div class="connectedSortable">
+                            <div class="col-lg-7 connectedSortable">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <h3 class="card-title">Pengunjung</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-default btn-sm" data-lte-toggle="card-collapse">
+                                                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                                                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div id="revenue-chart" style="height: 300px;"></div>
@@ -316,10 +322,10 @@ include "config/session.php";
                             <!-- /.Start col -->
 
                             <!-- Start col -->
-                            <!--<div class="col-lg-5 connectedSortable">
+                            <div class="col-lg-5 connectedSortable">
                                 <div class="card mb-4">
                                     <div class="card-header border-0">
-                                        <h3 class="card-title">Map Kabupaten Cirebon</h3>
+                                        <h3 class="card-title">Coming Soon</h3>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-default btn-sm" data-lte-toggle="card-collapse">
                                                 <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -331,7 +337,7 @@ include "config/session.php";
                                         <div id="map-cirebon" style="height: 305px;"></div>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
                             <!-- /.Start col -->
                         </div>
                     </div> <!--end::Container-->
@@ -401,10 +407,10 @@ include "config/session.php";
             fetch('./api/pengunjung.php') // Gantilah dengan path yang sesuai ke file PHP Anda
                 .then(response => response.json())
                 .then(data => {
-                    // Filter data agar hanya dimulai dari bulan November
+                    // Filter data agar hanya dimulai dari bulan Oktober
                     const filteredData = data.filter(item => {
                         const date = new Date(item.tanggal);
-                        return date.getMonth() >= 10; // November adalah bulan ke-10 (0-indexed)
+                        return date.getMonth() >= 9;
                     });
 
                     const pengunjungData = filteredData.map(item => item.jumlah_pengunjung);
