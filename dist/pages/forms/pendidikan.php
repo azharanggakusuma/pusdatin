@@ -302,7 +302,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Sekolah Ke 1</h2>
+                                        <h2 class="card-title mb-3">Sekolah Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -369,7 +369,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 2</h2>
+                                        <h2 class="card-title">Sekolah Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -435,7 +435,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 3</h2>
+                                        <h2 class="card-title">Sekolah Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -498,7 +498,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 4 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 4</h2>
+                                        <h2 class="card-title">Sekolah Ke 4</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -563,7 +563,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 5 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 5</h2>
+                                        <h2 class="card-title">Sekolah Ke 5</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -628,7 +628,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 6 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 6</h2>
+                                        <h2 class="card-title">Sekolah Ke 6</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -693,7 +693,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 7 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 7</h2>
+                                        <h2 class="card-title">Sekolah Ke 7</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -758,7 +758,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 8 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 8</h2>
+                                        <h2 class="card-title">Sekolah Ke 8</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -823,7 +823,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 9 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 9</h2>
+                                        <h2 class="card-title">Sekolah Ke 9</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -888,7 +888,7 @@ include "../../config/session.php";
                                 <!-- begin:: form sekolah ke 10 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Sekolah Ke 10</h2>
+                                        <h2 class="card-title">Sekolah Ke 10</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -997,7 +997,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Pondok Pesantren Ke 1</h2>
+                                        <h2 class="card-title mb-3">Pondok Pesantren Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1042,7 +1042,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 2</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -1088,7 +1088,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 3</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1131,7 +1131,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 4 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 4</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 4</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1175,7 +1175,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 5 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 5</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 5</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1220,7 +1220,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 6 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 6</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 6</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1265,7 +1265,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 7 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 7</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 7</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1310,7 +1310,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 8 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 8</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 8</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1354,7 +1354,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 9 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 9</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 9</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1399,7 +1399,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Pesantren ke 10 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Pesantren Ke 10</h2>
+                                        <h2 class="card-title">Pondok Pesantren Ke 10</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
