@@ -302,7 +302,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Rumah Sakit Ke 1</h2>
+                                        <h2 class="card-title mb-3">Rumah Sakit Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -359,7 +359,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Rumah Sakit ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Rumah Sakit Ke 2</h2>
+                                        <h2 class="card-title">Rumah Sakit Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -415,7 +415,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Rumah Sakit ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Rumah Sakit Ke 3</h2>
+                                        <h2 class="card-title">Rumah Sakit Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -515,7 +515,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama PUSKESMAS Ke 1</h2>
+                                        <h2 class="card-title mb-3">PUSKESMAS Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -560,7 +560,7 @@ include "../../config/session.php";
                                 <!-- begin:: form PUSKESMAS ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama PUSKESMAS Ke 2</h2>
+                                        <h2 class="card-title">PUSKESMAS Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -589,7 +589,7 @@ include "../../config/session.php";
                                 <!-- begin:: form PUSKESMAS ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama PUSKESMAS Ke 3</h2>
+                                        <h2 class="card-title">PUSKESMAS Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -660,7 +660,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama PUSTU Ke 1</h2>
+                                        <h2 class="card-title mb-3">PUSTU Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -705,7 +705,7 @@ include "../../config/session.php";
                                 <!-- begin:: form PUSTU ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama PUSTU Ke 2</h2>
+                                        <h2 class="card-title">PUSTU Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -752,7 +752,7 @@ include "../../config/session.php";
                                 <!-- begin:: form PUSTU ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama PUSTU Ke 3</h2>
+                                        <h2 class="card-title">PUSTU Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -842,7 +842,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Poliklinik Atau Balai Pengobatan Ke 1</h2>
+                                        <h2 class="card-title mb-3">Poliklinik Atau Balai Pengobatan Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -887,7 +887,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Poliklinik Atau Balai Pengobatan  ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Poliklinik Atau Balai Pengobatan Ke 2</h2>
+                                        <h2 class="card-title">Poliklinik Atau Balai Pengobatan Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -934,7 +934,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Poliklinik Atau Balai Pengobatan  ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Poliklinik Atau Balai Pengobatan Ke 3</h2>
+                                        <h2 class="card-title">Poliklinik Atau Balai Pengobatan Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1024,7 +1024,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Praktek Dokter Ke 1</h2>
+                                        <h2 class="card-title mb-3">Praktek Dokter Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1116,7 +1116,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Praktek Dokter  ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Praktek Dokter Ke 3</h2>
+                                        <h2 class="card-title">Praktek Dokter Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1206,7 +1206,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Praktek Bidan Ke 1</h2>
+                                        <h2 class="card-title mb-3">Praktek Bidan Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1251,7 +1251,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Praktek Bidan  ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Praktek Bidan Ke 2</h2>
+                                        <h2 class="card-title">Praktek Bidan Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -1298,7 +1298,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Praktek Bidan  ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Praktek Bidan Ke 3</h2>
+                                        <h2 class="card-title">Praktek Bidan Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1388,7 +1388,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Pos Kesehatan Desa (POSKESDES) Ke 1</h2>
+                                        <h2 class="card-title mb-3">Pos Kesehatan Desa (POSKESDES) Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1433,7 +1433,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pos Kesehatan Desa (POSKESDES)  ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pos Kesehatan Desa (POSKESDES) Ke 2</h2>
+                                        <h2 class="card-title">Pos Kesehatan Desa (POSKESDES) Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -1480,7 +1480,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pos Kesehatan Desa (POSKESDES)  ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pos Kesehatan Desa (POSKESDES) Ke 3</h2>
+                                        <h2 class="card-title">Pos Kesehatan Desa (POSKESDES) Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1570,7 +1570,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Pondok Bersalin Desa (POLINDES) Ke 1</h2>
+                                        <h2 class="card-title mb-3">Pondok Bersalin Desa (POLINDES) Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1615,7 +1615,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Bersalin Desa (POLINDES)  ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Bersalin Desa (POLINDES) Ke 2</h2>
+                                        <h2 class="card-title">Pondok Bersalin Desa (POLINDES) Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -1662,7 +1662,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Pondok Bersalin Desa (POLINDES)  ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Pondok Bersalin Desa (POLINDES) Ke 3</h2>
+                                        <h2 class="card-title">Pondok Bersalin Desa (POLINDES) Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1752,7 +1752,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama Apotek Ke 1</h2>
+                                        <h2 class="card-title mb-3">Apotek Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1797,7 +1797,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Apotek  ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Apotek Ke 2</h2>
+                                        <h2 class="card-title">Apotek Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -1844,7 +1844,7 @@ include "../../config/session.php";
                                 <!-- begin:: form Apotek  ke 3 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Apotek Ke 3</h2>
+                                        <h2 class="card-title">Apotek Ke 3</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -1934,7 +1934,7 @@ include "../../config/session.php";
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Nama POSYANDU Ke 1</h2>
+                                        <h2 class="card-title mb-3">POSYANDU Ke 1</h2>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -1979,7 +1979,7 @@ include "../../config/session.php";
                                 <!-- begin:: form POSYANDU  ke 2 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama POSYANDU Ke 2</h2>
+                                        <h2 class="card-title">POSYANDU Ke 2</h2>
                                     </div>
 
                                     <div class="row">
@@ -2072,7 +2072,7 @@ include "../../config/session.php";
                                 <!-- begin:: form POSYANDU  ke 4 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama POSYANDU Ke 4</h2>
+                                        <h2 class="card-title">POSYANDU Ke 4</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -2118,7 +2118,7 @@ include "../../config/session.php";
                                 <!-- begin:: form POSYANDU  ke 5 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama POSYANDU Ke 5</h2>
+                                        <h2 class="card-title">POSYANDU Ke 5</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -2164,7 +2164,7 @@ include "../../config/session.php";
                                 <!-- begin:: form POSYANDU  ke 6 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama POSYANDU Ke 6</h2>
+                                        <h2 class="card-title">POSYANDU Ke 6</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
@@ -2210,7 +2210,7 @@ include "../../config/session.php";
                                 <!-- begin:: form POSYANDU  ke 7 -->
                                 <div class="border p-3 mb-3">
                                     <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama POSYANDU Ke 7</h2>
+                                        <h2 class="card-title">POSYANDU Ke 7</h2>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3">
