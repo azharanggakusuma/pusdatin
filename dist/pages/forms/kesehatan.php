@@ -2274,7 +2274,7 @@ include "../../config/session.php";
                 Copyright &copy; 2024&nbsp;
                 <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
             </strong>
-            All rights reserved.
+            All rights reserved. 
             <!--end::Copyright-->
         </footer> <!--end::Footer-->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
