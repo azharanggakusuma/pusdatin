@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Menangani Error
+ErrorDocument 403 /pusdatin_kabcirebon/error/403.html
+ErrorDocument 404 /pusdatin_kabcirebon/error/404.html
+ErrorDocument 500 /pusdatin_kabcirebon/error/500.html
