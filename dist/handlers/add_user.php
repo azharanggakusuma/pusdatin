@@ -4,7 +4,7 @@ include_once('../config/conn.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = htmlspecialchars(trim($_POST['name']));
     $username = htmlspecialchars(trim($_POST['username']));
-    $password = md5(trim($_POST['password']));
+    $password = sha1(trim($_POST['password']));
     $level = htmlspecialchars(trim($_POST['level']));
 
     // Query untuk insert data

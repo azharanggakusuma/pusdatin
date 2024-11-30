@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-    $password_enkripsi = md5($password); // Enkripsi password menggunakan md5
+    $password_enkripsi = sha1($password); // Enkripsi password menggunakan SHA1
 
     // Include koneksi database
     include '../config/conn.php';

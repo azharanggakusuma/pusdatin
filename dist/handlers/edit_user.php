@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['id'])) {
     $name = htmlspecialchars(trim($_POST['name']));
     $username = htmlspecialchars(trim($_POST['username']));
     
-    // Menggunakan MD5 untuk password
-    $password = !empty($_POST['password']) ? md5(trim($_POST['password'])) : null;
+    // Menggunakan SHA1 untuk password
+    $password = !empty($_POST['password']) ? sha1(trim($_POST['password'])) : null;
     
     $level = htmlspecialchars(trim($_POST['level']));
 
