@@ -33,7 +33,7 @@ include "config/session.php";
 
     <div class="page animate__animated animate__fadeIn">
         <div class="app-wrapper"> <!--begin::Header-->
-            <?php include('components/navbar.php'); ?><!--end::Header--> <!--begin::Sidebar-->
+            <?php include('components/navbar.php'); ?> <!--end::Header--> <!--begin::Sidebar-->
 
             <?php include('components/sidebar.php'); ?>
             <!--end::Sidebar--> <!--begin::App Main-->
