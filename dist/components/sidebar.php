@@ -7,7 +7,7 @@ $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../.
     <div class="sidebar-brand">
         <a href="<?php echo $base_path; ?>index.php" class="brand-link">
             <img src="<?php echo $base_path; ?>img/kominfo.png" alt="Pusdatin" class="brand-image">
-            <span class="brand-text fw-bold">PUSDATIN v1.0</span>
+            <span class="brand-text fw-bold">P U S D A T I N</span>
         </a>
     </div>
     <div class="sidebar-wrapper">
