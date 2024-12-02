@@ -133,7 +133,7 @@ $menus = $conn->query($menu_query);
                           </div>
                         </form>
                       </td>
-                    </tr>
+                    </tr> 
                   <?php endwhile; ?>
                 </tbody>
               </table>

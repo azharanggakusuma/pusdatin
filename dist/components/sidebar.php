@@ -76,6 +76,6 @@ $menu_result = $conn->query($query);
                     </li>
                 <?php } ?>
             </ul>
-        </nav>
+        </nav> 
     </div>
 </aside>
