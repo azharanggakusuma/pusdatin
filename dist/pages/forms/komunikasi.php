@@ -75,6 +75,9 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Jumlah Menara Base Transceiver Station (BTS)</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBTS">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toogle-form">
                                     <i class="fas fa-minus"></i>
@@ -111,11 +114,35 @@ include "../../config/session.php";
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalBTS" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi angka/jumlah menara Base Transceiver Station (BTS)</li>
+                                            <li>Jika tidak ada isi angka 0</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Operator layanan komunikasi telepon seluler/handphone yang menjangkau wilayah desa</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalOperator">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toogle-form1">
                                     <i class="fas fa-minus"></i>
@@ -144,7 +171,7 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">1. Telkomsel/Halo/Loop/As</label>
                                             <input type="hidden" value="1. Telkomsel/Halo/Loop/As">
                                             <div class="me-3" style="width: 50%;">
-                                                <label>Sinyal di sebagian besar wilayah</label>
+                                                <label>Sinyal di sebagian besar wilayah :</label>
                                                 <select class="form-control me-3 mt-3" required>
                                                     <option disabled selected>Pilih opsi</option>
                                                     <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
@@ -154,7 +181,7 @@ include "../../config/session.php";
                                                 </select>
                                             </div>
                                             <div style="width: 50%;">
-                                                <label>Sinyal di sebagian besar wilayah</label>
+                                                <label>Sinyal internet Terkuat :</label>
                                                 <select class="form-control mt-3 ml-5" required>
                                                     <option disabled selected>Pilih opsi</option>
                                                     <option value="trayek-tetap">4G/LTE2</option>
@@ -262,11 +289,35 @@ include "../../config/session.php";
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalOperator" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Pilih Sinyal di sebagian besar wilayah untuk setiap operator</li>
+                                            <li>Pilih Sinyal internet Terkuat untuk setiap operator</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKantorPos">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toogle-form1">
                                     <i class="fas fa-minus"></i>
@@ -325,6 +376,28 @@ include "../../config/session.php";
                                         <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                     </div>    
                             </form>
+                        </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalKantorPos" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Pilih opsi Kantor Pos/Pos Pembantu/Rumah Pos</li>
+                                            <li>Pilih opsi Pos Keliling</li>
+                                            <li>Pilih opsi Perusahaan/Agen Jasa Ekspedisi Swasta</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div> <!--end::Container-->
