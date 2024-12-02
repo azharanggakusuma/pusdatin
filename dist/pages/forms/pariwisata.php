@@ -526,18 +526,11 @@ include "../../config/session.php";
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
-
-                    </form>
-
                     <!-- /.row -->
                 </div>
             </div>
-    </div> <!--end::Container-->
-    </div> <!--end::App Content-->
-    </main> <!--end::App Main--> <!--begin::Footer-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
 
     <footer class="app-footer"> <!--begin::To the end-->
         <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
