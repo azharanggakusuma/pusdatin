@@ -304,7 +304,7 @@ if ($result->num_rows > 0) {
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="width: 3%" class="text-center">
+                                        <th>
                                             #
                                         </th>
                                         <th>
@@ -320,7 +320,7 @@ if ($result->num_rows > 0) {
                                             Level
                                         </th>
                                         <th>
-
+                                            Actions
                                         </th>
                                     </tr>
                                 </thead>
@@ -334,7 +334,7 @@ if ($result->num_rows > 0) {
                                                 <td><?= htmlspecialchars($user['password']) ?></td>
                                                 <td><?= htmlspecialchars($user['level']) ?></td>
 
-                                                <td class="project-actions text-center">
+                                                <td class="project-actions">
                                                     <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"
                                                         onclick="editUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
                                                         <i class="fas fa-pencil-alt"></i>
@@ -342,7 +342,7 @@ if ($result->num_rows > 0) {
                                                     &nbsp;
                                                     <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
                                                         onclick="setDeleteUserId(<?= $user['id'] ?>)">
-                                                        <i class="fas fa-trash"></i>
+                                                        <i class="fas fa-trash-alt"></i>
                                                     </a>
 
                                                 </td>
