@@ -314,6 +314,7 @@ $menus = $conn->query($menu_query);
                     <th>Path</th>
                     <th>Status</th>
                     <th>Action</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -327,6 +328,14 @@ $menus = $conn->query($menu_query);
                         <span class="badge <?php echo $menu['status'] ? 'bg-success' : 'bg-danger'; ?>">
                           <?php echo $menu['status'] ? 'Aktif' : 'Nonaktif'; ?>
                         </span>
+                      </td>
+                      <td>
+                        <form method="POST" class="toggle-switch-form">
+                          <input type="hidden" name="menu_id" value="<?php echo $menu['id']; ?>">
+                          <div class="form-check form-switch">
+                            <input class="form-check-input <?php echo $menu['status'] ? 'bg-success' : ''; ?>" type="checkbox" name="status" value="<?php echo $menu['status'] ? 0 : 1; ?>" <?php echo $menu['status'] ? 'checked' : ''; ?> onchange="this.form.submit()">
+                          </div>
+                        </form>
                       </td>
                       <td>
                         <a class="btn btn-warning btn-sm btn-edit" href="#" data-bs-toggle="modal" data-bs-target="#editMenuModal"
