@@ -116,7 +116,7 @@ $menus = $conn->query($menu_query);
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <form method="POST" action="../../handlers/add_menu.php"> 
+                      <form method="POST" action="../../handlers/add_menu.php">
                         <div class="mb-3">
                           <label for="newMenuName" class="form-label">Nama Menu</label>
                           <input type="text" class="form-control" id="newMenuName" name="menu_name" placeholder="Masukkan nama menu" required oninput="updateURL('newMenuName', 'newMenuURL')">
@@ -221,6 +221,90 @@ $menus = $conn->query($menu_query);
                   document.getElementById('delete_menu_id').value = id;
                 }
               </script>
+
+              <!-- Notifikasi Add -->
+              <?php if (isset($_GET['messageadd'])): ?>
+                <script>
+                  let messageadd = "<?= $_GET['messageadd'] ?>";
+                  if (messageadd === 'success') {
+                    swal({
+                      title: "Berhasil!",
+                      text: "Menu berhasil ditambahkan.",
+                      icon: "success",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  } else if (messageadd === 'error') {
+                    swal({
+                      title: "Gagal!",
+                      text: "Terjadi kesalahan saat menambahkan menu.",
+                      icon: "error",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  }
+                </script>
+              <?php endif; ?>
+
+              <!-- Notifikasi edit -->
+              <?php if (isset($_GET['messageedit'])): ?>
+                <script>
+                  let messageedit = "<?= $_GET['messageedit'] ?>";
+                  if (messageedit === 'success') {
+                    swal({
+                      title: "Berhasil!",
+                      text: "Menu berhasil diubah.",
+                      icon: "success",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  } else if (messageedit === 'error') {
+                    swal({
+                      title: "Gagal!",
+                      text: "Terjadi kesalahan saat mengubah menu.",
+                      icon: "error",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  }
+                </script>
+              <?php endif; ?>
+
+              <!-- Notifikasi delete -->
+              <?php if (isset($_GET['messagedelete'])): ?>
+                <script>
+                  let messagedelete = "<?= $_GET['messagedelete'] ?>";
+                  if (messagedelete === 'success') {
+                    swal({
+                      title: "Berhasil!",
+                      text: "Menu berhasil dihapus.",
+                      icon: "success",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  } else if (messagedelete === 'error') {
+                    swal({
+                      title: "Gagal!",
+                      text: "Terjadi kesalahan saat menghapus menu.",
+                      icon: "error",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  }
+                </script>
+              <?php endif; ?>
 
               <table class="table table-striped table-hover align-middle">
                 <thead>
