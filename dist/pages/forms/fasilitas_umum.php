@@ -526,7 +526,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control"> 
                                             </div>
 
                                             <div class="titik_koordinat">
