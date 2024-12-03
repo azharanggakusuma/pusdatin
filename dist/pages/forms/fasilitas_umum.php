@@ -522,11 +522,11 @@ include "../../config/session.php";
                                                 <option value="Vihara">Vihara</option>
                                                 <option value="Klenteng">Klenteng </option>
                                             </select>
-                                        </div> 
+                                        </div>
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control"> 
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -553,6 +553,942 @@ include "../../config/session.php";
                                 </div>
                                 <!-- end:: Tempat Peribadatan ke 6 -->
 
+                                <!-- begin:: Tempat Peribadatan ke 7 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 7</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 7 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 8 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan ke 8</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 8 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 9 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 9</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 9 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 10 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 10</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 10 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 11 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan ke 11</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 11 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 12 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 12</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 12 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 13 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 13</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 13 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 14 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan ke 14</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 14 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 15 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 15</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 15 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 16 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 16</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 16 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 17 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan ke 17</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 17 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 17 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 17</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 17 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 18 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 7</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 18 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 19 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan ke 19</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 19 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 20 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 20</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 20 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 21 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 10</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 21 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 22 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan ke 22</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 22 -->
+
+                                <!-- begin:: Tempat Peribadatan ke 23 -->
+                                <div class="border p-3 mb-3">
+                                    <div class="card-header mb-3">
+
+                                        <h2 class="card-title mb-3">Tempat Peribadatan Ke 23</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis Tempat Ibadah</label>
+                                            <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
+                                                style="width: 100%;">
+                                                <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Masjid">Masjid</option>
+                                                <option value="Mushola">Mushola</option>
+                                                <option value="Gereja Protestan">Gereja Protestan</option>
+                                                <option value="Gereja Katolik">Gereja Katolik</option>
+                                                <option value="Gereja Katolik">Pura</option>
+                                                <option value="Vihara">Vihara</option>
+                                                <option value="Klenteng">Klenteng </option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Tempat Peribadatan</label>
+                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                            </div>
+
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <label for="titik_koordinat_lintang">Koordinat Lintang</label>
+                                                        <input id="titik_koordinat_lintang" type="text"
+                                                            class="form-control titik_koordinat_lintang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="titik_koordinat_bujur">Koordinat Bujur</label>
+                                                        <input id="titik_koordinat_bujur" type="text"
+                                                            class="form-control titik_koordinat_bujur">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end:: Tempat Peribadatan ke 23 -->
+
                                 <div class="col-md-6">
 
                                     <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
@@ -563,6 +1499,152 @@ include "../../config/session.php";
                     </div>
                 </div>
                 <!-- END:: contaainer Tempat Peribadatan -->
+
+                <!-- BEGIN:: CONTAINER JUMLAH TEMPAT PERIBADATAN -->
+                <div class="container-fluid"> <!--begin::Row-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Jumlah Prasarana Olahraga yang berlokasi di Desa/Kelurahan</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool jumlah_olahraga">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".jumlah_olahraga").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombo l
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Lapangan Sepak Bola</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Lapangan Futsal</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Lapangan Bulu tangkis</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Meja Pingpong</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Lapangan Tenis</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Lapangan Voli</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Lapangan Basket</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Pusat Kebugaran / GYM</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Gelanggang Remaja</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
+
+                                                fetch(apiUrl)
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        if (!data || !data.data || !Array.isArray(data.data)) {
+                                                            throw new Error("Data dari API tidak valid");
+                                                        }
+
+                                                        const villages = data.data;
+                                                        const villageCodeSelect = $("#villageCodeSelect");
+                                                        const villageNameSelect = $("#villageNameSelect");
+
+                                                        // Bersihkan opsi lama
+                                                        villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                        villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
+
+                                                        // Sort data berdasarkan Nama Desa
+                                                        villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
+
+                                                        // Isi dropdown Nama Desa
+                                                        villages.forEach(village => {
+                                                            villageNameSelect.append(
+                                                                new Option(village['Nama_Desa'], village['Kode_Desa'])
+                                                            );
+                                                        });
+
+                                                        // Inisialisasi Select2
+                                                        villageNameSelect.select2({
+                                                            theme: "bootstrap4" // Pastikan tema sesuai jika menggunakan select2bs4
+                                                        });
+
+                                                        // Event listener untuk Nama Desa
+                                                        villageNameSelect.on("change", function() {
+                                                            const selectedKodeDesa = $(this).val();
+
+                                                            // Temukan pasangan Kode Desa
+                                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
+
+                                                            // Update dropdown Kode Desa
+                                                            if (selectedVillage) {
+                                                                villageCodeSelect.empty().append(
+                                                                    new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
+                                                                );
+                                                            } else {
+                                                                villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                            }
+                                                        });
+
+                                                        // Event listener untuk Kode Desa
+                                                        villageCodeSelect.on("change", function() {
+                                                            const selectedKodeDesa = $(this).val();
+
+                                                            // Update Nama Desa sesuai Kode Desa
+                                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
+
+                                                            if (selectedVillage) {
+                                                                villageNameSelect.val(selectedVillage['Kode_Desa']).trigger("change");
+                                                            } else {
+                                                                villageNameSelect.val("").trigger("change");
+                                                            }
+                                                        });
+                                                    })
+                                                    .catch(error => {
+                                                        console.error("Terjadi kesalahan saat memuat data desa:", error);
+                                                    });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                </div> <!--end::Container-->
+                <!-- END:: CONTAINER TEMPAT PERIBADATAN -->
 
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
