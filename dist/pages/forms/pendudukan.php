@@ -74,7 +74,35 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Penduduk</h3> 
+                            <h3 class="card-title">Penduduk</h3>
+
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>isi angka/jumlah</li>
+                                                <li>isi angka/jumlah</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
@@ -96,17 +124,17 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="row">
-                                    <div >
+                                    <div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Penduduk Belum Tercatat di Kartu Keluarga (orang)</label>
                                             <input type="text" class="form-control">
                                         </div>
-                                         <div class="form-group mb-3">
+                                        <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Penduduk Belum Merekam e-KTP (orang)</label>
                                             <input type="text" class="form-control">
                                         </div>
 
-                                       
+
                                         <script>
                                             document.addEventListener("DOMContentLoaded", function() {
                                                 const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
@@ -179,7 +207,7 @@ include "../../config/session.php";
                                         </script>
                                     </div>
                                 </div>
-                                 <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                             </form>
                             <!-- /.row -->
                         </div>
@@ -187,6 +215,7 @@ include "../../config/session.php";
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
+
 
         <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
