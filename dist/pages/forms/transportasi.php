@@ -75,6 +75,9 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Keberadaan Angkutan Umum</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAngkutan">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toogle-form">
                                     <i class="fas fa-minus"></i>
@@ -103,25 +106,25 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Keberadaan Angkutan Umum</label>
                                             <select class="form-control" style="width: 100%;" required>
                                                 <option disabled selected>Pilih opsi</option>
-                                                <option value="trayek-tetap">Trayek Tetap</option>
-                                                <option value="tanpa-trayek-tetap">Tanpa Trayek Tetap</option>
-                                                <option value="tidak-ada">Tidak Ada Angkutan Umum</option>
+                                                <option value="trayek-tetap">TRAYEK TETAP</option>
+                                                <option value="tanpa-trayek-tetap">TANPA TRAYEK TETAP</option>
+                                                <option value="tidak-ada">TIDAK ADA ANGKATAN UMUM</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Operasional Angkutan Umum</label>
                                             <select class="form-control" style="width: 100%;" required>
                                                 <option disabled selected>Pilih opsi</option>
-                                                <option value="setiap-hari">Setiap Hari</option>
-                                                <option value="tidak-setiap-hari">Tidak Setiap Hari</option>
+                                                <option value="setiap-hari">SETIAP HARI</option>
+                                                <option value="tidak-setiap-hari">TIDAK SETIAP HARI</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Jam Operasi Angkutan Umum</label>
                                             <select class="form-control" style="width: 100%;" required>
                                                 <option disabled selected>Pilih opsi</option>
-                                                <option value="siang-malam">Siang dan Malam Hari</option>
-                                                <option value="siang-saja">Hanya Siang Hari</option>
+                                                <option value="siang-malam">SIANG DAN MALAM HARI</option>
+                                                <option value="siang-saja">HANYA SIANG HARI</option>
                                             </select>
                                         </div>
 
@@ -134,6 +137,27 @@ include "../../config/session.php";
                             </form>
                         </div>
 
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalAngkutan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Pilih Keberadaan Angkutan Umum</li>
+                                            <li>Pilih Operasional Angkutan Umum</li>
+                                            <li>Pilih Jam Operasi Angkutan Umum</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->

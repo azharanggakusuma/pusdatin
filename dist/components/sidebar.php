@@ -1,6 +1,10 @@
 <?php
 $current_folder = basename(dirname($_SERVER['SCRIPT_NAME']));
 $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../../' : './';
+
+// Query untuk mengambil menu dinamis
+$query = "SELECT * FROM menu WHERE status = 1"; // Hanya menu aktif
+$menu_result = $conn->query($query);
 ?>
 
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
@@ -29,108 +33,14 @@ $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../.
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/desa.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Desa</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/keadaan_geografi.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Keadaan Geografi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/wilayah_administratif.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Wilayah Administratif</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/sumber_daya_manusia.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Sumber Daya Manusia</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/kelembagaan_dan_keuangan_desa.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Kelembagaan Dan Keuangan Desa</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/pendudukan.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Penduduk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/pendidikan.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Pendidikan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/kesehatan.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Kesehatan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/fasilitas_umum.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Fasilitas Umum</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/sosial.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Sosial</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/pariwisata.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Pariwisata</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/transportasi.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Transportasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/komunikasi.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Komunikasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/lembaga_keuangan.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Lembaga Keuangan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/sarana_perdagangan.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Sarana Perdagangan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/infrastruktur.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Infrastruktur</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo $base_path; ?>pages/forms/lingkungan.php" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Lingkungan</p>
-                            </a>
-                        </li>
+                    <?php while ($menu = $menu_result->fetch_assoc()) : ?>
+                            <li class="nav-item">
+                                <a href="<?php echo $base_path . $menu['url']; ?>" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p><?php echo $menu['name']; ?></p>
+                                </a>
+                            </li>
+                        <?php endwhile; ?>
                     </ul>
                 </li>
 
@@ -156,10 +66,16 @@ $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../.
                                     <p>Rekap Data</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="<?php echo $base_path; ?>pages/tables/manage_menu.php" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Pengelolaan Menu</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 <?php } ?>
             </ul>
-        </nav>
+        </nav> 
     </div>
 </aside>

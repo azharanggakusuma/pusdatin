@@ -75,6 +75,9 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Daftar Potensi Wisata Desa</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalWisataDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -109,10 +112,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-1">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-1" class="form-control" required>
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -147,10 +151,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-2">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-2" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -185,10 +190,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-3">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-3" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -223,10 +229,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-4">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-4" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -261,10 +268,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-5">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-5" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -299,10 +307,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-6">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-6" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -337,10 +346,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-7">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-7" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -375,10 +385,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-8">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-8" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -413,10 +424,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-9">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-9" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -451,10 +463,11 @@ include "../../config/session.php";
                                                     <label class="mb-2" for="jenis-wisata-10">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-10" class="form-control">
                                                         <option disabled selected>Isi Jenis Wisata</option>
-                                                        <option value="alam">Wisata Alam</option>
-                                                        <option value="buatan">Wisata Buatan</option>
-                                                        <option value="religi">Wisata Religi</option>
-                                                        <option value="budaya">Wisata Budaya</option>
+                                                        <option value="alam">WISATA ALAM</option>
+                                                        <option value="buatan">WISATA BUATAN</option>
+                                                        <option value="religi">WISATA RELIGI</option>
+                                                        <option value="budaya">WISATA BUDAYA</option>
+                                                        <option value="tidakada">TIDAK ADA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -481,11 +494,38 @@ include "../../config/session.php";
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalWisataDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi nama potensi wisata desa, Jika tidak ada isi angka 0</li>
+                                            <li>Pilih jenis wisata desa, Jika tidak ada pilih TIDAK ADA</li>
+                                            <li>Isi koordinat lintang, jika tidak ada isi angka 0</li>
+                                            <li>Isi koordinat bujur, jika tidak ada isi angka 0</li>
+                                            <li>Potensi Wisata 1 wajib diisi, untuk ke 2 dan seterusnya optional</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Jumlah Usaha Jasa Akomodasi</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAkomodasi">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toogle-form-1">
                                     <i class="fas fa-minus"></i>
@@ -512,7 +552,7 @@ include "../../config/session.php";
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 150px;">Hotel (unit)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1"  required>
+                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" required>
                                         </div>
                                         <div class="form-group mb-3 d-flex align-items-center " style="width:100%">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 150px;">Penginapan (unit)</label>
@@ -527,27 +567,42 @@ include "../../config/session.php";
                             </form>
                         </div>
 
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalAkomodasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi angka/jumlah hotel per unit</li>
+                                            <li>Isi angka/jumlah penginapan (hotel/motel/losmen/wisma) per unit</li>
+                                            <li>Jika tidak ada isi angka 0</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
-                    </form>
-
                     <!-- /.row -->
                 </div>
             </div>
-    </div> <!--end::Container-->
-    </div> <!--end::App Content-->
-    </main> <!--end::App Main--> <!--begin::Footer-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <footer class="app-footer"> <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-        <strong>
-            Copyright &copy; 2024&nbsp;
-            <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-        </strong>
-        All rights reserved.
-        <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+        <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+            <strong>
+                Copyright &copy; 2024&nbsp;
+                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+            </strong>
+            All rights reserved.
+            <!--end::Copyright-->
+        </footer> <!--end::Footer-->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
 
