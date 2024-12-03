@@ -107,8 +107,8 @@ include "../../config/session.php";
                                         </div>
                                         <div class="modal-body">
                                             <ul>
-                                                <li>(isi angka/jumlah)</li>
-                                                <li>(isi angka/jumlah)</li>
+                                                <li>isi angka/jumlah</li>
+                                                <li>isi angka/jumlah</li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
