@@ -18,6 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../pages/tables/manage_menu.php");
+    header("Location: ../pages/tables/manage_menu.php"); 
 }
 ?>

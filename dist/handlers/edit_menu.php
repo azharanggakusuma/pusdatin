@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['id'])) {
         header("Location: ../pages/tables/manage_menu.php?messageedit=success");
     } else {
         echo "Error: " . $stmt->error;
-        header("Location: ../pages/tables/manage_menu.php?messageedit=error");
+        header("Location: ../pages/tables/manage_menu.php?messageedit=error"); 
     }
 
     // Tutup statement dan koneksi
