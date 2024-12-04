@@ -99,18 +99,19 @@ include "../../config/session.php";
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Nama Kepala Desa/Lurah</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
+                                        <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jenis kelamin</label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">LAKI - LAKI</option>
-                                            <option value=""> PEREMPUAN </option>
+                                        <select required name="" id="" class="form-control">
+                                            <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
+                                            <option value="LAKI-LAKI">LAKI - LAKI</option>
+                                            <option value="PEREMPUAN"> PEREMPUAN </option>
                                         </select>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Periode Tahun Menjabat</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan tahun periode" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun periode" style="width: 100%;" required>
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -132,70 +133,70 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form id="batasDesaForm" method="post">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class=">
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Perempuan</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Laki - Laki</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Kaur Perempuan</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Kaur Laki - Laki</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Kasi Perempuan</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Kasi Laki - Laki</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Staf/Pegawai Desa Lainnya Perempuan</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class=>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Staf/Pegawai Desa Lainnya Laki - Laki</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Jumlah Total Perempuan</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Jumlah Total Laki - Laki</label>
-                                            <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
+                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
 
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -240,15 +241,15 @@ include "../../config/session.php";
 
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jumlah laki - laki</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jumlah perempuan</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jumlah total</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -284,43 +285,43 @@ include "../../config/session.php";
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Ketua BPD Laki - Laki</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Ketua BPD Perempuan</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Wakil BPD Laki - Laki</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Wakil BPD Perempuan</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Sekertaris BPD Laki - Laki</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Sekertaris BPD Perempuan</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Bendahara BPD Laki - Laki</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Bendahara BPD Perempuan</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Anggota BPD Laki - Laki</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Anggota BPD Perempuan</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -360,7 +361,7 @@ include "../../config/session.php";
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Nama Pendamping Desa</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
+                                        <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -402,11 +403,11 @@ include "../../config/session.php";
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Banyaknya Linmas/Hansip (orang)</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Banyaknya Poskamling (unit)</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -469,7 +470,7 @@ include "../../config/session.php";
     <script src="../../plugins/select2/js/select2.full.min.js"></script>
     <!-- Bootstrap4 Duallistbox -->
     <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-    <!-- InputMask -->
+    <!-- Input requiredMask -->
     <script src="../../plugins/moment/moment.min.js"></script>
     <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- date-range-picker -->
