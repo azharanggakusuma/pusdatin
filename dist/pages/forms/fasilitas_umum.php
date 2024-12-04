@@ -92,12 +92,10 @@ include "../../config/session.php";
                                         </div>
                                         <div class="modal-body">
                                             <ul>
-                                                <li>Isi Angka Atau Jumlah</li>
-                                                <li>Isi Angka Atau Jumlah</li>
-                                                <li>Isi Angka Atau Jumlah</li>
-                                                <li>Isi Angka Atau Jumlah</li>
-                                                <li>Isi Angka Atau Jumlah</li>
-                                                <li>Isi Angka Atau Jumlah</li>
+                                                <li>Pilih Jenis Tempat Peribadatan Yang Sesuai</li>
+                                                <li>Isi Sesuai Dengan Nama Tempat Peribadatan</li>
+                                                <li>Pengisian Titik Kordinat Lintang Menggunakan Derajat Desimal , Contoh: -6.8796 LS</li>
+                                                <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal , Contoh: 108.5538 BT</li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
@@ -1684,7 +1682,7 @@ include "../../config/session.php";
                         </div>
                     </div>
                 </div> <!--end::Container-->
-                
+
                 <footer class="app-footer"> <!--begin::To the end-->
                     <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
                     <strong>
