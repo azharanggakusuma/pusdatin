@@ -237,7 +237,7 @@ include "../../config/session.php";
                         </div>
                     </div>
                 </div> <!--end::Container-->
-                <!-- END:: CONTAINER TEMPAT PERIBADATAN -->
+                <!-- END:: CONTAINER TEMPAT PERIBADATAN --> 
 
                 <!-- BEGIN:: container Tempat Peribadatan -->
                 <div class="container-fluid"> <!--begin::Row-->
