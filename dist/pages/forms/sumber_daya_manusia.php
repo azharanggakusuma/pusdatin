@@ -180,13 +180,13 @@ include "../../config/session.php";
                                             <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
-                                    <div >
+                                    <div>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Jumlah Total Perempuan</label>
                                             <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
-                                    <div >
+                                    <div>
                                         <div class="form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Jumlah Total Laki - Laki</label>
                                             <input type="number" id="" class="form-control" placeholder="Masukkan nama" required>
@@ -400,7 +400,7 @@ include "../../config/session.php";
                             <form action="" method="post">
                                 <div class="row"> <!-- /.col -->
                                     <!-- /.form-group -->
-                                    <div class="form-group mb-3"> 
+                                    <div class="form-group mb-3">
                                         <label class="mb-2">Banyaknya Linmas/Hansip (orang)</label>
                                         <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                     </div>
@@ -416,42 +416,44 @@ include "../../config/session.php";
                             <!-- /.row -->
                         </div>
                     </div>
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Lorem ipsum dolor</>
-                                        <ul>
-                                            <li>...</li>
-                                            <li>...</li>
-                                            <li>...</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    </div>
+                    <!-- Modal Info -->
+                    <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Lorem ipsum dolor</>
+                                    <ul>
+                                        <li>...</li>
+                                        <li>...</li>
+                                        <li>...</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
+                </div>
+                <footer class="app-footer"> <!--begin::To the end-->
+                    <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                    <strong>
+                        Copyright &copy; 2024&nbsp;
+                        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                    </strong>
+                    All rights reserved.
+                    <!--end::Copyright-->
+                </footer> <!--end::Footer-->
+            </div> <!--end::Container-->
+    </div> <!--end::App Content-->
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
+    </main> <!--end::App Main--> <!--begin::Footer-->
+
+
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
 

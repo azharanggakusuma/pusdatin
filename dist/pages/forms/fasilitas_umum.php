@@ -237,7 +237,7 @@ include "../../config/session.php";
                         </div>
                     </div>
                 </div> <!--end::Container-->
-                <!-- END:: CONTAINER TEMPAT PERIBADATAN --> 
+                <!-- END:: CONTAINER TEMPAT PERIBADATAN -->
 
                 <!-- BEGIN:: container Tempat Peribadatan -->
                 <div class="container-fluid"> <!--begin::Row-->
@@ -1708,20 +1708,19 @@ include "../../config/session.php";
                         </div>
                     </div>
                 </div> <!--end::Container-->
+                
+                <footer class="app-footer"> <!--begin::To the end-->
+                    <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                    <strong>
+                        Copyright &copy; 2024&nbsp;
+                        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                    </strong>
+                    All rights reserved.
+                    <!--end::Copyright-->
+                </footer> <!--end::Footer-->
                 <!-- END:: CONTAINER TEMPAT PERIBADATAN -->
-
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
-
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
 
