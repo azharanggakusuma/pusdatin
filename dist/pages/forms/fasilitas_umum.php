@@ -317,7 +317,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -369,7 +368,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -421,7 +419,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -473,7 +470,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -525,7 +521,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -577,7 +572,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -629,7 +623,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -681,7 +674,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -733,7 +725,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -785,7 +776,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -837,7 +827,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -889,7 +878,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -941,7 +929,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -993,7 +980,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1045,7 +1031,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1097,7 +1082,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1149,7 +1133,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1201,7 +1184,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1253,7 +1235,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1305,7 +1286,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1357,7 +1337,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1409,7 +1388,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1461,7 +1439,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
@@ -1513,7 +1490,6 @@ include "../../config/session.php";
                                             <select id="jenis_tempat_peribadatan" name="jenis_tempat_peribadatan" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                                                <option value="Paud">Paud</option>
                                                 <option value="Masjid">Masjid</option>
                                                 <option value="Mushola">Mushola</option>
                                                 <option value="Gereja Protestan">Gereja Protestan</option>
