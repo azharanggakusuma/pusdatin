@@ -23,7 +23,7 @@ include "../../config/session.php";
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- daterange picker -->
     <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
-    <!-- iCheck for checkboxes and radio inputs -->
+    <!-- iCheck for checkboxes and radio input required  -->
     <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Bootstrap Color Picker -->
     <link rel="stylesheet" href="../../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
@@ -92,10 +92,13 @@ include "../../config/session.php";
                                         </div>
                                         <div class="modal-body">
                                             <ul>
-                                                <li>Pilih Jenis Tempat Peribadatan Yang Sesuai</li>
-                                                <li>Isi Sesuai Dengan Nama Tempat Peribadatan</li>
-                                                <li>Pengisian Titik Kordinat Lintang Menggunakan Derajat Desimal , Contoh: -6.8796 LS</li>
-                                                <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal , Contoh: 108.5538 BT</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
+                                                <li>Isi Dengan Angka Atau Jumlah</li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
@@ -129,32 +132,32 @@ include "../../config/session.php";
                                     <div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Masjid</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control" Required>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Mushola</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control" >
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Gereja Protestean</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Gereja Katolik</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Pura</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Vihara</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Klenteng</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
 
                                         <script>
@@ -327,7 +330,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -336,12 +339,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -378,7 +381,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -387,12 +390,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -429,7 +432,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -438,12 +441,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -480,7 +483,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -489,12 +492,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -531,7 +534,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -540,12 +543,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -582,7 +585,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -591,12 +594,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -633,7 +636,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -642,12 +645,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -684,7 +687,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -693,12 +696,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -735,7 +738,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -744,12 +747,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -786,7 +789,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -795,12 +798,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -837,7 +840,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -846,12 +849,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -888,7 +891,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -897,12 +900,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -939,7 +942,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -948,12 +951,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -990,7 +993,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -999,12 +1002,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1041,7 +1044,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1050,12 +1053,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1092,7 +1095,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1101,12 +1104,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -1143,7 +1146,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1152,12 +1155,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1194,7 +1197,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1203,12 +1206,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1245,7 +1248,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1254,12 +1257,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -1296,7 +1299,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1305,12 +1308,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1347,7 +1350,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1356,12 +1359,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1398,7 +1401,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1407,12 +1410,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                        <input required id="koordinat_bujur_ke1" type="text"
                                                             class="form-control koordinat_bujur_ke1">
                                                     </div>
 
@@ -1449,7 +1452,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" name="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1458,12 +1461,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1500,7 +1503,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Tempat Peribadatan</label>
-                                                <input id="nama_tempat_peribadatan" type="text" class="form-control">
+                                                <input required id="nama_tempat_peribadatan" type="text" class="form-control">
                                             </div>
 
                                             <div class="titik_koordinat">
@@ -1509,12 +1512,12 @@ include "../../config/session.php";
                                                     <div class="col-md-6">
 
                                                         <label for="titik_koordinat_lintang">Koordinat Lintang</label>
-                                                        <input id="titik_koordinat_lintang" type="text"
+                                                        <input required id="titik_koordinat_lintang" type="text"
                                                             class="form-control titik_koordinat_lintang">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="titik_koordinat_bujur">Koordinat Bujur</label>
-                                                        <input id="titik_koordinat_bujur" type="text"
+                                                        <input required id="titik_koordinat_bujur" type="text"
                                                             class="form-control titik_koordinat_bujur">
                                                     </div>
 
@@ -1568,40 +1571,40 @@ include "../../config/session.php";
                                     <div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Lapangan Sepak Bola</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Lapangan Futsal</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Lapangan Bulu tangkis</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Meja Pingpong</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Lapangan Tenis</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Lapangan Voli</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Lapangan Basket</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Pusat Kebugaran / GYM</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jumlah Gelanggang Remaja</label>
-                                            <input type="text" class="form-control">
+                                            <input required type="text" class="form-control">
                                         </div>
 
                                         <script>
@@ -1710,9 +1713,9 @@ include "../../config/session.php";
     <script src="../../plugins/select2/js/select2.full.min.js"></script>
     <!-- Bootstrap4 Duallistbox -->
     <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-    <!-- InputMask -->
+    <!-- Input required ask -->
     <script src="../../plugins/moment/moment.min.js"></script>
-    <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="../../plugins/input required ask/jquery.input required ask.min.js"></script>
     <!-- date-range-picker -->
     <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
     <!-- bootstrap color picker -->
