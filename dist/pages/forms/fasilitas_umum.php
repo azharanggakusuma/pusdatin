@@ -131,7 +131,7 @@ include "../../config/session.php";
                                 <div class="row">
                                     <div>
                                         <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Masjid</label>
+                                            <label class="mb-2">Jumlah Masjid</label> 
                                             <input required type="text" class="form-control" Required>
                                         </div>
                                         <div class="form-group mb-3">
