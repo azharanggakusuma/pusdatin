@@ -38,8 +38,8 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
     <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin: Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end: Plugin(AdminLTE)-->
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -70,7 +70,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
     <div class="app-wrapper"> <!--begin::Header-->
 
         <?php include('../../components/navbar.php'); ?>
-        
+
         <?php include('../../components/sidebar.php'); ?>
         <!--end::Sidebar--> <!--begin::App Main-->
 
@@ -79,13 +79,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Desa</h3>
+                            <h3 class="mb-0">Form Enumerator</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Desa
+                                    Data Enumerator
                                 </li>
                             </ol>
                         </div>
@@ -96,7 +96,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Data Desa</h3>
+                            <h3 class="card-title">Data Enumerator</h3>
                             <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
                                 <i class="fas fa-info-circle"></i>
@@ -128,35 +128,30 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
 
-                                <!-- SweetAlert dengan Kustomisasi -->
-                                <!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        Swal.fire({
-                                            title: "⚠️ Form Terkunci!",
-                                            text: "Anda sudah mengisi form ini dan tidak dapat diubah kembali.",
-                                            icon: "info",
-
-                                            confirmButtonText: "OK",
-                                            timer: 5000,
-                                            background: "#f8f9fa",
-                                            backdrop: `
-                                                rgba(0,0,123,0.4)
-                                                url('https://i.gifer.com/ZZ5H.gif') // GIF animasi latar belakang
-                                                left top
-                                                no-repeat
-                                            `,
-                                            buttonsStyling: false,
-                                            customClass: {
-                                                confirmButton: 'btn btn-primary btn-lg px-4 py-2',
-                                                popup: 'rounded shadow-lg'
-                                            }
-                                        });
-                                    });
-                                </script>-->
                             <?php else: ?>
-                                <form action="../../handlers/form_desa.php" method="post">
+                                <form action="../../handlers/form_enumerator.php" method="post">
                                     <div class="row">
+                                        <!-- Nama -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama Lengkap</label>
+                                            <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
+                                        </div>
+
+                                        <!-- Alamat -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat</label>
+                                            <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
+                                        </div>
+
+                                        <!-- No HP -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">No HP</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">+62</span>
+                                                <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]{9,12}">
+                                            </div>
+                                        </div>
+
                                         <!-- Kode Desa -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Kode Desa</label>
@@ -175,6 +170,15 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             </select>
                                             <!-- Hidden Input untuk Nama Desa -->
                                             <input type="hidden" name="nama_desa" id="namaDesaHidden">
+                                        </div>
+
+                                        <!-- Kecamatan -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kecamatan</label>
+                                            <select disabled id="subDistrictSelect" class="form-control" style="width: 100%;">
+                                                <option value="" selected>Otomatis Terisi</option>
+                                            </select>
+                                            <input type="hidden" name="kecamatan" id="kecamatanHidden">
                                         </div>
                                     </div>
 
@@ -196,8 +200,10 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Isi nama desa</li>
-                                            <li>Untuk kode desa akan terisi otomatis setelah memilih nama desa</li>
+                                            <li>Isi Nama Desa sesuai pilihan yang tersedia.</li>
+                                            <li>Setelah Nama Desa dipilih, Kode Desa dan Nama Kecamatan akan terisi otomatis.</li>
+                                            <li>Pastikan data lainnya seperti Nama, Alamat, dan No HP diisi dengan benar.</li>
+                                            <li>Format No HP harus tanpa awalan 0, contohnya: 81234567890.</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -205,48 +211,47 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                        <?php if (isset($_GET['status'])): ?>
+                            <?php if (isset($_GET['status'])): ?>
+                                <script>
+                                    let status = "<?= $_GET['status'] ?>";
+                                    if (status === 'success') {
+                                        Swal.fire({
+                                            title: "Berhasil!",
+                                            text: "Data berhasil ditambahkan.",
+                                            icon: "success",
+                                            timer: 3000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            window.location.href = "data_enumerator.php";
+                                        });
+                                    } else if (status === 'error') {
+                                        Swal.fire({
+                                            title: "Gagal!",
+                                            text: "Terjadi kesalahan saat menambahkan data.",
+                                            icon: "error",
+                                            timer: 3000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            window.location.href = "data_enumerator.php";
+                                        });
+                                    } else if (status === 'warning') {
+                                        Swal.fire({
+                                            title: "Peringatan!",
+                                            text: "Mohon lengkapi semua data.",
+                                            icon: "warning",
+                                            timer: 3000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            window.location.href = "data_enumerator.php";
+                                        });
+                                    }
+                                </script>
+                            <?php endif; ?>
+
                             <script>
-                                let status = "<?= $_GET['status'] ?>";
-                                if (status === 'success') {
-                                    Swal.fire({
-                                        title: "Berhasil!",
-                                        text: "Data berhasil ditambahkan.",
-                                        icon: "success",
-                                        timer: 3000,
-                                        showConfirmButton: false
-                                    }).then(() => {
-                                        window.location.href = "desa.php";
-                                    });
-                                } else if (status === 'error') {
-                                    Swal.fire({
-                                        title: "Gagal!",
-                                        text: "Terjadi kesalahan saat menambahkan data.",
-                                        icon: "error",
-                                        timer: 3000,
-                                        showConfirmButton: false
-                                    }).then(() => {
-                                        window.location.href = "desa.php";
-                                    });
-                                } else if (status === 'warning') {
-                                    Swal.fire({
-                                        title: "Peringatan!",
-                                        text: "Mohon lengkapi semua data.",
-                                        icon: "warning",
-                                        timer: 3000,
-                                        showConfirmButton: false
-                                    }).then(() => {
-                                        window.location.href = "desa.php";
-                                    });
-                                }
-                            </script>
-                        <?php endif; ?>
-
-                        <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
 
@@ -260,44 +265,47 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         const villages = data.data;
                                         const villageCodeSelect = $("#villageCodeSelect");
                                         const villageNameSelect = $("#villageNameSelect");
+                                        const subDistrictSelect = $("#subDistrictSelect");
                                         const kodeDesaHidden = $("#kodeDesaHidden");
                                         const namaDesaHidden = $("#namaDesaHidden");
+                                        const kecamatanHidden = $("#kecamatanHidden");
 
-                                        // Bersihkan opsi lama
                                         villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
                                         villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
+                                        subDistrictSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
 
-                                        // Sort data berdasarkan Nama Desa
                                         villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
 
-                                        // Isi dropdown Nama Desa
                                         villages.forEach(village => {
                                             villageNameSelect.append(
                                                 new Option(village['Nama_Desa'], village['Kode_Desa'])
                                             );
                                         });
 
-                                        // Inisialisasi Select2
                                         villageNameSelect.select2({
                                             theme: "bootstrap4"
                                         });
 
-                                        // Event listener untuk Nama Desa
                                         villageNameSelect.on("change", function() {
                                             const selectedKodeDesa = $(this).val();
                                             const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
 
-                                            // Update dropdown Kode Desa dan input tersembunyi
                                             if (selectedVillage) {
                                                 villageCodeSelect.empty().append(
                                                     new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
                                                 );
-                                                kodeDesaHidden.val(selectedVillage['Kode_Desa']); // Set nilai ke hidden input Kode Desa
-                                                namaDesaHidden.val(selectedVillage['Nama_Desa']); // Set nilai ke hidden input Nama Desa
+                                                subDistrictSelect.empty().append(
+                                                    new Option(selectedVillage['Kecamatan'], selectedVillage['Kecamatan'], true, true)
+                                                );
+                                                kodeDesaHidden.val(selectedVillage['Kode_Desa']);
+                                                namaDesaHidden.val(selectedVillage['Nama_Desa']);
+                                                kecamatanHidden.val(selectedVillage['Kecamatan']);
                                             } else {
                                                 villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                subDistrictSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
                                                 kodeDesaHidden.val("");
                                                 namaDesaHidden.val("");
+                                                kecamatanHidden.val("");
                                             }
                                         });
                                     })
@@ -307,10 +315,9 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                             });
                         </script>
 
-
-                    </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
+                        </div>
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
 
         <footer class="app-footer"> <!--begin::To the end-->
@@ -353,10 +360,10 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
     <!-- dropzonejs -->
     <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin: Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end: Plugin(popperjs for Bootstrap 5)--><!--begin: Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end: Plugin(Bootstrap 5)--><!--begin: Plugin(AdminLTE)-->
+    <script src="../../../dist/js/adminlte.js"></script> <!--end: Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         $(function() {
             //Initialize Select2 Elements
