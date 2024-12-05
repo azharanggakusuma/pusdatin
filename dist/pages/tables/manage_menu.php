@@ -133,8 +133,8 @@ $menus = $conn->query($menu_query);
                           </select>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Tambah Menu</button>
+                          <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                          <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
                         </div>
                       </form>
                     </div>
@@ -169,8 +169,8 @@ $menus = $conn->query($menu_query);
                           </select>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                          <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                          <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
                         </div>
                       </form>
                     </div>
@@ -192,8 +192,8 @@ $menus = $conn->query($menu_query);
                         <input type="hidden" id="delete_menu_id" name="id">
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Hapus</button>
                       </div>
                     </form>
                   </div>

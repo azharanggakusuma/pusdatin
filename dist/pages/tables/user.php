@@ -147,8 +147,8 @@ if ($result->num_rows > 0) {
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
                                     </div>
                                 </form>
                             </div>
@@ -214,8 +214,8 @@ if ($result->num_rows > 0) {
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
                                     </div>
                                 </form>
                             </div>
@@ -275,8 +275,8 @@ if ($result->num_rows > 0) {
                                         <input type="hidden" id="delete_user_id" name="id">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Hapus</button>
                                     </div>
                                 </form>
                             </div>
