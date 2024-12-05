@@ -24,18 +24,18 @@ $kode_desa = $_GET['kode_desa'] ?? null;
 // Query untuk mengambil data desa
 $query = "
     SELECT
-        tb_desa.kode_desa,
-        tb_desa.nama_desa,
+        tb_enumerator.kode_desa,
+        tb_enumerator.nama_desa,
         tb_luas_wilayah_desa.luas_wilayah_desa
     FROM
-        tb_desa
+        tb_enumerator
     LEFT JOIN
         tb_luas_wilayah_desa
     ON
-        tb_desa.id_desa = tb_luas_wilayah_desa.desa_id
+        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
 ";
 if ($kode_desa) {
-    $query .= " WHERE tb_desa.kode_desa = '$kode_desa'";
+    $query .= " WHERE tb_enumerator.kode_desa = '$kode_desa'";
 }
 
 // Menjalankan query
@@ -250,7 +250,7 @@ if ($type === 'pdf') {
                                     <select name="kode_desa" id="kode_desa" class="form-control">
                                         <option value="">Semua Desa</option>
                                         <?php
-                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_desa");
+                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_enumerator");
                                         while ($desa = mysqli_fetch_assoc($desaResult)) {
                                             echo "<option value='{$desa['kode_desa']}'>{$desa['nama_desa']}</option>";
                                         }
