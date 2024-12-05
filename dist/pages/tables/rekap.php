@@ -99,7 +99,7 @@ $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 if ($type === 'pdf') {
     $mpdf = new Mpdf();
 
-    $html = '<h1 style="text-align: center;">Data Desa dan Luas Wilayah</h1>';
+    $html = '<h1 style="text-align: center;">Rekap Data</h1>';
     $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
     $html .= '<th>Kode Desa</th><th>Desa/Kelurahan</th><th>Luas Wilayah Desa(Hektar)</th>';
