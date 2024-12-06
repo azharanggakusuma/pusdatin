@@ -62,7 +62,7 @@ include "config/session.php";
                             <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 1-->
                                 <div class="small-box text-bg-primary">
                                     <div class="inner">
-                                        <h3>422</h3>
+                                        <h3>424</h3>
                                         <p>Desa / Kelurahan</p>
                                     </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path d="M12 3.172l9 9V20a1 1 0 01-1 1h-6a1 1 0 01-1-1v-4H11v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-7.828l9-9zm-7 9.414V19h4v-5a1 1 0 011-1h4a1 1 0 011 1v5h4v-6.414L12 5.586l-7 7z" />
