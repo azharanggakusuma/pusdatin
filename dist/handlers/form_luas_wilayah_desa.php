@@ -4,13 +4,13 @@ session_start();
 
 // Ambil ID pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
-$query_user = "SELECT id FROM users WHERE username = '$username'";
+$query_user = "SELECT id FROM users WHERE username = '$username'"; 
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
 // Ambil ID desa yang terkait dengan user yang sedang login
-$query_desa = "SELECT id_desa FROM tb_desa WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1"; 
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1"; 
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;

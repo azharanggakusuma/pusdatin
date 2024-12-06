@@ -37,8 +37,8 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
     <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin: Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end: Plugin(AdminLTE)-->
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -171,7 +171,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
-                                            <input type="text" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;" required>
+                                            <input type="text" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;">
                                         </div>
                                     </div>
                                     <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -201,7 +201,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                         </div>
                     </div>
 
-                    <div class="card card-primary card-outline mb-4">
+                    <div class="card card-primary card-outline mb-4"> 
                         <div class="card-header mb-3">
                             <h3 class="card-title">Batas Wilayah Desa</h3>
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBatasDesa">
@@ -228,13 +228,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-utara" class="mb-2">Sebelah Utara</label>
-                                                <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan batas desa" required>
+                                                <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan batas desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-utara" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan kecamatan" required>
+                                                <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan kecamatan">
                                             </div>
                                         </div>
 
@@ -242,13 +242,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-selatan" class="mb-2">Sebelah Selatan</label>
-                                                <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan batas desa" required>
+                                                <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan batas desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-selatan" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan kecamatan" required>
+                                                <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan kecamatan">
                                             </div>
                                         </div>
 
@@ -256,13 +256,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-timur" class="mb-2">Sebelah Timur</label>
-                                                <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan batas desa" required>
+                                                <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan batas desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-timur" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan kecamatan" required>
+                                                <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan kecamatan">
                                             </div>
                                         </div>
 
@@ -270,13 +270,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-barat" class="mb-2">Sebelah Barat</label>
-                                                <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan batas desa" required>
+                                                <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan batas desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-barat" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan kecamatan" required>
+                                                <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan kecamatan">
                                             </div>
                                         </div>
                                     </div>
@@ -339,12 +339,12 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan jarak" style="width: 100%;" required>
+                                        <input type="text" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan jarak" style="width: 100%;" required>
+                                        <input type="text" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -403,12 +403,12 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Koordinat Lintang</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;" required>
+                                        <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Koordinat Bujur</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;" required>
+                                        <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -535,19 +535,19 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Tanah Bengkok</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Tanah Titi Sara</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Kebun Desa</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Sawah Desa</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;" required>
+                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
@@ -620,10 +620,10 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
     <!-- dropzonejs -->
     <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin: Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end: Plugin(popperjs for Bootstrap 5)--><!--begin: Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end: Plugin(Bootstrap 5)--><!--begin: Plugin(AdminLTE)-->
+    <script src="../../../dist/js/adminlte.js"></script> <!--end: Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         $(function() {
             //Initialize Select2 Elements
