@@ -4,7 +4,7 @@ session_start();
 
 // Ambil ID pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
-$query_user = "SELECT id FROM users WHERE username = '$username'";
+$query_user = "SELECT id FROM users WHERE username = '$username'"; 
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
