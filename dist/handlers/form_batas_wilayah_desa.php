@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // Redirect jika ID desa atau user tidak ditemukan
-        header("Location: ../pages/forms/keadaan_geografi.php?status=error&message=" . urlencode("ID Desa atau ID User tidak ditemukan."));
+        header("Location: ../pages/forms/keadaan_geografi.php?status=warning");
         exit();
     }
 }
