@@ -24,18 +24,18 @@ $kode_desa = $_GET['kode_desa'] ?? null;
 // Query untuk mengambil data desa
 $query = "
     SELECT
-        tb_desa.kode_desa,
-        tb_desa.nama_desa,
+        tb_enumerator.kode_desa,
+        tb_enumerator.nama_desa,
         tb_luas_wilayah_desa.luas_wilayah_desa
     FROM
-        tb_desa
+        tb_enumerator
     LEFT JOIN
         tb_luas_wilayah_desa
     ON
-        tb_desa.id_desa = tb_luas_wilayah_desa.desa_id
+        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
 ";
 if ($kode_desa) {
-    $query .= " WHERE tb_desa.kode_desa = '$kode_desa'";
+    $query .= " WHERE tb_enumerator.kode_desa = '$kode_desa'";
 }
 
 // Menjalankan query
@@ -89,7 +89,7 @@ $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 
     // Kirim file Excel ke browser
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment; filename="data_desa.xlsx"');
+    header('Content-Disposition: attachment; filename="rekap_data_pusdatin.xlsx"');
     $writer = new Xlsx($spreadsheet);
     $writer->save('php://output');
     exit;
@@ -99,7 +99,7 @@ $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 if ($type === 'pdf') {
     $mpdf = new Mpdf();
 
-    $html = '<h1 style="text-align: center;">Data Desa dan Luas Wilayah</h1>';
+    $html = '<h1 style="text-align: center;">Rekap Data</h1>';
     $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
     $html .= '<th>Kode Desa</th><th>Desa/Kelurahan</th><th>Luas Wilayah Desa(Hektar)</th>';
@@ -116,7 +116,7 @@ if ($type === 'pdf') {
     $html .= '</tbody></table>';
 
     $mpdf->WriteHTML($html);
-    $mpdf->Output('data_desa.pdf', 'D');
+    $mpdf->Output('rekap_data_pusdatin.pdf', 'D');
     exit;
 }
 ?>
@@ -250,7 +250,7 @@ if ($type === 'pdf') {
                                     <select name="kode_desa" id="kode_desa" class="form-control">
                                         <option value="">Semua Desa</option>
                                         <?php
-                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_desa");
+                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_enumerator");
                                         while ($desa = mysqli_fetch_assoc($desaResult)) {
                                             echo "<option value='{$desa['kode_desa']}'>{$desa['nama_desa']}</option>";
                                         }

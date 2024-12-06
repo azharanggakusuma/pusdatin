@@ -85,6 +85,38 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4 card0">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Daftar Sekolah/Lembaga Pendidikan Formal</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Isi Nama Sekolah</li>
+                                                <li>Pilih Jenjang Pendidikan Yang Sesuai</li>
+                                                <li>Pilih Status Sekolah Yang Sesuai</li>
+                                                <li>Isi Nama Kecamatan Tempat Sekolah</li>
+                                                <li>Pengisian Titik Kordinat Lintang Menggunakan Derajat Desimal , Contoh: -6.8796 LS</li>
+                                                <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal , Contoh: 108.5538 BT</li>
+
+
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool addButton">
                                     <i class="fas fa-minus"></i>
@@ -130,10 +162,10 @@ include "../../config/session.php";
                                                 <select id="jenjang_sekolah_ke1" class="form-control select2bs4"
                                                     style="width: 100%;">
                                                     <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
-                                                    <option value="">Paud</option>
-                                                    <option value="">Sekolah Dasar</option>
-                                                    <option value="">Sekolah Menengah Pertama</option>
-                                                    <option value="">Sekolah Menengah Atas</option>
+                                                    <option value="Paud">Paud</option>
+                                                    <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                    <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                    <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                                 </select>
                                             </div>
                                             <div class="form-group mb-3">
@@ -141,8 +173,8 @@ include "../../config/session.php";
                                                 <select id="status_sekolah1" class="form-control select2bs4"
                                                     style="width: 100%;">
                                                     <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                    <option value="">Negeri</option>
-                                                    <option value="">Swasta</option>
+                                                    <option value="Negeri">Negeri</option>
+                                                    <option value="Swasta">Swasta</option>
 
                                                 </select>
                                             </div>
@@ -196,11 +228,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke2" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -208,8 +240,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah2" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -261,11 +293,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke3" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -273,8 +305,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah3" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -324,11 +356,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke4" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -336,8 +368,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah4" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -389,11 +421,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke5" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -401,8 +433,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah5" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -454,11 +486,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke4" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -466,8 +498,9 @@ include "../../config/session.php";
                                             <select id="status_sekolah4" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="" disabled selected>---Pilih Status Sekolah---</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -519,11 +552,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke7" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -531,8 +564,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah7" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -584,11 +617,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke8" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -596,8 +629,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah8" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -649,11 +682,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke9" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -661,8 +694,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah9" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -714,11 +747,11 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenjang Pendidikan</label>
                                             <select id="jenjang_sekolah_ke10" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="">---Pilih Jenjang Pendidikan---</option>
-                                                <option value="">Paud</option>
-                                                <option value="">Sekolah Dasar</option>
-                                                <option value="">Sekolah Menengah Pertama</option>
-                                                <option value="">Sekolah Menengah Atas</option>
+                                                <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
+                                                <option value="Paud">Paud</option>
+                                                <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                                <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                                                <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
@@ -726,8 +759,8 @@ include "../../config/session.php";
                                             <select id="status_sekolah10" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>---Pilih Status Sekolah---</option>
-                                                <option value="">Negeri</option>
-                                                <option value="">Swasta</option>
+                                                <option value="Negeri">Negeri</option>
+                                                <option value="Swasta">Swasta</option>
 
                                             </select>
                                         </div>
@@ -780,6 +813,39 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4 card0">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Daftar Pondok Pesantren</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Isi Nama Pondok Pesantren</li>
+                                                <li>Isi Alamat Pondok Pesantren</li>
+                                                <li>Pilih Status Sekolah Yang Sesuai</li>
+                                                <li>Isi Nama Kecamatan Tempat Sekolah</li>
+                                                <li>Pengisian Titik Kordinat Lintang Menggunakan Derajat Desimal , Contoh: -6.8796 LS</li>
+                                                <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal , Contoh: 108.5538 BT</li>
+
+
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
+
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool addButton2">
                                     <i class="fas fa-minus"></i>
