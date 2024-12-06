@@ -2,7 +2,7 @@
 include_once('../../config/conn.php');
 include "../../config/session.php";
 
-$perPage = 10;
+$perPage = 100;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $perPage;
 
