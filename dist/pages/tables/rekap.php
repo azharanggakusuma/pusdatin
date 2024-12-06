@@ -89,7 +89,7 @@ $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 
     // Kirim file Excel ke browser
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment; filename="data_desa.xlsx"');
+    header('Content-Disposition: attachment; filename="rekap_data_pusdatin.xlsx"');
     $writer = new Xlsx($spreadsheet);
     $writer->save('php://output');
     exit;
@@ -116,7 +116,7 @@ if ($type === 'pdf') {
     $html .= '</tbody></table>';
 
     $mpdf->WriteHTML($html);
-    $mpdf->Output('data_desa.pdf', 'D');
+    $mpdf->Output('rekap_data_pusdatin.pdf', 'D');
     exit;
 }
 ?>
