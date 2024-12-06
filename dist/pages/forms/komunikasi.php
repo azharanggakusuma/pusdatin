@@ -173,7 +173,7 @@ include "../../config/session.php";
                                             <div class="me-3" style="width: 50%;">
                                                 <label>Sinyal di sebagian besar wilayah :</label>
                                                 <select class="form-control me-3 mt-3" required>
-                                                    <option disabled selected>Pilih opsi</option>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
                                                     <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                     <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                     <option value="tidak-ada">SINYAL LEMAH</option>
@@ -183,7 +183,7 @@ include "../../config/session.php";
                                             <div style="width: 50%;">
                                                 <label>Sinyal internet Terkuat :</label>
                                                 <select class="form-control mt-3 ml-5" required>
-                                                    <option disabled selected>Pilih opsi</option>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
                                                     <option value="trayek-tetap">4G/LTE2</option>
                                                     <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                     <option value="tidak-ada">2.5G/E/GPRS</option>
@@ -195,14 +195,14 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">2. Indosat</label>
                                             <input type="hidden" value="2. Indosat">
                                             <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                 <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                 <option value="tidak-ada">SINYAL LEMAH</option>
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                             <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">4G/LTE2</option>
                                                 <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                 <option value="tidak-ada">2.5G/E/GPRS</option>
@@ -213,14 +213,14 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">3. XL/Axis</label>
                                             <input type="hidden" value="3. XL/Axis">
                                             <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                 <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                 <option value="tidak-ada">SINYAL LEMAH</option>
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                             <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">4G/LTE2</option>
                                                 <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                 <option value="tidak-ada">2.5G/E/GPRS</option>
@@ -231,14 +231,14 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">4. Hutchison 3</label>
                                             <input type="hidden" value="4. Hutchison 3">
                                             <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                 <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                 <option value="tidak-ada">SINYAL LEMAH</option>
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                             <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">4G/LTE2</option>
                                                 <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                 <option value="tidak-ada">2.5G/E/GPRS</option>
@@ -249,14 +249,14 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">5. Smartfren</label>
                                             <input type="hidden" value="5. Smartfren">
                                             <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                 <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                 <option value="tidak-ada">SINYAL LEMAH</option>
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                             <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">4G/LTE2</option>
                                                 <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                 <option value="tidak-ada">2.5G/E/GPRS</option>
@@ -267,14 +267,14 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">6. Bakrie Telecom</label>
                                             <input type="hidden" value="6. Bakrie Telecom">
                                             <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                 <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                 <option value="tidak-ada">SINYAL LEMAH</option>
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                             <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">4G/LTE2</option>
                                                 <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                 <option value="tidak-ada">2.5G/E/GPRS</option>
@@ -345,7 +345,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Kantor Pos/Pos Pembantu/Rumah Pos</label>
                                             <select class="form-control me-3" style="width: 100%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">ADA, BEROPERASI</option>
                                                 <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
                                                 <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
@@ -355,7 +355,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Pos Keliling</label>
                                             <select class="form-control me-3" style="width: 100%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">ADA</option>
                                                 <option value="tanpa-trayek-tetap">TIDAK ADA</option>
                                             </select>
@@ -363,7 +363,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Perusahaan/Agen Jasa Ekspedisi Swasta</label>
                                             <select class="form-control me-3" style="width: 10 0%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">ADA, BEROPERASI</option>
                                                 <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
                                                 <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
@@ -388,9 +388,9 @@ include "../../config/session.php";
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Pilih opsi Kantor Pos/Pos Pembantu/Rumah Pos</li>
-                                            <li>Pilih opsi Pos Keliling</li>
-                                            <li>Pilih opsi Perusahaan/Agen Jasa Ekspedisi Swasta</li>
+                                            <li>-- Pilih Opsi -- Kantor Pos/Pos Pembantu/Rumah Pos</li>
+                                            <li>-- Pilih Opsi -- Pos Keliling</li>
+                                            <li>-- Pilih Opsi -- Perusahaan/Agen Jasa Ekspedisi Swasta</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">

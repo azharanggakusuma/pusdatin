@@ -105,7 +105,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Keberadaan Angkutan Umum</label>
                                             <select class="form-control" style="width: 100%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="trayek-tetap">TRAYEK TETAP</option>
                                                 <option value="tanpa-trayek-tetap">TANPA TRAYEK TETAP</option>
                                                 <option value="tidak-ada">TIDAK ADA ANGKATAN UMUM</option>
@@ -114,7 +114,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Operasional Angkutan Umum</label>
                                             <select class="form-control" style="width: 100%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="setiap-hari">SETIAP HARI</option>
                                                 <option value="tidak-setiap-hari">TIDAK SETIAP HARI</option>
                                             </select>
@@ -122,7 +122,7 @@ include "../../config/session.php";
                                         <div class="form-group mb-3 d-flex align-items-center">
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Jam Operasi Angkutan Umum</label>
                                             <select class="form-control" style="width: 100%;" required>
-                                                <option disabled selected>Pilih opsi</option>
+                                                <option disabled selected>-- Pilih Opsi --</option>
                                                 <option value="siang-malam">SIANG DAN MALAM HARI</option>
                                                 <option value="siang-saja">HANYA SIANG HARI</option>
                                             </select>
