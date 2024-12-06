@@ -2,18 +2,27 @@
 include_once('../../config/conn.php');
 include "../../config/session.php";
 
-// Query untuk mengambil data dari tabel `users`
-$query = "SELECT * FROM users";
+$perPage = 10;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $perPage;
+
+// Query untuk menghitung total data
+$totalQuery = "SELECT COUNT(*) as total FROM users";
+$totalResult = $conn->query($totalQuery);
+$totalData = $totalResult->fetch_assoc()['total'];
+$totalPages = ceil($totalData / $perPage);
+
+// Query untuk mengambil data sesuai halaman
+$query = "SELECT * FROM users LIMIT $perPage OFFSET $offset";
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
-    // Menyimpan data dalam array
     $users = [];
     while ($row = $result->fetch_assoc()) {
         $users[] = $row;
     }
 } else {
-    $users = []; // Jika tidak ada data, array kosong
+    $users = [];
 }
 ?>
 
@@ -182,7 +191,7 @@ if ($result->num_rows > 0) {
                             }
                         </script>
                     <?php endif; ?>
- 
+
                     <!-- Modal Edit User -->
                     <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -281,7 +290,7 @@ if ($result->num_rows > 0) {
                                 </form>
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
                     <script>
                         function setDeleteUserId(id) {
@@ -357,6 +366,21 @@ if ($result->num_rows > 0) {
                             </table>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer clearfix d-flex justify-content-center">
+                            <ul class="pagination pagination-sm m-0">
+                                <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                                    <a class="page-link" href="?page=<?= $page - 1 ?>">&laquo;</a>
+                                </li>
+                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                    <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                                    </li>
+                                <?php endfor; ?>
+                                <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
+                                    <a class="page-link" href="?page=<?= $page + 1 ?>">&raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div> <!--end::Container-->
