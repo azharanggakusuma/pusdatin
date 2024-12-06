@@ -109,9 +109,9 @@ include "../../config/session.php";
                                                     <input type="text" id="nama-wisata-1" class="form-control" placeholder="Isi nama potensi" required>
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <label class="mb-2" for="jenis-wisata-1">--Jenis Wisata Desa--</label>
+                                                    <label class="mb-2" for="jenis-wisata-1">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-1" class="form-control" required>
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -150,7 +150,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-2">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-2" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -189,7 +189,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-3">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-3" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -228,7 +228,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-4">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-4" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -267,7 +267,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-5">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-5" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -306,7 +306,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-6">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-6" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -345,7 +345,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-7">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-7" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -384,7 +384,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-8">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-8" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -423,7 +423,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-9">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-9" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
@@ -462,7 +462,7 @@ include "../../config/session.php";
                                                 <div class="form-group mb-3">
                                                     <label class="mb-2" for="jenis-wisata-10">Jenis Wisata Desa</label>
                                                     <select id="jenis-wisata-10" class="form-control">
-                                                        <option disabled selected>Isi Jenis Wisata</option>
+                                                        <option disabled selected>-- Pilih Jenis Wisata --</option>
                                                         <option value="alam">WISATA ALAM</option>
                                                         <option value="buatan">WISATA BUATAN</option>
                                                         <option value="religi">WISATA RELIGI</option>
