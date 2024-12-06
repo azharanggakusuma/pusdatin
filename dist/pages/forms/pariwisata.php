@@ -109,7 +109,7 @@ include "../../config/session.php";
                                                     <input type="text" id="nama-wisata-1" class="form-control" placeholder="Isi nama potensi" required>
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <label class="mb-2" for="jenis-wisata-1">Jenis Wisata Desa</label>
+                                                    <label class="mb-2" for="jenis-wisata-1">--Jenis Wisata Desa--</label>
                                                     <select id="jenis-wisata-1" class="form-control" required>
                                                         <option disabled selected>Isi Jenis Wisata</option>
                                                         <option value="alam">WISATA ALAM</option>
