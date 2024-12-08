@@ -4,7 +4,6 @@ include "../../config/session.php";
 ?>
 
 <?php
-
 // Ambil data pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
 $level = $_SESSION['level'] ?? ''; // Ambil level pengguna
@@ -14,13 +13,28 @@ $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Cek apakah form sudah terkunci
-$is_locked = false; // Default tidak terkunci
-if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
-    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Luas Wilayah Desa'";
-    $result_progress = mysqli_query($conn, $query_progress);
-    $progress = mysqli_fetch_assoc($result_progress);
-    $is_locked = $progress['is_locked'] ?? false;
+// List of forms
+$forms = [
+    'Luas Wilayah Desa',
+    'Batas Wilayah Desa',
+    // Add other form names here
+];
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+    // Check if the form is locked
+    $is_locked = false;
+    if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+        $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+        $result_progress = mysqli_query($conn, $query_progress);
+        $progress = mysqli_fetch_assoc($result_progress);
+        $is_locked = $progress['is_locked'] ?? false;
+    }
+
+    // Store the status in the array
+    $form_status[$form] = $is_locked;
 }
 ?>
 
@@ -158,7 +172,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <?php if ($is_locked): ?>
+                            <?php if ($form_status['Luas Wilayah Desa']) : ?>
                                 <!-- Alert Bootstrap dengan Inovasi -->
                                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                                     <i class="fas fa-lock me-2"></i>
@@ -201,7 +215,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                         </div>
                     </div>
 
-                    <div class="card card-primary card-outline mb-4"> 
+                    <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Batas Wilayah Desa</h3>
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBatasDesa">
@@ -214,7 +228,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                             </div>
                         </div>
                         <div class="card-body">
-                            <?php if ($is_locked): ?>
+                        <?php if ($form_status['Batas Wilayah Desa']) : ?>
                                 <!-- Alert Bootstrap dengan Inovasi -->
                                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                                     <i class="fas fa-lock me-2"></i>
