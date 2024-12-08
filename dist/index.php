@@ -140,7 +140,7 @@ include "config/session.php";
                                         <div id="revenue-chart" style="height: 300px;"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <!-- /.Start col -->
 
                             <!-- Start col -->
