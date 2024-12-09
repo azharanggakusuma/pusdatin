@@ -116,12 +116,12 @@ include('../../config/list_form.php');
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">Pengelolaan Form</h3>
+              <h3 class="mb-0">Management Form</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Pengelolaan Form</li>
+                <li class="breadcrumb-item active" aria-current="page">Management Form</li>
               </ol>
             </div>
           </div>
@@ -194,7 +194,7 @@ include('../../config/list_form.php');
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addMenuModalLabel">Pengelolaan Form</h5>
+              <h5 class="modal-title" id="addMenuModalLabel">Management Form</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
