@@ -194,8 +194,8 @@ $forms = [
                     <option value="" disabled selected>Pilih User</option>
                     <?php while ($user_data = mysqli_fetch_assoc($result_all_users)) { ?>
                       <option value="<?= $user_data['id']; ?>"><?= $user_data['name']; ?></option>
-                    <?php } ?>
-                  </select>
+                    <?php } ?> 
+                  </select> 
                 </div>
 
                 <div class="mb-3">
@@ -206,7 +206,7 @@ $forms = [
                       <option value="<?= $form; ?>"><?= $form; ?></option>
                     <?php } ?>
                   </select>
-                </div>
+                </div> 
 
                 <div class="mb-3">
                   <label for="is_locked" class="form-label">Status Form</label>
