@@ -221,6 +221,7 @@ if ($type === 'pdf') {
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Kode Desa</th>
                                         <th>Nama Desa</th>
                                         <th>Luas Wilayah Desa (Hektar)</th>
@@ -255,10 +256,11 @@ if ($type === 'pdf') {
 
                                     $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
 
-
+                                    $no = 1; 
                                     if ($result && mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
+                                            echo "<td>" . $no++ . "</td>"; 
                                             echo "<td>" . htmlspecialchars($row['kode_desa']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['nama_desa']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['luas_wilayah_desa']) . "</td>";
