@@ -57,11 +57,7 @@ if (isset($_POST['form_name'])) {
 }
 
 // Mengambil status form untuk setiap user dan form
-$forms = [
-  'Luas Wilayah Desa',
-  'Batas Wilayah Desa',
-  'Jarak Kantor Desa',
-];
+include('../../config/list_form.php');
 ?>
 
 <!DOCTYPE html>

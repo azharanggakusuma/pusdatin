@@ -6,7 +6,7 @@ include "../../config/session.php";
 <?php
 // Ambil data pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
-$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
+$level = $_SESSION['level'] ?? '';
 
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
@@ -14,25 +14,7 @@ $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
 // List of forms
-$forms = [
-    'Luas Wilayah Desa',
-    'Batas Wilayah Desa',
-    'Jarak Kantor Desa',
-    'Titik Koordinat Kantor Desa',
-    'Topografi Terluas Wilayah Desa',
-    'Luas Tanah Kas Desa',
-    'Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya',
-    'Banyaknya Dusun, Rukun Tetangga dan Rukun Warga',
-    'Alamat Balai Desa/Kantor Kelurahan',
-    'Dasar hukum pembentukan Pemerintah Desa / Kelurahan',
-    'Dasar hukum pembentukan Badan Permusyawaratan Desa (BPD)',
-    'Ketersediaan Penetapan Batas dan Peta Desa',
-    'Alamat Website dan Media Sosial',
-    'Kepemilikan Kantor Kepala Desa/Balai Desa',
-    'Kondisi Kantor Kepala Desa/Balai Desa',
-    'Perkembangan Status Indeks Desa Membangun (IDM) di Kantor Desa',
-    'Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa',
-];
+include('../../config/list_form.php');
 
 // Initialize an array to store form lock status
 $form_status = [];
