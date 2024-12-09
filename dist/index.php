@@ -140,7 +140,7 @@ include "config/session.php";
                                         <div id="revenue-chart" style="height: 300px;"></div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- /.Start col -->
 
                             <!-- Start col -->
@@ -201,10 +201,12 @@ include "config/session.php";
                                                 <i class="fas fa-home"></i>
                                                 <span>Home</span>
                                             </a>
-                                            <a href="#" class="icon-button" id="formButton">
-                                                <i class="fas fa-edit"></i>
-                                                <span>Forms</span>
-                                            </a>
+                                            <?php if ($level == 'user'): ?>
+                                                <a href="#" class="icon-button" id="formButton">
+                                                    <i class="fas fa-edit"></i>
+                                                    <span>Forms</span>
+                                                </a>
+                                            <?php endif; ?>
                                             <?php if ($level == 'admin'): ?>
                                                 <a href="./pages/tables/user.php" class="icon-button">
                                                     <i class="fas fa-users"></i>
@@ -218,8 +220,13 @@ include "config/session.php";
                                                     <i class="fas fa-cogs"></i>
                                                     <span>Menu</span>
                                                 </a>
+                                                <a href="./pages/tables/manage_form.php" class="icon-button">
+                                                    <i class="fas fa-tasks"></i>
+                                                    <span>Forms</span>
+                                                </a>
                                             <?php endif; ?>
                                         </div>
+
                                         <!-- Toast Container -->
                                         <div class="toast-container position-fixed top-0 end-0 p-3" id="toastContainer" style="z-index: 1050;">
                                             <div id="formToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
