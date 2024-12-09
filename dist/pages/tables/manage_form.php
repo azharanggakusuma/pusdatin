@@ -1,53 +1,58 @@
 <?php
 // Menghubungkan ke database
-include '../../config/conn.php'; // pastikan koneksi database di file ini
+include '../../config/conn.php';
 
-// Ambil data pengguna yang sedang login (Admin)
+// Ambil data pengguna yang sedang login
 session_start();
-$name = $_SESSION['name'] ?? '';  // Ambil nama pengguna
-$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
+$name = $_SESSION['name'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+// Variabel untuk SweetAlert
+$sweetalert_message = '';
+$error_message = '';
 
 if ($level !== 'admin') {
   echo "Access denied. Only admin can access this page.";
   exit;
 }
 
-$query_user = "SELECT id FROM users WHERE name = '$name'";  // Fetch user by name
+$query_user = "SELECT id FROM users WHERE name = '$name'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
 // Ambil data semua user untuk memilih user berdasarkan nama
-$query_all_users = "SELECT id, name FROM users";  // Change to 'name' field
+$query_all_users = "SELECT id, name FROM users";
 $result_all_users = mysqli_query($conn, $query_all_users);
 
 // Mengubah status kunci form jika form di-submit
 if (isset($_POST['form_name'])) {
   $form_name = $_POST['form_name'];
   $selected_user_id = $_POST['user_id'];
-  $is_locked = isset($_POST['is_locked']) ? $_POST['is_locked'] : '';  // Ensure value is set
+  $is_locked = isset($_POST['is_locked']) ? $_POST['is_locked'] : '';
 
   // Make sure is_locked has a valid value
   if ($is_locked === '') {
-    echo "Please select a lock status.";
-    exit;
-  }
-
-  // Convert 'true' or 'false' string to integer (1 for true, 0 for false)
-  $is_locked = ($is_locked === 'true') ? 1 : 0;
-
-  // Cek apakah status form sudah ada untuk user tertentu
-  $query_check = "SELECT * FROM user_progress WHERE user_id = '$selected_user_id' AND form_name = '$form_name'";
-  $result_check = mysqli_query($conn, $query_check);
-
-  if (mysqli_num_rows($result_check) > 0) {
-    // Update status form yang ada
-    $query_update = "UPDATE user_progress SET is_locked = '$is_locked', updated_at = NOW() WHERE user_id = '$selected_user_id' AND form_name = '$form_name'";
-    mysqli_query($conn, $query_update);
+    $error_message = "Please select a lock status.";
   } else {
-    // Jika data belum ada, tampilkan error dan tidak insert data baru
-    echo "Error: Form status not found for this user.";
-    exit;
+    // Convert 'true' or 'false' string to integer (1 for true, 0 for false)
+    $is_locked = ($is_locked === 'true') ? 1 : 0;
+
+    // Cek apakah status form sudah ada untuk user tertentu
+    $query_check = "SELECT * FROM user_progress WHERE user_id = '$selected_user_id' AND form_name = '$form_name'";
+    $result_check = mysqli_query($conn, $query_check);
+
+    if (mysqli_num_rows($result_check) > 0) {
+      // Update status form yang ada
+      $query_update = "UPDATE user_progress SET is_locked = '$is_locked', updated_at = NOW() WHERE user_id = '$selected_user_id' AND form_name = '$form_name'";
+      if (mysqli_query($conn, $query_update)) {
+        $sweetalert_message = "Status form berhasil diperbarui!";
+      } else {
+        $error_message = "Terjadi kesalahan saat memperbarui status.";
+      }
+    } else {
+      $error_message = "Status form tidak ditemukan untuk pengguna ini.";
+    }
   }
 }
 
@@ -56,9 +61,7 @@ $forms = [
   'Luas Wilayah Desa',
   'Batas Wilayah Desa',
   'Jarak Kantor Desa',
-  // Tambahkan form lainnya sesuai kebutuhan
 ];
-
 ?>
 
 <!DOCTYPE html>
@@ -202,7 +205,7 @@ $forms = [
               <form action="manage_form.php" method="post">
                 <div class="mb-3">
                   <label for="user_id" class="form-label">Pilih User (Desa/Kelurahan)</label>
-                  <select name="user_id" id="user_id" class="form-select">
+                  <select name="user_id" id="user_id" class="form-select" required>
                     <option value="" disabled selected>Pilih User</option>
                     <?php while ($user_data = mysqli_fetch_assoc($result_all_users)) { ?>
                       <option value="<?= $user_data['id']; ?>"><?= $user_data['name']; ?></option>
@@ -212,7 +215,7 @@ $forms = [
 
                 <div class="mb-3">
                   <label for="form_name" class="form-label">Pilih Form</label>
-                  <select name="form_name" id="form_name" class="form-select">
+                  <select name="form_name" id="form_name" class="form-select" required>
                     <option value="" disabled selected>Pilih Form</option>
                     <?php foreach ($forms as $form) { ?>
                       <option value="<?= $form; ?>"><?= $form; ?></option>
@@ -238,6 +241,33 @@ $forms = [
           </div>
         </div>
       </div>
+
+      <!-- SweetAlert Notifikasi -->
+      <?php if (!empty($sweetalert_message)): ?>
+        <script>
+          swal({
+            title: "Berhasil!",
+            text: "<?= $sweetalert_message; ?>",
+            icon: "success",
+            timer: 3000,
+            buttons: false
+          }).then(() => {
+            window.location.href = "manage_form.php";
+          });
+        </script>
+      <?php elseif (!empty($error_message)): ?>
+        <script>
+          swal({
+            title: "Gagal!",
+            text: "<?= $error_message; ?>",
+            icon: "error",
+            timer: 3000,
+            buttons: false
+          }).then(() => {
+            window.location.href = "manage_form.php";
+          });
+        </script>
+      <?php endif; ?>
 
     </main>
 
