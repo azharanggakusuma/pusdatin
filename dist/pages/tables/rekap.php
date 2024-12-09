@@ -5,6 +5,7 @@ include "../../config/session.php";
 
 <?php
 require __DIR__ . '/../../../vendor/autoload.php';
+
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -52,13 +53,13 @@ if ($type === 'excel') {
     $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
 
     /// Style untuk header
-$headerStyle = [
-    'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
-    'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
-    'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
-    'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-];
-$sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
+    $headerStyle = [
+        'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
+        'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
+        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+    ];
+    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 
 
     // Data dari database
@@ -82,8 +83,8 @@ $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
         $sheet->getColumnDimension($column)->setAutoSize(true);
     }
 
-     // Membersihkan buffer output
-     if (ob_get_level()) {
+    // Membersihkan buffer output
+    if (ob_get_level()) {
         ob_end_clean();
     }
 
@@ -197,6 +198,9 @@ if ($type === 'pdf') {
                             <h3 class="card-title">Rekap Data</h3>
 
                             <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#filterModal">
+                                    <i class="fas fa-filter"></i>
+                                </button>
                                 <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#exportModal">
                                     <i class="fas fa-download"></i>
                                 </button>
@@ -213,8 +217,35 @@ if ($type === 'pdf') {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    mysqli_data_seek($result, 0);
-                                    if (mysqli_num_rows($result) > 0) {
+                                    // Filter data berdasarkan tahun
+                                    $filter_tahun = isset($_GET['filter_tahun']) ? intval($_GET['filter_tahun']) : null;
+
+                                    // Query untuk mengambil data desa
+                                    $query = "
+                                        SELECT DISTINCT
+                                            tb_enumerator.kode_desa,
+                                            tb_enumerator.nama_desa,
+                                            tb_luas_wilayah_desa.luas_wilayah_desa
+                                        FROM
+                                            tb_enumerator
+                                        LEFT JOIN
+                                            tb_luas_wilayah_desa
+                                        ON
+                                            tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+                                    ";
+
+                                    if ($filter_tahun) {
+                                        $query .= "
+                                            LEFT JOIN user_progress
+                                            ON tb_enumerator.id_desa = user_progress.desa_id
+                                            WHERE YEAR(user_progress.created_at) = $filter_tahun
+                                        ";
+                                    }
+
+                                    $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
+
+
+                                    if ($result && mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
                                             echo "<td>" . htmlspecialchars($row['kode_desa']) . "</td>";
@@ -233,6 +264,44 @@ if ($type === 'pdf') {
                     </div>
                     <!-- /.card -->
                 </div> <!--end::Container-->
+
+                <!-- Modal Filter Tahun -->
+                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="GET">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="filterModalLabel">Filter Berdasarkan Tahun</h5>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="filter_tahun">Pilih Tahun:</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                        <option value="" selected disabled>Pilih Tahun</option>
+                                        <?php
+                                        // Ambil tahun unik dari tabel user_progress
+                                        $query_tahun = "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC";
+                                        $result_tahun = mysqli_query($conn, $query_tahun) or die("Error: " . mysqli_error($conn));
+
+                                        if ($result_tahun) {
+                                            while ($row_tahun = mysqli_fetch_assoc($result_tahun)) {
+                                                $selected = (isset($_GET['filter_tahun']) && $_GET['filter_tahun'] == $row_tahun['tahun']) ? 'selected' : '';
+                                                echo "<option value='" . htmlspecialchars($row_tahun['tahun']) . "' $selected>" . htmlspecialchars($row_tahun['tahun']) . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-success">Terapkan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Modal Export -->
                 <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
