@@ -57,25 +57,25 @@ $menu_result = $conn->query($query);
                             <li class="nav-item">
                                 <a href="<?php echo $base_path; ?>pages/tables/user.php" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
-                                    <p>Data User</p>
+                                    <p>Data Users</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo $base_path; ?>pages/tables/rekap.php" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
-                                    <p>Rekap Data</p>
+                                    <p>Data Report</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo $base_path; ?>pages/tables/manage_menu.php" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
-                                    <p>Pengelolaan Menu</p>
+                                    <p>Management Menu</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo $base_path; ?>pages/tables/manage_form.php" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
-                                    <p>Pengelolaan Form</p>
+                                    <p>Management Form</p>
                                 </a>
                             </li>
                         </ul>
