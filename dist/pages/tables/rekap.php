@@ -21,25 +21,36 @@ if (!$conn) {
 // Ambil parameter jenis ekspor dan kode desa
 $type = $_GET['type'] ?? null;
 $kode_desa = $_GET['kode_desa'] ?? null;
+$filter_tahun = $_GET['filter_tahun'] ?? null;
 
 // Query untuk mengambil data desa
 $query = "
-    SELECT
-        tb_enumerator.kode_desa,
-        tb_enumerator.nama_desa,
-        tb_luas_wilayah_desa.luas_wilayah_desa
-    FROM
-        tb_enumerator
-    LEFT JOIN
-        tb_luas_wilayah_desa
-    ON
-        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+SELECT DISTINCT
+    tb_enumerator.kode_desa,
+    tb_enumerator.nama_desa,
+    tb_luas_wilayah_desa.luas_wilayah_desa
+FROM
+    tb_enumerator
+LEFT JOIN
+    tb_luas_wilayah_desa
+ON
+    tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
 ";
+
+// Tambahkan filter jika desa dan/atau tahun dipilih
+$where = [];
 if ($kode_desa) {
-    $query .= " WHERE tb_enumerator.kode_desa = '$kode_desa'";
+    $where[] = "tb_enumerator.kode_desa = '$kode_desa'";
+}
+if ($filter_tahun) {
+    $where[] = "YEAR(user_progress.created_at) = '$filter_tahun'";
 }
 
-// Menjalankan query
+if ($where) {
+    $query .= " LEFT JOIN user_progress ON tb_enumerator.id_desa = user_progress.desa_id WHERE " . implode(' AND ', $where);
+}
+
+// Eksekusi query
 $result = mysqli_query($conn, $query);
 
 // Fungsi untuk ekspor Excel
@@ -316,7 +327,7 @@ if ($type === 'pdf') {
                                 </div>
                                 <div class="modal-body">
                                     <label for="kode_desa">Pilih Desa:</label>
-                                    <select name="kode_desa" id="kode_desa" class="form-control">
+                                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
                                         <option value="">Semua Desa</option>
                                         <?php
                                         $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_enumerator");
@@ -325,7 +336,19 @@ if ($type === 'pdf') {
                                         }
                                         ?>
                                     </select>
+
+                                    <label for="filter_tahun">Pilih Tahun:</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                        <option value="">Semua Tahun</option>
+                                        <?php
+                                        $tahunResult = mysqli_query($conn, "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC");
+                                        while ($tahun = mysqli_fetch_assoc($tahunResult)) {
+                                            echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
+
                                 <div class="modal-footer">
                                     <!-- Untuk Ekspor Excel -->
                                     <button type="submit" name="type" value="excel" class="btn btn-success">Export Excel</button>
