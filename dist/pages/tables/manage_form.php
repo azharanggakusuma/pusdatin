@@ -147,28 +147,40 @@ $forms = [
               <table class="table table-striped table-hover align-middle">
                 <thead>
                   <tr>
-                    <th>User</th>
+                    <th>#</th>
+                    <th>User (Desa/Kelurahan)</th>
                     <th>Form Name</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  foreach ($forms as $form) {
+                  $no = 1;
+                  foreach ($forms as $form):
                     $query_form_status = "SELECT users.name, user_progress.is_locked 
-                                      FROM user_progress 
-                                      JOIN users ON user_progress.user_id = users.id
-                                      WHERE user_progress.form_name = '$form'";
+                                  FROM user_progress 
+                                  JOIN users ON user_progress.user_id = users.id
+                                  WHERE user_progress.form_name = ?";
+                    $stmt = $conn->prepare($query_form_status);
+                    $stmt->bind_param('s', $form);
+                    $stmt->execute();
+                    $result_form_status = $stmt->get_result();
 
-                    $result_form_status = mysqli_query($conn, $query_form_status);
-                    while ($status = mysqli_fetch_assoc($result_form_status)) {
-                      echo "<tr>";
-                      echo "<td>{$status['name']}</td>";
-                      echo "<td>$form</td>";
-                      echo "<td>" . ($status['is_locked'] ? 'Locked' : 'Unlocked') . "</td>";
-                      echo "</tr>";
-                    }
-                  }
+                    while ($status = $result_form_status->fetch_assoc()):
+                  ?>
+                      <tr>
+                        <td><?= $no++; ?></td>
+                        <td><?= htmlspecialchars($status['name']); ?></td>
+                        <td><?= htmlspecialchars($form); ?></td>
+                        <td>
+                          <span class="badge <?= $status['is_locked'] ? 'bg-danger' : 'bg-success'; ?>">
+                            <?= $status['is_locked'] ? 'Locked' : 'Unlocked'; ?>
+                          </span>
+                        </td>
+                      </tr>
+                  <?php
+                    endwhile;
+                  endforeach;
                   ?>
                 </tbody>
               </table>
@@ -194,8 +206,8 @@ $forms = [
                     <option value="" disabled selected>Pilih User</option>
                     <?php while ($user_data = mysqli_fetch_assoc($result_all_users)) { ?>
                       <option value="<?= $user_data['id']; ?>"><?= $user_data['name']; ?></option>
-                    <?php } ?> 
-                  </select> 
+                    <?php } ?>
+                  </select>
                 </div>
 
                 <div class="mb-3">
@@ -206,7 +218,7 @@ $forms = [
                       <option value="<?= $form; ?>"><?= $form; ?></option>
                     <?php } ?>
                   </select>
-                </div> 
+                </div>
 
                 <div class="mb-3">
                   <label for="is_locked" class="form-label">Status Form</label>
