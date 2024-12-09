@@ -23,10 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 VALUES ('$kode_desa', '$nama_desa', '$nama_lengkap', '$alamat', '$no_hp', '$kecamatan', '$user_id')";
 
         if (mysqli_query($conn, $sql)) {
-            // Tambahkan atau perbarui progres pengguna
-            $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked) 
-                               VALUES ('$user_id', 'Data Enumerator', TRUE)
-                               ON DUPLICATE KEY UPDATE is_locked = TRUE";
+            // Ambil ID desa yang baru ditambahkan
+            $desa_id = mysqli_insert_id($conn);
+
+            // Tambahkan atau perbarui progres pengguna dan catat desa_id
+            $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
+                               VALUES ('$user_id', 'Data Enumerator', TRUE, '$desa_id')
+                               ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
             mysqli_query($conn, $query_progress);
 
             header("Location: ../pages/forms/data_enumerator.php?status=success");
