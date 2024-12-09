@@ -72,6 +72,12 @@ $menu_result = $conn->query($query);
                                     <p>Pengelolaan Menu</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="<?php echo $base_path; ?>pages/tables/manage_form.php" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Pengelolaan Form</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 <?php } ?>
