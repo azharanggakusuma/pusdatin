@@ -214,7 +214,7 @@ include "config/session.php";
                                                 </a>
                                                 <a href="./pages/tables/rekap.php" class="icon-button">
                                                     <i class="fas fa-table"></i>
-                                                    <span>Data Report</span>
+                                                    <span>Report</span>
                                                 </a>
                                                 <a href="./pages/tables/manage_menu.php" class="icon-button">
                                                     <i class="fas fa-cogs"></i>
