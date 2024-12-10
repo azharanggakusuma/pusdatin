@@ -188,13 +188,13 @@ if ($type === 'pdf') {
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Rekap Data</h3>
+                            <h3 class="mb-0">Data Report</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Master Data</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Rekap data
+                                    Data Report
                                 </li>
                             </ol>
                         </div>
@@ -206,7 +206,7 @@ if ($type === 'pdf') {
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Rekap Data</h3>
+                            <h3 class="card-title">Manage Report</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#filterModal">
