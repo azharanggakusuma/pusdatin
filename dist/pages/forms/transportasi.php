@@ -41,139 +41,145 @@ include "../../config/session.php";
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
+    <?php include "../../components/loading.php"; ?>
 
-        <?php include('../../components/navbar.php'); ?>
+    <div class="page animate__animated animate__fadeIn">
+        <div class="app-wrapper"> <!--begin::Header-->
 
-        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+            <?php include('../../components/navbar.php'); ?>
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Transportasi</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Transportasi
-                                </li>
-                            </ol>
-                        </div>
-                    </div> <!--end::Row-->
-                </div> <!--end::Container-->
-            </div> <!--end::App Content Header--> <!--begin::App Content-->
-            <div class="app-content"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
+            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Keberadaan Angkutan Umum</h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAngkutan">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toogle-form">
-                                    <i class="fas fa-minus"></i>
+            <main class="app-main"> <!--begin::App Content Header-->
+                <div class="app-content-header"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="mb-0">Transportasi</h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-end">
+                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Transportasi
+                                    </li>
+                                </ol>
+                            </div>
+                        </div> <!--end::Row-->
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content Header--> <!--begin::App Content-->
+                <div class="app-content"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Keberadaan Angkutan Umum</h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAngkutan">
+                                    <i class="fas fa-info-circle"></i>
                                 </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toogle-form").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toogle-form">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toogle-form").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
                                         });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Keberadaan Angkutan Umum</label>
-                                            <select class="form-control" style="width: 100%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">TRAYEK TETAP</option>
-                                                <option value="tanpa-trayek-tetap">TANPA TRAYEK TETAP</option>
-                                                <option value="tidak-ada">TIDAK ADA ANGKATAN UMUM</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Operasional Angkutan Umum</label>
-                                            <select class="form-control" style="width: 100%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="setiap-hari">SETIAP HARI</option>
-                                                <option value="tidak-setiap-hari">TIDAK SETIAP HARI</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Jam Operasi Angkutan Umum</label>
-                                            <select class="form-control" style="width: 100%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="siang-malam">SIANG DAN MALAM HARI</option>
-                                                <option value="siang-saja">HANYA SIANG HARI</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="modalAngkutan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul>
-                                            <li>Pilih Keberadaan Angkutan Umum</li>
-                                            <li>Pilih Operasional Angkutan Umum</li>
-                                            <li>Pilih Jam Operasi Angkutan Umum</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    </div>
+                                    </script>
                                 </div>
                             </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Keberadaan Angkutan Umum</label>
+                                                <select class="form-control" style="width: 100%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">TRAYEK TETAP</option>
+                                                    <option value="tanpa-trayek-tetap">TANPA TRAYEK TETAP</option>
+                                                    <option value="tidak-ada">TIDAK ADA ANGKATAN UMUM</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Operasional Angkutan Umum</label>
+                                                <select class="form-control" style="width: 100%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="setiap-hari">SETIAP HARI</option>
+                                                    <option value="tidak-setiap-hari">TIDAK SETIAP HARI</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">Jam Operasi Angkutan Umum</label>
+                                                <select class="form-control" style="width: 100%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="siang-malam">SIANG DAN MALAM HARI</option>
+                                                    <option value="siang-saja">HANYA SIANG HARI</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="modalAngkutan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Keberadaan Angkutan Umum</li>
+                                                <li>Pilih Operasional Angkutan Umum</li>
+                                                <li>Pilih Jam Operasi Angkutan Umum</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content-->
+            </main> <!--end::App Main--> <!--begin::Footer-->
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-
+            <footer class="app-footer"> <!--begin::To the end-->
+                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                <strong>
+                    Copyright &copy; 2024&nbsp;
+                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                </strong>
+                All rights reserved.
+                <!--end::Copyright-->
+            </footer> <!--end::Footer-->
+        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    </div>
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

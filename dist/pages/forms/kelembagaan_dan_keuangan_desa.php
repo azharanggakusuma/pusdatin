@@ -41,936 +41,942 @@ include "../../config/session.php";
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
-    
-        <?php include('../../components/navbar.php'); ?>
+    <?php include "../../components/loading.php"; ?>
 
-        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+    <div class="page animate__animated animate__fadeIn">
+        <div class="app-wrapper"> <!--begin::Header-->
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Kelembagaan dan Keuangan Desa</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                  Kelembagaan dan Keuangan Desa
-                                </li>
-                            </ol>
-                        </div>
-                    </div> <!--end::Row-->
-                </div> <!--end::Container-->
-            </div> <!--end::App Content Header--> <!--begin::App Content-->
-            <div class="app-content"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
+            <?php include('../../components/navbar.php'); ?>
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Lembaga Kemasyarakatan Desa</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+            <main class="app-main"> <!--begin::App Content Header-->
+                <div class="app-content-header"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="mb-0">Kelembagaan dan Keuangan Desa</h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-end">
+                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Kelembagaan dan Keuangan Desa
+                                    </li>
+                                </ol>
+                            </div>
+                        </div> <!--end::Row-->
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content Header--> <!--begin::App Content-->
+                <div class="app-content"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Jumlah Lembaga Kemasyarakatan Desa</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toggle-form">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toggle-form").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+
+
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus PKK (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota PKK (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus Karang Taruna (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota Karang Taruna (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus Lembaga Adat (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota Lembaga Adat (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus LPMD (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota LPMD (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus MUI (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota MUI (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus RT (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota RT (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Pengurus RW (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Anggota RW (orang)</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    
 
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus PKK (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Anggota PKK (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus Karang Taruna (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Anggota Karang Taruna (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus Lembaga Adat (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Anggota Lembaga Adat (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                     <!-- /.col -->
-                                     <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus LPMD  (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Anggota LPMD (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                     <!-- /.col -->
-                                     <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus MUI (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Anggota MUI (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                     <!-- /.col -->
-                                     <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus RT (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Anggota RT (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                     <!-- /.col -->
-                                     <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Pengurus RW (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah  Anggota RW (orang)</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Data BUMDes</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama BUMDes </label>
+                                                <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">AKTIF</option>
+                                                    <option value="">TIDAK AKTIF</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Status Badan Hukum</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">SUDAH MEMILIKI</option>
+                                                    <option value="">BELUM MEMILIKI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div> <!--end::Container-->
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Jumlah Peraturan Yang dimiliki Desa</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Peraturan Desa</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan banyaknya Peraturan Desa yang telah ditetapkan" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Peraturan Kepala Desa</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan banyaknya Peraturan Kepala Desa yang telah ditetapkan" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Surat Keputusan</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan banyaknya surat" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Ketersedian RPJMDes dan RKPDes</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Ketersediaan RPJMDes</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ADA</option>
+                                                    <option value="">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Periode Tahun RPJMDes</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan periode tahun" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Ketersediaan RKPDes</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ADA</option>
+                                                    <option value="">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Rincian Anggaran Pendapatan Desa</h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form id="anggaranDesaForm" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="dana_desa_apbn" class="mb-2">1. Dana Desa bersumber dari APBN</label>
+                                                <input type="hidden" name="label_dana_desa_apbn" value="1. Dana Desa bersumber dari APBN">
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="hidden" name="rupiah" value="Rupiah">
+                                                    <input type="text" id="dana_desa_apbn" name="dana_desa_apbn" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="pades" class="mb-2">2. Pendapatan Asli Desa (PADes)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="pades" name="pades" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="pajak_daerah" class="mb-2">3. Bagian dari hasil pajak daerah dan retribusi daerah</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="pajak_daerah" name="pajak_daerah" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="alokasi_dana_desa" class="mb-2">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="alokasi_dana_desa" name="alokasi_dana_desa" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="bantuan_apbd_provinsi" class="mb-2">5. Bantuan keuangan dari APBD Provinsi</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="bantuan_apbd_provinsi" name="bantuan_apbd_provinsi" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="bantuan_apbd_kabupaten" class="mb-2">6. Bantuan keuangan dari APBD Kabupaten/kota</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="bantuan_apbd_kabupaten" name="bantuan_apbd_kabupaten" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="hibah" class="mb-2">7. Hibah dan sumbangan dari pihak ketiga</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="hibah" name="hibah" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="lain_lain" class="mb-2">8. Lain-lain pendapatan desa yang sah</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="lain_lain" name="lain_lain" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="modalAnggaranDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Isi nominal anggaran sesuai dengan sumbernya.</li>
+                                                <li>Pastikan semua kolom terisi dengan benar.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title"> Anggaran Belanja Desa </h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form id="anggaranDesaForm" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="dana_desa_apbn" class="mb-2">1. Bidang penyelenggaraan pemerintahan desa</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="dana_desa_apbn" name="dana_desa_apbn" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="pades" class="mb-2">2. Bidang pelaksanaan pembangunan desa</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="pades" name="pades" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="pajak_daerah" class="mb-2">3. Bidang pemberdayaan masyarakat</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="pajak_daerah" name="pajak_daerah" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="alokasi_dana_desa" class="mb-2">4. Bidang pembinaan kemasyarakatan</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="alokasi_dana_desa" name="alokasi_dana_desa" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="bantuan_apbd_provinsi" class="mb-2">5. Belanja Modal (tanah, bangunan, jalan, jembatan, komputer, dll.)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="bantuan_apbd_provinsi" name="bantuan_apbd_provinsi" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="bantuan_apbd_kabupaten" class="mb-2">6. Penyertaan modal ke BUMDes</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="bantuan_apbd_kabupaten" name="bantuan_apbd_kabupaten" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="hibah" class="mb-2">7. Lainnya (belanja tak terduga, konsumsi rapat, dll.)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Rupiah</span>
+                                                    <input type="text" id="hibah" name="hibah" class="form-control" placeholder="Masukkan anggaran" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="modalAnggaranDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Isi nominal anggaran sesuai dengan sumbernya.</li>
+                                                <li>Pastikan semua kolom terisi dengan benar.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Jumlah Surat Keterangan Tidak Mampu/Miskin (SKTM) yang Dikeluarkan Pemerintah Desa</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah SKTM yang Dikeluarkan 2024</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah SKTM yang Dikeluarkan 2025</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Pemanfaatan Sistem Informasi Desa dan Sistem Keuangan Desa </h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Sistem Informasi Desa</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ADA, DIGUNAKAN</option>
+                                                    <option value="">ADA, JARANG DIGUNAKAN</option>
+                                                    <option value="">ADA, TIDAK DIGUNAKAN</option>
+                                                    <option value="">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Sistem Keuangan Desa</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ADA, DIGUNAKAN</option>
+                                                    <option value="">ADA, JARANG DIGUNAKAN</option>
+                                                    <option value="">ADA, TIDAK DIGUNAKAN</option>
+                                                    <option value="">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Kerjasama Desa</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Pihak yang diajak kerja sama 1</label>
+                                                <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Lingkup kerja sama</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ANTARDESA</option>
+                                                    <option value="">DENGAN SWASTA</option>
+                                                    <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Tahun kerja sama berakhir</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Pihak yang diajak kerja sama 2</label>
+                                                <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Lingkup kerja sama</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ANTARDESA</option>
+                                                    <option value="">DENGAN SWASTA</option>
+                                                    <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Tahun kerja sama berakhir</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Pihak yang diajak kerja sama 3</label>
+                                                <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Lingkup kerja sama</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ANTARDESA</option>
+                                                    <option value="">DENGAN SWASTA</option>
+                                                    <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Tahun kerja sama berakhir</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Pihak yang diajak kerja sama 4</label>
+                                                <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Lingkup kerja sama</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ANTARDESA</option>
+                                                    <option value="">DENGAN SWASTA</option>
+                                                    <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Tahun kerja sama berakhir</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Pihak yang diajak kerja sama 5</label>
+                                                <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Lingkup kerja sama</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">ANTARDESA</option>
+                                                    <option value="">DENGAN SWASTA</option>
+                                                    <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Tahun kerja sama berakhir</label>
+                                                <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Jumlah pengadaan barang dan jasa di Desa</h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form id="anggaranDesaForm" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label for="dana_desa_apbn" class="mb-2">Jumlah pengadaan barang dan jasa (s.d akhir tahun 2023)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Paket</span>
+                                                    <input type="number" id="jumlah_pengadaan_desa" name="paket" class="form-control" placeholder="Masukkan banyaknya paket" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                        </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Data BUMDes</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama BUMDes </label>
-                                            <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">AKTIF</option>
-                                                <option value="">TIDAK AKTIF</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Status Badan Hukum</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">SUDAH MEMILIKI</option>
-                                                <option value="">BELUM MEMILIKI</option>
-                                            </select>
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->  
-                                </div> 
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div> <!--end::Container-->
-
-                <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Peraturan Yang dimiliki Desa</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Peraturan Desa</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan banyaknya Peraturan Desa yang telah ditetapkan" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                   <!-- /.col -->
-                                   <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Peraturan Kepala Desa</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan banyaknya Peraturan Kepala Desa yang telah ditetapkan" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Surat Keputusan</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan banyaknya surat" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div> 
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div> 
-
-                <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Ketersedian RPJMDes dan RKPDes</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Ketersediaan RPJMDes</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ADA</option>
-                                                <option value="">TIDAK ADA</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Periode Tahun RPJMDes</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan periode tahun" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Ketersediaan RKPDes</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ADA</option>
-                                                <option value="">TIDAK ADA</option>
-                                            </select>
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->  
-                                </div> 
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div>
-                
-                <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Rincian Anggaran Pendapatan Desa</h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <form id="anggaranDesaForm" method="post">  
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="dana_desa_apbn" class="mb-2">1. Dana Desa bersumber dari APBN</label>
-                                            <input type="hidden" name="label_dana_desa_apbn" value="1. Dana Desa bersumber dari APBN">
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="hidden" name="rupiah" value="Rupiah">
-                                                <input type="text" id="dana_desa_apbn" name="dana_desa_apbn" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="pades" class="mb-2">2. Pendapatan Asli Desa (PADes)</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="pades" name="pades" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="pajak_daerah" class="mb-2">3. Bagian dari hasil pajak daerah dan retribusi daerah</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="pajak_daerah" name="pajak_daerah" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="alokasi_dana_desa" class="mb-2">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima)</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="alokasi_dana_desa" name="alokasi_dana_desa" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="bantuan_apbd_provinsi" class="mb-2">5. Bantuan keuangan dari APBD Provinsi</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="bantuan_apbd_provinsi" name="bantuan_apbd_provinsi" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="bantuan_apbd_kabupaten" class="mb-2">6. Bantuan keuangan dari APBD Kabupaten/kota</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="bantuan_apbd_kabupaten" name="bantuan_apbd_kabupaten" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="hibah" class="mb-2">7. Hibah dan sumbangan dari pihak ketiga</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="hibah" name="hibah" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="lain_lain" class="mb-2">8. Lain-lain pendapatan desa yang sah</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="lain_lain" name="lain_lain" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="modalAnggaranDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul>
-                                            <li>Isi nominal anggaran sesuai dengan sumbernya.</li>
-                                            <li>Pastikan semua kolom terisi dengan benar.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title"> Anggaran Belanja Desa </h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <form id="anggaranDesaForm" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="dana_desa_apbn" class="mb-2">1. Bidang penyelenggaraan pemerintahan desa</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="dana_desa_apbn" name="dana_desa_apbn" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="pades" class="mb-2">2. Bidang pelaksanaan pembangunan desa</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="pades" name="pades" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="pajak_daerah" class="mb-2">3. Bidang pemberdayaan masyarakat</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="pajak_daerah" name="pajak_daerah" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="alokasi_dana_desa" class="mb-2">4. Bidang pembinaan kemasyarakatan</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="alokasi_dana_desa" name="alokasi_dana_desa" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="bantuan_apbd_provinsi" class="mb-2">5. Belanja Modal (tanah, bangunan, jalan, jembatan, komputer, dll.)</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="bantuan_apbd_provinsi" name="bantuan_apbd_provinsi" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="bantuan_apbd_kabupaten" class="mb-2">6. Penyertaan modal ke BUMDes</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="bantuan_apbd_kabupaten" name="bantuan_apbd_kabupaten" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="hibah" class="mb-2">7. Lainnya (belanja tak terduga, konsumsi rapat, dll.)</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Rupiah</span>
-                                                <input type="text" id="hibah" name="hibah" class="form-control" placeholder="Masukkan anggaran" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="modalAnggaranDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul>
-                                            <li>Isi nominal anggaran sesuai dengan sumbernya.</li>
-                                            <li>Pastikan semua kolom terisi dengan benar.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Surat Keterangan Tidak Mampu/Miskin (SKTM) yang Dikeluarkan Pemerintah Desa</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah SKTM yang Dikeluarkan 2024</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah SKTM yang Dikeluarkan 2025</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div> 
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div>
-
-                <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Pemanfaatan Sistem Informasi Desa dan Sistem Keuangan Desa </h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Sistem Informasi Desa</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ADA, DIGUNAKAN</option>
-                                                <option value="">ADA, JARANG DIGUNAKAN</option>
-                                                <option value="">ADA, TIDAK DIGUNAKAN</option>
-                                                <option value="">TIDAK ADA</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Sistem Keuangan Desa</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ADA, DIGUNAKAN</option>
-                                                <option value="">ADA, JARANG DIGUNAKAN</option>
-                                                <option value="">ADA, TIDAK DIGUNAKAN</option>
-                                                <option value="">TIDAK ADA</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div> 
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div>
-
-                <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Kerjasama Desa</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Pihak yang diajak kerja sama 1</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>       
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Lingkup kerja sama</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ANTARDESA</option>
-                                                <option value="">DENGAN SWASTA</option>
-                                                <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Tahun kerja sama berakhir</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->  
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Pihak yang diajak kerja sama 2</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>       
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Lingkup kerja sama</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ANTARDESA</option>
-                                                <option value="">DENGAN SWASTA</option>
-                                                <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Tahun kerja sama berakhir</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->  
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Pihak yang diajak kerja sama 3</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>       
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Lingkup kerja sama</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ANTARDESA</option>
-                                                <option value="">DENGAN SWASTA</option>
-                                                <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Tahun kerja sama berakhir</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->  
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Pihak yang diajak kerja sama 4</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>       
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Lingkup kerja sama</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ANTARDESA</option>
-                                                <option value="">DENGAN SWASTA</option>
-                                                <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Tahun kerja sama berakhir</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Pihak yang diajak kerja sama 5</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan nama" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>       
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Lingkup kerja sama</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ANTARDESA</option>
-                                                <option value="">DENGAN SWASTA</option>
-                                                <option value="">DENGAN LEMBAGA INTERNASIONAL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Tahun kerja sama berakhir</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan Tahun" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>                        
-                                    <!-- /.col -->   
-                                </div> 
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div>
-                
-                <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah pengadaan barang dan jasa di Desa</h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <form id="anggaranDesaForm" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="dana_desa_apbn" class="mb-2">Jumlah pengadaan barang dan jasa (s.d akhir tahun 2023)</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Paket</span>
-                                                <input type="number" id="jumlah_pengadaan_desa" name="paket" class="form-control" placeholder="Masukkan banyaknya paket" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
@@ -996,66 +1002,66 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                        
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Ketersedian Data Statistik Desa dan Petugas yang menangani statistik </h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
-                                <i class="fas fa-info-circle"></i>
+
+                <div class="card card-primary card-outline mb-4">
+                    <div class="card-header mb-3">
+                        <h3 class="card-title">Ketersedian Data Statistik Desa dan Petugas yang menangani statistik </h3>
+                        <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool">
+                                <i class="fas fa-minus"></i>
                             </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
                         </div>
-                        <div class="card-body">
-                            <form id="anggaranDesaForm" method="post">
-                                <div class="row">
+                    </div>
+                    <div class="card-body">
+                        <form id="anggaranDesaForm" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label for="dana_desa_apbn" class="mb-2">Ketersediaan Data Statistik Desa</label>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">ADA</option>
+                                            <option value="">TIDAK ADA</option>
+                                        </select>
+                                    </div>
                                     <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label for="dana_desa_apbn" class="mb-2">Ketersediaan Data Statistik Desa</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">ADA</option>
-                                                <option value="">TIDAK ADA</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="dana_desa_apbn" class="mb-2">Jumlah petugas yang menangani statistik (orang)</label>
                                             <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
                                         </div>
-                                        </div>
-                                    </div>     
+                                    </div>
+                                </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                 </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
+        </div>
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
+    </div> <!--end::App Content-->
+    </main> <!--end::App Main--> <!--begin::Footer-->
+
+    <footer class="app-footer"> <!--begin::To the end-->
+        <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+        <strong>
+            Copyright &copy; 2024&nbsp;
+            <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+        </strong>
+        All rights reserved.
+        <!--end::Copyright-->
+    </footer> <!--end::Footer-->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-
+    </div>
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

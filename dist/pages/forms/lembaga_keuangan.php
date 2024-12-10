@@ -41,191 +41,197 @@ include "../../config/session.php";
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
+    <?php include "../../components/loading.php"; ?>
 
-        <?php include('../../components/navbar.php'); ?>
-        
-        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+    <div class="page animate__animated animate__fadeIn">
+        <div class="app-wrapper"> <!--begin::Header-->
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Lembaga Keuangan</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Lembaga Keuangan
-                                </li>
-                            </ol>
-                        </div>
-                    </div> <!--end::Row-->
-                </div> <!--end::Container-->
-            </div> <!--end::App Content Header--> <!--begin::App Content-->
-            <div class="app-content"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
+            <?php include('../../components/navbar.php'); ?>
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Banyaknya Bank Pemerintah, Bank Swasta dan BPR</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+            <main class="app-main"> <!--begin::App Content Header-->
+                <div class="app-content-header"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="mb-0">Lembaga Keuangan</h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-end">
+                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Lembaga Keuangan
+                                    </li>
+                                </ol>
+                            </div>
+                        </div> <!--end::Row-->
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content Header--> <!--begin::App Content-->
+                <div class="app-content"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Banyaknya Bank Pemerintah, Bank Swasta dan BPR</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toggle-form">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toggle-form").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+
+
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Bank Umum Pemerintah</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Bank Umum Swasta</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Bank Perkreditan Rakyat (BPR)</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    
 
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Bank Umum Pemerintah</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Bank Umum Swasta</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Bank Perkreditan Rakyat (BPR)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Banyaknya Koperasi Aktif</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".batas-wilayah").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Banyaknya Koperasi Aktif</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".batas-wilayah").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
                                         });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Unit Desa (KUD)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Simpan Pinjam (Kospin)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Serba Usaha</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div> 
-                                    </div>    
-                                     
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Koperasi Lainnya</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- /.col -->
+                                    </script>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Koperasi Unit Desa (KUD)</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
 
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Koperasi Simpan Pinjam (Kospin)</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Koperasi Serba Usaha</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Koperasi Lainnya</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
+                            </div>
+                        </div> <!--end::Container-->
+                    </div> <!--end::App Content-->
+            </main> <!--end::App Main--> <!--begin::Footer-->
+
+            <footer class="app-footer"> <!--begin::To the end-->
+                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                <strong>
+                    Copyright &copy; 2024&nbsp;
+                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                </strong>
+                All rights reserved.
+                <!--end::Copyright-->
+            </footer> <!--end::Footer-->
+        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    </div>
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

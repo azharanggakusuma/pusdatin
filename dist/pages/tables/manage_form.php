@@ -98,186 +98,192 @@ include('../../config/list_form.php');
   <!-- Jquery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+  <!-- Animate.css CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-  <div class="app-wrapper"> <!--begin::Header-->
+  <?php include "../../components/loading.php"; ?>
 
-    <?php include('../../components/navbar.php'); ?>
+  <div class="page animate__animated animate__fadeIn">
+    <div class="app-wrapper"> <!--begin::Header-->
 
-    <?php include('../../components/sidebar.php'); ?>
-    <!--end::Sidebar--> <!--begin::App Main-->
+      <?php include('../../components/navbar.php'); ?>
 
-    <main class="app-main">
-      <!--begin::App Content Header-->
-      <div class="app-content-header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <h3 class="mb-0">Management Form</h3>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-end">
-                <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Management Form</li>
-              </ol>
+      <?php include('../../components/sidebar.php'); ?>
+      <!--end::Sidebar--> <!--begin::App Main-->
+
+      <main class="app-main">
+        <!--begin::App Content Header-->
+        <div class="app-content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <h3 class="mb-0">Management Form</h3>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="#">Master Data</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Management Form</li>
+                </ol>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!--end::App Content Header-->
+        <!--end::App Content Header-->
 
-      <!--begin::App Content-->
-      <div class="app-content">
-        <div class="container-fluid">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Manage Forms</h3>
-              <div class="card-tools">
-                <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addMenuModal">
-                  <i class="fas fa-edit"></i> &nbsp; Status Form
-                </button>
+        <!--begin::App Content-->
+        <div class="app-content">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Manage Forms</h3>
+                <div class="card-tools">
+                  <!-- Button to trigger modal -->
+                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+                    <i class="fas fa-edit"></i> &nbsp; Status Form
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="card-body p-0">
-              <table class="table table-striped table-hover align-middle">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>User (Desa/Kelurahan)</th>
-                    <th>Form Name</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $no = 1;
-                  foreach ($forms as $form):
-                    $query_form_status = "SELECT users.name, user_progress.is_locked 
+              <div class="card-body p-0">
+                <table class="table table-striped table-hover align-middle">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>User (Desa/Kelurahan)</th>
+                      <th>Form Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = 1;
+                    foreach ($forms as $form):
+                      $query_form_status = "SELECT users.name, user_progress.is_locked 
                                   FROM user_progress 
                                   JOIN users ON user_progress.user_id = users.id
                                   WHERE user_progress.form_name = ?";
-                    $stmt = $conn->prepare($query_form_status);
-                    $stmt->bind_param('s', $form);
-                    $stmt->execute();
-                    $result_form_status = $stmt->get_result();
+                      $stmt = $conn->prepare($query_form_status);
+                      $stmt->bind_param('s', $form);
+                      $stmt->execute();
+                      $result_form_status = $stmt->get_result();
 
-                    while ($status = $result_form_status->fetch_assoc()):
-                  ?>
-                      <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= htmlspecialchars($status['name']); ?></td>
-                        <td><?= htmlspecialchars($form); ?></td>
-                        <td>
-                          <span class="badge <?= $status['is_locked'] ? 'bg-danger' : 'bg-success'; ?>">
-                            <?= $status['is_locked'] ? 'Locked' : 'Unlocked'; ?>
-                          </span>
-                        </td>
-                      </tr>
-                  <?php
-                    endwhile;
-                  endforeach;
-                  ?>
-                </tbody>
-              </table>
+                      while ($status = $result_form_status->fetch_assoc()):
+                    ?>
+                        <tr>
+                          <td><?= $no++; ?></td>
+                          <td><?= htmlspecialchars($status['name']); ?></td>
+                          <td><?= htmlspecialchars($form); ?></td>
+                          <td>
+                            <span class="badge <?= $status['is_locked'] ? 'bg-danger' : 'bg-success'; ?>">
+                              <?= $status['is_locked'] ? 'Locked' : 'Unlocked'; ?>
+                            </span>
+                          </td>
+                        </tr>
+                    <?php
+                      endwhile;
+                    endforeach;
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!--end::App Content-->
+        <!--end::App Content-->
 
-      <!-- Modal Form Pengelolaan -->
-      <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addMenuModalLabel">Edit Status Form</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="manage_form.php" method="post">
-                <div class="mb-3">
-                  <label for="user_id" class="form-label">Pilih User (Desa/Kelurahan)</label>
-                  <select name="user_id" id="user_id" class="form-select" required>
-                    <option value="" disabled selected>Pilih User</option>
-                    <?php while ($user_data = mysqli_fetch_assoc($result_all_users)) { ?>
-                      <option value="<?= $user_data['id']; ?>"><?= $user_data['name']; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
+        <!-- Modal Form Pengelolaan -->
+        <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addMenuModalLabel">Edit Status Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="manage_form.php" method="post">
+                  <div class="mb-3">
+                    <label for="user_id" class="form-label">Pilih User (Desa/Kelurahan)</label>
+                    <select name="user_id" id="user_id" class="form-select" required>
+                      <option value="" disabled selected>Pilih User</option>
+                      <?php while ($user_data = mysqli_fetch_assoc($result_all_users)) { ?>
+                        <option value="<?= $user_data['id']; ?>"><?= $user_data['name']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
 
-                <div class="mb-3">
-                  <label for="form_name" class="form-label">Pilih Form</label>
-                  <select name="form_name" id="form_name" class="form-select" required>
-                    <option value="" disabled selected>Pilih Form</option>
-                    <?php foreach ($forms as $form) { ?>
-                      <option value="<?= $form; ?>"><?= $form; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
+                  <div class="mb-3">
+                    <label for="form_name" class="form-label">Pilih Form</label>
+                    <select name="form_name" id="form_name" class="form-select" required>
+                      <option value="" disabled selected>Pilih Form</option>
+                      <?php foreach ($forms as $form) { ?>
+                        <option value="<?= $form; ?>"><?= $form; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
 
-                <div class="mb-3">
-                  <label for="is_locked" class="form-label">Status Form</label>
-                  <select name="is_locked" id="is_locked" class="form-select" required>
-                    <option value="" disabled selected>Pilih Status Form</option>
-                    <option value="true">Terkunci</option>
-                    <option value="false">Tidak Terkunci</option>
-                  </select>
-                </div>
+                  <div class="mb-3">
+                    <label for="is_locked" class="form-label">Status Form</label>
+                    <select name="is_locked" id="is_locked" class="form-select" required>
+                      <option value="" disabled selected>Pilih Status Form</option>
+                      <option value="true">Terkunci</option>
+                      <option value="false">Tidak Terkunci</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">
+                  <i class="fas fa-save"></i>&nbsp; Simpan
+                </button>
+              </div>
+              </form>
             </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-success">
-                <i class="fas fa-save"></i>&nbsp; Simpan
-              </button>
-            </div>
-            </form>
           </div>
         </div>
-      </div>
 
-      <!-- SweetAlert Notifikasi -->
-      <?php if (!empty($sweetalert_message)): ?>
-        <script>
-          swal({
-            title: "Berhasil!",
-            text: "<?= $sweetalert_message; ?>",
-            icon: "success",
-            timer: 3000,
-            buttons: false
-          }).then(() => {
-            window.location.href = "manage_form.php";
-          });
-        </script>
-      <?php elseif (!empty($error_message)): ?>
-        <script>
-          swal({
-            title: "Gagal!",
-            text: "<?= $error_message; ?>",
-            icon: "error",
-            timer: 3000,
-            buttons: false
-          }).then(() => {
-            window.location.href = "manage_form.php";
-          });
-        </script>
-      <?php endif; ?>
+        <!-- SweetAlert Notifikasi -->
+        <?php if (!empty($sweetalert_message)): ?>
+          <script>
+            swal({
+              title: "Berhasil!",
+              text: "<?= $sweetalert_message; ?>",
+              icon: "success",
+              timer: 3000,
+              buttons: false
+            }).then(() => {
+              window.location.href = "manage_form.php";
+            });
+          </script>
+        <?php elseif (!empty($error_message)): ?>
+          <script>
+            swal({
+              title: "Gagal!",
+              text: "<?= $error_message; ?>",
+              icon: "error",
+              timer: 3000,
+              buttons: false
+            }).then(() => {
+              window.location.href = "manage_form.php";
+            });
+          </script>
+        <?php endif; ?>
 
-    </main>
+      </main>
 
-    <footer class="app-footer"> <!--begin::To the end-->
-      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-      <strong>
-        Copyright &copy; 2024&nbsp;
-        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-      </strong>
-      All rights reserved.
-      <!--end::Copyright-->
-    </footer> <!--end::Footer-->
-  </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-
+      <footer class="app-footer"> <!--begin::To the end-->
+        <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+        <strong>
+          Copyright &copy; 2024&nbsp;
+          <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+        </strong>
+        All rights reserved.
+        <!--end::Copyright-->
+      </footer> <!--end::Footer-->
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+  </div>
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

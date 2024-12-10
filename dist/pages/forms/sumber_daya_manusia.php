@@ -41,100 +41,106 @@ include "../../config/session.php";
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
+    <?php include "../../components/loading.php"; ?>
 
-        <?php include('../../components/navbar.php'); ?>
+    <div class="page animate__animated animate__fadeIn">
+        <div class="app-wrapper"> <!--begin::Header-->
 
-        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+            <?php include('../../components/navbar.php'); ?>
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Sumber Daya Manusia</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Sumber Daya Manusia
-                                </li>
-                            </ol>
-                        </div>
-                    </div> <!--end::Row-->
-                </div> <!--end::Container-->
-            </div> <!--end::App Content Header--> <!--begin::App Content-->
-            <div class="app-content"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
+            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Nama Kepala Desa/Kelurahan</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+            <main class="app-main"> <!--begin::App Content Header-->
+                <div class="app-content-header"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="mb-0">Sumber Daya Manusia</h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-end">
+                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Sumber Daya Manusia
+                                    </li>
+                                </ol>
+                            </div>
+                        </div> <!--end::Row-->
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content Header--> <!--begin::App Content-->
+                <div class="app-content"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Nama Kepala Desa/Kelurahan</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toggle-form">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toggle-form").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
                                         });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Nama Kepala Desa/Lurah</label>
-                                        <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Jenis kelamin</label>
-                                        <select required name="" id="" class="form-control">
-                                            <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
-                                            <option value="LAKI-LAKI">LAKI - LAKI</option>
-                                            <option value="PEREMPUAN"> PEREMPUAN </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Periode Tahun Menjabat</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun periode" style="width: 100%;" required>
-                                    </div>
+                                    </script>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Perangkat Desa </h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool batas-wilayah">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama Kepala Desa/Lurah</label>
+                                            <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jenis kelamin</label>
+                                            <select required name="" id="" class="form-control">
+                                                <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
+                                                <option value="LAKI-LAKI">LAKI - LAKI</option>
+                                                <option value="PEREMPUAN"> PEREMPUAN </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Periode Tahun Menjabat</label>
+                                            <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun periode" style="width: 100%;" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                                <!-- /.row -->
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form id="batasDesaForm" method="post">
-                                <div class="row">
-                                    <div class=">
-                                        <div class="form-group mb-3">
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Jumlah Perangkat Desa </h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form id="batasDesaForm" method="post">
+                                    <div class="row">
+                                        <div class=">
+                                        <div class=" form-group mb-3">
                                             <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Perempuan</label>
                                             <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                         </div>
@@ -197,7 +203,7 @@ include "../../config/session.php";
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                     </div>
-                                </div>
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -429,7 +435,7 @@ include "../../config/session.php";
                                     <p>Lorem ipsum dolor</>
                                     <ul>
                                         <li>...</li>
-                                        <li>...</li> 
+                                        <li>...</li>
                                         <li>...</li>
                                     </ul>
                                 </div>
@@ -449,14 +455,14 @@ include "../../config/session.php";
                     All rights reserved.
                     <!--end::Copyright-->
                 </footer> <!--end::Footer-->
-            </div> <!--end::Container-->
+        </div> <!--end::Container-->
     </div> <!--end::App Content-->
 
     </main> <!--end::App Main--> <!--begin::Footer-->
 
 
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-
+    </div>
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

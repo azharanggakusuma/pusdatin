@@ -50,86 +50,149 @@ include "../../config/session.php";
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
-    
-        <?php include('../../components/navbar.php'); ?>
+    <?php include "../../components/loading.php"; ?>
 
-        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+    <div class="page animate__animated animate__fadeIn">
+        <div class="app-wrapper"> <!--begin::Header-->
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Kesehatan</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Keadaan Geografi
-                                </li>
-                            </ol>
+            <?php include('../../components/navbar.php'); ?>
+
+            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+
+            <main class="app-main"> <!--begin::App Content Header-->
+                <div class="app-content-header"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="mb-0">Kesehatan</h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-end">
+                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Keadaan Geografi
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="app-content"> <!--begin::Container-->
+                <div class="app-content"> <!--begin::Container-->
 
-                <!-- BEGIN:: container Rumah Sakit -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Rumah Sakit</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton">
-                                    <i class="fas fa-minus"></i>
+                    <!-- BEGIN:: container Rumah Sakit -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Rumah Sakit</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton">
+                                        <i class="fas fa-minus"></i>
 
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
 
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Rumah Sakit ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Rumah Sakit ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
 
-                                        <h2 class="card-title mb-3">Rumah Sakit Ke 1</h2>
+                                            <h2 class="card-title mb-3">Rumah Sakit Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Rumah Sakit</label>
+                                                    <input id="nama_Rumah Sakit_ke1" type="text" class="form-control">
+                                                </div>
+
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Jenis Rumah Sakit</label>
+                                                    <select id="Jenis_Rumah Sakit1" class="form-control select2bs4"
+                                                        style="width: 100%;">
+                                                        <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
+                                                        <option value="">Rumah Sakit</option>
+                                                        <option value="">Rumah Sakit Swasta</option>
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Rumah Sakit</label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Rumah Sakit ke 1 -->
+
+                                    <!-- begin:: form Rumah Sakit ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Rumah Sakit Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Rumah Sakit</label>
-                                                <input id="nama_Rumah Sakit_ke1" type="text" class="form-control">
+                                                <input id="nama_Rumah Sakit_ke2" type="text" class="form-control">
                                             </div>
 
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Jenis Rumah Sakit</label>
-                                                <select id="Jenis_Rumah Sakit1" class="form-control select2bs4"
+                                                <select id="Jenis_Rumah Sakit2" class="form-control select2bs4"
                                                     style="width: 100%;">
                                                     <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
                                                     <option value="">Rumah Sakit</option>
@@ -145,21 +208,21 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
                                             <div class="titik_koordinat">
-                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <label for="titik_koordinat_ke2">Titik Koordinat</label>
                                                 <div class="row">
                                                     <div class="col-md-6">
 
-                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                        <input id="koordinat_lintang_ke1" type="text"
-                                                            class="form-control koordinat_lintang_ke1">
+                                                        <label for="koordinat_lintang_ke2">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke2" type="text"
+                                                            class="form-control koordinat_lintang_ke2">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
-                                                            class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_bujur_ke2">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke2" type="text"
+                                                            class="form-control koordinat_bujur_ke2">
                                                     </div>
 
                                                 </div>
@@ -167,177 +230,167 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Rumah Sakit ke 2 -->
 
-                                </div>
-                                <!-- end:: Rumah Sakit ke 1 -->
 
-                                <!-- begin:: form Rumah Sakit ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Rumah Sakit Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Rumah Sakit</label>
-                                            <input id="nama_Rumah Sakit_ke2" type="text" class="form-control">
+                                    <!-- begin:: form Rumah Sakit ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Rumah Sakit Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Rumah Sakit</label>
+                                                <input id="nama_Rumah Sakit_ke3" type="text" class="form-control">
+                                            </div>
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jenis Rumah Sakit</label>
-                                            <select id="Jenis_Rumah Sakit2" class="form-control select2bs4"
-                                                style="width: 100%;">
-                                                <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
-                                                <option value="">Rumah Sakit</option>
-                                                <option value="">Rumah Sakit Swasta</option>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jenis Rumah Sakit</label>
+                                                <select id="Jenis_Rumah Sakit3" class="form-control select2bs4"
+                                                    style="width: 100%;">
+                                                    <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
+                                                    <option value="">Rumah Sakit</option>
+                                                    <option value="">Rumah Sakit Swasta</option>
 
-                                            </select>
-                                        </div>
+                                                </select>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Rumah Sakit</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Rumah Sakit</label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke2">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke3">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke2">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke2" type="text"
-                                                        class="form-control koordinat_lintang_ke2">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke2">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke2" type="text"
-                                                        class="form-control koordinat_bujur_ke2">
+                                                        <label for="koordinat_lintang_ke3">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke3" type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke3">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke3" type="text"
+                                                            class="form-control koordinat_bujur_ke3">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Rumah Sakit ke 2 -->
+                                    <!-- end:: form Rumah Sakit ke 3 -->
 
 
-                                <!-- begin:: form Rumah Sakit ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Rumah Sakit Ke 3</h2>
+
+
+                                    <div class="col-md-6">
+
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Rumah Sakit</label>
-                                            <input id="nama_Rumah Sakit_ke3" type="text" class="form-control">
-                                        </div>
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jenis Rumah Sakit</label>
-                                            <select id="Jenis_Rumah Sakit3" class="form-control select2bs4"
-                                                style="width: 100%;">
-                                                <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
-                                                <option value="">Rumah Sakit</option>
-                                                <option value="">Rumah Sakit Swasta</option>
-
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Rumah Sakit</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke3">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke3">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke3" type="text" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke3">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke3" type="text"
-                                                        class="form-control koordinat_bujur_ke3">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end:: form Rumah Sakit ke 3 -->
-
-
-
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- END:: contaainer Rumah Sakit -->
-
-                <!-- BEGIN:: container PUSKESMAS -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Pusat Kesehatan Masyarakat (PUSKESMAS) </h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton2">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton2").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div>
+                    <!-- END:: contaainer Rumah Sakit -->
 
-                                        <h2 class="card-title mb-3">PUSKESMAS Ke 1</h2>
+                    <!-- BEGIN:: container PUSKESMAS -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Pusat Kesehatan Masyarakat (PUSKESMAS) </h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton2">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton2").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">PUSKESMAS Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama PUSKESMAS</label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat PUSKESMAS</label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: PUSKESMAS ke 1 -->
+
+                                    <!-- begin:: form PUSKESMAS ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">PUSKESMAS Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama PUSKESMAS</label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_PUSKESMAS_ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat PUSKESMAS</label>
@@ -346,143 +399,143 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
-                                            <div class="titik_koordinat">
-                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                                <div class="row">
-                                                    <div class="col-md-6">
 
-                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                        <input id="koordinat_lintang_ke1" type="text"
-                                                            class="form-control koordinat_lintang_ke1">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                        <input id="koordinat_bujur_ke1" type="text"
-                                                            class="form-control koordinat_bujur_ke1">
+                                        </div>
+                                    </div>
+                                    <!-- end:: form PUSKESMAS ke 2 -->
+
+
+                                    <!-- begin:: form PUSKESMAS ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">PUSKESMAS Ke 3</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama PUSKESMAS</label>
+                                                <input id="nama_PUSKESMAS_ke3" type="text" class="form-control">
+                                            </div>
+
+
+
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat PUSKESMAS</label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- end:: form PUSKESMAS ke 3 -->
+
+                                    <div class="col-md-6">
+
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> <!--end::Container-->
+                    <!-- END:: container PUSKESMAS -->
+
+                    <!-- BEGIN:: container PUSTU -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Puskesmas Pembantu (PUSTU)</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton4">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton4").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">PUSTU Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama PUSTU</label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat PUSTU</label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
-
                                             </div>
                                         </div>
-                                    </div>
-
-                                </div>
-                                <!-- end:: PUSKESMAS ke 1 -->
-
-                                <!-- begin:: form PUSKESMAS ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">PUSKESMAS Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama PUSKESMAS</label>
-                                            <input id="nama_PUSKESMAS_ke2" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat PUSKESMAS</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
 
                                     </div>
-                                </div>
-                                <!-- end:: form PUSKESMAS ke 2 -->
+                                    <!-- end:: PUSTU ke 1 -->
 
-
-                                <!-- begin:: form PUSKESMAS ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">PUSKESMAS Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama PUSKESMAS</label>
-                                            <input id="nama_PUSKESMAS_ke3" type="text" class="form-control">
+                                    <!-- begin:: form PUSTU ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">PUSTU Ke 2</h2>
                                         </div>
 
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat PUSKESMAS</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- end:: form PUSKESMAS ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Container-->
-                <!-- END:: container PUSKESMAS -->
-
-                <!-- BEGIN:: container PUSTU -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Puskesmas Pembantu (PUSTU)</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton4">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton4").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-
-                                        <h2 class="card-title mb-3">PUSTU Ke 1</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div>
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama PUSTU</label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_PUSTU_ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat PUSTU</label>
@@ -491,8 +544,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -513,158 +567,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form PUSTU ke 2 -->
 
-                                </div>
-                                <!-- end:: PUSTU ke 1 -->
 
-                                <!-- begin:: form PUSTU ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">PUSTU Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama PUSTU</label>
-                                            <input id="nama_PUSTU_ke2" type="text" class="form-control">
+                                    <!-- begin:: form PUSTU ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">PUSTU Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama PUSTU</label>
+                                                <input id="nama_PUSTU_ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat PUSTU</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat PUSTU</label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form PUSTU ke 2 -->
+                                    <!-- end:: form PUSTU ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form PUSTU ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">PUSTU Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama PUSTU</label>
-                                            <input id="nama_PUSTU_ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat PUSTU</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form PUSTU ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Container-->
-                <!-- END:: container PUSTU -->
-
-                <!-- BEGIN:: container Poliklinik Atau Balai Pengobatan  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Poliklinik Atau Balai Pengobatan </h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton5">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton5").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Container-->
+                    <!-- END:: container PUSTU -->
 
-                                        <h2 class="card-title mb-3">Poliklinik Atau Balai Pengobatan Ke 1</h2>
+                    <!-- BEGIN:: container Poliklinik Atau Balai Pengobatan  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Poliklinik Atau Balai Pengobatan </h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton5">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton5").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">Poliklinik Atau Balai Pengobatan Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Poliklinik Atau Balai Pengobatan </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Poliklinik Atau Balai Pengobatan  ke 1 -->
+
+                                    <!-- begin:: form Poliklinik Atau Balai Pengobatan  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Poliklinik Atau Balai Pengobatan Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Poliklinik Atau Balai Pengobatan </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_Poliklinik Atau Balai Pengobatan _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
@@ -673,8 +726,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -695,158 +749,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Poliklinik Atau Balai Pengobatan  ke 2 -->
 
-                                </div>
-                                <!-- end:: Poliklinik Atau Balai Pengobatan  ke 1 -->
 
-                                <!-- begin:: form Poliklinik Atau Balai Pengobatan  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Poliklinik Atau Balai Pengobatan Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Poliklinik Atau Balai Pengobatan </label>
-                                            <input id="nama_Poliklinik Atau Balai Pengobatan _ke2" type="text" class="form-control">
+                                    <!-- begin:: form Poliklinik Atau Balai Pengobatan  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Poliklinik Atau Balai Pengobatan Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Poliklinik Atau Balai Pengobatan </label>
+                                                <input id="nama_Poliklinik Atau Balai Pengobatan _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Poliklinik Atau Balai Pengobatan  ke 2 -->
+                                    <!-- end:: form Poliklinik Atau Balai Pengobatan  ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form Poliklinik Atau Balai Pengobatan  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Poliklinik Atau Balai Pengobatan Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Poliklinik Atau Balai Pengobatan </label>
-                                            <input id="nama_Poliklinik Atau Balai Pengobatan _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form Poliklinik Atau Balai Pengobatan  ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Container-->
-                <!-- END:: container POLOKNLINIK ATAU BALAI pENGOBATAN -->
-
-                <!-- BEGIN:: container Praktek Dokter  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Praktek Dokter</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton6">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton6").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Container-->
+                    <!-- END:: container POLOKNLINIK ATAU BALAI pENGOBATAN -->
 
-                                        <h2 class="card-title mb-3">Praktek Dokter Ke 1</h2>
+                    <!-- BEGIN:: container Praktek Dokter  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Praktek Dokter</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton6">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton6").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">Praktek Dokter Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Praktek Dokter </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Praktek Dokter </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Praktek Dokter  ke 1 -->
+
+                                    <!-- begin:: form Praktek Dokter  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Nama Praktek Dokter Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Praktek Dokter </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_Praktek Dokter _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Praktek Dokter </label>
@@ -855,8 +908,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -877,158 +931,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Praktek Dokter  ke 2 -->
 
-                                </div>
-                                <!-- end:: Praktek Dokter  ke 1 -->
 
-                                <!-- begin:: form Praktek Dokter  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama Praktek Dokter Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Praktek Dokter </label>
-                                            <input id="nama_Praktek Dokter _ke2" type="text" class="form-control">
+                                    <!-- begin:: form Praktek Dokter  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Praktek Dokter Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Praktek Dokter </label>
+                                                <input id="nama_Praktek Dokter _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Praktek Dokter </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Praktek Dokter </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Praktek Dokter  ke 2 -->
+                                    <!-- end:: form Praktek Dokter  ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form Praktek Dokter  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Praktek Dokter Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Praktek Dokter </label>
-                                            <input id="nama_Praktek Dokter _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Praktek Dokter </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form Praktek Dokter  ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Ctainer-->
-                <!-- END:: container POLOKNLINIK ATAU BALAI pENGOBATAN -->
-
-                <!-- BEGIN:: container Praktek Bidan  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Praktek Bidan</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton7">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton7").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Ctainer-->
+                    <!-- END:: container POLOKNLINIK ATAU BALAI pENGOBATAN -->
 
-                                        <h2 class="card-title mb-3">Praktek Bidan Ke 1</h2>
+                    <!-- BEGIN:: container Praktek Bidan  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Praktek Bidan</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton7">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton7").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">Praktek Bidan Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Praktek Bidan </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Praktek Bidan </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Praktek Bidan  ke 1 -->
+
+                                    <!-- begin:: form Praktek Bidan  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Praktek Bidan Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Praktek Bidan </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_Praktek Bidan _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Praktek Bidan </label>
@@ -1037,8 +1090,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -1059,158 +1113,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Praktek Bidan  ke 2 -->
 
-                                </div>
-                                <!-- end:: Praktek Bidan  ke 1 -->
 
-                                <!-- begin:: form Praktek Bidan  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Praktek Bidan Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Praktek Bidan </label>
-                                            <input id="nama_Praktek Bidan _ke2" type="text" class="form-control">
+                                    <!-- begin:: form Praktek Bidan  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Praktek Bidan Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Praktek Bidan </label>
+                                                <input id="nama_Praktek Bidan _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Praktek Bidan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Praktek Bidan </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Praktek Bidan  ke 2 -->
+                                    <!-- end:: form Praktek Bidan  ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form Praktek Bidan  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Praktek Bidan Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Praktek Bidan </label>
-                                            <input id="nama_Praktek Bidan _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Praktek Bidan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form Praktek Bidan  ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Ctainer-->
-                <!-- END:: container Bidan -->
-
-                <!-- BEGIN:: container Pos Kesehatan Desa (POSKESDES)  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Pos Kesehatan Desa (POSKESDES)</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton8">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton8").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-
-                                            // Toggle antara fa-plus dan fa-minus
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Ctainer-->
+                    <!-- END:: container Bidan -->
 
-                                        <h2 class="card-title mb-3">Pos Kesehatan Desa (POSKESDES) Ke 1</h2>
+                    <!-- BEGIN:: container Pos Kesehatan Desa (POSKESDES)  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Pos Kesehatan Desa (POSKESDES)</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton8">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton8").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+
+                                                // Toggle antara fa-plus dan fa-minus
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">Pos Kesehatan Desa (POSKESDES) Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Pos Kesehatan Desa (POSKESDES) </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Pos Kesehatan Desa (POSKESDES)  ke 1 -->
+
+                                    <!-- begin:: form Pos Kesehatan Desa (POSKESDES)  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Pos Kesehatan Desa (POSKESDES) Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Pos Kesehatan Desa (POSKESDES) </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_Pos Kesehatan Desa (POSKESDES) _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
@@ -1219,8 +1272,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -1241,158 +1295,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Pos Kesehatan Desa (POSKESDES)  ke 2 -->
 
-                                </div>
-                                <!-- end:: Pos Kesehatan Desa (POSKESDES)  ke 1 -->
 
-                                <!-- begin:: form Pos Kesehatan Desa (POSKESDES)  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Pos Kesehatan Desa (POSKESDES) Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Pos Kesehatan Desa (POSKESDES) </label>
-                                            <input id="nama_Pos Kesehatan Desa (POSKESDES) _ke2" type="text" class="form-control">
+                                    <!-- begin:: form Pos Kesehatan Desa (POSKESDES)  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Pos Kesehatan Desa (POSKESDES) Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Pos Kesehatan Desa (POSKESDES) </label>
+                                                <input id="nama_Pos Kesehatan Desa (POSKESDES) _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Pos Kesehatan Desa (POSKESDES)  ke 2 -->
+                                    <!-- end:: form Pos Kesehatan Desa (POSKESDES)  ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form Pos Kesehatan Desa (POSKESDES)  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Pos Kesehatan Desa (POSKESDES) Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Pos Kesehatan Desa (POSKESDES) </label>
-                                            <input id="nama_Pos Kesehatan Desa (POSKESDES) _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form Pos Kesehatan Desa (POSKESDES)  ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Ctainer-->
-                <!-- END:: container Pos Kesehatan Desa -->
-
-                <!-- BEGIN:: container Pondok Bersalin Desa (POLINDES)  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Pondok Bersalin Desa (POLINDES)</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton9">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton9").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
-
-                                            // Toggle antara fa-plus dan fa-minus  
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Ctainer-->
+                    <!-- END:: container Pos Kesehatan Desa -->
 
-                                        <h2 class="card-title mb-3">Pondok Bersalin Desa (POLINDES) Ke 1</h2>
+                    <!-- BEGIN:: container Pondok Bersalin Desa (POLINDES)  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Pondok Bersalin Desa (POLINDES)</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton9">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton9").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
+
+                                                // Toggle antara fa-plus dan fa-minus  
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">Pondok Bersalin Desa (POLINDES) Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Pondok Bersalin Desa (POLINDES) </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Pondok Bersalin Desa (POLINDES)  ke 1 -->
+
+                                    <!-- begin:: form Pondok Bersalin Desa (POLINDES)  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Pondok Bersalin Desa (POLINDES) Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Pondok Bersalin Desa (POLINDES) </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_Pondok Bersalin Desa (POLINDES) _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
@@ -1401,8 +1454,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -1423,158 +1477,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Pondok Bersalin Desa (POLINDES)  ke 2 -->
 
-                                </div>
-                                <!-- end:: Pondok Bersalin Desa (POLINDES)  ke 1 -->
 
-                                <!-- begin:: form Pondok Bersalin Desa (POLINDES)  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Pondok Bersalin Desa (POLINDES) Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Pondok Bersalin Desa (POLINDES) </label>
-                                            <input id="nama_Pondok Bersalin Desa (POLINDES) _ke2" type="text" class="form-control">
+                                    <!-- begin:: form Pondok Bersalin Desa (POLINDES)  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Pondok Bersalin Desa (POLINDES) Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Pondok Bersalin Desa (POLINDES) </label>
+                                                <input id="nama_Pondok Bersalin Desa (POLINDES) _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Pondok Bersalin Desa (POLINDES)  ke 2 -->
+                                    <!-- end:: form Pondok Bersalin Desa (POLINDES)  ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form Pondok Bersalin Desa (POLINDES)  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Pondok Bersalin Desa (POLINDES) Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Pondok Bersalin Desa (POLINDES) </label>
-                                            <input id="nama_Pondok Bersalin Desa (POLINDES) _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form Pondok Bersalin Desa (POLINDES)  ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Ctainer-->
-                <!-- END:: container Pos Kesehatan Desa -->
-
-                <!-- BEGIN:: container Apotek  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Apotek</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton10">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton10").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
-
-                                            // Toggle antara fa-plus dan fa-minus  
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Ctainer-->
+                    <!-- END:: container Pos Kesehatan Desa -->
 
-                                        <h2 class="card-title mb-3">Apotek Ke 1</h2>
+                    <!-- BEGIN:: container Apotek  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Apotek</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton10">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton10").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
+
+                                                // Toggle antara fa-plus dan fa-minus  
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">Apotek Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Apotek </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat Apotek </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: Apotek  ke 1 -->
+
+                                    <!-- begin:: form Apotek  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Apotek Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Apotek </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_Apotek _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Apotek </label>
@@ -1583,8 +1636,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -1605,158 +1659,157 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form Apotek  ke 2 -->
 
-                                </div>
-                                <!-- end:: Apotek  ke 1 -->
 
-                                <!-- begin:: form Apotek  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Apotek Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Apotek </label>
-                                            <input id="nama_Apotek _ke2" type="text" class="form-control">
+                                    <!-- begin:: form Apotek  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Apotek Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Apotek </label>
+                                                <input id="nama_Apotek _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Apotek </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat Apotek </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form Apotek  ke 2 -->
+                                    <!-- end:: form Apotek  ke 3 -->
 
+                                    <div class="col-md-6">
 
-                                <!-- begin:: form Apotek  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Apotek Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Apotek </label>
-                                            <input id="nama_Apotek _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat Apotek </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form Apotek  ke 3 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> <!--end::Ctainer-->
-                <!-- END:: container Apotek-->
-
-                <!-- BEGIN:: container POSYANDU  -->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="card card-primary card-outline mb-4 card0">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar POSYANDU</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool addButton11">
-                                    <i class="fas fa-minus"></i>
-
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".addButton11").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
-
-                                            // Toggle antara fa-plus dan fa-minus  
-                                            if ($icon.hasClass("fa-plus")) {
-                                                $icon.removeClass("fa-plus").addClass("fa-minus");
-                                            } else {
-                                                $icon.removeClass("fa-minus").addClass("fa-plus");
-                                            }
-                                        });
-                                    });
-                                </script>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <!-- begin:: Sekolah ke 1 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
+                    </div> <!--end::Ctainer-->
+                    <!-- END:: container Apotek-->
 
-                                        <h2 class="card-title mb-3">POSYANDU Ke 1</h2>
+                    <!-- BEGIN:: container POSYANDU  -->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="card card-primary card-outline mb-4 card0">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar POSYANDU</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool addButton11">
+                                        <i class="fas fa-minus"></i>
+
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".addButton11").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi 
+
+                                                // Toggle antara fa-plus dan fa-minus  
+                                                if ($icon.hasClass("fa-plus")) {
+                                                    $icon.removeClass("fa-plus").addClass("fa-minus");
+                                                } else {
+                                                    $icon.removeClass("fa-minus").addClass("fa-plus");
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <!-- begin:: Sekolah ke 1 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+
+                                            <h2 class="card-title mb-3">POSYANDU Ke 1</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama POSYANDU </label>
+                                                    <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Alamat POSYANDU </label>
+                                                    <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="mb-2">Nama Kecamatan</label>
+                                                    <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                </div>
+                                                <div class="titik_koordinat">
+                                                    <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                            <input id="koordinat_lintang_ke1" type="text"
+                                                                class="form-control koordinat_lintang_ke1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                            <input id="koordinat_bujur_ke1" type="text"
+                                                                class="form-control koordinat_bujur_ke1">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div>
+                                    <!-- end:: POSYANDU  ke 1 -->
+
+                                    <!-- begin:: form POSYANDU  ke 2 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">POSYANDU Ke 2</h2>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama POSYANDU </label>
-                                                <input id="nama_pondok_pesantren_ke1" type="text" class="form-control">
+                                                <input id="nama_POSYANDU _ke2" type="text" class="form-control">
                                             </div>
+
+
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat POSYANDU </label>
@@ -1765,8 +1818,9 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Kecamatan</label>
-                                                <input id="nama_kecamatan_ke1" type="text" class="form-control">
+                                                <input id="nama_kecamatan_ke2" type="text" class="form-control">
                                             </div>
+
                                             <div class="titik_koordinat">
                                                 <label for="titik_koordinat_ke1">Titik Koordinat</label>
                                                 <div class="row">
@@ -1787,313 +1841,265 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end:: form POSYANDU  ke 2 -->
 
-                                </div>
-                                <!-- end:: POSYANDU  ke 1 -->
 
-                                <!-- begin:: form POSYANDU  ke 2 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">POSYANDU Ke 2</h2>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama POSYANDU </label>
-                                            <input id="nama_POSYANDU _ke2" type="text" class="form-control">
+                                    <!-- begin:: form POSYANDU  ke 3 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">Nama POSYANDU Ke 3</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama POSYANDU </label>
+                                                <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat POSYANDU </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke2" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end:: form POSYANDU  ke 2 -->
+                                    <!-- end:: form POSYANDU  ke 3 -->
 
-
-                                <!-- begin:: form POSYANDU  ke 3 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">Nama POSYANDU Ke 3</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama POSYANDU </label>
-                                            <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                    <!-- begin:: form POSYANDU  ke 4 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">POSYANDU Ke 4</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama POSYANDU </label>
+                                                <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat POSYANDU </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
-
                                     </div>
-                                </div>
-                                <!-- end:: form POSYANDU  ke 3 -->
+                                    <!-- end:: form POSYANDU  ke 4 -->
 
-                                <!-- begin:: form POSYANDU  ke 4 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">POSYANDU Ke 4</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama POSYANDU </label>
-                                            <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                    <!-- begin:: form POSYANDU  ke 5 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">POSYANDU Ke 5</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama POSYANDU </label>
+                                                <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat POSYANDU </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
-
                                     </div>
-                                </div>
-                                <!-- end:: form POSYANDU  ke 4 -->
+                                    <!-- end:: form POSYANDU  ke 5 -->
 
-                                <!-- begin:: form POSYANDU  ke 5 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">POSYANDU Ke 5</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama POSYANDU </label>
-                                            <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                    <!-- begin:: form POSYANDU  ke 6 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">POSYANDU Ke 6</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama POSYANDU </label>
+                                                <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat POSYANDU </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
-
                                     </div>
-                                </div>
-                                <!-- end:: form POSYANDU  ke 5 -->
+                                    <!-- end:: form POSYANDU  ke 6 -->
 
-                                <!-- begin:: form POSYANDU  ke 6 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">POSYANDU Ke 6</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama POSYANDU </label>
-                                            <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                    <!-- begin:: form POSYANDU  ke 7 -->
+                                    <div class="border p-3 mb-3">
+                                        <div class="card-header mb-3">
+                                            <h2 class="card-title">POSYANDU Ke 7</h2>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama POSYANDU </label>
+                                                <input id="nama_POSYANDU _ke3" type="text" class="form-control">
+                                            </div>
 
 
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Alamat POSYANDU </label>
+                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Kecamatan</label>
+                                                <input id="nama_kecamatan_ke3" type="text" class="form-control">
+                                            </div>
 
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="titik_koordinat">
+                                                <label for="titik_koordinat_ke1">Titik Koordinat</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
+                                                        <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
+                                                        <input id="koordinat_lintang_ke1" type="text"
+                                                            class="form-control koordinat_lintang_ke1">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
+                                                        <input id="koordinat_bujur_ke1" type="text"
+                                                            class="form-control koordinat_bujur_ke1">
+                                                    </div>
+
                                                 </div>
 
                                             </div>
 
                                         </div>
+                                    </div>
+                                    <!-- end:: form POSYANDU ke 7 -->
+
+                                    <div class="col-md-6">
+
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
 
                                     </div>
-                                </div>
-                                <!-- end:: form POSYANDU  ke 6 -->
-
-                                <!-- begin:: form POSYANDU  ke 7 -->
-                                <div class="border p-3 mb-3">
-                                    <div class="card-header mb-3">
-                                        <h2 class="card-title">POSYANDU Ke 7</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama POSYANDU </label>
-                                            <input id="nama_POSYANDU _ke3" type="text" class="form-control">
-                                        </div>
-
-
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kecamatan</label>
-                                            <input id="nama_kecamatan_ke3" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="titik_koordinat">
-                                            <label for="titik_koordinat_ke1">Titik Koordinat</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <label for="koordinat_lintang_ke1">Koordinat Lintang</label>
-                                                    <input id="koordinat_lintang_ke1" type="text"
-                                                        class="form-control koordinat_lintang_ke1">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="koordinat_bujur_ke1">Koordinat Bujur</label>
-                                                    <input id="koordinat_bujur_ke1" type="text"
-                                                        class="form-control koordinat_bujur_ke1">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- end:: form POSYANDU ke 7 -->
-
-                                <div class="col-md-6">
-
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan Semua</button>
-
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </div> <!--end::Ctainer-->
-                <!-- END:: container POSYANDU-->
+                    </div> <!--end::Ctainer-->
+                    <!-- END:: container POSYANDU-->
 
-            </div> <!--end::App Content-->
+                </div> <!--end::App Content-->
 
-        </main> <!--end::App Main--> <!--begin::Footer-->
+            </main> <!--end::App Main--> <!--begin::Footer-->
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved. 
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-
+            <footer class="app-footer"> <!--begin::To the end-->
+                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                <strong>
+                    Copyright &copy; 2024&nbsp;
+                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                </strong>
+                All rights reserved.
+                <!--end::Copyright-->
+            </footer> <!--end::Footer-->
+        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    </div>
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

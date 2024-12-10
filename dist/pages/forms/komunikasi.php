@@ -41,148 +41,245 @@ include "../../config/session.php";
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
+    <?php include "../../components/loading.php"; ?>
 
-        <?php include('../../components/navbar.php'); ?>
+    <div class="page animate__animated animate__fadeIn">
+        <div class="app-wrapper"> <!--begin::Header-->
 
-        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+            <?php include('../../components/navbar.php'); ?>
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Komunikasi</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Komunikasi
-                                </li>
-                            </ol>
-                        </div>
-                    </div> <!--end::Row-->
-                </div> <!--end::Container-->
-            </div> <!--end::App Content Header--> <!--begin::App Content-->
-            <div class="app-content"> <!--begin::Container-->
-                <div class="container-fluid"> <!--begin::Row-->
+            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Menara Base Transceiver Station (BTS)</h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBTS">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toogle-form">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toogle-form").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
+            <main class="app-main"> <!--begin::App Content Header-->
+                <div class="app-content-header"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="mb-0">Komunikasi</h3>
                             </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah menara Base Transceiver Station (BTS)</label>
-                                            <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-end">
+                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Komunikasi
+                                    </li>
+                                </ol>
+                            </div>
+                        </div> <!--end::Row-->
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content Header--> <!--begin::App Content-->
+                <div class="app-content"> <!--begin::Container-->
+                    <div class="container-fluid"> <!--begin::Row-->
+
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Jumlah Menara Base Transceiver Station (BTS)</h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBTS">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toogle-form">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toogle-form").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah menara Base Transceiver Station (BTS)</label>
+                                                <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="modalBTS" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Isi angka/jumlah menara Base Transceiver Station (BTS)</li>
+                                                <li>Jika tidak ada isi angka 0</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                         </div>
                                     </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="modalBTS" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul>
-                                            <li>Isi angka/jumlah menara Base Transceiver Station (BTS)</li>
-                                            <li>Jika tidak ada isi angka 0</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Operator layanan komunikasi telepon seluler/handphone yang menjangkau wilayah desa</h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalOperator">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toogle-form1">
-                                    <i class="fas fa-minus"></i>
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Operator layanan komunikasi telepon seluler/handphone yang menjangkau wilayah desa</h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalOperator">
+                                    <i class="fas fa-info-circle"></i>
                                 </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toogle-form1").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toogle-form1">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toogle-form1").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">1. Telkomsel/Halo/Loop/As</label>
-                                            <input type="hidden" value="1. Telkomsel/Halo/Loop/As">
-                                            <div class="me-3" style="width: 50%;">
-                                                <label>Sinyal di sebagian besar wilayah :</label>
-                                                <select class="form-control me-3 mt-3" required>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">1. Telkomsel/Halo/Loop/As</label>
+                                                <input type="hidden" value="1. Telkomsel/Halo/Loop/As">
+                                                <div class="me-3" style="width: 50%;">
+                                                    <label>Sinyal di sebagian besar wilayah :</label>
+                                                    <select class="form-control me-3 mt-3" required>
+                                                        <option disabled selected>-- Pilih Opsi --</option>
+                                                        <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                        <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                        <option value="tidak-ada">SINYAL LEMAH</option>
+                                                        <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                    </select>
+                                                </div>
+                                                <div style="width: 50%;">
+                                                    <label>Sinyal internet Terkuat :</label>
+                                                    <select class="form-control mt-3 ml-5" required>
+                                                        <option disabled selected>-- Pilih Opsi --</option>
+                                                        <option value="trayek-tetap">4G/LTE2</option>
+                                                        <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                        <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                        <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">2. Indosat</label>
+                                                <input type="hidden" value="2. Indosat">
+                                                <select class="form-control me-3" style="width: 50%;" required>
                                                     <option disabled selected>-- Pilih Opsi --</option>
                                                     <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
                                                     <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
                                                     <option value="tidak-ada">SINYAL LEMAH</option>
                                                     <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                                 </select>
+                                                <select class="form-control" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">4G/LTE2</option>
+                                                    <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                    <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
                                             </div>
-                                            <div style="width: 50%;">
-                                                <label>Sinyal internet Terkuat :</label>
-                                                <select class="form-control mt-3 ml-5" required>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">3. XL/Axis</label>
+                                                <input type="hidden" value="3. XL/Axis">
+                                                <select class="form-control me-3" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                    <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                    <option value="tidak-ada">SINYAL LEMAH</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                                <select class="form-control" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">4G/LTE2</option>
+                                                    <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                    <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">4. Hutchison 3</label>
+                                                <input type="hidden" value="4. Hutchison 3">
+                                                <select class="form-control me-3" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                    <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                    <option value="tidak-ada">SINYAL LEMAH</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                                <select class="form-control" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">4G/LTE2</option>
+                                                    <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                    <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">5. Smartfren</label>
+                                                <input type="hidden" value="5. Smartfren">
+                                                <select class="form-control me-3" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                    <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                    <option value="tidak-ada">SINYAL LEMAH</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                                <select class="form-control" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">4G/LTE2</option>
+                                                    <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
+                                                    <option value="tidak-ada">2.5G/E/GPRS</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">6. Bakrie Telecom</label>
+                                                <input type="hidden" value="6. Bakrie Telecom">
+                                                <select class="form-control me-3" style="width: 50%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
+                                                    <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
+                                                    <option value="tidak-ada">SINYAL LEMAH</option>
+                                                    <option value="tidak-ada">TIDAK ADA SINYAL</option>
+                                                </select>
+                                                <select class="form-control" style="width: 50%;" required>
                                                     <option disabled selected>-- Pilih Opsi --</option>
                                                     <option value="trayek-tetap">4G/LTE2</option>
                                                     <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
@@ -191,230 +288,139 @@ include "../../config/session.php";
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">2. Indosat</label>
-                                            <input type="hidden" value="2. Indosat">
-                                            <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
-                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
-                                                <option value="tidak-ada">SINYAL LEMAH</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                            <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">4G/LTE2</option>
-                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
-                                                <option value="tidak-ada">2.5G/E/GPRS</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">3. XL/Axis</label>
-                                            <input type="hidden" value="3. XL/Axis">
-                                            <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
-                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
-                                                <option value="tidak-ada">SINYAL LEMAH</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                            <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">4G/LTE2</option>
-                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
-                                                <option value="tidak-ada">2.5G/E/GPRS</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">4. Hutchison 3</label>
-                                            <input type="hidden" value="4. Hutchison 3">
-                                            <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
-                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
-                                                <option value="tidak-ada">SINYAL LEMAH</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                            <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">4G/LTE2</option>
-                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
-                                                <option value="tidak-ada">2.5G/E/GPRS</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">5. Smartfren</label>
-                                            <input type="hidden" value="5. Smartfren">
-                                            <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
-                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
-                                                <option value="tidak-ada">SINYAL LEMAH</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                            <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">4G/LTE2</option>
-                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
-                                                <option value="tidak-ada">2.5G/E/GPRS</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">6. Bakrie Telecom</label>
-                                            <input type="hidden" value="6. Bakrie Telecom">
-                                            <select class="form-control me-3" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
-                                                <option value="tanpa-trayek-tetap">SINYAL KUAT</option>
-                                                <option value="tidak-ada">SINYAL LEMAH</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                            <select class="form-control" style="width: 50%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">4G/LTE2</option>
-                                                <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
-                                                <option value="tidak-ada">2.5G/E/GPRS</option>
-                                                <option value="tidak-ada">TIDAK ADA SINYAL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="modalOperator" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul>
-                                            <li>Pilih Sinyal di sebagian besar wilayah untuk setiap operator</li>
-                                            <li>Pilih Sinyal internet Terkuat untuk setiap operator</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3>
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKantorPos">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toogle-form1">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toogle-form1").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Kantor Pos/Pos Pembantu/Rumah Pos</label>
-                                            <select class="form-control me-3" style="width: 100%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">ADA, BEROPERASI</option>
-                                                <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
-                                                <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
-                                                <option value="tidak-ada">TIDAK ADA</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Pos Keliling</label>
-                                            <select class="form-control me-3" style="width: 100%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">ADA</option>
-                                                <option value="tanpa-trayek-tetap">TIDAK ADA</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3 d-flex align-items-center">
-                                            <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Perusahaan/Agen Jasa Ekspedisi Swasta</label>
-                                            <select class="form-control me-3" style="width: 10 0%;" required>
-                                                <option disabled selected>-- Pilih Opsi --</option>
-                                                <option value="trayek-tetap">ADA, BEROPERASI</option>
-                                                <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
-                                                <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
-                                                <option value="tidak-ada">TIDAK ADA</option>
-                                            </select>
-                                        </div>
                                         <!-- /.col -->
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                    </div>    
-                            </form>
-                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="modalKantorPos" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul>
-                                            <li>-- Pilih Opsi -- Kantor Pos/Pos Pembantu/Rumah Pos</li>
-                                            <li>-- Pilih Opsi -- Pos Keliling</li>
-                                            <li>-- Pilih Opsi -- Perusahaan/Agen Jasa Ekspedisi Swasta</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="modalOperator" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Sinyal di sebagian besar wilayah untuk setiap operator</li>
+                                                <li>Pilih Sinyal internet Terkuat untuk setiap operator</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+                        <div class="card card-primary card-outline mb-4">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKantorPos">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool toogle-form1">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toogle-form1").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Kantor Pos/Pos Pembantu/Rumah Pos</label>
+                                                <select class="form-control me-3" style="width: 100%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">ADA, BEROPERASI</option>
+                                                    <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
+                                                    <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
+                                                    <option value="tidak-ada">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Pos Keliling</label>
+                                                <select class="form-control me-3" style="width: 100%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">ADA</option>
+                                                    <option value="tanpa-trayek-tetap">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3 d-flex align-items-center">
+                                                <label class="mb-2 flex-shrink-0 me-3" style="width: 290px;">Perusahaan/Agen Jasa Ekspedisi Swasta</label>
+                                                <select class="form-control me-3" style="width: 10 0%;" required>
+                                                    <option disabled selected>-- Pilih Opsi --</option>
+                                                    <option value="trayek-tetap">ADA, BEROPERASI</option>
+                                                    <option value="tanpa-trayek-tetap">ADA, JARANG BEROPERASI</option>
+                                                    <option value="tidak-ada">ADA, TIDAK BEROPERASI</option>
+                                                    <option value="tidak-ada">TIDAK ADA</option>
+                                                </select>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                        </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="modalKantorPos" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>-- Pilih Opsi -- Kantor Pos/Pos Pembantu/Rumah Pos</li>
+                                                <li>-- Pilih Opsi -- Pos Keliling</li>
+                                                <li>-- Pilih Opsi -- Perusahaan/Agen Jasa Ekspedisi Swasta</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content-->
+            </main> <!--end::App Main--> <!--begin::Footer-->
+
+            <footer class="app-footer"> <!--begin::To the end-->
+                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                <strong>
+                    Copyright &copy; 2024&nbsp;
+                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                </strong>
+                All rights reserved.
+                <!--end::Copyright-->
+            </footer> <!--end::Footer-->
+        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    </div>
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

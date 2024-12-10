@@ -55,6 +55,6 @@
             const pageContent = document.querySelector('.page');
             pageContent.style.display = 'block';
             pageContent.classList.add('animate__fadeIn');
-        }, 1000);
+        }, 500);
     };
 </script>
