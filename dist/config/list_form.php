@@ -1,5 +1,6 @@
 <?php
 $forms = [
+    'Data Enumerator',
     'Luas Wilayah Desa',
     'Batas Wilayah Desa',
     'Jarak Kantor Desa',
