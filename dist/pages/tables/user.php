@@ -136,7 +136,7 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="name" class="form-label">Nama User</label>
+                                            <label for="name" class="form-label">Nama User (Desa/Kelurahan)</label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="Nama" required>
                                         </div>
                                         <div class="mb-3">
@@ -203,7 +203,7 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="edit_name" class="form-label">Nama User</label>
+                                            <label for="edit_name" class="form-label">Nama User (Desa/Kelurahan)</label>
                                             <input type="text" class="form-control" id="edit_name" name="name" required>
                                         </div>
                                         <div class="mb-3">
@@ -304,8 +304,8 @@ if ($result->num_rows > 0) {
 
                             <div class="card-tools">
                                 <!-- Button Tambah User -->
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                                    <i class="fas fa-plus"></i>
+                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                                    <i class="fas fa-plus"></i> &nbsp; Add User
                                 </button>
                             </div>
                         </div>
