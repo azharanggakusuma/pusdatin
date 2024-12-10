@@ -31,11 +31,11 @@ $query = "
         tb_luas_wilayah_desa.luas_wilayah_desa,
         GROUP_CONCAT(
             CONCAT(
-                'Arah: ', tb_batas_wilayah_desa.arah, 
-                ' / Batas: ', tb_batas_wilayah_desa.batas_wilayah_desa, 
+                'Batas: ', tb_batas_wilayah_desa.batas, 
+                ' / Desa/Kelurahan: ', tb_batas_wilayah_desa.desa, 
                 ' / Kecamatan: ', tb_batas_wilayah_desa.kecamatan
             ) 
-            ORDER BY tb_batas_wilayah_desa.arah
+            ORDER BY tb_batas_wilayah_desa.batas
             SEPARATOR ' | '
         ) AS batas_wilayah
     FROM
@@ -78,7 +78,7 @@ if ($type === 'excel') {
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
     $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
-    $sheet->setCellValue('D1', 'Batas Wilayah Desa'); // Add the header for 'batas_wilayah_desa'
+    $sheet->setCellValue('D1', 'Batas Wilayah Desa');
 
     // Style untuk header
     $headerStyle = [
@@ -87,7 +87,7 @@ if ($type === 'excel') {
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
     ];
-    $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);  // Apply header style to columns A to D
+    $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);
 
     // Data dari database
     $rowNumber = 2;
@@ -99,7 +99,7 @@ if ($type === 'excel') {
         $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
         $sheet->setCellValue('C' . $rowNumber, $row['luas_wilayah_desa']);
-        $sheet->setCellValue('D' . $rowNumber, $batasWilayahFormatted);  // Add formatted batas_wilayah
+        $sheet->setCellValue('D' . $rowNumber, $batasWilayahFormatted);
 
         // Apply style to wrap text in column D
         $sheet->getStyle('D' . $rowNumber)->getAlignment()->setWrapText(true);
@@ -112,11 +112,11 @@ if ($type === 'excel') {
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
     ];
-    $sheet->getStyle('A1:D' . ($rowNumber - 1))->applyFromArray($tableStyle);  // Apply table style to columns A to D
+    $sheet->getStyle('A1:D' . ($rowNumber - 1))->applyFromArray($tableStyle); 
 
     // Auto-size columns (ensure the text in column D is visible)
     foreach (range('A', 'D') as $column) {
-        $sheet->getColumnDimension($column)->setAutoSize(true);  // Auto-size columns A to D
+        $sheet->getColumnDimension($column)->setAutoSize(true);
     }
 
     // Membersihkan buffer output
@@ -266,12 +266,12 @@ if ($type === 'pdf') {
                                             tb_luas_wilayah_desa.luas_wilayah_desa,
                                             GROUP_CONCAT(
                                                 CONCAT(
-                                                    '<li><strong>Arah: </strong>', tb_batas_wilayah_desa.arah, 
-                                                    ' / <strong>Batas: </strong>', tb_batas_wilayah_desa.batas_wilayah_desa, 
+                                                    '<li><strong>Batas: </strong>', tb_batas_wilayah_desa.batas, 
+                                                    ' / <strong>Desa/Kelurahan: </strong>', tb_batas_wilayah_desa.desa, 
                                                     ' / <strong>Kecamatan: </strong>', tb_batas_wilayah_desa.kecamatan, 
                                                     '</li>'
                                                 ) 
-                                                ORDER BY tb_batas_wilayah_desa.arah
+                                                ORDER BY tb_batas_wilayah_desa.batas
                                                 SEPARATOR ''
                                             ) AS batas_wilayah
                                         FROM
