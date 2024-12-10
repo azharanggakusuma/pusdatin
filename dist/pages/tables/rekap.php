@@ -204,68 +204,67 @@ if ($type === 'pdf') {
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?>
+    <?php include "../../components/loading.php"; ?> 
 
-    <div class="page animate__animated animate__fadeIn">
-        <div class="app-wrapper"> <!--begin::Header-->
+    <div class="app-wrapper"> <!--begin::Header-->
 
-            <?php include('../../components/navbar.php'); ?>
+        <?php include('../../components/navbar.php'); ?>
 
-            <?php include('../../components/sidebar.php'); ?>
-            <!--end::Sidebar--> <!--begin::App Main-->
+        <?php include('../../components/sidebar.php'); ?>
+        <!--end::Sidebar--> <!--begin::App Main-->
 
-            <main class="app-main"> <!--begin::App Content Header-->
-                <div class="app-content-header"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Data Report</h3>
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Data Report</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Master Data</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Data Report
+                                </li>
+                            </ol>
+                        </div>
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
+
+            <div class="app-content"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Report</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#filterModal">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#exportModal">
+                                    <i class="fas fa-download"></i>
+                                </button>
                             </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-end">
-                                    <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Data Report
-                                    </li>
-                                </ol>
-                            </div>
-                        </div> <!--end::Row-->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content Header--> <!--begin::App Content-->
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Kode Desa</th>
+                                        <th>Nama Desa</th>
+                                        <th>Luas Wilayah Desa (Hektar)</th>
+                                        <th>Batas Wilayah Desa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    // Filter data berdasarkan tahun
+                                    $filter_tahun = isset($_GET['filter_tahun']) ? intval($_GET['filter_tahun']) : null;
 
-                <div class="app-content"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Manage Report</h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#filterModal">
-                                        <i class="fas fa-filter"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#exportModal">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body p-0">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Kode Desa</th>
-                                            <th>Nama Desa</th>
-                                            <th>Luas Wilayah Desa (Hektar)</th>
-                                            <th>Batas Wilayah Desa</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        // Filter data berdasarkan tahun
-                                        $filter_tahun = isset($_GET['filter_tahun']) ? intval($_GET['filter_tahun']) : null;
-
-                                        // Query untuk mengambil data desa
-                                        $query = "
+                                    // Query untuk mengambil data desa
+                                    $query = "
                                         SELECT DISTINCT
                                             tb_enumerator.kode_desa,
                                             tb_enumerator.nama_desa,
@@ -291,213 +290,211 @@ if ($type === 'pdf') {
                                         ON
                                             tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
                                     ";
-                                        if ($filter_tahun) {
-                                            $query .= "
+                                    if ($filter_tahun) {
+                                        $query .= "
                                             LEFT JOIN user_progress
                                             ON tb_enumerator.id_desa = user_progress.desa_id
                                             WHERE YEAR(user_progress.created_at) = $filter_tahun
                                         ";
-                                        }
+                                    }
 
-                                        $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+                                    $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
 
-                                        $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
+                                    $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
 
-                                        $no = 1;
-                                        if ($result && mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>";
-                                                echo "<td>" . $no++ . "</td>";
-                                                echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
-                                                echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
-                                                echo "<td>" . (!empty($row['luas_wilayah_desa']) ? htmlspecialchars($row['luas_wilayah_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
-                                                echo "<td>";
-                                                if (!empty($row['batas_wilayah'])) {
-                                                    echo "<ul>" . $row['batas_wilayah'] . "</ul>";
-                                                } else {
-                                                    echo '<span class="badge bg-warning text-dark">Belum Mengisi</span>';
-                                                }
-                                                echo "</td>";
-
-                                                echo "</tr>";
+                                    $no = 1;
+                                    if ($result && mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<tr>";
+                                            echo "<td>" . $no++ . "</td>";
+                                            echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>" . (!empty($row['luas_wilayah_desa']) ? htmlspecialchars($row['luas_wilayah_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>";
+                                            if (!empty($row['batas_wilayah'])) {
+                                                echo "<ul>" . $row['batas_wilayah'] . "</ul>";
+                                            } else {
+                                                echo '<span class="badge bg-warning text-dark">Belum Mengisi</span>';
                                             }
-                                        } else {
-                                            echo "<tr><td colspan='3'>Tidak ada data.</td></tr>";
+                                            echo "</td>";
+
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='3'>Tidak ada data.</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div> <!--end::Container-->
+
+                <!-- Modal Filter Tahun -->
+                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="GET">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="filterModalLabel">Filter Berdasarkan Tahun</h5>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="filter_tahun">Pilih Tahun:</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                        <option value="" selected disabled>Pilih Tahun</option>
+                                        <?php
+                                        // Ambil tahun unik dari tabel user_progress
+                                        $query_tahun = "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC";
+                                        $result_tahun = mysqli_query($conn, $query_tahun) or die("Error: " . mysqli_error($conn));
+
+                                        if ($result_tahun) {
+                                            while ($row_tahun = mysqli_fetch_assoc($result_tahun)) {
+                                                $selected = (isset($_GET['filter_tahun']) && $_GET['filter_tahun'] == $row_tahun['tahun']) ? 'selected' : '';
+                                                echo "<option value='" . htmlspecialchars($row_tahun['tahun']) . "' $selected>" . htmlspecialchars($row_tahun['tahun']) . "</option>";
+                                            }
                                         }
                                         ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div> <!--end::Container-->
-
-                    <!-- Modal Filter Tahun -->
-                    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form method="GET">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="filterModalLabel">Filter Berdasarkan Tahun</h5>
-                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
-                                            &times;
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label for="filter_tahun">Pilih Tahun:</label>
-                                        <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
-                                            <option value="" selected disabled>Pilih Tahun</option>
-                                            <?php
-                                            // Ambil tahun unik dari tabel user_progress
-                                            $query_tahun = "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC";
-                                            $result_tahun = mysqli_query($conn, $query_tahun) or die("Error: " . mysqli_error($conn));
-
-                                            if ($result_tahun) {
-                                                while ($row_tahun = mysqli_fetch_assoc($result_tahun)) {
-                                                    $selected = (isset($_GET['filter_tahun']) && $_GET['filter_tahun'] == $row_tahun['tahun']) ? 'selected' : '';
-                                                    echo "<option value='" . htmlspecialchars($row_tahun['tahun']) . "' $selected>" . htmlspecialchars($row_tahun['tahun']) . "</option>";
-                                                }
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>-->
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> &nbsp; Simpan</button>
-                                    </div>
-                                </form>
-                            </div>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>-->
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> &nbsp; Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Modal Export -->
-                    <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form method="GET">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
-                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
-                                            &times;
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label for="kode_desa">Pilih Desa:</label>
-                                        <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
-                                            <option value="">Semua Desa</option>
-                                            <?php
-                                            $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_enumerator");
-                                            while ($desa = mysqli_fetch_assoc($desaResult)) {
-                                                echo "<option value='{$desa['kode_desa']}'>{$desa['nama_desa']}</option>";
-                                            }
-                                            ?>
-                                        </select>
+                <!-- Modal Export -->
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="GET">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="kode_desa">Pilih Desa:</label>
+                                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
+                                        <option value="">Semua Desa</option>
+                                        <?php
+                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_enumerator");
+                                        while ($desa = mysqli_fetch_assoc($desaResult)) {
+                                            echo "<option value='{$desa['kode_desa']}'>{$desa['nama_desa']}</option>";
+                                        }
+                                        ?>
+                                    </select>
 
-                                        <label for="filter_tahun">Pilih Tahun:</label>
-                                        <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
-                                            <option value="">Semua Tahun</option>
-                                            <?php
-                                            $tahunResult = mysqli_query($conn, "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC");
-                                            while ($tahun = mysqli_fetch_assoc($tahunResult)) {
-                                                echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
+                                    <label for="filter_tahun">Pilih Tahun:</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                        <option value="">Semua Tahun</option>
+                                        <?php
+                                        $tahunResult = mysqli_query($conn, "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC");
+                                        while ($tahun = mysqli_fetch_assoc($tahunResult)) {
+                                            echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
 
-                                    <div class="modal-footer">
-                                        <!-- Untuk Ekspor Excel -->
-                                        <button type="submit" name="type" value="excel" class="btn btn-success"><i class="fas fa-file-excel"></i> &nbsp; Export Excel</button>
-                                        <!-- Untuk Ekspor PDF -->
-                                        <button type="submit" name="type" value="pdf" class="btn btn-danger"><i class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
-                                    </div>
-                                </form>
-                            </div>
+                                <div class="modal-footer">
+                                    <!-- Untuk Ekspor Excel -->
+                                    <button type="submit" name="type" value="excel" class="btn btn-success"><i class="fas fa-file-excel"></i> &nbsp; Export Excel</button>
+                                    <!-- Untuk Ekspor PDF -->
+                                    <button type="submit" name="type" value="pdf" class="btn btn-danger"><i class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+                </div>
 
-                </div> <!--end::App Content-->
-            </main> <!--end::App Main--> <!--begin::Footer-->
+            </div> <!--end::App Content-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
 
-            <footer class="app-footer"> <!--begin::To the end-->
-                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                <strong>
-                    Copyright &copy; 2024&nbsp;
-                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                </strong>
-                All rights reserved.
-                <!--end::Copyright-->
-            </footer> <!--end::Footer-->
-        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    </div>
+        <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+            <strong>
+                Copyright &copy; 2024&nbsp;
+                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+            </strong>
+            All rights reserved.
+            <!--end::Copyright-->
+        </footer> <!--end::Footer-->
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
+    <!-- Tambahkan library Select2 dan tema Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="../../plugins/moment/moment.min.js"></script>
+    <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- BS-Stepper -->
+    <script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-        <!-- Tambahkan library Select2 dan tema Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
-        <!-- jQuery -->
-        <script src="../../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Select2 -->
-        <script src="../../plugins/select2/js/select2.full.min.js"></script>
-        <!-- Bootstrap4 Duallistbox -->
-        <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-        <!-- InputMask -->
-        <script src="../../plugins/moment/moment.min.js"></script>
-        <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
-        <!-- date-range-picker -->
-        <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- bootstrap color picker -->
-        <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-        <!-- Tempusdominus Bootstrap 4 -->
-        <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-        <!-- Bootstrap Switch -->
-        <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-        <!-- BS-Stepper -->
-        <script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
-        <!-- dropzonejs -->
-        <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+    <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-        <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-        <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
-        <script>
-            $(function() {
-                //Initialize Select2 Elements
-                $('.select2').select2()
-
-                //Initialize Select2 Elements
-                $('.select2bs4').select2({
-                    theme: 'bootstrap4'
-                })
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
             })
+        })
 
-            const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
-            const Default = {
-                scrollbarTheme: "os-theme-light",
-                scrollbarAutoHide: "leave",
-                scrollbarClickScroll: true,
-            };
-            document.addEventListener("DOMContentLoaded", function() {
-                const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-                if (
-                    sidebarWrapper &&
-                    typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
-                ) {
-                    OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-                        scrollbars: {
-                            theme: Default.scrollbarTheme,
-                            autoHide: Default.scrollbarAutoHide,
-                            clickScroll: Default.scrollbarClickScroll,
-                        },
-                    });
-                }
-            });
-        </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
+        const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+        const Default = {
+            scrollbarTheme: "os-theme-light",
+            scrollbarAutoHide: "leave",
+            scrollbarClickScroll: true,
+        };
+        document.addEventListener("DOMContentLoaded", function() {
+            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+            if (
+                sidebarWrapper &&
+                typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+            ) {
+                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                    scrollbars: {
+                        theme: Default.scrollbarTheme,
+                        autoHide: Default.scrollbarAutoHide,
+                        clickScroll: Default.scrollbarClickScroll,
+                    },
+                });
+            }
+        });
+    </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
 </body><!--end::Body-->
 
 </html>

@@ -74,336 +74,334 @@ if ($result->num_rows > 0) {
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
     <?php include "../../components/loading.php"; ?>
 
-    <div class="page animate__animated animate__fadeIn">
-        <div class="app-wrapper"> <!--begin::Header-->
+    <div class="app-wrapper"> <!--begin::Header-->
 
-            <?php include('../../components/navbar.php'); ?>
+        <?php include('../../components/navbar.php'); ?>
 
-            <?php include('../../components/sidebar.php'); ?>
-            <!--end::Sidebar--> <!--begin::App Main-->
+        <?php include('../../components/sidebar.php'); ?>
+        <!--end::Sidebar--> <!--begin::App Main-->
 
-            <main class="app-main"> <!--begin::App Content Header-->
-                <div class="app-content-header"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Data User</h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-end">
-                                    <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Data User
-                                    </li>
-                                </ol>
-                            </div>
-                        </div> <!--end::Row-->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content Header--> <!--begin::App Content-->
-
-                <div class="app-content"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <!-- Notifikasi Add -->
-                        <?php if (isset($_GET['messageadd'])): ?>
-                            <script>
-                                let messageadd = "<?= $_GET['messageadd'] ?>";
-                                if (messageadd === 'success') {
-                                    swal({
-                                        title: "Berhasil!",
-                                        text: "Data user berhasil ditambahkan.",
-                                        icon: "success",
-                                        timer: 3000,
-                                        buttons: false
-                                    }).then(() => {
-                                        window.location.href = "user.php";
-                                    });
-                                } else if (messageadd === 'error') {
-                                    swal({
-                                        title: "Gagal!",
-                                        text: "Terjadi kesalahan saat menambahkan data.",
-                                        icon: "error",
-                                        timer: 3000,
-                                        buttons: false
-                                    }).then(() => {
-                                        window.location.href = "user.php";
-                                    });
-                                }
-                            </script>
-                        <?php endif; ?>
-
-                        <!-- Modal Tambah User -->
-                        <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="../../handlers/add_user.php" method="POST">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="addUserModalLabel">Tambah User</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="name" class="form-label">Nama User (Desa/Kelurahan)</label>
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Nama" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="username" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="level" class="form-label">Level</label>
-                                                <select class="form-select" id="level" name="level" required>
-                                                    <option value="admin">Admin</option>
-                                                    <option value="user">User</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
-                                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Data User</h3>
                         </div>
-
-                        <!-- Notifikasi edit -->
-                        <?php if (isset($_GET['messageedit'])): ?>
-                            <script>
-                                let messageedit = "<?= $_GET['messageedit'] ?>";
-                                if (messageedit === 'success') {
-                                    swal({
-                                        title: "Berhasil!",
-                                        text: "Data user berhasil diubah.",
-                                        icon: "success",
-                                        timer: 3000,
-                                        buttons: false
-                                    }).then(() => {
-                                        window.location.href = "user.php";
-                                    });
-                                } else if (messageedit === 'error') {
-                                    swal({
-                                        title: "Gagal!",
-                                        text: "Terjadi kesalahan saat mengubah data.",
-                                        icon: "error",
-                                        timer: 3000,
-                                        buttons: false
-                                    }).then(() => {
-                                        window.location.href = "user.php";
-                                    });
-                                }
-                            </script>
-                        <?php endif; ?>
-
-                        <!-- Modal Edit User -->
-                        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="../../handlers/edit_user.php" method="POST" enctype="multipart/form-data">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="edit_name" class="form-label">Nama User (Desa/Kelurahan)</label>
-                                                <input type="text" class="form-control" id="edit_name" name="name" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="edit_username" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="edit_username" name="username" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="edit_password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="edit_password" name="password" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="edit_level" class="form-label">Level</label>
-                                                <select class="form-select" id="edit_level" name="level" required>
-                                                    <option value="admin">Admin</option>
-                                                    <option value="user">User</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
-                                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Master Data</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Data User
+                                </li>
+                            </ol>
                         </div>
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
 
+            <div class="app-content"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <!-- Notifikasi Add -->
+                    <?php if (isset($_GET['messageadd'])): ?>
                         <script>
-                            function editUser(id, name, username, password, level) {
-                                document.getElementById('edit_name').value = name;
-                                document.getElementById('edit_username').value = username;
-                                document.getElementById('edit_password').value = password;
-                                document.getElementById('edit_level').value = level;
-                                document.querySelector('#editUserModal form').action = `../../handlers/edit_user.php?id=${id}`;
+                            let messageadd = "<?= $_GET['messageadd'] ?>";
+                            if (messageadd === 'success') {
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Data user berhasil ditambahkan.",
+                                    icon: "success",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "user.php";
+                                });
+                            } else if (messageadd === 'error') {
+                                swal({
+                                    title: "Gagal!",
+                                    text: "Terjadi kesalahan saat menambahkan data.",
+                                    icon: "error",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "user.php";
+                                });
                             }
                         </script>
+                    <?php endif; ?>
 
-
-                        <!-- Notifikasi delete -->
-                        <?php if (isset($_GET['messagedelete'])): ?>
-                            <script>
-                                let messagedelete = "<?= $_GET['messagedelete'] ?>";
-                                if (messagedelete === 'success') {
-                                    swal({
-                                        title: "Berhasil!",
-                                        text: "Data user berhasil dihapus.",
-                                        icon: "success",
-                                        timer: 3000,
-                                        buttons: false
-                                    }).then(() => {
-                                        window.location.href = "user.php";
-                                    });
-                                } else if (messagedelete === 'error') {
-                                    swal({
-                                        title: "Gagal!",
-                                        text: "Terjadi kesalahan saat menghapus data.",
-                                        icon: "error",
-                                        timer: 3000,
-                                        buttons: false
-                                    }).then(() => {
-                                        window.location.href = "user.php";
-                                    });
-                                }
-                            </script>
-                        <?php endif; ?>
-
-                        <!-- Modal Delete User -->
-                        <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="../../handlers/delete_user.php" method="POST">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteUserModalLabel">Hapus User</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- Modal Tambah User -->
+                    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="../../handlers/add_user.php" method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addUserModalLabel">Tambah User</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nama User (Desa/Kelurahan)</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama" required>
                                         </div>
-                                        <div class="modal-body">
-                                            <p>Apakah Anda yakin ingin menghapus user ini?</p>
-                                            <input type="hidden" id="delete_user_id" name="id">
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                                         </div>
-                                        <div class="modal-footer">
-                                            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
-                                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Hapus</button>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="mb-3">
+                                            <label for="level" class="form-label">Level</label>
+                                            <select class="form-select" id="level" name="level" required>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
+                    <!-- Notifikasi edit -->
+                    <?php if (isset($_GET['messageedit'])): ?>
                         <script>
-                            function setDeleteUserId(id) {
-                                document.getElementById('delete_user_id').value = id;
+                            let messageedit = "<?= $_GET['messageedit'] ?>";
+                            if (messageedit === 'success') {
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Data user berhasil diubah.",
+                                    icon: "success",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "user.php";
+                                });
+                            } else if (messageedit === 'error') {
+                                swal({
+                                    title: "Gagal!",
+                                    text: "Terjadi kesalahan saat mengubah data.",
+                                    icon: "error",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "user.php";
+                                });
                             }
                         </script>
+                    <?php endif; ?>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Manage Users</h3>
-
-                                <div class="card-tools">
-                                    <!-- Button Tambah User -->
-                                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                                        <i class="fas fa-plus"></i> &nbsp; Add User
-                                    </button>
-                                </div>
+                    <!-- Modal Edit User -->
+                    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="../../handlers/edit_user.php" method="POST" enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="edit_name" class="form-label">Nama User (Desa/Kelurahan)</label>
+                                            <input type="text" class="form-control" id="edit_name" name="name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="edit_username" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="edit_username" name="username" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="edit_password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="edit_password" name="password" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="edit_level" class="form-label">Level</label>
+                                            <select class="form-select" id="edit_level" name="level" required>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="card-body p-0">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                #
-                                            </th>
-                                            <th>
-                                                User
-                                            </th>
-                                            <th>
-                                                Username
-                                            </th>
-                                            <th>
-                                                Password
-                                            </th>
-                                            <th>
-                                                Level
-                                            </th>
-                                            <th>
-                                                Actions
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php if (!empty($users)): ?>
-                                            <?php foreach ($users as $index => $user): ?>
-                                                <tr>
-                                                    <td><?= $index + 1 ?></td>
-                                                    <td><?= htmlspecialchars($user['name']) ?></td>
-                                                    <td><?= htmlspecialchars($user['username']) ?></td>
-                                                    <td><?= htmlspecialchars($user['password']) ?></td>
-                                                    <td><?= htmlspecialchars($user['level']) ?></td>
+                        </div>
+                    </div>
 
-                                                    <td class="project-actions">
-                                                        <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"
-                                                            onclick="editUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                        </a>
-                                                        &nbsp;
-                                                        <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
-                                                            onclick="setDeleteUserId(<?= $user['id'] ?>)">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </a>
+                    <script>
+                        function editUser(id, name, username, password, level) {
+                            document.getElementById('edit_name').value = name;
+                            document.getElementById('edit_username').value = username;
+                            document.getElementById('edit_password').value = password;
+                            document.getElementById('edit_level').value = level;
+                            document.querySelector('#editUserModal form').action = `../../handlers/edit_user.php?id=${id}`;
+                        }
+                    </script>
 
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        <?php else: ?>
-                                            tr>
-                                            <td colspan="5" class="text-center">Tidak ada data</td>
+
+                    <!-- Notifikasi delete -->
+                    <?php if (isset($_GET['messagedelete'])): ?>
+                        <script>
+                            let messagedelete = "<?= $_GET['messagedelete'] ?>";
+                            if (messagedelete === 'success') {
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Data user berhasil dihapus.",
+                                    icon: "success",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "user.php";
+                                });
+                            } else if (messagedelete === 'error') {
+                                swal({
+                                    title: "Gagal!",
+                                    text: "Terjadi kesalahan saat menghapus data.",
+                                    icon: "error",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "user.php";
+                                });
+                            }
+                        </script>
+                    <?php endif; ?>
+
+                    <!-- Modal Delete User -->
+                    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="../../handlers/delete_user.php" method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteUserModalLabel">Hapus User</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Apakah Anda yakin ingin menghapus user ini?</p>
+                                        <input type="hidden" id="delete_user_id" name="id">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Hapus</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function setDeleteUserId(id) {
+                            document.getElementById('delete_user_id').value = id;
+                        }
+                    </script>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Users</h3>
+
+                            <div class="card-tools">
+                                <!-- Button Tambah User -->
+                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                                    <i class="fas fa-plus"></i> &nbsp; Add User
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            User
+                                        </th>
+                                        <th>
+                                            Username
+                                        </th>
+                                        <th>
+                                            Password
+                                        </th>
+                                        <th>
+                                            Level
+                                        </th>
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (!empty($users)): ?>
+                                        <?php foreach ($users as $index => $user): ?>
+                                            <tr>
+                                                <td><?= $index + 1 ?></td>
+                                                <td><?= htmlspecialchars($user['name']) ?></td>
+                                                <td><?= htmlspecialchars($user['username']) ?></td>
+                                                <td><?= htmlspecialchars($user['password']) ?></td>
+                                                <td><?= htmlspecialchars($user['level']) ?></td>
+
+                                                <td class="project-actions">
+                                                    <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"
+                                                        onclick="editUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
+                                                        onclick="setDeleteUserId(<?= $user['id'] ?>)">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+
+                                                </td>
                                             </tr>
-                                        <?php endif; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix d-flex justify-content-center">
-                                <ul class="pagination pagination-sm m-0">
-                                    <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
-                                        <a class="page-link" href="?page=<?= $page - 1 ?>">&laquo;</a>
-                                    </li>
-                                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                        <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                                        </li>
-                                    <?php endfor; ?>
-                                    <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
-                                        <a class="page-link" href="?page=<?= $page + 1 ?>">&raquo;</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        tr>
+                                        <td colspan="5" class="text-center">Tidak ada data</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.card -->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content-->
-            </main> <!--end::App Main--> <!--begin::Footer-->
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix d-flex justify-content-center">
+                            <ul class="pagination pagination-sm m-0">
+                                <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                                    <a class="page-link" href="?page=<?= $page - 1 ?>">&laquo;</a>
+                                </li>
+                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                    <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                                    </li>
+                                <?php endfor; ?>
+                                <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
+                                    <a class="page-link" href="?page=<?= $page + 1 ?>">&raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
 
-            <footer class="app-footer"> <!--begin::To the end-->
-                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                <strong>
-                    Copyright &copy; 2024&nbsp;
-                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                </strong>
-                All rights reserved.
-                <!--end::Copyright-->
-            </footer> <!--end::Footer-->
-        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    </div>
+        <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+            <strong>
+                Copyright &copy; 2024&nbsp;
+                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+            </strong>
+            All rights reserved.
+            <!--end::Copyright-->
+        </footer> <!--end::Footer-->
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

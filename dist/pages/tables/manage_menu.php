@@ -72,328 +72,326 @@ $menus = $conn->query($menu_query);
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
   <?php include "../../components/loading.php"; ?>
 
-  <div class="page animate__animated animate__fadeIn">
-    <div class="app-wrapper"> <!--begin::Header-->
+  <div class="app-wrapper"> <!--begin::Header-->
 
-      <?php include('../../components/navbar.php'); ?>
+    <?php include('../../components/navbar.php'); ?>
 
-      <?php include('../../components/sidebar.php'); ?>
-      <!--end::Sidebar--> <!--begin::App Main-->
+    <?php include('../../components/sidebar.php'); ?>
+    <!--end::Sidebar--> <!--begin::App Main-->
 
-      <main class="app-main"> <!--begin::App Content Header-->
-        <div class="app-content-header"> <!--begin::Container-->
-          <div class="container-fluid"> <!--begin::Row-->
-            <div class="row">
-              <div class="col-sm-6">
-                <h3 class="mb-0">Management Menu</h3>
+    <main class="app-main"> <!--begin::App Content Header-->
+      <div class="app-content-header"> <!--begin::Container-->
+        <div class="container-fluid"> <!--begin::Row-->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class="mb-0">Management Menu</h3>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="#">Master Data</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Management Menu
+                </li>
+              </ol>
+            </div>
+          </div> <!--end::Row-->
+        </div> <!--end::Container-->
+      </div> <!--end::App Content Header--> <!--begin::App Content-->
+
+      <div class="app-content"> <!--begin::Container-->
+        <div class="container-fluid"> <!--begin::Row-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Manage Menu</h3>
+              <div class="card-tools">
+                <!-- Button Tambah Menu -->
+                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+                  <i class="fas fa-plus"></i> &nbsp; Add Menu
+                </button>
               </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-end">
-                  <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Management Menu
-                  </li>
-                </ol>
-              </div>
-            </div> <!--end::Row-->
-          </div> <!--end::Container-->
-        </div> <!--end::App Content Header--> <!--begin::App Content-->
+            </div>
+            <div class="card-body p-0">
 
-        <div class="app-content"> <!--begin::Container-->
-          <div class="container-fluid"> <!--begin::Row-->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Manage Menu</h3>
-                <div class="card-tools">
-                  <!-- Button Tambah Menu -->
-                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addMenuModal">
-                    <i class="fas fa-plus"></i> &nbsp; Add Menu
-                  </button>
-                </div>
-              </div>
-              <div class="card-body p-0">
-
-                <!-- Modal Tambah -->
-                <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="addMenuModalLabel">Tambah Menu Baru</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form method="POST" action="../../handlers/add_menu.php">
-                          <div class="mb-3">
-                            <label for="newMenuName" class="form-label">Nama Menu</label>
-                            <input type="text" class="form-control" id="newMenuName" name="menu_name" placeholder="Masukkan nama menu" required oninput="updateURL('newMenuName', 'newMenuURL')">
-                          </div>
-                          <div class="mb-3">
-                            <label for="newMenuURL" class="form-label">URL</label>
-                            <input type="text" class="form-control" id="newMenuURL" name="menu_url" value="pages/forms/" readonly>
-                          </div>
-                          <div class="mb-3">
-                            <label for="newMenuStatus" class="form-label">Status</label>
-                            <select class="form-select" id="newMenuStatus" name="menu_status">
-                              <option value="1" selected>Aktif</option>
-                              <option value="0">Nonaktif</option>
-                            </select>
-                          </div>
-                          <div class="modal-footer">
-                            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
-                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
-                          </div>
-                        </form>
-                      </div>
+              <!-- Modal Tambah -->
+              <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addMenuModalLabel">Tambah Menu Baru</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                  </div>
-                </div>
-
-                <!-- Modal Edit -->
-                <div class="modal fade" id="editMenuModal" tabindex="-1" aria-labelledby="editMenuModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="editMenuModalLabel">Edit Menu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form method="POST" action="edit_menu.php">
-                          <input type="hidden" name="menu_id" id="editMenuId">
-                          <div class="mb-3">
-                            <label for="editMenuName" class="form-label">Nama Menu</label>
-                            <input type="text" class="form-control" id="editMenuName" name="menu_name" required oninput="updateURL('editMenuName', 'editMenuURL')">
-                          </div>
-                          <div class="mb-3">
-                            <label for="editMenuURL" class="form-label">URL</label>
-                            <input type="text" class="form-control" id="editMenuURL" name="menu_url" readonly>
-                          </div>
-                          <div class="mb-3">
-                            <label for="editMenuStatus" class="form-label">Status</label>
-                            <select class="form-select" id="editMenuStatus" name="menu_status">
-                              <option value="1">Aktif</option>
-                              <option value="0">Nonaktif</option>
-                            </select>
-                          </div>
-                          <div class="modal-footer">
-                            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
-                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Modal Delete -->
-                <div class="modal fade" id="deleteMenuModal" tabindex="-1" aria-labelledby="deleteMenuModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <form action="../../handlers/delete_menu.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="deleteMenuModalLabel">Hapus Menu</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                      <form method="POST" action="../../handlers/add_menu.php">
+                        <div class="mb-3">
+                          <label for="newMenuName" class="form-label">Nama Menu</label>
+                          <input type="text" class="form-control" id="newMenuName" name="menu_name" placeholder="Masukkan nama menu" required oninput="updateURL('newMenuName', 'newMenuURL')">
                         </div>
-                        <div class="modal-body">
-                          <p>Apakah Anda yakin ingin menghapus menu ini?</p>
-                          <input type="hidden" id="delete_menu_id" name="id">
+                        <div class="mb-3">
+                          <label for="newMenuURL" class="form-label">URL</label>
+                          <input type="text" class="form-control" id="newMenuURL" name="menu_url" value="pages/forms/" readonly>
+                        </div>
+                        <div class="mb-3">
+                          <label for="newMenuStatus" class="form-label">Status</label>
+                          <select class="form-select" id="newMenuStatus" name="menu_status">
+                            <option value="1" selected>Aktif</option>
+                            <option value="0">Nonaktif</option>
+                          </select>
                         </div>
                         <div class="modal-footer">
                           <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
-                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Hapus</button>
+                          <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
+              </div>
 
+              <!-- Modal Edit -->
+              <div class="modal fade" id="editMenuModal" tabindex="-1" aria-labelledby="editMenuModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editMenuModalLabel">Edit Menu</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="POST" action="edit_menu.php">
+                        <input type="hidden" name="menu_id" id="editMenuId">
+                        <div class="mb-3">
+                          <label for="editMenuName" class="form-label">Nama Menu</label>
+                          <input type="text" class="form-control" id="editMenuName" name="menu_name" required oninput="updateURL('editMenuName', 'editMenuURL')">
+                        </div>
+                        <div class="mb-3">
+                          <label for="editMenuURL" class="form-label">URL</label>
+                          <input type="text" class="form-control" id="editMenuURL" name="menu_url" readonly>
+                        </div>
+                        <div class="mb-3">
+                          <label for="editMenuStatus" class="form-label">Status</label>
+                          <select class="form-select" id="editMenuStatus" name="menu_status">
+                            <option value="1">Aktif</option>
+                            <option value="0">Nonaktif</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer">
+                          <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                          <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp; Simpan</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal Delete -->
+              <div class="modal fade" id="deleteMenuModal" tabindex="-1" aria-labelledby="deleteMenuModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <form action="../../handlers/delete_menu.php" method="POST">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="deleteMenuModalLabel">Hapus Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menghapus menu ini?</p>
+                        <input type="hidden" id="delete_menu_id" name="id">
+                      </div>
+                      <div class="modal-footer">
+                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>-->
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Hapus</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function updateURL(nameFieldId, urlFieldId) {
+                  var name = document.getElementById(nameFieldId).value;
+                  var formattedName = name.toLowerCase().replace(/\s+/g, '_') + '.php';
+                  document.getElementById(urlFieldId).value = 'pages/forms/' + formattedName;
+                }
+
+                // Function to edit menu details and populate modal fields
+                function editMenu(id, name, url, status) {
+                  document.getElementById('editMenuId').value = id;
+                  document.getElementById('editMenuName').value = name;
+                  document.getElementById('editMenuURL').value = url;
+                  document.getElementById('editMenuStatus').value = status;
+                  document.querySelector('#editMenuModal form').action = `../../handlers/edit_menu.php?id=${id}`;
+                }
+
+                // Function to set the menu ID for deletion in the modal
+                function setDeleteMenuId(id) {
+                  document.getElementById('delete_menu_id').value = id;
+                }
+              </script>
+
+              <!-- Notifikasi Add -->
+              <?php if (isset($_GET['messageadd'])): ?>
                 <script>
-                  function updateURL(nameFieldId, urlFieldId) {
-                    var name = document.getElementById(nameFieldId).value;
-                    var formattedName = name.toLowerCase().replace(/\s+/g, '_') + '.php';
-                    document.getElementById(urlFieldId).value = 'pages/forms/' + formattedName;
-                  }
-
-                  // Function to edit menu details and populate modal fields
-                  function editMenu(id, name, url, status) {
-                    document.getElementById('editMenuId').value = id;
-                    document.getElementById('editMenuName').value = name;
-                    document.getElementById('editMenuURL').value = url;
-                    document.getElementById('editMenuStatus').value = status;
-                    document.querySelector('#editMenuModal form').action = `../../handlers/edit_menu.php?id=${id}`;
-                  }
-
-                  // Function to set the menu ID for deletion in the modal
-                  function setDeleteMenuId(id) {
-                    document.getElementById('delete_menu_id').value = id;
-                  }
-                </script>
-
-                <!-- Notifikasi Add -->
-                <?php if (isset($_GET['messageadd'])): ?>
-                  <script>
-                    let messageadd = "<?= $_GET['messageadd'] ?>";
-                    if (messageadd === 'success') {
-                      swal({
-                        title: "Berhasil!",
-                        text: "Menu berhasil ditambahkan.",
-                        icon: "success",
-                        timer: 3000,
-                        buttons: false
-                      }).then(() => {
-                        window.location.href = "manage_menu.php";
-                      });
-                    } else if (messageadd === 'error') {
-                      swal({
-                        title: "Gagal!",
-                        text: "Terjadi kesalahan saat menambahkan menu.",
-                        icon: "error",
-                        timer: 3000,
-                        buttons: false
-                      }).then(() => {
-                        window.location.href = "manage_menu.php";
-                      });
-                    }
-                  </script>
-                <?php endif; ?>
-
-                <!-- Notifikasi edit -->
-                <?php if (isset($_GET['messageedit'])): ?>
-                  <script>
-                    let messageedit = "<?= $_GET['messageedit'] ?>";
-                    if (messageedit === 'success') {
-                      swal({
-                        title: "Berhasil!",
-                        text: "Menu berhasil diubah.",
-                        icon: "success",
-                        timer: 3000,
-                        buttons: false
-                      }).then(() => {
-                        window.location.href = "manage_menu.php";
-                      });
-                    } else if (messageedit === 'error') {
-                      swal({
-                        title: "Gagal!",
-                        text: "Terjadi kesalahan saat mengubah menu.",
-                        icon: "error",
-                        timer: 3000,
-                        buttons: false
-                      }).then(() => {
-                        window.location.href = "manage_menu.php";
-                      });
-                    }
-                  </script>
-                <?php endif; ?>
-
-                <!-- Notifikasi delete -->
-                <?php if (isset($_GET['messagedelete'])): ?>
-                  <script>
-                    let messagedelete = "<?= $_GET['messagedelete'] ?>";
-                    if (messagedelete === 'success') {
-                      swal({
-                        title: "Berhasil!",
-                        text: "Menu berhasil dihapus.",
-                        icon: "success",
-                        timer: 3000,
-                        buttons: false
-                      }).then(() => {
-                        window.location.href = "manage_menu.php";
-                      });
-                    } else if (messagedelete === 'error') {
-                      swal({
-                        title: "Gagal!",
-                        text: "Terjadi kesalahan saat menghapus menu.",
-                        icon: "error",
-                        timer: 3000,
-                        buttons: false
-                      }).then(() => {
-                        window.location.href = "manage_menu.php";
-                      });
-                    }
-                  </script>
-                <?php endif; ?>
-
-                <table class="table table-striped table-hover align-middle">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Menu Name</th>
-                      <th>Path</th>
-                      <th>Current Status</th>
-                      <th>Status (On/Off)</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $no = 1;
-                    while ($menu = $menus->fetch_assoc()) : ?>
-                      <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $menu['name']; ?></td>
-                        <td><?php echo $menu['url']; ?></td>
-                        <td>
-                          <span class="badge <?php echo $menu['status'] ? 'bg-success' : 'bg-danger'; ?>">
-                            <?php echo $menu['status'] ? 'Aktif' : 'Nonaktif'; ?>
-                          </span>
-                        </td>
-                        <td>
-                          <form method="POST" class="toggle-switch-form">
-                            <input type="hidden" name="menu_id" value="<?php echo $menu['id']; ?>">
-                            <div class="form-check form-switch">
-                              <input class="form-check-input <?php echo $menu['status'] ? 'bg-success' : ''; ?>" type="checkbox" name="status" value="<?php echo $menu['status'] ? 0 : 1; ?>" <?php echo $menu['status'] ? 'checked' : ''; ?> onchange="this.form.submit()">
-                            </div>
-                          </form>
-                        </td>
-                        <td>
-                          <a class="btn btn-warning btn-sm btn-edit" href="#" data-bs-toggle="modal" data-bs-target="#editMenuModal"
-                            data-id="<?php echo $menu['id']; ?>" data-name="<?php echo $menu['name']; ?>"
-                            data-url="<?php echo $menu['url']; ?>" data-status="<?php echo $menu['status']; ?>"
-                            onclick="editMenu(<?php echo $menu['id']; ?>, '<?php echo $menu['name']; ?>', '<?php echo $menu['url']; ?>', '<?php echo $menu['status']; ?>')">
-                            <i class="fas fa-pencil-alt"></i>
-                          </a>
-                          &nbsp;
-                          <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteMenuModal"
-                            data-id="<?php echo $menu['id']; ?>" onclick="setDeleteMenuId(<?php echo $menu['id']; ?>)">
-                            <i class="fas fa-trash-alt"></i>
-                          </a>
-                        </td>
-                      </tr>
-                    <?php endwhile; ?>
-                  </tbody>
-                </table>
-
-                <?php if ($sweetalert_message): ?>
-                  <script>
-                    // Menampilkan SweetAlert tanpa tombol
+                  let messageadd = "<?= $_GET['messageadd'] ?>";
+                  if (messageadd === 'success') {
                     swal({
                       title: "Berhasil!",
-                      text: "<?php echo $sweetalert_message; ?>",
+                      text: "Menu berhasil ditambahkan.",
                       icon: "success",
-                      timer: 2000, // Menampilkan selama 2 detik
-                      buttons: false, // Menonaktifkan tombol
-                      className: "swal-modal"
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
                     });
-                  </script>
-                <?php endif; ?>
+                  } else if (messageadd === 'error') {
+                    swal({
+                      title: "Gagal!",
+                      text: "Terjadi kesalahan saat menambahkan menu.",
+                      icon: "error",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  }
+                </script>
+              <?php endif; ?>
 
-              </div>
-              <!-- /.card-body -->
+              <!-- Notifikasi edit -->
+              <?php if (isset($_GET['messageedit'])): ?>
+                <script>
+                  let messageedit = "<?= $_GET['messageedit'] ?>";
+                  if (messageedit === 'success') {
+                    swal({
+                      title: "Berhasil!",
+                      text: "Menu berhasil diubah.",
+                      icon: "success",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  } else if (messageedit === 'error') {
+                    swal({
+                      title: "Gagal!",
+                      text: "Terjadi kesalahan saat mengubah menu.",
+                      icon: "error",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  }
+                </script>
+              <?php endif; ?>
+
+              <!-- Notifikasi delete -->
+              <?php if (isset($_GET['messagedelete'])): ?>
+                <script>
+                  let messagedelete = "<?= $_GET['messagedelete'] ?>";
+                  if (messagedelete === 'success') {
+                    swal({
+                      title: "Berhasil!",
+                      text: "Menu berhasil dihapus.",
+                      icon: "success",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  } else if (messagedelete === 'error') {
+                    swal({
+                      title: "Gagal!",
+                      text: "Terjadi kesalahan saat menghapus menu.",
+                      icon: "error",
+                      timer: 3000,
+                      buttons: false
+                    }).then(() => {
+                      window.location.href = "manage_menu.php";
+                    });
+                  }
+                </script>
+              <?php endif; ?>
+
+              <table class="table table-striped table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Menu Name</th>
+                    <th>Path</th>
+                    <th>Current Status</th>
+                    <th>Status (On/Off)</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $no = 1;
+                  while ($menu = $menus->fetch_assoc()) : ?>
+                    <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $menu['name']; ?></td>
+                      <td><?php echo $menu['url']; ?></td>
+                      <td>
+                        <span class="badge <?php echo $menu['status'] ? 'bg-success' : 'bg-danger'; ?>">
+                          <?php echo $menu['status'] ? 'Aktif' : 'Nonaktif'; ?>
+                        </span>
+                      </td>
+                      <td>
+                        <form method="POST" class="toggle-switch-form">
+                          <input type="hidden" name="menu_id" value="<?php echo $menu['id']; ?>">
+                          <div class="form-check form-switch">
+                            <input class="form-check-input <?php echo $menu['status'] ? 'bg-success' : ''; ?>" type="checkbox" name="status" value="<?php echo $menu['status'] ? 0 : 1; ?>" <?php echo $menu['status'] ? 'checked' : ''; ?> onchange="this.form.submit()">
+                          </div>
+                        </form>
+                      </td>
+                      <td>
+                        <a class="btn btn-warning btn-sm btn-edit" href="#" data-bs-toggle="modal" data-bs-target="#editMenuModal"
+                          data-id="<?php echo $menu['id']; ?>" data-name="<?php echo $menu['name']; ?>"
+                          data-url="<?php echo $menu['url']; ?>" data-status="<?php echo $menu['status']; ?>"
+                          onclick="editMenu(<?php echo $menu['id']; ?>, '<?php echo $menu['name']; ?>', '<?php echo $menu['url']; ?>', '<?php echo $menu['status']; ?>')">
+                          <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        &nbsp;
+                        <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteMenuModal"
+                          data-id="<?php echo $menu['id']; ?>" onclick="setDeleteMenuId(<?php echo $menu['id']; ?>)">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  <?php endwhile; ?>
+                </tbody>
+              </table>
+
+              <?php if ($sweetalert_message): ?>
+                <script>
+                  // Menampilkan SweetAlert tanpa tombol
+                  swal({
+                    title: "Berhasil!",
+                    text: "<?php echo $sweetalert_message; ?>",
+                    icon: "success",
+                    timer: 2000, // Menampilkan selama 2 detik
+                    buttons: false, // Menonaktifkan tombol
+                    className: "swal-modal"
+                  });
+                </script>
+              <?php endif; ?>
+
             </div>
+            <!-- /.card-body -->
+          </div>
 
-          </div> <!--end::Container-->
-        </div> <!--end::App Content-->
-      </main> <!--end::App Main--> <!--begin::Footer-->
+        </div> <!--end::Container-->
+      </div> <!--end::App Content-->
+    </main> <!--end::App Main--> <!--begin::Footer-->
 
-      <footer class="app-footer"> <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-        <strong>
-          Copyright &copy; 2024&nbsp;
-          <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-        </strong>
-        All rights reserved.
-        <!--end::Copyright-->
-      </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-  </div>
+    <footer class="app-footer"> <!--begin::To the end-->
+      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+      <strong>
+        Copyright &copy; 2024&nbsp;
+        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+      </strong>
+      All rights reserved.
+      <!--end::Copyright-->
+    </footer> <!--end::Footer-->
+  </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
