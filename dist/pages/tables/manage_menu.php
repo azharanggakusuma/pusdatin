@@ -100,8 +100,8 @@ $menus = $conn->query($menu_query);
               <h3 class="card-title">Manage Menu</h3>
               <div class="card-tools">
                 <!-- Button Tambah Menu -->
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addMenuModal">
-                  <i class="fas fa-plus"></i>
+                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+                  <i class="fas fa-plus"></i> &nbsp; Add Menu
                 </button>
               </div>
             </div>
