@@ -25,16 +25,29 @@ $filter_tahun = $_GET['filter_tahun'] ?? null;
 
 // Query untuk mengambil data desa
 $query = "
-SELECT DISTINCT
-    tb_enumerator.kode_desa,
-    tb_enumerator.nama_desa,
-    tb_luas_wilayah_desa.luas_wilayah_desa
-FROM
-    tb_enumerator
-LEFT JOIN
-    tb_luas_wilayah_desa
-ON
-    tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+    SELECT DISTINCT
+        tb_enumerator.kode_desa,
+        tb_enumerator.nama_desa,
+        tb_luas_wilayah_desa.luas_wilayah_desa,
+        GROUP_CONCAT(
+            CONCAT(
+                'Arah: ', tb_batas_wilayah_desa.arah, 
+                ' / Batas: ', tb_batas_wilayah_desa.batas_wilayah_desa, 
+                ' / Kecamatan: ', tb_batas_wilayah_desa.kecamatan
+            ) 
+            ORDER BY tb_batas_wilayah_desa.arah
+            SEPARATOR ' | '
+        ) AS batas_wilayah
+    FROM
+        tb_enumerator
+    LEFT JOIN
+        tb_luas_wilayah_desa
+    ON
+        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+    LEFT JOIN
+        tb_batas_wilayah_desa
+    ON
+        tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
 ";
 
 // Tambahkan filter jika desa dan/atau tahun dipilih
@@ -50,6 +63,9 @@ if ($where) {
     $query .= " LEFT JOIN user_progress ON tb_enumerator.id_desa = user_progress.desa_id WHERE " . implode(' AND ', $where);
 }
 
+// Modify the query to include the GROUP BY clause
+$query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+
 // Eksekusi query
 $result = mysqli_query($conn, $query);
 
@@ -62,36 +78,45 @@ if ($type === 'excel') {
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
     $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
+    $sheet->setCellValue('D1', 'Batas Wilayah Desa'); // Add the header for 'batas_wilayah_desa'
 
-    /// Style untuk header
+    // Style untuk header
     $headerStyle = [
         'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
         'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
     ];
-    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
-
+    $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);  // Apply header style to columns A to D
 
     // Data dari database
     $rowNumber = 2;
     while ($row = mysqli_fetch_assoc($result)) {
+        // Replace the separator with a line break for better formatting in Excel
+        $batasWilayahFormatted = str_replace(' | ', PHP_EOL, $row['batas_wilayah']);
+
+        // Insert data into respective columns (A to D)
         $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
         $sheet->setCellValue('C' . $rowNumber, $row['luas_wilayah_desa']);
+        $sheet->setCellValue('D' . $rowNumber, $batasWilayahFormatted);  // Add formatted batas_wilayah
+
+        // Apply style to wrap text in column D
+        $sheet->getStyle('D' . $rowNumber)->getAlignment()->setWrapText(true);
+
         $rowNumber++;
     }
 
-    // Style untuk semua tabel
+    // Style untuk semua tabel (columns A to D)
     $tableStyle = [
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
     ];
-    $sheet->getStyle('A1:C' . ($rowNumber - 1))->applyFromArray($tableStyle);
+    $sheet->getStyle('A1:D' . ($rowNumber - 1))->applyFromArray($tableStyle);  // Apply table style to columns A to D
 
-    // Auto-size kolom
-    foreach (range('A', 'C') as $column) {
-        $sheet->getColumnDimension($column)->setAutoSize(true);
+    // Auto-size columns (ensure the text in column D is visible)
+    foreach (range('A', 'D') as $column) {
+        $sheet->getColumnDimension($column)->setAutoSize(true);  // Auto-size columns A to D
     }
 
     // Membersihkan buffer output
