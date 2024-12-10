@@ -29,10 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($desa_id > 0 && $user_id > 0) {  // Pastikan user_id dan desa_id ada
         // Query untuk menyisipkan data ke dalam tabel tb_batas_wilayah_desa
         $sql = "INSERT INTO tb_batas_wilayah_desa (desa_id, user_id, arah, batas_wilayah_desa, kecamatan) VALUES 
-                ('$desa_id', '$user_id', 'Utara', '$batas_utara', '$kec_utara'),
-                ('$desa_id', '$user_id', 'Selatan', '$batas_selatan', '$kec_selatan'),
-                ('$desa_id', '$user_id', 'Timur', '$batas_timur', '$kec_timur'),
-                ('$desa_id', '$user_id', 'Barat', '$batas_barat', '$kec_barat')";
+                ('$desa_id', '$user_id', 'Sebelah Utara', '$batas_utara', '$kec_utara'),
+                ('$desa_id', '$user_id', 'Sebelah Selatan', '$batas_selatan', '$kec_selatan'),
+                ('$desa_id', '$user_id', 'Sebelah Timur', '$batas_timur', '$kec_timur'),
+                ('$desa_id', '$user_id', 'Sebelah Barat', '$batas_barat', '$kec_barat')";
 
         if (mysqli_query($conn, $sql)) {
             // Tambahkan atau perbarui progres pengguna
