@@ -225,6 +225,7 @@ if ($type === 'pdf') {
                                         <th>Kode Desa</th>
                                         <th>Nama Desa</th>
                                         <th>Luas Wilayah Desa (Hektar)</th>
+                                        <th>Batas Wilayah Desa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -237,15 +238,28 @@ if ($type === 'pdf') {
                                         SELECT DISTINCT
                                             tb_enumerator.kode_desa,
                                             tb_enumerator.nama_desa,
-                                            tb_luas_wilayah_desa.luas_wilayah_desa
+                                            tb_luas_wilayah_desa.luas_wilayah_desa,
+                                            GROUP_CONCAT(
+                                                CONCAT(
+                                                    '<li><strong>Arah: </strong>', tb_batas_wilayah_desa.arah, 
+                                                    ' / <strong>Batas: </strong>', tb_batas_wilayah_desa.batas_wilayah_desa, 
+                                                    ' / <strong>Kecamatan: </strong>', tb_batas_wilayah_desa.kecamatan, 
+                                                    '</li>'
+                                                ) 
+                                                ORDER BY tb_batas_wilayah_desa.arah
+                                                SEPARATOR ''
+                                            ) AS batas_wilayah
                                         FROM
                                             tb_enumerator
                                         LEFT JOIN
                                             tb_luas_wilayah_desa
                                         ON
                                             tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+                                        LEFT JOIN
+                                            tb_batas_wilayah_desa
+                                        ON
+                                            tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
                                     ";
-
                                     if ($filter_tahun) {
                                         $query .= "
                                             LEFT JOIN user_progress
@@ -254,16 +268,26 @@ if ($type === 'pdf') {
                                         ";
                                     }
 
+                                    $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+
                                     $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
 
-                                    $no = 1; 
+                                    $no = 1;
                                     if ($result && mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
-                                            echo "<td>" . $no++ . "</td>"; 
-                                            echo "<td>" . htmlspecialchars($row['kode_desa']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['nama_desa']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['luas_wilayah_desa']) . "</td>";
+                                            echo "<td>" . $no++ . "</td>";
+                                            echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>" . (!empty($row['luas_wilayah_desa']) ? htmlspecialchars($row['luas_wilayah_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>";
+                                            if (!empty($row['batas_wilayah'])) {
+                                                echo "<ul>" . $row['batas_wilayah'] . "</ul>";
+                                            } else {
+                                                echo '<span class="badge bg-warning text-dark">Belum Mengisi</span>';
+                                            }
+                                            echo "</td>";
+
                                             echo "</tr>";
                                         }
                                     } else {
