@@ -137,8 +137,8 @@ include('../../config/list_form.php');
               <h3 class="card-title">Manage Forms</h3>
               <div class="card-tools">
                 <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#addMenuModal">
-                  <i class="fas fa-edit"></i>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+                  <i class="fas fa-edit"></i> &nbsp; Status Form
                 </button>
               </div>
             </div>
@@ -194,7 +194,7 @@ include('../../config/list_form.php');
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addMenuModalLabel">Management Form</h5>
+              <h5 class="modal-title" id="addMenuModalLabel">Edit Status Form</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
