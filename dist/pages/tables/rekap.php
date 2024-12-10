@@ -308,8 +308,8 @@ if ($type === 'pdf') {
                                     </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-success">Terapkan</button>
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>-->
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> &nbsp; Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -353,9 +353,9 @@ if ($type === 'pdf') {
 
                                 <div class="modal-footer">
                                     <!-- Untuk Ekspor Excel -->
-                                    <button type="submit" name="type" value="excel" class="btn btn-success">Export Excel</button>
+                                    <button type="submit" name="type" value="excel" class="btn btn-success"><i class="fas fa-file-excel"></i> &nbsp; Export Excel</button>
                                     <!-- Untuk Ekspor PDF -->
-                                    <button type="submit" name="type" value="pdf" class="btn btn-danger">Export PDF</button>
+                                    <button type="submit" name="type" value="pdf" class="btn btn-danger"><i class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
                                 </div>
                             </form>
                         </div>
