@@ -146,7 +146,9 @@ if ($type === 'pdf') {
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $batasWilayahFormatted = str_replace(' | ', '<br>', htmlspecialchars($row['batas_wilayah'])); // Sesuaikan format batas wilayah
+        // Format batas wilayah agar dipisahkan dengan baris baru
+        $batasWilayahFormatted = str_replace(' | ', '<br>', htmlspecialchars($row['batas_wilayah']));
+
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
@@ -157,8 +159,6 @@ if ($type === 'pdf') {
 
     $html .= '</tbody></table>';
 
-    // Tambahkan margin pada dokumen PDF agar terlihat lebih rapi
-    $mpdf->SetMargins(10, 10, 10);
     $mpdf->WriteHTML($html);
     $mpdf->Output('rekap_data_pusdatin.pdf', 'D');
     exit;
