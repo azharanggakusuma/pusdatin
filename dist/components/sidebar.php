@@ -3,8 +3,11 @@ $current_folder = basename(dirname($_SERVER['SCRIPT_NAME']));
 $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../../' : './';
 
 // Query untuk mengambil menu dinamis
-$query = "SELECT * FROM menu WHERE status = 1"; // Hanya menu aktif
+$query = "SELECT * FROM menu WHERE status = 1";
 $menu_result = $conn->query($query);
+
+// Dapatkan nama file saat ini
+$current_page = basename($_SERVER['SCRIPT_NAME']);
 ?>
 
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
@@ -18,7 +21,7 @@ $menu_result = $conn->query($query);
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item menu-open">
-                    <a href="<?php echo $base_path; ?>index.php" class="nav-link active">
+                    <a href="<?php echo $base_path; ?>index.php" class="nav-link <?php echo $current_page == 'index.php' ? 'active' : ''; ?>">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>Dashboard</p>
                     </a>
@@ -33,9 +36,9 @@ $menu_result = $conn->query($query);
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                    <?php while ($menu = $menu_result->fetch_assoc()) : ?>
+                        <?php while ($menu = $menu_result->fetch_assoc()) : ?>
                             <li class="nav-item">
-                                <a href="<?php echo $base_path . $menu['url']; ?>" class="nav-link">
+                                <a href="<?php echo $base_path . $menu['url']; ?>" class="nav-link <?php echo $current_page == basename($menu['url']) ? 'active' : ''; ?>">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p><?php echo $menu['name']; ?></p>
                                 </a>
@@ -55,25 +58,25 @@ $menu_result = $conn->query($query);
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?php echo $base_path; ?>pages/tables/user.php" class="nav-link">
+                                <a href="<?php echo $base_path; ?>pages/tables/user.php" class="nav-link <?php echo $current_page == 'user.php' ? 'active' : ''; ?>">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Data Users</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo $base_path; ?>pages/tables/rekap.php" class="nav-link">
+                                <a href="<?php echo $base_path; ?>pages/tables/rekap.php" class="nav-link <?php echo $current_page == 'rekap.php' ? 'active' : ''; ?>">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Data Report</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo $base_path; ?>pages/tables/manage_menu.php" class="nav-link">
+                                <a href="<?php echo $base_path; ?>pages/tables/manage_menu.php" class="nav-link <?php echo $current_page == 'manage_menu.php' ? 'active' : ''; ?>">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Management Menu</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo $base_path; ?>pages/tables/manage_form.php" class="nav-link">
+                                <a href="<?php echo $base_path; ?>pages/tables/manage_form.php" class="nav-link <?php echo $current_page == 'manage_form.php' ? 'active' : ''; ?>">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Management Form</p>
                                 </a>
