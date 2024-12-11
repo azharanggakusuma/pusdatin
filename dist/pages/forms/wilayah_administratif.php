@@ -111,9 +111,9 @@ include "../../config/session.php";
                                                 <label class="mb-2">Klasifikasi Desa (Swasembada/ Swakarya/ Swadaya)</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Klasifikasi Desa --</option>
-                                                    <option value="">SWASEMBADA</option>
-                                                    <option value="">SWAKARYA</option>
-                                                    <option value="">SWADAYA</option>
+                                                    <option value="SWASEMBADA">SWASEMBADA</option>
+                                                    <option value="SWAKARYA">SWAKARYA</option>
+                                                    <option value="SWADAYA">SWADAYA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -125,11 +125,11 @@ include "../../config/session.php";
                                                 <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
-                                                    <option value="">DESA</option>
-                                                    <option value="">KELURAHAN</option>
-                                                    <option value="">KAMPUNG</option>
-                                                    <option value="">NAGARI</option>
-                                                    <option value="">GAMPONG</option>
+                                                    <option value="DESA">DESA</option>
+                                                    <option value="KELURAHAN">KELURAHAN</option>
+                                                    <option value="KAMPUNG">KAMPUNG</option>
+                                                    <option value="NAGARI">NAGARI</option>
+                                                    <option value="GAMPONG">GAMPONG</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -145,12 +145,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Banyaknya Dusun, Rukun Tetangga dan Rukun Warga </h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form1">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form1").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -202,12 +202,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Alamat Balai Desa/Kantor Kelurahan </h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form2">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form2").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -252,12 +252,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Dasar hukum pembentukan Pemerintah Desa / Kelurahan </h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form3">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form3").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -279,8 +279,8 @@ include "../../config/session.php";
                                                 <label class="mb-2">Ketersediaan Dasar Hukum Pembentukan Pemerintah Desa / Kelurahan</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Ketersediaan Dasar Hukum --</option>
-                                                    <option value="">ADA</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="ADA">ADA</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -305,12 +305,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Dasar hukum pembentukan Badan Permusyawaratan Desa (BPD)</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form4">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form4").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -332,8 +332,8 @@ include "../../config/session.php";
                                                 <label class="mb-2">Ketersediaan Dasar Hukum Badan Permusyawaratan Desa (BPD)</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Ketersediaan Dasar Hukum --</option>
-                                                    <option value="">ADA</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="ADA">ADA</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -358,12 +358,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Ketersediaan Penetapan Batas dan Peta Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form5">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form5").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -385,8 +385,8 @@ include "../../config/session.php";
                                                 <label class="mb-2">Penetapan Batas Desa (Sudah ada/Belum ada)</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
-                                                    <option value="">ADA</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="ADA">ADA</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -407,8 +407,8 @@ include "../../config/session.php";
                                                 <label class="mb-2">Ketersediaan Peta Desa (Ada/Tidak)</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
-                                                    <option value="">ADA</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="ADA">ADA</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -433,12 +433,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Alamat website dan media sosial</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form6">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form6").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -509,12 +509,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Kepemilikan Kantor Kepala Desa/Balai Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form7">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form7").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -536,8 +536,8 @@ include "../../config/session.php";
                                                 <label class="mb-2">Aset Desa/Bukan Aset Desa</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Aset Desa/Bukan Aset Desa --</option>
-                                                    <option value="">ASET DESA</option>
-                                                    <option value="">BUKAN ASET DESA</option>
+                                                    <option value="ASET DESA">ASET DESA</option>
+                                                    <option value="BUKAN ASET DESA">BUKAN ASET DESA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -553,12 +553,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Kondisi Kantor Kepala Desa/Balai Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form8">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form8").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -580,9 +580,9 @@ include "../../config/session.php";
                                                 <label class="mb-2">Kondisi Kantor Kepala Desa/Balai Desa</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
-                                                    <option value="">ADA, LAYAK</option>
-                                                    <option value="">ADA, TIDAK LAYAK</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="ADA, LAYAK">ADA, LAYAK</option>
+                                                    <option value="ADA, TIDAK LAYAK">ADA, TIDAK LAYAK</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -598,12 +598,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Perkembangan Status Indeks Desa Membangun (IDM) di Kantor Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form9">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form9").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -625,11 +625,11 @@ include "../../config/session.php";
                                                 <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2024</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
-                                                    <option value="">MANDIRI</option>
-                                                    <option value="">MAJU</option>
-                                                    <option value="">BERKEMBANG</option>
-                                                    <option value="">TERTINGGAL</option>
-                                                    <option value="">SANGAT TERTINGGAL</option>
+                                                    <option value="MANDIRI">MANDIRI</option>
+                                                    <option value="MAJU">MAJU</option>
+                                                    <option value="BERKEMBANG">BERKEMBANG</option>
+                                                    <option value="TERTINGGAL">TERTINGGAL</option>
+                                                    <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -641,11 +641,11 @@ include "../../config/session.php";
                                                 <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2025</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Status Desa Membangun 2025 --</option>
-                                                    <option value="">MANDIRI</option>
-                                                    <option value="">MAJU</option>
-                                                    <option value="">BERKEMBANG</option>
-                                                    <option value="">TERTINGGAL</option>
-                                                    <option value="">SANGAT TERTINGGAL</option>
+                                                    <option value="MANDIRI">MANDIRI</option>
+                                                    <option value="MAJU">MAJU</option>
+                                                    <option value="BERKEMBANG">BERKEMBANG</option>
+                                                    <option value="TERTINGGAL">TERTINGGAL</option>
+                                                    <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -661,12 +661,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form10">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form10").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -688,10 +688,10 @@ include "../../config/session.php";
                                                 <label class="mb-2">Ketersediaan Internet</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Ketersedian Internet --</option>
-                                                    <option value="">BERFUNGSI</option>
-                                                    <option value="">JARANG BERFUNGSI</option>
-                                                    <option value="">TIDAK BERFUNGSI</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="BERFUNGSI">BERFUNGSI</option>
+                                                    <option value="JARANG BERFUNGSI">JARANG BERFUNGSI</option>
+                                                    <option value="TIDAK BERFUNGSI">TIDAK BERFUNGSI</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -703,9 +703,9 @@ include "../../config/session.php";
                                                 <label class="mb-2">Kecepatan akses internet</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Kecepatan Akses Internet --</option>
-                                                    <option value="">CEPAT</option>
-                                                    <option value="">SEDANG</option>
-                                                    <option value="">LAMBAT</option>
+                                                    <option value="CEPAT">CEPAT</option>
+                                                    <option value="SEDANG">SEDANG</option>
+                                                    <option value="LAMBAT">LAMBAT</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -726,10 +726,10 @@ include "../../config/session.php";
                                                 <label class="mb-2">Frekuensi Penggunaan Komputer/PC/laptop di Kantor Desa</label>
                                                 <select name="" id="" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Frekuensi Penggunaan Komputer --</option>
-                                                    <option value="">DIGUNAKAN</option>
-                                                    <option value="">JARANG DIGUNAKAN</option>
-                                                    <option value="">TIDAK DIGUNAKAN</option>
-                                                    <option value="">TIDAK ADA</option>
+                                                    <option value="DIGUNAKAN">DIGUNAKAN</option>
+                                                    <option value="ARANG DIGUNAKAN">JARANG DIGUNAKAN</option>
+                                                    <option value="TIDAK DIGUNAKAN">TIDAK DIGUNAKAN</option>
+                                                    <option value="TIDAK ADA">TIDAK ADA</option>
                                                 </select>
                                             </div>
                                         </div>
