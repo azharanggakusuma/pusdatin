@@ -554,6 +554,129 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
+                            <h3 class="card-title">Rincian Aset Desa</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalRincianAset">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form-aset">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form-aset").on("click", function() {
+                                            var $icon = $(this).find("i");
+                                            var $cardBody = $(this).closest(".card").find(".card-body");
+
+                                            $cardBody.slideToggle();
+                                            $icon.toggleClass("fa-minus fa-plus");
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="rincianAsetForm" method="post">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="bumdes" class="mb-2">1. Bumdes dan bumdesma</label>
+                                            <div class="input-group">
+                                                <input type="text" id="bumdes_volume" name="bumdes_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="bumdes_nilai" name="bumdes_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="tanah_desa" class="mb-2">2. Tanah Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="tanah_desa_volume" name="tanah_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Ha</span>
+                                                <input type="text" id="tanah_desa_nilai" name="tanah_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="bangunan_milik_desa" class="mb-2">3. Bangunan Milik Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="bangunan_milik_desa_volume" name="bangunan_milik_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="bangunan_milik_desa_nilai" name="bangunan_milik_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="kendaraan_desa" class="mb-2">4. Kendaraan Milik Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="kendaraan_desa_volume" name="kendaraan_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="kendaraan_desa_nilai" name="kendaraan_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="peralatan_desa" class="mb-2">5. Peralatan Milik Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="peralatan_desa_volume" name="peralatan_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="peralatan_desa_nilai" name="peralatan_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tambahkan baris sesuai dengan kebutuhan -->
+
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="aset_lainnya" class="mb-2">11. Aset Desa Lainnya</label>
+                                            <div class="input-group">
+                                                <input type="text" id="aset_lainnya_volume" name="aset_lainnya_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="aset_lainnya_nilai" name="aset_lainnya_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="modalRincianAset" tabindex="-1" aria-labelledby="modalRincianAsetLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalRincianAsetLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi volume dan nilai sesuai dengan jenis aset desa.</li>
+                                            <li>Gunakan satuan yang sesuai untuk volume.</li>
+                                            <li>Pastikan semua data terisi dengan benar sebelum menyimpan.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
                             <h3 class="card-title"> Anggaran Belanja Desa </h3>
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
                                 <i class="fas fa-info-circle"></i>
