@@ -1,9 +1,7 @@
 <?php
 include_once('../../config/conn.php');
 include "../../config/session.php";
-?>
 
-<?php
 require __DIR__ . '/../../../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -134,19 +132,28 @@ if ($type === 'excel') {
 
 // Fungsi untuk ekspor PDF
 if ($type === 'pdf') {
-    $mpdf = new Mpdf();
+    $mpdf = new Mpdf([
+        'format' => 'A4-L', // Set ukuran kertas A4 dengan orientasi landscape
+    ]);
 
     $html = '<h1 style="text-align: center;">Rekap Data</h1>';
     $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
-    $html .= '<th>Kode Desa</th><th>Desa/Kelurahan</th><th>Luas Wilayah Desa(Hektar)</th>';
+    $html .= '<th>Kode Desa</th>';
+    $html .= '<th>Desa/Kelurahan</th>';
+    $html .= '<th>Luas Wilayah Desa (Hektar)</th>';
+    $html .= '<th>Batas Wilayah Desa</th>';
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
+        // Format batas wilayah agar dipisahkan dengan baris baru
+        $batasWilayahFormatted = str_replace(' | ', '<br>', htmlspecialchars($row['batas_wilayah']));
+
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
+        $html .= '<td>' . $batasWilayahFormatted . '</td>';
         $html .= '</tr>';
     }
 
@@ -204,7 +211,7 @@ if ($type === 'pdf') {
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?> 
+    <?php include "../../components/loading.php"; ?>
 
     <div class="app-wrapper"> <!--begin::Header-->
 
@@ -240,10 +247,13 @@ if ($type === 'pdf') {
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#filterModal">
-                                    <i class="fas fa-filter"></i>
+                                    <i class="fas fa-filter"></i>&nbsp; Filter
                                 </button>
                                 <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#exportModal">
-                                    <i class="fas fa-download"></i>
+                                    <i class="fas fa-download"></i>&nbsp; Export
+                                </button>
+                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#previewModal">
+                                    <i class="fas fa-table"></i> &nbsp; Preview
                                 </button>
                             </div>
                         </div>
@@ -412,6 +422,108 @@ if ($type === 'pdf') {
                                     <button type="submit" name="type" value="pdf" class="btn btn-danger"><i class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                // Query untuk mengambil data desa
+                $query = "
+                    SELECT DISTINCT
+                        tb_enumerator.kode_desa,
+                        tb_enumerator.nama_desa,
+                        tb_luas_wilayah_desa.luas_wilayah_desa,
+                        GROUP_CONCAT(
+                            DISTINCT CONCAT(
+                                'Batas: ', tb_batas_wilayah_desa.batas, 
+                                ' / Desa/Kelurahan: ', tb_batas_wilayah_desa.desa, 
+                                ' / Kecamatan: ', tb_batas_wilayah_desa.kecamatan
+                            ) 
+                            ORDER BY tb_batas_wilayah_desa.batas
+                            SEPARATOR ' | '
+                        ) AS batas_wilayah
+                    FROM
+                        tb_enumerator
+                    LEFT JOIN
+                        tb_luas_wilayah_desa
+                    ON
+                        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+                    LEFT JOIN
+                        tb_batas_wilayah_desa
+                    ON
+                        tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
+                ";
+
+                // Tambahkan filter jika desa dan/atau tahun dipilih
+                $where = [];
+                if ($kode_desa) {
+                    $where[] = "tb_enumerator.kode_desa = '$kode_desa'";
+                }
+                if ($filter_tahun) {
+                    $where[] = "YEAR(user_progress.created_at) = '$filter_tahun'";
+                }
+
+                if ($where) {
+                    $query .= " LEFT JOIN user_progress ON tb_enumerator.id_desa = user_progress.desa_id WHERE " . implode(' AND ', $where);
+                }
+
+                // Modify the query to include the GROUP BY clause
+                $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+
+                // Eksekusi query
+                $result = mysqli_query($conn, $query);
+
+                // Inisialisasi variabel untuk cek data
+                $data_found = false;
+                if ($result) {
+                    $data_found = mysqli_num_rows($result) > 0;
+                } else {
+                    die('Query Error: ' . mysqli_error($conn));
+                }
+                ?>
+
+                <!-- Modal Preview -->
+                <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" style="max-width: 100vw; height: 100vh; margin: 0;">
+                        <div class="modal-content" style="height: 100%; width: 100%;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="previewModalLabel">Preview Data</h5>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="height: calc(100vh - 120px); overflow-y: auto;">
+                                <?php if ($data_found): ?>
+                                    <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
+                                        <thead style="background-color: #f0f0f0;">
+                                            <tr>
+                                                <th style="text-align: center; padding: 10px;">Kode Desa</th>
+                                                <th style="text-align: center; padding: 10px;">Nama Desa</th>
+                                                <th style="text-align: center; padding: 10px;">Luas Wilayah (Hektar)</th>
+                                                <th style="text-align: center; padding: 10px;">Batas Wilayah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                                                <?php
+                                                $batas_wilayah = !is_null($row['batas_wilayah']) ? explode(' | ', $row['batas_wilayah']) : [];
+                                                $unique_batas = array_unique($batas_wilayah);
+                                                $batas_wilayah = implode('<br>', $unique_batas);
+                                                ?>
+                                                <tr>
+                                                    <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['kode_desa']); ?></td>
+                                                    <td style="padding: 10px;"><?php echo htmlspecialchars($row['nama_desa']); ?></td>
+                                                    <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['luas_wilayah_desa']); ?></td>
+                                                    <td style="padding: 10px;"><?php echo htmlspecialchars_decode($batas_wilayah); ?></td>
+                                                </tr>
+                                            <?php endwhile; ?>
+                                        </tbody>
+                                    </table>
+                                <?php else: ?>
+                                    <p>Data tidak ditemukan.</p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>

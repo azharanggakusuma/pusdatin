@@ -308,9 +308,8 @@ if ($result->num_rows > 0) {
                             <h3 class="card-title">Manage Users</h3>
 
                             <div class="card-tools">
-                                <!-- Button Tambah User -->
-                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                                    <i class="fas fa-plus"></i> &nbsp; Add User
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                                    <i class="fas fa-user-plus"></i> &nbsp; Add User
                                 </button>
                             </div>
                         </div>
