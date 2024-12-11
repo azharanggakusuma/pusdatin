@@ -82,12 +82,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Jumlah Lembaga Kemasyarakatan Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form1">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form1").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -241,12 +241,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Data BUMDes</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form2">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form2").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -307,12 +307,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Jumlah Peraturan Yang dimiliki Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form3">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form3").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -365,12 +365,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Ketersedian RPJMDes dan RKPDes</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form4">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form4").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -433,9 +433,20 @@ include "../../config/session.php";
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool">
+                                    <button type="button" class="btn btn-tool toggle-form5">
                                         <i class="fas fa-minus"></i>
                                     </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toggle-form5").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -551,9 +562,20 @@ include "../../config/session.php";
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool">
+                                    <button type="button" class="btn btn-tool toggle-form6">
                                         <i class="fas fa-minus"></i>
                                     </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toggle-form6").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -655,12 +677,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Jumlah Surat Keterangan Tidak Mampu/Miskin (SKTM) yang Dikeluarkan Pemerintah Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form7">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form7").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -705,12 +727,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Pemanfaatan Sistem Informasi Desa dan Sistem Keuangan Desa </h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form8">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form8").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -764,12 +786,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Kerjasama Desa</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form9">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form9").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -953,9 +975,20 @@ include "../../config/session.php";
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool">
+                                    <button type="button" class="btn btn-tool toggle-form10">
                                         <i class="fas fa-minus"></i>
                                     </button>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $(".toggle-form10").on("click", function() {
+                                                var $icon = $(this).find("i"); // Ambil ikon tombol
+                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -985,9 +1018,20 @@ include "../../config/session.php";
                                 <i class="fas fa-info-circle"></i>
                             </button>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool">
+                                <button type="button" class="btn btn-tool toggle-form11">
                                     <i class="fas fa-minus"></i>
                                 </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form11").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
                         <div class="card-body">
@@ -1012,14 +1056,25 @@ include "../../config/session.php";
 
                 <div class="card card-primary card-outline mb-4">
                     <div class="card-header mb-3">
-                        <h3 class="card-title">Ketersedian Data Statistik Desa dan Petugas yang menangani statistik </h3>
+                        <h3 class="card-title">Ketersedian Data Statistik Desa dan Petugas yang menangani statistik </h3> 
                         <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
                             <i class="fas fa-info-circle"></i>
                         </button>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool">
+                            <button type="button" class="btn btn-tool toggle-form12">
                                 <i class="fas fa-minus"></i>
                             </button>
+                            <script>
+                                $(document).ready(function() {
+                                    $(".toggle-form12").on("click", function() {
+                                        var $icon = $(this).find("i"); // Ambil ikon tombol
+                                        var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                        $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                        $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="card-body">
