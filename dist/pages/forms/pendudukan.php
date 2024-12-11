@@ -48,192 +48,189 @@ include "../../config/session.php";
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?>
 
-    <div class="page animate__animated animate__fadeIn">
-        <div class="app-wrapper"> <!--begin::Header-->
+    <div class="app-wrapper"> <!--begin::Header-->
 
-            <?php include('../../components/navbar.php'); ?>
+        <?php include('../../components/navbar.php'); ?>
 
-            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-            <main class="app-main"> <!--begin::App Content Header-->
-                <div class="app-content-header"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Penduduk</h3>
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Penduduk</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Keadaan Geografi
+                                </li>
+                            </ol>
+                        </div>
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
+            <div class="app-content"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Penduduk</h3>
+
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>isi angka/jumlah</li>
+                                                <li>isi angka/jumlah</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-end">
-                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Keadaan Geografi
-                                    </li>
-                                </ol>
-                            </div>
-                        </div> <!--end::Row-->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content Header--> <!--begin::App Content-->
-                <div class="app-content"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-
-                        <div class="card card-primary card-outline mb-4">
-                            <div class="card-header mb-3">
-                                <h3 class="card-title">Penduduk</h3>
-
-                                <!-- BEGIN:: INFO BUTTON -->
-                                <!-- Aturan Pengisian Button -->
-                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
-                                    <i class="fas fa-info-circle"></i>
+                            <!-- END:: INFO BUTTON -->
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
                                 </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombo l
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                <!-- Modal Info -->
-                                <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul>
-                                                    <li>isi angka/jumlah</li>
-                                                    <li>isi angka/jumlah</li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END:: INFO BUTTON -->
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
-                                                var $icon = $(this).find("i"); // Ambil ikon tombo l
-                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                            });
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
                                         });
-                                    </script>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <div>
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jumlah Penduduk Belum Tercatat di Kartu Keluarga (orang)</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jumlah Penduduk Belum Merekam e-KTP (orang)</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-
-                                            <script>
-                                                document.addEventListener("DOMContentLoaded", function() {
-                                                    const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
-
-                                                    fetch(apiUrl)
-                                                        .then(response => response.json())
-                                                        .then(data => {
-                                                            if (!data || !data.data || !Array.isArray(data.data)) {
-                                                                throw new Error("Data dari API tidak valid");
-                                                            }
-
-                                                            const villages = data.data;
-                                                            const villageCodeSelect = $("#villageCodeSelect");
-                                                            const villageNameSelect = $("#villageNameSelect");
-
-                                                            // Bersihkan opsi lama
-                                                            villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                            villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
-
-                                                            // Sort data berdasarkan Nama Desa
-                                                            villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
-
-                                                            // Isi dropdown Nama Desa
-                                                            villages.forEach(village => {
-                                                                villageNameSelect.append(
-                                                                    new Option(village['Nama_Desa'], village['Kode_Desa'])
-                                                                );
-                                                            });
-
-                                                            // Inisialisasi Select2
-                                                            villageNameSelect.select2({
-                                                                theme: "bootstrap4" // Pastikan tema sesuai jika menggunakan select2bs4
-                                                            });
-
-                                                            // Event listener untuk Nama Desa
-                                                            villageNameSelect.on("change", function() {
-                                                                const selectedKodeDesa = $(this).val();
-
-                                                                // Temukan pasangan Kode Desa
-                                                                const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
-
-                                                                // Update dropdown Kode Desa
-                                                                if (selectedVillage) {
-                                                                    villageCodeSelect.empty().append(
-                                                                        new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
-                                                                    );
-                                                                } else {
-                                                                    villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                                }
-                                                            });
-
-                                                            // Event listener untuk Kode Desa
-                                                            villageCodeSelect.on("change", function() {
-                                                                const selectedKodeDesa = $(this).val();
-
-                                                                // Update Nama Desa sesuai Kode Desa
-                                                                const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
-
-                                                                if (selectedVillage) {
-                                                                    villageNameSelect.val(selectedVillage['Kode_Desa']).trigger("change");
-                                                                } else {
-                                                                    villageNameSelect.val("").trigger("change");
-                                                                }
-                                                            });
-                                                        })
-                                                        .catch(error => {
-                                                            console.error("Terjadi kesalahan saat memuat data desa:", error);
-                                                        });
-                                                });
-                                            </script>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                </form>
-                                <!-- /.row -->
+                                    });
+                                </script>
                             </div>
                         </div>
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content-->
-            </main> <!--end::App Main--> <!--begin::Footer-->
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Penduduk Belum Tercatat di Kartu Keluarga (orang)</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jumlah Penduduk Belum Merekam e-KTP (orang)</label>
+                                            <input type="text" class="form-control">
+                                        </div>
 
 
-            <footer class="app-footer"> <!--begin::To the end-->
-                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                <strong>
-                    Copyright &copy; 2024&nbsp;
-                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                </strong>
-                All rights reserved.
-                <!--end::Copyright-->
-            </footer> <!--end::Footer-->
-        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    </div>
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
+
+                                                fetch(apiUrl)
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        if (!data || !data.data || !Array.isArray(data.data)) {
+                                                            throw new Error("Data dari API tidak valid");
+                                                        }
+
+                                                        const villages = data.data;
+                                                        const villageCodeSelect = $("#villageCodeSelect");
+                                                        const villageNameSelect = $("#villageNameSelect");
+
+                                                        // Bersihkan opsi lama
+                                                        villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                        villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
+
+                                                        // Sort data berdasarkan Nama Desa
+                                                        villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
+
+                                                        // Isi dropdown Nama Desa
+                                                        villages.forEach(village => {
+                                                            villageNameSelect.append(
+                                                                new Option(village['Nama_Desa'], village['Kode_Desa'])
+                                                            );
+                                                        });
+
+                                                        // Inisialisasi Select2
+                                                        villageNameSelect.select2({
+                                                            theme: "bootstrap4" // Pastikan tema sesuai jika menggunakan select2bs4
+                                                        });
+
+                                                        // Event listener untuk Nama Desa
+                                                        villageNameSelect.on("change", function() {
+                                                            const selectedKodeDesa = $(this).val();
+
+                                                            // Temukan pasangan Kode Desa
+                                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
+
+                                                            // Update dropdown Kode Desa
+                                                            if (selectedVillage) {
+                                                                villageCodeSelect.empty().append(
+                                                                    new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
+                                                                );
+                                                            } else {
+                                                                villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                            }
+                                                        });
+
+                                                        // Event listener untuk Kode Desa
+                                                        villageCodeSelect.on("change", function() {
+                                                            const selectedKodeDesa = $(this).val();
+
+                                                            // Update Nama Desa sesuai Kode Desa
+                                                            const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
+
+                                                            if (selectedVillage) {
+                                                                villageNameSelect.val(selectedVillage['Kode_Desa']).trigger("change");
+                                                            } else {
+                                                                villageNameSelect.val("").trigger("change");
+                                                            }
+                                                        });
+                                                    })
+                                                    .catch(error => {
+                                                        console.error("Terjadi kesalahan saat memuat data desa:", error);
+                                                    });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                </div> <!--end::Container-->
+            </div> <!--end::App Content-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
+
+
+        <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+            <strong>
+                Copyright &copy; 2024&nbsp;
+                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+            </strong>
+            All rights reserved.
+            <!--end::Copyright-->
+        </footer> <!--end::Footer-->
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

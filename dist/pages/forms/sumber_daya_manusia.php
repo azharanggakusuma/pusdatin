@@ -48,176 +48,44 @@ include "../../config/session.php";
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?>
 
-    <div class="page animate__animated animate__fadeIn">
-        <div class="app-wrapper"> <!--begin::Header-->
+    <div class="app-wrapper"> <!--begin::Header-->
 
-            <?php include('../../components/navbar.php'); ?>
+        <?php include('../../components/navbar.php'); ?>
 
-            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-            <main class="app-main"> <!--begin::App Content Header-->
-                <div class="app-content-header"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Sumber Daya Manusia</h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-end">
-                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Sumber Daya Manusia
-                                    </li>
-                                </ol>
-                            </div>
-                        </div> <!--end::Row-->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content Header--> <!--begin::App Content-->
-                <div class="app-content"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-
-                        <div class="card card-primary card-outline mb-4">
-                            <div class="card-header mb-3">
-                                <h3 class="card-title">Nama Kepala Desa/Kelurahan</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form1">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $(".toggle-form1").on("click", function() {
-                                                var $icon = $(this).find("i"); // Ambil ikon tombol
-                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <form action="" method="post">
-                                    <div class="row"> <!-- /.col -->
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Kepala Desa/Lurah</label>
-                                            <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jenis kelamin</label>
-                                            <select required name="" id="" class="form-control">
-                                                <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
-                                                <option value="LAKI-LAKI">LAKI - LAKI</option>
-                                                <option value="PEREMPUAN"> PEREMPUAN </option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Periode Tahun Menjabat</label>
-                                            <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun periode" style="width: 100%;" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                                </form>
-                                <!-- /.row -->
-                            </div>
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Sumber Daya Manusia</h3>
                         </div>
-
-                        <div class="card card-primary card-outline mb-4">
-                            <div class="card-header mb-3">
-                                <h3 class="card-title">Jumlah Perangkat Desa </h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <form id="batasDesaForm" method="post">
-                                    <div class="row">
-                                        <div class=">
-                                        <div class=" form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Perempuan</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Laki - Laki</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Kaur Perempuan</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Kaur Laki - Laki</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Kasi Perempuan</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Kasi Laki - Laki</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Staf/Pegawai Desa Lainnya Perempuan</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div class=>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Staf/Pegawai Desa Lainnya Laki - Laki</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Jumlah Total Perempuan</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="form-group mb-3">
-                                            <label for="batas-utara" class="mb-2">Jumlah Total Laki - Laki</label>
-                                            <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                    </div>
-                            </div>
-                            </form>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Sumber Daya Manusia
+                                </li>
+                            </ol>
                         </div>
-                    </div>
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
+            <div class="app-content"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Perangkat Desa Menurut Tingkat Pendidikan</h3>
+                            <h3 class="card-title">Nama Kepala Desa/Kelurahan</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form2">
+                                <button type="button" class="btn btn-tool toggle-form1">
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <script>
                                     $(document).ready(function() {
-                                        $(".toggle-form2").on("click", function() {
+                                        $(".toggle-form1").on("click", function() {
                                             var $icon = $(this).find("i"); // Ambil ikon tombol
                                             var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -234,145 +102,23 @@ include "../../config/session.php";
                                 <div class="row"> <!-- /.col -->
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
-                                        <label class="mb-2">Tingkat Pendidikan</label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Sekolah Dasar (SD)</option>
-                                            <option value="">SMP</option>
-                                            <option value="">SMA</option>
-                                            <option value="">Diploma I, II/Akta I, II</option>
-                                            <option value="">Diploma III/Akta III/Sarjana Muda</option>
-                                            <option value="">Tingkat Sarjana/Doktor</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Jumlah laki - laki</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Jumlah perempuan</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Jumlah total</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Pengurus dan Anggota BPD</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form3">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form3").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Ketua BPD Laki - Laki</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Ketua BPD Perempuan</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Wakil BPD Laki - Laki</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Wakil BPD Perempuan</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Sekertaris BPD Laki - Laki</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Sekertaris BPD Perempuan</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Bendahara BPD Laki - Laki</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Bendahara BPD Perempuan</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Anggota BPD Laki - Laki</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Anggota BPD Perempuan</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Daftar Nama Pendamping Desa </h3>
-                            <!-- Aturan Pengisian Button -->
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModal">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form4">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form4").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Nama Pendamping Desa</label>
+                                        <label class="mb-2">Nama Kepala Desa/Lurah</label>
                                         <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Jenis kelamin</label>
+                                        <select required name="" id="" class="form-control">
+                                            <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
+                                            <option value="LAKI-LAKI">LAKI - LAKI</option>
+                                            <option value="PEREMPUAN"> PEREMPUAN </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Periode Tahun Menjabat</label>
+                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun periode" style="width: 100%;" required>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
-                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                             </form>
                             <!-- /.row -->
                         </div>
@@ -380,86 +126,337 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Jumlah Anggota Hansip/ Linmas dan Poskamling</h3>
-                            <!-- Aturan Pengisian Button -->
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModal">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
+                            <h3 class="card-title">Jumlah Perangkat Desa </h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form5">
+                                <button type="button" class="btn btn-tool batas-wilayah">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form5").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Banyaknya Linmas/Hansip (orang)</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Banyaknya Poskamling (unit)</label>
-                                        <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                            <form id="batasDesaForm" method="post">
+                                <div class="row">
+                                    <div class=">
+                                        <div class=" form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Perempuan</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
                                     </div>
                                 </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Sekretaris Desa/Kelurahan Laki - Laki</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Kaur Perempuan</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Kaur Laki - Laki</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Kasi Perempuan</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Kasi Laki - Laki</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Staf/Pegawai Desa Lainnya Perempuan</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div class=>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Staf/Pegawai Desa Lainnya Laki - Laki</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Jumlah Total Perempuan</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group mb-3">
+                                        <label for="batas-utara" class="mb-2">Jumlah Total Laki - Laki</label>
+                                        <input required type="number" min="0" id="" class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                </div>
+
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                 </div>
-                            </form>
-                            <!-- /.row -->
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card card-primary card-outline mb-4">
+                    <div class="card-header mb-3">
+                        <h3 class="card-title">Jumlah Perangkat Desa Menurut Tingkat Pendidikan</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool toggle-form2">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <script>
+                                $(document).ready(function() {
+                                    $(".toggle-form2").on("click", function() {
+                                        var $icon = $(this).find("i"); // Ambil ikon tombol
+                                        var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                        $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                        $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
-                    <!-- Modal Info -->
-                    <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="row"> <!-- /.col -->
+                                <!-- /.form-group -->
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Tingkat Pendidikan</label>
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Sekolah Dasar (SD)</option>
+                                        <option value="">SMP</option>
+                                        <option value="">SMA</option>
+                                        <option value="">Diploma I, II/Akta I, II</option>
+                                        <option value="">Diploma III/Akta III/Sarjana Muda</option>
+                                        <option value="">Tingkat Sarjana/Doktor</option>
+                                    </select>
                                 </div>
-                                <div class="modal-body">
-                                    <p>Lorem ipsum dolor</>
-                                    <ul>
-                                        <li>...</li>
-                                        <li>...</li>
-                                        <li>...</li>
-                                    </ul>
+
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Jumlah laki - laki</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Jumlah perempuan</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Jumlah total</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                            </div>
+                            <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                        </form>
+                        <!-- /.row -->
+                    </div>
+                </div>
+
+                <div class="card card-primary card-outline mb-4">
+                    <div class="card-header mb-3">
+                        <h3 class="card-title">Jumlah Pengurus dan Anggota BPD</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool toggle-form3">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <script>
+                                $(document).ready(function() {
+                                    $(".toggle-form3").on("click", function() {
+                                        var $icon = $(this).find("i"); // Ambil ikon tombol
+                                        var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                        $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                        $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="row"> <!-- /.col -->
+                                <!-- /.form-group -->
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Ketua BPD Laki - Laki</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Ketua BPD Perempuan</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Wakil BPD Laki - Laki</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Wakil BPD Perempuan</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Sekertaris BPD Laki - Laki</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Sekertaris BPD Perempuan</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Bendahara BPD Laki - Laki</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Bendahara BPD Perempuan</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Anggota BPD Laki - Laki</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Anggota BPD Perempuan</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                            </div>
+                            <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                        </form>
+                        <!-- /.row -->
+                    </div>
+                </div>
+
+                <div class="card card-primary card-outline mb-4">
+                    <div class="card-header mb-3">
+                        <h3 class="card-title">Daftar Nama Pendamping Desa </h3>
+                        <!-- Aturan Pengisian Button -->
+                        <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModal">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool toggle-form4">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <script>
+                                $(document).ready(function() {
+                                    $(".toggle-form4").on("click", function() {
+                                        var $icon = $(this).find("i"); // Ambil ikon tombol
+                                        var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                        $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                        $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="row"> <!-- /.col -->
+                                <!-- /.form-group -->
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Nama Pendamping Desa</label>
+                                    <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
+                            </div>
+                        </form>
+                        <!-- /.row -->
+                    </div>
+                </div>
+
+                <div class="card card-primary card-outline mb-4">
+                    <div class="card-header mb-3">
+                        <h3 class="card-title">Jumlah Anggota Hansip/ Linmas dan Poskamling</h3>
+                        <!-- Aturan Pengisian Button -->
+                        <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModal">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool toggle-form5">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <script>
+                                $(document).ready(function() {
+                                    $(".toggle-form5").on("click", function() {
+                                        var $icon = $(this).find("i"); // Ambil ikon tombol
+                                        var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                        $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                        $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="row"> <!-- /.col -->
+                                <!-- /.form-group -->
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Banyaknya Linmas/Hansip (orang)</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Banyaknya Poskamling (unit)</label>
+                                    <input required type="number" min="0" class="form-control" placeholder="Masukkan angka/jumlah" style="width: 100%;" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
+                            </div>
+                        </form>
+                        <!-- /.row -->
+                    </div>
+                </div>
+                <!-- Modal Info -->
+                <div class="modal fade" id="aturanModal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Lorem ipsum dolor</>
+                                <ul>
+                                    <li>...</li>
+                                    <li>...</li>
+                                    <li>...</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="app-footer"> <!--begin::To the end-->
-                    <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                    <strong>
-                        Copyright &copy; 2024&nbsp;
-                        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                    </strong>
-                    All rights reserved.
-                    <!--end::Copyright-->
-                </footer> <!--end::Footer-->
-        </div> <!--end::Container-->
+            </div>
+            <footer class="app-footer"> <!--begin::To the end-->
+                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+                <strong>
+                    Copyright &copy; 2024&nbsp;
+                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+                </strong>
+                All rights reserved.
+                <!--end::Copyright-->
+            </footer> <!--end::Footer-->
+    </div> <!--end::Container-->
     </div> <!--end::App Content-->
 
     </main> <!--end::App Main--> <!--begin::Footer-->
-
 
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
     </div>

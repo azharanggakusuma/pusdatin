@@ -70,273 +70,269 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?>
+    <div class="app-wrapper"> <!--begin::Header-->
 
-    <div class="page animate__animated animate__fadeIn">
-        <div class="app-wrapper"> <!--begin::Header-->
+        <?php include('../../components/navbar.php'); ?>
 
-            <?php include('../../components/navbar.php'); ?>
+        <?php include('../../components/sidebar.php'); ?>
+        <!--end::Sidebar--> <!--begin::App Main-->
 
-            <?php include('../../components/sidebar.php'); ?>
-            <!--end::Sidebar--> <!--begin::App Main-->
-
-            <main class="app-main"> <!--begin::App Content Header-->
-                <div class="app-content-header"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Form Enumerator</h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-end">
-                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Data Enumerator
-                                    </li>
-                                </ol>
-                            </div>
-                        </div> <!--end::Row-->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content Header--> <!--begin::App Content-->
-                <div class="app-content"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="card card-primary card-outline mb-4">
-                            <div class="card-header mb-3">
-                                <h3 class="card-title">Data Enumerator</h3>
-                                <!-- Aturan Pengisian Button -->
-                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
-                                    <i class="fas fa-info-circle"></i>
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Form Enumerator</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Data Enumerator
+                                </li>
+                            </ol>
+                        </div>
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
+            <div class="app-content"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Data Enumerator</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form">
+                                    <i class="fas fa-minus"></i>
                                 </button>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
-                                                var $icon = $(this).find("i"); // Ambil ikon tombol
-                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <?php if ($is_locked): ?>
-                                    <!-- Alert Bootstrap dengan Inovasi -->
-                                    <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-                                        <i class="fas fa-lock me-2"></i>
-                                        <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-
-                                <?php else: ?>
-                                    <form action="../../handlers/form_enumerator.php" method="post">
-                                        <div class="row">
-                                            <!-- Nama -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama Lengkap</label>
-                                                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
-                                            </div>
-
-                                            <!-- Alamat -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Alamat</label>
-                                                <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
-                                            </div>
-
-                                            <!-- No HP -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">No HP</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text">+62</span>
-                                                    <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]{9,12}">
-                                                </div>
-                                            </div>
-
-                                            <!-- Kode Desa -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Kode Desa</label>
-                                                <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                                    <option value="" selected>Otomatis Terisi</option>
-                                                </select>
-                                                <!-- Hidden Input untuk Kode Desa -->
-                                                <input type="hidden" name="kode_desa" id="kodeDesaHidden">
-                                            </div>
-
-                                            <!-- Nama Desa -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama Desa</label>
-                                                <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
-                                                    <option value="" selected>Cari Nama Desa</option>
-                                                </select>
-                                                <!-- Hidden Input untuk Nama Desa -->
-                                                <input type="hidden" name="nama_desa" id="namaDesaHidden">
-                                            </div>
-
-                                            <!-- Kecamatan -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Kecamatan</label>
-                                                <select disabled id="subDistrictSelect" class="form-control" style="width: 100%;">
-                                                    <option value="" selected>Otomatis Terisi</option>
-                                                </select>
-                                                <input type="hidden" name="kecamatan" id="kecamatanHidden">
-                                            </div>
-                                        </div>
-
-                                        <!-- Tombol Simpan -->
-                                        <div class="mb-3">
-                                            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                        </div>
-                                    </form>
-                                <?php endif; ?>
-                            </div>
-
-                            <!-- Modal Info -->
-                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <ul>
-                                                <li>Isi Nama Desa sesuai pilihan yang tersedia.</li>
-                                                <li>Setelah Nama Desa dipilih, Kode Desa dan Nama Kecamatan akan terisi otomatis.</li>
-                                                <li>Pastikan data lainnya seperti Nama, Alamat, dan No HP diisi dengan benar.</li>
-                                                <li>Format No HP harus tanpa awalan 0, contohnya: 81234567890.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-                                <?php if (isset($_GET['status'])): ?>
-                                    <script>
-                                        let status = "<?= $_GET['status'] ?>";
-                                        if (status === 'success') {
-                                            Swal.fire({
-                                                title: "Berhasil!",
-                                                text: "Data berhasil ditambahkan.",
-                                                icon: "success",
-                                                timer: 3000,
-                                                showConfirmButton: false
-                                            }).then(() => {
-                                                window.location.href = "data_enumerator.php";
-                                            });
-                                        } else if (status === 'error') {
-                                            Swal.fire({
-                                                title: "Gagal!",
-                                                text: "Terjadi kesalahan saat menambahkan data.",
-                                                icon: "error",
-                                                timer: 3000,
-                                                showConfirmButton: false
-                                            }).then(() => {
-                                                window.location.href = "data_enumerator.php";
-                                            });
-                                        } else if (status === 'warning') {
-                                            Swal.fire({
-                                                title: "Peringatan!",
-                                                text: "Mohon lengkapi semua data.",
-                                                icon: "warning",
-                                                timer: 3000,
-                                                showConfirmButton: false
-                                            }).then(() => {
-                                                window.location.href = "data_enumerator.php";
-                                            });
-                                        }
-                                    </script>
-                                <?php endif; ?>
-
                                 <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
+                                    $(document).ready(function() {
+                                        $(".toggle-form").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                        fetch(apiUrl)
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                if (!data || !data.data || !Array.isArray(data.data)) {
-                                                    throw new Error("Data dari API tidak valid");
-                                                }
-
-                                                const villages = data.data;
-                                                const villageCodeSelect = $("#villageCodeSelect");
-                                                const villageNameSelect = $("#villageNameSelect");
-                                                const subDistrictSelect = $("#subDistrictSelect");
-                                                const kodeDesaHidden = $("#kodeDesaHidden");
-                                                const namaDesaHidden = $("#namaDesaHidden");
-                                                const kecamatanHidden = $("#kecamatanHidden");
-
-                                                villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
-                                                subDistrictSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-
-                                                villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
-
-                                                villages.forEach(village => {
-                                                    villageNameSelect.append(
-                                                        new Option(village['Nama_Desa'], village['Kode_Desa'])
-                                                    );
-                                                });
-
-                                                villageNameSelect.select2({
-                                                    theme: "bootstrap4"
-                                                });
-
-                                                villageNameSelect.on("change", function() {
-                                                    const selectedKodeDesa = $(this).val();
-                                                    const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
-
-                                                    if (selectedVillage) {
-                                                        villageCodeSelect.empty().append(
-                                                            new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
-                                                        );
-                                                        subDistrictSelect.empty().append(
-                                                            new Option(selectedVillage['Kecamatan'], selectedVillage['Kecamatan'], true, true)
-                                                        );
-                                                        kodeDesaHidden.val(selectedVillage['Kode_Desa']);
-                                                        namaDesaHidden.val(selectedVillage['Nama_Desa']);
-                                                        kecamatanHidden.val(selectedVillage['Kecamatan']);
-                                                    } else {
-                                                        villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                        subDistrictSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
-                                                        kodeDesaHidden.val("");
-                                                        namaDesaHidden.val("");
-                                                        kecamatanHidden.val("");
-                                                    }
-                                                });
-                                            })
-                                            .catch(error => {
-                                                console.error("Terjadi kesalahan saat memuat data desa:", error);
-                                            });
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
                                     });
                                 </script>
-
                             </div>
-                        </div> <!--end::Container-->
-                    </div> <!--end::App Content-->
-            </main> <!--end::App Main--> <!--begin::Footer-->
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <?php if ($is_locked): ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
 
-            <footer class="app-footer"> <!--begin::To the end-->
-                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                <strong>
-                    Copyright &copy; 2024&nbsp;
-                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                </strong>
-                All rights reserved.
-                <!--end::Copyright-->
-            </footer> <!--end::Footer-->
-        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    </div>
+                            <?php else: ?>
+                                <form action="../../handlers/form_enumerator.php" method="post">
+                                    <div class="row">
+                                        <!-- Nama -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama Lengkap</label>
+                                            <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
+                                        </div>
+
+                                        <!-- Alamat -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Alamat</label>
+                                            <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
+                                        </div>
+
+                                        <!-- No HP -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">No HP</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">+62</span>
+                                                <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]{9,12}">
+                                            </div>
+                                        </div>
+
+                                        <!-- Kode Desa -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kode Desa</label>
+                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
+                                                <option value="" selected>Otomatis Terisi</option>
+                                            </select>
+                                            <!-- Hidden Input untuk Kode Desa -->
+                                            <input type="hidden" name="kode_desa" id="kodeDesaHidden">
+                                        </div>
+
+                                        <!-- Nama Desa -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama Desa</label>
+                                            <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
+                                                <option value="" selected>Cari Nama Desa</option>
+                                            </select>
+                                            <!-- Hidden Input untuk Nama Desa -->
+                                            <input type="hidden" name="nama_desa" id="namaDesaHidden">
+                                        </div>
+
+                                        <!-- Kecamatan -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kecamatan</label>
+                                            <select disabled id="subDistrictSelect" class="form-control" style="width: 100%;">
+                                                <option value="" selected>Otomatis Terisi</option>
+                                            </select>
+                                            <input type="hidden" name="kecamatan" id="kecamatanHidden">
+                                        </div>
+                                    </div>
+
+                                    <!-- Tombol Simpan -->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li>Isi Nama Desa sesuai pilihan yang tersedia.</li>
+                                            <li>Setelah Nama Desa dipilih, Kode Desa dan Nama Kecamatan akan terisi otomatis.</li>
+                                            <li>Pastikan data lainnya seperti Nama, Alamat, dan No HP diisi dengan benar.</li>
+                                            <li>Format No HP harus tanpa awalan 0, contohnya: 81234567890.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                            <?php if (isset($_GET['status'])): ?>
+                                <script>
+                                    let status = "<?= $_GET['status'] ?>";
+                                    if (status === 'success') {
+                                        Swal.fire({
+                                            title: "Berhasil!",
+                                            text: "Data berhasil ditambahkan.",
+                                            icon: "success",
+                                            timer: 3000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            window.location.href = "data_enumerator.php";
+                                        });
+                                    } else if (status === 'error') {
+                                        Swal.fire({
+                                            title: "Gagal!",
+                                            text: "Terjadi kesalahan saat menambahkan data.",
+                                            icon: "error",
+                                            timer: 3000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            window.location.href = "data_enumerator.php";
+                                        });
+                                    } else if (status === 'warning') {
+                                        Swal.fire({
+                                            title: "Peringatan!",
+                                            text: "Mohon lengkapi semua data.",
+                                            icon: "warning",
+                                            timer: 3000,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            window.location.href = "data_enumerator.php";
+                                        });
+                                    }
+                                </script>
+                            <?php endif; ?>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    const apiUrl = "https://script.google.com/macros/s/AKfycbxQ6XoS1RW6UZHRxV3dBiVWb2WsIQVNcwI9_yB7FErj5cyXWZ51FTStmTlD_7bAa5zV/exec";
+
+                                    fetch(apiUrl)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (!data || !data.data || !Array.isArray(data.data)) {
+                                                throw new Error("Data dari API tidak valid");
+                                            }
+
+                                            const villages = data.data;
+                                            const villageCodeSelect = $("#villageCodeSelect");
+                                            const villageNameSelect = $("#villageNameSelect");
+                                            const subDistrictSelect = $("#subDistrictSelect");
+                                            const kodeDesaHidden = $("#kodeDesaHidden");
+                                            const namaDesaHidden = $("#namaDesaHidden");
+                                            const kecamatanHidden = $("#kecamatanHidden");
+
+                                            villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                            villageNameSelect.empty().append('<option value="" selected>Cari Nama Desa</option>');
+                                            subDistrictSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+
+                                            villages.sort((a, b) => a['Nama_Desa'].localeCompare(b['Nama_Desa']));
+
+                                            villages.forEach(village => {
+                                                villageNameSelect.append(
+                                                    new Option(village['Nama_Desa'], village['Kode_Desa'])
+                                                );
+                                            });
+
+                                            villageNameSelect.select2({
+                                                theme: "bootstrap4"
+                                            });
+
+                                            villageNameSelect.on("change", function() {
+                                                const selectedKodeDesa = $(this).val();
+                                                const selectedVillage = villages.find(village => village['Kode_Desa'] === selectedKodeDesa);
+
+                                                if (selectedVillage) {
+                                                    villageCodeSelect.empty().append(
+                                                        new Option(selectedVillage['Kode_Desa'], selectedVillage['Kode_Desa'], true, true)
+                                                    );
+                                                    subDistrictSelect.empty().append(
+                                                        new Option(selectedVillage['Kecamatan'], selectedVillage['Kecamatan'], true, true)
+                                                    );
+                                                    kodeDesaHidden.val(selectedVillage['Kode_Desa']);
+                                                    namaDesaHidden.val(selectedVillage['Nama_Desa']);
+                                                    kecamatanHidden.val(selectedVillage['Kecamatan']);
+                                                } else {
+                                                    villageCodeSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                    subDistrictSelect.empty().append('<option value="" selected>Otomatis Terisi</option>');
+                                                    kodeDesaHidden.val("");
+                                                    namaDesaHidden.val("");
+                                                    kecamatanHidden.val("");
+                                                }
+                                            });
+                                        })
+                                        .catch(error => {
+                                            console.error("Terjadi kesalahan saat memuat data desa:", error);
+                                        });
+                                });
+                            </script>
+
+                        </div>
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
+
+        <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+            <strong>
+                Copyright &copy; 2024&nbsp;
+                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+            </strong>
+            All rights reserved.
+            <!--end::Copyright-->
+        </footer> <!--end::Footer-->
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />

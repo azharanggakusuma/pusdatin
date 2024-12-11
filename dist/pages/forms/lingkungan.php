@@ -48,172 +48,168 @@ include "../../config/session.php";
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?>
+    <div class="app-wrapper"> <!--begin::Header-->
 
-    <div class="page animate__animated animate__fadeIn">
-        <div class="app-wrapper"> <!--begin::Header-->
+        <?php include('../../components/navbar.php'); ?>
 
-            <?php include('../../components/navbar.php'); ?>
+        <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-            <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Lingkungan</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Formulir</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Lingkungan
+                                </li>
+                            </ol>
+                        </div>
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
+            <div class="app-content"> <!--begin::Container-->
+                <div class="container-fluid"> <!--begin::Row-->
 
-            <main class="app-main"> <!--begin::App Content Header-->
-                <div class="app-content-header"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Lingkungan</h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-end">
-                                    <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Lingkungan
-                                    </li>
-                                </ol>
-                            </div>
-                        </div> <!--end::Row-->
-                    </div> <!--end::Container-->
-                </div> <!--end::App Content Header--> <!--begin::App Content-->
-                <div class="app-content"> <!--begin::Container-->
-                    <div class="container-fluid"> <!--begin::Row-->
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Nama Sungai yang melintasi wilayah</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                        <div class="card card-primary card-outline mb-4">
-                            <div class="card-header mb-3">
-                                <h3 class="card-title">Nama Sungai yang melintasi wilayah</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
-                                                var $icon = $(this).find("i"); // Ambil ikon tombol
-                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                            });
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
                                         });
-                                    </script>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <!-- /.col -->
-                                        <div class=>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Keberadaan Sungai yang melintasi</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">Ada</option>
-                                                    <option value="">Tidak Ada</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama sungai yang melintasi 1</label>
-                                                <input type="text" id="nama-sungai-1" class="form-control" placeholder="Isi nama sungai" required>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama sungai yang melintasi 2</label>
-                                                <input type="text" id="nama-sungai-2" class="form-control" placeholder="Isi nama sungai" required>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama sungai yang melintasi 3</label>
-                                                <input type="text" id="nama-sungai-3" class="form-control" placeholder="Isi nama sungai" required>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Nama sungai yang melintasi 4</label>
-                                                <input type="text" id="nama-sungai-4" class="form-control" placeholder="Isi nama sungai" required>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                    </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                                </form>
-                                <!-- /.row -->
+                                    });
+                                </script>
                             </div>
                         </div>
-
-                        <div class="card card-primary card-outline mb-4">
-                            <div class="card-header mb-3">
-                                <h3 class="card-title">Keberadaan lokasi penggalian Golongan C</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
-                                                var $icon = $(this).find("i"); // Ambil ikon tombol
-                                                var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                                $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                                $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Keberadaan lokasi penggalian Golongan C (misalnya: batu kali, pasir, kapur, kaolin, pasir kuarsa, tanah liat, dll.)</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">Ada</option>
-                                                    <option value="">Tidak Ada</option>
-                                                </select>
-                                            </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class=>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Keberadaan Sungai yang melintasi</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
                                         </div>
-
-                                        <!-- /.col -->
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                                </form>
-                                <!-- /.row -->
-                            </div>
-                        </div> <!--end::Container-->
-                    </div> <!--end::App Content-->
-            </main> <!--end::App Main--> <!--begin::Footer-->
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama sungai yang melintasi 1</label>
+                                            <input type="text" id="nama-sungai-1" class="form-control" placeholder="Isi nama sungai" required>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama sungai yang melintasi 2</label>
+                                            <input type="text" id="nama-sungai-2" class="form-control" placeholder="Isi nama sungai" required>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama sungai yang melintasi 3</label>
+                                            <input type="text" id="nama-sungai-3" class="form-control" placeholder="Isi nama sungai" required>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Nama sungai yang melintasi 4</label>
+                                            <input type="text" id="nama-sungai-4" class="form-control" placeholder="Isi nama sungai" required>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div>
 
-            <footer class="app-footer"> <!--begin::To the end-->
-                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                <strong>
-                    Copyright &copy; 2024&nbsp;
-                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                </strong>
-                All rights reserved.
-                <!--end::Copyright-->
-            </footer> <!--end::Footer-->
-        </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    </div>
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Keberadaan lokasi penggalian Golongan C</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool batas-wilayah">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".batas-wilayah").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class>
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Keberadaan lokasi penggalian Golongan C (misalnya: batu kali, pasir, kapur, kaolin, pasir kuarsa, tanah liat, dll.)</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Ada</option>
+                                                <option value="">Tidak Ada</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col -->
+                                </div>
+                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                            </form>
+                            <!-- /.row -->
+                        </div>
+                    </div> <!--end::Container-->
+                </div> <!--end::App Content-->
+        </main> <!--end::App Main--> <!--begin::Footer-->
+
+        <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
+            <strong>
+                Copyright &copy; 2024&nbsp;
+                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
+            </strong>
+            All rights reserved.
+            <!--end::Copyright-->
+        </footer> <!--end::Footer-->
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
