@@ -82,12 +82,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Banyaknya Bank Pemerintah, Bank Swasta dan BPR</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form1">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form1").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -142,12 +142,12 @@ include "../../config/session.php";
                             <div class="card-header mb-3">
                                 <h3 class="card-title">Banyaknya Koperasi Aktif</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool batas-wilayah">
+                                    <button type="button" class="btn btn-tool toggle-form2">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".batas-wilayah").on("click", function() {
+                                            $(".toggle-form2").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
