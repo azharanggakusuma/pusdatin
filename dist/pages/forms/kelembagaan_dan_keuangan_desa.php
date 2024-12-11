@@ -1056,7 +1056,7 @@ include "../../config/session.php";
 
                 <div class="card card-primary card-outline mb-4">
                     <div class="card-header mb-3">
-                        <h3 class="card-title">Ketersedian Data Statistik Desa dan Petugas yang menangani statistik </h3>
+                        <h3 class="card-title">Ketersedian Data Statistik Desa dan Petugas yang menangani statistik </h3> 
                         <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalAnggaranDesa">
                             <i class="fas fa-info-circle"></i>
                         </button>
