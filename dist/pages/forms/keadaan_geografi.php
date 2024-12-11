@@ -156,12 +156,12 @@ foreach ($forms as $form) {
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form1">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form1").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -332,12 +332,12 @@ foreach ($forms as $form) {
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form2">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form2").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -396,12 +396,12 @@ foreach ($forms as $form) {
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form3">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form3").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -461,12 +461,12 @@ foreach ($forms as $form) {
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form4">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form4").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -528,12 +528,12 @@ foreach ($forms as $form) {
                                     <i class="fas fa-info-circle"></i>
                                 </button>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool toggle-form">
+                                    <button type="button" class="btn btn-tool toggle-form5">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <script>
                                         $(document).ready(function() {
-                                            $(".toggle-form").on("click", function() {
+                                            $(".toggle-form5").on("click", function() {
                                                 var $icon = $(this).find("i"); // Ambil ikon tombol
                                                 var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
