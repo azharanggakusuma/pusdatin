@@ -578,6 +578,7 @@ include "../../config/session.php";
                         <div class="card-body">
                             <form id="rincianAsetForm" method="post">
                                 <div class="row">
+                                    <!-- Loop untuk form 1 hingga 11 -->
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="bumdes" class="mb-2">1. Bumdes dan bumdesma</label>
@@ -588,7 +589,6 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="tanah_desa" class="mb-2">2. Tanah Desa</label>
@@ -599,7 +599,6 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="bangunan_milik_desa" class="mb-2">3. Bangunan Milik Desa</label>
@@ -610,7 +609,6 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="kendaraan_desa" class="mb-2">4. Kendaraan Milik Desa</label>
@@ -621,7 +619,6 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="peralatan_desa" class="mb-2">5. Peralatan Milik Desa</label>
@@ -632,9 +629,56 @@ include "../../config/session.php";
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Tambahkan baris sesuai dengan kebutuhan -->
-
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="perpustakaan_desa" class="mb-2">6. Perpustakaan Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="perpustakaan_desa_volume" name="perpustakaan_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="perpustakaan_desa_nilai" name="perpustakaan_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="pasar_desa" class="mb-2">7. Pasar Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="pasar_desa_volume" name="pasar_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="pasar_desa_nilai" name="pasar_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="tempat_ibadah" class="mb-2">8. Tempat Ibadah Milik Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="tempat_ibadah_volume" name="tempat_ibadah_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Unit</span>
+                                                <input type="text" id="tempat_ibadah_nilai" name="tempat_ibadah_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="jalan_desa" class="mb-2">9. Jalan Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="jalan_desa_volume" name="jalan_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Km</span>
+                                                <input type="text" id="jalan_desa_nilai" name="jalan_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="irigasi_desa" class="mb-2">10. Irigasi Desa</label>
+                                            <div class="input-group">
+                                                <input type="text" id="irigasi_desa_volume" name="irigasi_desa_volume" class="form-control" placeholder="Volume" required>
+                                                <span class="input-group-text">Km</span>
+                                                <input type="text" id="irigasi_desa_nilai" name="irigasi_desa_nilai" class="form-control" placeholder="Nilai Rupiah" required>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="aset_lainnya" class="mb-2">11. Aset Desa Lainnya</label>
