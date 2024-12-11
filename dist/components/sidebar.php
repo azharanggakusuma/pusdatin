@@ -23,9 +23,9 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                 <li class="nav-item menu-open">
                     <a href="<?php echo $base_path; ?>index.php" class="nav-link <?php echo $current_page == 'index.php' ? 'active' : ''; ?>">
                         <i class="nav-icon bi bi-speedometer"></i>
-                        <p>Dashboard</p>
+                        <p>Dashboard</p>u
                     </a>
-                </li>
+                </li> 
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
