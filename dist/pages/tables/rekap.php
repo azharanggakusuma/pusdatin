@@ -1,9 +1,7 @@
 <?php
 include_once('../../config/conn.php');
 include "../../config/session.php";
-?>
 
-<?php
 require __DIR__ . '/../../../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -134,24 +132,33 @@ if ($type === 'excel') {
 
 // Fungsi untuk ekspor PDF
 if ($type === 'pdf') {
-    $mpdf = new Mpdf();
+    $mpdf = new Mpdf([
+        'format' => 'A4-L', // Set ukuran kertas A4 dengan orientasi landscape
+    ]);
 
     $html = '<h1 style="text-align: center;">Rekap Data</h1>';
     $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
-    $html .= '<th>Kode Desa</th><th>Desa/Kelurahan</th><th>Luas Wilayah Desa(Hektar)</th>';
+    $html .= '<th>Kode Desa</th>';
+    $html .= '<th>Desa/Kelurahan</th>';
+    $html .= '<th>Luas Wilayah Desa (Hektar)</th>';
+    $html .= '<th>Batas Wilayah Desa</th>';
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
+        $batasWilayahFormatted = str_replace(' | ', '<br>', htmlspecialchars($row['batas_wilayah'])); // Sesuaikan format batas wilayah
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
+        $html .= '<td>' . $batasWilayahFormatted . '</td>';
         $html .= '</tr>';
     }
 
     $html .= '</tbody></table>';
 
+    // Tambahkan margin pada dokumen PDF agar terlihat lebih rapi
+    $mpdf->SetMargins(10, 10, 10);
     $mpdf->WriteHTML($html);
     $mpdf->Output('rekap_data_pusdatin.pdf', 'D');
     exit;
@@ -204,7 +211,7 @@ if ($type === 'pdf') {
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <?php include "../../components/loading.php"; ?> 
+    <?php include "../../components/loading.php"; ?>
 
     <div class="app-wrapper"> <!--begin::Header-->
 
