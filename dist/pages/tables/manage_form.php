@@ -141,9 +141,8 @@ include('../../config/list_form.php');
             <div class="card-header">
               <h3 class="card-title">Manage Forms</h3>
               <div class="card-tools">
-                <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addMenuModal">
-                  <i class="fas fa-edit"></i> &nbsp; Status Form
+                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+                  <i class="fas fa-file-alt"></i> &nbsp; Edit Status Form
                 </button>
               </div>
             </div>
