@@ -253,7 +253,7 @@ if ($type === 'pdf') {
                                     <i class="fas fa-download"></i>&nbsp; Export
                                 </button>
                                 <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#previewModal">
-                                    <i class="fas fa-print"></i> &nbsp; Preview
+                                    <i class="fas fa-table"></i> &nbsp; Preview
                                 </button>
                             </div>
                         </div>
