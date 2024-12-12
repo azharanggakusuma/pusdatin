@@ -917,7 +917,7 @@ include "../../config/session.php";
                             </form>
                             <!-- /.row -->
                         </div>
-                    </div> <!--end::Container-->
+                    </div> <!--end::Container--> 
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
