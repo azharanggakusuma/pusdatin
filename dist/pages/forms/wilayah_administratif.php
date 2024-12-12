@@ -3,6 +3,37 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+    // Check if the form is locked
+    $is_locked = false;
+    if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+        $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+        $result_progress = mysqli_query($conn, $query_progress);
+        $progress = mysqli_fetch_assoc($result_progress);
+        $is_locked = $progress['is_locked'] ?? false;
+    }
+
+    // Store the status in the array
+    $form_status[$form] = $is_locked;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -53,6 +84,45 @@ include "../../config/session.php";
         <?php include('../../components/navbar.php'); ?>
 
         <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <?php if (isset($_GET['status'])): ?>
+            <script>
+                let status = "<?= $_GET['status'] ?>";
+                if (status === 'success') {
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "Data berhasil ditambahkan.",
+                        icon: "success",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "wilayah_administratif.php";
+                    });
+                } else if (status === 'error') {
+                    Swal.fire({
+                        title: "Gagal!",
+                        text: "Terjadi kesalahan saat menambahkan data.",
+                        icon: "error",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "wilayah_administratif.php";
+                    });
+                } else if (status === 'warning') {
+                    Swal.fire({
+                        title: "Peringatan!",
+                        text: "Mohon lengkapi semua data.",
+                        icon: "warning",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "wilayah_administratif.php";
+                    });
+                }
+            </script>
+        <?php endif; ?>
 
         <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
@@ -123,43 +193,49 @@ include "../../config/session.php";
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-
-
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Klasifikasi Desa (Swasembada/ Swakarya/ Swadaya)</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="" disabled selected>-- Pilih Klasifikasi Desa --</option>
-                                                <option value="SWASEMBADA">SWASEMBADA</option>
-                                                <option value="SWAKARYA">SWAKARYA</option>
-                                                <option value="SWADAYA">SWADAYA</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class=>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
-                                                <option value="DESA">DESA</option>
-                                                <option value="KELURAHAN">KELURAHAN</option>
-                                                <option value="KAMPUNG">KAMPUNG</option>
-                                                <option value="NAGARI">NAGARI</option>
-                                                <option value="GAMPONG">GAMPONG</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
+                            <?php if ($form_status['Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya']) : ?>
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            <?php else: ?>
+                                <form action="../../handlers/form_status_pemerintahan_desa.php" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Klasifikasi Desa (Swasembada/ Swakarya/ Swadaya)</label>
+                                                <select name="klasifikasi_desa" class="form-control">
+                                                    <option value="" disabled selected>-- Pilih Klasifikasi Desa --</option>
+                                                    <option value="SWASEMBADA">SWASEMBADA</option>
+                                                    <option value="SWAKARYA">SWAKARYA</option>
+                                                    <option value="SWADAYA">SWADAYA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <!-- /.col -->
+                                        <div class=>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
+                                                <select name="status_pemerintahan" class="form-control">
+                                                    <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
+                                                    <option value="DESA">DESA</option>
+                                                    <option value="KELURAHAN">KELURAHAN</option>
+                                                    <option value="KAMPUNG">KAMPUNG</option>
+                                                    <option value="NAGARI">NAGARI</option>
+                                                    <option value="GAMPONG">GAMPONG</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
                     </div>
@@ -917,7 +993,7 @@ include "../../config/session.php";
                             </form>
                             <!-- /.row -->
                         </div>
-                    </div> <!--end::Container--> 
+                    </div> <!--end::Container-->
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
