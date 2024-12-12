@@ -241,13 +241,13 @@ foreach ($forms as $form) {
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-utara" class="mb-2">Sebelah Utara</label>
-                                                <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan batas desa">
+                                                <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-utara" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan kecamatan">
+                                                <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
 
@@ -255,13 +255,13 @@ foreach ($forms as $form) {
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-selatan" class="mb-2">Sebelah Selatan</label>
-                                                <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan batas desa">
+                                                <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-selatan" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan kecamatan">
+                                                <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
 
@@ -269,13 +269,13 @@ foreach ($forms as $form) {
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-timur" class="mb-2">Sebelah Timur</label>
-                                                <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan batas desa">
+                                                <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-timur" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan kecamatan">
+                                                <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
 
@@ -283,13 +283,13 @@ foreach ($forms as $form) {
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="batas-barat" class="mb-2">Sebelah Barat</label>
-                                                <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan batas desa">
+                                                <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec-barat" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan kecamatan">
+                                                <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
                                     </div>
@@ -347,17 +347,17 @@ foreach ($forms as $form) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form action="../../handlers/form_jarak_kantor_desa.php" method="post">
                                 <div class="row"> <!-- /.col -->
                                     <!-- /.form-group -->
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                                        <input type="text" name="jarak_ke_ibukota_kecamatan" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                                        <input type="text" name="jarak_ke_ibukota_kabupaten" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
