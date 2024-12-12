@@ -19,36 +19,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $koordinat_lintang = mysqli_real_escape_string($conn, $_POST['koordinat_lintang']);
     $koordinat_bujur = mysqli_real_escape_string($conn, $_POST['koordinat_bujur']);
 
-    // Validasi format derajat desimal untuk lintang dan bujur
-    $pattern = '/^-?([1-8]?[0-9](?:\.\d+)?|90(?:\.0+)?)(?:\s?[NS])?$/'; // Lintang (N/S)
-    $pattern_bujur = '/^-?([1-9]?[0-9]|1[0-7][0-9])(?:\.\d+)?(?:\s?[EW])?$/'; // Bujur (E/W)
+    if (!empty($koordinat_lintang) && !empty($koordinat_bujur)) {
+        // Perbarui query untuk memasukkan user_id dan desa_id
+        $sql = "INSERT INTO tb_titik_koordinat_kantor_desa (koordinat_lintang, koordinat_bujur, user_id, desa_id) 
+                VALUES ('$koordinat_lintang', '$koordinat_bujur', '$user_id', '$desa_id')";
 
-    // Cek apakah koordinat lintang dan bujur valid
-    if (preg_match($pattern, $koordinat_lintang) && preg_match($pattern_bujur, $koordinat_bujur)) {
-        if (!empty($koordinat_lintang) && !empty($koordinat_bujur)) {
-            // Perbarui query untuk memasukkan user_id dan desa_id
-            $sql = "INSERT INTO tb_titik_koordinat_kantor_desa (koordinat_lintang, koordinat_bujur, user_id, desa_id) 
-                    VALUES ('$koordinat_lintang', '$koordinat_bujur', '$user_id', '$desa_id')";
+        if (mysqli_query($conn, $sql)) {
+            // Tambahkan atau perbarui progres pengguna
+            $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
+                               VALUES ('$user_id', 'Titik Koordinat Kantor Desa', TRUE, '$desa_id')
+                               ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
+            mysqli_query($conn, $query_progress);
 
-            if (mysqli_query($conn, $sql)) {
-                // Tambahkan atau perbarui progres pengguna
-                $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
-                                   VALUES ('$user_id', 'Titik Koordinat Kantor Desa', TRUE, '$desa_id')
-                                   ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
-                mysqli_query($conn, $query_progress);
-
-                header("Location: ../pages/forms/keadaan_geografi.php?status=success");
-                exit();
-            } else {
-                header("Location: ../pages/forms/keadaan_geografi.php?status=error&message=" . urlencode(mysqli_error($conn)));
-                exit();
-            }
+            header("Location: ../pages/forms/keadaan_geografi.php?status=success");
+            exit();
         } else {
-            header("Location: ../pages/forms/keadaan_geografi.php?status=warning");
+            header("Location: ../pages/forms/keadaan_geografi.php?status=error&message=" . urlencode(mysqli_error($conn)));
             exit();
         }
     } else {
-        header("Location: ../pages/forms/keadaan_geografi.php?status=error&message=" . urlencode('Koordinat tidak valid. Format harus menggunakan derajat desimal.'));
+        header("Location: ../pages/forms/keadaan_geografi.php?status=warning");
         exit();
     }
 }
