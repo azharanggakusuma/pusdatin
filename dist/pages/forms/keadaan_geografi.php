@@ -347,21 +347,30 @@ foreach ($forms as $form) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="../../handlers/form_jarak_kantor_desa.php" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
-                                        <input type="text" name="jarak_ke_ibukota_kecamatan" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
-                                        <input type="text" name="jarak_ke_ibukota_kabupaten" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
-                                    </div>
+                            <?php if ($form_status['Jarak Kantor Desa']) : ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            <?php else: ?>
+                                <form action="../../handlers/form_jarak_kantor_desa.php" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
+                                            <input type="text" name="jarak_ke_ibukota_kecamatan" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
+                                            <input type="text" name="jarak_ke_ibukota_kabupaten" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
                         <!-- Modal Info -->
@@ -411,21 +420,30 @@ foreach ($forms as $form) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Koordinat Lintang</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Koordinat Bujur</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
-                                    </div>
+                            <?php if ($form_status['Titik Koordinat Kantor Desa']) : ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            <?php else: ?>
+                                <form action="" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koordinat Lintang</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Koordinat Bujur</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
                         <!-- Modal Info -->
@@ -476,24 +494,33 @@ foreach ($forms as $form) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Topografi Terluas Wilayah Desa</label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="" disabled selected>-- Silakkan Pilih --</option>
-                                            <option value="">LERENG/PUNCAK</option>
-                                            <option value="">LEMBAH</option>
-                                            <option value="">DATARAN</option>
-                                            <option value="">PESISIR PANTAI</option>
-                                        </select>
+                            <?php if ($form_status['Topografi Terluas Wilayah Desa']) : ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php else: ?>
+                                <form action="" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Topografi Terluas Wilayah Desa</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="" disabled selected>-- Silakkan Pilih --</option>
+                                                <option value="">LERENG/PUNCAK</option>
+                                                <option value="">LEMBAH</option>
+                                                <option value="">DATARAN</option>
+                                                <option value="">PESISIR PANTAI</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
-                                </div>
-                            </form>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
+                                    </div>
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
                         <!-- Modal Info -->
@@ -543,28 +570,37 @@ foreach ($forms as $form) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row"> <!-- /.col -->
-                                    <!-- /.form-group -->
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Tanah Bengkok</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Tanah Titi Sara</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Kebun Desa</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="mb-2">Sawah Desa</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
-                                    </div>
+                            <?php if ($form_status['Luas Tanah Kas Desa']) : ?>
+                                <!-- Alert Bootstrap dengan Inovasi -->
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            <?php else: ?>
+                                <form action="" method="post">
+                                    <div class="row"> <!-- /.col -->
+                                        <!-- /.form-group -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Tanah Bengkok</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Tanah Titi Sara</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kebun Desa</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Sawah Desa</label>
+                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
                         <!-- Modal Info -->
