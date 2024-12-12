@@ -428,18 +428,17 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
+                                <form action="../../handlers/form_titik_koordinat_kantor_desa.php" method="post">
                                     <div class="row"> <!-- /.col -->
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Koordinat Lintang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
+                                            <input type="text" class="form-control" name="koordinat_lintang" placeholder="Masukkan koordinat lintang" style="width: 100%;">
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Koordinat Bujur</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan koordinat" style="width: 100%;">
-                                        </div>
+                                            <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur" style="width: 100%;">
                                     </div>
                                     <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                                 </form>
@@ -502,7 +501,7 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
+                                <form action="../../handlers/topografi_terluas_wilayah_desa.php" method="post">
                                     <div class="row"> <!-- /.col -->
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
@@ -578,7 +577,7 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
+                                <form action="../../handlers/luas_tanah_kas_desa.php" method="post">
                                     <div class="row"> <!-- /.col -->
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
