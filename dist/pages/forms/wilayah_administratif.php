@@ -78,6 +78,32 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Jenjang Klasifikasi Desa Yang Sesuai</li>
+                                                <li>Pilih Status Pemerintahan Yang Sesuai</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form">
                                     <i class="fas fa-minus"></i>
@@ -141,6 +167,33 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Banyaknya Dusun, Rukun Tetangga dan Rukun Warga </h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Masukan Angka/Jumlah</li>
+                                                <li>Masukan Angka/Jumlah</li>
+                                                <li>Masukan Angka/Jumlah</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form1">
                                     <i class="fas fa-minus"></i>
@@ -198,6 +251,32 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Alamat Balai Desa/Kantor Kelurahan </h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanBalaiDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanBalaiDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Masukkan Alamat Balai Desa/Kantor Dengan Benar</li>
+                                                <li>Masukkan Nama Kecamatan Tempat Balai Desa/Kantor Kelurahan</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form2">
                                     <i class="fas fa-minus"></i>
@@ -248,6 +327,33 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Dasar hukum pembentukan Pemerintah Desa / Kelurahan </h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanDasarHukum">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanDasarHukum" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih ketersediaan Dasar Hukum Yang Sesuai</li>
+                                                <li>Isi No Peraturan Pembentukan Desa Berupa Perda/Perbup/Kebup/Lainnya</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
+
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form3">
                                     <i class="fas fa-minus"></i>
@@ -301,6 +407,32 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Dasar hukum pembentukan Badan Permusyawaratan Desa (BPD)</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanDasarHukumBPD">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanDasarHukumBPD" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih ketersediaan Dasar Hukum Yang Sesuai</li>
+                                                <li>Isi No Peraturan Pembentukan BPD Berupa Perda/Perbup/Kebup/Lainnya</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form4">
                                     <i class="fas fa-minus"></i>
@@ -354,6 +486,34 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Ketersediaan Penetapan Batas dan Peta Desa</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#PenetapanBatasDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="PenetapanBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Antara ADA Atau TIDAK ADA</li>
+                                                <li>Isi No Sk/ Perbup/ Perda/ Perdes Tentang Penetapan Batas Desa</li>
+                                                <li>Pilih Antara ADA Atau TIDAK ADA</li>
+                                                <li>Isi No Sk/ Perbup/ Perda/ Perdes Tentang Penetapan Peta Desa</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form5">
                                     <i class="fas fa-minus"></i>
@@ -429,6 +589,35 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Alamat website dan media sosial</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#alamatWebsite">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="alamatWebsite" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Isi Nama Alamat Website Desa</li>
+                                                <li>Isi Nama Alamat Email Desa</li>
+                                                <li>Isi Nama Alamat Facebook Desa</li>
+                                                <li>Isi Nama Alamat Twitter Desa</li>
+                                                <li>Isi Nama Alamat Youtube Desa</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form6">
                                     <i class="fas fa-minus"></i>
@@ -505,6 +694,31 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Kepemilikan Kantor Kepala Desa/Balai Desa</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#kondisiDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="kondisiDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Kondisi Kantor Kepala Desa Antara ("ADA,LAYAK","ADA, TIDAK LAYAK","TIDAK ADA") </li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form7">
                                     <i class="fas fa-minus"></i>
@@ -549,6 +763,31 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Kondisi Kantor Kepala Desa/Balai Desa</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#kondisiDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="kondisiDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Antara Aset Desa/Bukan Aset Desa</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form8">
                                     <i class="fas fa-minus"></i>
@@ -594,6 +833,32 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Perkembangan Status Indeks Desa Membangun (IDM) di Kantor Desa</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#idm">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="idm" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Status Desa Membangun Pada Tahun 2024</li>
+                                                <li>Pilih Status Desa Membangun Pada Tahun 2025</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form9">
                                     <i class="fas fa-minus"></i>
@@ -657,6 +922,35 @@ include "../../config/session.php";
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#ketersediaaninternet">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="ketersediaaninternet" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih Antara BERFUNGSI,JARANG BERFUNGSI,TIDAK BERFUNGSI,TIDAK ADA</li>
+                                                <li>Pilih Antara CEPAT, SEDANG, LAMBAT</li>
+                                                <li>Masukan Jumlah/Angka Yang Sesuai</li>
+                                                <li>Pilih Antara DIGUNAKAN, JARANG DIGUNAKAN, TIDAK DIGUNAKAN, TIDAK ADA</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form10">
                                     <i class="fas fa-minus"></i>
