@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         header("Location: ../pages/forms/keadaan_geografi.php?status=warning");
-        exit();
+        exit(); 
     }
 }
 ?>

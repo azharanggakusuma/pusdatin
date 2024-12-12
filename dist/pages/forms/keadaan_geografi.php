@@ -544,7 +544,7 @@ foreach ($forms as $form) {
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
+                        <div class="card-header mb-3"> 
                             <h3 class="card-title">Luas Tanah Kas Desa</h3>
                             <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalLuasTanahKasDesa">
