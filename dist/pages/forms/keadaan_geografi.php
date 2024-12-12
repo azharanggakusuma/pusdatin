@@ -439,8 +439,8 @@ foreach ($forms as $form) {
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Koordinat Bujur</label>
                                             <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur" style="width: 100%;">
-                                    </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                        </div>
+                                        <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
                                 </form>
                             <?php endif; ?>
                             <!-- /.row -->
@@ -501,17 +501,16 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="../../handlers/topografi_terluas_wilayah_desa.php" method="post">
-                                    <div class="row"> <!-- /.col -->
-                                        <!-- /.form-group -->
+                                <form action="../../handlers/form_topografi_terluas_wilayah_desa.php" method="post">
+                                    <div class="row">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Topografi Terluas Wilayah Desa</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="" disabled selected>-- Silakkan Pilih --</option>
-                                                <option value="">LERENG/PUNCAK</option>
-                                                <option value="">LEMBAH</option>
-                                                <option value="">DATARAN</option>
-                                                <option value="">PESISIR PANTAI</option>
+                                            <select name="topografi_terluas_wilayah_desa" class="form-control">
+                                                <option value="" disabled selected>-- Silahkan Pilih --</option>
+                                                <option value="LERENG/PUNCAK">LERENG/PUNCAK</option>
+                                                <option value="LEMBAH">LEMBAH</option>
+                                                <option value="DATARAN">DATARAN</option>
+                                                <option value="PESISIR PANTAI">PESISIR PANTAI</option>
                                             </select>
                                         </div>
                                     </div>
@@ -519,6 +518,7 @@ foreach ($forms as $form) {
                                         <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
                                     </div>
                                 </form>
+
                             <?php endif; ?>
                             <!-- /.row -->
                         </div>
@@ -577,7 +577,7 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="../../handlers/luas_tanah_kas_desa.php" method="post">
+                                <form action="../../handlers/form_luas_tanah_kas_desa.php" method="post">
                                     <div class="row"> <!-- /.col -->
                                         <!-- /.form-group -->
                                         <div class="form-group mb-3">
