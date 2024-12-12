@@ -50,3 +50,17 @@ CREATE TABLE tb_status_pemerintahan_desa (
   CONSTRAINT fk_tb_status_pemerintahan_desa_desa_id FOREIGN KEY (desa_id) REFERENCES tb_enumerator (id_desa) ON DELETE CASCADE,
   CONSTRAINT fk_tb_status_pemerintahan_desa_user_id FOREIGN KEY (user_id) REFERENCES users (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE tb_dusun_rw_rt (
+  id_dusun_rw_rt int NOT NULL AUTO_INCREMENT,
+  jumlah_dusun int NOT NULL,
+  jumlah_rw int NOT NULL,
+  jumlah_rt int NOT NULL,
+  user_id int DEFAULT NULL,
+  desa_id int DEFAULT NULL,
+  PRIMARY KEY (id_dusun_rw_rt),
+  KEY fk_user_id (user_id),
+  KEY fk_desa_id (desa_id),
+  CONSTRAINT fk_tb_dusun_rw_rt_desa_id FOREIGN KEY (desa_id) REFERENCES tb_enumerator (id_desa) ON DELETE CASCADE,
+  CONSTRAINT fk_tb_dusun_rw_rt_user_id FOREIGN KEY (user_id) REFERENCES users (id)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

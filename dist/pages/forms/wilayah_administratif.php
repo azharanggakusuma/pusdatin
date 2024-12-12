@@ -242,7 +242,7 @@ foreach ($forms as $form) {
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Banyaknya Dusun, Rukun Tetangga dan Rukun Warga </h3>
+                            <h3 class="card-title">Banyaknya Dusun, Rukun Tetangga dan Rukun Warga</h3>
                             <!-- BEGIN:: INFO BUTTON -->
                             <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
@@ -289,41 +289,48 @@ foreach ($forms as $form) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Banyaknya RW</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <!-- /.col -->
-                                    <div class>
-                                        <!-- /.form-group -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Banyaknya RT</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
+                            <?php if ($form_status['Banyaknya Dusun, Rukun Tetangga dan Rukun Warga']) : ?>
+                                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                            </form>
+                            <?php else: ?>
+                                <form action="../../handlers/form_banyaknya_dusun_rt_rw.php" method="post">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis</label>
+                                                <input type="number" name="jumlah_dusun" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Banyaknya RW</label>
+                                                <input type="number" name="jumlah_rw" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class>
+                                            <!-- /.form-group -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Banyaknya RT</label>
+                                                <input type="number" name="jumlah_rt" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                </form>
+                            <?php endif; ?>
                             <!-- /.row -->
                         </div>
                     </div>
+
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Alamat Balai Desa/Kantor Kelurahan </h3>
