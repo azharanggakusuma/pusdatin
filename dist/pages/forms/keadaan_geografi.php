@@ -148,7 +148,6 @@ foreach ($forms as $form) {
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Luas Wilayah Desa</h3>
-                            <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalLuasDesa">
                                 <i class="fas fa-info-circle"></i>
                             </button>
@@ -159,20 +158,17 @@ foreach ($forms as $form) {
                                 <script>
                                     $(document).ready(function() {
                                         $(".toggle-form1").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            var $icon = $(this).find("i");
+                                            var $cardBody = $(this).closest(".card").find(".card-body");
+                                            $cardBody.slideToggle();
+                                            $icon.toggleClass("fa-minus fa-plus");
                                         });
                                     });
                                 </script>
                             </div>
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             <?php if ($form_status['Luas Wilayah Desa']) : ?>
-                                <!-- Alert Bootstrap dengan Inovasi -->
                                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                                     <i class="fas fa-lock me-2"></i>
                                     <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
@@ -180,20 +176,18 @@ foreach ($forms as $form) {
                                 </div>
                             <?php else: ?>
                                 <form action="../../handlers/form_luas_wilayah_desa.php" method="post">
-                                    <div class="row"> <!-- /.col -->
-                                        <!-- /.form-group -->
+                                    <div class="row">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
-                                            <input type="text" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas desa" style="width: 100%;">
+                                            <input type="number" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas wilayah dalam hektar" style="width: 100%;" step="0.01" min="0">
                                         </div>
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                                 </form>
                             <?php endif; ?>
-                            <!-- /.row -->
                         </div>
-
-                        <!-- Modal Info -->
                         <div class="modal fade" id="modalLuasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -203,7 +197,11 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Isi angka/luas desa</li>
+                                            <li>Masukkan luas wilayah desa dalam satuan hektar.</li>
+                                            <li>Gunakan tanda titik (.) untuk angka desimal.</li>
+                                            <li>Contoh pengisian: 120.75.</li>
+                                            <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                                            <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -299,6 +297,7 @@ foreach ($forms as $form) {
                                 </form>
                             <?php endif; ?>
                         </div>
+
                         <!-- Modal Info -->
                         <div class="modal fade" id="modalBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -309,8 +308,11 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Isi nama desa yang berbatasan</li>
-                                            <li>Isi nama kecamatan yang berbatasan</li>
+                                            <li>Masukkan nama desa yang berbatasan sesuai arah mata angin (Utara, Selatan, Timur, Barat).</li>
+                                            <li>Masukkan nama kecamatan tempat desa tersebut berada.</li>
+                                            <li>Pastikan informasi yang diisi sesuai dengan data administratif yang benar.</li>
+                                            <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                                            <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -383,9 +385,14 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Isi dengan angka</li>
+                                            <li>Masukkan jarak dalam satuan kilometer (km) menggunakan angka desimal jika diperlukan (contoh: 12.5).</li>
+                                            <li>Pastikan pengisian sesuai dengan data geografis atau administratif yang valid.</li>
+                                            <li>Isi jarak ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota dengan teliti.</li>
+                                            <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                                            <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                                         </ul>
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                     </div>
@@ -455,10 +462,15 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Pengisian titik kordinat menggunakan derajat desimal, <br> contoh: <strong>-6.8796 LS</strong></li>
-                                            <li>Pengisian titik kordinat menggunakan derajat desimal, <br> contoh: <strong>108.5538 BT</strong></li>
+                                            <li>Masukkan koordinat dalam format derajat desimal (contoh: -6.8796 untuk Lintang Selatan, 108.5538 untuk Bujur Timur).</li>
+                                            <li>Gunakan tanda minus (-) untuk koordinat di belahan selatan (LS) atau barat (BB).</li>
+                                            <li>Pastikan nilai lintang berada dalam rentang -90 hingga 90, dan bujur berada dalam rentang -180 hingga 180.</li>
+                                            <li>Periksa keakuratan data sesuai dengan titik lokasi kantor desa menggunakan aplikasi peta seperti Google Maps.</li>
+                                            <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                                            <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                                         </ul>
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                     </div>
@@ -532,7 +544,9 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Pilih salah satu yang ada dipilihan</li>
+                                            <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan topografi wilayah desa Anda.</li>
+                                            <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                                            <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -544,7 +558,7 @@ foreach ($forms as $form) {
                     </div>
 
                     <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3"> 
+                        <div class="card-header mb-3">
                             <h3 class="card-title">Luas Tanah Kas Desa</h3>
                             <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalLuasTanahKasDesa">
@@ -578,26 +592,27 @@ foreach ($forms as $form) {
                                 </div>
                             <?php else: ?>
                                 <form action="../../handlers/form_luas_tanah_kas_desa.php" method="post">
-                                    <div class="row"> <!-- /.col -->
-                                        <!-- /.form-group -->
+                                    <div class="row">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Tanah Bengkok</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                            <input type="number" name="tanah_bengkok" class="form-control" placeholder="Masukkan angka/luas" step="0.01" style="width: 100%;">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Tanah Titi Sara</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                            <input type="number" name="tanah_titi_sara" class="form-control" placeholder="Masukkan angka/luas" step="0.01" style="width: 100%;">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Kebun Desa</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                            <input type="number" name="kebun_desa" class="form-control" placeholder="Masukkan angka/luas" step="0.01" style="width: 100%;">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Sawah Desa</label>
-                                            <input type="number" class="form-control" placeholder="Masukkan angka/luas" style="width: 100%;">
+                                            <input type="number" name="sawah_desa" class="form-control" placeholder="Masukkan angka/luas" step="0.01" style="width: 100%;">
                                         </div>
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                                 </form>
                             <?php endif; ?>
                             <!-- /.row -->
@@ -612,7 +627,11 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Isi dengan angka/luas</li>
+                                            <li>Isi setiap kolom dengan angka desimal menggunakan tanda titik sebagai pemisah desimal. Contoh: <strong>2.07</strong>.</li>
+                                            <li>Jika hanya ingin mengisi angka bulat, cukup tulis angka tanpa desimal. Contoh: <strong>5</strong>.</li>
+                                            <li>Jangan menggunakan tanda koma sebagai pemisah desimal, karena sistem akan otomatis menggantinya dengan tanda titik.</li>
+                                            <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                                            <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
