@@ -1530,7 +1530,7 @@ include "../../config/session.php";
                             </form>
                         </div>
                     </div>
-                </div> <!--end::Ctainer-->
+                </div> <!--end::Ctainer--> 
                 <!-- END:: container Pos Kesehatan Desa -->
 
                 <!-- BEGIN:: container Apotek  -->
