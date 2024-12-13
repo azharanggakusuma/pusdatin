@@ -127,7 +127,7 @@ include "../../config/session.php";
                                         <div>
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Nama Rumah Sakit</label>
-                                                <input id="nama_Rumah Sakit_ke1" type="text" class="form-control">
+                                                <input placeholder="Isi Nama Rumah Sakit" id="nama_Rumah Sakit_ke1" type="text" class="form-control">
                                             </div>
 
 
@@ -135,7 +135,7 @@ include "../../config/session.php";
                                                 <label class="mb-2">Jenis Rumah Sakit</label>
                                                 <select id="Jenis_Rumah Sakit1" class="form-control select2bs4"
                                                     style="width: 100%;">
-                                                    <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
+                                                    <option value="" disabled selected>---Pilih Jenis Rumah Sakit---</option>
                                                     <option value="">Rumah Sakit</option>
                                                     <option value="">Rumah Sakit Swasta</option>
 
@@ -144,7 +144,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Rumah Sakit</label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -184,7 +184,7 @@ include "../../config/session.php";
                                     <div class="row">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Rumah Sakit</label>
-                                            <input id="nama_Rumah Sakit_ke2" type="text" class="form-control">
+                                            <input placeholder="Isi Nama Rumah Sakit" id="nama_Rumah Sakit_ke2" type="text" class="form-control">
                                         </div>
 
 
@@ -192,7 +192,7 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenis Rumah Sakit</label>
                                             <select id="Jenis_Rumah Sakit2" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
+                                                <option value="" disabled selected>---Pilih Jenis Rumah Sakit---</option>
                                                 <option value="">Rumah Sakit</option>
                                                 <option value="">Rumah Sakit Swasta</option>
 
@@ -201,7 +201,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Rumah Sakit</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -239,7 +239,7 @@ include "../../config/session.php";
                                     <div class="row">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Rumah Sakit</label>
-                                            <input id="nama_Rumah Sakit_ke3" type="text" class="form-control">
+                                            <input placeholder="Isi Nama Rumah Sakit" id="nama_Rumah Sakit_ke3" type="text" class="form-control">
                                         </div>
 
 
@@ -247,7 +247,7 @@ include "../../config/session.php";
                                             <label class="mb-2">Jenis Rumah Sakit</label>
                                             <select id="Jenis_Rumah Sakit3" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="" disabled selected>Pilih Jenis Rumah Sakit</option>
+                                                <option value="" disabled selected>---Pilih Jenis Rumah Sakit---</option>
                                                 <option value="">Rumah Sakit</option>
                                                 <option value="">Rumah Sakit Swasta</option>
 
@@ -256,7 +256,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Rumah Sakit</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -345,7 +345,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat PUSKESMAS</label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat PUSKESMA Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -392,7 +392,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat PUSKESMAS</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat PUSKESMA Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -420,7 +420,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat PUSKESMAS</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat PUSKESMA Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -490,7 +490,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat PUSTU</label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat PUSTU Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -537,7 +537,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat PUSTU</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat PUSTU Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -583,7 +583,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat PUSTU</label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat PUSTU Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -672,7 +672,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat Poliklinik Atau Balai Pengobatan Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -719,7 +719,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Poliklinik Atau Balai Pengobatan Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -765,7 +765,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Poliklinik Atau Balai Pengobatan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Poliklinik Atau Balai Pengobatan Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -854,7 +854,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Praktek Dokter </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat Prakter Dokter Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -901,7 +901,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Praktek Dokter </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Prakter Dokter Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -947,7 +947,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Praktek Dokter </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Prakter Dokter Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1036,7 +1036,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Praktek Bidan </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat Praktek Bidan Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -1083,7 +1083,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Praktek Bidan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Praktek Bidan Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1129,7 +1129,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Praktek Bidan </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Praktek Bidan Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1218,7 +1218,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat POSKESDES Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -1265,7 +1265,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat POSKESDES Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1307,11 +1307,9 @@ include "../../config/session.php";
                                             <input id="nama_Pos Kesehatan Desa (POSKESDES) _ke3" type="text" class="form-control">
                                         </div>
 
-
-
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Pos Kesehatan Desa (POSKESDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat POSKESDES Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1400,7 +1398,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat POLINDES Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -1447,7 +1445,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat POLINDES Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1493,7 +1491,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Pondok Bersalin Desa (POLINDES) </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat POLINDES Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1582,7 +1580,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat Apotek </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -1629,7 +1627,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Apotek </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1675,7 +1673,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat Apotek </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1764,7 +1762,7 @@ include "../../config/session.php";
 
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Alamat POSYANDU </label>
-                                                <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -1811,7 +1809,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1857,7 +1855,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1903,7 +1901,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1949,7 +1947,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -1995,7 +1993,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
@@ -2041,7 +2039,7 @@ include "../../config/session.php";
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat POSYANDU </label>
-                                            <textarea class="form-control" rows="3" placeholder="alamat"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Isi Alamat Rumah Sakit Dengan Benar"></textarea>
                                         </div>
 
                                         <div class="form-group mb-3">
