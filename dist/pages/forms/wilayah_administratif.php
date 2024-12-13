@@ -47,8 +47,8 @@ foreach ($forms as $form) {
     <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin: Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end: Plugin(AdminLTE)-->
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -483,7 +483,7 @@ foreach ($forms as $form) {
                                 <form action="../../handlers/form_dasar_hukum_pembentukan_desa.php" method="post">
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Ketersediaan Dasar Hukum Pembentukan Pemerintah Desa / Kelurahan</label>
-                                        <select name="dasar_hukum" class="form-control" required>
+                                        <select name="dasar_hukum" class="form-control">
                                             <option value="" disabled selected>-- Pilih Ketersediaan Dasar Hukum --</option>
                                             <option value="ADA">ADA</option>
                                             <option value="TIDAK ADA">TIDAK ADA</option>
@@ -491,7 +491,7 @@ foreach ($forms as $form) {
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="mb-2">Jika Kolom di atas Ada, No Peraturan/Keputusan Pendirian Desa</label>
-                                        <input type="text" name="no_peraturan" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;" required>
+                                        <input type="text" name="no_peraturan" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-primary mt-3">Simpan</button>
@@ -560,7 +560,7 @@ foreach ($forms as $form) {
                                     <div class="row">
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Ketersediaan Dasar Hukum Badan Permusyawaratan Desa (BPD)</label>
-                                            <select name="ketersediaan_dasar_hukum" id="ketersediaan_dasar_hukum" class="form-control" required>
+                                            <select name="ketersediaan_dasar_hukum" id="ketersediaan_dasar_hukum" class="form-control">
                                                 <option value="" disabled selected>-- Pilih Ketersediaan Dasar Hukum --</option>
                                                 <option value="ADA">ADA</option>
                                                 <option value="TIDAK ADA">TIDAK ADA</option>
@@ -594,12 +594,9 @@ foreach ($forms as $form) {
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Ketersediaan Penetapan Batas dan Peta Desa</h3>
-                            <!-- BEGIN:: INFO BUTTON -->
-                            <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#PenetapanBatasDesa">
                                 <i class="fas fa-info-circle"></i>
                             </button>
-                            <!-- Modal Info -->
                             <div class="modal fade" id="PenetapanBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -609,10 +606,10 @@ foreach ($forms as $form) {
                                         </div>
                                         <div class="modal-body">
                                             <ul>
-                                                <li>Pilih Antara ADA Atau TIDAK ADA</li>
-                                                <li>Isi No Sk/ Perbup/ Perda/ Perdes Tentang Penetapan Batas Desa</li>
-                                                <li>Pilih Antara ADA Atau TIDAK ADA</li>
-                                                <li>Isi No Sk/ Perbup/ Perda/ Perdes Tentang Penetapan Peta Desa</li>
+                                                <li>Pilih antara SUDAH ADA atau BELUM ADA untuk Penetapan Batas Desa.</li>
+                                                <li>Isi No SK/Perbup/Perda/Perdes jika SUDAH ADA, atau otomatis BELUM ADA jika tidak.</li>
+                                                <li>Pilih antara ADA atau TIDAK ADA untuk Ketersediaan Peta Desa.</li>
+                                                <li>Isi No SK/Perbup/Perda jika ADA, atau otomatis TIDAK ADA jika tidak.</li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
@@ -621,7 +618,6 @@ foreach ($forms as $form) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- END:: INFO BUTTON -->
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool toggle-form5">
                                     <i class="fas fa-minus"></i>
@@ -629,17 +625,16 @@ foreach ($forms as $form) {
                                 <script>
                                     $(document).ready(function() {
                                         $(".toggle-form5").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+                                            var $icon = $(this).find("i");
+                                            var $cardBody = $(this).closest(".card").find(".card-body");
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                            $cardBody.slideToggle();
+                                            $icon.toggleClass("fa-minus fa-plus");
                                         });
                                     });
                                 </script>
                             </div>
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             <?php if ($form_status['Ketersediaan Penetapan Batas dan Peta Desa']) : ?>
                                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
@@ -648,59 +643,64 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
+                                <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
                                     <div class="row">
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Penetapan Batas Desa (Sudah ada/Belum ada)</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
-                                                    <option value="ADA">ADA</option>
-                                                    <option value="TIDAK ADA">TIDAK ADA</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Penetapan Batas Desa</label>
+                                            <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
+                                                <option value="SUDAH ADA">SUDAH ADA</option>
+                                                <option value="BELUM ADA">BELUM ADA</option>
+                                            </select>
                                         </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jika kolom di atas Ada, No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
-                                            </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
+                                            <input type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control" placeholder="Masukkan No Peraturan" readonly>
                                         </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Ketersediaan Peta Desa (Ada/Tidak)</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
-                                                    <option value="ADA">ADA</option>
-                                                    <option value="TIDAK ADA">TIDAK ADA</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Ketersediaan Peta Desa</label>
+                                            <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control">
+                                                <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
+                                                <option value="ADA">ADA</option>
+                                                <option value="TIDAK ADA">TIDAK ADA</option>
+                                            </select>
                                         </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jika Kolom di atas Ada, No SK/Perbup/Perda tentang Peta Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan No Peraturan" min="0" step="1" style="width: 100%;">
-                                            </div>
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">No SK/Perbup/Perda tentang Peta Desa</label>
+                                            <input type="text" name="no_surat_peta_desa" id="no_surat_peta_desa" class="form-control" placeholder="Masukkan No Peraturan" readonly>
                                         </div>
-                                        <!-- /.col -->
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                                 </form>
                             <?php endif; ?>
-                            <!-- /.row -->
                         </div>
-                    </div> <!--end::Container-->
+                    </div>
+
+                    <script>
+                        document.getElementById('penetapan_batas_desa').addEventListener('change', function() {
+                            const noSuratBatasDesa = document.getElementById('no_surat_batas_desa');
+                            if (this.value === 'SUDAH ADA') {
+                                noSuratBatasDesa.readOnly = false;
+                                noSuratBatasDesa.value = '';
+                            } else {
+                                noSuratBatasDesa.readOnly = true;
+                                noSuratBatasDesa.value = 'BELUM ADA';
+                            }
+                        });
+
+                        document.getElementById('ketersediaan_peta_desa').addEventListener('change', function() {
+                            const noSuratPetaDesa = document.getElementById('no_surat_peta_desa');
+                            if (this.value === 'ADA') {
+                                noSuratPetaDesa.readOnly = false;
+                                noSuratPetaDesa.value = '';
+                            } else {
+                                noSuratPetaDesa.readOnly = true;
+                                noSuratPetaDesa.value = 'TIDAK ADA';
+                            }
+                        });
+                    </script>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
@@ -720,11 +720,11 @@ foreach ($forms as $form) {
                                         </div>
                                         <div class="modal-body">
                                             <ul>
-                                                <li>Isi Nama Alamat Website Desa</li>
-                                                <li>Isi Nama Alamat Email Desa</li>
-                                                <li>Isi Nama Alamat Facebook Desa</li>
-                                                <li>Isi Nama Alamat Twitter Desa</li>
-                                                <li>Isi Nama Alamat Youtube Desa</li>
+                                                <li>Isi Alamat Website Desa dengan URL yang valid.</li>
+                                                <li>Isi Alamat Email Desa dengan format email yang benar.</li>
+                                                <li>Isi Alamat Facebook Desa dengan URL halaman Facebook.</li>
+                                                <li>Isi Alamat Twitter Desa dengan URL profil Twitter.</li>
+                                                <li>Isi Alamat YouTube Desa dengan URL channel YouTube.</li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
@@ -760,55 +760,28 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Alamat Website Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Alamat Email Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Alamat Facebook Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Alamat Twitter Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Alamat Youtube Desa</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan alamat" min="0" step="1" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
+                                <form action="../../handlers/form_alamat_website_medsos.php" method="post">
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Alamat Website Desa</label>
+                                        <input type="text" name="alamat_website" class="form-control" placeholder="Masukkan alamat website">
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Alamat Email Desa</label>
+                                        <input type="email" name="alamat_email" class="form-control" placeholder="Masukkan alamat email">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Alamat Facebook Desa</label>
+                                        <input type="text" name="alamat_facebook" class="form-control" placeholder="Masukkan alamat Facebook">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Alamat Twitter Desa</label>
+                                        <input type="text" name="alamat_twitter" class="form-control" placeholder="Masukkan alamat Twitter">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Alamat YouTube Desa</label>
+                                        <input type="text" name="alamat_youtube" class="form-control" placeholder="Masukkan alamat YouTube">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                                 </form>
                             <?php endif; ?>
                             <!-- /.row -->
@@ -819,7 +792,6 @@ foreach ($forms as $form) {
                         <div class="card-header mb-3">
                             <h3 class="card-title">Kepemilikan Kantor Kepala Desa/Balai Desa</h3>
                             <!-- BEGIN:: INFO BUTTON -->
-                            <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#kondisiDesa">
                                 <i class="fas fa-info-circle"></i>
                             </button>
@@ -833,7 +805,7 @@ foreach ($forms as $form) {
                                         </div>
                                         <div class="modal-body">
                                             <ul>
-                                                <li>Pilih Kondisi Kantor Kepala Desa Antara ("ADA,LAYAK","ADA, TIDAK LAYAK","TIDAK ADA") </li>
+                                                <li>Pilih Kondisi Kantor Kepala Desa Antara ("ADA,LAYAK","ADA, TIDAK LAYAK","TIDAK ADA")</li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
@@ -843,22 +815,6 @@ foreach ($forms as $form) {
                                 </div>
                             </div>
                             <!-- END:: INFO BUTTON -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form7">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form7").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -869,28 +825,26 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
+                                <form action="../../handlers/form_kepemilikan_kantor.php" method="post">
                                     <div class="row">
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
+                                        <div class="col">
                                             <div class="form-group mb-3">
                                                 <label class="mb-2">Aset Desa/Bukan Aset Desa</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="aset_desa" id="aset_desa" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Aset Desa/Bukan Aset Desa --</option>
                                                     <option value="ASET DESA">ASET DESA</option>
                                                     <option value="BUKAN ASET DESA">BUKAN ASET DESA</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- /.col -->
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                                 </form>
                             <?php endif; ?>
-                            <!-- /.row -->
                         </div>
-                    </div> <!--end::Container-->
+                    </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
@@ -946,14 +900,14 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
+                                <form action="../../handlers/form_kondisi_kantor.php" method="post">
                                     <div class="row">
                                         <!-- /.col -->
-                                        <div class>
+                                        <div class="col">
                                             <!-- /.form-group -->
                                             <div class="form-group mb-3">
-                                                <label class="mb-2">Kondisi Kantor Kepala Desa/Balai Desa</label>
-                                                <select name="" id="" class="form-control">
+                                                <label class="mb-2" for="kondisi_kantor">Kondisi Kantor Kepala Desa/Balai Desa</label>
+                                                <select name="kondisi_kantor" id="kondisi_kantor" class="form-control">
                                                     <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
                                                     <option value="ADA, LAYAK">ADA, LAYAK</option>
                                                     <option value="ADA, TIDAK LAYAK">ADA, TIDAK LAYAK</option>
@@ -963,12 +917,13 @@ foreach ($forms as $form) {
                                         </div>
                                         <!-- /.col -->
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div>
                                 </form>
                             <?php endif; ?>
-                            <!-- /.row -->
                         </div>
-                    </div> <!--end::Container-->
+                    </div>
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
@@ -1025,42 +980,32 @@ foreach ($forms as $form) {
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2024</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
-                                                    <option value="MANDIRI">MANDIRI</option>
-                                                    <option value="MAJU">MAJU</option>
-                                                    <option value="BERKEMBANG">BERKEMBANG</option>
-                                                    <option value="TERTINGGAL">TERTINGGAL</option>
-                                                    <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2025</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Status Desa Membangun 2025 --</option>
-                                                    <option value="MANDIRI">MANDIRI</option>
-                                                    <option value="MAJU">MAJU</option>
-                                                    <option value="BERKEMBANG">BERKEMBANG</option>
-                                                    <option value="TERTINGGAL">TERTINGGAL</option>
-                                                    <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
+                                <form action="../../handlers/form_idm_status.php" method="post">
+                                    <div class="mb-3">
+                                        <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2024</label>
+                                        <select name="status_2024" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
+                                            <option value="MANDIRI">MANDIRI</option>
+                                            <option value="MAJU">MAJU</option>
+                                            <option value="BERKEMBANG">BERKEMBANG</option>
+                                            <option value="TERTINGGAL">TERTINGGAL</option>
+                                            <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
+                                        </select>
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                                    <div class="mb-3">
+                                        <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal) 2025</label>
+                                        <select name="status_2025" id="" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Status Desa Membangun 2025 --</option>
+                                            <option value="MANDIRI">MANDIRI</option>
+                                            <option value="MAJU">MAJU</option>
+                                            <option value="BERKEMBANG">BERKEMBANG</option>
+                                            <option value="TERTINGGAL">TERTINGGAL</option>
+                                            <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    </div> <!--end::Footer-->
                                 </form>
                             <?php endif; ?>
                             <!-- /.row -->
@@ -1070,7 +1015,6 @@ foreach ($forms as $form) {
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
                             <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
-                            <!-- BEGIN:: INFO BUTTON -->
                             <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#ketersediaaninternet">
                                 <i class="fas fa-info-circle"></i>
@@ -1089,7 +1033,6 @@ foreach ($forms as $form) {
                                                 <li>Pilih Antara CEPAT, SEDANG, LAMBAT</li>
                                                 <li>Masukan Jumlah/Angka Yang Sesuai</li>
                                                 <li>Pilih Antara DIGUNAKAN, JARANG DIGUNAKAN, TIDAK DIGUNAKAN, TIDAK ADA</li>
-
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
@@ -1103,90 +1046,63 @@ foreach ($forms as $form) {
                                 <button type="button" class="btn btn-tool toggle-form10">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form10").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <?php if ($form_status['Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa']) : ?>
+                        <?php if ($form_status['Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa']) : ?>
                                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                                     <i class="fas fa-lock me-2"></i>
                                     <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php else: ?>
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Ketersediaan Internet</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Ketersedian Internet --</option>
-                                                    <option value="BERFUNGSI">BERFUNGSI</option>
-                                                    <option value="JARANG BERFUNGSI">JARANG BERFUNGSI</option>
-                                                    <option value="TIDAK BERFUNGSI">TIDAK BERFUNGSI</option>
-                                                    <option value="TIDAK ADA">TIDAK ADA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Kecepatan akses internet</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Kecepatan Akses Internet --</option>
-                                                    <option value="CEPAT">CEPAT</option>
-                                                    <option value="SEDANG">SEDANG</option>
-                                                    <option value="LAMBAT">LAMBAT</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Jumlah Komputer/PC/laptop di Kantor Desa</label>
-                                                <input type="number" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                        <!-- /.col -->
-                                        <div class>
-                                            <!-- /.form-group -->
-                                            <div class="form-group mb-3">
-                                                <label class="mb-2">Frekuensi Penggunaan Komputer/PC/laptop di Kantor Desa</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="" disabled selected>-- Pilih Frekuensi Penggunaan Komputer --</option>
-                                                    <option value="DIGUNAKAN">DIGUNAKAN</option>
-                                                    <option value="ARANG DIGUNAKAN">JARANG DIGUNAKAN</option>
-                                                    <option value="TIDAK DIGUNAKAN">TIDAK DIGUNAKAN</option>
-                                                    <option value="TIDAK ADA">TIDAK ADA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
+                            <form action="../../handlers/form_ketersediaan_internet.php" method="post">
+                                <div class="row">
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Ketersediaan Internet</label>
+                                        <select name="internet_status" id="internet_status" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Ketersediaan Internet --</option>
+                                            <option value="BERFUNGSI">BERFUNGSI</option>
+                                            <option value="JARANG BERFUNGSI">JARANG BERFUNGSI</option>
+                                            <option value="TIDAK BERFUNGSI">TIDAK BERFUNGSI</option>
+                                            <option value="TIDAK ADA">TIDAK ADA</option>
+                                        </select>
                                     </div>
-                                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                                </form>
+
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Kecepatan Akses Internet</label>
+                                        <select name="internet_speed" id="internet_speed" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Kecepatan Akses Internet --</option>
+                                            <option value="CEPAT">CEPAT</option>
+                                            <option value="SEDANG">SEDANG</option>
+                                            <option value="LAMBAT">LAMBAT</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Jumlah Komputer/PC/laptop di Kantor Desa</label>
+                                        <input type="number" name="computer_count" class="form-control" placeholder="Masukkan angka/jumlah" min="0" step="1">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2">Frekuensi Penggunaan Komputer/PC/laptop di Kantor Desa</label>
+                                        <select name="computer_usage_frequency" id="computer_usage_frequency" class="form-control">
+                                            <option value="" disabled selected>-- Pilih Frekuensi Penggunaan Komputer --</option>
+                                            <option value="DIGUNAKAN">DIGUNAKAN</option>
+                                            <option value="JARANG DIGUNAKAN">JARANG DIGUNAKAN</option>
+                                            <option value="TIDAK DIGUNAKAN">TIDAK DIGUNAKAN</option>
+                                            <option value="TIDAK ADA">TIDAK ADA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                </div>
+                            </form>
                             <?php endif; ?>
-                            <!-- /.row -->
                         </div>
-                    </div> <!--end::Container-->
+                    </div>
 
                 </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
@@ -1230,10 +1146,10 @@ foreach ($forms as $form) {
     <!-- dropzonejs -->
     <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin: Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end: Plugin(popperjs for Bootstrap 5)--><!--begin: Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end: Plugin(Bootstrap 5)--><!--begin: Plugin(AdminLTE)-->
+    <script src="../../../dist/js/adminlte.js"></script> <!--end: Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         $(function() {
             //Initialize Select2 Elements
