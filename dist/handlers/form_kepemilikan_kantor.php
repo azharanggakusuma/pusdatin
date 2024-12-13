@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validasi input
     if (empty($aset_desa)) {
         // Jika ada field yang kosong, arahkan kembali dengan status warning
-        header("Location: ../pages/forms/wilayah_administratif.php?status=warning");
+        header("Location: ../pages/forms/wilayah_administratif.php?status=warning"); 
         exit();
     }
 

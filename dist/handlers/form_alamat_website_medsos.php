@@ -15,7 +15,7 @@ $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
     $alamat_website = mysqli_real_escape_string($conn, $_POST['alamat_website']);
     $alamat_email = mysqli_real_escape_string($conn, $_POST['alamat_email']);
     $alamat_facebook = mysqli_real_escape_string($conn, $_POST['alamat_facebook']);

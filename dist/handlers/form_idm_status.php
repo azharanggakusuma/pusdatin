@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validasi input
     if (empty($status_2024) || empty($status_2025)) {
         // Jika ada field yang kosong, arahkan kembali dengan status warning
-        header("Location: ../pages/forms/wilayah_administratif.php?status=warning");
+        header("Location: ../pages/forms/wilayah_administratif.php?status=warning"); 
         exit();
     }
 

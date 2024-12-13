@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validasi input
     if (empty($internet_status) || empty($internet_speed) || empty($computer_count) || empty($computer_usage_frequency)) {
         // Jika ada field yang kosong, arahkan kembali dengan status warning
-        header("Location: ../pages/forms/wilayah_administratif.php?status=warning");
+        header("Location: ../pages/forms/wilayah_administratif.php?status=warning"); 
         exit();
     }
 

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validasi input
     if (empty($penetapan_batas_desa) || empty($ketersediaan_peta_desa)) {
         // Jika ada field yang kosong, arahkan kembali dengan status warning
-        header("Location: ../pages/forms/wilayah_administratif.php?status=warning");
+        header("Location: ../pages/forms/wilayah_administratif.php?status=warning"); 
         exit();
     }
 

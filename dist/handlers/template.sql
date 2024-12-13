@@ -186,4 +186,4 @@ CREATE TABLE tb_ketersediaan_internet (
   KEY fk_desa_id (desa_id),
   CONSTRAINT fk_tb_ketersediaan_internet_user_id FOREIGN KEY (user_id) REFERENCES users (id),
   CONSTRAINT fk_tb_ketersediaan_internet_desa_id FOREIGN KEY (desa_id) REFERENCES tb_enumerator (id_desa) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; 

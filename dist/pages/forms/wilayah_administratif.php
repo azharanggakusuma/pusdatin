@@ -1046,7 +1046,7 @@ foreach ($forms as $form) {
                                 <button type="button" class="btn btn-tool toggle-form10">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                            </div>
+                            </div> 
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
