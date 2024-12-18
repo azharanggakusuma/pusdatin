@@ -138,12 +138,15 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Lengkap</label>
                                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
                                         </div>
 
                                         <!-- Alamat -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat</label>
                                             <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
+
                                         </div>
 
                                         <!-- No HP -->
@@ -151,8 +154,12 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             <label class="mb-2">No HP</label>
                                             <div class="input-group">
                                                 <span class="input-group-text">+62</span>
-                                                <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]{9,12}">
+                                                <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]
+                                                {9,12}">
+
                                             </div>
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
+
                                         </div>
 
                                         <!-- Kode Desa -->
