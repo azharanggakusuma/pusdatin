@@ -82,7 +82,7 @@
                             </div>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                         </div>
-                        <div class="input-group mb-3">
+                        <!--<div class="input-group mb-3">
                             <div class="input-group-text">
                                 <span class="bi bi-calendar"></span>
                             </div>
@@ -94,7 +94,7 @@
                                 <option value="2027">2027</option>
                                 <option value="2028">2028</option>
                             </select>
-                        </div>
+                        </div>-->
                         <div class="row">
                             <div class="d-grid gap-2 mt-3 mb-3">
                                 <input type="submit" class="btn btn-primary" value="Log In">
