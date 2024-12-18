@@ -180,6 +180,7 @@ foreach ($forms as $form) {
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
                                             <input type="number" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas wilayah dalam hektar" style="width: 100%;" step="0.01" min="0">
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
                                         </div>
                                     </div>
                                     <div class="mb-3">
