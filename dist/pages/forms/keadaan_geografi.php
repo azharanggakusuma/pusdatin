@@ -32,7 +32,27 @@ foreach ($forms as $form) {
     // Store the status in the array
     $form_status[$form] = $is_locked;
 }
+
+include("../../config/function.php");
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa yang terkait dengan user yang sedang login
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya untuk luas wilayah dan jarak
+$previous_luas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_luas_wilayah_desa', ['luas_wilayah_desa'], 'Luas Wilayah Desa');
+$previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa');
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
@@ -180,7 +200,10 @@ foreach ($forms as $form) {
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
                                             <input type="number" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas wilayah dalam hektar" style="width: 100%;" step="0.01" min="0">
-                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_luas_data['created_year']); ?>):
+                                                <?php echo htmlspecialchars($previous_luas_data['luas_wilayah_desa']); ?> Hektar
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -364,11 +387,19 @@ foreach ($forms as $form) {
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
                                             <input type="text" name="jarak_ke_ibukota_kecamatan" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_jarak_data['created_year']); ?>):
+                                                <?php echo htmlspecialchars($previous_jarak_data['jarak_ke_ibukota_kecamatan']); ?>
+                                            </p>
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
                                             <input type="text" name="jarak_ke_ibukota_kabupaten" class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_jarak_data['created_year']); ?>):
+                                                <?php echo htmlspecialchars($previous_jarak_data['jarak_ke_ibukota_kabupaten']); ?>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
