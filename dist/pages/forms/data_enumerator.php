@@ -138,6 +138,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Lengkap</label>
                                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
+                                            <p class="text-muted" style="font-size: 12px; margin-left: 5px; margin-top: 10px;">Data Tahun Sebelumnya: <span>Lorem ipsum dolor sit amet.</span> </p>
                                         </div>
 
                                         <!-- Alamat -->
