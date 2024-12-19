@@ -134,21 +134,21 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                             <?php else: ?>
                                 <form action="../../handlers/form_enumerator.php" method="post">
                                     <div class="row">
-                                        <!-- Nama -->
+                                        <!-- Nama
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Lengkap</label>
                                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
-                                        </div>
+                                        </div>-->
 
-                                        <!-- Alamat -->
+                                        <!-- Alamat
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat</label>
                                             <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
                                             <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
 
-                                        </div>
+                                        </div>-->
 
-                                        <!-- No HP -->
+                                        <!-- No HP
                                         <div class="form-group mb-3">
                                             <label class="mb-2">No HP</label>
                                             <div class="input-group">
@@ -159,7 +159,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             </div>
                                             <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
 
-                                        </div>
+                                        </div>-->
 
                                         <!-- Kode Desa -->
                                         <div class="form-group mb-3">
