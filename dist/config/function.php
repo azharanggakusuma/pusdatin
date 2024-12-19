@@ -2,7 +2,7 @@
 function getPreviousYearData($conn, $user_id, $desa_id, $table_name, $columns, $form_name)
 {
     $current_year = date('Y');
-    $previous_year = $current_year - 1;
+    $previous_year = $current_year - 1; 
 
     // Pastikan $columns adalah array, jika tidak konversi menjadi array
     if (!is_array($columns)) {
