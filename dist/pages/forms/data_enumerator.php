@@ -18,7 +18,7 @@ $user_id = $user['id'] ?? 0;
 // Cek apakah form sudah terkunci
 $is_locked = false; // Default tidak terkunci
 if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
-    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Data Enumerator'";
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Data Desa'";
     $result_progress = mysqli_query($conn, $query_progress);
     $progress = mysqli_fetch_assoc($result_progress);
     $is_locked = $progress['is_locked'] ?? false;
@@ -82,13 +82,13 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Form Enumerator</h3>
+                            <h3 class="mb-0">Form Data Desa</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Data Enumerator
+                                    Data Desa
                                 </li>
                             </ol>
                         </div>
@@ -99,7 +99,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Data Enumerator</h3>
+                            <h3 class="card-title">Data Desa</h3>
                             <!-- Aturan Pengisian Button -->
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
                                 <i class="fas fa-info-circle"></i>
@@ -134,26 +134,32 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                             <?php else: ?>
                                 <form action="../../handlers/form_enumerator.php" method="post">
                                     <div class="row">
-                                        <!-- Nama -->
+                                        <!-- Nama
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Lengkap</label>
                                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
-                                        </div>
+                                        </div>-->
 
-                                        <!-- Alamat -->
+                                        <!-- Alamat
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat</label>
                                             <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
-                                        </div>
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
 
-                                        <!-- No HP -->
+                                        </div>-->
+
+                                        <!-- No HP
                                         <div class="form-group mb-3">
                                             <label class="mb-2">No HP</label>
                                             <div class="input-group">
                                                 <span class="input-group-text">+62</span>
-                                                <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]{9,12}">
+                                                <input type="tel" name="no_hp" class="form-control" placeholder="Masukkan No HP tanpa 0 di awal" pattern="[0-9]
+                                                {9,12}">
+
                                             </div>
-                                        </div>
+                                            <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">Data Pada Tahun Sebelumnya : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, impedit! </p>
+
+                                        </div>-->
 
                                         <!-- Kode Desa -->
                                         <div class="form-group mb-3">

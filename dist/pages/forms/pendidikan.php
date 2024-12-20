@@ -109,7 +109,7 @@ include "../../config/session.php";
                                                 <li>Pilih Status Sekolah Yang Sesuai</li>
                                                 <li>Isi Nama Kecamatan Tempat Sekolah</li>
                                                 <li>Pengisian Titik Kordinat Lintang Menggunakan Derajat Desimal , Contoh: -6.8796 LS</li>
-                                                <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal , Contoh: 108.5538 BT</li>
+                                                <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal , Contoh: 108.5538 BT</li> 
 
 
                                             </ul>
