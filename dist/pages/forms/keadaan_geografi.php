@@ -50,14 +50,6 @@ $desa_id = $desa['id_desa'] ?? 0;
 // Ambil data sebelumnya
 $previous_luas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_luas_wilayah_desa', ['luas_wilayah_desa'], 'Luas Wilayah Desa');
 $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa');
-
-$previous_batas_utara = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas', 'desa', 'kecamatan'], 'Batas Wilayah Desa', 'Sebelah Utara');
-$previous_batas_selatan = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas', 'desa', 'kecamatan'], 'Batas Wilayah Desa', 'Sebelah Selatan');
-$previous_batas_timur = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas', 'desa', 'kecamatan'], 'Batas Wilayah Desa', 'Sebelah Timur');
-$previous_batas_barat = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas', 'desa', 'kecamatan'], 'Batas Wilayah Desa', 'Sebelah Barat');
-
-//$previous_batas = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['desa', 'kecamatan'], 'Batas Wilayah Desa');
-
 ?>
 
 <!DOCTYPE html>
@@ -316,88 +308,56 @@ $previous_batas_barat = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas
                                         <!-- Sebelah Utara -->
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="batas-utara" class="mb-2">Sebelah Utara</label>
-                                                <input type="text" id="batas-utara" name="batas_utara" class="form-control" placeholder="Masukkan nama desa">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_utara['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_utara['desa']); ?>
-                                                </p>
+                                                <label for="batas_utara" class="mb-2">Sebelah Utara</label>
+                                                <input type="text" id="batas_utara" name="batas_utara" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="kec-utara" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-utara" name="kec_utara" class="form-control" placeholder="Masukkan nama kecamatan">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_utara['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_utara['kecamatan']); ?>
-                                                </p>
+                                                <label for="kec_utara" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec_utara" name="kec_utara" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
 
                                         <!-- Sebelah Selatan -->
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="batas-selatan" class="mb-2">Sebelah Selatan</label>
-                                                <input type="text" id="batas-selatan" name="batas_selatan" class="form-control" placeholder="Masukkan nama desa">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_selatan['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_selatan['desa']); ?>
-                                                </p>
+                                                <label for="batas_selatan" class="mb-2">Sebelah Selatan</label>
+                                                <input type="text" id="batas_selatan" name="batas_selatan" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="kec-selatan" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-selatan" name="kec_selatan" class="form-control" placeholder="Masukkan nama kecamatan">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_selatan['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_selatan['kecamatan']); ?>
-                                                </p>
+                                                <label for="kec_selatan" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec_selatan" name="kec_selatan" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
 
                                         <!-- Sebelah Timur -->
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="batas-timur" class="mb-2">Sebelah Timur</label>
-                                                <input type="text" id="batas-timur" name="batas_timur" class="form-control" placeholder="Masukkan nama desa">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_timur['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_timur['desa']); ?>
-                                                </p>
+                                                <label for="batas_timur" class="mb-2">Sebelah Timur</label>
+                                                <input type="text" id="batas_timur" name="batas_timur" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="kec-timur" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-timur" name="kec_timur" class="form-control" placeholder="Masukkan nama kecamatan">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_timur['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_timur['kecamatan']); ?>
-                                                </p>
+                                                <label for="kec_timur" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec_timur" name="kec_timur" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
 
                                         <!-- Sebelah Barat -->
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="batas-barat" class="mb-2">Sebelah Barat</label>
-                                                <input type="text" id="batas-barat" name="batas_barat" class="form-control" placeholder="Masukkan nama desa">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_barat['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_barat['desa']); ?>
-                                                </p>
+                                                <label for="batas_barat" class="mb-2">Sebelah Barat</label>
+                                                <input type="text" id="batas_barat" name="batas_barat" class="form-control" placeholder="Masukkan nama desa">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="kec-barat" class="mb-2">Kecamatan</label>
-                                                <input type="text" id="kec-barat" name="kec_barat" class="form-control" placeholder="Masukkan nama kecamatan">
-                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_barat['created_year']); ?>):
-                                                    <?php echo htmlspecialchars($previous_batas_barat['kecamatan']); ?>
-                                                </p>
+                                                <label for="kec_barat" class="mb-2">Kecamatan</label>
+                                                <input type="text" id="kec_barat" name="kec_barat" class="form-control" placeholder="Masukkan nama kecamatan">
                                             </div>
                                         </div>
                                     </div>
