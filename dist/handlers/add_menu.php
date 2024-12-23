@@ -14,6 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("sss", $name, $url, $status);
 
     if ($stmt->execute()) {
+        // Memastikan direktori ada
+        $directoryPath = '../' . dirname($url);
+        if (!is_dir($directoryPath)) {
+            mkdir($directoryPath, 0777, true); // Buat direktori dengan rekursif
+        }
+
+        // Cek dan buat file PHP kosong jika belum ada
+        $filePath = '../' . $url;
+        $fileHandle = fopen($filePath, 'w');
+        if ($fileHandle === false) {
+            die("Tidak dapat membuat file. Cek izin folder.");
+        } else {
+            fclose($fileHandle); // Menutup file yang telah berhasil dibuka
+        }
+        
         // Redirect back to the manage menu page with success message
         header("Location: ../pages/tables/manage_menu.php?messageadd=success");
     } else {
