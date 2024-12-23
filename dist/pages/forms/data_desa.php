@@ -132,7 +132,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 </div>
 
                             <?php else: ?>
-                                <form action="../../handlers/form_enumerator.php" method="post">
+                                <form action="../../handlers/form_desa.php" method="post">
                                     <div class="row">
                                         <!-- Nama
                                         <div class="form-group mb-3">
@@ -234,7 +234,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             timer: 3000,
                                             showConfirmButton: false
                                         }).then(() => {
-                                            window.location.href = "data_enumerator.php";
+                                            window.location.href = "data_desa.php";
                                         });
                                     } else if (status === 'error') {
                                         Swal.fire({
@@ -244,7 +244,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             timer: 3000,
                                             showConfirmButton: false
                                         }).then(() => {
-                                            window.location.href = "data_enumerator.php";
+                                            window.location.href = "data_desa.php";
                                         });
                                     } else if (status === 'warning') {
                                         Swal.fire({
@@ -254,7 +254,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             timer: 3000,
                                             showConfirmButton: false
                                         }).then(() => {
-                                            window.location.href = "data_enumerator.php";
+                                            window.location.href = "data_desa.php";
                                         });
                                     }
                                 </script>

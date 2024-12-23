@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
             mysqli_query($conn, $query_progress);
 
-            header("Location: ../pages/forms/data_enumerator.php?status=success");
+            header("Location: ../pages/forms/data_desa.php?status=success");
             exit();
         } else {
-            header("Location: ../pages/forms/data_enumerator.php?status=error&message=" . urlencode(mysqli_error($conn)));
+            header("Location: ../pages/forms/data_desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
             exit();
         }
     } else {
-        header("Location: ../pages/forms/data_enumerator.php?status=warning");
+        header("Location: ../pages/forms/data_desa.php?status=warning");
         exit();
     }
 }
