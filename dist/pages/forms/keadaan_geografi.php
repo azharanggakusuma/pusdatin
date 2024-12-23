@@ -50,6 +50,7 @@ $desa_id = $desa['id_desa'] ?? 0;
 // Ambil data sebelumnya
 $previous_luas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_luas_wilayah_desa', ['luas_wilayah_desa'], 'Luas Wilayah Desa');
 $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa');
+$previous_batas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas_utara', 'kecamatan_utara', 'batas_selatan', 'kecamatan_selatan', 'batas_timur', 'kecamatan_timur', 'batas_barat', 'kecamatan_barat'], 'Batas Wilayah Desa');
 ?>
 
 <!DOCTYPE html>
@@ -168,11 +169,23 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
 
             // Contoh penggunaan fungsi untuk form tertentu
             document.addEventListener('DOMContentLoaded', function() {
-                // Panggil fungsi untuk form pertama (luas_wilayah_desa)
-                toggleInputWithCheckbox('use_previous_data', ['luas_wilayah_desa'], ["<?php echo htmlspecialchars($previous_luas_data['luas_wilayah_desa']); ?>"]);
+                // Panggil fungsi untuk form luas_wilayah_desa
+                toggleInputWithCheckbox('use_previous_luas', ['luas_wilayah_desa'], ["<?php echo htmlspecialchars($previous_luas_data['luas_wilayah_desa']); ?>"]);
 
-                // Panggil fungsi untuk form kedua (jarak_kantor_desa)
-                toggleInputWithCheckbox('use_previous_data_2', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], [
+                // Panggil fungsi untuk form batas_wilayah_desa
+                toggleInputWithCheckbox('use_previous_batas', ['batas_utara', 'kec_utara', 'batas_selatan', 'kec_selatan', 'batas_timur', 'kec_timur', 'batas_barat', 'kec_barat'], [
+                    "<?php echo htmlspecialchars($previous_batas_data['batas_utara']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['kecamatan_utara']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['batas_selatan']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['kecamatan_selatan']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['batas_timur']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['kecamatan_timur']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['batas_barat']); ?>",
+                    "<?php echo htmlspecialchars($previous_batas_data['kecamatan_barat']); ?>"
+                ]);
+
+                // Panggil fungsi untuk form jarak_kantor_desa
+                toggleInputWithCheckbox('use_previous_jarak', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], [
                     "<?php echo htmlspecialchars($previous_jarak_data['jarak_ke_ibukota_kecamatan']); ?>",
                     "<?php echo htmlspecialchars($previous_jarak_data['jarak_ke_ibukota_kabupaten']); ?>"
                 ]);
@@ -245,8 +258,8 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
                                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                                     <div class="form-group mb-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="use_previous_data" name="use_previous_data" value="1">
-                                            <label class="form-check-label" for="use_previous_data">
+                                            <input class="form-check-input" type="checkbox" id="use_previous_luas" name="use_previous_luas" value="1">
+                                            <label class="form-check-label" for="use_previous_luas">
                                                 Gunakan data tahun sebelumnya
                                             </label>
                                         </div>
@@ -310,12 +323,19 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
                                             <div class="form-group mb-3">
                                                 <label for="batas_utara" class="mb-2">Sebelah Utara</label>
                                                 <input type="text" id="batas_utara" name="batas_utara" class="form-control" placeholder="Masukkan nama desa">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['batas_utara']); ?>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec_utara" class="mb-2">Kecamatan</label>
                                                 <input type="text" id="kec_utara" name="kec_utara" class="form-control" placeholder="Masukkan nama kecamatan">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['kecamatan_utara']); ?>
                                             </div>
                                         </div>
 
@@ -324,12 +344,18 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
                                             <div class="form-group mb-3">
                                                 <label for="batas_selatan" class="mb-2">Sebelah Selatan</label>
                                                 <input type="text" id="batas_selatan" name="batas_selatan" class="form-control" placeholder="Masukkan nama desa">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['batas_selatan']); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec_selatan" class="mb-2">Kecamatan</label>
                                                 <input type="text" id="kec_selatan" name="kec_selatan" class="form-control" placeholder="Masukkan nama kecamatan">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['kecamatan_selatan']); ?>
                                             </div>
                                         </div>
 
@@ -338,12 +364,18 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
                                             <div class="form-group mb-3">
                                                 <label for="batas_timur" class="mb-2">Sebelah Timur</label>
                                                 <input type="text" id="batas_timur" name="batas_timur" class="form-control" placeholder="Masukkan nama desa">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['batas_timur']); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec_timur" class="mb-2">Kecamatan</label>
                                                 <input type="text" id="kec_timur" name="kec_timur" class="form-control" placeholder="Masukkan nama kecamatan">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['kecamatan_timur']); ?>
                                             </div>
                                         </div>
 
@@ -352,12 +384,28 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
                                             <div class="form-group mb-3">
                                                 <label for="batas_barat" class="mb-2">Sebelah Barat</label>
                                                 <input type="text" id="batas_barat" name="batas_barat" class="form-control" placeholder="Masukkan nama desa">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['batas_barat']); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="kec_barat" class="mb-2">Kecamatan</label>
                                                 <input type="text" id="kec_barat" name="kec_barat" class="form-control" placeholder="Masukkan nama kecamatan">
+                                                <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                                    Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_batas_data['created_year']); ?>):
+                                                    <?php echo htmlspecialchars($previous_batas_data['kecamatan_barat']); ?>
+                                            </div>
+                                        </div>
+
+                                        <!-- Checkbox untuk menggunakan data tahun sebelumnya -->
+                                        <div class="form-group mb-3 mt-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="use_previous_batas" name="use_previous_batas" value="1">
+                                                <label class="form-check-label" for="use_previous_batas">
+                                                    Gunakan data tahun sebelumnya
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -452,8 +500,8 @@ $previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_
                                         <!-- Checkbox untuk menggunakan data tahun sebelumnya -->
                                         <div class="form-group mb-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="use_previous_data_2" name="use_previous_data_2" value="1">
-                                                <label class="form-check-label" for="use_previous_data_2">
+                                                <input class="form-check-input" type="checkbox" id="use_previous_jarak" name="use_previous_jarak" value="1">
+                                                <label class="form-check-label" for="use_previous_jarak">
                                                     Gunakan data tahun sebelumnya
                                                 </label>
                                             </div>
