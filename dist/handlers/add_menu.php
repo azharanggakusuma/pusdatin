@@ -20,13 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             mkdir($directoryPath, 0777, true); // Buat direktori dengan rekursif
         }
 
-        // Cek dan buat file PHP kosong jika belum ada
+        // Lokasi file template
+        $templatePath = 'template_form.php'; // Sesuaikan lokasi template sesuai dengan struktur folder Anda
+
+        // Cek dan buat file PHP dengan isi dari template
         $filePath = '../' . $url;
-        $fileHandle = fopen($filePath, 'w');
-        if ($fileHandle === false) {
-            die("Tidak dapat membuat file. Cek izin folder.");
-        } else {
-            fclose($fileHandle); // Menutup file yang telah berhasil dibuka
+        if (!file_exists($filePath)) {
+            // Membaca konten dari file template
+            $templateContent = file_get_contents($templatePath);
+            if ($templateContent === false) {
+                die("Gagal membaca file template. Cek file dan izinnya.");
+            }
+            
+            // Menulis konten template ke file baru
+            if (file_put_contents($filePath, $templateContent) === false) {
+                die("Tidak dapat menulis ke file. Cek izin folder.");
+            }
         }
         
         // Redirect back to the manage menu page with success message
