@@ -10,17 +10,14 @@ $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama_lengkap = isset($_POST['nama']) ? mysqli_real_escape_string($conn, $_POST['nama']) : '';
-    $alamat = isset($_POST['alamat']) ? mysqli_real_escape_string($conn, $_POST['alamat']) : '';
-    $no_hp = isset($_POST['no_hp']) ? mysqli_real_escape_string($conn, $_POST['no_hp']) : '';
     $kode_desa = isset($_POST['kode_desa']) ? mysqli_real_escape_string($conn, $_POST['kode_desa']) : '';
     $nama_desa = isset($_POST['nama_desa']) ? mysqli_real_escape_string($conn, $_POST['nama_desa']) : '';
     $kecamatan = isset($_POST['kecamatan']) ? mysqli_real_escape_string($conn, $_POST['kecamatan']) : '';
 
-    if (!empty($kode_desa) && !empty($nama_desa) && !empty($nama_lengkap) && !empty($alamat) && !empty($no_hp) && !empty($kecamatan)) {
+    if (!empty($kode_desa) && !empty($nama_desa) && !empty($kecamatan)) {
         // Tambahkan data desa beserta data lainnya
-        $sql = "INSERT INTO tb_enumerator (kode_desa, nama_desa, nama_lengkap, alamat, no_hp, kecamatan, user_id) 
-                VALUES ('$kode_desa', '$nama_desa', '$nama_lengkap', '$alamat', '$no_hp', '$kecamatan', '$user_id')";
+        $sql = "INSERT INTO tb_enumerator (kode_desa, nama_desa, kecamatan, user_id) 
+                VALUES ('$kode_desa', '$nama_desa', '$kecamatan', '$user_id')";
 
         if (mysqli_query($conn, $sql)) {
             // Ambil ID desa yang baru ditambahkan

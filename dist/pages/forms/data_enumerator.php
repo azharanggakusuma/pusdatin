@@ -161,16 +161,6 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
 
                                         </div>-->
 
-                                        <!-- Kode Desa -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Kode Desa</label>
-                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                                <option value="" selected>Otomatis Terisi</option>
-                                            </select>
-                                            <!-- Hidden Input untuk Kode Desa -->
-                                            <input type="hidden" name="kode_desa" id="kodeDesaHidden">
-                                        </div>
-
                                         <!-- Nama Desa -->
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Desa</label>
@@ -179,6 +169,16 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                             </select>
                                             <!-- Hidden Input untuk Nama Desa -->
                                             <input type="hidden" name="nama_desa" id="namaDesaHidden">
+                                        </div>
+
+                                        <!-- Kode Desa -->
+                                        <div class="form-group mb-3">
+                                            <label class="mb-2">Kode Desa</label>
+                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
+                                                <option value="" selected>Otomatis Terisi</option>
+                                            </select>
+                                            <!-- Hidden Input untuk Kode Desa -->
+                                            <input type="hidden" name="kode_desa" id="kodeDesaHidden">
                                         </div>
 
                                         <!-- Kecamatan -->
@@ -211,8 +211,8 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                         <ul>
                                             <li>Isi Nama Desa sesuai pilihan yang tersedia.</li>
                                             <li>Setelah Nama Desa dipilih, Kode Desa dan Nama Kecamatan akan terisi otomatis.</li>
-                                            <li>Pastikan data lainnya seperti Nama, Alamat, dan No HP diisi dengan benar.</li>
-                                            <li>Format No HP harus tanpa awalan 0, contohnya: 81234567890.</li>
+                                            <!--<li>Pastikan data lainnya seperti Nama, Alamat, dan No HP diisi dengan benar.</li>
+                                            <li>Format No HP harus tanpa awalan 0, contohnya: 81234567890.</li>-->
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
