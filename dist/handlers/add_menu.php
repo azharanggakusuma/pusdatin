@@ -14,27 +14,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("sss", $name, $url, $status);
 
     if ($stmt->execute()) {
-        // Memastikan direktori ada
+        // Ensure directory exists
         $directoryPath = '../' . dirname($url);
         if (!is_dir($directoryPath)) {
-            mkdir($directoryPath, 0777, true); // Buat direktori dengan rekursif
+            mkdir($directoryPath, 0777, true);
         }
 
-        // Lokasi file template
-        $templatePath = 'template_form.php'; // Sesuaikan lokasi template sesuai dengan struktur folder Anda
-
-        // Cek dan buat file PHP dengan isi dari template
+        // Path to the template file
+        $templatePath = 'template_form.php'; // Ensure this path is correct
         $filePath = '../' . $url;
+
         if (!file_exists($filePath)) {
-            // Membaca konten dari file template
+            // Read the content from the template file
             $templateContent = file_get_contents($templatePath);
             if ($templateContent === false) {
-                die("Gagal membaca file template. Cek file dan izinnya.");
+                die("Failed to read template file. Check file and permissions.");
             }
             
-            // Menulis konten template ke file baru
+            // Replace placeholders with actual menu name
+            $templateContent = str_replace('{MENU_TITLE}', $name, $templateContent);
+
+            // Write the content to the new file
             if (file_put_contents($filePath, $templateContent) === false) {
-                die("Tidak dapat menulis ke file. Cek izin folder.");
+                die("Failed to write to file. Check folder permissions.");
             }
         }
         

@@ -60,13 +60,13 @@ include "../../config/session.php";
         <div class="container-fluid"> <!--begin::Row-->
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">Judul Menu</h3>
+              <h3 class="mb-0">{MENU_TITLE}</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Judul Menu
+                  {MENU_TITLE}
                 </li>
               </ol>
             </div>
@@ -109,7 +109,12 @@ include "../../config/session.php";
                     <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
                   </div>
                 </div>
-                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
               </form>
               <!-- /.row -->
             </div>
