@@ -145,37 +145,37 @@
     <script src="../../../dist/js/adminlte.js"></script> <!--end: Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
+             //Initialize Select2 Elements
+             $('.select2').select2()
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            })
-        })
+//Initialize Select2 Elements
+$('.select2bs4').select2({
+    theme: 'bootstrap4'
+})
+})
 
-        const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
-        const Default = {
-            scrollbarTheme: "os-theme-light",
-            scrollbarAutoHide: "leave",
-            scrollbarClickScroll: true,
-        };
-        document.addEventListener("DOMContentLoaded", function() {
-            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-            if (
-                sidebarWrapper &&
-                typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
-            ) {
-                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-                    scrollbars: {
-                        theme: Default.scrollbarTheme,
-                        autoHide: Default.scrollbarAutoHide,
-                        clickScroll: Default.scrollbarClickScroll,
-                    },
-                });
-            }
-        });
-    </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
+const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+const Default = {
+scrollbarTheme: "os-theme-light",
+scrollbarAutoHide: "leave",
+scrollbarClickScroll: true,
+};
+document.addEventListener("DOMContentLoaded", function() {
+const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+if (
+    sidebarWrapper &&
+    typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+) {
+    OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+        scrollbars: {
+            theme: Default.scrollbarTheme,
+            autoHide: Default.scrollbarAutoHide,
+            clickScroll: Default.scrollbarClickScroll,
+        },
+    });
+}
+});
+</script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
 </body><!--end::Body-->
 
 </html>
