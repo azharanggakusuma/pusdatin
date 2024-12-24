@@ -152,7 +152,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</h3>
+              <h3 class="card-title">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</h3> 
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
