@@ -79,7 +79,7 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</h3>
+              <h3 class="card-title">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</h3> 
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
