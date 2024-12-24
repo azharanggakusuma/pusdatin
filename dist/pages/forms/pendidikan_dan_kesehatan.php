@@ -382,9 +382,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Ensure to check the relevant boxes based on the occurrences in the last year.</li>
-                      <li>Mark 'Ada' if the disease outbreak occurred, otherwise 'Tidak ada'.</li>
-                      <li>If marking 'Lainnya', specify the diseases in the space provided.</li>
+                      <li>Pastikan untuk mencentang kotak yang relevan berdasarkan kejadian pada tahun lalu.</li>
+                      <li>Centang 'Ada' jika wabah penyakit terjadi, jika tidak, centang 'Tidak ada'.</li>
+                      <li>Jika menandai 'Lainnya', sebutkan penyakitnya di tempat yang tersedia.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
