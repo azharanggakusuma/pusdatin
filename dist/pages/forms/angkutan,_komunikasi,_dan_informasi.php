@@ -354,7 +354,7 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</label>
+                    <label class="mb-2">Keberadaan internet untuk warnet, game	online, dan fasilitas lainnya di desa/kelurahan</label>
                     <select name="" id="" class="form-control">
                         <option value="" disabled selected>Pilih</option>
                         <option value="Ada">Ada</option>
