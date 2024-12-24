@@ -473,7 +473,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan internet untuk warnet, game	online, dan fasilitas lainnya di desa/kelurahan</h3> 
+              <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3> 
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -499,11 +499,23 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan internet untuk warnet, game	online, dan fasilitas lainnya di desa/kelurahan</label>
+                    <label class="mb-2">Komputer/PC/laptop yang masih	berfungsi	di kantor kepala desa/lurah</label>
                     <select name="" id="" class="form-control">
                         <option value="" disabled selected>Pilih</option>
-                        <option value="Ada">Ada</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
+                        <option value="Digunakan">Digunakan</option>
+                        <option value="Jarang	digunakan">Jarang	digunakan</option>
+                        <option value="Tidak	digunakan">Tidak	digunakan</option>
+                        <option value="Tidak	ada">Tidak	ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2"> Fasilitas internet di kantor kepala desa/lurah</label>
+                    <select name="" id="" class="form-control">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="Berfungsi">Berfungsi</option>
+                        <option value="Jarang	berfungsi">Jarang	berfungsi</option>
+                        <option value="Tidak	berfungsi">Tidak	berfungsi</option>
+                        <option value="Tidak	ada">Tidak	ada</option>
                     </select>
                   </div>
                 </div>
