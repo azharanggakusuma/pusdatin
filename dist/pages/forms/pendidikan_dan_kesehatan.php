@@ -304,7 +304,7 @@ include "../../config/session.php";
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <form action="/submit-your-action" method="post">
+                <form action="" method="post">
                   <div class="form-group">
                     <table class="table">
                       <thead>
