@@ -79,11 +79,11 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                <i class="fas fa-info-circle"></i>
-              </button>
+              <h3 class="card-title">Jumlah Tempat Ibadah di Desa/Kelurahan</h3>
               <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+                  <i class="fas fa-info-circle"></i>
+                </button>
                 <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
@@ -100,50 +100,80 @@ include "../../config/session.php";
                 </script>
               </div>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
               <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
-                  </div>
-                </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Jenis Tempat Ibadah</th>
+                      <th>Jumlah</th>
+                      <th>Jenis Tempat Ibadah</th>
+                      <th>Jumlah</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Masjid</td>
+                      <td><input type="number" class="form-control"></td>
+                      <td>Pura</td>
+                      <td><input type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                      <td>Surau/Langgar/Musala</td>
+                      <td><input type="number" class="form-control"></td>
+                      <td>Wihara</td>
+                      <td><input type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                      <td>Gereja Kristen</td>
+                      <td><input type="number" class="form-control"></td>
+                      <td>Kelenteng</td>
+                      <td><input type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                      <td>Gereja Katolik</td>
+                      <td><input type="number" class="form-control"></td>
+                      <td>Balai Basarah</td>
+                      <td><input type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                      <td>Kapel</td>
+                      <td><input type="number" class="form-control"></td>
+                      <td>Lainnya</td>
+                      <td><input type="text" class="form-control" placeholder="Tulis jenis lainnya..."></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary mt-3">
+                  <i class="fas fa-save"></i> &nbsp; Simpan
+                </button>
               </form>
-              <!-- /.row -->
             </div>
+          </div>
 
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
+          <!-- Modal Info -->
+          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
               </div>
             </div>
           </div>
-
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
