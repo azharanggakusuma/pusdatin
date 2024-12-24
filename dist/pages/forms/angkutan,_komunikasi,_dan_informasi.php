@@ -285,7 +285,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="" method="post"> 
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah menara telepon seluler atau Base	Transceiver	Station (BTS)</label>

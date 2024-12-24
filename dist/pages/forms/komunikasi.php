@@ -284,7 +284,7 @@ include "../../config/session.php";
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3">
