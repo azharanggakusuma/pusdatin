@@ -79,8 +79,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -105,8 +105,12 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                    <label for="" class="form-label">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" selected disabled>Pilih</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak ada</option>
+                    </select>
                   </div>
                 </div>
 
@@ -120,7 +124,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -142,6 +146,262 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label for="" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" selected disabled>Pilih</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label for="" class="form-label">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" selected disabled>Pilih</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header">
+              <h3 class="card-title">Jumlah Kejadian Luar Biasa (KLB) atau Wabah Penyakit Selama Setahun Terakhir</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-bs-toggle="collapse" data-bs-target="#collapseForm">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="collapse show" id="collapseForm">
+              <div class="card-body">
+                <form action="/submit-your-action" method="post">
+                  <div class="form-group">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Jenis KLB/Wabah Penyakit</th>
+                          <th>Ada</th>
+                          <th>Tidak ada</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Muntaber/diare</td>
+                          <td><input type="checkbox" name="muntaber_diare" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="muntaber_diare" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Demam Berdarah</td>
+                          <td><input type="checkbox" name="demam_berdarah" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="demam_berdarah" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Campak</td>
+                          <td><input type="checkbox" name="campak" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="campak" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Malaria</td>
+                          <td><input type="checkbox" name="malaria" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="malaria" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Flu Burung/SARS</td>
+                          <td><input type="checkbox" name="flu_burung_sars" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="flu_burung_sars" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Hepatitis E</td>
+                          <td><input type="checkbox" name="hepatitis_e" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="hepatitis_e" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Difteri</td>
+                          <td><input type="checkbox" name="difteri" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="difteri" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Corona/COVID-19</td>
+                          <td><input type="checkbox" name="corona_covid19" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="corona_covid19" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                        <tr>
+                          <td>Lainnya (tuliskan: chikungunya, leptospirosis, kolera, dll)</td>
+                          <td><input type="checkbox" name="lainnya" value="1" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="lainnya" value="2" onchange="handleChange(this)"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-save"></i> &nbsp;Simpan
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Modal for Additional Information -->
+            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="modalPKHLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalPKHLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Ensure to check the relevant boxes based on the occurrences in the last year.</li>
+                      <li>Mark 'Ada' if the disease outbreak occurred, otherwise 'Tidak ada'.</li>
+                      <li>If marking 'Lainnya', specify the diseases in the space provided.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              function handleChange(checkbox) {
+                const allCheckboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
+                allCheckboxes.forEach((cb) => {
+                  if (cb !== checkbox) cb.checked = false;
+                });
+              }
+            </script>
           </div>
 
         </div> <!--end::Container-->
