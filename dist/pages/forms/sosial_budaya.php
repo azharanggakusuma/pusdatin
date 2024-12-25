@@ -80,10 +80,10 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Jumlah Tempat Ibadah di Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTempatIbadah">
+                <i class="fas fa-info-circle"></i>
+              </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                  <i class="fas fa-info-circle"></i>
-                </button>
                 <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
@@ -102,57 +102,72 @@ include "../../config/session.php";
             </div>
             <div class="card-body">
               <form action="" method="post">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Jenis Tempat Ibadah</th>
-                      <th>Jumlah</th>
-                      <th>Jenis Tempat Ibadah</th>
-                      <th>Jumlah</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Masjid</td>
-                      <td><input type="number" class="form-control"></td>
-                      <td>Pura</td>
-                      <td><input type="number" class="form-control"></td>
-                    </tr>
-                    <tr>
-                      <td>Surau/Langgar/Musala</td>
-                      <td><input type="number" class="form-control"></td>
-                      <td>Wihara</td>
-                      <td><input type="number" class="form-control"></td>
-                    </tr>
-                    <tr>
-                      <td>Gereja Kristen</td>
-                      <td><input type="number" class="form-control"></td>
-                      <td>Kelenteng</td>
-                      <td><input type="number" class="form-control"></td>
-                    </tr>
-                    <tr>
-                      <td>Gereja Katolik</td>
-                      <td><input type="number" class="form-control"></td>
-                      <td>Balai Basarah</td>
-                      <td><input type="number" class="form-control"></td>
-                    </tr>
-                    <tr>
-                      <td>Kapel</td>
-                      <td><input type="number" class="form-control"></td>
-                      <td>Lainnya</td>
-                      <td><input type="text" class="form-control" placeholder="Tulis jenis lainnya..."></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="masjid" class="form-label">Masjid</label>
+                    <input type="number" class="form-control" id="masjid" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="pura" class="form-label">Pura</label>
+                    <input type="number" class="form-control" id="pura" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="musala" class="form-label">Surau/Langgar/Musala</label>
+                    <input type="number" class="form-control" id="musala" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="wihara" class="form-label">Wihara</label>
+                    <input type="number" class="form-control" id="wihara" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="kristen" class="form-label">Gereja Kristen</label>
+                    <input type="number" class="form-control" id="kristen" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="kelenteng" class="form-label">Kelenteng</label>
+                    <input type="number" class="form-control" id="kelenteng" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="katolik" class="form-label">Gereja Katolik</label>
+                    <input type="number" class="form-control" id="katolik" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="basarah" class="form-label">Balai Basarah</label>
+                    <input type="number" class="form-control" id="basarah" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="kapel" class="form-label">Kapel</label>
+                    <input type="number" class="form-control" id="kapel" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lainnya" class="form-label">Lainnya</label>
+                    <input type="text" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lain...">
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
               </form>
             </div>
           </div>
 
           <!-- Modal Info -->
-          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+          <div class="modal fade" id="modalTempatIbadah" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -161,17 +176,227 @@ include "../../config/session.php";
                 </div>
                 <div class="modal-body">
                   <ul>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Masukkan jumlah eksak yang ada untuk setiap jenis tempat ibadah.</li>
+                    <li>Jangan membiarkan bidang input kosong; masukkan '0' jika tidak ada tempat ibadah dari jenis tersebut.</li>
+                    <li>Pastikan semua angka yang dimasukkan akurat untuk mencegah kesalahan data.</li>
+                    <li>Gunakan tombol 'Simpan' di bawah formulir setelah mengisi semua data.</li>
+                    <li>Apabila ada jenis tempat ibadah yang tidak terdaftar, masukkan jenisnya pada 'Lainnya' dan isi jumlahnya.</li>
                   </ul>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Banyaknya penyandang disabilitas di desa/kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalDisabilitas">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tuna-netra" class="form-label">Jumlah tuna netra (buta)</label>
+                    <input type="number" class="form-control" id="tuna-netra" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="tuna-rungu" class="form-label">Jumlah tuna rungu (tuli)</label>
+                    <input type="number" class="form-control" id="tuna-rungu" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tuna-wicara" class="form-label">Jumlah tuna wicara (bisu)</label>
+                    <input type="number" class="form-control" id="tuna-wicara" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="tuna-rungu-wicara" class="form-label">Jumlah tuna rungu-wicara (tuli-bisu)</label>
+                    <input type="number" class="form-control" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tuna-daksa" class="form-label">Jumlah tuna daksa (disabilitas tubuh)</label>
+                    <input type="number" class="form-control" id="tuna-daksa" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="tuna-grahita" class="form-label">Jumlah tuna grahita (keterbelakangan mental)</label>
+                    <input type="number" class="form-control" id="tuna-grahita" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tuna-laras" class="form-label">Jumlah tuna laras (eks-sakit jiwa)</label>
+                    <input type="number" class="form-control" id="tuna-laras" placeholder="Masukkan jumlah">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="tuna-eks-kusta" class="form-label">Jumlah tuna eks-sakit kusta</label>
+                    <input type="number" class="form-control" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tuna-ganda" class="form-label">Jumlah tuna ganda (fisik-mental)</label>
+                    <input type="number" class="form-control" id="tuna-ganda" placeholder="Masukkan jumlah">
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalDisabilitas" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi jumlah penyandang disabilitas di desa/kelurahan untuk setiap kategori yang terdaftar.</li>
+                      <li>Masukkan angka '0' jika tidak ada penyandang disabilitas dalam kategori tersebut.</li>
+                      <li>Pastikan untuk memasukkan data yang akurat dan terverifikasi dari sumber yang dapat dipercaya.</li>
+                      <li>Review kembali semua data yang telah dimasukkan sebelum menyimpan untuk memastikan tidak ada kesalahan entri.</li>
+                      <li>Gunakan tombol 'Simpan' untuk menyimpan informasi yang telah diisi ke dalam basis data.</li>
+                      <li>Setiap entri harus sesuai dengan kondisi nyata di lapangan untuk memastikan kevalidan data.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Ruang publik terbuka</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modalRuangPublik" data-bs-target="#modal">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <label for="publicSpaceStatus" class="form-label">Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)</label>
+                    <select class="form-select" id="publicSpaceStatus" name="publicSpaceStatus">
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Ada, dikelola">Ada, dikelola</option>
+                      <option value="Ada, tidak dikelola">Ada, tidak dikelola</option>
+                      <option value="Tidak Ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row additional-info" style="display:none">
+                  <div class="col-12 mb-3">
+                    <label for="greenSpace" class="form-label">Ruang Terbuka Hijau (RTH):</label>
+                    <select class="form-select" id="greenSpace" name="greenSpace">
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <label for="nonGreenSpace" class="form-label">Ruang Terbuka Non Hijau (RTNH):</label>
+                    <select class="form-select" id="nonGreenSpace" name="nonGreenSpace">
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">
+                  <i class="fas fa-save"></i> &nbsp; Simpan
+                </button>
+              </form>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  const publicSpaceStatus = document.getElementById('publicSpaceStatus');
+                  const additionalInfo = document.querySelector('.additional-info');
+
+                  publicSpaceStatus.addEventListener('change', function() {
+                    if (this.value === 'Ada, dikelola' || this.value === 'Ada, tidak dikelola') {
+                      additionalInfo.style.display = 'block';
+                    } else {
+                      additionalInfo.style.display = 'none';
+                    }
+                  });
+                });
+              </script>
+
+              <!-- Modal Info -->
+              <div class="modal fade" id="modalRuangPublik" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li>Pilih status ruang publik terbuka berdasarkan kondisi eksisting: "Tidak ada", "Ada, dikelola", atau "Ada, tidak dikelola".</li>
+                        <li>Jika ruang publik terbuka ada, pilih status untuk Ruang Terbuka Hijau (RTH) dan Ruang Terbuka Non Hijau (RTNH).</li>
+                        <li>Isi opsi "Ada" jika ruang tersebut tersedia dan "Tidak ada" jika tidak tersedia.</li>
+                        <li>Data yang dimasukkan harus mencerminkan kondisi terkini untuk memastikan akurasi informasi.</li>
+                        <li>Gunakan tombol 'Simpan' untuk menyimpan data yang telah diisi pada form.</li>
+                        <li>Pastikan semua data telah diisi dengan benar sebelum menekan tombol 'Simpan'.</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div> <!--end::Container-->
