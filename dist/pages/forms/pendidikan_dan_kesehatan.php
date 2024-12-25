@@ -80,7 +80,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTBM">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -107,7 +107,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label for="" class="form-label">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</label>
                     <select name="" id="" class="form-control">
-                      <option value="" selected disabled>Pilih</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
@@ -124,7 +124,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalTBM" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -133,11 +133,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih 'Ada' jika di desa/kelurahan terdapat Taman Bacaan Masyarakat (TBM) atau Perpustakaan Desa.</li>
+                      <li>Pilih 'Tidak Ada' jika di desa/kelurahan tidak terdapat Taman Bacaan Masyarakat (TBM) atau Perpustakaan Desa.</li>
+                      <li>Pastikan untuk memilih salah satu opsi sebelum menyimpan form.</li>
+                      <li>Gunakan tombol 'Simpan' untuk mengonfirmasi dan menyimpan pilihan Anda.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -151,7 +150,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBidan">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -178,7 +177,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label for="" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
                     <select name="" id="" class="form-control">
-                      <option value="" selected disabled>Pilih</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
@@ -195,7 +194,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalBidan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -204,11 +203,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih 'Ada' jika terdapat Bidan Desa yang menetap di desa/kelurahan.</li>
+                      <li>Pilih 'Tidak Ada' jika tidak terdapat Bidan Desa yang menetap di desa/kelurahan.</li>
+                      <li>Pilihan harus dilakukan berdasarkan keadaan aktual di lapangan.</li>
+                      <li>Simpan informasi setelah memilih opsi yang sesuai untuk memastikan data tersimpan dengan benar.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -222,7 +220,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalDukunBayi">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -249,7 +247,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label for="" class="form-label">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</label>
                     <select name="" id="" class="form-control">
-                      <option value="" selected disabled>Pilih</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
@@ -266,7 +264,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalDukunBayi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -275,11 +273,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih 'Ada' jika terdapat Dukun Bayi/Paraji yang menetap di desa/kelurahan.</li>
+                      <li>Pilih 'Tidak Ada' jika tidak terdapat Dukun Bayi/Paraji yang menetap di desa/kelurahan.</li>
+                      <li>Verifikasi keberadaan Dukun Bayi/Paraji sebelum membuat pilihan pada form.</li>
+                      <li>Gunakan tombol 'Simpan' untuk mengonfirmasi dan menyimpan informasi yang telah dipilih.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -293,7 +290,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header">
               <h3 class="card-title">Jumlah Kejadian Luar Biasa (KLB) atau Wabah Penyakit Selama Setahun Terakhir</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKLB">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -373,7 +370,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal for Additional Information -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="modalPKHLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKLB" tabindex="-1" aria-labelledby="modalPKHLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
