@@ -11,6 +11,24 @@
     <link rel="stylesheet" href="../css/adminlte.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <link rel="shortcut icon" href="../img/kominfo.png" type="image/x-icon">
+
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfUfaUqAAAAAA_6RPB8APiOKw_ovLr3yR8QeyTT"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("login-form").submit(); // Submit form after CAPTCHA is verified
+        }
+
+        function triggerCaptcha() {
+            grecaptcha.enterprise.ready(function() {
+                grecaptcha.enterprise.execute('6LfUfaUqAAAAAA_6RPB8APiOKw_ovLr3yR8QeyTT', {
+                    action: 'login'
+                }).then(function(token) {
+                    document.getElementById('recaptcha_token').value = token;
+                    onSubmit(token);
+                });
+            });
+        }
+    </script>
 </head> <!--end::Head-->
 
 <body class="login-page bg-body-secondary">
@@ -69,7 +87,7 @@
                             </script>';
                     }
                     ?>
-                    <form action="proses_login.php" method="post">
+                    <form action="proses_login.php" method="post" id="login-form">
                         <div class="input-group mb-3">
                             <div class="input-group-text">
                                 <span class="bi bi-person-fill"></span>
@@ -82,22 +100,10 @@
                             </div>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                         </div>
-                        <!--<div class="input-group mb-3">
-                            <div class="input-group-text">
-                                <span class="bi bi-calendar"></span>
-                            </div>
-                            <select name="tahun" id="tahun" class="form-control">
-                                <option value="" disabled selected>Pilih Tahun</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                            </select>
-                        </div>-->
+                        <input type="hidden" id="recaptcha_token" name="recaptcha_token">
                         <div class="row">
                             <div class="d-grid gap-2 mt-3 mb-3">
-                                <input type="submit" class="btn btn-primary" value="Log In">
+                                <input type="submit" class="btn btn-primary" value="Log In" onclick="triggerCaptcha()">
                             </div>
                         </div>
                     </form>
@@ -145,37 +151,37 @@
     <script src="../../../dist/js/adminlte.js"></script> <!--end: Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         $(function() {
-             //Initialize Select2 Elements
-             $('.select2').select2()
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-//Initialize Select2 Elements
-$('.select2bs4').select2({
-    theme: 'bootstrap4'
-})
-})
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
 
-const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
-const Default = {
-scrollbarTheme: "os-theme-light",
-scrollbarAutoHide: "leave",
-scrollbarClickScroll: true,
-};
-document.addEventListener("DOMContentLoaded", function() {
-const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-if (
-    sidebarWrapper &&
-    typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
-) {
-    OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-        scrollbars: {
-            theme: Default.scrollbarTheme,
-            autoHide: Default.scrollbarAutoHide,
-            clickScroll: Default.scrollbarClickScroll,
-        },
-    });
-}
-});
-</script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
+        const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+        const Default = {
+            scrollbarTheme: "os-theme-light",
+            scrollbarAutoHide: "leave",
+            scrollbarClickScroll: true,
+        };
+        document.addEventListener("DOMContentLoaded", function() {
+            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+            if (
+                sidebarWrapper &&
+                typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+            ) {
+                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                    scrollbars: {
+                        theme: Default.scrollbarTheme,
+                        autoHide: Default.scrollbarAutoHide,
+                        clickScroll: Default.scrollbarClickScroll,
+                    },
+                });
+            }
+        });
+    </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
 </body><!--end::Body-->
 
 </html>
