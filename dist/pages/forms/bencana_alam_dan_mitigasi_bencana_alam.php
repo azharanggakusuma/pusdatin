@@ -80,7 +80,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header">
               <h3 class="card-title">Kejadian/bencana alam yang terjadi</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBencanaAlam">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -161,53 +161,53 @@ include "../../config/session.php";
                     </table>
                   </div>
                   <div class="mb-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary mt-3">
                       <i class="fas fa-save"></i> &nbsp;Simpan
                     </button>
                   </div>
                 </form>
               </div>
             </div>
-          </div>
 
-          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <ul>
-                    <li>Pilih 'Ada' jika kejadian/bencana alam tersebut telah terjadi di wilayah Anda.</li>
-                    <li>Pilih 'Tidak ada' jika kejadian/bencana alam tersebut belum terjadi di wilayah Anda.</li>
-                    <li>Tidak boleh menandai kedua kotak pada satu kejadian/bencana alam. Jika salah satu kotak telah dipilih, kotak lainnya tidak dapat dipilih untuk kejadian yang sama.</li>
-                    <li>Pastikan untuk memberikan informasi yang akurat dan terkini.</li>
-                    <li>Periksa kembali sebelum mengirimkan form untuk memastikan tidak ada kesalahan input.</li>
-                  </ul>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <div class="modal fade" id="modalBencanaAlam" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih 'Ada' jika kejadian/bencana alam tersebut telah terjadi di wilayah Anda.</li>
+                      <li>Pilih 'Tidak ada' jika kejadian/bencana alam tersebut belum terjadi di wilayah Anda.</li>
+                      <li>Tidak boleh menandai kedua kotak pada satu kejadian/bencana alam. Jika salah satu kotak telah dipilih, kotak lainnya tidak dapat dipilih untuk kejadian yang sama.</li>
+                      <li>Pastikan untuk memberikan informasi yang akurat dan terkini.</li>
+                      <li>Periksa kembali sebelum mengirimkan form untuk memastikan tidak ada kesalahan input.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <script>
-            function handleChange(checkbox) {
-              const allCheckboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
-              allCheckboxes.forEach((cb) => {
-                if (cb !== checkbox) cb.checked = false;
-              });
-            }
-          </script>
+            <script>
+              function handleChange(checkbox) {
+                const allCheckboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
+                allCheckboxes.forEach((cb) => {
+                  if (cb !== checkbox) cb.checked = false;
+                });
+              }
+            </script>
+          </div>
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Fasilitas/Upaya Antisipasi/Mitigasi Bencana Alam yang Ada di Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                  <i class="fas fa-info-circle"></i>
-                </button>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalFasilitasMitigasi">
+                <i class="fas fa-info-circle"></i>
+              </button>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#collapseForm">
                   <i class="fas fa-minus"></i>
@@ -221,8 +221,8 @@ include "../../config/session.php";
                   <div class="mb-3">
                     <label for="peringatan_dini" class="form-label">Sistem Peringatan Dini Bencana Alam</label>
                     <select name="peringatan_dini" id="peringatan_dini" class="form-control">
-                    <option value="" selected disabled>Pilih</option>  
-                    <option value="Ada">Ada</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
+                      <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
                   </div>
@@ -231,8 +231,8 @@ include "../../config/session.php";
                   <div class="mb-3">
                     <label for="peringatan_tsunami" class="form-label">Sistem Peringatan Dini Khusus Tsunami</label>
                     <select name="peringatan_tsunami" id="peringatan_tsunami" class="form-control">
-                    <option value="" selected disabled>Pilih</option>  
-                    <option value="Ada">Ada</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
+                      <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                       <option value="3">Bukan Wilayah Potensi Tsunami</option>
                     </select>
@@ -242,8 +242,8 @@ include "../../config/session.php";
                   <div class="mb-3">
                     <label for="perlengkapan_keselamatan" class="form-label">Perlengkapan Keselamatan (Perahu Karet, Tenda, Masker, dll)</label>
                     <select name="perlengkapan_keselamatan" id="perlengkapan_keselamatan" class="form-control">
-                    <option value="" selected disabled>Pilih</option>  
-                    <option value="Ada">Ada</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
+                      <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
                   </div>
@@ -252,8 +252,8 @@ include "../../config/session.php";
                   <div class="mb-3">
                     <label for="rambu_evakuasi" class="form-label">Rambu-Rambu dan Jalur Evakuasi Bencana</label>
                     <select name="rambu_evakuasi" id="rambu_evakuasi" class="form-control">
-                    <option value="" selected disabled>Pilih</option> 
-                    <option value="Ada">Ada</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
+                      <option value="Ada">Ada</option>
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
@@ -263,7 +263,7 @@ include "../../config/session.php";
                     <label for="infrastruktur" class="form-label">Pembuatan, Perawatan, atau Normalisasi (Sungai, Kanal, Tanggul, Parit, Drainase, Waduk, Pantai, dll.)</label>
                     <select name="infrastruktur" id="infrastruktur" class="form-control">
                       <option value=""></option>
-                      <option value="" selected disabled>Pilih</option>
+                      <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
@@ -271,30 +271,33 @@ include "../../config/session.php";
 
                   <!-- Submit button -->
                   <div class="mb-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary mt-3">
                       <i class="fas fa-save"></i> &nbsp;Simpan
                     </button>
                   </div>
                 </form>
               </div>
             </div>
-          </div>
 
-          <!-- Modal Info -->
-          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <ul>
-                    <li>Pilih 'Ada' jika fasilitas/mitigasi tersebut tersedia di wilayah Anda.</li>
-                    <li>Pilih 'Tidak ada' jika fasilitas/mitigasi tersebut tidak tersedia di wilayah Anda.</li>
-                    <li>Untuk 'Sistem Peringatan Dini Khusus Tsunami', pilih 'Bukan Wilayah Potensi Tsunami' jika wilayah Anda tidak berpotensi tsunami.</li>
-                    <li>Pastikan tidak memilih lebih dari satu opsi per fasilitas.</li>
-                  </ul>
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalFasilitasMitigasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih 'Ada' jika fasilitas/mitigasi tersebut tersedia di wilayah Anda.</li>
+                      <li>Pilih 'Tidak ada' jika fasilitas/mitigasi tersebut tidak tersedia di wilayah Anda.</li>
+                      <li>Untuk 'Sistem Peringatan Dini Khusus Tsunami', pilih 'Bukan Wilayah Potensi Tsunami' jika wilayah Anda tidak berpotensi tsunami.</li>
+                      <li>Pastikan tidak memilih lebih dari satu opsi per fasilitas.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
                 </div>
               </div>
             </div>
