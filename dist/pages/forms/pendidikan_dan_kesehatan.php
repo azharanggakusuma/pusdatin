@@ -353,9 +353,11 @@ include "../../config/session.php";
                           <td><input type="checkbox" name="corona_covid19" value="2" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
-                          <td>Lainnya (tuliskan: chikungunya, leptospirosis, kolera, dll)</td>
-                          <td><input type="checkbox" name="lainnya" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="lainnya" value="2" onchange="handleChange(this)"></td>
+                          <td>
+                            <input type="text" class="form-control" id="lainnya" placeholder="Lainnya (tuliskan: chikungunya, leptospirosis, kolera, dll)" style="border: none; width: 60%;">
+                          </td>
+                          <td class="checkbox-lainnya"><input type="checkbox" name="lainnya_ada" value="1" onchange="handleChange(this)"></td>
+                          <td class="checkbox-lainnya"><input type="checkbox" name="lainnya_tidak_ada" value="2" onchange="handleChange(this)"></td>
                         </tr>
                       </tbody>
                     </table>
