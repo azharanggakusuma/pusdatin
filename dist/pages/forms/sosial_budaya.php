@@ -153,9 +153,23 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="lainnya" class="form-label">Lainnya</label>
-                    <input type="text" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lain...">
+                    <input type="text" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lainnya">
+                    <input type="number" class="form-control mt-2" id="lainnyaInput" placeholder="Masukkan jumlah" style="display: none;">
                   </div>
                 </div>
+
+                <script>
+                  $(document).ready(function() {
+                    $('#lainnya').on('input', function() {
+                      var inputVal = $(this).val();
+                      if (inputVal) {
+                        $('#lainnyaInput').show();
+                      } else {
+                        $('#lainnyaInput').hide();
+                      }
+                    });
+                  });
+                </script>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
