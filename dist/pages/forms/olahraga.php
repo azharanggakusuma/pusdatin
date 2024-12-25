@@ -79,8 +79,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalOlahraga">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -103,12 +103,157 @@ include "../../config/session.php";
             <!-- /.card-header -->
             <div class="card-body">
               <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="sepakbola" class="form-label">Sepak bola</label>
+                    <select id="sepakbola" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="bolavoli" class="form-label">Bola voli</label>
+                    <select id="bolavoli" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="bulutangkis" class="form-label">Bulu tangkis</label>
+                    <select id="bulutangkis" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="basket" class="form-label">Bola basket</label>
+                    <select id="basket" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tenislapangan" class="form-label">Tenis lapangan</label>
+                    <select id="tenislapangan" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="tenismeja" class="form-label">Tenis meja</label>
+                    <select id="tenismeja" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="futsal" class="form-label">Futsal</label>
+                    <select id="futsal" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="renang" class="form-label">Renang</label>
+                    <select id="renang" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
+                    <select id="beladiri" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="bilyard" class="form-label">Bilyard</label>
+                    <select id="bilyard" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="fitness" class="form-label">Fitnes, aerobik, dll.</label>
+                    <select id="fitness" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
+                    <input type="text" class="form-control" id="lainnya" placeholder="Nama lainnya">
+                    <select id="lainnyaSelect" class="form-select mt-2" style="display: none;">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <script>
+                  $(document).ready(function() {
+                    $('#lainnya').on('input', function() {
+                      var inputVal = $(this).val();
+                      if (inputVal) {
+                        $('#lainnyaSelect').show();
+                      } else {
+                        $('#lainnyaSelect').hide();
+                      }
+                    });
+                  });
+                </script>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -120,7 +265,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalOlahraga" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -129,12 +274,19 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih kondisi untuk setiap fasilitas olahraga yang terdaftar di form:
+                        <ul>
+                          <li>'Ada, baik' jika fasilitas tersedia dan dalam kondisi baik.</li>
+                          <li>'Ada, rusak sedang' jika fasilitas tersedia namun mengalami kerusakan sedang.</li>
+                          <li>'Ada, rusak parah' jika fasilitas tersedia namun mengalami kerusakan parah.</li>
+                          <li>'Tidak ada' jika fasilitas tersebut tidak tersedia.</li>
+                        </ul>
+                      </li>
+                      <li>Untuk opsi 'Lainnya', tuliskan nama fasilitas olahraga yang tidak terdaftar pada kolom yang disediakan. Jika ada, pilih kondisi fasilitas sesuai dengan opsi yang tersedia di dropdown yang muncul.</li>
+                      <li>Pastikan untuk mengisi form berdasarkan kondisi fasilitas olahraga terkini di desa/kelurahan Anda.</li>
+                      <li>Gunakan tombol 'Simpan' yang terletak di bagian bawah form untuk menyimpan pilihan Anda dan mengirim data.</li>
                     </ul>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
