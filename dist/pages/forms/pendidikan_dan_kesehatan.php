@@ -106,7 +106,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label for="" class="form-label">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
@@ -176,7 +176,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label for="" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
@@ -246,7 +246,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label for="" class="form-label">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>

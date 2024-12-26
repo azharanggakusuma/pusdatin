@@ -220,7 +220,7 @@ include "../../config/session.php";
                   <!-- Form field 1 -->
                   <div class="mb-3">
                     <label for="peringatan_dini" class="form-label">Sistem Peringatan Dini Bencana Alam</label>
-                    <select name="peringatan_dini" id="peringatan_dini" class="form-control">
+                    <select name="peringatan_dini" id="peringatan_dini" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
@@ -230,7 +230,7 @@ include "../../config/session.php";
                   <!-- Form field 2 -->
                   <div class="mb-3">
                     <label for="peringatan_tsunami" class="form-label">Sistem Peringatan Dini Khusus Tsunami</label>
-                    <select name="peringatan_tsunami" id="peringatan_tsunami" class="form-control">
+                    <select name="peringatan_tsunami" id="peringatan_tsunami" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
@@ -241,7 +241,7 @@ include "../../config/session.php";
                   <!-- Form field 3 -->
                   <div class="mb-3">
                     <label for="perlengkapan_keselamatan" class="form-label">Perlengkapan Keselamatan (Perahu Karet, Tenda, Masker, dll)</label>
-                    <select name="perlengkapan_keselamatan" id="perlengkapan_keselamatan" class="form-control">
+                    <select name="perlengkapan_keselamatan" id="perlengkapan_keselamatan" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
@@ -251,7 +251,7 @@ include "../../config/session.php";
                   <!-- Form field 4 -->
                   <div class="mb-3">
                     <label for="rambu_evakuasi" class="form-label">Rambu-Rambu dan Jalur Evakuasi Bencana</label>
-                    <select name="rambu_evakuasi" id="rambu_evakuasi" class="form-control">
+                    <select name="rambu_evakuasi" id="rambu_evakuasi" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak ada">Tidak ada</option>
@@ -261,8 +261,7 @@ include "../../config/session.php";
                   <!-- Form field 5 -->
                   <div class="mb-3">
                     <label for="infrastruktur" class="form-label">Pembuatan, Perawatan, atau Normalisasi (Sungai, Kanal, Tanggul, Parit, Drainase, Waduk, Pantai, dll.)</label>
-                    <select name="infrastruktur" id="infrastruktur" class="form-control">
-                      <option value=""></option>
+                    <select name="infrastruktur" id="infrastruktur" class="form-select">
                       <option value="" selected disabled>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
