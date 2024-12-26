@@ -317,7 +317,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Ruang publik terbuka</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modalRuangPublik" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalRuangPublik">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -354,6 +354,7 @@ include "../../config/session.php";
                   <div class="col-12 mb-3">
                     <label for="greenSpace" class="form-label">Ruang Terbuka Hijau (RTH):</label>
                     <select class="form-select" id="greenSpace" name="greenSpace">
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
@@ -361,6 +362,7 @@ include "../../config/session.php";
                   <div class="col-12 mb-3">
                     <label for="nonGreenSpace" class="form-label">Ruang Terbuka Non Hijau (RTNH):</label>
                     <select class="form-select" id="nonGreenSpace" name="nonGreenSpace">
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
