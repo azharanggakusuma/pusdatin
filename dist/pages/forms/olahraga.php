@@ -3,6 +3,56 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa yang terkait dengan user yang sedang login
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya
+$previous_luas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_luas_wilayah_desa', ['luas_wilayah_desa'], 'Luas Wilayah Desa');
+$previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa');
+$previous_batas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas_utara', 'kecamatan_utara', 'batas_selatan', 'kecamatan_selatan', 'batas_timur', 'kecamatan_timur', 'batas_barat', 'kecamatan_barat'], 'Batas Wilayah Desa');
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -102,11 +152,11 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="sepakbola" class="form-label">Sepak bola</label>
-                    <select id="sepakbola" class="form-select">
+                    <select id="sepakbola" name="sepakbola" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -116,7 +166,7 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="bolavoli" class="form-label">Bola voli</label>
-                    <select id="bolavoli" class="form-select">
+                    <select id="bolavoli" name="bolavoli" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -129,7 +179,7 @@ include "../../config/session.php";
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="bulutangkis" class="form-label">Bulu tangkis</label>
-                    <select id="bulutangkis" class="form-select">
+                    <select id="bulutangkis" name="bulutangkis" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -139,7 +189,7 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="basket" class="form-label">Bola basket</label>
-                    <select id="basket" class="form-select">
+                    <select id="basket" name="basket" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -152,7 +202,7 @@ include "../../config/session.php";
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="tenislapangan" class="form-label">Tenis lapangan</label>
-                    <select id="tenislapangan" class="form-select">
+                    <select id="tenislapangan" name="tenislapangan" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -162,7 +212,7 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="tenismeja" class="form-label">Tenis meja</label>
-                    <select id="tenismeja" class="form-select">
+                    <select id="tenismeja" name="tenismeja" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -175,7 +225,7 @@ include "../../config/session.php";
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="futsal" class="form-label">Futsal</label>
-                    <select id="futsal" class="form-select">
+                    <select id="futsal" name="futsal" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -185,7 +235,7 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="renang" class="form-label">Renang</label>
-                    <select id="renang" class="form-select">
+                    <select id="renang" name="renang" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -198,7 +248,7 @@ include "../../config/session.php";
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
-                    <select id="beladiri" class="form-select">
+                    <select id="beladiri" name="beladiri" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -208,7 +258,7 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="bilyard" class="form-label">Bilyard</label>
-                    <select id="bilyard" class="form-select">
+                    <select id="bilyard" name="bilyard" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -220,8 +270,8 @@ include "../../config/session.php";
 
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <label for="fitness" class="form-label">Fitnes, aerobik, dll.</label>
-                    <select id="fitness" class="form-select">
+                    <label for="fitness" class="form-label">Fitness, aerobik, dll.</label>
+                    <select id="fitness" name="fitness" class="form-select">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -231,8 +281,8 @@ include "../../config/session.php";
                   </div>
                   <div class="col-md-6">
                     <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
-                    <input type="text" class="form-control" id="lainnya" placeholder="Nama lainnya">
-                    <select id="lainnyaSelect" class="form-select mt-2" style="display: none;">
+                    <input type="text" class="form-control" id="lainnya" name="lainnya" placeholder="Nama lainnya">
+                    <select id="lainnyaSelect" name="lainnyaSelect" class="form-select mt-2" style="display: none;">
                       <option selected disabled>--- Pilih kondisi ---</option>
                       <option value="Ada, baik">Ada, baik</option>
                       <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -242,25 +292,26 @@ include "../../config/session.php";
                   </div>
                 </div>
 
-                <script>
-                  $(document).ready(function() {
-                    $('#lainnya').on('input', function() {
-                      var inputVal = $(this).val();
-                      if (inputVal) {
-                        $('#lainnyaSelect').show();
-                      } else {
-                        $('#lainnyaSelect').hide();
-                      }
-                    });
-                  });
-                </script>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
               </form>
+
+              <script>
+                $(document).ready(function() {
+                  $('#lainnya').on('input', function() {
+                    var inputVal = $(this).val();
+                    if (inputVal) {
+                      $('#lainnyaSelect').show();
+                    } else {
+                      $('#lainnyaSelect').hide();
+                    }
+                  });
+                });
+              </script>
+
               <!-- /.row -->
             </div>
 
