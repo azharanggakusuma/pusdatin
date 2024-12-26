@@ -192,8 +192,10 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                     </div>
 
                                     <!-- Tombol Simpan -->
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                    <div class="mb-2">
+                                        <button type="submit" class="btn btn-primary mt-3">
+                                            <i class="fas fa-save"></i> &nbsp; Simpan
+                                        </button>
                                     </div>
                                 </form>
                             <?php endif; ?>
