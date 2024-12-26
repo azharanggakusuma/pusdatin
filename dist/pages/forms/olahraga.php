@@ -48,9 +48,7 @@ $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_luas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_luas_wilayah_desa', ['luas_wilayah_desa'], 'Luas Wilayah Desa');
-$previous_jarak_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa');
-$previous_batas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_wilayah_desa', ['batas_utara', 'kecamatan_utara', 'batas_selatan', 'kecamatan_selatan', 'batas_timur', 'kecamatan_timur', 'batas_barat', 'kecamatan_barat'], 'Batas Wilayah Desa');
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
 ?>
 
 <!DOCTYPE html>
@@ -191,152 +189,208 @@ $previous_batas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="sepakbola" class="form-label">Sepak bola</label>
-                    <select id="sepakbola" name="sepakbola" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="bolavoli" class="form-label">Bola voli</label>
-                    <select id="bolavoli" name="bolavoli" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
+              <?php if ($form_status['Luas Wilayah Desa']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+              <?php else: ?>
+                <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="sepakbola" class="form-label">Sepak bola</label>
+                      <select id="sepakbola" name="sepakbola" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="bolavoli" class="form-label">Bola voli</label>
+                      <select id="bolavoli" name="bolavoli" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>
+                      </p>
+                    </div>
+                  </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="bulutangkis" class="form-label">Bulu tangkis</label>
-                    <select id="bulutangkis" name="bulutangkis" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="bulutangkis" class="form-label">Bulu tangkis</label>
+                      <select id="bulutangkis" name="bulutangkis" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="basket" class="form-label">Bola basket</label>
+                      <select id="basket" name="basket" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="basket" class="form-label">Bola basket</label>
-                    <select id="basket" name="basket" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="tenislapangan" class="form-label">Tenis lapangan</label>
-                    <select id="tenislapangan" name="tenislapangan" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tenislapangan" class="form-label">Tenis lapangan</label>
+                      <select id="tenislapangan" name="tenislapangan" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="tenismeja" class="form-label">Tenis meja</label>
+                      <select id="tenismeja" name="tenismeja" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="tenismeja" class="form-label">Tenis meja</label>
-                    <select id="tenismeja" name="tenismeja" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="futsal" class="form-label">Futsal</label>
-                    <select id="futsal" name="futsal" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="futsal" class="form-label">Futsal</label>
+                      <select id="futsal" name="futsal" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="renang" class="form-label">Renang</label>
+                      <select id="renang" name="renang" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="renang" class="form-label">Renang</label>
-                    <select id="renang" name="renang" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
-                    <select id="beladiri" name="beladiri" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
+                      <select id="beladiri" name="beladiri" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="bilyard" class="form-label">Bilyard</label>
+                      <select id="bilyard" name="bilyard" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="bilyard" class="form-label">Bilyard</label>
-                    <select id="bilyard" name="bilyard" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="fitness" class="form-label">Fitness, aerobik, dll.</label>
-                    <select id="fitness" name="fitness" class="form-select">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="fitness" class="form-label">Fitness, aerobik, dll.</label>
+                      <select id="fitness" name="fitness" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
+                      <input type="text" class="form-control" id="lainnya" name="lainnya" placeholder="Nama lainnya">
+                      <select id="lainnyaSelect" name="lainnyaSelect" class="form-select mt-2" style="display: none;">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                        <?php echo htmlspecialchars($previous_olahraga_data['lainnya_nama']); echo htmlspecialchars($previous_olahraga_data['lainnya_kondisi']); ?>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
-                    <input type="text" class="form-control" id="lainnya" name="lainnya" placeholder="Nama lainnya">
-                    <select id="lainnyaSelect" name="lainnyaSelect" class="form-select mt-2" style="display: none;">
-                      <option selected disabled>--- Pilih kondisi ---</option>
-                      <option value="Ada, baik">Ada, baik</option>
-                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                      <option value="Ada, rusak parah">Ada, rusak parah</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
 
               <script>
                 $(document).ready(function() {

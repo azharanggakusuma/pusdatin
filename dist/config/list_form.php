@@ -72,6 +72,7 @@ $forms = [
     'Nama danau/waduk/situ',
     'Jumlah Sarana Prasarana Kebersihan',
     'Nama Sungai yang melintasi wilayah',
-    'Keberadaan lokasi penggalian Golongan C'
+    'Keberadaan lokasi penggalian Golongan C',
+    'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan',
 ];
 ?>
