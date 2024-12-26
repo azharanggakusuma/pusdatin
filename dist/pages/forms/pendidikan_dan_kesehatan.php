@@ -314,50 +314,50 @@ include "../../config/session.php";
                       <tbody>
                         <tr>
                           <td>Muntaber/diare</td>
-                          <td><input type="checkbox" name="muntaber_diare" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="muntaber_diare" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="muntaber_diare" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="muntaber_diare" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Demam Berdarah</td>
-                          <td><input type="checkbox" name="demam_berdarah" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="demam_berdarah" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="demam_berdarah" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="demam_berdarah" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Campak</td>
-                          <td><input type="checkbox" name="campak" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="campak" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="campak" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="campak" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Malaria</td>
-                          <td><input type="checkbox" name="malaria" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="malaria" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="malaria" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="malaria" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Flu Burung/SARS</td>
-                          <td><input type="checkbox" name="flu_burung_sars" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="flu_burung_sars" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="flu_burung_sars" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="flu_burung_sars" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Hepatitis E</td>
-                          <td><input type="checkbox" name="hepatitis_e" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="hepatitis_e" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="hepatitis_e" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="hepatitis_e" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Difteri</td>
-                          <td><input type="checkbox" name="difteri" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="difteri" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="difteri" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="difteri" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>Corona/COVID-19</td>
-                          <td><input type="checkbox" name="corona_covid19" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="corona_covid19" value="2" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="corona_covid19" value="Ada" onchange="handleChange(this)"></td>
+                          <td><input type="checkbox" name="corona_covid19" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                         <tr>
                           <td>
                             <input type="text" class="form-control" id="lainnya" placeholder="Lainnya (tuliskan: chikungunya, leptospirosis, kolera, dll)" style="border: none; width: 60%;">
                           </td>
-                          <td class="checkbox-lainnya"><input type="checkbox" name="lainnya_ada" value="1" onchange="handleChange(this)"></td>
-                          <td class="checkbox-lainnya"><input type="checkbox" name="lainnya_tidak_ada" value="2" onchange="handleChange(this)"></td>
+                          <td class="checkbox-lainnya"><input type="checkbox" name="lainnya" value="Ada" onchange="handleChange(this)"></td>
+                          <td class="checkbox-lainnya"><input type="checkbox" name="lainnya" value="Tidak Ada" onchange="handleChange(this)"></td>
                         </tr>
                       </tbody>
                     </table>

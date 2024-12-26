@@ -104,58 +104,58 @@ include "../../config/session.php";
                       <tbody>
                         <tr>
                           <td>Tanah longsor</td>
-                          <td><input type="checkbox" name="tanah_longsor" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="tanah_longsor" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="tanah_longsor" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="tanah_longsor" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Banjir</td>
-                          <td><input type="checkbox" name="banjir" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="banjir" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="banjir" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="banjir" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Banjir bandang</td>
-                          <td><input type="checkbox" name="banjir_bandang" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="banjir_bandang" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="banjir_bandang" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="banjir_bandang" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Gempa bumi</td>
-                          <td><input type="checkbox" name="gempa_bumi" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="gempa_bumi" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="gempa_bumi" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="gempa_bumi" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Tsunami</td>
-                          <td><input type="checkbox" name="tsunami" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="tsunami" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="tsunami" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="tsunami" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Gelombang pasang laut</td>
-                          <td><input type="checkbox" name="gelombang_pasang" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="gelombang_pasang" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="gelombang_pasang" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="gelombang_pasang" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Angin puyuh/puting beliung/topan</td>
-                          <td><input type="checkbox" name="angin_puyuh" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="angin_puyuh" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="angin_puyuh" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="angin_puyuh" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Gunung meletus</td>
-                          <td><input type="checkbox" name="gunung_meletus" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="gunung_meletus" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="gunung_meletus" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="gunung_meletus" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Kebakaran hutan dan lahan</td>
-                          <td><input type="checkbox" name="kebakaran_hutan" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="kebakaran_hutan" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="kebakaran_hutan" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="kebakaran_hutan" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Kekeringan (lahan)</td>
-                          <td><input type="checkbox" name="kekeringan" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="kekeringan" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="kekeringan" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="kekeringan" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                         <tr>
                           <td>Abrasi</td>
-                          <td><input type="checkbox" name="abrasi" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="abrasi" value="2" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="abrasi" value="Ada" onchange="handleChange(this);"></td>
+                          <td><input type="checkbox" name="abrasi" value="Tidak Ada" onchange="handleChange(this);"></td>
                         </tr>
                       </tbody>
                     </table>
