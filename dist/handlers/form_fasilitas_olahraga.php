@@ -31,6 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $lainnya_nama = isset($_POST['lainnya']) ? mysqli_real_escape_string($conn, $_POST['lainnya']) : null;
   $lainnya_kondisi = isset($_POST['lainnyaSelect']) ? mysqli_real_escape_string($conn, $_POST['lainnyaSelect']) : null;
 
+  // Check if all fields are empty
+  if (!$sepak_bola && !$bola_voli && !$bulu_tangkis && !$bola_basket && !$tenis_lapangan && !$tenis_meja && !$futsal && !$renang && !$bela_diri && !$bilyard && !$fitness && !$lainnya_nama) {
+    header("Location: ../pages/forms/olahraga.php?status=warning");
+    exit();
+  }
+
   // Masukkan data ke database
   $sql = "INSERT INTO tb_fasilitas_olahraga (sepak_bola, bola_voli, bulu_tangkis, bola_basket, tenis_lapangan, tenis_meja, futsal, renang, bela_diri, bilyard, fitness, lainnya_nama, lainnya_kondisi, user_id, desa_id) 
             VALUES ('$sepak_bola', '$bola_voli', '$bulu_tangkis', '$bola_basket', '$tenis_lapangan', '$tenis_meja', '$futsal', '$renang', '$bela_diri', '$bilyard', '$fitness', '$lainnya_nama', '$lainnya_kondisi', '$user_id', '$desa_id')";
