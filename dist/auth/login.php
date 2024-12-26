@@ -99,6 +99,11 @@
                                 <span class="bi bi-lock-fill"></span>
                             </div>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                            <div class="input-group-text">
+                                <a href="#" class="toggle-password" style="text-decoration:none;color:inherit;">
+                                    <i class="bi bi-eye-fill" id="togglePasswordIcon"></i>
+                                </a>
+                            </div>
                         </div>
                         <input type="hidden" id="recaptcha_token" name="recaptcha_token">
                         <div class="row">
@@ -107,6 +112,24 @@
                             </div>
                         </div>
                     </form>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const togglePassword = document.querySelector('.toggle-password');
+                            const password = document.getElementById('password');
+                            const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+
+                            togglePassword.addEventListener('click', function(e) {
+                                // Prevent the link from being followed
+                                e.preventDefault();
+
+                                // Toggle the type attribute using a ternary operator
+                                password.type = password.type === 'password' ? 'text' : 'password';
+
+                                // Toggle the icon class
+                                togglePasswordIcon.className = togglePasswordIcon.className === 'bi bi-eye-fill' ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill';
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>
