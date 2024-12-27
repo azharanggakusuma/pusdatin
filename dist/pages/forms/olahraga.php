@@ -142,6 +142,62 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
       </script>
     <?php endif; ?>
 
+    <script>
+      function toggleInputWithCheckbox(checkboxId, inputIds, previousData) {
+        const checkbox = document.getElementById(checkboxId);
+        inputIds.forEach(function(inputId, index) {
+          const inputField = document.getElementById(inputId);
+
+          checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+              inputField.value = previousData[index];
+              if (inputField.tagName === "SELECT") {
+                // Preserve the initial value and prevent changes
+                inputField.dataset.previous = inputField.value;
+                inputField.addEventListener('change', revertSelect);
+              } else {
+                inputField.readOnly = true; // Set text inputs as read-only
+              }
+            } else {
+              inputField.value = '';
+              if (inputField.tagName === "SELECT") {
+                inputField.removeEventListener('change', revertSelect);
+              } else {
+                inputField.readOnly = false;
+              }
+            }
+          });
+        });
+      }
+
+      function revertSelect(event) {
+        const select = event.target;
+        select.value = select.dataset.previous; // Revert to previous value
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const inputNames = ['sepakbola', 'bolavoli', 'bulutangkis', 'basket', 'tenislapangan', 'tenismeja', 'futsal', 'renang', 'beladiri', 'bilyard', 'fitness', 'lainnya', 'lainnyaSelect'];
+        const previousData = [
+          "<?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['lainnya_nama']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['lainnya_kondisi']); ?>"
+        ];
+
+        toggleInputWithCheckbox('use_previous_olahraga', inputNames, previousData);
+      });
+    </script>
+
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -407,6 +463,42 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                           ?>
                         </p>
                       <?php endif; ?>
+
+                      <script>
+                        $(document).ready(function() {
+                          // Function to toggle the visibility of lainnyaSelect based on conditions
+                          function toggleSelectVisibility() {
+                            var inputVal = $('#lainnya').val();
+                            var checkboxChecked = $('#use_previous_olahraga').is(':checked');
+                            // Show select if input is not empty or if the checkbox is checked
+                            if (inputVal || checkboxChecked) {
+                              $('#lainnyaSelect').show();
+                            } else {
+                              $('#lainnyaSelect').hide();
+                            }
+                          }
+
+                          // Event listener for text input changes
+                          $('#lainnya').on('input', toggleSelectVisibility);
+
+                          // Event listener for checkbox changes
+                          $('#use_previous_olahraga').on('change', toggleSelectVisibility);
+
+                          // Initial check in case the checkbox is pre-checked or input is pre-filled when the page loads
+                          toggleSelectVisibility();
+                        });
+                      </script>
+
+                    </div>
+                  </div>
+
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_olahraga" name="use_previous_olahraga" value="1">
+                      <label class="form-check-label" for="use_previous_olahraga">
+                        Gunakan data tahun sebelumnya
+                      </label>
                     </div>
                   </div>
 
@@ -417,19 +509,6 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                   </div>
                 </form>
               <?php endif; ?>
-
-              <script>
-                $(document).ready(function() {
-                  $('#lainnya').on('input', function() {
-                    var inputVal = $(this).val();
-                    if (inputVal) {
-                      $('#lainnyaSelect').show();
-                    } else {
-                      $('#lainnyaSelect').hide();
-                    }
-                  });
-                });
-              </script>
 
               <!-- /.row -->
             </div>
