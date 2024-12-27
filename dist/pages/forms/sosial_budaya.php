@@ -3,6 +3,54 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa yang terkait dengan user yang sedang login
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -55,6 +103,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "sosial_budaya.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "sosial_budaya.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "sosial_budaya.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -101,60 +188,67 @@ include "../../config/session.php";
               </div>
             </div>
             <div class="card-body">
-              <form action="" method="post">
+            <?php if ($form_status['Jumlah Tempat Ibadah di Desa/Kelurahan']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+              <form action="../../handlers/form_tempat_ibadah.php" method="post">
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="masjid" class="form-label">Masjid</label>
-                    <input type="number" class="form-control" id="masjid" placeholder="Masukkan jumlah">
+                    <input type="number" name="masjid" class="form-control" id="masjid" placeholder="Masukkan jumlah">
                   </div>
                   <div class="col-md-6">
                     <label for="pura" class="form-label">Pura</label>
-                    <input type="number" class="form-control" id="pura" placeholder="Masukkan jumlah">
+                    <input type="number" name="pura" class="form-control" id="pura" placeholder="Masukkan jumlah">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="musala" class="form-label">Surau/Langgar/Musala</label>
-                    <input type="number" class="form-control" id="musala" placeholder="Masukkan jumlah">
+                    <input type="number" name="musala" class="form-control" id="musala" placeholder="Masukkan jumlah">
                   </div>
                   <div class="col-md-6">
                     <label for="wihara" class="form-label">Wihara</label>
-                    <input type="number" class="form-control" id="wihara" placeholder="Masukkan jumlah">
+                    <input type="number" name="wihara" class="form-control" id="wihara" placeholder="Masukkan jumlah">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="kristen" class="form-label">Gereja Kristen</label>
-                    <input type="number" class="form-control" id="kristen" placeholder="Masukkan jumlah">
+                    <input type="number" name="kristen" class="form-control" id="kristen" placeholder="Masukkan jumlah">
                   </div>
                   <div class="col-md-6">
                     <label for="kelenteng" class="form-label">Kelenteng</label>
-                    <input type="number" class="form-control" id="kelenteng" placeholder="Masukkan jumlah">
+                    <input type="number" name="kelenteng" class="form-control" id="kelenteng" placeholder="Masukkan jumlah">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="katolik" class="form-label">Gereja Katolik</label>
-                    <input type="number" class="form-control" id="katolik" placeholder="Masukkan jumlah">
+                    <input type="number" name="katolik" class="form-control" id="katolik" placeholder="Masukkan jumlah">
                   </div>
                   <div class="col-md-6">
                     <label for="basarah" class="form-label">Balai Basarah</label>
-                    <input type="number" class="form-control" id="basarah" placeholder="Masukkan jumlah">
+                    <input type="number" name="basarah" class="form-control" id="basarah" placeholder="Masukkan jumlah">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label for="kapel" class="form-label">Kapel</label>
-                    <input type="number" class="form-control" id="kapel" placeholder="Masukkan jumlah">
+                    <input type="number" name="kapel" class="form-control" id="kapel" placeholder="Masukkan jumlah">
                   </div>
                   <div class="col-md-6">
                     <label for="lainnya" class="form-label">Lainnya</label>
-                    <input type="text" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lainnya">
-                    <input type="number" class="form-control mt-2" id="lainnyaInput" placeholder="Masukkan jumlah" style="display: none;">
+                    <input type="text" name="lainnya" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lainnya">
+                    <input type="number" name="lainnyaInput" class="form-control mt-2" id="lainnyaInput" placeholder="Masukkan jumlah" style="display: none;">
                   </div>
                 </div>
 
@@ -177,6 +271,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+              <?php endif; ?>
             </div>
           </div>
 
