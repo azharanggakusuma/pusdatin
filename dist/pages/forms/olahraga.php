@@ -245,7 +245,7 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php if ($form_status['Luas Wilayah Desa']) : ?>
+              <?php if ($form_status['Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan']) : ?>
                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
