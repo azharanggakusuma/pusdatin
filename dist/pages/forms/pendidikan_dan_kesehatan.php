@@ -274,11 +274,11 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               <?php else: ?>
-                <form action="" method="post">
+                <form action="../../handlers/form_keberadaan_bidan.php" method="post">
                   <div class="row">
                     <div class="form-group mb-3">
-                      <label for="" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
-                      <select name="" id="" class="form-select">
+                      <label for="keberadaan_bidan" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
+                      <select name="keberadaan_bidan" id="keberadaan_bidan" class="form-select">
                         <option value="" selected disabled>--- Pilih ---</option>
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
@@ -288,7 +288,7 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp; Simpan
+                      <i class="fas fa-save"></i> &nbsp;Simpan
                     </button>
                   </div>
                 </form>
