@@ -207,10 +207,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="bolavoli" class="form-label">Bola voli</label>
@@ -221,10 +223,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -238,10 +242,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="basket" class="form-label">Bola basket</label>
@@ -252,10 +258,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -269,10 +277,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tenismeja" class="form-label">Tenis meja</label>
@@ -283,10 +293,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -300,10 +312,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="renang" class="form-label">Renang</label>
@@ -314,10 +328,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -331,10 +347,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="bilyard" class="form-label">Bilyard</label>
@@ -345,10 +363,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -362,10 +382,12 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
@@ -377,10 +399,14 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada, rusak parah">Ada, rusak parah</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                        <?php echo htmlspecialchars($previous_olahraga_data['lainnya_nama']); echo htmlspecialchars($previous_olahraga_data['lainnya_kondisi']); ?>
-                      </p>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php
+                          echo htmlspecialchars($previous_olahraga_data['lainnya_nama']) . " - " . htmlspecialchars($previous_olahraga_data['lainnya_kondisi']);
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
