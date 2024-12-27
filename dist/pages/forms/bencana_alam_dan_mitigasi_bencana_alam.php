@@ -255,7 +255,7 @@ include "../../config/session.php";
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <form action="" method="post">
+                <form action="../../handlers/form_peringatan_bencana.php" method="post">
                   <!-- Form field 1 -->
                   <div class="mb-3">
                     <label for="peringatan_dini" class="form-label">Sistem Peringatan Dini Bencana Alam</label>
