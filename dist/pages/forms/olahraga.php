@@ -492,15 +492,17 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     </div>
                   </div>
 
-                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
-                  <div class="form-group mb-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="use_previous_olahraga" name="use_previous_olahraga" value="1">
-                      <label class="form-check-label" for="use_previous_olahraga">
-                        Gunakan data tahun sebelumnya
-                      </label>
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_olahraga" name="use_previous_olahraga" value="1">
+                        <label class="form-check-label" for="use_previous_olahraga">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
                     </div>
-                  </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
