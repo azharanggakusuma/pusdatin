@@ -441,55 +441,63 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
               </div>
             </div>
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="col-12 mb-3">
-                    <label for="publicSpaceStatus" class="form-label">Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)</label>
-                    <select class="form-select" id="publicSpaceStatus" name="publicSpaceStatus">
-                      <option value="" disabled selected>--- Pilih ---</option>
-                      <option value="Ada, dikelola">Ada, dikelola</option>
-                      <option value="Ada, tidak dikelola">Ada, tidak dikelola</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
-                  </div>
+              <?php if ($form_status['Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <div class="row additional-info" style="display:none">
-                  <div class="col-12 mb-3">
-                    <label for="greenSpace" class="form-label">Ruang Terbuka Hijau (RTH):</label>
-                    <select class="form-select" id="greenSpace" name="greenSpace">
-                      <option value="" disabled selected>--- Pilih ---</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
+              <?php else: ?>
+                <form action="../../handlers/form_ruang_publik.php" method="post">
+                  <div class="row">
+                    <div class="col-12 mb-3">
+                      <label for="publicSpaceStatus" class="form-label">Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)</label>
+                      <select class="form-select" id="publicSpaceStatus" name="publicSpaceStatus">
+                        <option value="" disabled selected>--- Pilih ---</option>
+                        <option value="Ada, dikelola">Ada, dikelola</option>
+                        <option value="Ada, tidak dikelola">Ada, tidak dikelola</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="col-12 mb-3">
-                    <label for="nonGreenSpace" class="form-label">Ruang Terbuka Non Hijau (RTNH):</label>
-                    <select class="form-select" id="nonGreenSpace" name="nonGreenSpace">
-                      <option value="" disabled selected>--- Pilih ---</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
+                  <div class="row additional-info" style="display:none">
+                    <div class="col-12 mb-3">
+                      <label for="greenSpace" class="form-label">Ruang Terbuka Hijau (RTH):</label>
+                      <select class="form-select" id="greenSpace" name="greenSpace">
+                        <option value="" disabled selected>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="nonGreenSpace" class="form-label">Ruang Terbuka Non Hijau (RTNH):</label>
+                      <select class="form-select" id="nonGreenSpace" name="nonGreenSpace">
+                        <option value="" disabled selected>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
-              </form>
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </form>
 
-              <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                  const publicSpaceStatus = document.getElementById('publicSpaceStatus');
-                  const additionalInfo = document.querySelector('.additional-info');
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const publicSpaceStatus = document.getElementById('publicSpaceStatus');
+                    const additionalInfo = document.querySelector('.additional-info');
 
-                  publicSpaceStatus.addEventListener('change', function() {
-                    if (this.value === 'Ada, dikelola' || this.value === 'Ada, tidak dikelola') {
-                      additionalInfo.style.display = 'block';
-                    } else {
-                      additionalInfo.style.display = 'none';
-                    }
+                    publicSpaceStatus.addEventListener('change', function() {
+                      if (this.value === 'Ada, dikelola' || this.value === 'Ada, tidak dikelola') {
+                        additionalInfo.style.display = 'block';
+                      } else {
+                        additionalInfo.style.display = 'none';
+                      }
+                    });
                   });
-                });
-              </script>
+                </script>
+              <?php endif; ?>
 
               <!-- Modal Info -->
               <div class="modal fade" id="modalRuangPublik" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">

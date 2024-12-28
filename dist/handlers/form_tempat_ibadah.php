@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (mysqli_query($conn, $sql)) {
     // Update user progress
     $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
-    VALUES ('$user_id', 'Jumlah Tempat Ibadah di Desa/Keluraha', TRUE, '$desa_id')
+    VALUES ('$user_id', 'Jumlah Tempat Ibadah di Desa/Kelurahan', TRUE, '$desa_id')
     ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
     mysqli_query($conn, $query_progress);
 
