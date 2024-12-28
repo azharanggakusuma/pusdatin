@@ -188,89 +188,89 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
               </div>
             </div>
             <div class="card-body">
-            <?php if ($form_status['Jumlah Tempat Ibadah di Desa/Kelurahan']) : ?>
+              <?php if ($form_status['Jumlah Tempat Ibadah di Desa/Kelurahan']) : ?>
                 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               <?php else: ?>
-              <form action="../../handlers/form_tempat_ibadah.php" method="post">
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="masjid" class="form-label">Masjid</label>
-                    <input type="number" name="masjid" class="form-control" id="masjid" placeholder="Masukkan jumlah">
+                <form action="../../handlers/form_tempat_ibadah.php" method="post">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="masjid" class="form-label">Masjid</label>
+                      <input type="number" name="masjid" class="form-control" id="masjid" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="pura" class="form-label">Pura</label>
+                      <input type="number" name="pura" class="form-control" id="pura" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="pura" class="form-label">Pura</label>
-                    <input type="number" name="pura" class="form-control" id="pura" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="musala" class="form-label">Surau/Langgar/Musala</label>
-                    <input type="number" name="musala" class="form-control" id="musala" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="musala" class="form-label">Surau/Langgar/Musala</label>
+                      <input type="number" name="musala" class="form-control" id="musala" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="wihara" class="form-label">Wihara</label>
+                      <input type="number" name="wihara" class="form-control" id="wihara" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="wihara" class="form-label">Wihara</label>
-                    <input type="number" name="wihara" class="form-control" id="wihara" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="kristen" class="form-label">Gereja Kristen</label>
-                    <input type="number" name="kristen" class="form-control" id="kristen" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="kristen" class="form-label">Gereja Kristen</label>
+                      <input type="number" name="kristen" class="form-control" id="kristen" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="kelenteng" class="form-label">Kelenteng</label>
+                      <input type="number" name="kelenteng" class="form-control" id="kelenteng" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="kelenteng" class="form-label">Kelenteng</label>
-                    <input type="number" name="kelenteng" class="form-control" id="kelenteng" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="katolik" class="form-label">Gereja Katolik</label>
-                    <input type="number" name="katolik" class="form-control" id="katolik" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="katolik" class="form-label">Gereja Katolik</label>
+                      <input type="number" name="katolik" class="form-control" id="katolik" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="basarah" class="form-label">Balai Basarah</label>
+                      <input type="number" name="basarah" class="form-control" id="basarah" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="basarah" class="form-label">Balai Basarah</label>
-                    <input type="number" name="basarah" class="form-control" id="basarah" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="kapel" class="form-label">Kapel</label>
-                    <input type="number" name="kapel" class="form-control" id="kapel" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="kapel" class="form-label">Kapel</label>
+                      <input type="number" name="kapel" class="form-control" id="kapel" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="lainnya" class="form-label">Lainnya</label>
+                      <input type="text" name="lainnya" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lainnya">
+                      <input type="number" name="lainnyaInput" class="form-control mt-2" id="lainnyaInput" placeholder="Masukkan jumlah" style="display: none;">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="lainnya" class="form-label">Lainnya</label>
-                    <input type="text" name="lainnya" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lainnya">
-                    <input type="number" name="lainnyaInput" class="form-control mt-2" id="lainnyaInput" placeholder="Masukkan jumlah" style="display: none;">
-                  </div>
-                </div>
 
-                <script>
-                  $(document).ready(function() {
-                    $('#lainnya').on('input', function() {
-                      var inputVal = $(this).val();
-                      if (inputVal) {
-                        $('#lainnyaInput').show();
-                      } else {
-                        $('#lainnyaInput').hide();
-                      }
+                  <script>
+                    $(document).ready(function() {
+                      $('#lainnya').on('input', function() {
+                        var inputVal = $(this).val();
+                        if (inputVal) {
+                          $('#lainnyaInput').show();
+                        } else {
+                          $('#lainnyaInput').hide();
+                        }
+                      });
                     });
-                  });
-                </script>
+                  </script>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+                </form>
               <?php endif; ?>
             </div>
           </div>
@@ -323,64 +323,72 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
               </div>
             </div>
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="tuna-netra" class="form-label">Jumlah tuna netra (buta)</label>
-                    <input type="number" class="form-control" id="tuna-netra" placeholder="Masukkan jumlah">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="tuna-rungu" class="form-label">Jumlah tuna rungu (tuli)</label>
-                    <input type="number" class="form-control" id="tuna-rungu" placeholder="Masukkan jumlah">
-                  </div>
+              <?php if ($form_status['Banyaknya penyandang disabilitas']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+              <?php else: ?>
+                <form action="../../handlers/form_disabilitas.php" method="post">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tuna-netra" class="form-label">Jumlah tuna netra (buta)</label>
+                      <input type="number" class="form-control" id="tuna-netra" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="tuna-rungu" class="form-label">Jumlah tuna rungu (tuli)</label>
+                      <input type="number" class="form-control" id="tuna-rungu" placeholder="Masukkan jumlah">
+                    </div>
+                  </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="tuna-wicara" class="form-label">Jumlah tuna wicara (bisu)</label>
-                    <input type="number" class="form-control" id="tuna-wicara" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tuna-wicara" class="form-label">Jumlah tuna wicara (bisu)</label>
+                      <input type="number" class="form-control" id="tuna-wicara" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="tuna-rungu-wicara" class="form-label">Jumlah tuna rungu-wicara (tuli-bisu)</label>
+                      <input type="number" class="form-control" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="tuna-rungu-wicara" class="form-label">Jumlah tuna rungu-wicara (tuli-bisu)</label>
-                    <input type="number" class="form-control" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="tuna-daksa" class="form-label">Jumlah tuna daksa (disabilitas tubuh)</label>
-                    <input type="number" class="form-control" id="tuna-daksa" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tuna-daksa" class="form-label">Jumlah tuna daksa (disabilitas tubuh)</label>
+                      <input type="number" class="form-control" id="tuna-daksa" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="tuna-grahita" class="form-label">Jumlah tuna grahita (keterbelakangan mental)</label>
+                      <input type="number" class="form-control" id="tuna-grahita" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="tuna-grahita" class="form-label">Jumlah tuna grahita (keterbelakangan mental)</label>
-                    <input type="number" class="form-control" id="tuna-grahita" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="tuna-laras" class="form-label">Jumlah tuna laras (eks-sakit jiwa)</label>
-                    <input type="number" class="form-control" id="tuna-laras" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tuna-laras" class="form-label">Jumlah tuna laras (eks-sakit jiwa)</label>
+                      <input type="number" class="form-control" id="tuna-laras" placeholder="Masukkan jumlah">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="tuna-eks-kusta" class="form-label">Jumlah tuna eks-sakit kusta</label>
+                      <input type="number" class="form-control" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="tuna-eks-kusta" class="form-label">Jumlah tuna eks-sakit kusta</label>
-                    <input type="number" class="form-control" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="tuna-ganda" class="form-label">Jumlah tuna ganda (fisik-mental)</label>
-                    <input type="number" class="form-control" id="tuna-ganda" placeholder="Masukkan jumlah">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tuna-ganda" class="form-label">Jumlah tuna ganda (fisik-mental)</label>
+                      <input type="number" class="form-control" id="tuna-ganda" placeholder="Masukkan jumlah">
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
             </div>
 
             <!-- Modal Info -->
