@@ -334,51 +334,51 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="tuna-netra" class="form-label">Jumlah tuna netra (buta)</label>
-                      <input type="number" class="form-control" id="tuna-netra" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_netra" id="tuna-netra" placeholder="Masukkan jumlah">
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-rungu" class="form-label">Jumlah tuna rungu (tuli)</label>
-                      <input type="number" class="form-control" id="tuna-rungu" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_rungu" id="tuna-rungu" placeholder="Masukkan jumlah">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="tuna-wicara" class="form-label">Jumlah tuna wicara (bisu)</label>
-                      <input type="number" class="form-control" id="tuna-wicara" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_wicara" id="tuna-wicara" placeholder="Masukkan jumlah">
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-rungu-wicara" class="form-label">Jumlah tuna rungu-wicara (tuli-bisu)</label>
-                      <input type="number" class="form-control" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_rungu_wicara" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="tuna-daksa" class="form-label">Jumlah tuna daksa (disabilitas tubuh)</label>
-                      <input type="number" class="form-control" id="tuna-daksa" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_daksa" id="tuna-daksa" placeholder="Masukkan jumlah">
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-grahita" class="form-label">Jumlah tuna grahita (keterbelakangan mental)</label>
-                      <input type="number" class="form-control" id="tuna-grahita" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_grahita" id="tuna-grahita" placeholder="Masukkan jumlah">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="tuna-laras" class="form-label">Jumlah tuna laras (eks-sakit jiwa)</label>
-                      <input type="number" class="form-control" id="tuna-laras" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_laras" id="tuna-laras" placeholder="Masukkan jumlah">
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-eks-kusta" class="form-label">Jumlah tuna eks-sakit kusta</label>
-                      <input type="number" class="form-control" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_eks_kusta" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="tuna-ganda" class="form-label">Jumlah tuna ganda (fisik-mental)</label>
-                      <input type="number" class="form-control" id="tuna-ganda" placeholder="Masukkan jumlah">
+                      <input type="number" class="form-control" name="tuna_ganda" id="tuna-ganda" placeholder="Masukkan jumlah">
                     </div>
                   </div>
 
