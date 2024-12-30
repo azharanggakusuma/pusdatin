@@ -80,7 +80,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Sentra Industri Unggulan Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalsentraindustri">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -150,7 +150,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalsentraindustri" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -175,7 +175,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Produk barang unggulan/utama di desa/kelurahan (Makanan dan Non Makanan)</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalkeberadaanproduk">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -239,7 +239,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalkeberadaanproduk" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -263,7 +263,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Pangkalan Minyak Tanah dan LPG</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpangkalanminyak">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -313,11 +313,8 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
-
-
-
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalpangkalanminyak" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -337,11 +334,12 @@ include "../../config/session.php";
               </div>
             </div>
           </div>  
+          </div>
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Banyaknya Bank Umum Pemerintah, Bank Umum Swasta dan BPR</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbankumum">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -368,11 +366,11 @@ include "../../config/session.php";
                 <div class="form-group mb-3">
                     <label class="mb-2">Jumlah bank yang beroperasi di desa/kelurahan</label>
                     <p style="margin-left: 20px;">1. Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)</p>
-                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">2. Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)</p>
-                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">3. Bank Perkreditan Rakyat (BPR)</p>
-                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                 </div>
                 
                 <div class="form-group mb-3">
@@ -392,7 +390,7 @@ include "../../config/session.php";
 
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalbankumum" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -401,11 +399,114 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi jumlah Jumlah bank yang beroperasi di desa/kelurahan </li>
-                      <li>Masukkan jumlah Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)</li>
-                      <li>>Masukkan jumlah Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)</li>
-                      <li>>Masukkan jumlah Bank Perkreditan Rakyat (BPR)</li>
+                      <li>Isi jumlah bank yang beroperasi di desa/kelurahan </li>
+                      <li>1. Masukkan jumlah Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)</li>
+                      <li>2. Masukkan jumlah Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)</li>
+                      <li>3. Masukkan jumlah Bank Perkreditan Rakyat (BPR)</li>
                       <li>Jika tidak ada bank, isi dengan perkiraan jarak ke bank terdekat</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jumlah koperasi di desa/kelurahan yang masih aktif</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalkoperasi">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah koperasi di desa/kelurahan yang masih aktif</label>
+                    <p style="margin-left: 20px;">1.  Koperasi Unit Desa (KUD)</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">2.  Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)/Usaha mikro</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">3.  Koperasi Simpan Pinjam (KSP/Kospin)</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">4.  Koperasi lainnya</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Tuliskan Lainnya ---">
+                </div>
+                
+                <div class="row">
+                <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan toko/kios yang menjual sarana produksi pertanian (benih, pupuk, pestisida, cangkul, dll.) di desa/kelurahan</label>
+                    <p style="margin-left: 20px;">1. Milik KUD</p>
+                    <select name="" id="publicSpaceStatus" class="form-control mb-3">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                    <p style="margin-left: 20px;">2. Milik BUM Desa</p>
+                    <select name="" id="publicSpaceStatus" class="form-control mb-3">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                    <p style="margin-left: 20px;">3.  Selain milik KUD/BUM Desa</p>
+                    <select name="" id="publicSpaceStatus" class="form-control mb-3">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                </div>
+                
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalkoperasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>jumlah koperasi di desa/kelurahan yang masih aktif, diisikan sesuai jenis koperasi</li>
+                      <li>1. isi jumlah Koperasi Unit Desa (KUD)</li>
+                      <li>2. isi jumlah Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)/Usaha mikro</li>
+                      <li>3. isi jumlah Koperasi Simpan Pinjam (KSP/Kospin)</li>
+                      <li>4. isi dengan menuliskan koperasi lainnya </li>
+                      <li>isi Keberadaan toko/kios yang menjual sarana produksi pertanian (benih, pupuk, pestisida, cangkul, dll.) di desa/kelurahan</li>
+                      <li>1. Pilih Ada/Tidak Ada Milik KUD</li>
+                      <li>2. Pilih Ada/Tidak Ada Milik BUM Desa</li>
+                      <li>3. Pilih Ada/Tidak Ada Selain milik KUD/BUM Desa</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
