@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'pusdatin';
+$user = 'cirebon5';
+$pass = ')6uSsP399w!TKd';
+$db = 'cirebon5_pusdatin';
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 if (!$conn) {
