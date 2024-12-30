@@ -163,11 +163,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>SILAHKAN PILIH ANTARA: PERMENDAGRI/KEPMENDAGRI, PERDA PROVINSI, PERDA KABUPATEN, SK
+                        GUBERNUR/BUPAT, LAINNYA (TULISKAN)</li>
+                      <li>APABILA MEMILIH LAINNYA SILAHKAN TULISKAN PADA FORM DIBAWAHNYA</li>
+
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -176,14 +175,14 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
           <!-- END:: CONTAINER Sk Pembentukan/Pengesahan Desa/Kelurahan -->
 
           <!-- BEGIN::CONTAINER BALAI DESA -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Alamat Balai Desa/Kantor Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBALAIDESA">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -208,10 +207,11 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label for="" class="mb-3">Alamat Balai Desa/Kelurahan</label> 
-                    <textarea name="" id="" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
+                    <label for="" class="mb-3">Alamat Balai Desa/Kelurahan</label>
+                    <textarea name="" id="" class="form-control" placeholder="(isi alamat kantor desa)"
+                      required></textarea>
                   </div>
-                    <div class="form-group ">
+                  <div class="form-group ">
                     <label for="" class="mb-3">Nama Kecamatan</label>
                     <input type="text" class="form-control" Required placeholder="(isi nama kecamatan)">
                   </div>
@@ -227,7 +227,8 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalBALAIDESA" tabindex="-1" aria-labelledby="aturanModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -236,11 +237,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>SILAHKAN ISI ALAMAT KANTOR DESA</li>
+                      <li>SILAHKAN ISI NAMA KECAMATAN YANG SESUAI</li>
+
                     </ul>
                   </div>
                   <div class="modal-footer">
