@@ -338,7 +338,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Banyaknya Bank Umum Pemerintah, Bank Umum Swasta dan BPR</h3>
+              <h3 class="card-title">Bank Umum Pemerintah, Bank Umum Swasta dan BPR</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbankumum">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -416,7 +416,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Jumlah koperasi di desa/kelurahan yang masih aktif</h3>
+              <h3 class="card-title">Koperasi di desa/kelurahan yang masih aktif</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalkoperasi">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -515,7 +515,227 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div>   
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan sarana penunjang ekonomi di desa/kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalsaranapenunjang">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+            <form action="" method="post">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Jenis Sarana Penunjang Ekonomi</th>
+            <th>Jumlah Sarana</th>
+            <th>Jarak (km)</th>
+            <th>Kemudahan untuk Mencapai</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- BMT -->
+          <tr>
+            <td>Baitul Maal Wa Tamwil (BMT)</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          <tr>
+            <td>Anjungan Tunai Mandiri (ATM)</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="atm_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- Agen Bank -->
+          <tr>
+            <td>Agen Bank</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="agen_bank_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- BMT -->
+          <tr>
+            <td>Baitul Maal Wa Tamwil (BMT)</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          <!-- BMT -->
+          <tr>
+            <td> Pedagang Valuta Asing</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          <!-- BMT -->
+          <tr>
+            <td>Pergadaian</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          <!-- BMT -->
+          <tr>
+            <td>Agen Tiket/Travel/Biro Perjalanan</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          <!-- BMT -->
+          <tr>
+            <td> Bengkel Mobil/Motor</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          <!-- BMT -->
+          <tr>
+            <td>Salon Kecantikan</td>
+            <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+            <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+            <td>
+              <select name="bmt_kemudahan" class="form-control">
+                <option value="" disabled selected> --- Pilih --- </option>
+                <option value="1">Sangat Mudah</option>
+                <option value="2">Mudah</option>
+                <option value="3">Sulit</option>
+                <option value="4">Sangat Sulit</option>
+              </select>
+            </td>
+          </tr>
+          <!-- ATM -->
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-3">
+    <i class="fas fa-save"></i> &nbsp; Simpan
+  </button>
+</form>
+              <!-- /.row -->
+            </div>
+
+
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalsaranapenunjang" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Keberadaan sarana penunjang ekonomi di desa/kelurahan</li>
+                      <li>isi Jenis Sarana Penunjang Ekonomi</li>
+                      <li>isi Jumlah Sarana</li>
+                      <li>isi Jarak (km)</li>
+                      <li>Pilih Kemudahan untuk Mencapai </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
