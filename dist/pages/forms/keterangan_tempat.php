@@ -207,7 +207,7 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label for="" class="mb-3">Alamat Balai Desa/Kelurahan</label>
+                    <label for="" class="mb-3">Alamat Balai Desa/Kelurahan</label> 
                     <textarea name="" id="" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
                   </div>
                     <div class="form-group ">
