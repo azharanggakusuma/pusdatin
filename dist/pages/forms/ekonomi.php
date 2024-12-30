@@ -148,8 +148,8 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
-            
-            <!-- Modal Info -->
+
+            <!-- Modal Info --> 
             <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
