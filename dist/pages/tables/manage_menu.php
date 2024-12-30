@@ -313,7 +313,7 @@ $menus = $conn->query($menu_query);
                   <tr>
                     <th>#</th>
                     <th>Menu Name</th>
-                    <th>Path</th>
+                    <!--<th>Path</th>-->
                     <th>Current Status</th>
                     <th>Status (On/Off)</th>
                     <th>Actions</th>
@@ -325,7 +325,7 @@ $menus = $conn->query($menu_query);
                     <tr>
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $menu['name']; ?></td>
-                      <td><?php echo $menu['url']; ?></td>
+                      <!--<td><?php //echo $menu['url']; ?></td>-->
                       <td>
                         <span class="badge <?php echo $menu['status'] ? 'bg-success' : 'bg-danger'; ?>">
                           <?php echo $menu['status'] ? 'Aktif' : 'Nonaktif'; ?>

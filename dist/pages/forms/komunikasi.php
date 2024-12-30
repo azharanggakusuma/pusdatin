@@ -142,7 +142,7 @@ include "../../config/session.php";
 
                     <div class="card card-primary card-outline mb-4">
                         <div class="card-header mb-3">
-                            <h3 class="card-title">Operator layanan komunikasi telepon seluler/handphone yang menjangkau wilayah desa</h3>
+                            <h3 class="card-title"></h3>
                             <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalOperator">
                                 <i class="fas fa-info-circle"></i>
                             </button>
@@ -174,7 +174,7 @@ include "../../config/session.php";
                                             <label class="mb-2 flex-shrink-0 me-3" style="width: 200px;">1. Telkomsel/Halo/Loop/As</label>
                                             <input type="hidden" value="1. Telkomsel/Halo/Loop/As">
                                             <div class="me-3" style="width: 50%;">
-                                                <label>Sinyal di sebagian besar wilayah :</label>
+                                                <label>Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
                                                 <select class="form-control me-3 mt-3" required>
                                                     <option disabled selected>-- Pilih Opsi --</option>
                                                     <option value="trayek-tetap">SINYAL SANGAT KUAT</option>
@@ -184,10 +184,10 @@ include "../../config/session.php";
                                                 </select>
                                             </div>
                                             <div style="width: 50%;">
-                                                <label>Sinyal internet Terkuat :</label>
+                                                <label>Sinyal internet telepon seluler/handphone di sebagian besar wilayah di desa/kelurahan</label>
                                                 <select class="form-control mt-3 ml-5" required>
                                                     <option disabled selected>-- Pilih Opsi --</option>
-                                                    <option value="trayek-tetap">4G/LTE2</option>
+                                                    <option value="trayek-tetap">5G/4G/LTE2</option>
                                                     <option value="tanpa-trayek-tetap">3G/H/H+/EVDO</option>
                                                     <option value="tidak-ada">2.5G/E/GPRS</option>
                                                     <option value="tidak-ada">TIDAK ADA SINYAL</option>
@@ -284,7 +284,7 @@ include "../../config/session.php";
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3">
