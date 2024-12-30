@@ -176,7 +176,7 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
           <!-- END:: CONTAINER Sk Pembentukan/Pengesahan Desa/Kelurahan -->
 
           <!-- BEGIN::CONTAINER BALAI DESA -->
