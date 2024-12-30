@@ -60,13 +60,13 @@ include "../../config/session.php";
         <div class="container-fluid"> <!--begin::Row-->
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">Data Lokasi Geospasial</h3>
+              <h3 class="mb-0">Perlindungan Sosial, Pembangunan, dan Pemberdayaan Masyarakat</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Data Lokasi Geospasial
+                  Perlindungan Sosial, Pembangunan, dan Pemberdayaan Masyarakat
                 </li>
               </ol>
             </div>
@@ -79,8 +79,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Jumlah Penerima Bantuan Sosial di Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBansos">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -105,8 +105,20 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                    <label class="mb-2">Jumlah Penerima Bantuan PKH (Kepala Keluarga)</label>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah Penerima BLT Dana Desa</label>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah Penerima Bantuan Pangan Non Tunai (BPNT) </label>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah Penerima PBI Jaminan Kesehatan </label>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -120,7 +132,75 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalBansos" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jumlah Surat Keterangan Tidak Mampu/Miskin (SKTM) yang Dikeluarkan Pemerintah Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalSKTM">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form1").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah SKTM yang Dikeluarkan</label>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalSKTM" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
