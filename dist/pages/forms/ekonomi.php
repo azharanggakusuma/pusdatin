@@ -107,7 +107,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sentra Industri Unggulan Desa</label>
                     <select name="" id="publicSpaceStatus" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
@@ -115,11 +115,11 @@ include "../../config/session.php";
                 </div>
                 <div class="form-group mb-3" id="sentraIndustriInfo" style="display: none;">
                   <label class="mb-2">Sentra Industri</label>
-                  <input type="number" class="form-control" name="sentra_industri" id="sentra_industri" placeholder="Masukkan jumlah">
+                  <input type="number" class="form-control" name="sentra_industri" id="sentra_industri" placeholder=" --- Masukkan jumlah --- ">
                 </div>
                 <div class="form-group mb-3" id="muatanUsahaInfo" style="display: none;">
                   <label class="mb-2">Produk pada sentra industri yang mempunyai muatan usaha terbanyak</label>
-                  <input type="text" class="form-control" name="muatan_usaha" id="muatan_usaha" placeholder="Tuliskan produk">
+                  <input type="text" class="form-control" name="muatan_usaha" id="muatan_usaha" placeholder=" --- Tuliskan produk --- ">
                 </div>
 
                 <script>
@@ -159,11 +159,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isi bagian Keberadaan Sentra Industri Unggulan Desa dengan memilih Ada/Tidak Ada, jika Ada lanjut mengisi</li>
+                      <li>isi dengan jumlah Sentra Industri</li>
+                      <li>Tuliskan produk pada sentra industri yang mempunyai muatan usaha terbanyak</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -172,7 +170,7 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div>
+          </div>     
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
@@ -204,7 +202,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Produk barang unggulan/utama di desa/kelurahan (Makanan dan Non Makanan)</label>
                     <select name="" id="productPresence" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option> 
                     </select>
@@ -212,8 +210,8 @@ include "../../config/session.php";
                 </div>
                 <div class="form-group mb-3" id="productInfo" style="display: none;">
                   <label class="mb-2">Produk barang unggulan/utama desa/kelurahan</label>
-                  <input type="text" class="form-control mb-2" name="makanan_unggulan" id="makanan_unggulan" placeholder="Tuliskan Makanan">
-                  <input type="text" class="form-control" name="non_makanan_unggulan" id="non_makanan_unggulan" placeholder="Tuliskan Non Makanan">
+                  <input type="text" class="form-control mb-2" name="makanan_unggulan" id="makanan_unggulan" placeholder=" --- Tuliskan Makanan --- ">
+                  <input type="text" class="form-control" name="non_makanan_unggulan" id="non_makanan_unggulan" placeholder=" --- Tuliskan Non Makanan --- ">
                 </div>
 
                 <script>
@@ -250,11 +248,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih Ada/ Tidak Keberadaan Produk barang unggulan/utama di desa/kelurahan (Makanan dan Non Makanan), Jika Ada lanjut mengisi </li>
+                      <li>isi form (Makanan dan Non Makanan)dengan produk barang unggulan/utama desa/keluraha </li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -263,7 +258,7 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div>
+          </div>   
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
@@ -295,7 +290,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pangkalan/agen/penjual minyak tanah (termasuk penjual minyak tanah keliling)</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
@@ -303,7 +298,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
@@ -331,11 +326,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih Ada/Tidak Ada Keberadaan pangkalan/agen/penjual minyak tanah (termasuk penjual minyak tanah keliling)</li>
+                      <li>Pilih Ada/Tidak Ada Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -345,6 +337,84 @@ include "../../config/session.php";
               </div>
             </div>
           </div>  
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Banyaknya Bank Umum Pemerintah, Bank Umum Swasta dan BPR</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah bank yang beroperasi di desa/kelurahan</label>
+                    <p style="margin-left: 20px;">1. Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)</p>
+                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">2. Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)</p>
+                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">3. Bank Perkreditan Rakyat (BPR)</p>
+                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jumlah ---">
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label class="mb-2">Jika tidak ada bank, perkiraan jarak ke bank terdekat</label>
+                    <input type="number" name="" id="" class="form-control" placeholder=" --- Masukkan jarak ---">
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi jumlah Jumlah bank yang beroperasi di desa/kelurahan </li>
+                      <li>Masukkan jumlah Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)</li>
+                      <li>>Masukkan jumlah Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)</li>
+                      <li>>Masukkan jumlah Bank Perkreditan Rakyat (BPR)</li>
+                      <li>Jika tidak ada bank, isi dengan perkiraan jarak ke bank terdekat</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
