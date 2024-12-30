@@ -206,7 +206,7 @@ include "../../config/session.php";
                     <select name="" id="productPresence" class="form-control">
                       <option value="" disabled selected>Pilih</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option> 
                     </select>
                   </div>
                 </div>
