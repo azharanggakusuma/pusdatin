@@ -3,6 +3,54 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa yang terkait dengan user yang sedang login
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -55,6 +103,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "pendidikan_dan_kesehatan.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "pendidikan_dan_kesehatan.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "pendidikan_dan_kesehatan.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -80,7 +167,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTBM">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -102,29 +189,37 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label for="" class="form-label">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</label>
-                    <select name="" id="" class="form-control">
-                      <option value="" selected disabled>Pilih</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
+              <?php if ($form_status['Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+                <form action="../../handlers/form_taman_bacaan.php" method="post">
+                  <div class="row">
+                    <div class="form-group mb-3">
+                      <label for="keberadaan_tbm" class="form-label">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</label>
+                      <select name="keberadaan_tbm" id="keberadaan_tbm" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp;Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
               <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalTBM" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -133,11 +228,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih 'Ada' jika di desa/kelurahan terdapat Taman Bacaan Masyarakat (TBM) atau Perpustakaan Desa.</li>
+                      <li>Pilih 'Tidak Ada' jika di desa/kelurahan tidak terdapat Taman Bacaan Masyarakat (TBM) atau Perpustakaan Desa.</li>
+                      <li>Pastikan untuk memilih salah satu opsi sebelum menyimpan form.</li>
+                      <li>Gunakan tombol 'Simpan' untuk mengonfirmasi dan menyimpan pilihan Anda.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -151,7 +245,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBidan">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -173,29 +267,37 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label for="" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
-                    <select name="" id="" class="form-control">
-                      <option value="" selected disabled>Pilih</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
+              <?php if ($form_status['Keberadaan Bidan Desa yang menetap di Desa/Kelurahan']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+                <form action="../../handlers/form_keberadaan_bidan.php" method="post">
+                  <div class="row">
+                    <div class="form-group mb-3">
+                      <label for="keberadaan_bidan" class="form-label">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</label>
+                      <select name="keberadaan_bidan" id="keberadaan_bidan" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp;Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
               <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalBidan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -204,11 +306,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih 'Ada' jika terdapat Bidan Desa yang menetap di desa/kelurahan.</li>
+                      <li>Pilih 'Tidak Ada' jika tidak terdapat Bidan Desa yang menetap di desa/kelurahan.</li>
+                      <li>Pilihan harus dilakukan berdasarkan keadaan aktual di lapangan.</li>
+                      <li>Simpan informasi setelah memilih opsi yang sesuai untuk memastikan data tersimpan dengan benar.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -222,7 +323,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalDukunBayi">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -244,29 +345,37 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label for="" class="form-label">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</label>
-                    <select name="" id="" class="form-control">
-                      <option value="" selected disabled>Pilih</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
+              <?php if ($form_status['Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+                <form action="../../handlers/form_keberadaan_dukun_bayi.php" method="post">
+                  <div class="row">
+                    <div class="form-group mb-3">
+                      <label for="keberadaan_dukun_bayi" class="form-label">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</label>
+                      <select name="keberadaan_dukun_bayi" id="keberadaan_dukun_bayi" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp;Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
               <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalDukunBayi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -275,11 +384,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih 'Ada' jika terdapat Dukun Bayi/Paraji yang menetap di desa/kelurahan.</li>
+                      <li>Pilih 'Tidak Ada' jika tidak terdapat Dukun Bayi/Paraji yang menetap di desa/kelurahan.</li>
+                      <li>Verifikasi keberadaan Dukun Bayi/Paraji sebelum membuat pilihan pada form.</li>
+                      <li>Gunakan tombol 'Simpan' untuk mengonfirmasi dan menyimpan informasi yang telah dipilih.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -293,7 +401,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header">
               <h3 class="card-title">Jumlah Kejadian Luar Biasa (KLB) atau Wabah Penyakit Selama Setahun Terakhir</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKLB">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -304,76 +412,86 @@ include "../../config/session.php";
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <form action="" method="post">
-                  <div class="form-group">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Jenis KLB/Wabah Penyakit</th>
-                          <th>Ada</th>
-                          <th>Tidak ada</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Muntaber/diare</td>
-                          <td><input type="checkbox" name="muntaber_diare" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="muntaber_diare" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Demam Berdarah</td>
-                          <td><input type="checkbox" name="demam_berdarah" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="demam_berdarah" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Campak</td>
-                          <td><input type="checkbox" name="campak" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="campak" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Malaria</td>
-                          <td><input type="checkbox" name="malaria" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="malaria" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Flu Burung/SARS</td>
-                          <td><input type="checkbox" name="flu_burung_sars" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="flu_burung_sars" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Hepatitis E</td>
-                          <td><input type="checkbox" name="hepatitis_e" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="hepatitis_e" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Difteri</td>
-                          <td><input type="checkbox" name="difteri" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="difteri" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Corona/COVID-19</td>
-                          <td><input type="checkbox" name="corona_covid19" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="corona_covid19" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                        <tr>
-                          <td>Lainnya (tuliskan: chikungunya, leptospirosis, kolera, dll)</td>
-                          <td><input type="checkbox" name="lainnya" value="1" onchange="handleChange(this)"></td>
-                          <td><input type="checkbox" name="lainnya" value="2" onchange="handleChange(this)"></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <?php if ($form_status['Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir']) : ?>
+                  <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                    <i class="fas fa-lock me-2"></i>
+                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary">
-                      <i class="fas fa-save"></i> &nbsp;Simpan
-                    </button>
-                  </div>
-                </form>
+                <?php else: ?>
+                  <form action="../../handlers/form_klb_wabah.php" method="post">
+                    <div class="form-group">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Jenis KLB/Wabah Penyakit</th>
+                            <th>Ada</th>
+                            <th>Tidak ada</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Muntaber/diare</td>
+                            <td><input type="checkbox" name="muntaber_diare" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="muntaber_diare" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Demam Berdarah</td>
+                            <td><input type="checkbox" name="demam_berdarah" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="demam_berdarah" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Campak</td>
+                            <td><input type="checkbox" name="campak" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="campak" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Malaria</td>
+                            <td><input type="checkbox" name="malaria" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="malaria" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Flu Burung/SARS</td>
+                            <td><input type="checkbox" name="flu_burung_sars" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="flu_burung_sars" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Hepatitis E</td>
+                            <td><input type="checkbox" name="hepatitis_e" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="hepatitis_e" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Difteri</td>
+                            <td><input type="checkbox" name="difteri" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="difteri" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>Corona/COVID-19</td>
+                            <td><input type="checkbox" name="corona_covid19" value="Ada" onchange="handleChange(this)"></td>
+                            <td><input type="checkbox" name="corona_covid19" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input type="text" class="form-control" id="lainnya" name="lainnya_name" placeholder="Lainnya (tuliskan: chikungunya, leptospirosis, kolera, dll)" style="border: none; width: 60%;">
+                            </td>
+                            <td class="checkbox-lainnya"><input type="checkbox" name="lainnya_status" value="Ada" onchange="handleChange(this)"></td>
+                            <td class="checkbox-lainnya"><input type="checkbox" name="lainnya_status" value="Tidak Ada" onchange="handleChange(this)"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="mb-2">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> &nbsp;Simpan
+                      </button>
+                    </div>
+                  </form>
+                <?php endif; ?>
               </div>
             </div>
 
             <!-- Modal for Additional Information -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="modalPKHLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKLB" tabindex="-1" aria-labelledby="modalPKHLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">

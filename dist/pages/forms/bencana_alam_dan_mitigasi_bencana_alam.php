@@ -3,6 +3,54 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa yang terkait dengan user yang sedang login
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -55,6 +103,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "bencana_alam_dan_mitigasi_bencana_alam.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "bencana_alam_dan_mitigasi_bencana_alam.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "bencana_alam_dan_mitigasi_bencana_alam.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -80,7 +167,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header">
               <h3 class="card-title">Kejadian/bencana alam yang terjadi</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBencanaAlam">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -91,123 +178,131 @@ include "../../config/session.php";
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <form action="/submit-your-action" method="post">
-                  <div class="form-group">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Kejadian/bencana alam</th>
-                          <th>Ada</th>
-                          <th>Tidak ada</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Tanah longsor</td>
-                          <td><input type="checkbox" name="tanah_longsor" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="tanah_longsor" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Banjir</td>
-                          <td><input type="checkbox" name="banjir" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="banjir" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Banjir bandang</td>
-                          <td><input type="checkbox" name="banjir_bandang" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="banjir_bandang" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Gempa bumi</td>
-                          <td><input type="checkbox" name="gempa_bumi" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="gempa_bumi" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Tsunami</td>
-                          <td><input type="checkbox" name="tsunami" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="tsunami" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Gelombang pasang laut</td>
-                          <td><input type="checkbox" name="gelombang_pasang" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="gelombang_pasang" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Angin puyuh/puting beliung/topan</td>
-                          <td><input type="checkbox" name="angin_puyuh" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="angin_puyuh" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Gunung meletus</td>
-                          <td><input type="checkbox" name="gunung_meletus" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="gunung_meletus" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Kebakaran hutan dan lahan</td>
-                          <td><input type="checkbox" name="kebakaran_hutan" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="kebakaran_hutan" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Kekeringan (lahan)</td>
-                          <td><input type="checkbox" name="kekeringan" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="kekeringan" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                        <tr>
-                          <td>Abrasi</td>
-                          <td><input type="checkbox" name="abrasi" value="1" onchange="handleChange(this);"></td>
-                          <td><input type="checkbox" name="abrasi" value="2" onchange="handleChange(this);"></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <?php if ($form_status['Kejadian/bencana alam (mengganggu kehidupan dan menyebabkan kerugian bagi masyarakat) yang terjadi']) : ?>
+                  <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                    <i class="fas fa-lock me-2"></i>
+                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary">
-                      <i class="fas fa-save"></i> &nbsp;Simpan
-                    </button>
-                  </div>
-                </form>
+                <?php else: ?>
+                  <form action="../../handlers/form_bencana_alam.php" method="post">
+                    <div class="form-group">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Kejadian/bencana alam</th>
+                            <th>Ada</th>
+                            <th>Tidak ada</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Tanah longsor</td>
+                            <td><input type="checkbox" name="tanah_longsor" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="tanah_longsor" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Banjir</td>
+                            <td><input type="checkbox" name="banjir" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="banjir" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Banjir bandang</td>
+                            <td><input type="checkbox" name="banjir_bandang" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="banjir_bandang" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Gempa bumi</td>
+                            <td><input type="checkbox" name="gempa_bumi" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="gempa_bumi" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Tsunami</td>
+                            <td><input type="checkbox" name="tsunami" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="tsunami" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Gelombang pasang laut</td>
+                            <td><input type="checkbox" name="gelombang_pasang" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="gelombang_pasang" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Angin puyuh/puting beliung/topan</td>
+                            <td><input type="checkbox" name="angin_puyuh" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="angin_puyuh" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Gunung meletus</td>
+                            <td><input type="checkbox" name="gunung_meletus" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="gunung_meletus" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Kebakaran hutan dan lahan</td>
+                            <td><input type="checkbox" name="kebakaran_hutan" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="kebakaran_hutan" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Kekeringan (lahan)</td>
+                            <td><input type="checkbox" name="kekeringan" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="kekeringan" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                          <tr>
+                            <td>Abrasi</td>
+                            <td><input type="checkbox" name="abrasi" value="Ada" onchange="handleChange(this);"></td>
+                            <td><input type="checkbox" name="abrasi" value="Tidak Ada" onchange="handleChange(this);"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="mb-2">
+                      <button type="submit" class="btn btn-primary mt-3">
+                        <i class="fas fa-save"></i> &nbsp;Simpan
+                      </button>
+                    </div>
+                  </form>
+                <?php endif; ?>
               </div>
             </div>
-          </div>
 
-          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <ul>
-                    <li>Pilih 'Ada' jika kejadian/bencana alam tersebut telah terjadi di wilayah Anda.</li>
-                    <li>Pilih 'Tidak ada' jika kejadian/bencana alam tersebut belum terjadi di wilayah Anda.</li>
-                    <li>Tidak boleh menandai kedua kotak pada satu kejadian/bencana alam. Jika salah satu kotak telah dipilih, kotak lainnya tidak dapat dipilih untuk kejadian yang sama.</li>
-                    <li>Pastikan untuk memberikan informasi yang akurat dan terkini.</li>
-                    <li>Periksa kembali sebelum mengirimkan form untuk memastikan tidak ada kesalahan input.</li>
-                  </ul>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <div class="modal fade" id="modalBencanaAlam" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih 'Ada' jika kejadian/bencana alam tersebut telah terjadi di wilayah Anda.</li>
+                      <li>Pilih 'Tidak ada' jika kejadian/bencana alam tersebut belum terjadi di wilayah Anda.</li>
+                      <li>Tidak boleh menandai kedua kotak pada satu kejadian/bencana alam. Jika salah satu kotak telah dipilih, kotak lainnya tidak dapat dipilih untuk kejadian yang sama.</li>
+                      <li>Pastikan untuk memberikan informasi yang akurat dan terkini.</li>
+                      <li>Periksa kembali sebelum mengirimkan form untuk memastikan tidak ada kesalahan input.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <script>
-            function handleChange(checkbox) {
-              const allCheckboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
-              allCheckboxes.forEach((cb) => {
-                if (cb !== checkbox) cb.checked = false;
-              });
-            }
-          </script>
+            <script>
+              function handleChange(checkbox) {
+                const allCheckboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
+                allCheckboxes.forEach((cb) => {
+                  if (cb !== checkbox) cb.checked = false;
+                });
+              }
+            </script>
+          </div>
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Fasilitas/Upaya Antisipasi/Mitigasi Bencana Alam yang Ada di Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                  <i class="fas fa-info-circle"></i>
-                </button>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalFasilitasMitigasi">
+                <i class="fas fa-info-circle"></i>
+              </button>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#collapseForm">
                   <i class="fas fa-minus"></i>
@@ -216,85 +311,95 @@ include "../../config/session.php";
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <form action="" method="post">
-                  <!-- Form field 1 -->
-                  <div class="mb-3">
-                    <label for="peringatan_dini" class="form-label">Sistem Peringatan Dini Bencana Alam</label>
-                    <select name="peringatan_dini" id="peringatan_dini" class="form-control">
-                    <option value="" selected disabled>Pilih</option>  
-                    <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
+                <?php if ($form_status['Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan']) : ?>
+                  <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                    <i class="fas fa-lock me-2"></i>
+                    <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
+                <?php else: ?>
+                  <form action="../../handlers/form_peringatan_bencana.php" method="post">
+                    <!-- Form field 1 -->
+                    <div class="mb-3">
+                      <label for="peringatan_dini" class="form-label">Sistem Peringatan Dini Bencana Alam</label>
+                      <select name="peringatan_dini" id="peringatan_dini" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
 
-                  <!-- Form field 2 -->
-                  <div class="mb-3">
-                    <label for="peringatan_tsunami" class="form-label">Sistem Peringatan Dini Khusus Tsunami</label>
-                    <select name="peringatan_tsunami" id="peringatan_tsunami" class="form-control">
-                    <option value="" selected disabled>Pilih</option>  
-                    <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                      <option value="3">Bukan Wilayah Potensi Tsunami</option>
-                    </select>
-                  </div>
+                    <!-- Form field 2 -->
+                    <div class="mb-3">
+                      <label for="peringatan_tsunami" class="form-label">Sistem Peringatan Dini Khusus Tsunami</label>
+                      <select name="peringatan_tsunami" id="peringatan_tsunami" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                        <option value="3">Bukan Wilayah Potensi Tsunami</option>
+                      </select>
+                    </div>
 
-                  <!-- Form field 3 -->
-                  <div class="mb-3">
-                    <label for="perlengkapan_keselamatan" class="form-label">Perlengkapan Keselamatan (Perahu Karet, Tenda, Masker, dll)</label>
-                    <select name="perlengkapan_keselamatan" id="perlengkapan_keselamatan" class="form-control">
-                    <option value="" selected disabled>Pilih</option>  
-                    <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
-                  </div>
+                    <!-- Form field 3 -->
+                    <div class="mb-3">
+                      <label for="perlengkapan_keselamatan" class="form-label">Perlengkapan Keselamatan (Perahu Karet, Tenda, Masker, dll)</label>
+                      <select name="perlengkapan_keselamatan" id="perlengkapan_keselamatan" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
 
-                  <!-- Form field 4 -->
-                  <div class="mb-3">
-                    <label for="rambu_evakuasi" class="form-label">Rambu-Rambu dan Jalur Evakuasi Bencana</label>
-                    <select name="rambu_evakuasi" id="rambu_evakuasi" class="form-control">
-                    <option value="" selected disabled>Pilih</option> 
-                    <option value="Ada">Ada</option>
-                      <option value="Tidak ada">Tidak ada</option>
-                    </select>
-                  </div>
+                    <!-- Form field 4 -->
+                    <div class="mb-3">
+                      <label for="rambu_evakuasi" class="form-label">Rambu-Rambu dan Jalur Evakuasi Bencana</label>
+                      <select name="rambu_evakuasi" id="rambu_evakuasi" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                    </div>
 
-                  <!-- Form field 5 -->
-                  <div class="mb-3">
-                    <label for="infrastruktur" class="form-label">Pembuatan, Perawatan, atau Normalisasi (Sungai, Kanal, Tanggul, Parit, Drainase, Waduk, Pantai, dll.)</label>
-                    <select name="infrastruktur" id="infrastruktur" class="form-control">
-                      <option value=""></option>
-                      <option value="" selected disabled>Pilih</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
-                    </select>
-                  </div>
+                    <!-- Form field 5 -->
+                    <div class="mb-3">
+                      <label for="infrastruktur" class="form-label">Pembuatan, Perawatan, atau Normalisasi (Sungai, Kanal, Tanggul, Parit, Drainase, Waduk, Pantai, dll.)</label>
+                      <select name="infrastruktur" id="infrastruktur" class="form-select">
+                        <option value="" selected disabled>--- Pilih ---</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Tidak Ada">Tidak ada</option>
+                      </select>
+                    </div>
 
-                  <!-- Submit button -->
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary">
-                      <i class="fas fa-save"></i> &nbsp;Simpan
-                    </button>
-                  </div>
-                </form>
+                    <!-- Submit button -->
+                    <div class="mb-2">
+                      <button type="submit" class="btn btn-primary mt-3">
+                        <i class="fas fa-save"></i> &nbsp;Simpan
+                      </button>
+                    </div>
+                  </form>
+                <?php endif; ?>
               </div>
             </div>
-          </div>
 
-          <!-- Modal Info -->
-          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <ul>
-                    <li>Pilih 'Ada' jika fasilitas/mitigasi tersebut tersedia di wilayah Anda.</li>
-                    <li>Pilih 'Tidak ada' jika fasilitas/mitigasi tersebut tidak tersedia di wilayah Anda.</li>
-                    <li>Untuk 'Sistem Peringatan Dini Khusus Tsunami', pilih 'Bukan Wilayah Potensi Tsunami' jika wilayah Anda tidak berpotensi tsunami.</li>
-                    <li>Pastikan tidak memilih lebih dari satu opsi per fasilitas.</li>
-                  </ul>
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalFasilitasMitigasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih 'Ada' jika fasilitas/mitigasi tersebut tersedia di wilayah Anda.</li>
+                      <li>Pilih 'Tidak ada' jika fasilitas/mitigasi tersebut tidak tersedia di wilayah Anda.</li>
+                      <li>Untuk 'Sistem Peringatan Dini Khusus Tsunami', pilih 'Bukan Wilayah Potensi Tsunami' jika wilayah Anda tidak berpotensi tsunami.</li>
+                      <li>Pastikan tidak memilih lebih dari satu opsi per fasilitas.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
                 </div>
               </div>
             </div>

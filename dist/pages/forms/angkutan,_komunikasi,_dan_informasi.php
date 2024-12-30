@@ -79,7 +79,7 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</h3> 
+              <h3 class="card-title">Prasarana dan sarana transportasi antar desa/kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -104,189 +104,124 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="" method="post">
                 <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Lalu lintas dari/ke desa/kelurahan melalui</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Aspal/Beton">Aspal/Beton</option>
+                      <option value="Diperkeras (kerikil, batu, dll.)">Diperkeras (kerikil, batu, dll.)</option>
+                      <option value="Tanah">Tanah</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Aspal/Beton">Aspal/Beton</option>
-                        <option value="Diperkeras (kerikil, batu, dll.)">Diperkeras (kerikil, batu, dll.)</option>
-                        <option value="Tanah">Tanah</option>
-                        <option value="Lainnya">Lainnya</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Sepanjang tahun">Sepanjang tahun</option>
+                      <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
+                      <option value="Selama musim kemarau">Selama musim kemarau</option>
+                      <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
                     </select>
                   </div>
-                </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
-
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</h3> 
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function() {
-                    $(".toggle-form").on("click", function() {
-                      var $icon = $(this).find("i");
-                      var $cardBody = $(this).closest(".card").find(".card-body");
-
-                      $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus");
-                    });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Sepanjang tahun">Sepanjang tahun</option>
-                        <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
-                        <option value="Selama musim kemarau">Selama musim kemarau</option>
-                        <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Sepanjang tahun">Sepanjang tahun</option>
+                      <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
+                      <option value="Selama musim kemarau">Selama musim kemarau</option>
+                      <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
                     </select>
                   </div>
-                </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
-
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Angkutan Umum yang melewati Desa/Kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function() {
-                    $(".toggle-form").on("click", function() {
-                      var $icon = $(this).find("i");
-                      var $cardBody = $(this).closest(".card").find(".card-body");
-
-                      $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus");
-                    });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan angkutan umum</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Ada,	dengan	trayek	tetap">Ada,	dengan	trayek	tetap</option>
-                        <option value="Ada,	tanpa	trayek	tetap">Ada,	tanpa	trayek	tetap</option>
-                        <option value="Tidak	ada	angkutan	umum">Tidak	ada	angkutan	umum</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Ada,	dengan	trayek	tetap">Ada, dengan trayek tetap</option>
+                      <option value="Ada,	tanpa	trayek	tetap">Ada, tanpa trayek tetap</option>
+                      <option value="Tidak	ada	angkutan	umum">Tidak ada angkutan umum</option>
                     </select>
                   </div>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Operasional angkutan umum yang utama</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Setiap	hari">Setiap	hari</option>
-                        <option value="Tidak	setiap	hari">Tidak	setiap	hari</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Setiap	hari">Setiap hari</option>
+                      <option value="Tidak	setiap	hari">Tidak setiap hari</option>
                     </select>
                   </div>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jam operasi angkutan umum yang utama</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Siang	dan	malam	hari">Siang	dan	malam	hari</option>
-                        <option value="Hanya	siang/malam	hari">Hanya	siang/malam	hari</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Siang	dan	malam	hari">Siang dan malam hari</option>
+                      <option value="Hanya	siang/malam	hari">Hanya siang/malam hari</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
@@ -300,7 +235,6 @@ include "../../config/session.php";
               <!-- /.row -->
             </div>
 
-
             <!-- Modal Info -->
             <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -328,7 +262,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan internet untuk warnet, game	online, dan fasilitas lainnya di desa/kelurahan</h3> 
+              <h3 class="card-title">Keberadaan menara telepon seluler, sinyal telepon dan sinyal internet di desa/kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -352,22 +286,42 @@ include "../../config/session.php";
             <!-- /.card-header -->
             <div class="card-body">
               <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan internet untuk warnet, game	online, dan fasilitas lainnya di desa/kelurahan</label>
-                    <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Ada">Ada</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                    </select>
-                  </div>
+                <div class="mb-3">
+                  <label for="bts-count" class="form-label">Jumlah menara telepon seluler atau Base Transceiver Station (BTS)</label>
+                  <input type="number" id="bts-count" class="form-control" placeholder="Masukkan jumlah BTS" min="0">
                 </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
+                <div class="mb-3">
+                  <label for="operator-count" class="form-label">Jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</label>
+                  <input type="number" id="operator-count" class="form-control" placeholder="Masukkan jumlah operator" min="0">
                 </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
+                  <select class="form-select" aria-label="Signal strength">
+                    <option value="Sinyal sangat kuat">Sinyal sangat kuat</option>
+                    <option value="Sinyal kuat">Sinyal kuat</option>
+                    <option value="Sinyal lemah">Sinyal lemah</option>
+                    <option value="Tidak ada sinyal">Tidak ada sinyal</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
+                  <select class="form-select" aria-label="Internet signal type">
+                    <option value="5G/4G/LTE">5G/4G/LTE</option>
+                    <option value="3G/H+/EVDO">3G/H+/EVDO</option>
+                    <option value="2.5G/EG/GPRS">2.5G/EG/GPRS</option>
+                    <option value="Tidak ada sinyal internet">Tidak ada sinyal internet</option>
+                  </select>
+                </div>
+
+                <!-- Submit button -->
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp;Simpan
+                    </button>
+                  </div>
               </form>
               <!-- /.row -->
             </div>
@@ -399,7 +353,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan menara telepon seluler, sinyal telepon dan sinyal internet di desa/kelurahan</h3> 
+              <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -425,97 +379,23 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah menara telepon seluler atau Base	Transceiver	Station (BTS)</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Operator layanan komunikasi telepon seluler/handphone yang menjangkau wilayah desa</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;">
-                  </div>
-                </div>
-
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
-
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3> 
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function() {
-                    $(".toggle-form").on("click", function() {
-                      var $icon = $(this).find("i");
-                      var $cardBody = $(this).closest(".card").find(".card-body");
-
-                      $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus");
-                    });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Komputer/PC/laptop yang masih	berfungsi	di kantor kepala desa/lurah</label>
+                    <label class="mb-2">Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Digunakan">Digunakan</option>
-                        <option value="Jarang	digunakan">Jarang	digunakan</option>
-                        <option value="Tidak	digunakan">Tidak	digunakan</option>
-                        <option value="Tidak	ada">Tidak	ada</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Digunakan">Digunakan</option>
+                      <option value="Jarang	digunakan">Jarang digunakan</option>
+                      <option value="Tidak	digunakan">Tidak digunakan</option>
+                      <option value="Tidak	ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2"> Fasilitas internet di kantor kepala desa/lurah</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Berfungsi">Berfungsi</option>
-                        <option value="Jarang	berfungsi">Jarang	berfungsi</option>
-                        <option value="Tidak	berfungsi">Tidak	berfungsi</option>
-                        <option value="Tidak	ada">Tidak	ada</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Berfungsi">Berfungsi</option>
+                      <option value="Jarang	berfungsi">Jarang berfungsi</option>
+                      <option value="Tidak	berfungsi">Tidak berfungsi</option>
+                      <option value="Tidak	ada">Tidak ada</option>
                     </select>
                   </div>
                 </div>
@@ -556,7 +436,7 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3> 
+              <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -584,29 +464,29 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2"> Kantor pos/pos pembantu/rumah pos</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Beroperasi">Beroperasi</option>
-                        <option value="Jarang	beroperasi">Jarang	beroperasi</option>
-                        <option value="Tidak beroperasi">Tidak	beroperasi</option>
-                        <option value="Tidak	ada">Tidak	ada</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Beroperasi">Beroperasi</option>
+                      <option value="Jarang	beroperasi">Jarang beroperasi</option>
+                      <option value="Tidak beroperasi">Tidak beroperasi</option>
+                      <option value="Tidak	ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Layanan pos keliling</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Ada">Ada</option>
-                        <option value="Tidak	ada">Tidak	ada</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak	ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</label>
                     <select name="" id="" class="form-control">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="Beroperasi">Beroperasi</option>
-                        <option value="Jarang	beroperas">Jarang	beroperas</option>
-                        <option value="Tidak	beroperasi">Tidak	beroperasi</option>
-                        <option value="Tidak	ada">Tidak	ada</option>
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Beroperasi">Beroperasi</option>
+                      <option value="Jarang	beroperas">Jarang beroperas</option>
+                      <option value="Tidak	beroperasi">Tidak beroperasi</option>
+                      <option value="Tidak	ada">Tidak ada</option>
                     </select>
                   </div>
                 </div>
@@ -646,8 +526,8 @@ include "../../config/session.php";
           </div>
 
 
-        
-        
+
+
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->

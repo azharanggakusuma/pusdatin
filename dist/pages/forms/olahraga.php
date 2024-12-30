@@ -3,6 +3,54 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa yang terkait dengan user yang sedang login
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -55,6 +103,101 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "olahraga.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "olahraga.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "olahraga.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
+    <script>
+      function toggleInputWithCheckbox(checkboxId, inputIds, previousData) {
+        const checkbox = document.getElementById(checkboxId);
+        inputIds.forEach(function(inputId, index) {
+          const inputField = document.getElementById(inputId);
+
+          checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+              inputField.value = previousData[index];
+              if (inputField.tagName === "SELECT") {
+                // Preserve the initial value and prevent changes
+                inputField.dataset.previous = inputField.value;
+                inputField.addEventListener('change', revertSelect);
+              } else {
+                inputField.readOnly = true; // Set text inputs as read-only
+              }
+            } else {
+              inputField.value = '';
+              if (inputField.tagName === "SELECT") {
+                inputField.removeEventListener('change', revertSelect);
+              } else {
+                inputField.readOnly = false;
+              }
+            }
+          });
+        });
+      }
+
+      function revertSelect(event) {
+        const select = event.target;
+        select.value = select.dataset.previous; // Revert to previous value
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const inputNames = ['sepakbola', 'bolavoli', 'bulutangkis', 'basket', 'tenislapangan', 'tenismeja', 'futsal', 'renang', 'beladiri', 'bilyard', 'fitness', 'lainnya', 'lainnyaSelect'];
+        const previousData = [
+          "<?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['lainnya_nama']); ?>",
+          "<?php echo htmlspecialchars($previous_olahraga_data['lainnya_kondisi']); ?>"
+        ];
+
+        toggleInputWithCheckbox('use_previous_olahraga', inputNames, previousData);
+      });
+    </script>
+
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -79,8 +222,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalOlahraga">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -102,25 +245,278 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+              <?php if ($form_status['Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+                <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="sepakbola" class="form-label">Sepak bola</label>
+                      <select id="sepakbola" name="sepakbola" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="bolavoli" class="form-label">Bola voli</label>
+                      <select id="bolavoli" name="bolavoli" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="bulutangkis" class="form-label">Bulu tangkis</label>
+                      <select id="bulutangkis" name="bulutangkis" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="basket" class="form-label">Bola basket</label>
+                      <select id="basket" name="basket" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="tenislapangan" class="form-label">Tenis lapangan</label>
+                      <select id="tenislapangan" name="tenislapangan" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="tenismeja" class="form-label">Tenis meja</label>
+                      <select id="tenismeja" name="tenismeja" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="futsal" class="form-label">Futsal</label>
+                      <select id="futsal" name="futsal" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="renang" class="form-label">Renang</label>
+                      <select id="renang" name="renang" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
+                      <select id="beladiri" name="beladiri" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="bilyard" class="form-label">Bilyard</label>
+                      <select id="bilyard" name="bilyard" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="fitness" class="form-label">Fitness, aerobik, dll.</label>
+                      <select id="fitness" name="fitness" class="form-select">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>
+                        </p>
+                      <?php endif; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
+                      <input type="text" class="form-control" id="lainnya" name="lainnya" placeholder="Nama lainnya">
+                      <select id="lainnyaSelect" name="lainnyaSelect" class="form-select mt-2" style="display: none;">
+                        <option selected disabled>--- Pilih kondisi ---</option>
+                        <option value="Ada, baik">Ada, baik</option>
+                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                        <option value="Ada, rusak parah">Ada, rusak parah</option>
+                        <option value="Tidak ada">Tidak ada</option>
+                      </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
+                          <?php
+                          echo htmlspecialchars($previous_olahraga_data['lainnya_nama']) . " - " . htmlspecialchars($previous_olahraga_data['lainnya_kondisi']);
+                          ?>
+                        </p>
+                      <?php endif; ?>
+
+                      <script>
+                        $(document).ready(function() {
+                          // Function to toggle the visibility of lainnyaSelect based on conditions
+                          function toggleSelectVisibility() {
+                            var inputVal = $('#lainnya').val();
+                            var checkboxChecked = $('#use_previous_olahraga').is(':checked');
+                            // Show select if input is not empty or if the checkbox is checked
+                            if (inputVal || checkboxChecked) {
+                              $('#lainnyaSelect').show();
+                            } else {
+                              $('#lainnyaSelect').hide();
+                            }
+                          }
+
+                          // Event listener for text input changes
+                          $('#lainnya').on('input', toggleSelectVisibility);
+
+                          // Event listener for checkbox changes
+                          $('#use_previous_olahraga').on('change', toggleSelectVisibility);
+
+                          // Initial check in case the checkbox is pre-checked or input is pre-filled when the page loads
+                          toggleSelectVisibility();
+                        });
+                      </script>
+
+                    </div>
+                  </div>
+
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_olahraga" name="use_previous_olahraga" value="1">
+                        <label class="form-check-label" for="use_previous_olahraga">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
+
               <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalOlahraga" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -129,12 +525,19 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih kondisi untuk setiap fasilitas olahraga yang terdaftar di form:
+                        <ul>
+                          <li>'Ada, baik' jika fasilitas tersedia dan dalam kondisi baik.</li>
+                          <li>'Ada, rusak sedang' jika fasilitas tersedia namun mengalami kerusakan sedang.</li>
+                          <li>'Ada, rusak parah' jika fasilitas tersedia namun mengalami kerusakan parah.</li>
+                          <li>'Tidak ada' jika fasilitas tersebut tidak tersedia.</li>
+                        </ul>
+                      </li>
+                      <li>Untuk opsi 'Lainnya', tuliskan nama fasilitas olahraga yang tidak terdaftar pada kolom yang disediakan. Jika ada, pilih kondisi fasilitas sesuai dengan opsi yang tersedia di dropdown yang muncul.</li>
+                      <li>Pastikan untuk mengisi form berdasarkan kondisi fasilitas olahraga terkini di desa/kelurahan Anda.</li>
+                      <li>Gunakan tombol 'Simpan' yang terletak di bagian bawah form untuk menyimpan pilihan Anda dan mengirim data.</li>
                     </ul>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
