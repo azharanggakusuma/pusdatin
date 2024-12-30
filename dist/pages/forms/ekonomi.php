@@ -515,7 +515,7 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div>
+          </div>   
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
