@@ -545,7 +545,7 @@ include "../../config/session.php";
       <form action="" method="post">
         <div class="row">
           <div class="col-12 mb-3">
-            <table class="table table-bordered">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Jenis Sarana Penunjang Ekonomi</th>
