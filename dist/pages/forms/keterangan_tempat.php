@@ -93,12 +93,12 @@ include "../../config/session.php";
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool toggle-form1">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                    $(".toggle-form1").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -179,6 +179,7 @@ include "../../config/session.php";
           </div>
           <!-- END:: CONTAINER Sk Pembentukan/Pengesahan Desa/Kelurahan -->
 
+          <!-- BEGIN::CONTAINER BALAI DESA -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Alamat Balai Desa/Kantor Kelurahan</h3>
@@ -249,6 +250,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+          <!-- END::CONTAINER BALAI DESA -->
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
