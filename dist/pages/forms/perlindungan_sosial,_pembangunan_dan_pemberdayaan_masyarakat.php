@@ -66,8 +66,7 @@ include "../../config/session.php";
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Perlindungan Sosial, Pembangunan Dan Pemberdayaan Masyarakat
-                </li>
+                  Perlindungan Sosial, Pembangunan Dan Pemberdayaan Masyarakat 
               </ol>
             </div>
           </div> <!--end::Row-->
