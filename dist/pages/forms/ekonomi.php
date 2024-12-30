@@ -149,7 +149,7 @@ include "../../config/session.php";
               <!-- /.row -->
             </div>
 
-            <!-- Modal Info --> 
+            <!-- Modal Info -->
             <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -203,35 +203,33 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Produk barang unggulan/utama di desa/kelurahan (Makanan dan Non Makanan)</label>
-                    <select name="" id="publicSpaceStatus" class="form-control">
+                    <select name="" id="productPresence" class="form-control">
                       <option value="" disabled selected>Pilih</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-                <div class="form-group mb-3" style="display: none;">
-                    <label class="mb-2">Produk barang unggulan/utama desa/kelurahan</label>
-                    <input type="text" class="form-control additional-info" name="barang_unggulan" id="barang_unggulan" placeholder="Tuliskan Makanan">
-                    <input type="text" class="form-control additional-info" name="barang_unggulan" id="barang_unggulan" placeholder="Tuliskan Non Makanan">
+                <div class="form-group mb-3" id="productInfo" style="display: none;">
+                  <label class="mb-2">Produk barang unggulan/utama desa/kelurahan</label>
+                  <input type="text" class="form-control mb-2" name="makanan_unggulan" id="makanan_unggulan" placeholder="Tuliskan Makanan">
+                  <input type="text" class="form-control" name="non_makanan_unggulan" id="non_makanan_unggulan" placeholder="Tuliskan Non Makanan">
                 </div>
 
                 <script>
                   document.addEventListener("DOMContentLoaded", function() {
-                    const publicSpaceStatus = document.getElementById('publicSpaceStatus');
-                    const additionalInfo = document.querySelector('.additional-info');
+                    const productPresence = document.getElementById('productPresence');
+                    const productInfo = document.getElementById('productInfo');
 
-                    publicSpaceStatus.addEventListener('change', function() {
+                    productPresence.addEventListener('change', function() {
                       if (this.value === 'Ada') {
-                        additionalInfo.style.display = 'block';
+                        productInfo.style.display = 'block';
                       } else {
-                        additionalInfo.style.display = 'none';
+                        productInfo.style.display = 'none';
                       }
                     });
                   });
                 </script>
-               
-
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -241,8 +239,6 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
-
-
 
             <!-- Modal Info -->
             <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
