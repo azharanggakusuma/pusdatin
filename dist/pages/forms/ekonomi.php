@@ -701,7 +701,7 @@ include "../../config/session.php";
             </table>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">
+        <button type="submit" class="btn btn-primary">
           <i class="fas fa-save"></i> &nbsp; Simpan
         </button>
       </form>
@@ -732,6 +732,8 @@ include "../../config/session.php";
       </div>
     </div>
   </div>
+
+  <!-- End Form-->
   </div> <!--end::Container-->
   </div> <!--end::App Content-->
   </main> <!--end::App Main--> <!--begin::Footer-->
