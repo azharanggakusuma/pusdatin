@@ -60,13 +60,13 @@ include "../../config/session.php";
         <div class="container-fluid"> <!--begin::Row-->
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">Perlindungan Sosial, Pembangunan, dan Pemberdayaan Masyarakat</h3>
+              <h3 class="mb-0">Perlindungan Sosial, Pembangunan Dan  Pemberdayaan Masyarakat</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Perlindungan Sosial, Pembangunan, dan Pemberdayaan Masyarakat
+                  Perlindungan Sosial, Pembangunan Dan  Pemberdayaan Masyarakat
                 </li>
               </ol>
             </div>
