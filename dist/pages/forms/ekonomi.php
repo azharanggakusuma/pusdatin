@@ -79,7 +79,7 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
+              <h3 class="card-title">Keberadaan Sentra Industri Unggulan Desa</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -105,10 +105,39 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                    <label class="mb-2">Keberadaan Sentra Industri Unggulan Desa</label>
+                    <select name="" id="publicSpaceStatus" class="form-control">
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
                 </div>
+                <div class="form-group mb-3" style="display: none;">
+                    <label class="mb-2">Sentra Industri</label>
+                    <input type="number" class="form-control additional-info" name="sentra_industri" id="sentra_industri" placeholder="Masukkan jumlah">
+                </div>
+                <div class="form-group mb-3" style="display: none;">
+                    <label class="mb-2">Produk pada sentra industri yang mempunyai muatan usaha terbanyak</label>
+                    <input type="text" class="form-control additional-info" name="muatan_usaha" id="muatan_usaha" placeholder="Tuliskan produk">
+                </div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const publicSpaceStatus = document.getElementById('publicSpaceStatus');
+                    const additionalInfo = document.querySelector('.additional-info');
+
+                    publicSpaceStatus.addEventListener('change', function() {
+                      if (this.value === 'Ada') {
+                        additionalInfo.style.display = 'block';
+                      } else {
+                        additionalInfo.style.display = 'none';
+                      }
+                    });
+                  });
+                </script>
+               
+
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -118,6 +147,8 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
+
+
 
             <!-- Modal Info -->
             <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
