@@ -70,5 +70,25 @@ function getPreviousYearData($conn, $user_id, $desa_id, $table_name, $columns, $
       return $response;
     }
   }
-}
+};
+
+// Pemanggilan ke dalam form
+function displayPreviousYearData($previous_data, $field_name, $label) {
+  // Check if there's no data
+  if ($previous_data['created_year'] === '-') {
+      return "Anda belum mengisi data.";
+  }
+  // Check if the data is from the previous year
+  elseif ($previous_data['created_year'] == date('Y') - 1) {
+      return "Data Pada Tahun Sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+  }
+  // Check if the data is from the current year
+  elseif ($previous_data['created_year'] == date('Y')) {
+      return "Data Pada Tahun Ini (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+  }
+  // Default message if no valid data is found
+  else {
+      return "Data tidak ditemukan.";
+  }
+};
 ?>
