@@ -1,27 +1,34 @@
 <?php
 include_once "../../config/conn.php";
 include "../../config/session.php";
-?>
-
-
-<?php
 
 // Ambil data pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
-$level = $_SESSION['level'] ?? ''; // Ambil level pengguna
+$level = $_SESSION['level'] ?? '';
 
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Cek apakah form sudah terkunci
-$is_locked = false; // Default tidak terkunci
-if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
-    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Data Desa'";
-    $result_progress = mysqli_query($conn, $query_progress);
-    $progress = mysqli_fetch_assoc($result_progress);
-    $is_locked = $progress['is_locked'] ?? false;
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+    // Check if the form is locked
+    $is_locked = false;
+    if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+        $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+        $result_progress = mysqli_query($conn, $query_progress);
+        $progress = mysqli_fetch_assoc($result_progress);
+        $is_locked = $progress['is_locked'] ?? false;
+    }
+
+    // Store the status in the array
+    $form_status[$form] = $is_locked;
 }
 ?>
 
@@ -132,15 +139,22 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
                                 </div>
 
                             <?php else: ?>
-                                <form action="../../handlers/form_desa.php" method="post">
-                                    <div class="row">
-                                        <!-- Nama
+                                <?php if ($form_status['Data Enumerator']) : ?>
+                                    <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                        <i class="fas fa-lock me-2"></i>
+                                        <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php else: ?>
+                                    <form action="../../handlers/form_desa.php" method="post">
+                                        <div class="row">
+                                            <!-- Nama
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Nama Lengkap</label>
                                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
                                         </div>-->
 
-                                        <!-- Alamat
+                                            <!-- Alamat
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Alamat</label>
                                             <textarea name="alamat" class="form-control" rows="4" placeholder="Masukkan Alamat"></textarea>
@@ -148,7 +162,7 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
 
                                         </div>-->
 
-                                        <!-- No HP
+                                            <!-- No HP
                                         <div class="form-group mb-3">
                                             <label class="mb-2">No HP</label>
                                             <div class="input-group">
@@ -161,43 +175,44 @@ if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
 
                                         </div>-->
 
-                                        <!-- Nama Desa -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Nama Desa</label>
-                                            <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected>Cari Nama Desa</option>
-                                            </select>
-                                            <!-- Hidden Input untuk Nama Desa -->
-                                            <input type="hidden" name="nama_desa" id="namaDesaHidden">
+                                            <!-- Nama Desa -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Nama Desa</label>
+                                                <select id="villageNameSelect" class="form-control select2bs4" style="width: 100%;">
+                                                    <option value="" selected>Cari Nama Desa</option>
+                                                </select>
+                                                <!-- Hidden Input untuk Nama Desa -->
+                                                <input type="hidden" name="nama_desa" id="namaDesaHidden">
+                                            </div>
+
+                                            <!-- Kode Desa -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Kode Desa</label>
+                                                <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
+                                                    <option value="" selected>Otomatis Terisi</option>
+                                                </select>
+                                                <!-- Hidden Input untuk Kode Desa -->
+                                                <input type="hidden" name="kode_desa" id="kodeDesaHidden">
+                                            </div>
+
+                                            <!-- Kecamatan -->
+                                            <div class="form-group mb-3">
+                                                <label class="mb-2">Kecamatan</label>
+                                                <select disabled id="subDistrictSelect" class="form-control" style="width: 100%;">
+                                                    <option value="" selected>Otomatis Terisi</option>
+                                                </select>
+                                                <input type="hidden" name="kecamatan" id="kecamatanHidden">
+                                            </div>
                                         </div>
 
-                                        <!-- Kode Desa -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Kode Desa</label>
-                                            <select disabled id="villageCodeSelect" class="form-control" style="width: 100%;">
-                                                <option value="" selected>Otomatis Terisi</option>
-                                            </select>
-                                            <!-- Hidden Input untuk Kode Desa -->
-                                            <input type="hidden" name="kode_desa" id="kodeDesaHidden">
+                                        <!-- Tombol Simpan -->
+                                        <div class="mb-2">
+                                            <button type="submit" class="btn btn-primary mt-3">
+                                                <i class="fas fa-save"></i> &nbsp; Simpan
+                                            </button>
                                         </div>
-
-                                        <!-- Kecamatan -->
-                                        <div class="form-group mb-3">
-                                            <label class="mb-2">Kecamatan</label>
-                                            <select disabled id="subDistrictSelect" class="form-control" style="width: 100%;">
-                                                <option value="" selected>Otomatis Terisi</option>
-                                            </select>
-                                            <input type="hidden" name="kecamatan" id="kecamatanHidden">
-                                        </div>
-                                    </div>
-
-                                    <!-- Tombol Simpan -->
-                                    <div class="mb-2">
-                                        <button type="submit" class="btn btn-primary mt-3">
-                                            <i class="fas fa-save"></i> &nbsp; Simpan
-                                        </button>
-                                    </div>
-                                </form>
+                                    </form>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
 
