@@ -50,6 +50,23 @@ $desa_id = $desa['id_desa'] ?? 0;
 $previous_bacaan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_taman_bacaan', ['keberadaan_tbm'], 'Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa');
 $previous_bidan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_bidan', ['keberadaan_bidan'], 'Keberadaan Bidan Desa yang menetap di Desa/Kelurahan');
 $previous_dukun_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_dukun_bayi', ['keberadaan_dukun_bayi'], 'Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan');
+
+// Ambil data sebelumnya
+$previous_klb_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_klb_wabah', [
+  'muntaber_diare',
+  'demam_berdarah',
+  'campak',
+  'malaria',
+  'flu_burung_sars',
+  'hepatitis_e',
+  'difteri',
+  'corona_covid19',
+  'lainnya_name',
+  'lainnya_status'
+], 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir');
+
+// Konversi data ke JSON
+$previous_klb_json = json_encode($previous_klb_data);
 ?>
 
 <!DOCTYPE html>
@@ -628,12 +645,59 @@ $previous_dukun_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_kebera
                         </tbody>
                       </table>
                     </div>
+                    <?php if ($level != 'admin'): ?>
+                      <div class="form-group mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="use_previous_klb" name="use_previous_klb" value="1" onchange="fillPreviousData(this);">
+                          <label class="form-check-label" for="use_previous_klb">
+                            Gunakan data tahun sebelumnya
+                          </label>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+
                     <div class="mb-2">
                       <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> &nbsp;Simpan
                       </button>
                     </div>
                   </form>
+                  <script>
+                    // Data sebelumnya dari PHP
+                    const previousData = <?php echo $previous_klb_json; ?>;
+
+                    // Fungsi untuk mengisi data sebelumnya
+                    function fillPreviousData(checkbox) {
+                      if (checkbox.checked) {
+                        // Mengisi checkbox berdasarkan data sebelumnya
+                        Object.keys(previousData).forEach(key => {
+                          const value = previousData[key];
+                          const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
+                          checkboxes.forEach(checkbox => {
+                            if (checkbox.value === value) {
+                              checkbox.checked = true;
+                            }
+                          });
+                        });
+
+                        // Mengisi input teks dengan data sebelumnya
+                        if (previousData['lainnya_name']) {
+                          document.getElementById('lainnya').value = previousData['lainnya_name'];
+                        }
+                      } else {
+                        // Jika checkbox tidak dicentang, kosongkan pilihan
+                        Object.keys(previousData).forEach(key => {
+                          const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
+                          checkboxes.forEach(checkbox => {
+                            checkbox.checked = false;
+                          });
+                        });
+
+                        // Kosongkan input teks
+                        document.getElementById('lainnya').value = '';
+                      }
+                    }
+                  </script>
                 <?php endif; ?>
               </div>
             </div>
