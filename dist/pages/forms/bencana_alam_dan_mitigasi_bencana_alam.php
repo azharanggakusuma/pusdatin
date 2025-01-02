@@ -64,6 +64,9 @@ $previous_bencana_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_benc
 
 // Konversi data ke JSON
 $previous_bencana_json = json_encode($previous_bencana_data);
+
+// Ambil data sebelumnya
+$previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_peringatan_bencana', ['peringatan_dini', 'peringatan_tsunami', 'perlengkapan_keselamatan', 'rambu_evakuasi', 'infrastruktur'], 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
 ?>
 
 <!DOCTYPE html>
@@ -379,6 +382,13 @@ $previous_bencana_json = json_encode($previous_bencana_data);
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'peringatan_dini', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 2 -->
@@ -390,6 +400,13 @@ $previous_bencana_json = json_encode($previous_bencana_data);
                         <option value="Tidak Ada">Tidak ada</option>
                         <option value="3">Bukan Wilayah Potensi Tsunami</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'peringatan_tsunami', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 3 -->
@@ -400,6 +417,13 @@ $previous_bencana_json = json_encode($previous_bencana_data);
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'perlengkapan_keselamatan', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 4 -->
@@ -410,6 +434,13 @@ $previous_bencana_json = json_encode($previous_bencana_data);
                         <option value="Ada">Ada</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'rambu_evakuasi', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 5 -->
@@ -420,7 +451,26 @@ $previous_bencana_json = json_encode($previous_bencana_data);
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'infrastruktur', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
+
+                    <!-- Checkbox to use previous year data -->
+                    <?php if ($level != 'admin'): ?>
+                      <div class="form-group mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="use_previous_peringatan" name="use_previous_peringatan" value="1">
+                          <label class="form-check-label" for="use_previous_peringatan">
+                            Gunakan data tahun sebelumnya
+                          </label>
+                        </div>
+                      </div>
+                    <?php endif; ?>
 
                     <!-- Submit button -->
                     <div class="mb-2">
@@ -429,6 +479,41 @@ $previous_bencana_json = json_encode($previous_bencana_data);
                       </button>
                     </div>
                   </form>
+
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      const inputNames = ['peringatan_dini', 'peringatan_tsunami', 'perlengkapan_keselamatan', 'rambu_evakuasi', 'infrastruktur'];
+                      const previousData = [
+                        "<?php echo htmlspecialchars($previous_peringatan_data['peringatan_dini']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['peringatan_tsunami']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['perlengkapan_keselamatan']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['rambu_evakuasi']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['infrastruktur']); ?>"
+                      ];
+
+                      const checkbox = document.getElementById('use_previous_peringatan');
+
+                      // Function to populate the form fields with previous data
+                      function populateFields() {
+                        inputNames.forEach((inputName, index) => {
+                          const inputField = document.getElementById(inputName);
+                          if (checkbox.checked) {
+                            inputField.value = previousData[index]; // Set the value of the select fields
+                            inputField.disabled = true; // Disable the field if checkbox is checked
+                          } else {
+                            inputField.value = ''; // Reset the value when checkbox is unchecked
+                            inputField.disabled = false; // Enable the field when checkbox is unchecked
+                          }
+                        });
+                      }
+
+                      // Set up the checkbox listener
+                      checkbox.addEventListener('change', populateFields);
+
+                      // Initialize the form based on the current checkbox state
+                      populateFields();
+                    });
+                  </script>
                 <?php endif; ?>
               </div>
             </div>
