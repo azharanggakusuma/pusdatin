@@ -79,8 +79,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Nama Kepala Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKades">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -103,13 +103,44 @@ include "../../config/session.php";
             <!-- /.card-header -->
             <div class="card-body">
               <form action="" method="post">
-                <div class="row">
+                <div class="row"> <!-- /.col -->
+                  <!-- /.form-group -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                    <label class="mb-2">Nama Kepala Desa/Lurah</label>
+                    <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Umur</label>
+                    <input required type="number" min="0" class="form-control" placeholder="Masukkan Umur" style="width: 100%;" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jenis kelamin</label>
+                    <select required name="" id="" class="form-control">
+                      <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
+                      <option value="LAKI-LAKI">LAKI - LAKI</option>
+                      <option value="PEREMPUAN"> PEREMPUAN </option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Pendidikan Tertinggi yang ditamatkan</label>
+                    <select required name="" id="" class="form-control">
+                      <option value="" disabled selected>---Pilih Pendidikan Terakhir---</option>
+                      <option value="Tidak pernah sekolah">Tidak pernah sekolah</option>
+                      <option value="Tidak tamat SD/Sederajat">Tidak tamat SD/Sederajat</option>
+                      <option value="Tamat SD/Sederajat">Tamat SD/Sederajat</option>
+                      <option value="SMP/Sederajat">SMP/Sederajat</option>
+                      <option value="SMU/Sederajat">SMU/Sederajat</option>
+                      <option value="Akademi/DIII">Akademi/DIII</option>
+                      <option value="Diploma IV/S1">Diploma IV/S1</option>
+                      <option value="S2">S2</option>
+                      <option value="S3">S3</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Tahun Mulai Menjabat</label>
+                    <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun mulai menjabat" style="width: 100%;" required>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -120,7 +151,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKades" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -134,6 +165,360 @@ include "../../config/session.php";
                       <li>Lorem ipsum dolor sit amet.</li>
                       <li>Lorem ipsum dolor sit amet.</li>
                       <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Template Form -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jumlah Perangkat Desa Menurut Jabatan dan Jenis Kelamin</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPerdes">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form1").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Jenis Jabatan</th>
+                          <th>Laki-Laki</th>
+                          <th>Perempuan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!--  -->
+                        <tr>
+                          <td>Sekretaris Desa/Kelurahan</td>
+                          <td><input type="number" name="skd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="skd_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <tr>
+                          <td>Kaur (kaur keuangan, dll)</td>
+                          <td><input type="number" name="kaur_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="kaur_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- Agen Bank -->
+                        <tr>
+                          <td>Kasi kasi kesejahteraan, dll</td>
+                          <td><input type="number" name="kkk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="kkk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- BMT -->
+                        <tr>
+                          <td>Pelaksana Kewilayahan</td>
+                          <td><input type="number" name="pk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="pk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>Staf/Pegawai Desa Lainnya</td>
+                          <td><input type="number" name="staf_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="staf_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>Jumlah Total</td>
+                          <td><input type="number" name="jumlah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="jumlah_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save"></i> &nbsp; Simpan
+                </button>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalPerdes" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Masukkan Jumlah Laki-Laki dan Perempuan berdasarkan jenis jabatan</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Template Form -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jumlah Perangkat Desa Menurut Tingkat Pendidikan dan Jenis Kelamin</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPerdesPend">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form2").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Tingkat Pendidikan terakhir yang ditamatkan</th>
+                          <th>Laki-Laki</th>
+                          <th>Perempuan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!--  -->
+                        <tr>
+                          <td>Tidak pernah sekolah</td>
+                          <td><input type="number" name="tidaksekolah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="tidaksekolah_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <tr>
+                          <td>Tidak tamat SD/Sederajat</td>
+                          <td><input type="number" name="tidaksd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="tidaksd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- Agen Bank -->
+                        <tr>
+                          <td>Tamat SD/Sederajat</td>
+                          <td><input type="number" name="sd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="sd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- BMT -->
+                        <tr>
+                          <td>SMP/Sederajat</td>
+                          <td><input type="number" name="smp_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="smp_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>SMU/Sederajat</td>
+                          <td><input type="number" name="smu_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="smu_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>Akademi/DIII</td>
+                          <td><input type="number" name="d3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="d3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>Diploma IV/S1</td>
+                          <td><input type="number" name="s1_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="s1_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>S2</td>
+                          <td><input type="number" name="s2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="s2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>S3</td>
+                          <td><input type="number" name="s3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="s3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                        <!-- ATM -->
+                        <!-- BMT -->
+                        <tr>
+                          <td>Jumlah Total</td>
+                          <td><input type="number" name="jumlah2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td><input type="number" name="jumlah2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save"></i> &nbsp; Simpan
+                </button>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalPerdesPend" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Masukkan Jumlah Laki-Laki dan Perempuan berdasarkan tingkat pendidikan terakhir</li>
+                      <li>Jumlah total harus sama dengan jumlah total pada tabel Jabatan</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Template Form -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Badan Permusyawaratan Desa/Lembaga Musyawarah Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBPD">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form3").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Badan Permusyawaratan Desa/Lembaga Musyawarah Kelurahan</label>
+                    <select name="" id="keberadaanBPD" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group mb-3" id="jumlahAnggotaBPD" style="display: none;">
+                <label class="mb-2" style="font-weight: bold;">Jumlah Anggota BPD</label>
+                  <div class="form-group mb-3">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="mb-2">Laki-Laki</label>
+                        <input type="number" class="form-control" min="0" name="laki_laki" id="laki_laki" placeholder=" --- Masukkan jumlah --- ">
+                      </div>
+                      <div class="col-md-4">
+                        <label class="mb-2">Perempuan</label>
+                        <input type="number" class="form-control" min="0" name="perempuan" id="perempuan" placeholder=" --- Masukkan jumlah --- ">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mb-3" id="kegiatanMusyawarahDesa" style="display: none;">
+                  <label class="mb-2">Jumlah kegiatan musyawarah desa/kelurahan yang dilakukan selama setahun terakhir</label>
+                  <input type="number" class="form-control" min="0" name="kegiatanMusyawarahDesa" id="kegiatanMusyawarahDesa" placeholder=" --- Masukkan jumlah --- ">
+                </div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const keberadaanBPD = document.getElementById('keberadaanBPD');
+                    const jumlahAnggotaBPD = document.getElementById('jumlahAnggotaBPD');
+                    const kegiatanMusyawarahDesa = document.getElementById('kegiatanMusyawarahDesa');
+
+                    keberadaanBPD.addEventListener('change', function() {
+                      if (this.value === 'Ada') {
+                        jumlahAnggotaBPD.style.display = 'block';
+                        kegiatanMusyawarahDesa.style.display = 'block';
+                      } else {
+                        jumlahAnggotaBPD.style.display = 'none';
+                        kegiatanMusyawarahDesa.style.display = 'none';
+                      }
+                    });
+                  });
+                </script>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalBPD" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi bagian Keberadaan Badan Permusyawaratan Desa/Lembaga Musyawarah Kelurahan dengan memilih Ada/Tidak Ada, jika Ada lanjut mengisi</li>
+                      <li>isi jumlah anggota BPD berdasarkan laki-laki dan perempuan</li>
+                      <li>Isi Jumlah kegiatan musyawarah desa/kelurahan yang dilakukan selama setahun terakhir</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
