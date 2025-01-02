@@ -49,6 +49,7 @@ $desa_id = $desa['id_desa'] ?? 0;
 // Ambil data sebelumnya
 $previous_bacaan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_taman_bacaan', ['keberadaan_tbm'], 'Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa');
 $previous_bidan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_bidan', ['keberadaan_bidan'], 'Keberadaan Bidan Desa yang menetap di Desa/Kelurahan');
+$previous_dukun_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_dukun_bayi', ['keberadaan_dukun_bayi'], 'Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan');
 ?>
 
 <!DOCTYPE html>
@@ -459,8 +460,27 @@ $previous_bidan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_kebera
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_dukun_data, 'keberadaan_dukun_bayi', 'Keberadaan Bidan Desa yang menetap di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
+
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_dukun" name="use_previous_dukun" value="1">
+                        <label class="form-check-label" for="use_previous_dukun">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
@@ -468,6 +488,36 @@ $previous_bidan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_kebera
                     </button>
                   </div>
                 </form>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const inputNames = ['keberadaan_dukun_bayi'];
+                    const previousData = [
+                      "<?php echo htmlspecialchars($previous_dukun_data['keberadaan_dukun_bayi']); ?>"
+                    ];
+
+                    const checkbox = document.getElementById('use_previous_dukun');
+
+                    // Function to populate the form fields with previous data
+                    function populateFields() {
+                      inputNames.forEach((inputName, index) => {
+                        const inputField = document.getElementById(inputName);
+                        if (checkbox.checked) {
+                          inputField.value = previousData[index]; // Set the value of the select fields
+                          inputField.readOnly = true; // Make the field read-only if checkbox is checked
+                        } else {
+                          inputField.value = ''; // Reset the value when checkbox is unchecked
+                          inputField.readOnly = false; // Make the field editable when checkbox is unchecked
+                        }
+                      });
+                    }
+
+                    // Set up the checkbox listener
+                    checkbox.addEventListener('change', populateFields);
+
+                    // Initialize the form based on the current checkbox state
+                    populateFields();
+                  });
+                </script>
               <?php endif; ?>
               <!-- /.row -->
             </div>
