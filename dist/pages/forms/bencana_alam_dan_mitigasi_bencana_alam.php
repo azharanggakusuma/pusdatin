@@ -34,21 +34,39 @@ foreach ($forms as $form) {
 }
 
 include("../../config/function.php");
-// Ambil ID pengguna yang sedang login
-$username = $_SESSION['username'] ?? '';
+
+// Ambil ID pengguna
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Ambil ID desa yang terkait dengan user yang sedang login
+// Ambil ID desa
 $query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+$previous_bencana_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_bencana_alam', [
+  'tanah_longsor',
+  'banjir',
+  'banjir_bandang',
+  'gempa_bumi',
+  'tsunami',
+  'gelombang_pasang',
+  'angin_puyuh',
+  'gunung_meletus',
+  'kebakaran_hutan',
+  'kekeringan',
+  'abrasi'
+], 'Kejadian/bencana alam (mengganggu kehidupan dan menyebabkan kerugian bagi masyarakat) yang terjadi');
+
+// Konversi data ke JSON
+$previous_bencana_json = json_encode($previous_bencana_data);
+
+// Ambil data sebelumnya
+$previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_peringatan_bencana', ['peringatan_dini', 'peringatan_tsunami', 'perlengkapan_keselamatan', 'rambu_evakuasi', 'infrastruktur'], 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
 ?>
 
 <!DOCTYPE html>
@@ -254,12 +272,49 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         </tbody>
                       </table>
                     </div>
+
+                    <?php if ($level != 'admin'): ?>
+                      <div class="form-group mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="use_previous_bencana" name="use_previous_bencana" value="1" onchange="fillPreviousData(this);">
+                          <label class="form-check-label" for="use_previous_bencana">
+                            Gunakan data tahun sebelumnya
+                          </label>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+
                     <div class="mb-2">
                       <button type="submit" class="btn btn-primary mt-3">
                         <i class="fas fa-save"></i> &nbsp;Simpan
                       </button>
                     </div>
                   </form>
+                  <script>
+                    // Data sebelumnya dari PHP
+                    const previousData = <?php echo $previous_bencana_json; ?>;
+
+                    // Fungsi untuk mengisi data sebelumnya
+                    function fillPreviousData(checkbox) {
+                      if (checkbox.checked) {
+                        Object.keys(previousData).forEach(key => {
+                          const value = previousData[key];
+                          const checkbox = document.querySelector(`input[name="${key}"][value="${value}"]`);
+                          if (checkbox) {
+                            checkbox.checked = true;
+                          }
+                        });
+                      } else {
+                        // Jika checkbox tidak dicentang, kosongkan pilihan
+                        Object.keys(previousData).forEach(key => {
+                          const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
+                          checkboxes.forEach(checkbox => {
+                            checkbox.checked = false;
+                          });
+                        });
+                      }
+                    }
+                  </script>
                 <?php endif; ?>
               </div>
             </div>
@@ -327,6 +382,13 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'peringatan_dini', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 2 -->
@@ -338,6 +400,13 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Tidak Ada">Tidak ada</option>
                         <option value="3">Bukan Wilayah Potensi Tsunami</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'peringatan_tsunami', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 3 -->
@@ -348,6 +417,13 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'perlengkapan_keselamatan', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 4 -->
@@ -358,6 +434,13 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada">Ada</option>
                         <option value="Tidak ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'rambu_evakuasi', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Form field 5 -->
@@ -368,7 +451,26 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         <option value="Ada">Ada</option>
                         <option value="Tidak Ada">Tidak ada</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_peringatan_data, 'infrastruktur', 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
+
+                    <!-- Checkbox to use previous year data -->
+                    <?php if ($level != 'admin'): ?>
+                      <div class="form-group mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="use_previous_peringatan" name="use_previous_peringatan" value="1">
+                          <label class="form-check-label" for="use_previous_peringatan">
+                            Gunakan data tahun sebelumnya
+                          </label>
+                        </div>
+                      </div>
+                    <?php endif; ?>
 
                     <!-- Submit button -->
                     <div class="mb-2">
@@ -377,6 +479,41 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </button>
                     </div>
                   </form>
+
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      const inputNames = ['peringatan_dini', 'peringatan_tsunami', 'perlengkapan_keselamatan', 'rambu_evakuasi', 'infrastruktur'];
+                      const previousData = [
+                        "<?php echo htmlspecialchars($previous_peringatan_data['peringatan_dini']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['peringatan_tsunami']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['perlengkapan_keselamatan']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['rambu_evakuasi']); ?>",
+                        "<?php echo htmlspecialchars($previous_peringatan_data['infrastruktur']); ?>"
+                      ];
+
+                      const checkbox = document.getElementById('use_previous_peringatan');
+
+                      // Function to populate the form fields with previous data
+                      function populateFields() {
+                        inputNames.forEach((inputName, index) => {
+                          const inputField = document.getElementById(inputName);
+                          if (checkbox.checked) {
+                            inputField.value = previousData[index]; // Set the value of the select fields
+                            inputField.readOnly = true; // Make the field read-only if checkbox is checked
+                          } else {
+                            inputField.value = ''; // Reset the value when checkbox is unchecked
+                            inputField.readOnly = false; // Make the field editable when checkbox is unchecked
+                          }
+                        });
+                      }
+
+                      // Set up the checkbox listener
+                      checkbox.addEventListener('change', populateFields);
+
+                      // Initialize the form based on the current checkbox state
+                      populateFields();
+                    });
+                  </script>
                 <?php endif; ?>
               </div>
             </div>
