@@ -34,21 +34,36 @@ foreach ($forms as $form) {
 }
 
 include("../../config/function.php");
-// Ambil ID pengguna yang sedang login
-$username = $_SESSION['username'] ?? '';
+
+// Ambil ID pengguna
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Ambil ID desa yang terkait dengan user yang sedang login
+// Ambil ID desa
 $query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+$previous_bencana_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_bencana_alam', [
+  'tanah_longsor',
+  'banjir',
+  'banjir_bandang',
+  'gempa_bumi',
+  'tsunami',
+  'gelombang_pasang',
+  'angin_puyuh',
+  'gunung_meletus',
+  'kebakaran_hutan',
+  'kekeringan',
+  'abrasi'
+], 'Kejadian/bencana alam (mengganggu kehidupan dan menyebabkan kerugian bagi masyarakat) yang terjadi');
+
+// Konversi data ke JSON
+$previous_bencana_json = json_encode($previous_bencana_data);
 ?>
 
 <!DOCTYPE html>
@@ -254,12 +269,49 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                         </tbody>
                       </table>
                     </div>
+
+                    <?php if ($level != 'admin'): ?>
+                      <div class="form-group mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="use_previous_bencana" name="use_previous_bencana" value="1" onchange="fillPreviousData(this);">
+                          <label class="form-check-label" for="use_previous_bencana">
+                            Gunakan data tahun sebelumnya
+                          </label>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+
                     <div class="mb-2">
                       <button type="submit" class="btn btn-primary mt-3">
                         <i class="fas fa-save"></i> &nbsp;Simpan
                       </button>
                     </div>
                   </form>
+                  <script>
+                    // Data sebelumnya dari PHP
+                    const previousData = <?php echo $previous_bencana_json; ?>;
+
+                    // Fungsi untuk mengisi data sebelumnya
+                    function fillPreviousData(checkbox) {
+                      if (checkbox.checked) {
+                        Object.keys(previousData).forEach(key => {
+                          const value = previousData[key];
+                          const checkbox = document.querySelector(`input[name="${key}"][value="${value}"]`);
+                          if (checkbox) {
+                            checkbox.checked = true;
+                          }
+                        });
+                      } else {
+                        // Jika checkbox tidak dicentang, kosongkan pilihan
+                        Object.keys(previousData).forEach(key => {
+                          const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
+                          checkboxes.forEach(checkbox => {
+                            checkbox.checked = false;
+                          });
+                        });
+                      }
+                    }
+                  </script>
                 <?php endif; ?>
               </div>
             </div>
