@@ -34,14 +34,13 @@ foreach ($forms as $form) {
 }
 
 include("../../config/function.php");
-// Ambil ID pengguna yang sedang login
-$username = $_SESSION['username'] ?? '';
+// Ambil ID pengguna
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Ambil ID desa yang terkait dengan user yang sedang login
+// Ambil ID desa
 $query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
@@ -248,10 +247,26 @@ $previous_batas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                                         <div class="form-group mb-3">
                                             <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
                                             <input type="number" id="luas_wilayah_desa" name="luas_wilayah_desa" class="form-control" placeholder="Masukkan luas wilayah dalam hektar" style="width: 100%;" step="0.01" min="0">
+
                                             <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                                                Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_luas_data['created_year']); ?>):
-                                                <?php echo htmlspecialchars($previous_luas_data['luas_wilayah_desa']); ?> Hektar
+                                                <?php
+                                                if ($previous_luas_data['created_year'] === '-') {
+                                                    // If no data is available
+                                                    echo "Anda belum mengisi data.";
+                                                } elseif ($previous_luas_data['created_year'] == date('Y') - 1) {
+                                                    // If the data is from the previous year
+                                                    echo "Data Pada Tahun Sebelumnya (" . htmlspecialchars($previous_luas_data['created_year']) . "): " . htmlspecialchars($previous_luas_data['luas_wilayah_desa']) . " Hektar";
+                                                } elseif ($previous_luas_data['created_year'] == date('Y')) {
+                                                    // If the data is from the current year
+                                                    echo "Data Pada Tahun Ini (" . htmlspecialchars($previous_luas_data['created_year']) . "): " . htmlspecialchars($previous_luas_data['luas_wilayah_desa']) . " Hektar";
+                                                } else {
+                                                    // Default message if something unexpected happens
+                                                    echo "Data tidak ditemukan.";
+                                                }
+                                                ?>
                                             </p>
+
+
                                         </div>
                                     </div>
 

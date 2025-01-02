@@ -34,21 +34,20 @@ foreach ($forms as $form) {
 }
 
 include("../../config/function.php");
-// Ambil ID pengguna yang sedang login
-$username = $_SESSION['username'] ?? '';
+// Ambil ID pengguna
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Ambil ID desa yang terkait dengan user yang sedang login
+// Ambil ID desa
 $query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
 ?>
 
 <!DOCTYPE html>
@@ -265,8 +264,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['sepak_bola']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'sepak_bola', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -281,8 +281,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['bola_voli']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'bola_voli', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -300,8 +301,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['bulu_tangkis']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'bulu_tangkis', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -316,8 +318,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['bola_basket']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'bola_basket', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -335,8 +338,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['tenis_lapangan']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'tenis_lapangan', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -351,8 +355,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['tenis_meja']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'tenis_meja', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -370,8 +375,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['futsal']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'futsal', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -386,8 +392,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['renang']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'renang', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -405,8 +412,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['bela_diri']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'bela_diri', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -421,8 +429,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['bilyard']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'bilyard', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -440,8 +449,9 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
-                          <?php echo htmlspecialchars($previous_olahraga_data['fitness']); ?>
+                          <?php
+                          echo displayPreviousYearData($previous_olahraga_data, 'fitness', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -457,9 +467,10 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          Data Pada Tahun Sebelumnya (<?php echo htmlspecialchars($previous_olahraga_data['created_year']); ?>):
                           <?php
-                          echo htmlspecialchars($previous_olahraga_data['lainnya_nama']) . " - " . htmlspecialchars($previous_olahraga_data['lainnya_kondisi']);
+                          echo displayPreviousYearData($previous_olahraga_data, 'lainnya_nama', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                          echo " <br> ";
+                          echo displayPreviousYearData($previous_olahraga_data, 'lainnya_kondisi', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
                           ?>
                         </p>
                       <?php endif; ?>
