@@ -48,6 +48,7 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
 $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempat_ibadah', ['jumlah_masjid', 'jumlah_pura', 'jumlah_musala', 'jumlah_wihara', 'jumlah_gereja_kristen', 'jumlah_kelenteng', 'jumlah_gereja_katolik', 'jumlah_balai_basarah', 'jumlah_kapel', 'lainnya', 'jumlah_lainnya'], 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+$previous_disabilitas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_disabilitas', ['jumlah_tuna_netra', 'jumlah_tuna_rungu', 'jumlah_tuna_wicara', 'jumlah_tuna_rungu_wicara', 'jumlah_tuna_daksa', 'jumlah_tuna_grahita', 'jumlah_tuna_laras', 'jumlah_tuna_eks_kusta', 'jumlah_tuna_ganda'], 'Banyaknya penyandang disabilitas');
 ?>
 
 <!DOCTYPE html>
@@ -470,10 +471,24 @@ $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempa
                     <div class="col-md-6">
                       <label for="tuna-netra" class="form-label">Jumlah tuna netra (buta)</label>
                       <input type="number" class="form-control" name="tuna_netra" id="tuna-netra" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_netra', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-rungu" class="form-label">Jumlah tuna rungu (tuli)</label>
                       <input type="number" class="form-control" name="tuna_rungu" id="tuna-rungu" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_rungu', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -481,10 +496,24 @@ $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempa
                     <div class="col-md-6">
                       <label for="tuna-wicara" class="form-label">Jumlah tuna wicara (bisu)</label>
                       <input type="number" class="form-control" name="tuna_wicara" id="tuna-wicara" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_wicara', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-rungu-wicara" class="form-label">Jumlah tuna rungu-wicara (tuli-bisu)</label>
                       <input type="number" class="form-control" name="tuna_rungu_wicara" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_rungu_wicara', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -492,10 +521,24 @@ $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempa
                     <div class="col-md-6">
                       <label for="tuna-daksa" class="form-label">Jumlah tuna daksa (disabilitas tubuh)</label>
                       <input type="number" class="form-control" name="tuna_daksa" id="tuna-daksa" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_daksa', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-grahita" class="form-label">Jumlah tuna grahita (keterbelakangan mental)</label>
                       <input type="number" class="form-control" name="tuna_grahita" id="tuna-grahita" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_grahita', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -503,10 +546,24 @@ $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempa
                     <div class="col-md-6">
                       <label for="tuna-laras" class="form-label">Jumlah tuna laras (eks-sakit jiwa)</label>
                       <input type="number" class="form-control" name="tuna_laras" id="tuna-laras" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_laras', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-eks-kusta" class="form-label">Jumlah tuna eks-sakit kusta</label>
                       <input type="number" class="form-control" name="tuna_eks_kusta" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_eks_kusta', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -514,8 +571,27 @@ $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempa
                     <div class="col-md-6">
                       <label for="tuna-ganda" class="form-label">Jumlah tuna ganda (fisik-mental)</label>
                       <input type="number" class="form-control" name="tuna_ganda" id="tuna-ganda" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_ganda', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
+
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_disabilitas" name="use_previous_disabilitas" value="1">
+                        <label class="form-check-label" for="use_previous_disabilitas">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
@@ -523,6 +599,47 @@ $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempa
                     </button>
                   </div>
                 </form>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const inputIds = [
+                      'tuna-netra', 'tuna-rungu', 'tuna-wicara', 'tuna-rungu-wicara',
+                      'tuna-daksa', 'tuna-grahita', 'tuna-laras', 'tuna-eks-kusta', 'tuna-ganda'
+                    ];
+                    const previousData = {
+                      'tuna-netra': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_netra'] ?? ''); ?>",
+                      'tuna-rungu': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_rungu'] ?? ''); ?>",
+                      'tuna-wicara': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_wicara'] ?? ''); ?>",
+                      'tuna-rungu-wicara': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_rungu_wicara'] ?? ''); ?>",
+                      'tuna-daksa': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_daksa'] ?? ''); ?>",
+                      'tuna-grahita': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_grahita'] ?? ''); ?>",
+                      'tuna-laras': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_laras'] ?? ''); ?>",
+                      'tuna-eks-kusta': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_eks_kusta'] ?? ''); ?>",
+                      'tuna-ganda': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_ganda'] ?? ''); ?>"
+                    };
+
+                    const checkbox = document.getElementById('use_previous_disabilitas');
+
+                    // Function to populate the form fields with previous data
+                    function populateFields() {
+                      inputIds.forEach((inputId) => {
+                        const inputField = document.getElementById(inputId);
+                        if (checkbox.checked) {
+                          inputField.value = previousData[inputId] || ''; // Set value if data exists, else empty string
+                          inputField.readOnly = true; // Make the field read-only
+                        } else {
+                          inputField.value = ''; // Clear value
+                          inputField.readOnly = false; // Make the field editable
+                        }
+                      });
+                    }
+
+                    // Add event listener to the checkbox
+                    checkbox.addEventListener('change', populateFields);
+
+                    // Initialize the form based on the checkbox state
+                    populateFields();
+                  });
+                </script>
               <?php endif; ?>
             </div>
 
