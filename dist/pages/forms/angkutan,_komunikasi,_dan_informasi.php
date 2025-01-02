@@ -80,7 +80,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Prasarana dan sarana transportasi antar desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modaltransportasi">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -107,7 +107,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Lalu lintas dari/ke desa/kelurahan melalui</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Aspal/Beton">Aspal/Beton</option>
                       <option value="Diperkeras (kerikil, batu, dll.)">Diperkeras (kerikil, batu, dll.)</option>
                       <option value="Tanah">Tanah</option>
@@ -117,7 +117,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Sepanjang tahun">Sepanjang tahun</option>
                       <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
                       <option value="Selama musim kemarau">Selama musim kemarau</option>
@@ -127,7 +127,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Sepanjang tahun">Sepanjang tahun</option>
                       <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
                       <option value="Selama musim kemarau">Selama musim kemarau</option>
@@ -137,7 +137,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan angkutan umum</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada,	dengan	trayek	tetap">Ada, dengan trayek tetap</option>
                       <option value="Ada,	tanpa	trayek	tetap">Ada, tanpa trayek tetap</option>
                       <option value="Tidak	ada	angkutan	umum">Tidak ada angkutan umum</option>
@@ -146,7 +146,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Operasional angkutan umum yang utama</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Setiap	hari">Setiap hari</option>
                       <option value="Tidak	setiap	hari">Tidak setiap hari</option>
                     </select>
@@ -154,7 +154,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Jam operasi angkutan umum yang utama</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Siang	dan	malam	hari">Siang dan malam hari</option>
                       <option value="Hanya	siang/malam	hari">Hanya siang/malam hari</option>
                     </select>
@@ -165,7 +165,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modaltransportasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -174,11 +174,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isi Prasarana dan sarana transportasi antar desa/kelurahan, pilih opsi pengisian yang sesuai dengan desa</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -192,7 +188,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalinternet">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -219,7 +215,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
@@ -236,7 +232,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalinternet" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -245,11 +241,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isi Ada/Tidak Ada keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -263,7 +255,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan menara telepon seluler, sinyal telepon dan sinyal internet di desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalmenaratlp">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -288,17 +280,18 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="mb-3">
                   <label for="bts-count" class="form-label">Jumlah menara telepon seluler atau Base Transceiver Station (BTS)</label>
-                  <input type="number" id="bts-count" class="form-control" placeholder="Masukkan jumlah BTS" min="0">
+                  <input type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
                 </div>
 
                 <div class="mb-3">
                   <label for="operator-count" class="form-label">Jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</label>
-                  <input type="number" id="operator-count" class="form-control" placeholder="Masukkan jumlah operator" min="0">
+                  <input type="number" id="operator-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label">Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
                   <select class="form-select" aria-label="Signal strength">
+                    <option value="" disabled selected> --- Pilih --- </option>
                     <option value="Sinyal sangat kuat">Sinyal sangat kuat</option>
                     <option value="Sinyal kuat">Sinyal kuat</option>
                     <option value="Sinyal lemah">Sinyal lemah</option>
@@ -309,6 +302,7 @@ include "../../config/session.php";
                 <div class="mb-3">
                   <label class="form-label">Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
                   <select class="form-select" aria-label="Internet signal type">
+                    <option value="" disabled selected> --- Pilih --- </option>
                     <option value="5G/4G/LTE">5G/4G/LTE</option>
                     <option value="3G/H+/EVDO">3G/H+/EVDO</option>
                     <option value="2.5G/EG/GPRS">2.5G/EG/GPRS</option>
@@ -327,7 +321,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalmenaratlp" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -336,11 +330,10 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isi jumlah menara telepon seluler atau Base Transceiver Station (BTS)</li>
+                      <li>Isi jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</li>
+                      <li>Pilih kekuatan sinyal seluler/handphone di sebagian besar wilayah desa/kelurahan</li>
+                      <li>Pilih tipe sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -354,7 +347,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalketersediaaninternet">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -381,7 +374,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Digunakan">Digunakan</option>
                       <option value="Jarang	digunakan">Jarang digunakan</option>
                       <option value="Tidak	digunakan">Tidak digunakan</option>
@@ -389,9 +382,9 @@ include "../../config/session.php";
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2"> Fasilitas internet di kantor kepala desa/lurah</label>
+                    <label class="mb-2">Fasilitas internet di kantor kepala desa/lurah</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Berfungsi">Berfungsi</option>
                       <option value="Jarang	berfungsi">Jarang berfungsi</option>
                       <option value="Tidak	berfungsi">Tidak berfungsi</option>
@@ -410,7 +403,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalketersediaaninternet" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -419,11 +412,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah</li>
+                      <li>Pilih Fasilitas internet di kantor kepala desa/lurah</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -437,7 +427,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalkantorpos">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -462,9 +452,9 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2"> Kantor pos/pos pembantu/rumah pos</label>
+                    <label class="mb-2">Kantor pos/pos pembantu/rumah pos</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Beroperasi">Beroperasi</option>
                       <option value="Jarang	beroperasi">Jarang beroperasi</option>
                       <option value="Tidak beroperasi">Tidak beroperasi</option>
@@ -474,7 +464,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Layanan pos keliling</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak	ada">Tidak ada</option>
                     </select>
@@ -482,7 +472,7 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</label>
                     <select name="" id="" class="form-control">
-                      <option value="" disabled selected>Pilih</option>
+                      <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Beroperasi">Beroperasi</option>
                       <option value="Jarang	beroperas">Jarang beroperas</option>
                       <option value="Tidak	beroperasi">Tidak beroperasi</option>
@@ -501,7 +491,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalkantorpos" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -510,11 +500,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih kantor pos/pos pembantu/rumah pos</li>
+                      <li>Pilih layanan pos keliling</li>
+                      <li>Pilih Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
