@@ -605,7 +605,7 @@ include "../../config/session.php";
               </form>
             </div>
           </div>
-          <!-- END::Ketersediaan Penetapan Batas dan Peta Desa --> 
+          <!-- END::Ketersediaan Penetapan Batas dan Peta Desa -->  
 
           <!-- BEGIN::BANYAKNYA DUSUN -->
           <div class="card card-primary card-outline mb-4">
