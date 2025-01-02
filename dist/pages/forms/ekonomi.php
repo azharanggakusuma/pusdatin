@@ -944,7 +944,7 @@ include "../../config/session.php";
               <li>Sarana dan prasarana ekonomi di desa/kelurahan</li>
               <li>isi jenis sarana dan prasarana ekonomi</li>
               <li>isi Jumlah Sarana</li>
-              <li>Pilih Kemudahan untuk Mencapai </li>
+              <li>Pilih Kemudahan untuk Mencapai </li>  
             </ul>
           </div>
           <div class="modal-footer">
