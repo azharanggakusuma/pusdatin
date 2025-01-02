@@ -144,6 +144,109 @@ include "../../config/session.php";
             </div>
           </div>
 
+          <!-- end -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Kegiatan warga desa/kelurahan untuk menjaga keamanan lingkungan di desa/kelurahan selama setahun terakhir</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalkegiatanmenjagadesa">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Pembangunan/pemeliharaan pos keamanan lingkungan</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Pembentukan/pengaturan regu keamanan</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Penambahan jumlah anggota hansip/linmas</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalkegiatanmenjagadesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih Ada/Tidak Ada kegiatan warga desa/kelurahan untuk menjaga keamanan lingkungan di desa/kelurahan selama setahun terakhir</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- end -->
+          
+
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
