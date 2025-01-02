@@ -499,10 +499,10 @@ $previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_p
                           const inputField = document.getElementById(inputName);
                           if (checkbox.checked) {
                             inputField.value = previousData[index]; // Set the value of the select fields
-                            inputField.disabled = true; // Disable the field if checkbox is checked
+                            inputField.readOnly = true; // Make the field read-only if checkbox is checked
                           } else {
                             inputField.value = ''; // Reset the value when checkbox is unchecked
-                            inputField.disabled = false; // Enable the field when checkbox is unchecked
+                            inputField.readOnly = false; // Make the field editable when checkbox is unchecked
                           }
                         });
                       }
