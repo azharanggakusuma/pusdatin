@@ -788,8 +788,8 @@ include "../../config/session.php";
                           <option value="LERENG/PUNCAK">LERENG/PUNCAK</option>
                           <option value="LEMBAH">LEMBAH</option>
                           <option value="DATARAN">DATARAN</option>
-                          <option value="PESISIR PANTAI">PESISIR PANTAI</option>
-                        </select>
+                          <option value="PESISIR PANTAI">PESISIR PANTAI</option> 
+                        </select> 
                       </div>
                     </div>
                     <div class="mb-3">
