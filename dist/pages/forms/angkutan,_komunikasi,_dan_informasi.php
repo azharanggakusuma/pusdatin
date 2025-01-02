@@ -291,6 +291,7 @@ include "../../config/session.php";
                 <div class="mb-3">
                   <label class="form-label">Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
                   <select class="form-select" aria-label="Signal strength">
+                    <option value="" disabled selected> --- Pilih --- </option>
                     <option value="Sinyal sangat kuat">Sinyal sangat kuat</option>
                     <option value="Sinyal kuat">Sinyal kuat</option>
                     <option value="Sinyal lemah">Sinyal lemah</option>
@@ -301,6 +302,7 @@ include "../../config/session.php";
                 <div class="mb-3">
                   <label class="form-label">Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
                   <select class="form-select" aria-label="Internet signal type">
+                    <option value="" disabled selected> --- Pilih --- </option>
                     <option value="5G/4G/LTE">5G/4G/LTE</option>
                     <option value="3G/H+/EVDO">3G/H+/EVDO</option>
                     <option value="2.5G/EG/GPRS">2.5G/EG/GPRS</option>
