@@ -49,6 +49,7 @@ $desa_id = $desa['id_desa'] ?? 0;
 // Ambil data sebelumnya
 $previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempat_ibadah', ['jumlah_masjid', 'jumlah_pura', 'jumlah_musala', 'jumlah_wihara', 'jumlah_gereja_kristen', 'jumlah_kelenteng', 'jumlah_gereja_katolik', 'jumlah_balai_basarah', 'jumlah_kapel', 'lainnya', 'jumlah_lainnya'], 'Jumlah Tempat Ibadah di Desa/Kelurahan');
 $previous_disabilitas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_disabilitas', ['jumlah_tuna_netra', 'jumlah_tuna_rungu', 'jumlah_tuna_wicara', 'jumlah_tuna_rungu_wicara', 'jumlah_tuna_daksa', 'jumlah_tuna_grahita', 'jumlah_tuna_laras', 'jumlah_tuna_eks_kusta', 'jumlah_tuna_ganda'], 'Banyaknya penyandang disabilitas');
+$previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_ruang_publik', ['status_ruang_publik', 'ruang_terbuka_hijau', 'ruang_terbuka_non_hijau'], 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
 ?>
 
 <!DOCTYPE html>
@@ -730,10 +731,99 @@ $previous_disabilitas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_
                       </select>
                     </div>
                   </div>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_ruang_publik_data, 'status_ruang_publik', 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+                      echo " <br> ";
+                      echo displayPreviousYearData($previous_ruang_publik_data, 'ruang_terbuka_hijau', 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+                      echo " <br> ";
+                      echo displayPreviousYearData($previous_ruang_publik_data, 'ruang_terbuka_non_hijau', 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+                      ?>
+                    </p>
+                  <?php endif; ?>
+
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_ruang_publik" name="use_previous_ruang_publik" value="1">
+                        <label class="form-check-label" for="use_previous_ruang_publik">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </form>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const publicSpaceStatus = document.getElementById("publicSpaceStatus");
+                    const greenSpace = document.getElementById("greenSpace");
+                    const nonGreenSpace = document.getElementById("nonGreenSpace");
+                    const additionalInfo = document.querySelector(".additional-info");
+                    const usePreviousCheckbox = document.getElementById("use_previous_ruang_publik");
+
+                    // Data tahun sebelumnya
+                    const previousData = {
+                      publicSpaceStatus: "<?php echo htmlspecialchars($previous_ruang_publik_data['status_ruang_publik'] ?? ''); ?>",
+                      greenSpace: "<?php echo htmlspecialchars($previous_ruang_publik_data['ruang_terbuka_hijau'] ?? ''); ?>",
+                      nonGreenSpace: "<?php echo htmlspecialchars($previous_ruang_publik_data['ruang_terbuka_non_hijau'] ?? ''); ?>"
+                    };
+
+                    // Fungsi untuk mengatur data tahun sebelumnya ke form
+                    function populatePreviousData() {
+                      if (usePreviousCheckbox.checked) {
+                        // Set nilai ke elemen
+                        publicSpaceStatus.value = previousData.publicSpaceStatus || "";
+                        greenSpace.value = previousData.greenSpace || "";
+                        nonGreenSpace.value = previousData.nonGreenSpace || "";
+
+                        // Tampilkan additional-info jika status ruang publik adalah 'Ada'
+                        if (previousData.publicSpaceStatus === "Ada, dikelola" || previousData.publicSpaceStatus === "Ada, tidak dikelola") {
+                          additionalInfo.style.display = "block";
+                        } else {
+                          additionalInfo.style.display = "none";
+                        }
+
+                        // Buat elemen menjadi read-only
+                        publicSpaceStatus.setAttribute("readonly", true);
+                        greenSpace.setAttribute("readonly", true);
+                        nonGreenSpace.setAttribute("readonly", true);
+                      } else {
+                        // Reset form jika checkbox tidak dicentang
+                        publicSpaceStatus.value = "";
+                        greenSpace.value = "";
+                        nonGreenSpace.value = "";
+                        additionalInfo.style.display = "none";
+
+                        // Hapus atribut read-only
+                        publicSpaceStatus.removeAttribute("readonly");
+                        greenSpace.removeAttribute("readonly");
+                        nonGreenSpace.removeAttribute("readonly");
+                      }
+                    }
+
+                    // Event listener untuk checkbox
+                    usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                    // Event listener untuk perubahan status ruang publik
+                    publicSpaceStatus.addEventListener("change", function() {
+                      if (this.value === "Ada, dikelola" || this.value === "Ada, tidak dikelola") {
+                        additionalInfo.style.display = "block";
+                      } else {
+                        additionalInfo.style.display = "none";
+                      }
+                    });
+
+                    // Inisialisasi saat halaman dimuat
+                    populatePreviousData();
+                  });
+                </script>
 
                 <script>
                   document.addEventListener("DOMContentLoaded", function() {
