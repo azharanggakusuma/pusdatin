@@ -13,10 +13,18 @@ include "../../config/session.php";
   <meta name="title" content="AdminLTE 4 | General Form Elements">
   <meta name="author" content="ColorlibHQ">
   <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
-  <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
+  <meta name="keywords"
+    content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard">
+  <!--end::Primary Meta Tags--><!--begin::Fonts-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
+    integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+  <!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
+    integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
+  <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
+    integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
+  <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
   <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
 
   <!-- Font Awesome -->
@@ -77,50 +85,96 @@ include "../../config/session.php";
         <div class="container-fluid"> <!--begin::Row-->
 
           <!-- Template Form -->
+        
+          <!-- BEGIN::CONTAINER BATAS WILAYAH DESA -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Batas Wilayah Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalBatasDesa">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool toggle-form1">
                   <i class="fas fa-minus"></i>
                 </button>
-                <script>
-                  $(document).ready(function() {
-                    $(".toggle-form").on("click", function() {
-                      var $icon = $(this).find("i");
-                      var $cardBody = $(this).closest(".card").find(".card-body");
-
-                      $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus");
-                    });
-                  });
-                </script>
               </div>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form id="batasDesaForm" method="post" action="#">
                 <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                  <!-- Sebelah Utara -->
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="batas_utara" class="mb-2">Sebelah Utara</label>
+                      <input type="text" id="batas_utara" name="batas_utara" class="form-control"
+                        placeholder="Masukkan nama desa">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="kec_utara" class="mb-2">Kecamatan</label>
+                      <input type="text" id="kec_utara" name="kec_utara" class="form-control"
+                        placeholder="Masukkan nama kecamatan">
+                    </div>
+                  </div>
+
+                  <!-- Sebelah Selatan -->
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="batas_selatan" class="mb-2">Sebelah Selatan</label>
+                      <input type="text" id="batas_selatan" name="batas_selatan" class="form-control"
+                        placeholder="Masukkan nama desa">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="kec_selatan" class="mb-2">Kecamatan</label>
+                      <input type="text" id="kec_selatan" name="kec_selatan" class="form-control"
+                        placeholder="Masukkan nama kecamatan">
+                    </div>
+                  </div>
+
+                  <!-- Sebelah Timur -->
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="batas_timur" class="mb-2">Sebelah Timur</label>
+                      <input type="text" id="batas_timur" name="batas_timur" class="form-control"
+                        placeholder="Masukkan nama desa">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="kec_timur" class="mb-2">Kecamatan</label>
+                      <input type="text" id="kec_timur" name="kec_timur" class="form-control"
+                        placeholder="Masukkan nama kecamatan">
+                    </div>
+                  </div>
+
+                  <!-- Sebelah Barat -->
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="batas_barat" class="mb-2">Sebelah Barat</label>
+                      <input type="text" id="batas_barat" name="batas_barat" class="form-control"
+                        placeholder="Masukkan nama desa">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="kec_barat" class="mb-2">Kecamatan</label>
+                      <input type="text" id="kec_barat" name="kec_barat" class="form-control"
+                        placeholder="Masukkan nama kecamatan">
+                    </div>
                   </div>
                 </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -129,11 +183,101 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Masukkan nama desa yang berbatasan sesuai arah mata angin (Utara, Selatan, Timur, Barat).</li>
+                      <li>Masukkan nama kecamatan tempat desa tersebut berada.</li>
+                      <li>Pastikan informasi yang diisi sesuai dengan data administratif yang benar.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+              $(document).ready(function() {
+                $(".toggle-form1").on("click", function() {
+                  var $icon = $(this).find("i");
+                  var $cardBody = $(this).closest(".card").find(".card-body");
+
+                  $cardBody.slideToggle();
+                  $icon.toggleClass("fa-minus fa-plus");
+                });
+              });
+            </script>
+          </div>
+          <!-- END:: CONTAINER BATAS WILAYAH DESA -->
+          
+          <!-- BEGIN::CONTAINER JARAK KANTOR DESA -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jarak Kantor Desa</h3>
+              <!-- Aturan Pengisian Button -->
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalJarakKantorDesa">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form2">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form2").on("click", function() {
+                      var $icon = $(this).find("i"); // Ambil ikon tombol
+                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_jarak_kantor_desa.php" method="post">
+                <div class="row">
+                  <!-- Jarak ke Ibukota Kecamatan -->
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
+                    <input type="text" id="jarak_ke_ibukota_kecamatan" name="jarak_ke_ibukota_kecamatan"
+                      class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                  </div>
+
+                  <!-- Jarak ke Ibukota Kabupaten/Kota -->
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
+                    <input type="text" id="jarak_ke_ibukota_kabupaten" name="jarak_ke_ibukota_kabupaten"
+                      class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                  </div>
+
+                  <!-- Checkbox untuk menggunakan data tahun sebelumnya -->
+
+                </div>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                </div>
+              </form>
+            </div>
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalJarakKantorDesa" tabindex="-1" aria-labelledby="aturanModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Masukkan jarak dalam satuan kilometer (km) menggunakan angka desimal jika diperlukan (contoh:
+                        12.5).</li>
+                      <li>Pastikan pengisian sesuai dengan data geografis atau administratif yang valid.</li>
+                      <li>Isi jarak ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota dengan teliti.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -143,6 +287,543 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+          <!-- END::JARAK KANTOR DESA -->
+
+          <!-- BEGIN::PERKEMBANGAN IDM -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Perkembangan Status Indeks Desa Membangun (IDM)</h3>
+              <!-- BEGIN:: INFO BUTTON -->
+              <!-- Aturan Pengisian Button -->
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#idm">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <!-- Modal Info -->
+              <div class="modal fade" id="idm" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li>Pilih Status Desa Membangun Pada Tahun</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END:: INFO BUTTON -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form9">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form9").on("click", function() {
+                      var $icon = $(this).find("i"); // Ambil ikon tombol
+                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <form action="../../handlers/form_idm_status.php" method="post">
+                <div class="mb-3">
+                  <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal)
+                    2024</label>
+                  <select name="status_2024" id="" class="form-control">
+                    <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
+                    <option value="MANDIRI">MANDIRI</option>
+                    <option value="MAJU">MAJU</option>
+                    <option value="BERKEMBANG">BERKEMBANG</option>
+                    <option value="TERTINGGAL">TERTINGGAL</option>
+                    <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                </div> <!--end::Footer-->
+              </form>
+              <!-- /.row -->
+            </div>
+          </div> <!--end::Container-->
+          <!-- END:: PERKEMBANGAN IDM -->
+
+          <!-- BEGIN:: ALAMAT WEBSITE -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Alamat Website dan Media Sosial</h3>
+              <!-- BEGIN:: INFO BUTTON -->
+              <!-- Aturan Pengisian Button -->
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#alamatWebsite">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <!-- Modal Info -->
+              <div class="modal fade" id="alamatWebsite" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li>Isi Alamat Website Desa dengan URL yang valid.</li>
+                        <li>Isi Alamat Email Desa dengan format email yang benar.</li>
+                        <li>Isi Alamat Facebook Desa dengan URL halaman Facebook.</li>
+                        <li>Isi Alamat Twitter Desa dengan URL profil Twitter.</li>
+                        <li>Isi Alamat YouTube Desa dengan URL channel YouTube.</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END:: INFO BUTTON -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form6">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form6").on("click", function() {
+                      var $icon = $(this).find("i"); // Ambil ikon tombol
+                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <form action="../../handlers/form_alamat_website_medsos.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Alamat Website Desa</label>
+                  <input type="text" name="alamat_website" class="form-control" placeholder="Masukkan alamat website">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Alamat Email Desa</label>
+                  <input type="email" name="alamat_email" class="form-control" placeholder="Masukkan alamat email">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Alamat Facebook Desa</label>
+                  <input type="text" name="alamat_facebook" class="form-control" placeholder="Masukkan alamat Facebook">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Alamat Twitter Desa</label>
+                  <input type="text" name="alamat_twitter" class="form-control" placeholder="Masukkan alamat Twitter">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Alamat YouTube Desa</label>
+                  <input type="text" name="alamat_youtube" class="form-control" placeholder="Masukkan alamat YouTube">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+              </form>
+              <!-- /.row -->
+            </div>
+          </div> <!--end::Container-->
+          <!-- END:: ALAMAT WEBSITE -->
+
+          <!-- BEGIN::Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya</h3>
+              <!-- BEGIN:: INFO BUTTON -->
+              <!-- Aturan Pengisian Button -->
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#idm">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <!-- Modal Info -->
+              <div class="modal fade" id="idm" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li>Pilih Status Desa Membangun Pada Tahun</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END:: INFO BUTTON -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form5">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form5").on("click", function() {
+                      var $icon = $(this).find("i"); // Ambil ikon tombol
+                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <form action="../../handlers/form_idm_status.php" method="post">
+                <div class="mb-3">
+                  <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
+                  <select name="status_2024" id="" class="form-control">
+                    <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
+                    <option value="DESA">DESA</option>
+                    <option value="KELURAHAN">KELURAHAN</option>
+                    <option value="KAMPUNG">KAMPUNG</option>
+                    <option value="NAGARI">NAGARI</option>
+                    <option value="GAMPONG">GAMPONG</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                </div> <!--end::Footer-->
+              </form>
+              <!-- /.row -->
+            </div>
+          </div> <!--end::Container-->
+          <!-- END:: Status Pemerintahan Desa dan Klasifikasi Berdasarkan Tingkat Perkembangannya -->
+        
+          <!-- BEGIN::Ketersediaan Penetapan Batas dan Peta Desa -->
+          <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Ketersediaan Penetapan Batas dan Peta Desa</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#PenetapanBatasDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <div class="modal fade" id="PenetapanBatasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Pilih antara SUDAH ADA atau BELUM ADA untuk Penetapan Batas Desa.</li>
+                                                <li>Isi No SK/Perbup/Perda/Perdes jika SUDAH ADA, atau otomatis BELUM ADA jika tidak.</li>
+                                                <li>Pilih antara ADA atau TIDAK ADA untuk Ketersediaan Peta Desa.</li>
+                                                <li>Isi No SK/Perbup/Perda jika ADA, atau otomatis TIDAK ADA jika tidak.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form5">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form5").on("click", function() {
+                                            var $icon = $(this).find("i");
+                                            var $cardBody = $(this).closest(".card").find(".card-body");
+
+                                            $cardBody.slideToggle();
+                                            $icon.toggleClass("fa-minus fa-plus");
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="card-body">
+              
+                <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+                  <div class="row">
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Penetapan Batas Desa</label>
+                      <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control">
+                        <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
+                        <option value="SUDAH ADA">SUDAH ADA</option>
+                        <option value="BELUM ADA">BELUM ADA</option>
+                      </select>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
+                      <input type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control"
+                        placeholder="Masukkan No Peraturan" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Ketersediaan Peta Desa</label>
+                      <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control">
+                        <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
+                        <option value="ADA">ADA</option>
+                        <option value="TIDAK ADA">TIDAK ADA</option>
+                      </select>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="mb-2">No SK/Perbup/Perda tentang Peta Desa</label>
+                      <input type="text" name="no_surat_peta_desa" id="no_surat_peta_desa" class="form-control"
+                        placeholder="Masukkan No Peraturan" readonly>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+          <!-- END::Ketersediaan Penetapan Batas dan Peta Desa -->
+
+          <!-- BEGIN::BANYAKNYA DUSUN -->
+            <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Banyaknya Dusun, Rukun Tetangga dan Rukun Warga</h3>
+                            <!-- BEGIN:: INFO BUTTON -->
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <!-- Modal Info -->
+                            <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Masukan Angka/Jumlah</li>
+                                                <li>Masukan Angka/Jumlah</li>
+                                                <li>Masukan Angka/Jumlah</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END:: INFO BUTTON -->
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form1">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form1").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                  
+                  <form action="../../handlers/form_banyaknya_dusun_rt_rw.php" method="post">
+                    <div class="row">
+                      <!-- /.col -->
+                      <div>
+                        <!-- /.form-group -->
+                        <div class="form-group mb-3">
+                          <label class="mb-2">Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis</label>
+                          <input type="number" name="jumlah_dusun" class="form-control" placeholder="Masukkan angka/jumlah" min="0"
+                            step="1" style="width: 100%;">
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                      <div>
+                        <!-- /.form-group -->
+                        <div class="form-group mb-3">
+                          <label class="mb-2">Banyaknya RW</label>
+                          <input type="number" name="jumlah_rw" class="form-control" placeholder="Masukkan angka/jumlah" min="0"
+                            step="1" style="width: 100%;">
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                      <div>
+                        <!-- /.form-group -->
+                        <div class="form-group mb-3">
+                          <label class="mb-2">Banyaknya RT</label>
+                          <input type="number" name="jumlah_rt" class="form-control" placeholder="Masukkan angka/jumlah" min="0"
+                            step="1" style="width: 100%;">
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                  </form>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- END::BANYAKNYA DUSUN -->
+
+          <!-- BEGIN::LUAS WILAYAH -->
+            <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Luas Wilayah Desa</h3>
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalLuasDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form1">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form1").on("click", function() {
+                                            var $icon = $(this).find("i");
+                                            var $cardBody = $(this).closest(".card").find(".card-body");
+                                            $cardBody.slideToggle();
+                                            $icon.toggleClass("fa-minus fa-plus");
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                
+                  <form action="../../handlers/form_luas_wilayah_desa.php" method="post">
+                    <div class="row">
+                      <div class="form-group mb-3">
+                        <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
+                        <input type="number" id="luas_wilayah_desa" name="luas_wilayah_desa" class="form-control"
+                          placeholder="Masukkan luas wilayah dalam hektar" style="width: 100%;" step="0.01" min="0">
+                
+                      </div>
+                    </div>
+            
+                  
+            
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                    </div>
+                  </form>
+              </div>
+              <div class="modal fade" id="modalLuasDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li>Masukkan luas wilayah desa dalam satuan hektar.</li>
+                        <li>Gunakan tanda titik (.) untuk angka desimal.</li>
+                        <li>Contoh pengisian: 120.75.</li>
+                        <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                        <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- END:LUAS WILAYAH -->
+
+          <!-- BEGIN::TOPOGRAFI TERLUAS -->
+             <div class="card card-primary card-outline mb-4">
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Topografi Terluas Wilayah Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTopografiTerluas">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form4">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form4").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+              
+                  <form action="../../handlers/form_topografi_terluas_wilayah_desa.php" method="post">
+                    <div class="row">
+                      <div class="form-group mb-3">
+                        <label class="mb-2">Topografi Terluas Wilayah Desa</label>
+                        <select name="topografi_terluas_wilayah_desa" class="form-control">
+                          <option value="" disabled selected>-- Silahkan Pilih --</option>
+                          <option value="LERENG/PUNCAK">LERENG/PUNCAK</option>
+                          <option value="LEMBAH">LEMBAH</option>
+                          <option value="DATARAN">DATARAN</option>
+                          <option value="PESISIR PANTAI">PESISIR PANTAI</option> 
+                        </select> 
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
+                    </div>
+                  </form>
+            
+                <!-- /.row -->
+              </div>
+              <!-- Modal Info -->
+              <div class="modal fade" id="modalTopografiTerluas" tabindex="-1" aria-labelledby="aturanModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan topografi wilayah desa Anda.</li>
+                        <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                        <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- END:: TOPOGRAFI TERLUAS -->
+          
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
@@ -161,7 +842,8 @@ include "../../config/session.php";
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css"
+    rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
   <!-- jQuery -->
   <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -187,10 +869,17 @@ include "../../config/session.php";
   <!-- dropzonejs -->
   <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-  <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
+    integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+  <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
+  <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+  <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+  <script src="../../../dist/js/adminlte.js"></script>
+  <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
     $(function() {
       //Initialize Select2 Elements
