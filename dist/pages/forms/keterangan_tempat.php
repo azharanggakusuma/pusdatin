@@ -97,8 +97,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form1").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form1").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -111,10 +111,10 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_sk_pembentukan.php" method="post">
                 <div class="row">
-                  <div class="form-group ">
-                    <select id="jenjang_sekolah_ke1" class="form-control mb-3" style="width: 100%;" required>
+                  <div class="form-group">
+                    <select id="sk_pembentukan" name="sk_pembentukan" class="form-control mb-3" style="width: 100%;" required>
                       <option value="" disabled selected>---Sk Pembentukan/Pengesahan Desa/Kelurahan---</option>
                       <option value="PERMENDAGRI/KEPMENDAGRI">PERMENDAGRI/KEPMENDAGRI</option>
                       <option value="PERDA PROVINSI">PERDA PROVINSI</option>
@@ -122,15 +122,14 @@ include "../../config/session.php";
                       <option value="SK GUBERNUR/BUPAT">SK GUBERNUR/BUPAT</option>
                       <option value="Lainnya">LAINNYA (TULISKAN)</option>
                     </select>
-                    <input type="text" id="inputLainnya" name="inputLainnya" class="form-control"
-                      placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
+                    <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
                   </div>
 
                   <script>
-                    const selectElement = document.getElementById("jenjang_sekolah_ke1");
+                    const selectElement = document.getElementById("sk_pembentukan");
                     const inputLainnya = document.getElementById("inputLainnya");
 
-                    selectElement.addEventListener("change", function () {
+                    selectElement.addEventListener("change", function() {
                       if (this.value === "Lainnya") {
                         inputLainnya.style.display = "block";
                         inputLainnya.required = true; // Menjadikan input wajib diisi
@@ -141,7 +140,6 @@ include "../../config/session.php";
                       }
                     });
                   </script>
-
                 </div>
 
                 <div class="mb-2">
@@ -150,6 +148,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+
               <!-- /.row -->
             </div>
 
@@ -190,8 +189,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -307,7 +306,7 @@ include "../../config/session.php";
   <script src="../../../dist/js/adminlte.js"></script>
   <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
-    $(function () {
+    $(function() {
       //Initialize Select2 Elements
       $('.select2').select2()
 
@@ -323,7 +322,7 @@ include "../../config/session.php";
       scrollbarAutoHide: "leave",
       scrollbarClickScroll: true,
     };
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
       if (
         sidebarWrapper &&
