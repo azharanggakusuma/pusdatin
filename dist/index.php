@@ -258,15 +258,7 @@ include "config/session.php";
                         </div> <!--end::Container-->
                     </div> <!--end::App Content-->
             </main> <!--end::App Main--> <!--begin::Footer-->
-            <footer class="app-footer"> <!--begin::To the end-->
-                <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-                <strong>
-                    Copyright &copy; 2024&nbsp;
-                    <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-                </strong>
-                All rights reserved.
-                <!--end::Copyright-->
-            </footer> <!--end::Footer-->
+            <?php include("components/footer.php"); ?>
         </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
         <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
