@@ -106,7 +106,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Lalu lintas dari/ke desa/kelurahan melalui</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Aspal/Beton">Aspal/Beton</option>
                       <option value="Diperkeras (kerikil, batu, dll.)">Diperkeras (kerikil, batu, dll.)</option>
@@ -116,7 +116,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Sepanjang tahun">Sepanjang tahun</option>
                       <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
@@ -126,7 +126,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Sepanjang tahun">Sepanjang tahun</option>
                       <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
@@ -136,7 +136,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan angkutan umum</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada,	dengan	trayek	tetap">Ada, dengan trayek tetap</option>
                       <option value="Ada,	tanpa	trayek	tetap">Ada, tanpa trayek tetap</option>
@@ -145,7 +145,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Operasional angkutan umum yang utama</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Setiap	hari">Setiap hari</option>
                       <option value="Tidak	setiap	hari">Tidak setiap hari</option>
@@ -153,7 +153,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jam operasi angkutan umum yang utama</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Siang	dan	malam	hari">Siang dan malam hari</option>
                       <option value="Hanya	siang/malam	hari">Hanya siang/malam hari</option>
@@ -214,7 +214,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -312,10 +312,10 @@ include "../../config/session.php";
 
                 <!-- Submit button -->
                 <div class="mb-2">
-                    <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp;Simpan
-                    </button>
-                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp;Simpan
+                  </button>
+                </div>
               </form>
               <!-- /.row -->
             </div>
@@ -373,7 +373,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Digunakan">Digunakan</option>
                       <option value="Jarang	digunakan">Jarang digunakan</option>
@@ -383,7 +383,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Fasilitas internet di kantor kepala desa/lurah</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Berfungsi">Berfungsi</option>
                       <option value="Jarang	berfungsi">Jarang berfungsi</option>
@@ -453,7 +453,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Kantor pos/pos pembantu/rumah pos</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Beroperasi">Beroperasi</option>
                       <option value="Jarang	beroperasi">Jarang beroperasi</option>
@@ -463,7 +463,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Layanan pos keliling</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak	ada">Tidak ada</option>
@@ -471,7 +471,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control form-select">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Beroperasi">Beroperasi</option>
                       <option value="Jarang	beroperas">Jarang beroperas</option>
