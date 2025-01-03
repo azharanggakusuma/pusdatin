@@ -26,26 +26,13 @@ $query = "
     SELECT DISTINCT
         tb_enumerator.kode_desa,
         tb_enumerator.nama_desa,
-        tb_luas_wilayah_desa.luas_wilayah_desa,
-        GROUP_CONCAT(
-            CONCAT(
-                'Batas: ', tb_batas_wilayah_desa.batas, 
-                ' / Desa/Kelurahan: ', tb_batas_wilayah_desa.desa, 
-                ' / Kecamatan: ', tb_batas_wilayah_desa.kecamatan
-            ) 
-            ORDER BY tb_batas_wilayah_desa.batas
-            SEPARATOR ' | '
-        ) AS batas_wilayah
+        tb_luas_wilayah_desa.luas_wilayah_desa
     FROM
         tb_enumerator
     LEFT JOIN
         tb_luas_wilayah_desa
     ON
         tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
-    LEFT JOIN
-        tb_batas_wilayah_desa
-    ON
-        tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
 ";
 
 // Tambahkan filter jika desa dan/atau tahun dipilih
@@ -76,7 +63,6 @@ if ($type === 'excel') {
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
     $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
-    $sheet->setCellValue('D1', 'Batas Wilayah Desa');
 
     // Style untuk header
     $headerStyle = [
@@ -85,35 +71,28 @@ if ($type === 'excel') {
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
     ];
-    $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);
+    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
 
     // Data dari database
     $rowNumber = 2;
     while ($row = mysqli_fetch_assoc($result)) {
-        // Replace the separator with a line break for better formatting in Excel
-        $batasWilayahFormatted = str_replace(' | ', PHP_EOL, $row['batas_wilayah']);
-
-        // Insert data into respective columns (A to D)
+        // Insert data into respective columns (A to C)
         $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
         $sheet->setCellValue('C' . $rowNumber, $row['luas_wilayah_desa']);
-        $sheet->setCellValue('D' . $rowNumber, $batasWilayahFormatted);
-
-        // Apply style to wrap text in column D
-        $sheet->getStyle('D' . $rowNumber)->getAlignment()->setWrapText(true);
 
         $rowNumber++;
     }
 
-    // Style untuk semua tabel (columns A to D)
+    // Style untuk semua tabel (columns A to C)
     $tableStyle = [
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
     ];
-    $sheet->getStyle('A1:D' . ($rowNumber - 1))->applyFromArray($tableStyle);
+    $sheet->getStyle('A1:C' . ($rowNumber - 1))->applyFromArray($tableStyle);
 
-    // Auto-size columns (ensure the text in column D is visible)
-    foreach (range('A', 'D') as $column) {
+    // Auto-size columns (ensure the text in column C is visible)
+    foreach (range('A', 'C') as $column) {
         $sheet->getColumnDimension($column)->setAutoSize(true);
     }
 
@@ -142,18 +121,13 @@ if ($type === 'pdf') {
     $html .= '<th>Kode Desa</th>';
     $html .= '<th>Desa/Kelurahan</th>';
     $html .= '<th>Luas Wilayah Desa (Hektar)</th>';
-    $html .= '<th>Batas Wilayah Desa</th>';
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
-        // Format batas wilayah agar dipisahkan dengan baris baru
-        $batasWilayahFormatted = str_replace(' | ', '<br>', htmlspecialchars($row['batas_wilayah']));
-
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
-        $html .= '<td>' . $batasWilayahFormatted . '</td>';
         $html .= '</tr>';
     }
 
@@ -164,6 +138,7 @@ if ($type === 'pdf') {
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
@@ -263,7 +238,6 @@ if ($type === 'pdf') {
                                         <th>Kode Desa</th>
                                         <th>Nama Desa</th>
                                         <th>Luas Wilayah Desa (Hektar)</th>
-                                        <th>Batas Wilayah Desa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -276,28 +250,15 @@ if ($type === 'pdf') {
                                         SELECT DISTINCT
                                             tb_enumerator.kode_desa,
                                             tb_enumerator.nama_desa,
-                                            tb_luas_wilayah_desa.luas_wilayah_desa,
-                                            GROUP_CONCAT(
-                                                CONCAT(
-                                                    '<li><strong>Batas: </strong>', tb_batas_wilayah_desa.batas, 
-                                                    ' / <strong>Desa/Kelurahan: </strong>', tb_batas_wilayah_desa.desa, 
-                                                    ' / <strong>Kecamatan: </strong>', tb_batas_wilayah_desa.kecamatan, 
-                                                    '</li>'
-                                                ) 
-                                                ORDER BY tb_batas_wilayah_desa.batas
-                                                SEPARATOR ''
-                                            ) AS batas_wilayah
+                                            tb_luas_wilayah_desa.luas_wilayah_desa
                                         FROM
                                             tb_enumerator
                                         LEFT JOIN
                                             tb_luas_wilayah_desa
                                         ON
                                             tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
-                                        LEFT JOIN
-                                            tb_batas_wilayah_desa
-                                        ON
-                                            tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
                                     ";
+
                                     if ($filter_tahun) {
                                         $query .= "
                                             LEFT JOIN user_progress
@@ -318,22 +279,15 @@ if ($type === 'pdf') {
                                             echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "<td>" . (!empty($row['luas_wilayah_desa']) ? htmlspecialchars($row['luas_wilayah_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
-                                            echo "<td>";
-                                            if (!empty($row['batas_wilayah'])) {
-                                                echo "<ul>" . $row['batas_wilayah'] . "</ul>";
-                                            } else {
-                                                echo '<span class="badge bg-warning text-dark">Belum Mengisi</span>';
-                                            }
-                                            echo "</td>";
-
                                             echo "</tr>";
                                         }
                                     } else {
-                                        echo "<tr><td colspan='3'>Tidak ada data.</td></tr>";
+                                        echo "<tr><td colspan='4'>Tidak ada data.</td></tr>";
                                     }
                                     ?>
                                 </tbody>
                             </table>
+
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -427,30 +381,17 @@ if ($type === 'pdf') {
                 <?php
                 // Query untuk mengambil data desa
                 $query = "
-                    SELECT DISTINCT
-                        tb_enumerator.kode_desa,
-                        tb_enumerator.nama_desa,
-                        tb_luas_wilayah_desa.luas_wilayah_desa,
-                        GROUP_CONCAT(
-                            DISTINCT CONCAT(
-                                'Batas: ', tb_batas_wilayah_desa.batas, 
-                                ' / Desa/Kelurahan: ', tb_batas_wilayah_desa.desa, 
-                                ' / Kecamatan: ', tb_batas_wilayah_desa.kecamatan
-                            ) 
-                            ORDER BY tb_batas_wilayah_desa.batas
-                            SEPARATOR ' | '
-                        ) AS batas_wilayah
-                    FROM
-                        tb_enumerator
-                    LEFT JOIN
-                        tb_luas_wilayah_desa
-                    ON
-                        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
-                    LEFT JOIN
-                        tb_batas_wilayah_desa
-                    ON
-                        tb_enumerator.id_desa = tb_batas_wilayah_desa.desa_id
-                ";
+                SELECT DISTINCT
+                    tb_enumerator.kode_desa,
+                    tb_enumerator.nama_desa,
+                    tb_luas_wilayah_desa.luas_wilayah_desa
+                FROM
+                    tb_enumerator
+                LEFT JOIN
+                    tb_luas_wilayah_desa
+                ON
+                    tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+            ";
 
                 // Tambahkan filter jika desa dan/atau tahun dipilih
                 $where = [];
@@ -496,21 +437,14 @@ if ($type === 'pdf') {
                                                 <th style="text-align: center; padding: 10px;">Kode Desa</th>
                                                 <th style="text-align: center; padding: 10px;">Nama Desa</th>
                                                 <th style="text-align: center; padding: 10px;">Luas Wilayah (Hektar)</th>
-                                                <th style="text-align: center; padding: 10px;">Batas Wilayah</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                                                <?php
-                                                $batas_wilayah = !is_null($row['batas_wilayah']) ? explode(' | ', $row['batas_wilayah']) : [];
-                                                $unique_batas = array_unique($batas_wilayah);
-                                                $batas_wilayah = implode('<br>', $unique_batas);
-                                                ?>
                                                 <tr>
                                                     <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['kode_desa']); ?></td>
                                                     <td style="padding: 10px;"><?php echo htmlspecialchars($row['nama_desa']); ?></td>
                                                     <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['luas_wilayah_desa']); ?></td>
-                                                    <td style="padding: 10px;"><?php echo htmlspecialchars_decode($batas_wilayah); ?></td>
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>
