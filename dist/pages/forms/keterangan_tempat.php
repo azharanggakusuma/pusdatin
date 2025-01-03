@@ -47,7 +47,8 @@ $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-//$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], '');
+$previous_sk_pembentukan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_sk_pembentukan', ['sk_pembentukan'], 'SK pembentukan/pengesahan desa/kelurahan');
+$previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_balai_desa', ['alamat_balai', 'nama_kecamatan'], 'Alamat Balai Desa/Kantor Kelurahan');
 ?>
 
 
@@ -217,6 +218,13 @@ $desa_id = $desa['id_desa'] ?? 0;
                         <option value="Lainnya">LAINNYA (TULISKAN)</option>
                       </select>
                       <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_sk_pembentukan_data, 'sk_pembentukan', 'SK pembentukan/pengesahan desa/kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <script>
@@ -310,12 +318,26 @@ $desa_id = $desa['id_desa'] ?? 0;
                     <div class="form-group mb-3">
                       <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
                       <textarea name="alamat_balai" id="alamat_balai" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_balai_desa_data, 'alamat_balai', 'Alamat Balai Desa/Kantor Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <!-- Nama Kecamatan -->
                     <div class="form-group">
                       <label for="nama_kecamatan" class="mb-3">Nama Kecamatan</label>
                       <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required placeholder="(isi nama kecamatan)">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_balai_desa_data, 'nama_kecamatan', 'Alamat Balai Desa/Kantor Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -342,7 +364,6 @@ $desa_id = $desa['id_desa'] ?? 0;
                     <ul>
                       <li>SILAHKAN ISI ALAMAT KANTOR DESA</li>
                       <li>SILAHKAN ISI NAMA KECAMATAN YANG SESUAI</li>
-
                     </ul>
                   </div>
                   <div class="modal-footer">
