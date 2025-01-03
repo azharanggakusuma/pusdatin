@@ -63,6 +63,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keterangan_tempat.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keterangan_tempat.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keterangan_tempat.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -203,16 +242,18 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_balai_desa.php" method="post">
                 <div class="row">
+                  <!-- Alamat Balai Desa/Kelurahan -->
                   <div class="form-group mb-3">
-                    <label for="" class="mb-3">Alamat Balai Desa/Kelurahan</label>
-                    <textarea name="" id="" class="form-control" placeholder="(isi alamat kantor desa)"
-                      required></textarea>
+                    <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
+                    <textarea name="alamat_balai" id="alamat_balai" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
                   </div>
-                  <div class="form-group ">
-                    <label for="" class="mb-3">Nama Kecamatan</label>
-                    <input type="text" class="form-control" Required placeholder="(isi nama kecamatan)">
+
+                  <!-- Nama Kecamatan -->
+                  <div class="form-group">
+                    <label for="nama_kecamatan" class="mb-3">Nama Kecamatan</label>
+                    <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required placeholder="(isi nama kecamatan)">
                   </div>
                 </div>
 
