@@ -571,14 +571,14 @@ include "../../config/session.php";
                         <option value="BELUM ADA">BELUM ADA</option>
                       </select>
                     </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
+                      <input type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control"
+                        placeholder="Masukkan No Peraturan" readonly>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
-                        <input type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control"
-                          placeholder="Masukkan No Peraturan" readonly>
-                      </div>
-                    </div>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
@@ -605,7 +605,7 @@ include "../../config/session.php";
               </form>
             </div>
           </div>
-          <!-- END::Ketersediaan Penetapan Batas dan Peta Desa -->  
+          <!-- END::Ketersediaan Penetapan Batas dan Peta Desa -->
 
           <!-- BEGIN::BANYAKNYA DUSUN -->
           <div class="card card-primary card-outline mb-4">
@@ -954,48 +954,48 @@ include "../../config/session.php";
 
           <!-- BEGIN::TITIK KOORDINAT -->
           <div class="card card-primary card-outline mb-4">
-                        <div class="card-header mb-3">
-                            <h3 class="card-title">Titik Koordinat Kantor Desa</h3>
-                            <!-- Aturan Pengisian Button -->
-                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTitikKoordinatKantorDesa">
-                                <i class="fas fa-info-circle"></i>
-                            </button>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool toggle-form3">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        $(".toggle-form3").on("click", function() {
-                                            var $icon = $(this).find("i"); // Ambil ikon tombol
-                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+            <div class="card-header mb-3">
+              <h3 class="card-title">Titik Koordinat Kantor Desa</h3>
+              <!-- Aturan Pengisian Button -->
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTitikKoordinatKantorDesa">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form3">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form3").on("click", function() {
+                      var $icon = $(this).find("i"); // Ambil ikon tombol
+                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                
-                <form action="../../handlers/form_titik_koordinat_kantor_desa.php" method="post">
-                  <div class="row"> <!-- /.col -->
-                    <!-- /.form-group -->
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Koordinat Lintang (Latitude)</label>
-                      <input type="text" class="form-control" name="koordinat_lintang" placeholder="Masukkan koordinat lintang"
-                        style="width: 100%;">
-                    </div>
-          
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Koordinat Bujur (Longitude)</label>
-                      <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur"
-                        style="width: 100%;">
-                    </div>
-                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
-                </form>
+                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <form action="../../handlers/form_titik_koordinat_kantor_desa.php" method="post">
+                <div class="row"> <!-- /.col -->
+                  <!-- /.form-group -->
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Koordinat Lintang (Latitude)</label>
+                    <input type="text" class="form-control" name="koordinat_lintang" placeholder="Masukkan koordinat lintang"
+                      style="width: 100%;">
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Koordinat Bujur (Longitude)</label>
+                    <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur"
+                      style="width: 100%;">
+                  </div>
+                  <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+              </form>
               <!-- /.row -->
             </div>
             <!-- Modal Info -->
@@ -1020,7 +1020,7 @@ include "../../config/session.php";
                       <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
-          
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -1029,21 +1029,11 @@ include "../../config/session.php";
             </div>
           </div>
           <!-- END::TITIK KOOREDINAT -->
-
-
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <footer class="app-footer"> <!--begin::To the end-->
-      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-      <strong>
-        Copyright &copy; 2024&nbsp;
-        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-      </strong>
-      All rights reserved.
-      <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->

@@ -738,15 +738,7 @@ $previous_klb_json = json_encode($previous_klb_data);
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <footer class="app-footer"> <!--begin::To the end-->
-      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-      <strong>
-        Copyright &copy; 2024&nbsp;
-        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-      </strong>
-      All rights reserved.
-      <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->

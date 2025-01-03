@@ -385,14 +385,14 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="" method="post">
                 <div class="row">
-                 <div class="form-group mb-3">
+                  <div class="form-group mb-3">
                     <label class="mb-2">Ketersedian RPJMDes</label>
                     <select name="" id="publicSpaceStatus" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
-                 </div>
+                  </div>
                 </div>
                 <div class="form-group mb-3" id="taunawalInfo" style="display: none;">
                   <label class="mb-2">Periode Tahun Awal RPJMDes</label>
@@ -421,13 +421,13 @@ include "../../config/session.php";
                   });
                 </script>
                 <div class="form-group mb-3">
-                    <label class="mb-2">Ketersediaan RKPDes</label>
-                    <select name="" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak Ada</option>
-                    </select>
-                  </div>
+                  <label class="mb-2">Ketersediaan RKPDes</label>
+                  <select name="" id="" class="form-control">
+                    <option value="" disabled selected> --- Pilih --- </option>
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
+                  </select>
+                </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -699,7 +699,7 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="" method="post">
                 <div class="row">
-                <div class="form-group mb-3">
+                  <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kader Pembangunan Manusia (KPM)</label>
                     <select name="" id="kpm" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -707,18 +707,18 @@ include "../../config/session.php";
                       <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
-                 </div>
+                  </div>
                 </div>
                 <div class="form-group mb-3 KaderInfo" style="display: none;">
                   <label class="mb-2">Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota</label>
                   <select name="" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak Ada</option>
-                    </select>
+                    <option value="" disabled selected> --- Pilih --- </option>
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
+                  </select>
                 </div>
 
-                
+
                 <script>
                   document.addEventListener("DOMContentLoaded", function() {
                     const publicSpaceStatus = document.getElementById('kpm');
@@ -733,7 +733,7 @@ include "../../config/session.php";
                     });
                   });
                 </script>
-                
+
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -764,23 +764,11 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-
-          
-
-
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <footer class="app-footer"> <!--begin::To the end-->
-      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-      <strong>
-        Copyright &copy; 2024&nbsp;
-        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-      </strong>
-      All rights reserved.
-      <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
