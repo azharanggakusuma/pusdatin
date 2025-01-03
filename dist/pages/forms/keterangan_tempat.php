@@ -214,7 +214,7 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                         <option value="PERMENDAGRI/KEPMENDAGRI">PERMENDAGRI/KEPMENDAGRI</option>
                         <option value="PERDA PROVINSI">PERDA PROVINSI</option>
                         <option value="PERDA KABUPATEN">PERDA KABUPATEN</option>
-                        <option value="SK GUBERNUR/BUPAT">SK GUBERNUR/BUPAT</option>
+                        <option value="SK GUBERNUR/BUPAT">SK GUBERNUR/BUPATI</option>
                         <option value="Lainnya">LAINNYA (TULISKAN)</option>
                       </select>
                       <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
