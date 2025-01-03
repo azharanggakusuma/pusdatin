@@ -3,6 +3,54 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil data sebelumnya
+//$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], '');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -150,44 +198,51 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_sk_pembentukan.php" method="post">
-                <div class="row">
-                  <div class="form-group">
-                    <select id="sk_pembentukan" name="sk_pembentukan" class="form-control mb-3" style="width: 100%;" required>
-                      <option value="" disabled selected>---Sk Pembentukan/Pengesahan Desa/Kelurahan---</option>
-                      <option value="PERMENDAGRI/KEPMENDAGRI">PERMENDAGRI/KEPMENDAGRI</option>
-                      <option value="PERDA PROVINSI">PERDA PROVINSI</option>
-                      <option value="PERDA KABUPATEN">PERDA KABUPATEN</option>
-                      <option value="SK GUBERNUR/BUPAT">SK GUBERNUR/BUPAT</option>
-                      <option value="Lainnya">LAINNYA (TULISKAN)</option>
-                    </select>
-                    <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
+              <?php if ($form_status['SK pembentukan/pengesahan desa/kelurahan']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+                <form action="../../handlers/form_sk_pembentukan.php" method="post">
+                  <div class="row">
+                    <div class="form-group">
+                      <select id="sk_pembentukan" name="sk_pembentukan" class="form-control mb-3" style="width: 100%;" required>
+                        <option value="" disabled selected>---Sk Pembentukan/Pengesahan Desa/Kelurahan---</option>
+                        <option value="PERMENDAGRI/KEPMENDAGRI">PERMENDAGRI/KEPMENDAGRI</option>
+                        <option value="PERDA PROVINSI">PERDA PROVINSI</option>
+                        <option value="PERDA KABUPATEN">PERDA KABUPATEN</option>
+                        <option value="SK GUBERNUR/BUPAT">SK GUBERNUR/BUPAT</option>
+                        <option value="Lainnya">LAINNYA (TULISKAN)</option>
+                      </select>
+                      <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
+                    </div>
+
+                    <script>
+                      const selectElement = document.getElementById("sk_pembentukan");
+                      const inputLainnya = document.getElementById("inputLainnya");
+
+                      selectElement.addEventListener("change", function() {
+                        if (this.value === "Lainnya") {
+                          inputLainnya.style.display = "block";
+                          inputLainnya.required = true; // Menjadikan input wajib diisi
+                        } else {
+                          inputLainnya.style.display = "none";
+                          inputLainnya.required = false; // Menghapus kewajiban input
+                          inputLainnya.value = ""; // Mengosongkan input jika disembunyikan
+                        }
+                      });
+                    </script>
                   </div>
 
-                  <script>
-                    const selectElement = document.getElementById("sk_pembentukan");
-                    const inputLainnya = document.getElementById("inputLainnya");
-
-                    selectElement.addEventListener("change", function() {
-                      if (this.value === "Lainnya") {
-                        inputLainnya.style.display = "block";
-                        inputLainnya.required = true; // Menjadikan input wajib diisi
-                      } else {
-                        inputLainnya.style.display = "none";
-                        inputLainnya.required = false; // Menghapus kewajiban input
-                        inputLainnya.value = ""; // Mengosongkan input jika disembunyikan
-                      }
-                    });
-                  </script>
-                </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
-
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+                </form>
+              <?php endif; ?>
               <!-- /.row -->
             </div>
 
@@ -242,27 +297,35 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_balai_desa.php" method="post">
-                <div class="row">
-                  <!-- Alamat Balai Desa/Kelurahan -->
-                  <div class="form-group mb-3">
-                    <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
-                    <textarea name="alamat_balai" id="alamat_balai" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
+              <?php if ($form_status['Alamat Balai Desa/Kantor Kelurahan']) : ?>
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                  <i class="fas fa-lock me-2"></i>
+                  <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php else: ?>
+                <form action="../../handlers/form_balai_desa.php" method="post">
+                  <div class="row">
+                    <!-- Alamat Balai Desa/Kelurahan -->
+                    <div class="form-group mb-3">
+                      <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
+                      <textarea name="alamat_balai" id="alamat_balai" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
+                    </div>
+
+                    <!-- Nama Kecamatan -->
+                    <div class="form-group">
+                      <label for="nama_kecamatan" class="mb-3">Nama Kecamatan</label>
+                      <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required placeholder="(isi nama kecamatan)">
+                    </div>
                   </div>
 
-                  <!-- Nama Kecamatan -->
-                  <div class="form-group">
-                    <label for="nama_kecamatan" class="mb-3">Nama Kecamatan</label>
-                    <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required placeholder="(isi nama kecamatan)">
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
                   </div>
-                </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
+                </form>
+              <?php endif; ?>
               <!-- /.row -->
             </div>
 
