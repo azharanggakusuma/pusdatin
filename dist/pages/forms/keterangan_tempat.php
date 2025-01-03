@@ -244,6 +244,18 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                     </script>
                   </div>
 
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_sk_pembentukan" name="use_previous_sk_pembentukan" value="1">
+                        <label class="form-check-label" for="use_previous_sk_pembentukan">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
                       <i class="fas fa-save"></i> &nbsp; Simpan
@@ -267,7 +279,6 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                       <li>SILAHKAN PILIH ANTARA: PERMENDAGRI/KEPMENDAGRI, PERDA PROVINSI, PERDA KABUPATEN, SK
                         GUBERNUR/BUPAT, LAINNYA (TULISKAN)</li>
                       <li>APABILA MEMILIH LAINNYA SILAHKAN TULISKAN PADA FORM DIBAWAHNYA</li>
-
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -340,6 +351,18 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                       <?php endif; ?>
                     </div>
                   </div>
+
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_balai_desa" name="use_previous_balai_desa" value="1">
+                        <label class="form-check-label" for="use_previous_balai_desa">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
