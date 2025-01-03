@@ -125,33 +125,6 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
-
-            <!-- /end -->
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
-                    <p style="margin-left: 20px;">1. Tanah Bengkok</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                    <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                    <p style="margin-left: 20px;">3. Kebun Desa</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                    <p style="margin-left: 20px;">4. Sawah Desa</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                  </div>
-                </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="modalKAS" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -176,6 +149,167 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
+          <!--end::Row-->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Pemanfaatan Sistem Informasi Desa dan Sistem Keuangan Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpemanfaatan">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Sistem Informasi Desa</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Digunakan">Ada, Digunakan</option>
+                      <option value="Jarang	digunakan">Ada, Jarang digunakan</option>
+                      <option value="Tidak	digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak	ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Sistem Keuangan Desa</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Digunakan">Ada, Digunakan</option>
+                      <option value="Jarang	digunakan">Ada, Jarang digunakan</option>
+                      <option value="Tidak	digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak	ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalpemanfaatan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih yang sesuai untuk keberadaan sistem informasi desa </li>
+                      <li>Pilih yang sesuai untuk keberadaan sistem keuangan desa </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--end::Row-->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Pemanfaatan Sistem Informasi Desa dan Sistem Keuangan Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpemanfaatan">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Sistem Informasi Desa</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Digunakan">Ada, Digunakan</option>
+                      <option value="Jarang	digunakan">Ada, Jarang digunakan</option>
+                      <option value="Tidak	digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak	ada">Tidak ada</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Sistem Keuangan Desa</label>
+                    <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Digunakan">Ada, Digunakan</option>
+                      <option value="Jarang	digunakan">Ada, Jarang digunakan</option>
+                      <option value="Tidak	digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak	ada">Tidak ada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalpemanfaatan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih yang sesuai untuk keberadaan sistem informasi desa </li>
+                      <li>Pilih yang sesuai untuk keberadaan sistem keuangan desa </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
