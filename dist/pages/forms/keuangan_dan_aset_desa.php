@@ -79,8 +79,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Tanah Kas Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKAS">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -105,8 +105,41 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
+                    <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
+                    <p style="margin-left: 20px;">1. Tanah Bengkok</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p style="margin-left: 20px;">3. Kebun Desa</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p style="margin-left: 20px;">4. Sawah Desa</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- /end -->
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
+                    <p style="margin-left: 20px;">1. Tanah Bengkok</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p style="margin-left: 20px;">3. Kebun Desa</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p style="margin-left: 20px;">4. Sawah Desa</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
                   </div>
                 </div>
 
@@ -120,7 +153,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKAS" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -129,11 +162,11 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isi Luas Tanah Kas Desa (Hektar) dalam angka berbentuk desimal</li>
+                      <li>Isi luas Tanah Bengkok </li>
+                      <li>Isi luas Tanah Titi Sara</li>
+                      <li>isi luas Kebun Desa</li>
+                      <li>Isi luas Sawah Desa </li>
                     </ul>
                   </div>
                   <div class="modal-footer">
