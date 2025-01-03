@@ -328,7 +328,7 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                     <!-- Alamat Balai Desa/Kelurahan -->
                     <div class="form-group mb-3">
                       <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
-                      <textarea name="alamat_balai" id="alamat_balai" class="form-control" placeholder="(isi alamat kantor desa)" required></textarea>
+                      <textarea name="alamat_balai" id="alamat_balai" class="form-control w-100" placeholder="(isi alamat kantor desa)" required style="height: 100px;"></textarea>
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
