@@ -26,6 +26,7 @@ $query = "
     SELECT DISTINCT
         tb_enumerator.kode_desa,
         tb_enumerator.nama_desa,
+        tb_enumerator.kecamatan,
         tb_sk_pembentukan.sk_pembentukan
     FROM
         tb_enumerator
@@ -49,7 +50,7 @@ if ($where) {
 }
 
 // Modify the query to include the GROUP BY clause
-$query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_sk_pembentukan.sk_pembentukan";
+$query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_enumerator.kecamatan, tb_sk_pembentukan.sk_pembentukan";
 
 // Eksekusi query
 $result = mysqli_query($conn, $query);
@@ -62,7 +63,8 @@ if ($type === 'excel') {
     // Header tabel
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
-    $sheet->setCellValue('C1', 'Sk Pembentukan/Pengesahan Desa/Kelurahan');
+    $sheet->setCellValue('C1', 'Kecamatan');
+    $sheet->setCellValue('D1', 'Sk Pembentukan/Pengesahan Desa/Kelurahan');
 
     // Style untuk header
     $headerStyle = [
@@ -71,7 +73,7 @@ if ($type === 'excel') {
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
     ];
-    $sheet->getStyle('A1:C1')->applyFromArray($headerStyle);
+    $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);
 
     // Data dari database
     $rowNumber = 2;
@@ -79,7 +81,8 @@ if ($type === 'excel') {
         // Insert data into respective columns (A to C)
         $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
-        $sheet->setCellValue('C' . $rowNumber, $row['sk_pembentukan']);
+        $sheet->setCellValue('C' . $rowNumber, $row['kecamatan']);
+        $sheet->setCellValue('D' . $rowNumber, $row['sk_pembentukan']);
 
         $rowNumber++;
     }
@@ -120,6 +123,7 @@ if ($type === 'pdf') {
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
     $html .= '<th>Kode Desa</th>';
     $html .= '<th>Desa/Kelurahan</th>';
+    $html .= '<th>Kecamatan</th>';
     $html .= '<th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>';
     $html .= '</tr></thead><tbody>';
 
@@ -127,6 +131,7 @@ if ($type === 'pdf') {
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
+        $html .= '<td>' . htmlspecialchars($row['kecamatan']) . '</td>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['sk_pembentukan']) . '</td>';
         $html .= '</tr>';
     }
@@ -236,6 +241,7 @@ if ($type === 'pdf') {
                                         <th>#</th>
                                         <th>Kode Desa</th>
                                         <th>Nama Desa</th>
+                                        <th>Kecamatan</th>
                                         <th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
                                     </tr>
                                 </thead>
@@ -249,6 +255,7 @@ if ($type === 'pdf') {
                                         SELECT DISTINCT
                                             tb_enumerator.kode_desa,
                                             tb_enumerator.nama_desa,
+                                            tb_enumerator.kecamatan,
                                             tb_sk_pembentukan.sk_pembentukan
                                         FROM
                                             tb_enumerator
@@ -266,7 +273,7 @@ if ($type === 'pdf') {
                                         ";
                                     }
 
-                                    $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_sk_pembentukan.sk_pembentukan";
+                                    $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_enumerator.kecamatan, tb_sk_pembentukan.sk_pembentukan";
 
                                     $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
 
@@ -277,6 +284,7 @@ if ($type === 'pdf') {
                                             echo "<td>" . $no++ . "</td>";
                                             echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>" . (!empty($row['kecamatan']) ? htmlspecialchars($row['kecamatan']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "<td>" . (!empty($row['sk_pembentukan']) ? htmlspecialchars($row['sk_pembentukan']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "</tr>";
                                         }
@@ -383,6 +391,7 @@ if ($type === 'pdf') {
                 SELECT DISTINCT
                     tb_enumerator.kode_desa,
                     tb_enumerator.nama_desa,
+                    tb_enumerator.kecamatan,
                     tb_sk_pembentukan.sk_pembentukan
                 FROM
                     tb_enumerator
@@ -406,7 +415,7 @@ if ($type === 'pdf') {
                 }
 
                 // Modify the query to include the GROUP BY clause
-                $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_sk_pembentukan.sk_pembentukan";
+                $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_enumerator.kecamatan, tb_sk_pembentukan.sk_pembentukan";
 
                 // Eksekusi query
                 $result = mysqli_query($conn, $query);
@@ -435,6 +444,7 @@ if ($type === 'pdf') {
                                             <tr>
                                                 <th style="text-align: center; padding: 10px;">Kode Desa</th>
                                                 <th style="text-align: center; padding: 10px;">Nama Desa</th>
+                                                <th style="text-align: center; padding: 10px;">Kecamatan</th>
                                                 <th style="text-align: center; padding: 10px;">Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
                                             </tr>
                                         </thead>
@@ -443,6 +453,7 @@ if ($type === 'pdf') {
                                                 <tr>
                                                     <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['kode_desa']); ?></td>
                                                     <td style="padding: 10px;"><?php echo htmlspecialchars($row['nama_desa']); ?></td>
+                                                    <td style="padding: 10px;"><?php echo htmlspecialchars($row['kecamatan']); ?></td>
                                                     <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['sk_pembentukan']); ?></td>
                                                 </tr>
                                             <?php endwhile; ?>
