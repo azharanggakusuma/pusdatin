@@ -26,13 +26,13 @@ $query = "
     SELECT DISTINCT
         tb_enumerator.kode_desa,
         tb_enumerator.nama_desa,
-        tb_luas_wilayah_desa.luas_wilayah_desa
+        tb_sk_pembentukan.sk_pembentukan
     FROM
         tb_enumerator
     LEFT JOIN
-        tb_luas_wilayah_desa
+        tb_sk_pembentukan
     ON
-        tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+        tb_enumerator.id_desa = tb_sk_pembentukan.desa_id
 ";
 
 // Tambahkan filter jika desa dan/atau tahun dipilih
@@ -49,7 +49,7 @@ if ($where) {
 }
 
 // Modify the query to include the GROUP BY clause
-$query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+$query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_sk_pembentukan.sk_pembentukan";
 
 // Eksekusi query
 $result = mysqli_query($conn, $query);
@@ -62,7 +62,7 @@ if ($type === 'excel') {
     // Header tabel
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
-    $sheet->setCellValue('C1', 'Luas Wilayah Desa (Hektar)');
+    $sheet->setCellValue('C1', 'Sk Pembentukan/Pengesahan Desa/Kelurahan');
 
     // Style untuk header
     $headerStyle = [
@@ -79,7 +79,7 @@ if ($type === 'excel') {
         // Insert data into respective columns (A to C)
         $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
-        $sheet->setCellValue('C' . $rowNumber, $row['luas_wilayah_desa']);
+        $sheet->setCellValue('C' . $rowNumber, $row['sk_pembentukan']);
 
         $rowNumber++;
     }
@@ -120,14 +120,14 @@ if ($type === 'pdf') {
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
     $html .= '<th>Kode Desa</th>';
     $html .= '<th>Desa/Kelurahan</th>';
-    $html .= '<th>Luas Wilayah Desa (Hektar)</th>';
+    $html .= '<th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>';
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
         $html .= '<tr>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
-        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['luas_wilayah_desa']) . '</td>';
+        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['sk_pembentukan']) . '</td>';
         $html .= '</tr>';
     }
 
@@ -138,7 +138,6 @@ if ($type === 'pdf') {
     exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
@@ -237,7 +236,7 @@ if ($type === 'pdf') {
                                         <th>#</th>
                                         <th>Kode Desa</th>
                                         <th>Nama Desa</th>
-                                        <th>Luas Wilayah Desa (Hektar)</th>
+                                        <th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -250,13 +249,13 @@ if ($type === 'pdf') {
                                         SELECT DISTINCT
                                             tb_enumerator.kode_desa,
                                             tb_enumerator.nama_desa,
-                                            tb_luas_wilayah_desa.luas_wilayah_desa
+                                            tb_sk_pembentukan.sk_pembentukan
                                         FROM
                                             tb_enumerator
                                         LEFT JOIN
-                                            tb_luas_wilayah_desa
+                                            tb_sk_pembentukan
                                         ON
-                                            tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+                                            tb_enumerator.id_desa = tb_sk_pembentukan.desa_id
                                     ";
 
                                     if ($filter_tahun) {
@@ -267,7 +266,7 @@ if ($type === 'pdf') {
                                         ";
                                     }
 
-                                    $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+                                    $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_sk_pembentukan.sk_pembentukan";
 
                                     $result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
 
@@ -278,7 +277,7 @@ if ($type === 'pdf') {
                                             echo "<td>" . $no++ . "</td>";
                                             echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
-                                            echo "<td>" . (!empty($row['luas_wilayah_desa']) ? htmlspecialchars($row['luas_wilayah_desa']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
+                                            echo "<td>" . (!empty($row['sk_pembentukan']) ? htmlspecialchars($row['sk_pembentukan']) : '<span class="badge bg-warning text-dark">Belum Mengisi</span>') . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
@@ -384,13 +383,13 @@ if ($type === 'pdf') {
                 SELECT DISTINCT
                     tb_enumerator.kode_desa,
                     tb_enumerator.nama_desa,
-                    tb_luas_wilayah_desa.luas_wilayah_desa
+                    tb_sk_pembentukan.sk_pembentukan
                 FROM
                     tb_enumerator
                 LEFT JOIN
-                    tb_luas_wilayah_desa
+                    tb_sk_pembentukan
                 ON
-                    tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+                    tb_enumerator.id_desa = tb_sk_pembentukan.desa_id
             ";
 
                 // Tambahkan filter jika desa dan/atau tahun dipilih
@@ -407,7 +406,7 @@ if ($type === 'pdf') {
                 }
 
                 // Modify the query to include the GROUP BY clause
-                $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_luas_wilayah_desa.luas_wilayah_desa";
+                $query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_sk_pembentukan.sk_pembentukan";
 
                 // Eksekusi query
                 $result = mysqli_query($conn, $query);
@@ -436,7 +435,7 @@ if ($type === 'pdf') {
                                             <tr>
                                                 <th style="text-align: center; padding: 10px;">Kode Desa</th>
                                                 <th style="text-align: center; padding: 10px;">Nama Desa</th>
-                                                <th style="text-align: center; padding: 10px;">Luas Wilayah (Hektar)</th>
+                                                <th style="text-align: center; padding: 10px;">Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -444,7 +443,7 @@ if ($type === 'pdf') {
                                                 <tr>
                                                     <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['kode_desa']); ?></td>
                                                     <td style="padding: 10px;"><?php echo htmlspecialchars($row['nama_desa']); ?></td>
-                                                    <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['luas_wilayah_desa']); ?></td>
+                                                    <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['sk_pembentukan']); ?></td>
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>
