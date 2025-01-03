@@ -635,7 +635,7 @@ include "../../config/session.php";
                     <label class="mb-2">Keberadaan pendamping lokal desa</label>
                     <select name="" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Ada">Ada, Aktif</option>
+                      <option value="Ada, Aktif">Ada, Aktif</option>
                       <option value="Ada, Tidak Ada">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
@@ -674,8 +674,8 @@ include "../../config/session.php";
           <!--end::Row-->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan Pendamping Lokal Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpendamping">
+              <h3 class="card-title">Keberadaan Kader Pembangunan Manusia (KPM)</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalkader">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -699,16 +699,41 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="" method="post">
                 <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan pendamping lokal desa</label>
-                    <select name="" id="" class="form-control">
+                <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Kader Pembangunan Manusia (KPM)</label>
+                    <select name="" id="kpm" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Ada">Ada, Aktif</option>
-                      <option value="Ada, Tidak Ada">Ada, Tidak Aktif</option>
+                      <option value="Ada, Aktif">Ada, Aktif</option>
+                      <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
-                  </div>
+                 </div>
                 </div>
+                <div class="form-group mb-3 KaderInfo" style="display: none;">
+                  <label class="mb-2">Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota</label>
+                  <select name="" id="" class="form-control">
+                      <option value="" disabled selected> --- Pilih --- </option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                </div>
+
+                
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const publicSpaceStatus = document.getElementById('kpm');
+                    const additionalInfo = document.querySelector('.KaderInfo');
+
+                    publicSpaceStatus.addEventListener('change', function() {
+                      if (this.value === 'Ada, Aktif' || this.value === 'Ada, Tidak Aktif') {
+                        additionalInfo.style.display = 'block';
+                      } else {
+                        additionalInfo.style.display = 'none';
+                      }
+                    });
+                  });
+                </script>
+                
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -719,7 +744,7 @@ include "../../config/session.php";
               <!-- /.row -->
             </div>
             <!-- Modal Info -->
-            <div class="modal fade" id="modalpendamping" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalkader" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -728,7 +753,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan pendamping lokal desa</li>
+                      <li>Pilih Keaktifan Keberadaan Kader Pembangunan Manusia (KPM)</li>
+                      <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
                     </ul>
                   </div>
                   <div class="modal-footer">
