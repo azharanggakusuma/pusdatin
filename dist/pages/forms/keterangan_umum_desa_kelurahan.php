@@ -950,7 +950,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-          <!-- END::Keberadaan, status, kondisi, dan lokasi kantor kepala desa/lurah -->
+          <!-- END::Keberadaan, status, kondisi, dan lokasi kantor kepala desa/lurah --> 
 
           <!-- BEGIN::TITIK KOORDINAT -->
           <div class="card card-primary card-outline mb-4">
