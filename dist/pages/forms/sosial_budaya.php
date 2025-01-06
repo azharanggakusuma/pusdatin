@@ -34,21 +34,22 @@ foreach ($forms as $form) {
 }
 
 include("../../config/function.php");
-// Ambil ID pengguna yang sedang login
-$username = $_SESSION['username'] ?? '';
+// Ambil ID pengguna
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Ambil ID desa yang terkait dengan user yang sedang login
+// Ambil ID desa
 $query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan dan kelompok kegiatan olahraga di desa/kelurahan');
+$previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempat_ibadah', ['jumlah_masjid', 'jumlah_pura', 'jumlah_musala', 'jumlah_wihara', 'jumlah_gereja_kristen', 'jumlah_kelenteng', 'jumlah_gereja_katolik', 'jumlah_balai_basarah', 'jumlah_kapel', 'lainnya', 'jumlah_lainnya'], 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+$previous_disabilitas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_disabilitas', ['jumlah_tuna_netra', 'jumlah_tuna_rungu', 'jumlah_tuna_wicara', 'jumlah_tuna_rungu_wicara', 'jumlah_tuna_daksa', 'jumlah_tuna_grahita', 'jumlah_tuna_laras', 'jumlah_tuna_eks_kusta', 'jumlah_tuna_ganda'], 'Banyaknya penyandang disabilitas');
+$previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_ruang_publik', ['status_ruang_publik', 'ruang_terbuka_hijau', 'ruang_terbuka_non_hijau'], 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
 ?>
 
 <!DOCTYPE html>
@@ -200,10 +201,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="masjid" class="form-label">Masjid</label>
                       <input type="number" name="masjid" class="form-control" id="masjid" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_masjid', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="pura" class="form-label">Pura</label>
                       <input type="number" name="pura" class="form-control" id="pura" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_pura', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -211,10 +226,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="musala" class="form-label">Surau/Langgar/Musala</label>
                       <input type="number" name="musala" class="form-control" id="musala" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_musala', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="wihara" class="form-label">Wihara</label>
                       <input type="number" name="wihara" class="form-control" id="wihara" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_wihara', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -222,10 +251,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="kristen" class="form-label">Gereja Kristen</label>
                       <input type="number" name="kristen" class="form-control" id="kristen" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_gereja_kristen', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="kelenteng" class="form-label">Kelenteng</label>
                       <input type="number" name="kelenteng" class="form-control" id="kelenteng" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_kelenteng', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -233,10 +276,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="katolik" class="form-label">Gereja Katolik</label>
                       <input type="number" name="katolik" class="form-control" id="katolik" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_gereja_katolik', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="basarah" class="form-label">Balai Basarah</label>
                       <input type="number" name="basarah" class="form-control" id="basarah" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_balai_basarah', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -244,11 +301,28 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="kapel" class="form-label">Kapel</label>
                       <input type="number" name="kapel" class="form-control" id="kapel" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_kapel', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="lainnya" class="form-label">Lainnya</label>
                       <input type="text" name="lainnya" class="form-control" id="lainnya" placeholder="Tuliskan jenis tempat ibadah lainnya">
                       <input type="number" name="lainnyaInput" class="form-control mt-2" id="lainnyaInput" placeholder="Masukkan jumlah" style="display: none;">
+
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ibadah_data, 'lainnya', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          echo " <br> ";
+                          echo displayPreviousYearData($previous_ibadah_data, 'jumlah_lainnya', 'Jumlah Tempat Ibadah di Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -265,12 +339,75 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     });
                   </script>
 
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_ibadah" name="use_previous_ibadah" value="1">
+                        <label class="form-check-label" for="use_previous_ibadah">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
                       <i class="fas fa-save"></i> &nbsp; Simpan
                     </button>
                   </div>
                 </form>
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const inputNames = ['masjid', 'pura', 'musala', 'wihara', 'kristen', 'kelenteng', 'katolik', 'basarah', 'kapel', 'lainnya', 'lainnyaInput'];
+                    const previousData = [
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_masjid']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_pura']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_musala']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_wihara']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_gereja_kristen']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_kelenteng']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_gereja_katolik']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_balai_basarah']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_kapel']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['lainnya']); ?>",
+                      "<?php echo htmlspecialchars($previous_ibadah_data['jumlah_lainnya']); ?>",
+                    ];
+
+                    const checkbox = document.getElementById('use_previous_ibadah');
+
+                    // Function to populate the form fields with previous data
+                    function populateFields() {
+                      inputNames.forEach((inputName, index) => {
+                        const inputField = document.getElementById(inputName);
+                        if (checkbox.checked) {
+                          inputField.value = previousData[index]; // Set the value of the select fields
+                          inputField.readOnly = true; // Make the field read-only if checkbox is checked
+
+                          // Show the hidden input for "lainnyaInput" if checkbox is checked
+                          if (inputName === 'lainnyaInput' && previousData[index]) {
+                            inputField.style.display = 'block';
+                          }
+                        } else {
+                          inputField.value = ''; // Reset the value when checkbox is unchecked
+                          inputField.readOnly = false; // Make the field editable when checkbox is unchecked
+
+                          // Hide the "lainnyaInput" field when checkbox is unchecked
+                          if (inputName === 'lainnyaInput') {
+                            inputField.style.display = 'none';
+                          }
+                        }
+                      });
+                    }
+
+                    // Set up the checkbox listener
+                    checkbox.addEventListener('change', populateFields);
+
+                    // Initialize the form based on the current checkbox state
+                    populateFields();
+                  });
+                </script>
               <?php endif; ?>
             </div>
           </div>
@@ -335,10 +472,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="tuna-netra" class="form-label">Jumlah tuna netra (buta)</label>
                       <input type="number" class="form-control" name="tuna_netra" id="tuna-netra" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_netra', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-rungu" class="form-label">Jumlah tuna rungu (tuli)</label>
                       <input type="number" class="form-control" name="tuna_rungu" id="tuna-rungu" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_rungu', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -346,10 +497,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="tuna-wicara" class="form-label">Jumlah tuna wicara (bisu)</label>
                       <input type="number" class="form-control" name="tuna_wicara" id="tuna-wicara" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_wicara', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-rungu-wicara" class="form-label">Jumlah tuna rungu-wicara (tuli-bisu)</label>
                       <input type="number" class="form-control" name="tuna_rungu_wicara" id="tuna-rungu-wicara" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_rungu_wicara', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -357,10 +522,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="tuna-daksa" class="form-label">Jumlah tuna daksa (disabilitas tubuh)</label>
                       <input type="number" class="form-control" name="tuna_daksa" id="tuna-daksa" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_daksa', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-grahita" class="form-label">Jumlah tuna grahita (keterbelakangan mental)</label>
                       <input type="number" class="form-control" name="tuna_grahita" id="tuna-grahita" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_grahita', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -368,10 +547,24 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="tuna-laras" class="form-label">Jumlah tuna laras (eks-sakit jiwa)</label>
                       <input type="number" class="form-control" name="tuna_laras" id="tuna-laras" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_laras', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                       <label for="tuna-eks-kusta" class="form-label">Jumlah tuna eks-sakit kusta</label>
                       <input type="number" class="form-control" name="tuna_eks_kusta" id="tuna-eks-kusta" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_eks_kusta', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -379,8 +572,27 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     <div class="col-md-6">
                       <label for="tuna-ganda" class="form-label">Jumlah tuna ganda (fisik-mental)</label>
                       <input type="number" class="form-control" name="tuna_ganda" id="tuna-ganda" placeholder="Masukkan jumlah">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_disabilitas_data, 'jumlah_tuna_ganda', 'Banyaknya penyandang disabilitas');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
+
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_disabilitas" name="use_previous_disabilitas" value="1">
+                        <label class="form-check-label" for="use_previous_disabilitas">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
@@ -388,6 +600,47 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     </button>
                   </div>
                 </form>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const inputIds = [
+                      'tuna-netra', 'tuna-rungu', 'tuna-wicara', 'tuna-rungu-wicara',
+                      'tuna-daksa', 'tuna-grahita', 'tuna-laras', 'tuna-eks-kusta', 'tuna-ganda'
+                    ];
+                    const previousData = {
+                      'tuna-netra': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_netra'] ?? ''); ?>",
+                      'tuna-rungu': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_rungu'] ?? ''); ?>",
+                      'tuna-wicara': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_wicara'] ?? ''); ?>",
+                      'tuna-rungu-wicara': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_rungu_wicara'] ?? ''); ?>",
+                      'tuna-daksa': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_daksa'] ?? ''); ?>",
+                      'tuna-grahita': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_grahita'] ?? ''); ?>",
+                      'tuna-laras': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_laras'] ?? ''); ?>",
+                      'tuna-eks-kusta': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_eks_kusta'] ?? ''); ?>",
+                      'tuna-ganda': "<?php echo htmlspecialchars($previous_disabilitas_data['jumlah_tuna_ganda'] ?? ''); ?>"
+                    };
+
+                    const checkbox = document.getElementById('use_previous_disabilitas');
+
+                    // Function to populate the form fields with previous data
+                    function populateFields() {
+                      inputIds.forEach((inputId) => {
+                        const inputField = document.getElementById(inputId);
+                        if (checkbox.checked) {
+                          inputField.value = previousData[inputId] || ''; // Set value if data exists, else empty string
+                          inputField.readOnly = true; // Make the field read-only
+                        } else {
+                          inputField.value = ''; // Clear value
+                          inputField.readOnly = false; // Make the field editable
+                        }
+                      });
+                    }
+
+                    // Add event listener to the checkbox
+                    checkbox.addEventListener('change', populateFields);
+
+                    // Initialize the form based on the checkbox state
+                    populateFields();
+                  });
+                </script>
               <?php endif; ?>
             </div>
 
@@ -478,10 +731,99 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       </select>
                     </div>
                   </div>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_ruang_publik_data, 'status_ruang_publik', 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+                      echo " <br> ";
+                      echo displayPreviousYearData($previous_ruang_publik_data, 'ruang_terbuka_hijau', 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+                      echo " <br> ";
+                      echo displayPreviousYearData($previous_ruang_publik_data, 'ruang_terbuka_non_hijau', 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+                      ?>
+                    </p>
+                  <?php endif; ?>
+
+                  <!-- Checkbox to use previous year data -->
+                  <?php if ($level != 'admin'): ?>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_ruang_publik" name="use_previous_ruang_publik" value="1">
+                        <label class="form-check-label" for="use_previous_ruang_publik">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </form>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const publicSpaceStatus = document.getElementById("publicSpaceStatus");
+                    const greenSpace = document.getElementById("greenSpace");
+                    const nonGreenSpace = document.getElementById("nonGreenSpace");
+                    const additionalInfo = document.querySelector(".additional-info");
+                    const usePreviousCheckbox = document.getElementById("use_previous_ruang_publik");
+
+                    // Data tahun sebelumnya
+                    const previousData = {
+                      publicSpaceStatus: "<?php echo htmlspecialchars($previous_ruang_publik_data['status_ruang_publik'] ?? ''); ?>",
+                      greenSpace: "<?php echo htmlspecialchars($previous_ruang_publik_data['ruang_terbuka_hijau'] ?? ''); ?>",
+                      nonGreenSpace: "<?php echo htmlspecialchars($previous_ruang_publik_data['ruang_terbuka_non_hijau'] ?? ''); ?>"
+                    };
+
+                    // Fungsi untuk mengatur data tahun sebelumnya ke form
+                    function populatePreviousData() {
+                      if (usePreviousCheckbox.checked) {
+                        // Set nilai ke elemen
+                        publicSpaceStatus.value = previousData.publicSpaceStatus || "";
+                        greenSpace.value = previousData.greenSpace || "";
+                        nonGreenSpace.value = previousData.nonGreenSpace || "";
+
+                        // Tampilkan additional-info jika status ruang publik adalah 'Ada'
+                        if (previousData.publicSpaceStatus === "Ada, dikelola" || previousData.publicSpaceStatus === "Ada, tidak dikelola") {
+                          additionalInfo.style.display = "block";
+                        } else {
+                          additionalInfo.style.display = "none";
+                        }
+
+                        // Buat elemen menjadi read-only
+                        publicSpaceStatus.setAttribute("readonly", true);
+                        greenSpace.setAttribute("readonly", true);
+                        nonGreenSpace.setAttribute("readonly", true);
+                      } else {
+                        // Reset form jika checkbox tidak dicentang
+                        publicSpaceStatus.value = "";
+                        greenSpace.value = "";
+                        nonGreenSpace.value = "";
+                        additionalInfo.style.display = "none";
+
+                        // Hapus atribut read-only
+                        publicSpaceStatus.removeAttribute("readonly");
+                        greenSpace.removeAttribute("readonly");
+                        nonGreenSpace.removeAttribute("readonly");
+                      }
+                    }
+
+                    // Event listener untuk checkbox
+                    usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                    // Event listener untuk perubahan status ruang publik
+                    publicSpaceStatus.addEventListener("change", function() {
+                      if (this.value === "Ada, dikelola" || this.value === "Ada, tidak dikelola") {
+                        additionalInfo.style.display = "block";
+                      } else {
+                        additionalInfo.style.display = "none";
+                      }
+                    });
+
+                    // Inisialisasi saat halaman dimuat
+                    populatePreviousData();
+                  });
+                </script>
 
                 <script>
                   document.addEventListener("DOMContentLoaded", function() {
@@ -530,15 +872,7 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <footer class="app-footer"> <!--begin::To the end-->
-      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-      <strong>
-        Copyright &copy; 2024&nbsp;
-        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-      </strong>
-      All rights reserved.
-      <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->

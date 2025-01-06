@@ -954,56 +954,48 @@ include "../../config/session.php";
 
           <!-- BEGIN::TITIK KOORDINAT -->
           <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Koordinat Lokasi Kegiatan Pemerintahan Desa/Kelurahan</h3>
-              <!-- Aturan Pengisian Button -->
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal"
-                data-bs-target="#modalTitikKoordinatKantorDesa">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form3">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function () {
-                    $(".toggle-form3").on("click", function () {
-                      var $icon = $(this).find("i"); // Ambil ikon tombol
-                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+                        <div class="card-header mb-3">
+                            <h3 class="card-title">Titik Koordinat Kantor Desa</h3>
+                            <!-- Aturan Pengisian Button -->
+                            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTitikKoordinatKantorDesa">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool toggle-form3">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <script>
+                                    $(document).ready(function() {
+                                        $(".toggle-form3").on("click", function() {
+                                            var $icon = $(this).find("i"); // Ambil ikon tombol
+                                            var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                    });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-
-              <form action="../../handlers/form_titik_koordinat_kantor_desa.php" method="post">
-                <div class="row"> <!-- /.col -->
-                  <!-- /.form-group -->
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Koordinat Lintang (Latitude)</label>
-                    <input type="text" class="form-control" name="koordinat_lintang"
-                      placeholder="Masukkan koordinat lintang" style="width: 100%;">
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Koordinat Bujur (Longitude)</label>
-                    <input type="text" class="form-control" name="koordinat_bujur"
-                      placeholder="Masukkan koordinat bujur" style="width: 100%;">
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Ketinggian Letak (Altitude) Lokasi Kegiatan Pemerintahan Desa/Kelurahan Dari
-                      Permukaan Air Laut (Dpal)</label>
-                    <input type="text" class="form-control" placeholder="Silahkan Isi Dalam Satuan Meter ( m )">
-                  </div>
-                  <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div>
-                  <!--end::Footer-->
-              </form>
+                                            $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                                            $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                
+                <form action="../../handlers/form_titik_koordinat_kantor_desa.php" method="post">
+                  <div class="row"> <!-- /.col -->
+                    <!-- /.form-group -->
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Koordinat Lintang (Latitude)</label>
+                      <input type="text" class="form-control" name="koordinat_lintang" placeholder="Masukkan koordinat lintang"
+                        style="width: 100%;">
+                    </div>
+          
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Koordinat Bujur (Longitude)</label>
+                      <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur"
+                        style="width: 100%;">
+                    </div>
+                    <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                </form>
               <!-- /.row -->
             </div>
             <!-- Modal Info -->
@@ -1041,89 +1033,12 @@ include "../../config/session.php";
           </div>
           <!-- END::TITIK KOOREDINAT -->
 
-          <!-- BAGIN::Pemanfaatan laut untuk wilayah desa/kelurahan yang berbatasan langsung dengan laut -->
-          <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Pemanfaatan laut untuk wilayah desa/kelurahan yang berbatasan langsung dengan laut</h3>
-              <!-- Aturan Pengisian Button -->
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal"
-                data-bs-target="#modalTitikKoordinatKantorDesa">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form3">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function () {
-                    $(".toggle-form3").on("click", function () {
-                      var $icon = $(this).find("i"); // Ambil ikon tombol
-                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
-
-                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
-                    });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-
-              <form action="../../handlers/form_titik_koordinat_kantor_desa.php" method="post">
-          
-              </form>
-              <!-- /.row -->
-            </div>
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalTitikKoordinatKantorDesa" tabindex="-1" aria-labelledby="aturanModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Masukkan koordinat dalam format derajat desimal (contoh: -6.8796 untuk Lintang Selatan,
-                        108.5538 untuk
-                        Bujur Timur).</li>
-                      <li>Gunakan tanda minus (-) untuk koordinat di belahan selatan (LS) atau barat (BB).</li>
-                      <li>Pastikan nilai lintang berada dalam rentang -90 hingga 90, dan bujur berada dalam rentang -180
-                        hingga
-                        180.</li>
-                      <li>Periksa keakuratan data sesuai dengan titik lokasi kantor desa menggunakan aplikasi peta
-                        seperti Google
-                        Maps.</li>
-                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
-                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
-                    </ul>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END::Pemanfaatan Laut Untuk Wilayah Desa/Kelurahan Yang Berbatasan Langsung Dengan Laut -->
-
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <footer class="app-footer"> <!--begin::To the end-->
-      <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-      <strong>
-        Copyright &copy; 2024&nbsp;
-        <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-      </strong>
-      All rights reserved.
-      <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->

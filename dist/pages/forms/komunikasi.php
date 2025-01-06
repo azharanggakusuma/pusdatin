@@ -284,7 +284,7 @@ include "../../config/session.php";
                                                 <option value="tidak-ada">TIDAK ADA SINYAL</option>
                                             </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <!-- /.col -->
                                 </div>
                                 <div class="mb-3">
@@ -407,15 +407,7 @@ include "../../config/session.php";
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Version 1.0</div> <!--end::To the end--> <!--begin::Copyright-->
-            <strong>
-                Copyright &copy; 2024&nbsp;
-                <a href="#" class="text-decoration-none">Diskominfo Kab. Cirebon</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
+        <?php include("../../components/footer.php"); ?>
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
