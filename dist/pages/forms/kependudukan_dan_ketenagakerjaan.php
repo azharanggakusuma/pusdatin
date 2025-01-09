@@ -82,7 +82,7 @@ include "../../config/session.php";
         </div> <!--end::Container-->
       </div> <!--end::App Content Header--> <!--begin::App Content-->
       <div class="app-content"> <!--begin::Container-->
-        <div class="container-fluid"> <!--begin::Row-->
+        <div class="container-fluid"> <!--begin::Row--> 
 
           <!-- Template Form -->
 
