@@ -1,3 +1,16 @@
+<?php
+include('../config/conn.php');
+// Query untuk mengambil data tahun
+$query = "SELECT year FROM tahun ORDER BY year ASC";
+$result = mysqli_query($conn, $query);
+
+// Ambil hasil query ke dalam array
+$years = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $years[] = $row['year'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -172,9 +185,12 @@
                         </div>
                         <select class="form-control" name="tahun" id="tahun" required>
                             <option value="" disabled selected>Pilih Tahun</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
+                            <?php
+                            // Gunakan foreach untuk menampilkan tahun dalam select
+                            foreach ($years as $year) {
+                                echo '<option value="' . $year . '">' . $year . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
 
