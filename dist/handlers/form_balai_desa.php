@@ -20,16 +20,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $alamat_balai = mysqli_real_escape_string($conn, $_POST['alamat_balai']);
   $nama_kecamatan = mysqli_real_escape_string($conn, $_POST['nama_kecamatan']);
 
-  // Insert data into database
-  $sql = "INSERT INTO tb_balai_desa (alamat_balai, nama_kecamatan, user_id, desa_id)
-          VALUES ('$alamat_balai', '$nama_kecamatan', '$user_id', '$desa_id')";
+  // Check if the record already exists in `tb_balai_desa`
+  $check_query = "SELECT id FROM tb_balai_desa WHERE user_id = '$user_id' AND desa_id = '$desa_id'";
+  $check_result = mysqli_query($conn, $check_query);
+
+  if (mysqli_num_rows($check_result) > 0) {
+    // Update existing record
+    $sql = "UPDATE tb_balai_desa 
+            SET alamat_balai = '$alamat_balai', nama_kecamatan = '$nama_kecamatan' 
+            WHERE user_id = '$user_id' AND desa_id = '$desa_id'";
+  } else {
+    // Insert new record
+    $sql = "INSERT INTO tb_balai_desa (alamat_balai, nama_kecamatan, user_id, desa_id)
+            VALUES ('$alamat_balai', '$nama_kecamatan', '$user_id', '$desa_id')";
+  }
 
   if (mysqli_query($conn, $sql)) {
-    // Tambahkan atau perbarui progres pengguna
-    $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
-                       VALUES ('$user_id', 'Alamat Balai Desa/Kantor Kelurahan', TRUE, '$desa_id')
-                       ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
-    mysqli_query($conn, $query_progress);
+    // Check if progress entry exists
+    $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Alamat Balai Desa/Kantor Kelurahan'";
+    $result_progress = mysqli_query($conn, $query_progress);
+
+    $current_time = date('Y-m-d H:i:s');
+
+    if (mysqli_num_rows($result_progress) > 0) {
+      // Update progress if it exists, including created_at
+      $update_progress = "UPDATE user_progress 
+                          SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$current_time' 
+                          WHERE user_id = '$user_id' AND form_name = 'Alamat Balai Desa/Kantor Kelurahan'";
+      mysqli_query($conn, $update_progress);
+    } else {
+      // Insert new progress if it doesn't exist
+      $insert_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id, created_at) 
+                          VALUES ('$user_id', 'Alamat Balai Desa/Kantor Kelurahan', TRUE, '$desa_id', '$current_time')";
+      mysqli_query($conn, $insert_progress);
+    }
 
     header("Location: ../pages/forms/keterangan_tempat.php?status=success");
     exit();
