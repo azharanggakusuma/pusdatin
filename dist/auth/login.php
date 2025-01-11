@@ -19,14 +19,14 @@
         }
 
         .card-header img {
-            width: 60px;
+            width: 50px;
             margin-bottom: 10px;
         }
 
         .card-header p {
             font-size: 18px;
             font-weight: 600;
-            margin-top: 0;
+            margin-bottom: -20px;
         }
 
         .input-group {
@@ -103,8 +103,8 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <img src="../img/kominfo.png" alt="Pusdatin" width="60px">
-                <p class="login-box-msg mt-2 mb-0">Pusdatin Kab. Cirebon</p>
+                <img src="../img/kominfo.png" alt="Pusdatin" width="50px">
+                <p class="login-box-msg mt-2">Pusdatin Kab. Cirebon</p>
             </div>
 
             <div class="card-body login-card-body">
