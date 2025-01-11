@@ -59,9 +59,9 @@ function displayPreviousYearData($previous_data, $field_name, $label)
   elseif ($previous_data['created_year'] == date('Y') - 1) {
     return "Data Pada Tahun " . htmlspecialchars($previous_data['created_year']) . ": " . htmlspecialchars($previous_data[$field_name]);
   }
-  // Jika data ditemukan untuk tahun ini
+  // Jika data ditemukan untuk tahun sebelumnya
   elseif ($previous_data['created_year'] == date('Y')) {
-    return "Data Pada Tahun Ini (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+    return "Data Pada Tahun Sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
   }
   // Default jika tidak ada data
   else {
