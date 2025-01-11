@@ -262,6 +262,59 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                     </button>
                   </div>
                 </form>
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const skPembentukan = document.getElementById("sk_pembentukan");
+                    const inputLainnya = document.getElementById("inputLainnya");
+                    const usePreviousCheckbox = document.getElementById("use_previous_sk_pembentukan");
+
+                    // Data tahun sebelumnya
+                    const previousData = {
+                      skPembentukan: "<?php echo htmlspecialchars($previous_sk_pembentukan_data['sk_pembentukan'] ?? ''); ?>",
+                      inputLainnya: "<?php echo htmlspecialchars($previous_sk_pembentukan_data['inputLainnya'] ?? ''); ?>"
+                    };
+
+                    // Fungsi untuk mengatur data tahun sebelumnya ke form
+                    function populatePreviousData() {
+                      if (usePreviousCheckbox.checked) {
+                        // Set nilai ke elemen
+                        skPembentukan.value = previousData.skPembentukan || "";
+                        if (previousData.skPembentukan === "Lainnya") {
+                          inputLainnya.style.display = "block";
+                          inputLainnya.value = previousData.inputLainnya || "";
+                        } else {
+                          inputLainnya.style.display = "none";
+                        }
+
+                        // Buat elemen menjadi read-only jika diperlukan
+                        skPembentukan.setAttribute("readonly", true);
+                      } else {
+                        // Reset form jika checkbox tidak dicentang
+                        skPembentukan.value = "";
+                        inputLainnya.style.display = "none";
+                        inputLainnya.value = "";
+
+                        // Hapus atribut read-only
+                        skPembentukan.removeAttribute("readonly");
+                      }
+                    }
+
+                    // Event listener untuk checkbox
+                    usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                    // Event listener untuk perubahan nilai skPembentukan
+                    skPembentukan.addEventListener("change", function() {
+                      if (this.value === "Lainnya") {
+                        inputLainnya.style.display = "block";
+                      } else {
+                        inputLainnya.style.display = "none";
+                      }
+                    });
+
+                    // Inisialisasi saat halaman dimuat
+                    populatePreviousData();
+                  });
+                </script>
               <?php endif; ?>
               <!-- /.row -->
             </div>
@@ -370,6 +423,47 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                     </button>
                   </div>
                 </form>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const alamatBalai = document.getElementById("alamat_balai");
+                    const namaKecamatan = document.getElementById("nama_kecamatan");
+                    const usePreviousCheckbox = document.getElementById("use_previous_balai_desa");
+
+                    // Data tahun sebelumnya
+                    const previousData = {
+                      alamatBalai: "<?php echo htmlspecialchars($previous_balai_desa_data['alamat_balai'] ?? ''); ?>",
+                      namaKecamatan: "<?php echo htmlspecialchars($previous_balai_desa_data['nama_kecamatan'] ?? ''); ?>"
+                    };
+
+                    // Fungsi untuk mengatur data tahun sebelumnya ke form
+                    function populatePreviousData() {
+                      if (usePreviousCheckbox.checked) {
+                        // Set nilai ke elemen
+                        alamatBalai.value = previousData.alamatBalai || "";
+                        namaKecamatan.value = previousData.namaKecamatan || "";
+
+                        // Buat elemen menjadi read-only
+                        alamatBalai.setAttribute("readonly", true);
+                        namaKecamatan.setAttribute("readonly", true);
+                      } else {
+                        // Reset form jika checkbox tidak dicentang
+                        alamatBalai.value = "";
+                        namaKecamatan.value = "";
+
+                        // Hapus atribut read-only
+                        alamatBalai.removeAttribute("readonly");
+                        namaKecamatan.removeAttribute("readonly");
+                      }
+                    }
+
+                    // Event listener untuk checkbox
+                    usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                    // Inisialisasi saat halaman dimuat
+                    populatePreviousData();
+                  });
+                </script>
               <?php endif; ?>
               <!-- /.row -->
             </div>
