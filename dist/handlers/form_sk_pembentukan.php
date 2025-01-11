@@ -25,16 +25,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sk_pembentukan = $inputLainnya; // Use the 'Lainnya' input value
   }
 
-  // Insert data into the database
-  $sql = "INSERT INTO tb_sk_pembentukan (sk_pembentukan, user_id, desa_id)
+  // Check if the record already exists in `tb_sk_pembentukan`
+  $check_query = "SELECT id FROM tb_sk_pembentukan WHERE user_id = '$user_id' AND desa_id = '$desa_id'";
+  $check_result = mysqli_query($conn, $check_query);
+
+  if (mysqli_num_rows($check_result) > 0) {
+    // Update existing record
+    $sql = "UPDATE tb_sk_pembentukan 
+            SET sk_pembentukan = '$sk_pembentukan' 
+            WHERE user_id = '$user_id' AND desa_id = '$desa_id'";
+  } else {
+    // Insert new record
+    $sql = "INSERT INTO tb_sk_pembentukan (sk_pembentukan, user_id, desa_id)
             VALUES ('$sk_pembentukan', '$user_id', '$desa_id')";
+  }
 
   if (mysqli_query($conn, $sql)) {
-    // Add or update user progress
-    $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
-                       VALUES ('$user_id', 'SK pembentukan/pengesahan desa/kelurahan', TRUE, '$desa_id')
-                       ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
-    mysqli_query($conn, $query_progress);
+    // Update or insert progress into `user_progress`
+    $current_time = date('Y-m-d H:i:s');
+    $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'SK pembentukan/pengesahan desa/kelurahan'";
+    $result_progress = mysqli_query($conn, $query_progress);
+
+    if (mysqli_num_rows($result_progress) > 0) {
+      // Update progress
+      $update_progress = "UPDATE user_progress 
+                          SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$current_time' 
+                          WHERE user_id = '$user_id' AND form_name = 'SK pembentukan/pengesahan desa/kelurahan'";
+      mysqli_query($conn, $update_progress);
+    } else {
+      // Insert new progress
+      $insert_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id, created_at) 
+                          VALUES ('$user_id', 'SK pembentukan/pengesahan desa/kelurahan', TRUE, '$desa_id', '$current_time')";
+      mysqli_query($conn, $insert_progress);
+    }
 
     header("Location: ../pages/forms/keterangan_tempat.php?status=success");
     exit();
