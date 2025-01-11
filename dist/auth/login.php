@@ -92,10 +92,6 @@
             transform: scale(0.85);
             transform-origin: 0 0;
         }
-
-        .g-recaptcha iframe {
-            border-radius: 0.375rem; /* Agar reCAPTCHA punya border radius yang sama dengan input lainnya */
-        }
     </style>
 </head>
 
@@ -186,7 +182,7 @@
                     <div class="g-recaptcha" data-sitekey="6LdYSrQqAAAAAPgKD85lf9OAG6NgQX-ulVSf_-A8" id="recaptcha"></div>
 
                     <div class="row">
-                        <div class="d-grid gap-2 mt-3 mb-3">
+                        <div class="d-grid gap-2 mt-2 mb-3">
                             <input type="submit" class="btn btn-primary" value="Log In" id="submit-btn">
                         </div>
                     </div>
