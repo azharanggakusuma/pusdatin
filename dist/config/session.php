@@ -13,7 +13,7 @@ $name = $_SESSION['name'];
 $level = $_SESSION['level'];
 
 // Ambil tahun dari session
-$tahun = $_SESSION['tahun'] ?? null;
+$tahun = $_SESSION['tahun'] ?? date('Y');
 
 // Tentukan deskripsi berdasarkan level
 $role_description = ($level == 'admin') ? 'Diskominfo Kab. Cirebon' : 'Petugas';
