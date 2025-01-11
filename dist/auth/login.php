@@ -178,7 +178,6 @@
                         </select>
                     </div>
 
-                    <!-- reCAPTCHA widget -->
                     <div class="g-recaptcha" data-sitekey="6LdYSrQqAAAAAPgKD85lf9OAG6NgQX-ulVSf_-A8" id="recaptcha"></div>
 
                     <div class="row">
