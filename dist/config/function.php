@@ -1,7 +1,8 @@
 <?php
-function getPreviousYearData($conn, $user_id, $desa_id, $table_name, $columns, $form_name)
+function getPreviousYearData($conn, $user_id, $desa_id, $table_name, $columns, $form_name, $tahun)
 {
-  $current_year = date('Y');
+  // Menentukan tahun yang sesuai untuk pencarian data
+  $current_year = $tahun;
   $previous_year = $current_year - 1;
 
   // Pastikan $columns adalah array, jika tidak konversi menjadi array
@@ -9,86 +10,61 @@ function getPreviousYearData($conn, $user_id, $desa_id, $table_name, $columns, $
     $columns = [$columns]; // Ubah menjadi array jika hanya satu kolom
   }
 
-  // Membangun query untuk mengambil data kolom yang diberikan
+  // Membangun query untuk mengambil data berdasarkan tahun yang ada di kolom 'tahun'
   $columns_str = implode(", ", $columns); // Menggabungkan kolom yang diberikan menjadi string query
   $query = "
-      SELECT $columns_str, user_progress.created_at 
-      FROM $table_name
-      INNER JOIN user_progress 
-      ON $table_name.user_id = user_progress.user_id 
-      AND $table_name.desa_id = user_progress.desa_id 
-      WHERE $table_name.user_id = '$user_id' 
-      AND $table_name.desa_id = '$desa_id'
-      AND user_progress.form_name = '$form_name'
-      AND YEAR(user_progress.created_at) = '$previous_year'
-      ORDER BY user_progress.created_at DESC 
-      LIMIT 1";
+    SELECT $columns_str, user_progress.tahun 
+    FROM $table_name
+    INNER JOIN user_progress 
+    ON $table_name.user_id = user_progress.user_id 
+    AND $table_name.desa_id = user_progress.desa_id 
+    WHERE user_progress.user_id = '$user_id' 
+    AND user_progress.desa_id = '$desa_id'
+    AND user_progress.form_name = '$form_name' 
+    AND user_progress.tahun = '$previous_year'
+    ORDER BY user_progress.tahun DESC 
+    LIMIT 1";
+
 
   $result = mysqli_query($conn, $query);
-  
-  // Jika data ada untuk tahun sebelumnya, ambil data dan waktu pembuatan
+
+  // Jika data ada untuk tahun sebelumnya, ambil data dan tahun
   if ($result && mysqli_num_rows($result) > 0) {
     $data = mysqli_fetch_assoc($result);
     $response = [];
     foreach ($columns as $column) {
       $response[$column] = $data[$column] ?? 'Belum Ada Data';
     }
-    $response['created_year'] = date('Y', strtotime($data['created_at']));
+    $response['created_year'] = $data['tahun']; // Menggunakan kolom 'tahun'
     return $response;
   } else {
-    // Jika tidak ada data untuk tahun sebelumnya, coba ambil data untuk tahun saat ini
-    $query_current_year = "
-      SELECT $columns_str, user_progress.created_at 
-      FROM $table_name
-      INNER JOIN user_progress 
-      ON $table_name.user_id = user_progress.user_id 
-      AND $table_name.desa_id = user_progress.desa_id 
-      WHERE $table_name.user_id = '$user_id' 
-      AND $table_name.desa_id = '$desa_id'
-      AND user_progress.form_name = '$form_name'
-      AND YEAR(user_progress.created_at) = '$current_year'
-      ORDER BY user_progress.created_at DESC 
-      LIMIT 1";
-      
-    $result_current_year = mysqli_query($conn, $query_current_year);
-    
-    if ($result_current_year && mysqli_num_rows($result_current_year) > 0) {
-      $data = mysqli_fetch_assoc($result_current_year);
-      $response = [];
-      foreach ($columns as $column) {
-        $response[$column] = $data[$column] ?? 'Belum Ada Data';
-      }
-      $response['created_year'] = date('Y', strtotime($data['created_at']));
-      return $response;
-    } else {
-      // Jika tidak ada data untuk tahun ini, kembalikan pesan default
-      $response = [];
-      foreach ($columns as $column) {
-        $response[$column] = 'Belum Ada Data';
-      }
-      $response['created_year'] = '-';
-      return $response;
+    // Jika tidak ada data untuk tahun sebelumnya, kembalikan pesan default
+    $response = [];
+    foreach ($columns as $column) {
+      $response[$column] = 'Belum Ada Data';
     }
+    $response['created_year'] = '-';
+    return $response;
   }
 };
 
 // Pemanggilan ke dalam form
-function displayPreviousYearData($previous_data, $field_name, $label) {
-  // Check if there's no data
+function displayPreviousYearData($previous_data, $field_name, $label)
+{
+  // Jika tidak ada data untuk tahun sebelumnya
   if ($previous_data['created_year'] === '-') {
-      return "Anda belum mengisi data.";
+    return "Data untuk tahun sebelumnya belum ada.";
   }
-  // Check if the data is from the previous year
+  // Jika data ditemukan untuk tahun sebelumnya
   elseif ($previous_data['created_year'] == date('Y') - 1) {
-      return "Data Pada Tahun Sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+    return "Data Pada Tahun " . htmlspecialchars($previous_data['created_year']) . ": " . htmlspecialchars($previous_data[$field_name]);
   }
-  // Check if the data is from the current year
+  // Jika data ditemukan untuk tahun ini
   elseif ($previous_data['created_year'] == date('Y')) {
-      return "Data Pada Tahun Ini (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+    return "Data Pada Tahun Ini (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
   }
-  // Default message if no valid data is found
+  // Default jika tidak ada data
   else {
-      return "Data tidak ditemukan.";
+    return "Data tidak ditemukan.";
   }
 };
-?>
