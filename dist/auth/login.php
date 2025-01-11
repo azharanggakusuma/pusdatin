@@ -22,6 +22,50 @@
             </div>
 
             <div class="card-body login-card-body">
+                <?php
+                if (isset($_GET['error']) && $_GET['error'] == 'true') {
+                    echo '<script>
+                                swal({
+                                    title: "Login Gagal!",
+                                    text: "Username atau password salah.",
+                                    icon: "error",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    window.location.href = "login.php";
+                                });
+                              </script>';
+                }
+                if (isset($_GET['success']) && $_GET['success'] == 'true') {
+                    echo '<script>
+                                swal({
+                                    title: "Login Berhasil!",
+                                    text: "Selamat datang di sistem.",
+                                    icon: "success",
+                                    timer: 3000,
+                                    buttons: false
+                                }).then(() => {
+                                    setTimeout(() => {
+                                        window.location.href = "../index.php";
+                                    }, 500);
+                                });
+                              </script>';
+                }
+                if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+                    echo '<script>
+                                swal({
+                                    title: "Berhasil Logout!",
+                                    text: "Anda telah logout dari sistem.",
+                                    icon: "success",
+                                    timer: 3000,
+                                    buttons: false,
+                                    className: "swal-modal-fadeout"
+                                }).then(function() {
+                                    window.location.href = "login.php";
+                                });
+                            </script>';
+                }
+                ?>
                 <form action="proses_login.php" method="post" id="login-form">
                     <div class="input-group mb-3">
                         <div class="input-group-text">
