@@ -206,7 +206,7 @@ include "config/session.php";
                                 <div class="col-lg-5 connectedSortable">
                                     <div class="card mb-4">
                                         <div class="card-header">
-                                            <h3 class="card-title">Fast Link</h3>
+                                            <h3 class="card-title">Manage</h3>
                                             <div class="card-tools">
                                                 <button type="button" class="btn btn-default btn-sm" data-lte-toggle="card-collapse">
                                                     <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -256,11 +256,10 @@ include "config/session.php";
                                             </style>
 
                                             <div class="app-buttons-container">
-                                                <a href="./" class="icon-button">
-                                                    <i class="fas fa-home"></i>
-                                                    <span>Home</span>
+                                                <a href="./pages/tables/manage_tahun.php" class="icon-button">
+                                                    <i class="fas fa-calendar"></i>
+                                                    <span>Years</span>
                                                 </a>
-
                                                 <a href="./pages/tables/user.php" class="icon-button">
                                                     <i class="fas fa-users"></i>
                                                     <span>Users</span>
