@@ -134,7 +134,7 @@ if ($result->num_rows > 0) {
                   timer: 3000,
                   buttons: false
                 }).then(() => {
-                  window.location.href = "tahun.php";
+                  window.location.href = "manage_tahun.php";
                 });
               } else if (messageedit === 'error') {
                 let errorMessage = "";
@@ -152,7 +152,7 @@ if ($result->num_rows > 0) {
                   timer: 3000,
                   buttons: false
                 }).then(() => {
-                  window.location.href = "tahun.php";
+                  window.location.href = "manage_tahun.php";
                 });
               }
             </script>
