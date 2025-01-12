@@ -1,9 +1,9 @@
 <?php
 // Menghubungkan ke database
 include '../../config/conn.php';
+include '../../config/session.php';
 
 // Ambil data pengguna yang sedang login
-session_start();
 $name = $_SESSION['name'] ?? '';
 $level = $_SESSION['level'] ?? '';
 
