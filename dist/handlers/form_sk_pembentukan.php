@@ -53,18 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'SK pembentukan/pengesahan desa/kelurahan' AND tahun = '$tahun'";
         $result_progress = mysqli_query($conn, $query_progress);
 
-        $current_time = date('Y-m-d H:i:s');
+        // Set created_at to the first day of the year at 00:00:00
+        $created_at = $tahun . '-01-01 00:00:00';
 
         if (mysqli_num_rows($result_progress) > 0) {
             // If progress entry exists for the same year, update it
             $update_progress = "UPDATE user_progress 
-                                SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$current_time', tahun = '$tahun' 
+                                SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$created_at', tahun = '$tahun' 
                                 WHERE user_id = '$user_id' AND form_name = 'SK pembentukan/pengesahan desa/kelurahan' AND tahun = '$tahun'";
             mysqli_query($conn, $update_progress);
         } else {
             // If progress entry doesn't exist for the same year, insert a new entry
             $insert_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id, created_at, tahun) 
-                                VALUES ('$user_id', 'SK pembentukan/pengesahan desa/kelurahan', TRUE, '$desa_id', '$current_time', '$tahun')";
+                                VALUES ('$user_id', 'SK pembentukan/pengesahan desa/kelurahan', TRUE, '$desa_id', '$created_at', '$tahun')";
             mysqli_query($conn, $insert_progress);
         }
 
