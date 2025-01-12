@@ -143,71 +143,124 @@ include "config/session.php";
                             </div>
                             <!-- /.Start col -->
 
-                            <!-- Start col -->
-                            <div class="col-lg-5 connectedSortable">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Fast Link</h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-default btn-sm" data-lte-toggle="card-collapse">
-                                                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                                                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                                            </button>
+                            <?php
+                            // Koneksi ke database
+                            include 'config/conn.php';
+
+                            // Ambil data tahun dari tabel tahun
+                            $sql = "SELECT year FROM tahun ORDER BY year ASC";
+                            $result = mysqli_query($conn, $sql);
+
+                            // Ambil hasil query dan simpan dalam array $years
+                            $years = [];
+                            if ($result) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $years[] = $row['year'];
+                                }
+                            } else {
+                                echo "Error fetching years: " . mysqli_error($conn);
+                            }
+                            ?>
+
+                            <?php if ($level == 'user'): ?>
+                                <!-- Form Pindah Tahun -->
+                                <div class="col-lg-5 connectedSortable">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Ubah Periode Tahun</h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-default btn-sm" data-lte-toggle="card-collapse">
+                                                    <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                                                    <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="handlers/update_tahun.php" method="post">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-text">
+                                                        <span class="bi bi-calendar-fill"></span>
+                                                    </div>
+                                                    <select class="form-control" name="tahun" id="tahun" required>
+                                                        <option value="" disabled selected>Pilih Tahun</option>
+                                                        <?php
+                                                        // Ambil tahun dari database
+                                                        $result = mysqli_query($conn, "SELECT year FROM tahun");
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                            echo '<option value="' . $row['year'] . '">' . $row['year'] . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-success mt-2 mb-2">
+                                                    <i class="fas fa-save"></i> &nbsp; Simpan
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <style>
-                                            .icon-button {
-                                                display: flex;
-                                                flex-direction: column;
-                                                align-items: center;
-                                                justify-content: center;
-                                                width: 70px;
-                                                height: 70px;
-                                                border: 1px solid #ccc;
-                                                background-color: #f2f2f2;
-                                                color: #333;
-                                                margin: 10px;
-                                                border-radius: 4px;
-                                                transition: background-color 0.2s ease, box-shadow 0.2s ease;
-                                                text-decoration: none;
-                                                box-shadow: inset 0 -2px 0 #dcdcdc;
-                                            }
+                                </div>
+                            <?php endif; ?>
 
-                                            .icon-button i {
-                                                font-size: 18px;
-                                                margin-bottom: 5px;
-                                            }
+                            <?php if ($level == 'admin'): ?>
+                                <!-- Start col -->
+                                <div class="col-lg-5 connectedSortable">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Fast Link</h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-default btn-sm" data-lte-toggle="card-collapse">
+                                                    <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                                                    <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <style>
+                                                .icon-button {
+                                                    display: flex;
+                                                    flex-direction: column;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    width: 70px;
+                                                    height: 70px;
+                                                    border: 1px solid #ccc;
+                                                    background-color: #f2f2f2;
+                                                    color: #333;
+                                                    margin: 10px;
+                                                    border-radius: 4px;
+                                                    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+                                                    text-decoration: none;
+                                                    box-shadow: inset 0 -2px 0 #dcdcdc;
+                                                }
 
-                                            .icon-button span {
-                                                font-size: 12px;
-                                                font-weight: bold;
-                                            }
+                                                .icon-button i {
+                                                    font-size: 18px;
+                                                    margin-bottom: 5px;
+                                                }
 
-                                            .icon-button:hover {
-                                                background-color: #e0e0e0;
-                                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                                            }
+                                                .icon-button span {
+                                                    font-size: 12px;
+                                                    font-weight: bold;
+                                                }
 
-                                            .app-buttons-container {
-                                                display: flex;
-                                                justify-content: center;
-                                                flex-wrap: wrap;
-                                            }
-                                        </style>
+                                                .icon-button:hover {
+                                                    background-color: #e0e0e0;
+                                                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                                                }
 
-                                        <div class="app-buttons-container">
-                                            <a href="./" class="icon-button">
-                                                <i class="fas fa-home"></i>
-                                                <span>Home</span>
-                                            </a>
-                                            <?php if ($level == 'user'): ?>
-                                                <a href="#" class="icon-button" id="formButton">
-                                                    <i class="fas fa-edit"></i>
-                                                    <span>Forms</span>
+                                                .app-buttons-container {
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    flex-wrap: wrap;
+                                                }
+                                            </style>
+
+                                            <div class="app-buttons-container">
+                                                <a href="./" class="icon-button">
+                                                    <i class="fas fa-home"></i>
+                                                    <span>Home</span>
                                                 </a>
-                                            <?php endif; ?>
-                                            <?php if ($level == 'admin'): ?>
+
                                                 <a href="./pages/tables/user.php" class="icon-button">
                                                     <i class="fas fa-users"></i>
                                                     <span>Users</span>
@@ -224,37 +277,13 @@ include "config/session.php";
                                                     <i class="fas fa-tasks"></i>
                                                     <span>Forms</span>
                                                 </a>
-                                            <?php endif; ?>
-                                        </div>
 
-                                        <!-- Toast Container -->
-                                        <div class="toast-container position-fixed top-0 end-0 p-3" id="toastContainer" style="z-index: 1050;">
-                                            <div id="formToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                                                <div class="toast-header">
-                                                    <strong class="me-auto">Info</strong>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                                                </div>
-                                                <div class="toast-body">
-                                                    Anda dapat mengakses Form melalui sidebar.
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- /.Start col -->
                                 </div>
-
-                                <script>
-                                    // Trigger Toast when the "Form" button is clicked
-                                    document.getElementById('formButton').addEventListener('click', function(event) {
-                                        event.preventDefault(); // Prevent any default action (if any)
-
-                                        // Get the Toast element and show it
-                                        const toast = new bootstrap.Toast(document.getElementById('formToast'));
-                                        toast.show();
-                                    });
-                                </script>
-
-                                <!-- /.Start col -->
-                            </div>
+                            <?php endif; ?>
                         </div> <!--end::Container-->
                     </div> <!--end::App Content-->
             </main> <!--end::App Main--> <!--begin::Footer-->
