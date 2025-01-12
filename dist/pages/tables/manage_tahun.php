@@ -85,9 +85,11 @@ if ($result->num_rows > 0) {
 
       <div class="app-content">
         <div class="container-fluid">
+
           <?php if (isset($_GET['messageadd'])): ?>
             <script>
               let messageadd = "<?= $_GET['messageadd'] ?>";
+              let reason = "<?= $_GET['reason'] ?? '' ?>";
               if (messageadd === 'success') {
                 swal({
                   title: "Berhasil!",
@@ -96,17 +98,88 @@ if ($result->num_rows > 0) {
                   timer: 3000,
                   buttons: false
                 }).then(() => {
-                  window.location.href = "tahun.php";
+                  window.location.href = "manage_tahun.php";
                 });
               } else if (messageadd === 'error') {
+                let errorMessage = "";
+                if (reason === 'exists') {
+                  errorMessage = "Tahun yang dimasukkan sudah ada!";
+                } else if (reason === 'before2024') {
+                  errorMessage = "Tahun harus lebih besar atau sama dengan 2024!";
+                } else {
+                  errorMessage = "Terjadi kesalahan saat menambahkan data.";
+                }
                 swal({
                   title: "Gagal!",
-                  text: "Terjadi kesalahan saat menambahkan data.",
+                  text: errorMessage,
+                  icon: "error",
+                  timer: 3000,
+                  buttons: false
+                }).then(() => {
+                  window.location.href = "manage_tahun.php";
+                });
+              }
+            </script>
+          <?php endif; ?>
+
+          <?php if (isset($_GET['messageedit'])): ?>
+            <script>
+              let messageedit = "<?= $_GET['messageedit'] ?>";
+              let reason = "<?= $_GET['reason'] ?? '' ?>";
+              if (messageedit === 'success') {
+                swal({
+                  title: "Berhasil!",
+                  text: "Data tahun berhasil diperbarui.",
+                  icon: "success",
+                  timer: 3000,
+                  buttons: false
+                }).then(() => {
+                  window.location.href = "tahun.php";
+                });
+              } else if (messageedit === 'error') {
+                let errorMessage = "";
+                if (reason === 'exists') {
+                  errorMessage = "Tahun yang dimasukkan sudah ada!";
+                } else if (reason === 'before2024') {
+                  errorMessage = "Tahun harus lebih besar atau sama dengan 2024!";
+                } else {
+                  errorMessage = "Terjadi kesalahan saat memperbarui data.";
+                }
+                swal({
+                  title: "Gagal!",
+                  text: errorMessage,
                   icon: "error",
                   timer: 3000,
                   buttons: false
                 }).then(() => {
                   window.location.href = "tahun.php";
+                });
+              }
+            </script>
+          <?php endif; ?>
+
+          <?php if (isset($_GET['messagedelete'])): ?>
+            <script>
+              let messagedelete = "<?= $_GET['messagedelete'] ?>";
+              if (messagedelete === 'success') {
+                swal({
+                  title: "Berhasil!",
+                  text: "Data tahun berhasil dihapus.",
+                  icon: "success",
+                  timer: 3000,
+                  buttons: false
+                }).then(() => {
+                  window.location.href = "manage_tahun.php";
+                });
+              } else if (messagedelete === 'error') {
+                swal({
+                  title: "Gagal!",
+                  text: "Terjadi kesalahan saat menghapus data.",
+                  icon: "error",
+                  timer: 3000,
+                  buttons: false
+                }).then(() => {
+                  window.location.href = "manage_tahun.php";
                 });
               }
             </script>
@@ -189,6 +262,13 @@ if ($result->num_rows > 0) {
             </div>
           </div>
 
+          <script>
+            // Fungsi untuk mengisi modal dengan ID tahun yang akan dihapus
+            function setDeleteYearId(id) {
+              document.getElementById('deleteYearId').value = id;
+            }
+          </script>
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Manage Tahun</h3>
@@ -215,13 +295,13 @@ if ($result->num_rows > 0) {
                         <td><?= htmlspecialchars($year['year'] ?? 'Data tidak tersedia') ?></td>
                         <td class="project-actions">
                           <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editYearModal"
-                            onclick="editYear(<?= $year['id'] ?>, '<?= htmlspecialchars($year['tahun'] ?? '') ?>')">
-                            <i class="fas fa-edit"></i>&nbsp; Edit
+                            onclick="editYear(<?= $year['id'] ?>, '<?= htmlspecialchars($year['year'] ?? '') ?>')">
+                            <i class="fas fa-edit"></i>
                           </a>
                           &nbsp;
                           <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#deleteYearModal"
                             onclick="setDeleteYearId(<?= $year['id'] ?>)">
-                            <i class="fas fa-trash"></i>&nbsp; Hapus
+                            <i class="fas fa-trash"></i>
                           </a>
                         </td>
                       </tr>
