@@ -55,11 +55,11 @@ function displayPreviousYearData($previous_data, $field_name, $label)
     }
     // Jika data ditemukan untuk tahun sebelumnya
     elseif ($previous_data['created_year'] == date('Y') - 1) {
-        return "Data Pada Tahun Sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+        return "Data pada tahun sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
     }
     // Jika data ditemukan untuk tahun sebelumnya
     elseif ($previous_data['created_year'] == date('Y')) {
-        return "Data Pada Tahun Sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
+        return "Data pada tahun sebelumnya (" . htmlspecialchars($previous_data['created_year']) . "): " . htmlspecialchars($previous_data[$field_name]);
     }
     // Default jika tidak ada data
     else {
