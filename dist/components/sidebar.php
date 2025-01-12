@@ -20,7 +20,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
     <div class="sidebar-wrapper">
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-            <li class="nav-header mb-2"><b><i>Periode Tahun (<?php echo htmlspecialchars($tahun); ?>)</i></b></li>
+                <li class="nav-header mb-2"><b><i>Periode Tahun (<?php echo htmlspecialchars($tahun); ?>)</i></b></li>
                 <li class="nav-item menu-open">
                     <a href="<?php echo $base_path; ?>index.php" class="nav-link <?php echo $current_page == 'index.php' ? 'active' : ''; ?>">
                         <i class="nav-icon bi bi-speedometer"></i>
@@ -58,6 +58,12 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $base_path; ?>pages/tables/manage_tahun.php" class="nav-link <?php echo $current_page == 'manage_tahun.php' ? 'active' : ''; ?>">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Data Tahun</p>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="<?php echo $base_path; ?>pages/tables/user.php" class="nav-link <?php echo $current_page == 'user.php' ? 'active' : ''; ?>">
                                     <i class="nav-icon bi bi-circle"></i>
