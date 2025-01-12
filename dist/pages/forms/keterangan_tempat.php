@@ -50,7 +50,7 @@ $desa_id = $desa['id_desa'] ?? 0;
 $tahun = $_SESSION['tahun'] ?? date('Y');
 
 // Ambil data sebelumnya
-//$previous_sk_pembentukan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_sk_pembentukan', ['sk_pembentukan'], 'SK pembentukan/pengesahan desa/kelurahan');
+$previous_sk_pembentukan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_sk_pembentukan', ['sk_pembentukan'], 'SK pembentukan/pengesahan desa/kelurahan', $tahun);
 $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_balai_desa', ['alamat_balai', 'nama_kecamatan'], 'Alamat Balai Desa/Kantor Kelurahan', $tahun);
 ?>
 
