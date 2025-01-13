@@ -189,13 +189,13 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
               </div>
             </div>
             <div class="card-body">
-              <?php if ($form_status['Jumlah Tempat Ibadah di Desa/Kelurahan']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Jumlah Tempat Ibadah di Desa/Kelurahan']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_tempat_ibadah.php" method="post">
                   <div class="row mb-3">
                     <div class="col-md-6">
@@ -408,7 +408,7 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
                     populateFields();
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
             </div>
           </div>
 
@@ -460,13 +460,13 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
               </div>
             </div>
             <div class="card-body">
-              <?php if ($form_status['Banyaknya penyandang disabilitas']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Banyaknya penyandang disabilitas']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_disabilitas.php" method="post">
                   <div class="row mb-3">
                     <div class="col-md-6">
@@ -641,7 +641,7 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
                     populateFields();
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
             </div>
 
             <!-- Modal Info -->
@@ -694,13 +694,13 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
               </div>
             </div>
             <div class="card-body">
-              <?php if ($form_status['Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_ruang_publik.php" method="post">
                   <div class="row">
                     <div class="col-12 mb-3">
@@ -839,7 +839,7 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
                     });
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
 
               <!-- Modal Info -->
               <div class="modal fade" id="modalRuangPublik" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
