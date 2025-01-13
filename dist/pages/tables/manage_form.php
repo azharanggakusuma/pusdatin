@@ -16,11 +16,6 @@ if ($level !== 'admin') {
   exit;
 }
 
-$query_user = "SELECT id FROM users WHERE name = '$name'";
-$result_user = mysqli_query($conn, $query_user);
-$user = mysqli_fetch_assoc($result_user);
-$user_id = $user['id'] ?? 0;
-
 // Ambil data semua user untuk memilih user berdasarkan nama
 $query_all_users = "SELECT id, name FROM users";
 $result_all_users = mysqli_query($conn, $query_all_users);
@@ -31,19 +26,15 @@ if (isset($_POST['form_name'])) {
   $selected_user_id = $_POST['user_id'];
   $is_locked = isset($_POST['is_locked']) ? $_POST['is_locked'] : '';
 
-  // Make sure is_locked has a valid value
   if ($is_locked === '') {
     $error_message = "Please select a lock status.";
   } else {
-    // Convert 'true' or 'false' string to integer (1 for true, 0 for false)
     $is_locked = ($is_locked === 'true') ? 1 : 0;
 
-    // Cek apakah status form sudah ada untuk user tertentu
     $query_check = "SELECT * FROM user_progress WHERE user_id = '$selected_user_id' AND form_name = '$form_name'";
     $result_check = mysqli_query($conn, $query_check);
 
     if (mysqli_num_rows($result_check) > 0) {
-      // Update status form yang ada
       $query_update = "UPDATE user_progress SET is_locked = '$is_locked', updated_at = NOW() WHERE user_id = '$selected_user_id' AND form_name = '$form_name'";
       if (mysqli_query($conn, $query_update)) {
         $sweetalert_message = "Status form berhasil diperbarui!";
@@ -52,6 +43,27 @@ if (isset($_POST['form_name'])) {
       }
     } else {
       $error_message = "Status form tidak ditemukan untuk pengguna ini.";
+    }
+  }
+}
+
+// Mengubah status semua form sekaligus
+if (isset($_POST['all_forms_action'])) {
+  $all_forms_action = $_POST['all_forms_action'];
+
+  if ($all_forms_action === 'lock_all') {
+    $query_update_all = "UPDATE user_progress SET is_locked = 1, updated_at = NOW()";
+    if (mysqli_query($conn, $query_update_all)) {
+      $sweetalert_message = "Semua form berhasil dikunci!";
+    } else {
+      $error_message = "Terjadi kesalahan saat mengunci semua form.";
+    }
+  } elseif ($all_forms_action === 'unlock_all') {
+    $query_update_all = "UPDATE user_progress SET is_locked = 0, updated_at = NOW()";
+    if (mysqli_query($conn, $query_update_all)) {
+      $sweetalert_message = "Semua form berhasil dibuka!";
+    } else {
+      $error_message = "Terjadi kesalahan saat membuka semua form.";
     }
   }
 }
@@ -73,8 +85,8 @@ include('../../config/list_form.php');
   <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-  <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin: Plugin(AdminLTE)-->
+  <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end: Plugin(AdminLTE)-->
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -203,7 +215,7 @@ include('../../config/list_form.php');
               <form action="manage_form.php" method="post">
                 <div class="mb-3">
                   <label for="user_id" class="form-label">Pilih User (Desa/Kelurahan)</label>
-                  <select name="user_id" id="user_id" class="form-select" required>
+                  <select name="user_id" id="user_id" class="form-select">
                     <option value="" disabled selected>Pilih User</option>
                     <?php while ($user_data = mysqli_fetch_assoc($result_all_users)) { ?>
                       <option value="<?= $user_data['id']; ?>"><?= $user_data['name']; ?></option>
@@ -213,7 +225,7 @@ include('../../config/list_form.php');
 
                 <div class="mb-3">
                   <label for="form_name" class="form-label">Pilih Form</label>
-                  <select name="form_name" id="form_name" class="form-select" required>
+                  <select name="form_name" id="form_name" class="form-select">
                     <option value="" disabled selected>Pilih Form</option>
                     <?php foreach ($forms as $form) { ?>
                       <option value="<?= $form; ?>"><?= $form; ?></option>
@@ -223,19 +235,33 @@ include('../../config/list_form.php');
 
                 <div class="mb-3">
                   <label for="is_locked" class="form-label">Status Form</label>
-                  <select name="is_locked" id="is_locked" class="form-select" required>
+                  <select name="is_locked" id="is_locked" class="form-select">
                     <option value="" disabled selected>Pilih Status Form</option>
                     <option value="true">Terkunci</option>
                     <option value="false">Tidak Terkunci</option>
                   </select>
                 </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Aksi Massal</label>
+                  <div>
+                    <button type="submit" name="all_forms_action" value="lock_all" class="btn btn-danger">
+                      <i class="fas fa-lock"></i>&nbsp; Kunci Semua
+                    </button>
+                    &nbsp;
+                    <button type="submit" name="all_forms_action" value="unlock_all" class="btn btn-primary">
+                      <i class="fas fa-unlock"></i>&nbsp; Buka Semua
+                    </button>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i>&nbsp; Simpan
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-success">
-                <i class="fas fa-save"></i>&nbsp; Simpan
-              </button>
-            </div>
-            </form>
           </div>
         </div>
       </div>
@@ -300,10 +326,10 @@ include('../../config/list_form.php');
   <!-- dropzonejs -->
   <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-  <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin: Plugin(popperjs for Bootstrap 5)-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end: Plugin(popperjs for Bootstrap 5)--><!--begin: Plugin(Bootstrap 5)-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end: Plugin(Bootstrap 5)--><!--begin: Plugin(AdminLTE)-->
+  <script src="../../../dist/js/adminlte.js"></script> <!--end: Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
     $(function() {
       //Initialize Select2 Elements
