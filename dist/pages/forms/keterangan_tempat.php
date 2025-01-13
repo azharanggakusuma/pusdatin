@@ -202,13 +202,13 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php if ($form_status['SK pembentukan/pengesahan desa/kelurahan']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['SK pembentukan/pengesahan desa/kelurahan']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_sk_pembentukan.php" method="post">
                   <div class="row">
                     <div class="form-group">
@@ -318,7 +318,7 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                     populatePreviousData();
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
               <!-- /.row -->
             </div>
 
@@ -372,13 +372,13 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php if ($form_status['Alamat Balai Desa/Kantor Kelurahan']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Alamat Balai Desa/Kantor Kelurahan']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_balai_desa.php" method="post">
                   <div class="row">
                     <!-- Alamat Balai Desa/Kelurahan -->
@@ -467,7 +467,7 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                     populatePreviousData();
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
               <!-- /.row -->
             </div>
 
