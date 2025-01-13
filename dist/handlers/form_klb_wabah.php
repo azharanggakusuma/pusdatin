@@ -15,6 +15,14 @@ $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
+// Retrieve year from session
+$tahun = $_SESSION['tahun'] ?? null;
+
+if (!$tahun) {
+    echo "Tahun tidak ditemukan. Pastikan Anda telah login dengan memilih tahun.";
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Sanitize and prepare data from POST
   $muntaber_diare = $_POST['muntaber_diare'] ?? 'Tidak Ada';
@@ -28,16 +36,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $lainnya_name = $_POST['lainnya_name'] ?? NULL;
   $lainnya_status = $_POST['lainnya_status'] ?? 'Tidak Ada';
 
-  // Insert data into database
-  $sql = "INSERT INTO tb_klb_wabah (muntaber_diare, demam_berdarah, campak, malaria, flu_burung_sars, hepatitis_e, difteri, corona_covid19, lainnya_name, lainnya_status, user_id, desa_id)
-            VALUES ('$muntaber_diare', '$demam_berdarah', '$campak', '$malaria', '$flu_burung_sars', '$hepatitis_e', '$difteri', '$corona_covid19', '$lainnya_name', '$lainnya_status', '$user_id', '$desa_id')";
+  // Check if the record already exists for the same year
+  $check_query = "SELECT id_klb FROM tb_klb_wabah WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
+  $check_result = mysqli_query($conn, $check_query);
+
+  if (mysqli_num_rows($check_result) > 0) {
+    // If record exists for the same year, update the existing record
+    $sql = "UPDATE tb_klb_wabah 
+            SET muntaber_diare = '$muntaber_diare', demam_berdarah = '$demam_berdarah', campak = '$campak', malaria = '$malaria', 
+                flu_burung_sars = '$flu_burung_sars', hepatitis_e = '$hepatitis_e', difteri = '$difteri', corona_covid19 = '$corona_covid19', 
+                lainnya_name = '$lainnya_name', lainnya_status = '$lainnya_status', tahun = '$tahun' 
+            WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
+  } else {
+    // If record doesn't exist for the same year, insert a new record
+    $sql = "INSERT INTO tb_klb_wabah (muntaber_diare, demam_berdarah, campak, malaria, flu_burung_sars, hepatitis_e, difteri, corona_covid19, lainnya_name, lainnya_status, user_id, desa_id, tahun)
+            VALUES ('$muntaber_diare', '$demam_berdarah', '$campak', '$malaria', '$flu_burung_sars', '$hepatitis_e', '$difteri', '$corona_covid19', '$lainnya_name', '$lainnya_status', '$user_id', '$desa_id', '$tahun')";
+  }
 
   if (mysqli_query($conn, $sql)) {
-    // Tambahkan atau perbarui progres pengguna
-    $query_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id) 
-                           VALUES ('$user_id', 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir', TRUE, '$desa_id')
-                           ON DUPLICATE KEY UPDATE is_locked = TRUE, desa_id = '$desa_id'";
-    mysqli_query($conn, $query_progress);
+    // Check if progress entry exists for the same year
+    $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir' AND tahun = '$tahun'";
+    $result_progress = mysqli_query($conn, $query_progress);
+
+    // Set created_at to the first day of the year at 00:00:00
+    $created_at = $tahun . '-01-01 00:00:00';
+
+    if (mysqli_num_rows($result_progress) > 0) {
+      // If progress entry exists for the same year, update it
+      $update_progress = "UPDATE user_progress 
+                          SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$created_at', tahun = '$tahun' 
+                          WHERE user_id = '$user_id' AND form_name = 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir' AND tahun = '$tahun'";
+      mysqli_query($conn, $update_progress);
+    } else {
+      // If progress entry doesn't exist for the same year, insert a new entry
+      $insert_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id, created_at, tahun) 
+                          VALUES ('$user_id', 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir', TRUE, '$desa_id', '$created_at', '$tahun')";
+      mysqli_query($conn, $insert_progress);
+    }
 
     header("Location: ../pages/forms/pendidikan_dan_kesehatan.php?status=success");
     exit();

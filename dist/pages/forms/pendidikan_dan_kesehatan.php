@@ -577,13 +577,13 @@ $previous_klb_json = json_encode($previous_klb_data);
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <?php if ($form_status['Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir']) : ?>
-                  <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                <?php //if ($form_status['Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir']) : ?>
+                  <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                     <i class="fas fa-lock me-2"></i>
                     <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                <?php else: ?>
+                  </div>-->
+                <?php //else: ?>
                   <form action="../../handlers/form_klb_wabah.php" method="post">
                     <div class="form-group">
                       <table class="table">
@@ -698,7 +698,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                       }
                     }
                   </script>
-                <?php endif; ?>
+                <?php //endif; ?>
               </div>
             </div>
 
