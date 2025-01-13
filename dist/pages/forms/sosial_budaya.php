@@ -47,9 +47,9 @@ $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempat_ibadah', ['jumlah_masjid', 'jumlah_pura', 'jumlah_musala', 'jumlah_wihara', 'jumlah_gereja_kristen', 'jumlah_kelenteng', 'jumlah_gereja_katolik', 'jumlah_balai_basarah', 'jumlah_kapel', 'lainnya', 'jumlah_lainnya'], 'Jumlah Tempat Ibadah di Desa/Kelurahan');
-$previous_disabilitas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_disabilitas', ['jumlah_tuna_netra', 'jumlah_tuna_rungu', 'jumlah_tuna_wicara', 'jumlah_tuna_rungu_wicara', 'jumlah_tuna_daksa', 'jumlah_tuna_grahita', 'jumlah_tuna_laras', 'jumlah_tuna_eks_kusta', 'jumlah_tuna_ganda'], 'Banyaknya penyandang disabilitas');
-$previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_ruang_publik', ['status_ruang_publik', 'ruang_terbuka_hijau', 'ruang_terbuka_non_hijau'], 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)');
+$previous_ibadah_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_tempat_ibadah', ['jumlah_masjid', 'jumlah_pura', 'jumlah_musala', 'jumlah_wihara', 'jumlah_gereja_kristen', 'jumlah_kelenteng', 'jumlah_gereja_katolik', 'jumlah_balai_basarah', 'jumlah_kapel', 'lainnya', 'jumlah_lainnya'], 'Jumlah Tempat Ibadah di Desa/Kelurahan', $tahun);
+$previous_disabilitas_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_disabilitas', ['jumlah_tuna_netra', 'jumlah_tuna_rungu', 'jumlah_tuna_wicara', 'jumlah_tuna_rungu_wicara', 'jumlah_tuna_daksa', 'jumlah_tuna_grahita', 'jumlah_tuna_laras', 'jumlah_tuna_eks_kusta', 'jumlah_tuna_ganda'], 'Banyaknya penyandang disabilitas', $tahun);
+$previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_ruang_publik', ['status_ruang_publik', 'ruang_terbuka_hijau', 'ruang_terbuka_non_hijau'], 'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)', $tahun);
 ?>
 
 <!DOCTYPE html>

@@ -47,7 +47,7 @@ $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+$previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fasilitas_olahraga', ['sepak_bola', 'bola_voli', 'bulu_tangkis', 'bola_basket', 'tenis_lapangan', 'tenis_meja', 'futsal', 'renang', 'bela_diri', 'bilyard', 'fitness', 'lainnya_nama', 'lainnya_kondisi'], 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan', $tahun);
 ?>
 
 <!DOCTYPE html>

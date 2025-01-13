@@ -47,9 +47,9 @@ $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil data sebelumnya
-$previous_bacaan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_taman_bacaan', ['keberadaan_tbm'], 'Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa');
-$previous_bidan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_bidan', ['keberadaan_bidan'], 'Keberadaan Bidan Desa yang menetap di Desa/Kelurahan');
-$previous_dukun_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_dukun_bayi', ['keberadaan_dukun_bayi'], 'Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan');
+$previous_bacaan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_taman_bacaan', ['keberadaan_tbm'], 'Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa', $tahun);
+$previous_bidan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_bidan', ['keberadaan_bidan'], 'Keberadaan Bidan Desa yang menetap di Desa/Kelurahan', $tahun);
+$previous_dukun_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_keberadaan_dukun_bayi', ['keberadaan_dukun_bayi'], 'Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan', $tahun);
 
 // Ambil data sebelumnya
 $previous_klb_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_klb_wabah', [
@@ -63,7 +63,7 @@ $previous_klb_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_klb_waba
   'corona_covid19',
   'lainnya_name',
   'lainnya_status'
-], 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir');
+], 'Jumlah Kejadian luar biasa (KLB) atau wabah penyakit selama setahun terakhir', $tahun);
 
 // Konversi data ke JSON
 $previous_klb_json = json_encode($previous_klb_data);

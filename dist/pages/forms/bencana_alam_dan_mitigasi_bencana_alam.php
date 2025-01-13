@@ -60,13 +60,13 @@ $previous_bencana_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_benc
   'kebakaran_hutan',
   'kekeringan',
   'abrasi'
-], 'Kejadian/bencana alam (mengganggu kehidupan dan menyebabkan kerugian bagi masyarakat) yang terjadi');
+], 'Kejadian/bencana alam (mengganggu kehidupan dan menyebabkan kerugian bagi masyarakat) yang terjadi', $tahun);
 
 // Konversi data ke JSON
 $previous_bencana_json = json_encode($previous_bencana_data);
 
 // Ambil data sebelumnya
-$previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_peringatan_bencana', ['peringatan_dini', 'peringatan_tsunami', 'perlengkapan_keselamatan', 'rambu_evakuasi', 'infrastruktur'], 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan');
+$previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_peringatan_bencana', ['peringatan_dini', 'peringatan_tsunami', 'perlengkapan_keselamatan', 'rambu_evakuasi', 'infrastruktur'], 'Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan', $tahun);
 ?>
 
 <!DOCTYPE html>
