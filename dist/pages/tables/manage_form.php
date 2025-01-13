@@ -156,51 +156,110 @@ include('../../config/list_form.php');
                 </button>
               </div>
             </div>
-            <div class="card-body p-0">
-              <table class="table table-striped table-hover align-middle">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>User (Desa/Kelurahan)</th>
-                    <th>Form Name</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $no = 1;
-                  foreach ($forms as $form):
-                    $query_form_status = "SELECT users.name, user_progress.is_locked 
-                                  FROM user_progress 
-                                  JOIN users ON user_progress.user_id = users.id
-                                  WHERE user_progress.form_name = ?";
-                    $stmt = $conn->prepare($query_form_status);
-                    $stmt->bind_param('s', $form);
-                    $stmt->execute();
-                    $result_form_status = $stmt->get_result();
+            <div class="card-body">
+              <!-- Search Bar -->
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <input type="text" id="searchInput" class="form-control" placeholder="Cari berdasarkan nama atau form...">
+                </div>
+                <div class="col-md-6">
+                  <!-- Filter Status -->
+                  <select id="statusFilter" class="form-select">
+                    <option value="">Semua Status</option>
+                    <option value="Locked">Terkunci</option>
+                    <option value="Unlocked">Tidak Terkunci</option>
+                  </select>
+                </div>
+              </div>
 
-                    while ($status = $result_form_status->fetch_assoc()):
-                  ?>
-                      <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= htmlspecialchars($status['name']); ?></td>
-                        <td><?= htmlspecialchars($form); ?></td>
-                        <td>
-                          <span class="badge <?= $status['is_locked'] ? 'bg-danger' : 'bg-success'; ?>">
-                            <?= $status['is_locked'] ? 'Locked' : 'Unlocked'; ?>
-                          </span>
-                        </td>
-                      </tr>
-                  <?php
-                    endwhile;
-                  endforeach;
-                  ?>
-                </tbody>
-              </table>
+              <!-- Table -->
+              <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>User (Desa/Kelurahan)</th>
+                      <th>Form Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="formTableBody">
+                    <?php
+                    $no = 1;
+                    foreach ($forms as $form):
+                      $query_form_status = "SELECT users.name, user_progress.is_locked 
+                              FROM user_progress 
+                              JOIN users ON user_progress.user_id = users.id
+                              WHERE user_progress.form_name = ?";
+                      $stmt = $conn->prepare($query_form_status);
+                      $stmt->bind_param('s', $form);
+                      $stmt->execute();
+                      $result_form_status = $stmt->get_result();
+
+                      while ($status = $result_form_status->fetch_assoc()):
+                    ?>
+                        <tr>
+                          <td><?= $no++; ?></td>
+                          <td><?= htmlspecialchars($status['name']); ?></td>
+                          <td><?= htmlspecialchars($form); ?></td>
+                          <td>
+                            <span class="badge <?= $status['is_locked'] ? 'bg-danger' : 'bg-success'; ?>">
+                              <?= $status['is_locked'] ? 'Locked' : 'Unlocked'; ?>
+                            </span>
+                          </td>
+                        </tr>
+                    <?php
+                      endwhile;
+                    endforeach;
+                    ?>
+                  </tbody>
+                </table>
+                <!-- No Data Message -->
+                <p id="noDataMessage" class="text-center text-muted mt-3" style="display: none;">Data tidak ditemukan.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <script>
+        const searchInput = document.getElementById('searchInput');
+        const statusFilter = document.getElementById('statusFilter');
+        const formTableBody = document.getElementById('formTableBody');
+        const noDataMessage = document.getElementById('noDataMessage');
+
+        // Function to update table visibility
+        function updateTableVisibility() {
+          const rows = formTableBody.querySelectorAll('tr');
+          let visibleCount = 0;
+
+          rows.forEach(row => {
+            const user = row.cells[1].textContent.toLowerCase();
+            const form = row.cells[2].textContent.toLowerCase();
+            const status = row.cells[3].textContent.trim();
+            const searchValue = searchInput.value.toLowerCase();
+            const filterValue = statusFilter.value;
+
+            const matchesSearch = user.includes(searchValue) || form.includes(searchValue);
+            const matchesFilter = filterValue === '' || status === filterValue;
+
+            if (matchesSearch && matchesFilter) {
+              row.style.display = '';
+              visibleCount++;
+            } else {
+              row.style.display = 'none';
+            }
+          });
+
+          // Show or hide the no data message
+          noDataMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Attach event listeners
+        searchInput.addEventListener('keyup', updateTableVisibility);
+        statusFilter.addEventListener('change', updateTableVisibility);
+      </script>
+
       <!--end::App Content-->
 
       <!-- Modal Form Pengelolaan -->
