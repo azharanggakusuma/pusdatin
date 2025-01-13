@@ -244,13 +244,13 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php if ($form_status['Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
                   <div class="row mb-3">
                     <div class="col-md-6">
@@ -521,7 +521,7 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                     </button>
                   </div>
                 </form>
-              <?php endif; ?>
+              <?php //endif; ?>
 
               <!-- /.row -->
             </div>
