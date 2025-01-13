@@ -175,7 +175,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         </div>
                         <div class="position-relative flex-grow-1">
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
-                            <i class="bi bi-eye-fill position-absolute" id="togglePasswordIcon" style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+                            <i class="bi bi-eye-fill position-absolute" id="togglePasswordIcon" style="top: 50%; right: 12px; transform: translateY(-50%); cursor: pointer;"></i>
                         </div>
                     </div>
 
@@ -183,7 +183,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <div class="input-group-text">
                             <span class="bi bi-calendar-fill"></span>
                         </div>
-                        <select class="form-control" name="tahun" id="tahun" required>
+                        <select class="form-control form-select" name="tahun" id="tahun" required>
                             <option value="" disabled selected>Pilih Tahun</option>
                             <?php
                             // Gunakan foreach untuk menampilkan tahun dalam select
