@@ -197,7 +197,7 @@ if ($result->num_rows > 0) {
                   <div class="modal-body">
                     <div class="mb-3">
                       <label for="year" class="form-label">Tahun</label>
-                      <input type="text" class="form-control" id="year" name="year" placeholder="Tahun" required>
+                      <input type="number" class="form-control" id="year" name="year" placeholder="Masukkan tahun" required>
                     </div>
                   </div>
                   <div class="modal-footer">
