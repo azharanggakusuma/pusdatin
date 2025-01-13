@@ -335,13 +335,13 @@ $previous_klb_json = json_encode($previous_klb_data);
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php if ($form_status['Keberadaan Bidan Desa yang menetap di Desa/Kelurahan']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Keberadaan Bidan Desa yang menetap di Desa/Kelurahan']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_keberadaan_bidan.php" method="post">
                   <div class="row">
                     <div class="form-group mb-3">
@@ -408,7 +408,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                     populateFields();
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
               <!-- /.row -->
             </div>
 
@@ -461,13 +461,13 @@ $previous_klb_json = json_encode($previous_klb_data);
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php if ($form_status['Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan']) : ?>
-                <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan']) : ?>
+                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <?php else: ?>
+                </div>-->
+              <?php //else: ?>
                 <form action="../../handlers/form_keberadaan_dukun_bayi.php" method="post">
                   <div class="row">
                     <div class="form-group mb-3">
@@ -535,7 +535,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                     populateFields();
                   });
                 </script>
-              <?php endif; ?>
+              <?php //endif; ?>
               <!-- /.row -->
             </div>
 
