@@ -366,13 +366,13 @@ $previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_p
             </div>
             <div class="collapse show" id="collapseForm">
               <div class="card-body">
-                <?php if ($form_status['Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan']) : ?>
-                  <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                <?php //if ($form_status['Fasilitas/upaya antisipasi/mitigasi bencana alam yang ada di desa/kelurahan']) : ?>
+                  <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                     <i class="fas fa-lock me-2"></i>
                     <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                <?php else: ?>
+                  </div>-->
+                <?php //else: ?>
                   <form action="../../handlers/form_peringatan_bencana.php" method="post">
                     <!-- Form field 1 -->
                     <div class="mb-3">
@@ -514,7 +514,7 @@ $previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_p
                       populateFields();
                     });
                   </script>
-                <?php endif; ?>
+                <?php //endif; ?>
               </div>
             </div>
 
