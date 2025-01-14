@@ -199,7 +199,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Penduduk dan Keluarga</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPendudukDanKeluarga">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -221,21 +221,24 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_penduduk_dan_keluarga.php" method="post">
                 <div class="row">
+                  <!-- Jumlah Penduduk Laki-Laki -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Penduduk Laki – Laki</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_penduduk_laki">Jumlah Penduduk Laki-Laki</label>
+                    <input type="number" min="0" id="jumlah_penduduk_laki" name="jumlah_penduduk_laki" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
 
+                  <!-- Jumlah Penduduk Perempuan -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Penduduk Perempuan</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_penduduk_perempuan">Jumlah Penduduk Perempuan</label>
+                    <input type="number" min="0" id="jumlah_penduduk_perempuan" name="jumlah_penduduk_perempuan" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
 
+                  <!-- Jumlah Kepala Keluarga -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Kepala Keluarga</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_kepala_keluarga">Jumlah Kepala Keluarga</label>
+                    <input type="number" min="0" id="jumlah_kepala_keluarga" name="jumlah_kepala_keluarga" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -249,22 +252,22 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalPendudukDanKeluarga" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Masukkan jumlah penduduk laki-laki, penduduk perempuan, dan kepala keluarga dalam format angka (contoh: 10).</li>
+                      <li>Pastikan nilai yang dimasukkan adalah angka non-negatif.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -272,6 +275,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Penduduk dan keluarga -->
 
           <!-- BEGIN::KETANA KERJAAN -->
