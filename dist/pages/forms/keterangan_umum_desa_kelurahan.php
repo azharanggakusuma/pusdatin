@@ -530,7 +530,7 @@ include "../../config/session.php";
             <!-- /.card-header -->
             <div class="card-body">
 
-              <form action="../../handlers/form_idm_status.php" method="post">
+              <form action="../../handlers/form_status_pemerintahan.php" method="post">
                 <div class="mb-3">
                   <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
                   <select name="status_2024" id="" class="form-control">
