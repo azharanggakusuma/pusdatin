@@ -245,11 +245,10 @@ include "../../config/session.php";
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalinternet">
+              <h3 class="card-title">Keberadaan Internet untuk Warnet, Game Online, dan Fasilitas Lainnya di Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalInternet">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -271,12 +270,13 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_internet_transportasi.php" method="post">
                 <div class="row">
+                  <!-- Keberadaan Internet -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2" for="keberadaan_internet">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</label>
+                    <select name="keberadaan_internet" id="keberadaan_internet" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
@@ -293,18 +293,22 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalinternet" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalInternet" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi Ada/Tidak Ada keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</li>
+                      <li>Pilih <strong>Ada</strong> jika keberadaan internet untuk warnet, game online, dan fasilitas lainnya tersedia di desa/kelurahan Anda.</li>
+                      <li>Pilih <strong>Tidak Ada</strong> jika tidak tersedia.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -312,6 +316,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
