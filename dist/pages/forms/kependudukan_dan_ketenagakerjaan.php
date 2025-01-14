@@ -63,6 +63,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "kependudukan_dan_ketenagakerjaan.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "kependudukan_dan_ketenagakerjaan.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "kependudukan_dan_ketenagakerjaan.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -82,14 +121,14 @@ include "../../config/session.php";
         </div> <!--end::Container-->
       </div> <!--end::App Content Header--> <!--begin::App Content-->
       <div class="app-content"> <!--begin::Container-->
-        <div class="container-fluid"> <!--begin::Row--> 
+        <div class="container-fluid"> <!--begin::Row-->
 
           <!-- Template Form -->
 
           <!-- BEGIN::KEMATIAN -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">KEMATIAN</h3>
+              <h3 class="card-title">Kematian</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -98,8 +137,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".kematian").on("click", function () {
+                  $(document).ready(function() {
+                    $(".kematian").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -118,7 +157,6 @@ include "../../config/session.php";
                     <label class="mb-2">Jumlah Surat Kematian Yang Dikeluarkan</label>
                     <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
                   </div>
-
                 </div>
 
                 <div class="mb-2">
@@ -158,7 +196,7 @@ include "../../config/session.php";
           <!-- BEGIN::Penduduk dan keluarga -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">PENDUDUK DAN KELUARGa</h3>
+              <h3 class="card-title">Penduduk dan Keluarga</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -167,8 +205,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -237,7 +275,7 @@ include "../../config/session.php";
           <!-- BEGIN::KETANA KERJAAN -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">KETENAGAKERJAAN</h3>
+              <h3 class="card-title">Ketenagakerjaan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -246,8 +284,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -291,14 +329,14 @@ include "../../config/session.php";
                   </div>
 
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Warga Negara Asing (WNA) di desa/kelurahan  </label>
+                    <label class="mb-2">Keberadaan Warga Negara Asing (WNA) di desa/kelurahan </label>
                     <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak ada</option>
                     </select>
                   </div>
-                
+
                 </div>
 
                 <div class="mb-2">
@@ -336,7 +374,7 @@ include "../../config/session.php";
           </div>
           <!-- END::KETANAKERJAAN -->
 
-        
+
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
@@ -386,7 +424,7 @@ include "../../config/session.php";
   <script src="../../../dist/js/adminlte.js"></script>
   <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
-    $(function () {
+    $(function() {
       //Initialize Select2 Elements
       $('.select2').select2()
 
@@ -402,7 +440,7 @@ include "../../config/session.php";
       scrollbarAutoHide: "leave",
       scrollbarClickScroll: true,
     };
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
       if (
         sidebarWrapper &&
