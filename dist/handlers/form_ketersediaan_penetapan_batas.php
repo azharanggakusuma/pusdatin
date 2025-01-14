@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../config/conn.php"; // Sesuaikan dengan path koneksi Anda
+include "../config/conn.php";
 
 // Ambil user_id dari session berdasarkan username
 $username = $_SESSION['username'] ?? '';
