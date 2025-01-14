@@ -877,115 +877,112 @@ include "../../config/session.php";
 
           <!-- BEGIN::Keberadaan, status, kondisi, dan lokasi kantor kepala desa/lurah -->
           <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan, status, kondisi, dan lokasi kantor kepala desa/lurah</h3>
-              <!-- Aturan Pengisian Button -->
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTopografiTerluas">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form4">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function() {
+    <div class="card-header mb-3">
+        <h3 class="card-title">Keberadaan, Status, Kondisi, dan Lokasi Kantor Kepala Desa/Lurah</h3>
+        <!-- Aturan Pengisian Button -->
+        <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKepemilikanKantor">
+            <i class="fas fa-info-circle"></i>
+        </button>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool toggle-form4">
+                <i class="fas fa-minus"></i>
+            </button>
+            <script>
+                $(document).ready(function() {
                     $(".toggle-form4").on("click", function() {
-                      var $icon = $(this).find("i"); // Ambil ikon tombol
-                      var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
+                        var $icon = $(this).find("i"); // Ambil ikon tombol
+                        var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
-                      $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
-                      $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
+                        $cardBody.slideToggle(); // Menampilkan/menghilangkan dengan animasi
+                        $icon.toggleClass("fa-minus fa-plus"); // Ganti ikon
                     });
-                  });
-                </script>
-              </div>
+                });
+            </script>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <form action="../../handlers/form_kepemilikan_kantor.php" method="post">
+            <div class="row">
+                <!-- KEBERADAAN KANTOR -->
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="mb-2">Keberadaan kantor kepala desa/lurah</label>
+                        <select name="keberadaan_kantor" id="keberadaan_kantor" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Ada/Tidak Ada --</option>
+                            <option value="ADA">ADA</option>
+                            <option value="TIDAK ADA">TIDAK ADA</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Status Kantor Kepala Desa/Lurah -->
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="mb-2">Status Kantor Kepala Desa/Lurah</label>
+                        <select name="status_kantor" id="status_kantor" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Aset Desa/Bukan Aset Desa --</option>
+                            <option value="ASET DESA">ASET DESA</option>
+                            <option value="BUKAN ASET DESA">BUKAN ASET DESA</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
 
-              <form action="../../handlers/form_kepemilikan_kantor.php" method="post">
-                <div class="row">
-                  <!-- KEBERADAAN KANTOR -->
-                  <div class="col-md-6">
+            <div class="row">
+                <!-- KONDISI KANTOR -->
+                <div class="col-md-6">
                     <div class="form-group mb-3">
-                      <label class="mb-2">Keberadaan kantor kepala desa/lurah</label>
-                      <select name="aset_desa" id="aset_desa" class="form-control">
-                        <option value="" disabled selected>-- Pilih Ada/Tidak Ada --</option>
-                        <option value="ADA">ADA</option>
-                        <option value="TIDAK ADA">TIDAK ADA</option>
-                      </select>
+                        <label class="mb-2" for="kondisi_kantor">Kondisi Kantor Kepala Desa/Balai Desa</label>
+                        <select name="kondisi_kantor" id="kondisi_kantor" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
+                            <option value="ADA, LAYAK">ADA, LAYAK</option>
+                            <option value="ADA, TIDAK LAYAK">ADA, TIDAK LAYAK</option>
+                            <option value="TIDAK ADA">TIDAK ADA</option>
+                        </select>
                     </div>
-                  </div>
-
-                  <!-- Status Kantor Kepala Desa/Lurah -->
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Status Kantor Kepala Desa/Lurah</label>
-                      <select name="aset_desa" id="aset_desa" class="form-control">
-                        <option value="" disabled selected>-- Pilih Aset Desa/Bukan Aset Desa --</option>
-                        <option value="ASET DESA">ASET DESA</option>
-                        <option value="BUKAN ASET DESA">BUKAN ASET DESA</option>
-                      </select>
-                    </div>
-                  </div>
-
                 </div>
 
-                <div class="row">
-                  <!-- KONDISI KANTOR -->
-                  <div class="col-md-6">
+                <!-- Lokasi kantor kepala desa/lurah -->
+                <div class="col-md-6">
                     <div class="form-group mb-3">
-                      <label class="mb-2" for="kondisi_kantor">Kondisi Kantor Kepala Desa/Balai Desa</label>
-                      <select name="kondisi_kantor" id="kondisi_kantor" class="form-control">
-                        <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
-                        <option value="ADA, LAYAK">ADA, LAYAK</option>
-                        <option value="ADA, TIDAK LAYAK">ADA, TIDAK LAYAK</option>
-                        <option value="TIDAK ADA">TIDAK ADA</option>
-                      </select>
+                        <label class="mb-2" for="lokasi_kantor">Lokasi Kantor Kepala Desa/Lurah</label>
+                        <select name="lokasi_kantor" id="lokasi_kantor" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Lokasi Kantor Kepala Desa --</option>
+                            <option value="Di dalam wilayah desa/kelurahan">Di dalam wilayah desa/kelurahan</option>
+                            <option value="Di Luar Wilayah Desa/Kelurahan">Di Luar Wilayah Desa/Kelurahan</option>
+                        </select>
                     </div>
-                  </div>
-
-                  <!-- Lokasi kantor kepala desa/lurah -->
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2" for="kondisi_kantor">Lokasi Kantor Kepala Desa/Lurah</label>
-                      <select name="kondisi_kantor" id="kondisi_kantor" class="form-control">
-                        <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
-                        <option value="Di	Dalam	Wilayah	Desa/Kelurahan">Di dalam wilayah desa/kelurahan</option>
-                        <option value="Di Luar Wilayah	Desa/Kelurahan">Di Luar Wilayah Desa/Kelurahan</option>
-                      </select>
-                    </div>
-                  </div>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                </div>
-              </form>
-              <!-- /.row -->
             </div>
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalTopografiTerluas" tabindex="-1" aria-labelledby="aturanModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+            </div>
+        </form>
+    </div>
+    <!-- Modal Info -->
+    <div class="modal fade" id="modalKepemilikanKantor" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan topografi wilayah desa Anda.</li>
-                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
-                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
                 </div>
-              </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan kondisi kantor kepala desa/lurah Anda.</li>
+                        <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                        <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
             </div>
-          </div>
+        </div>
+    </div>
+</div>
+
           <!-- END::Keberadaan, status, kondisi, dan lokasi kantor kepala desa/lurah -->
 
           <!-- BEGIN::TITIK KOORDINAT -->

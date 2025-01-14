@@ -47,44 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $kondisi_kantor = mysqli_real_escape_string($conn, $_POST['kondisi_kantor'] ?? '');
     $lokasi_kantor = mysqli_real_escape_string($conn, $_POST['lokasi_kantor'] ?? '');
 
-    // ============================
-    // Bagian VALIDASI DASAR
-    // ============================
-
-    $errors = [];
-
-    // 1) Validasi keberadaan_kantor
-    $allowed_keberadaan = ['ADA', 'TIDAK ADA'];
-    if (empty($keberadaan_kantor) || !in_array($keberadaan_kantor, $allowed_keberadaan)) {
-        $errors[] = "Anda harus memilih Keberadaan Kantor Kepala Desa/Lurah.";
-    }
-
-    // 2) Validasi status_kantor
-    $allowed_status = ['ASET DESA', 'BUKAN ASET DESA'];
-    if (empty($status_kantor) || !in_array($status_kantor, $allowed_status)) {
-        $errors[] = "Anda harus memilih Status Kantor Kepala Desa/Lurah.";
-    }
-
-    // 3) Validasi kondisi_kantor
-    $allowed_kondisi = ['ADA, LAYAK', 'ADA, TIDAK LAYAK', 'TIDAK ADA'];
-    if (empty($kondisi_kantor) || !in_array($kondisi_kantor, $allowed_kondisi)) {
-        $errors[] = "Anda harus memilih Kondisi Kantor Kepala Desa/Balai Desa.";
-    }
-
-    // 4) Validasi lokasi_kantor
-    $allowed_lokasi = ['Di dalam wilayah desa/kelurahan', 'Di Luar Wilayah Desa/Kelurahan'];
-    if (empty($lokasi_kantor) || !in_array($lokasi_kantor, $allowed_lokasi)) {
-        $errors[] = "Anda harus memilih Lokasi Kantor Kepala Desa/Lurah.";
-    }
-
-    // Jika ada error, redirect dengan pesan error
-    if (!empty($errors)) {
-        $message = implode(" ", $errors);
-        header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($message));
-        exit();
-    }
-
-    // Cek apakah data sudah ada di db untuk tahun yang sama
+    // Cek apakah data untuk tahun yang sama sudah ada di db
     $check_query = "SELECT id 
                     FROM tb_kepemilikan_kantor 
                     WHERE user_id = '$user_id' 
