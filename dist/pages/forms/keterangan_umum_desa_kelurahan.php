@@ -100,7 +100,7 @@ include "../../config/session.php";
               </div>
             </div>
             <div class="card-body">
-              <form id="batasDesaForm" method="post" action="#">
+              <form id="batasDesaForm" method="post" action="../../handlers/form_batas_desa.php">
                 <div class="row">
                   <!-- Sebelah Utara -->
                   <div class="col-md-6">
