@@ -317,7 +317,6 @@ include "../../config/session.php";
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan menara telepon seluler, sinyal telepon dan sinyal internet di desa/kelurahan</h3>
