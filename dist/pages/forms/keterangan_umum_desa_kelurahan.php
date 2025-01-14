@@ -205,8 +205,10 @@ include "../../config/session.php";
                     </div>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
             </div>
@@ -295,8 +297,10 @@ include "../../config/session.php";
                   <!-- Checkbox untuk menggunakan data tahun sebelumnya -->
 
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
             </div>
@@ -390,8 +394,10 @@ include "../../config/session.php";
                     <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
                   </select>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div> <!--end::Footer-->
               </form>
               <!-- /.row -->
@@ -474,7 +480,11 @@ include "../../config/session.php";
                   <label class="mb-2">Alamat YouTube Desa</label>
                   <input type="text" name="alamat_youtube" class="form-control" placeholder="Masukkan alamat YouTube">
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
               </form>
               <!-- /.row -->
             </div>
@@ -542,8 +552,10 @@ include "../../config/session.php";
                     <option value="GAMPONG">GAMPONG</option>
                   </select>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div> <!--end::Footer-->
               </form>
               <!-- /.row -->
@@ -638,8 +650,10 @@ include "../../config/session.php";
                     </div>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
             </div>
@@ -729,7 +743,13 @@ include "../../config/session.php";
                   </div>
                   <!-- /.col -->
                 </div>
-                <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div>
+                <div class="mb-3">
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+                </div>
                 <!--end::Footer-->
               </form>
               <!-- /.row -->
@@ -771,8 +791,10 @@ include "../../config/session.php";
 
                   </div>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
             </div>
@@ -843,8 +865,10 @@ include "../../config/session.php";
                     </select>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary me-2 mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
 
@@ -955,8 +979,10 @@ include "../../config/session.php";
                     </div>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
             </div>
@@ -1027,7 +1053,13 @@ include "../../config/session.php";
                     <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur"
                       style="width: 100%;">
                   </div>
-                  <div class="mb-3"> <button type="submit" class="btn btn-primary mt-3">Simpan</button> </div> <!--end::Footer-->
+                  <div class="mb-3">
+                    <div class="mb-2">
+                      <button type="submit" class="btn btn-primary mt-3">
+                        <i class="fas fa-save"></i> &nbsp; Simpan
+                      </button>
+                    </div>
+                  </div> <!--end::Footer-->
               </form>
               <!-- /.row -->
             </div>
