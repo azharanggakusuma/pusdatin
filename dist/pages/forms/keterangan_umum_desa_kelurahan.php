@@ -771,9 +771,6 @@ include "../../config/session.php";
 
                   </div>
                 </div>
-
-
-
                 <div class="mb-3">
                   <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                 </div>
