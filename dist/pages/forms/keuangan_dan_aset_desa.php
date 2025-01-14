@@ -962,10 +962,10 @@ include "../../config/session.php";
           <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpengadaan">
             <i class="fas fa-info-circle"></i>
           </button>
-          <div class="card-tools">
+          <div class="card-tools">                                         
             <button type="button" class="btn btn-tool toggle-form">
               <i class="fas fa-minus"></i>
-            </button>
+            </button>    
             <script>
               $(document).ready(function() {
                 $(".toggle-form").on("click", function() {
