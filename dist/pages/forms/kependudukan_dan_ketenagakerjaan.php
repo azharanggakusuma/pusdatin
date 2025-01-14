@@ -282,7 +282,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Ketenagakerjaan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKetenagakerjaan">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -304,45 +304,47 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_ketenagakerjaan.php" method="post">
                 <div class="row">
+                  <!-- Keberadaan PMI/TKI -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Warga desa/kelurahan yang sedang bekerja sebagai PMI (Pekerja Migran
-                      Indonesia)/TKI di luar negeri</label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="pmi_bekerja">Keberadaan Warga Desa/Kelurahan yang Sedang Bekerja sebagai PMI (Pekerja Migran Indonesia)/TKI di Luar Negeri</label>
+                    <select name="pmi_bekerja" id="pmi_bekerja" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
 
+                  <!-- Keberadaan Agen Pengerahan PMI/TKI -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Agen (Seseorang/Sekelompok Orang/Perusahaan) Pengerahan Pekerja Migran Indonesia/Tki Ke Luar Negeri Di Desa/Kelurahan </label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="agen_pengerahan_pmi">Keberadaan Agen (Seseorang/Sekelompok Orang/Perusahaan) Pengerahan Pekerja Migran Indonesia/TKI ke Luar Negeri di Desa/Kelurahan</label>
+                    <select name="agen_pengerahan_pmi" id="agen_pengerahan_pmi" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
 
+                  <!-- Layanan Rekomendasi PMI/TKI -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Layanan Rekomendasi/Surat Keterangan Bagi Warga Desa/Kelurahan Yang Akan Bekerja Sebagai Pekerja Migran Indonesia/Tki Di Luar Negeri</label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="layanan_rekomendasi_pmi">Layanan Rekomendasi/Surat Keterangan Bagi Warga Desa/Kelurahan yang Akan Bekerja Sebagai Pekerja Migran Indonesia/TKI di Luar Negeri</label>
+                    <select name="layanan_rekomendasi_pmi" id="layanan_rekomendasi_pmi" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
 
+                  <!-- Keberadaan WNA -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Warga Negara Asing (WNA) di desa/kelurahan </label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="keberadaan_wna">Keberadaan Warga Negara Asing (WNA) di Desa/Kelurahan</label>
+                    <select name="keberadaan_wna" id="keberadaan_wna" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-
                 </div>
 
                 <div class="mb-2">
@@ -355,22 +357,22 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKetenagakerjaan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan kondisi ketenagakerjaan di desa/kelurahan Anda.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Gunakan pilihan <strong>Ada</strong> jika kondisi tersebut ada di desa/kelurahan Anda, dan <strong>Tidak Ada</strong> jika tidak.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -379,8 +381,6 @@ include "../../config/session.php";
             </div>
           </div>
           <!-- END::KETANAKERJAAN -->
-
-
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
