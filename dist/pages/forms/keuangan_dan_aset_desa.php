@@ -791,63 +791,66 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <form action="" method="post">
-              <div class="row">
-                <div class="form-group mb-3">
-                  <label class="mb-2">Realiasi Pendapatan Desa Tahun Anggaran .......... (Rupiah)</label>
-                  <p style="margin-left: 20px;">1. Pendapatan Asli Desa (PADes)</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">2. Dana Desa (bersumber dari APBN)</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima kabupaten/kota)</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">5. Bantuan keuangan dari APBD Provinsi</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">6. Bantuan keuangan dari APBD Kabupaten/kota</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">7. Hibah dan sumbangan dari pihak ketiga</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">8. Lain–lain pendapatan desa yang sah</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                </div>
+              <form action="" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Realiasi Pendapatan Desa Tahun Anggaran .......... (Rupiah)</label>
+                    <p style="margin-left: 20px;">1. Pendapatan Asli Desa (PADes)</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">2. Dana Desa (bersumber dari APBN)</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima kabupaten/kota)</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">5. Bantuan keuangan dari APBD Provinsi</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">6. Bantuan keuangan dari APBD Kabupaten/kota</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">7. Hibah dan sumbangan dari pihak ketiga</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <p style="margin-left: 20px;">8. Lain–lain pendapatan desa yang sah</p>
+                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-            </form>
-            <!-- /.row -->
+                  <div class="mb-2">
+                    <button type="submit" class="btn btn-primary mt-3">
+                      <i class="fas fa-save"></i> &nbsp; Simpan
+                    </button>
+                  </div>
+              </form>
+              <!-- /.row -->
+            </div>
           </div>
 
           <!--end::Row-->
-          <div class="card card-primary card-outline mb-4">
-            <div class="card-header mb-3">
-              <h3 class="card-title">Realisasi Anggaran Belanja Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbelanja">
-                <i class="fas fa-info-circle"></i>
-              </button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <script>
-                  $(document).ready(function() {
-                    $(".toggle-form").on("click", function() {
-                      var $icon = $(this).find("i");
-                      var $cardBody = $(this).closest(".card").find(".card-body");
+        </div>
 
-                      $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus");
-                    });
+        <div class="card card-primary card-outline mb-4">
+          <div class="card-header mb-3">
+            <h3 class="card-title">Realisasi Anggaran Belanja Desa</h3>
+            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbelanja">
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool toggle-form">
+                <i class="fas fa-minus"></i>
+              </button>
+              <script>
+                $(document).ready(function() {
+                  $(".toggle-form").on("click", function() {
+                    var $icon = $(this).find("i");
+                    var $cardBody = $(this).closest(".card").find(".card-body");
+
+                    $cardBody.slideToggle();
+                    $icon.toggleClass("fa-minus fa-plus");
                   });
-                </script>
-              </div>
+                });
+              </script>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
             <form action="" method="post">
               <div class="row">
                 <div class="form-group mb-3">
@@ -872,27 +875,83 @@ include "../../config/session.php";
             </form>
             <!-- /.row -->
           </div>
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalbelanja" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Isi Anggaran Belanja Desa Dalam Rupiah </li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
-                </div>
+
+          <!--end::Row-->
+        </div>
+      </div> <!--end::Container-->
+      <div class="card card-primary card-outline mb-4">
+        <div class="card-header mb-3">
+          <h3 class="card-title">Data BUMDes</h3>
+          <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbumdes">
+            <i class="fas fa-info-circle"></i>
+          </button>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool toggle-form">
+              <i class="fas fa-minus"></i>
+            </button>
+            <script>
+              $(document).ready(function() {
+                $(".toggle-form").on("click", function() {
+                  var $icon = $(this).find("i");
+                  var $cardBody = $(this).closest(".card").find(".card-body");
+
+                  $cardBody.slideToggle();
+                  $icon.toggleClass("fa-minus fa-plus");
+                });
+              });
+            </script>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <form action="" method="post">
+            <div class="row">
+              <div class="form-group mb-3">
+                <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
+                <select name="" id="" class="form-control form-select">
+                  <option value="" disabled selected> --- Pilih --- </option>
+                  <option value="Aktif">Aktif</option>
+                  <option value="Tidak Aktif">Tidak Aktif</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="mb-2">Status Badan Hukum</label>
+                <select name="" id="" class="form-control form-select">
+                  <option value="" disabled selected> --- Pilih --- </option>
+                  <option value="Sudah Memiliki Badan Hukum">Sudah Memiliki Badan Hukum</option>
+                  <option value="Belum Memiliki Badan">Belum Memiliki Badan</option>
+                </select>
+              </div>
+
+              <div class="mb-2">
+                <button type="submit" class="btn btn-primary mt-3">
+                  <i class="fas fa-save"></i> &nbsp; Simpan
+                </button>
+              </div>
+          </form>
+          <!-- /.row -->
+        </div>
+        <!-- Modal Info -->
+        <div class="modal fade" id="modalbumdes" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>Pilih Status Keaktifan (Aktif/Tidak Aktif)</li>
+                  <li>Pilih Status Badan Hukum</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
               </div>
             </div>
           </div>
-        </div> <!--end::Container-->
+        </div>
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
