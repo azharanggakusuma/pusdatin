@@ -55,6 +55,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "angkutan,_komunikasi,_dan_informasi.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "angkutan,_komunikasi,_dan_informasi.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "angkutan,_komunikasi,_dan_informasi.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -79,8 +118,8 @@ include "../../config/session.php";
           <!-- Template Form -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Prasarana dan sarana transportasi antar desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modaltransportasi">
+              <h3 class="card-title">Prasarana dan Sarana Transportasi Antar Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTransportasi">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -102,81 +141,102 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_prasarana_transportasi.php" method="post">
                 <div class="row">
+                  <!-- Lalu Lintas -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Lalu lintas dari/ke desa/kelurahan melalui</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2" for="lalu_lintas">Lalu lintas dari/ke desa/kelurahan melalui</label>
+                    <select name="lalu_lintas" id="lalu_lintas" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Aspal/Beton">Aspal/Beton</option>
                       <option value="Diperkeras (kerikil, batu, dll.)">Diperkeras (kerikil, batu, dll.)</option>
                       <option value="Tanah">Tanah</option>
                       <option value="Lainnya">Lainnya</option>
                     </select>
                   </div>
+
+                  <!-- Jenis Permukaan Jalan -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2" for="jenis_permukaan_jalan">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</label>
+                    <select name="jenis_permukaan_jalan" id="jenis_permukaan_jalan" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Sepanjang tahun">Sepanjang tahun</option>
                       <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
                       <option value="Selama musim kemarau">Selama musim kemarau</option>
                       <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
                     </select>
                   </div>
+
+                  <!-- Jalan Darat Bisa Dilalui -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2" for="jalan_darat_bisa_dilalui">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</label>
+                    <select name="jalan_darat_bisa_dilalui" id="jalan_darat_bisa_dilalui" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Sepanjang tahun">Sepanjang tahun</option>
                       <option value="Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)">Sepanjang tahun kecuali saat tertentu (ketika turun hujan, pasang, dll.)</option>
                       <option value="Selama musim kemarau">Selama musim kemarau</option>
                       <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
                     </select>
                   </div>
+
+                  <!-- Keberadaan Angkutan Umum -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan angkutan umum</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Ada,	dengan	trayek	tetap">Ada, dengan trayek tetap</option>
-                      <option value="Ada,	tanpa	trayek	tetap">Ada, tanpa trayek tetap</option>
-                      <option value="Tidak	ada	angkutan	umum">Tidak ada angkutan umum</option>
+                    <label class="mb-2" for="keberadaan_angkutan_umum">Keberadaan angkutan umum</label>
+                    <select name="keberadaan_angkutan_umum" id="keberadaan_angkutan_umum" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Ada, dengan trayek tetap">Ada, dengan trayek tetap</option>
+                      <option value="Ada, tanpa trayek tetap">Ada, tanpa trayek tetap</option>
+                      <option value="Tidak ada angkutan umum">Tidak ada angkutan umum</option>
                     </select>
                   </div>
+
+                  <!-- Operasional Angkutan Umum yang Utama -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Operasional angkutan umum yang utama</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Setiap	hari">Setiap hari</option>
-                      <option value="Tidak	setiap	hari">Tidak setiap hari</option>
+                    <label class="mb-2" for="operasional_angkutan_umum">Operasional angkutan umum yang utama</label>
+                    <select name="operasional_angkutan_umum" id="operasional_angkutan_umum" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Setiap hari">Setiap hari</option>
+                      <option value="Tidak setiap hari">Tidak setiap hari</option>
                     </select>
                   </div>
+
+                  <!-- Jam Operasi Angkutan Umum yang Utama -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jam operasi angkutan umum yang utama</label>
-                    <select name="" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="Siang	dan	malam	hari">Siang dan malam hari</option>
-                      <option value="Hanya	siang/malam	hari">Hanya siang/malam hari</option>
+                    <label class="mb-2" for="jam_operasi_angkutan_umum">Jam operasi angkutan umum yang utama</label>
+                    <select name="jam_operasi_angkutan_umum" id="jam_operasi_angkutan_umum" class="form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Siang dan malam hari">Siang dan malam hari</option>
+                      <option value="Hanya siang/malam hari">Hanya siang/malam hari</option>
                     </select>
                   </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
                 </div>
               </form>
               <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modaltransportasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalTransportasi" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi Prasarana dan sarana transportasi antar desa/kelurahan, pilih opsi pengisian yang sesuai dengan desa</li>
+                      <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan kondisi prasarana dan sarana transportasi di desa/kelurahan Anda.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Gunakan pilihan <strong>--- Pilih ---</strong> dan pilih opsi yang sesuai dengan kondisi aktual.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -184,6 +244,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
@@ -512,10 +573,6 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-
-
-
-
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
