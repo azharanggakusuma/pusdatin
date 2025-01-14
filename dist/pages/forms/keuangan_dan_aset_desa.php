@@ -826,7 +826,7 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Realisasi Anggaran Belanja Desa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalanggaran">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbelanja">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -851,22 +851,16 @@ include "../../config/session.php";
             <form action="" method="post">
               <div class="row">
                 <div class="form-group mb-3">
-                  <label class="mb-2">Realiasi Pendapatan Desa Tahun Anggaran .......... (Rupiah)</label>
-                  <p style="margin-left: 20px;">1. Pendapatan Asli Desa (PADes)</p>
+                  <label class="mb-2">Realiasi Belanja Desa Tahun Anggaran .......... (Rupiah) </label>
+                  <p style="margin-left: 20px;">1. Bidang Penyelenggaraan Pemerintahan Desa</p>
                   <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">2. Dana Desa (bersumber dari APBN)</p>
+                  <p style="margin-left: 20px;">2. Bidang Pelaksanaan Pembangunan Desa</p>
                   <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
+                  <p style="margin-left: 20px;">3. Bidang Pembinaan Kemasyarakatan</p>
                   <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima kabupaten/kota)</p>
+                  <p style="margin-left: 20px;">4. Bidang Pemberdayaan Masyarakat</p>
                   <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">5. Bantuan keuangan dari APBD Provinsi</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">6. Bantuan keuangan dari APBD Kabupaten/kota</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">7. Hibah dan sumbangan dari pihak ketiga</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">8. Lain–lain pendapatan desa yang sah</p>
+                  <p style="margin-left: 20px;">5. Bidang Tak Terduga/Belanja Bidang Penanggulangan Bencana, Keadaan Darurat dan Mendesak</p>
                   <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                 </div>
 
@@ -879,7 +873,7 @@ include "../../config/session.php";
             <!-- /.row -->
           </div>
             <!-- Modal Info -->
-            <div class="modal fade" id="modalanggaran" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalbelanja" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -888,7 +882,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi Anggaran Pendapatan Desa Dalam Rupiah </li>
+                      <li>Isi Anggaran Belanja Desa Dalam Rupiah </li>
                     </ul>
                   </div>
                   <div class="modal-footer">
