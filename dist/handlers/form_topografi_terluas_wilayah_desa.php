@@ -13,7 +13,7 @@ if (!$result_user) {
     exit();
 }
 
-$user = mysqli_fetch_assoc($result_user);
+$user = mysqli_fetch_assoc($result_user); 
 $user_id = $user['id'] ?? 0;
 
 // Ambil tahun dari session

@@ -872,7 +872,7 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
           <!-- END:: TOPOGRAFI TERLUAS -->
 
           <!-- BEGIN::Keberadaan, status, kondisi, dan lokasi kantor kepala desa/lurah -->
