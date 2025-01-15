@@ -55,6 +55,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keuangan_dan_aset_desa.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keuangan_dan_aset_desa.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keuangan_dan_aset_desa.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -953,75 +992,75 @@ include "../../config/session.php";
           </div>
         </div>
       </div> <!--end::App Content-->
+  </div>
+
+  <!--end::Row-->
+  <div class="card card-primary card-outline mb-4">
+    <div class="card-header mb-3">
+      <h3 class="card-title">Jumlah pengadaan barang dan jasa di Desa</h3>
+      <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpengadaan">
+        <i class="fas fa-info-circle"></i>
+      </button>
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool toggle-form">
+          <i class="fas fa-minus"></i>
+        </button>
+        <script>
+          $(document).ready(function() {
+            $(".toggle-form").on("click", function() {
+              var $icon = $(this).find("i");
+              var $cardBody = $(this).closest(".card").find(".card-body");
+
+              $cardBody.slideToggle();
+              $icon.toggleClass("fa-minus fa-plus");
+            });
+          });
+        </script>
+      </div>
     </div>
-
-      <!--end::Row-->
-      <div class="card card-primary card-outline mb-4">
-        <div class="card-header mb-3">
-          <h3 class="card-title">Jumlah pengadaan barang dan jasa di Desa</h3>
-          <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpengadaan">
-            <i class="fas fa-info-circle"></i>
-          </button>
-          <div class="card-tools">                                         
-            <button type="button" class="btn btn-tool toggle-form">
-              <i class="fas fa-minus"></i>
-            </button>    
-            <script>
-              $(document).ready(function() {
-                $(".toggle-form").on("click", function() {
-                  var $icon = $(this).find("i");
-                  var $cardBody = $(this).closest(".card").find(".card-body");
-
-                  $cardBody.slideToggle();
-                  $icon.toggleClass("fa-minus fa-plus");
-                });
-              });
-            </script>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <form action="" method="post">
+        <div class="row">
+          <div class="form-group mb-3">
+            <label class="mb-2">Jumlah paket pengadaan barang dan jasa yang dilaksanakan</label>
+            <input type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
           </div>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <form action="" method="post">
-            <div class="row">
-              <div class="form-group mb-3">
-                <label class="mb-2">Jumlah paket pengadaan barang dan jasa yang dilaksanakan</label>
-                <input type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
-              </div>
-            </div>
-            <div class="mb-2">
-              <button type="submit" class="btn btn-primary mt-3">
-                <i class="fas fa-save"></i> &nbsp; Simpan
-              </button>
-            </div>
-          </form>
-          <!-- /.row -->
+        <div class="mb-2">
+          <button type="submit" class="btn btn-primary mt-3">
+            <i class="fas fa-save"></i> &nbsp; Simpan
+          </button>
         </div>
-        <!-- Modal Info -->
-        <div class="modal fade" id="modalpengadaan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <ul>
-                  <li>Isi dengan angka Jumlah paket pengadaan barang dan jasa yang dilaksanakan </li>
-                  <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
-                </ul>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-              </div>
-            </div>
+      </form>
+      <!-- /.row -->
+    </div>
+    <!-- Modal Info -->
+    <div class="modal fade" id="modalpengadaan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>Isi dengan angka Jumlah paket pengadaan barang dan jasa yang dilaksanakan </li>
+              <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
           </div>
         </div>
       </div>
-   
+    </div>
+  </div>
 
-    </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <?php include("../../components/footer.php"); ?>
+  </main> <!--end::App Main--> <!--begin::Footer-->
+
+  <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
