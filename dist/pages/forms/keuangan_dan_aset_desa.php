@@ -885,7 +885,7 @@ include "../../config/session.php";
                     $icon.toggleClass("fa-minus fa-plus");
                   });
                 });
-              </script>
+              </script>    
             </div>
           </div>
           <!-- /.card-header -->
