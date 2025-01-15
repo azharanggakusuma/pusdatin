@@ -55,9 +55,10 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
-    <main class="app-main"> <!--begin::App Content Header-->
-      <div class="app-content-header"> <!--begin::Container-->
-        <div class="container-fluid"> <!--begin::Row-->
+    <main class="app-main">
+      <!--begin::App Content Header-->
+      <div class="app-content-header">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
               <h3 class="mb-0">Data Lokasi Geospasial</h3>
@@ -65,21 +66,20 @@ include "../../config/session.php";
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Formulir</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Data Lokasi Geospasial
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Data Lokasi Geospasial</li>
               </ol>
             </div>
-          </div> <!--end::Row-->
-        </div> <!--end::Container-->
-      </div> <!--end::App Content Header--> <!--begin::App Content-->
-      <div class="app-content"> <!--begin::Container-->
-        <div class="container-fluid"> <!--begin::Row-->
+          </div>
+        </div>
+      </div>
+      <!--end::App Content Header-->
 
-          <!-- Template Form -->
+      <!--begin::App Content-->
+      <div class="app-content">
+        <div class="container-fluid">
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Judul Data</h3>
+              <h3 class="card-title">Daftar Tempat Peribadatan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -100,53 +100,107 @@ include "../../config/session.php";
                 </script>
               </div>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
-                <div class="row">
-                  <div class="form-group mb-3">
-                    <label class="mb-2">Judul Inputan</label>
-                    <input type="text" id="" name="" class="form-control" placeholder="" style="width: 100%;">
-                  </div>
-                </div>
+              <div class="form-group mb-3">
+                <label class="mb-2">Jumlah Tempat Peribadatan</label>
+                <input type="number" id="jumlahTempat" class="form-control" placeholder="Isi angka/jumlah" min="0" max="50" step="1" style="width: 100%;" required>
+              </div>
 
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-              </form>
-              <!-- /.row -->
-            </div>
+              <!-- Container untuk Form Dinamis -->
+              <div id="dynamicForms" class="mt-4"></div>
 
-            <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                  </div>
-                </div>
+              <div class="mb-2">
+                <button type="submit" class="btn btn-primary mt-3">
+                  <i class="fas fa-save"></i> &nbsp; Simpan
+                </button>
               </div>
             </div>
           </div>
 
-        </div> <!--end::Container-->
-      </div> <!--end::App Content-->
-    </main> <!--end::App Main--> <!--begin::Footer-->
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const jumlahTempatInput = document.getElementById('jumlahTempat');
+              const formContainer = document.getElementById('dynamicForms');
+
+              jumlahTempatInput.addEventListener('input', function() {
+                const jumlah = parseInt(this.value);
+                formContainer.innerHTML = ''; // Bersihkan form lama
+
+                if (!isNaN(jumlah) && jumlah > 0) {
+                  for (let i = 1; i <= jumlah; i++) {
+                    const formTemplate = `
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <h4 class="card-title">Tempat Peribadatan Ke-${i}</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group mb-3">
+                        <label class="mb-2">Jenis Tempat Ibadah</label>
+                        <select name="jenis_tempat_peribadatan_${i}" class="form-control">
+                          <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                          <option value="Masjid">Masjid</option>
+                          <option value="Mushola">Mushola</option>
+                          <option value="Gereja Protestan">Gereja Protestan</option>
+                          <option value="Gereja Katolik">Gereja Katolik</option>
+                          <option value="Pura">Pura</option>
+                          <option value="Vihara">Vihara</option>
+                          <option value="Klenteng">Klenteng</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label class="mb-2">Nama Tempat Peribadatan</label>
+                        <input name="nama_tempat_peribadatan_${i}" type="text" class="form-control" required>
+                      </div>
+                      <div class="titik_koordinat">
+                        <label>Titik Koordinat</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Koordinat Lintang</label>
+                            <input name="titik_koordinat_lintang_${i}" type="text" class="form-control" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label>Koordinat Bujur</label>
+                            <input name="titik_koordinat_bujur_${i}" type="text" class="form-control" required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+                    formContainer.insertAdjacentHTML('beforeend', formTemplate);
+                  }
+                }
+              });
+            });
+          </script>
+
+          <!-- Modal Info -->
+          <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul>
+                    <li>Isi sesuai petunjuk.</li>
+                    <li>Pastikan data yang dimasukkan benar.</li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end::App Content-->
+
+    </main>
+    <!--end::App Main-->
+
 
     <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
