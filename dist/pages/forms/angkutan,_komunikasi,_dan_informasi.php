@@ -382,7 +382,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
+              <!-- /.row --> 
             </div>
 
             <!-- Modal Info -->
