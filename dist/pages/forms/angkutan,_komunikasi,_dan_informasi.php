@@ -288,7 +288,7 @@ include "../../config/session.php";
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
-              </form>
+              </form>     
               <!-- /.row -->
             </div>
 
