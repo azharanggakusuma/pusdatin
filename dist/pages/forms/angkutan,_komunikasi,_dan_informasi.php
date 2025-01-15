@@ -319,8 +319,8 @@ include "../../config/session.php";
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan menara telepon seluler, sinyal telepon dan sinyal internet di desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalmenaratlp">
+              <h3 class="card-title">Keberadaan Menara Telepon Seluler, Sinyal Telepon, dan Sinyal Internet di Desa/Kelurahan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalMenaraTlp">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -342,21 +342,21 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_menara_telepon.php" method="post">
                 <div class="mb-3">
                   <label for="bts-count" class="form-label">Jumlah menara telepon seluler atau Base Transceiver Station (BTS)</label>
-                  <input type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
+                  <input type="number" name="jumlah_bts" id="bts-count" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
                 </div>
 
                 <div class="mb-3">
                   <label for="operator-count" class="form-label">Jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</label>
-                  <input type="number" id="operator-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
+                  <input type="number" name="jumlah_operator_telekomunikasi" id="operator-count" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label">Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
-                  <select class="form-select" aria-label="Signal strength">
-                    <option value="" disabled selected> --- Pilih --- </option>
+                  <label for="sinyal_telepon" class="form-label">Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
+                  <select name="sinyal_telepon" id="sinyal_telepon" class="form-select" required>
+                    <option value="" disabled selected>--- Pilih ---</option>
                     <option value="Sinyal sangat kuat">Sinyal sangat kuat</option>
                     <option value="Sinyal kuat">Sinyal kuat</option>
                     <option value="Sinyal lemah">Sinyal lemah</option>
@@ -365,9 +365,9 @@ include "../../config/session.php";
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label">Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
-                  <select class="form-select" aria-label="Internet signal type">
-                    <option value="" disabled selected> --- Pilih --- </option>
+                  <label for="sinyal_internet" class="form-label">Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</label>
+                  <select name="sinyal_internet" id="sinyal_internet" class="form-select" required>
+                    <option value="" disabled selected>--- Pilih ---</option>
                     <option value="5G/4G/LTE">5G/4G/LTE</option>
                     <option value="3G/H+/EVDO">3G/H+/EVDO</option>
                     <option value="2.5G/EG/GPRS">2.5G/EG/GPRS</option>
@@ -378,7 +378,7 @@ include "../../config/session.php";
                 <!-- Submit button -->
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp;Simpan
+                    <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
               </form>
@@ -386,21 +386,24 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalmenaratlp" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalMenaraTlp" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi jumlah menara telepon seluler atau Base Transceiver Station (BTS)</li>
-                      <li>Isi jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</li>
-                      <li>Pilih kekuatan sinyal seluler/handphone di sebagian besar wilayah desa/kelurahan</li>
-                      <li>Pilih tipe sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</li>
+                      <li>Isi jumlah menara telepon seluler atau Base Transceiver Station (BTS) yang ada di desa/kelurahan Anda.</li>
+                      <li>Isi jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa/kelurahan Anda.</li>
+                      <li>Pilih kekuatan sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan Anda.</li>
+                      <li>Pilih tipe sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan Anda.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -408,6 +411,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
