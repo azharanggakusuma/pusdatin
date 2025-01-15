@@ -402,7 +402,7 @@ include "../../config/session.php";
                     <div class="form-group mb-3">
                       <label class="mb-2">wilayah desa/kelurahan dilalui saluran udara tegangan ekstra tinggi (SUTET) / Saluran Udara Tegangan Tinggi (SUUT) / Saluran Udara Tegangan Tinggi Arus Searah (SUTTAS)</label>
                       <select name="TPS" id="TPS" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                        <option value="" disabled selected>-- Pilih Dengan Benar --</option> 
                         <option value="Ada, Digunakan">Ada, Digunakan </option>
                         <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                         <option value="Tidak Ada">Tidak Ada</option>
