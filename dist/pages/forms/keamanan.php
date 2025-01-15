@@ -144,13 +144,8 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-<<<<<<< HEAD
                     <label class="mb-2">Kejadian perkelahian massal di desa/kelurahan selama setahun	terakhir</label>
                     <select name="kejadian_perkelahian_massal" id="" class="form-control">
-=======
-                    <label class="mb-2">Kejadian perkelahian massal di desa/kelurahan selama setahun terakhir</label>
-                    <select name="" id="" class="form-control">
->>>>>>> 4e0177dc3f5fd2376f337543a1a7d4131449209c
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
