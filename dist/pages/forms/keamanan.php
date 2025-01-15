@@ -55,6 +55,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keamanan.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keamanan.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "keamanan.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -106,7 +145,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Kejadian perkelahian massal di desa/kelurahan selama setahun	terakhir</label>
-                    <select name="" id="" class="form-control">
+                    <select name="kejadian_perkelahian_massal" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -174,7 +213,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembangunan/pemeliharaan pos keamanan lingkungan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="pembangunan_pos_keamanan" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -182,7 +221,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembentukan/pengaturan regu keamanan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="pembentukan_regu_keamanan" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -190,7 +229,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Penambahan jumlah anggota hansip/linmas</label>
-                    <select name="" id="" class="form-control">
+                    <select name="penambahan_anggota_hansip" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -198,7 +237,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="pelaporan_tamu_menginap" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -206,7 +245,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga</label>
-                    <select name="" id="" class="form-control">
+                    <select name="pengaktifan_sistem_keamanan" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -237,15 +276,15 @@ include "../../config/session.php";
                     </ul>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button> 
                   </div>
                 </div>
-              </div>
+              </div>                    
             </div>
-          </div>
+          </div>          
 
           <!-- end -->
-          <div class="card card-primary card-outline mb-4">
+          <div class="card card-primary card-outline mb-4"> 
             <div class="card-header mb-3">
               <h3 class="card-title">Anggota Hansip/ Linmas dan poskamling di desa/kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modallinmas">
@@ -274,7 +313,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah anggota linmas/hansip di desa/kelurahan</label>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jemlah_anggota_linmas" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   </div>
                 </div>
 
@@ -338,7 +377,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_pos_polisi" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -375,7 +414,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-          
+
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
