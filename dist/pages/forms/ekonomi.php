@@ -237,11 +237,11 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_produk_unggulan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Produk barang unggulan/utama di desa/kelurahan (Makanan dan Non Makanan)</label>
-                    <select name="" id="productPresence" class="form-control">
+                    <select name="keberadaan" id="productPresence" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -275,6 +275,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+
               <!-- /.row -->
             </div>
 
