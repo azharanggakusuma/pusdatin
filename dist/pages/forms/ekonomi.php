@@ -326,11 +326,11 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_pangkalan_minyak.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pangkalan/agen/penjual minyak tanah (termasuk penjual minyak tanah keliling)</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_minyak_tanah" id="keberadaan_minyak_tanah" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -338,20 +338,21 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_lpg" id="keberadaan_lpg" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
+                </div>
 
-
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp; Simpan
-                    </button>
-                  </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
               </form>
+
               <!-- /.row -->
             </div>
             <!-- Modal Info -->
