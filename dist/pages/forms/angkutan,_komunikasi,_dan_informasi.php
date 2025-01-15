@@ -382,7 +382,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
-              <!-- /.row --> 
+              <!-- /.row -->
             </div>
 
             <!-- Modal Info -->
@@ -412,7 +412,6 @@ include "../../config/session.php";
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Ketersediaan Internet dan Komputer/PC/laptop di Kantor Desa</h3>
@@ -438,26 +437,26 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_ketersediaan_internet.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah</label>
-                    <select name="" id="" class="form-control form-select">
+                    <select name="kondisi_komputer" id="kondisi_komputer" class="form-control form-select" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Digunakan">Digunakan</option>
-                      <option value="Jarang	digunakan">Jarang digunakan</option>
-                      <option value="Tidak	digunakan">Tidak digunakan</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Jarang digunakan">Jarang digunakan</option>
+                      <option value="Tidak digunakan">Tidak digunakan</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Fasilitas internet di kantor kepala desa/lurah</label>
-                    <select name="" id="" class="form-control form-select">
+                    <select name="fasilitas_internet" id="fasilitas_internet" class="form-control form-select" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Berfungsi">Berfungsi</option>
-                      <option value="Jarang	berfungsi">Jarang berfungsi</option>
-                      <option value="Tidak	berfungsi">Tidak berfungsi</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Jarang berfungsi">Jarang berfungsi</option>
+                      <option value="Tidak berfungsi">Tidak berfungsi</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                 </div>
@@ -468,6 +467,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+
               <!-- /.row -->
             </div>
 
