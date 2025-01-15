@@ -55,6 +55,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "ekonomi.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "ekonomi.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "ekonomi.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -874,7 +913,7 @@ include "../../config/session.php";
                   </td>
                 </tr>
                 <!-- ATM -->
-               
+
                 <!-- BMT -->
                 <tr>
                   <td>Toko/warung kelontong (tempat usaha di bangunan tetap untuk menjual berbagai jenis barang keperluan sehari hari secara eceran, tanpa ada sistem pelayanan mandiri)</td>
@@ -891,7 +930,7 @@ include "../../config/session.php";
                 </tr>
                 <!-- ATM -->
                 <!-- BMT -->
-                 <tr>
+                <tr>
                   <td>Hotel (menyediakan jasa akomodasi dan ada restoran, penginapan dengan izin usaha sebagai hotel)</td>
                   <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                   <td>
@@ -906,7 +945,7 @@ include "../../config/session.php";
                 </tr>
                 <!-- ATM -->
                 <!-- BMT -->
-                 <tr>
+                <tr>
                   <td> Penginapan: hostel/motel/losmen/wisma (menyediakan akomodasi, penginapan dengan izin usaha bukan sebagai hotel)</td>
                   <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                   <td>
@@ -919,7 +958,7 @@ include "../../config/session.php";
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->            
+                <!-- ATM -->
               </tbody>
             </table>
           </div>
@@ -944,7 +983,7 @@ include "../../config/session.php";
               <li>Sarana dan prasarana ekonomi di desa/kelurahan</li>
               <li>isi jenis sarana dan prasarana ekonomi</li>
               <li>isi jumlah Sarana</li>
-              <li>Pilih kemudahan untuk mencapai </li>  
+              <li>Pilih kemudahan untuk mencapai </li>
             </ul>
           </div>
           <div class="modal-footer">
@@ -954,8 +993,6 @@ include "../../config/session.php";
       </div>
     </div>
   </div>
-  
-
   </div> <!--end::Container-->
   </div> <!--end::App Content-->
   </main> <!--end::App Main--> <!--begin::Footer-->
