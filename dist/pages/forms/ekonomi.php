@@ -476,43 +476,42 @@ include "../../config/session.php";
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <form action="" method="post">
+            <form action="../../handlers/form_koperasi.php" method="post">
               <div class="row">
                 <div class="form-group mb-3">
                   <label class="mb-2">Jumlah koperasi di desa/kelurahan yang masih aktif</label>
                   <p style="margin-left: 20px;">1. Koperasi Unit Desa (KUD)</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="koperasi_kud" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
                   <p style="margin-left: 20px;">2. Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)/Usaha mikro</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="koperasi_kopinkra" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
                   <p style="margin-left: 20px;">3. Koperasi Simpan Pinjam (KSP/Kospin)</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="koperasi_ksp" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
                   <p style="margin-left: 20px;">4. Koperasi lainnya</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Tuliskan Lainnya ---">
+                  <input type="number" name="koperasi_lainnya" class="form-control mb-3" placeholder=" --- Tuliskan Lainnya ---" required>
                 </div>
 
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan toko/kios yang menjual sarana produksi pertanian (benih, pupuk, pestisida, cangkul, dll.) di desa/kelurahan</label>
+                    <label class="mb-2">Keberadaan toko/kios yang menjual sarana produksi pertanian</label>
                     <p style="margin-left: 20px;">1. Milik KUD</p>
-                    <select name="" id="publicSpaceStatus" class="form-control mb-3">
+                    <select name="toko_kud" class="form-control mb-3" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <p style="margin-left: 20px;">2. Milik BUM Desa</p>
-                    <select name="" id="publicSpaceStatus" class="form-control mb-3">
+                    <select name="toko_bumdesa" class="form-control mb-3" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <p style="margin-left: 20px;">3. Selain milik KUD/BUM Desa</p>
-                    <select name="" id="publicSpaceStatus" class="form-control mb-3">
+                    <select name="toko_lainnya" class="form-control mb-3" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
