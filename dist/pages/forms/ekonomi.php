@@ -577,7 +577,7 @@ include "../../config/session.php";
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <form action="" method="post">
+      <form action="../../handlers/form_sarana_ekonomi.php" method="post">
         <div class="row">
           <div class="col-12 mb-3">
             <table class="table">
@@ -590,148 +590,118 @@ include "../../config/session.php";
                 </tr>
               </thead>
               <tbody>
-                <!-- BMT -->
                 <tr>
                   <td>Baitul Maal Wa Tamwil (BMT)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
+                    <select name="bmt_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
                 <tr>
                   <td>Anjungan Tunai Mandiri (ATM)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td><input type="number" name="atm_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="atm_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="atm_kemudahan" class="form-control">
+                    <select name="atm_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- Agen Bank -->
                 <tr>
                   <td>Agen Bank</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td><input type="number" name="agen_bank_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="agen_bank_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="agen_bank_kemudahan" class="form-control">
+                    <select name="agen_bank_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- BMT -->
                 <tr>
-                  <td>Baitul Maal Wa Tamwil (BMT)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td>Pedagang Valuta Asing</td>
+                  <td><input type="number" name="valas_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="valas_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
+                    <select name="valas_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
-                <tr>
-                  <td> Pedagang Valuta Asing</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
-                  <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
-                    </select>
-                  </td>
-                </tr>
-                <!-- ATM -->
-                <!-- BMT -->
                 <tr>
                   <td>Pergadaian</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td><input type="number" name="pegadaian_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="pegadaian_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
+                    <select name="pegadaian_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
                 <tr>
                   <td>Agen Tiket/Travel/Biro Perjalanan</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td><input type="number" name="agen_tiket_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="agen_tiket_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
+                    <select name="agen_tiket_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
                 <tr>
-                  <td> Bengkel Mobil/Motor</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td>Bengkel Mobil/Motor</td>
+                  <td><input type="number" name="bengkel_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="bengkel_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
+                    <select name="bengkel_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
                 <tr>
                   <td>Salon Kecantikan</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- "></td>
+                  <td><input type="number" name="salon_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
+                  <td><input type="text" name="salon_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
+                    <select name="salon_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-
               </tbody>
             </table>
           </div>
@@ -740,6 +710,8 @@ include "../../config/session.php";
           <i class="fas fa-save"></i> &nbsp; Simpan
         </button>
       </form>
+
+
       <!-- /.row -->
       <!-- Modal Info -->
       <div class="modal fade" id="modalsaranapenunjang" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
