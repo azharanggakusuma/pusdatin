@@ -63,6 +63,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "kependudukan_dan_ketenagakerjaan.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "kependudukan_dan_ketenagakerjaan.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "kependudukan_dan_ketenagakerjaan.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -82,15 +121,15 @@ include "../../config/session.php";
         </div> <!--end::Container-->
       </div> <!--end::App Content Header--> <!--begin::App Content-->
       <div class="app-content"> <!--begin::Container-->
-        <div class="container-fluid"> <!--begin::Row--> 
+        <div class="container-fluid"> <!--begin::Row-->
 
           <!-- Template Form -->
 
           <!-- BEGIN::KEMATIAN -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">KEMATIAN</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Kematian</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKematian">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -98,8 +137,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".kematian").on("click", function () {
+                  $(document).ready(function() {
+                    $(".kematian").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -112,13 +151,12 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kematian.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Surat Kematian Yang Dikeluarkan</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_surat_kematian">Jumlah Surat Kematian Yang Dikeluarkan</label>
+                    <input type="number" min="0" id="jumlah_surat_kematian" name="jumlah_surat_kematian" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
-
                 </div>
 
                 <div class="mb-2">
@@ -131,22 +169,22 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKematian" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Masukkan jumlah surat kematian yang dikeluarkan dalam format angka (contoh: 10).</li>
+                      <li>Pastikan nilai yang dimasukkan adalah angka non-negatif.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -154,12 +192,14 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END:KEMATIAN -->
+
           <!-- BEGIN::Penduduk dan keluarga -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">PENDUDUK DAN KELUARGa</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Penduduk dan Keluarga</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPendudukDanKeluarga">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -167,8 +207,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -181,21 +221,24 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_penduduk_dan_keluarga.php" method="post">
                 <div class="row">
+                  <!-- Jumlah Penduduk Laki-Laki -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Penduduk Laki – Laki</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_penduduk_laki">Jumlah Penduduk Laki-Laki</label>
+                    <input type="number" min="0" id="jumlah_penduduk_laki" name="jumlah_penduduk_laki" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
 
+                  <!-- Jumlah Penduduk Perempuan -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Penduduk Perempuan</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_penduduk_perempuan">Jumlah Penduduk Perempuan</label>
+                    <input type="number" min="0" id="jumlah_penduduk_perempuan" name="jumlah_penduduk_perempuan" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
 
+                  <!-- Jumlah Kepala Keluarga -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Kepala Keluarga</label>
-                    <input type="number" min="0" id="" name="" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;">
+                    <label class="mb-2" for="jumlah_kepala_keluarga">Jumlah Kepala Keluarga</label>
+                    <input type="number" min="0" id="jumlah_kepala_keluarga" name="jumlah_kepala_keluarga" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -209,22 +252,22 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalPendudukDanKeluarga" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Masukkan jumlah penduduk laki-laki, penduduk perempuan, dan kepala keluarga dalam format angka (contoh: 10).</li>
+                      <li>Pastikan nilai yang dimasukkan adalah angka non-negatif.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -232,13 +275,14 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Penduduk dan keluarga -->
 
           <!-- BEGIN::KETANA KERJAAN -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">KETENAGAKERJAAN</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <h3 class="card-title">Ketenagakerjaan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKetenagakerjaan">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -246,8 +290,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -260,45 +304,47 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_ketenagakerjaan.php" method="post">
                 <div class="row">
+                  <!-- Keberadaan PMI/TKI -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Warga desa/kelurahan yang sedang bekerja sebagai PMI (Pekerja Migran
-                      Indonesia)/TKI di luar negeri</label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="pmi_bekerja">Keberadaan Warga Desa/Kelurahan yang Sedang Bekerja sebagai PMI (Pekerja Migran Indonesia)/TKI di Luar Negeri</label>
+                    <select name="pmi_bekerja" id="pmi_bekerja" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
 
+                  <!-- Keberadaan Agen Pengerahan PMI/TKI -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Agen (Seseorang/Sekelompok Orang/Perusahaan) Pengerahan Pekerja Migran Indonesia/Tki Ke Luar Negeri Di Desa/Kelurahan </label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="agen_pengerahan_pmi">Keberadaan Agen (Seseorang/Sekelompok Orang/Perusahaan) Pengerahan Pekerja Migran Indonesia/TKI ke Luar Negeri di Desa/Kelurahan</label>
+                    <select name="agen_pengerahan_pmi" id="agen_pengerahan_pmi" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
 
+                  <!-- Layanan Rekomendasi PMI/TKI -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Layanan Rekomendasi/Surat Keterangan Bagi Warga Desa/Kelurahan Yang Akan Bekerja Sebagai Pekerja Migran Indonesia/Tki Di Luar Negeri</label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="layanan_rekomendasi_pmi">Layanan Rekomendasi/Surat Keterangan Bagi Warga Desa/Kelurahan yang Akan Bekerja Sebagai Pekerja Migran Indonesia/TKI di Luar Negeri</label>
+                    <select name="layanan_rekomendasi_pmi" id="layanan_rekomendasi_pmi" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
 
+                  <!-- Keberadaan WNA -->
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Warga Negara Asing (WNA) di desa/kelurahan  </label>
-                    <select name="ketenagakerjaan" id="ketenagakerjaan" class="form-select">
+                    <label class="mb-2" for="keberadaan_wna">Keberadaan Warga Negara Asing (WNA) di Desa/Kelurahan</label>
+                    <select name="keberadaan_wna" id="keberadaan_wna" class="form-select" required>
                       <option value="" selected disabled>--- Pilih Ada/Tidak Ada ---</option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                
                 </div>
 
                 <div class="mb-2">
@@ -311,22 +357,22 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKetenagakerjaan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title">Aturan Pengisian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan kondisi ketenagakerjaan di desa/kelurahan Anda.</li>
+                      <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
+                      <li>Gunakan pilihan <strong>Ada</strong> jika kondisi tersebut ada di desa/kelurahan Anda, dan <strong>Tidak Ada</strong> jika tidak.</li>
+                      <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
@@ -335,8 +381,6 @@ include "../../config/session.php";
             </div>
           </div>
           <!-- END::KETANAKERJAAN -->
-
-        
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
@@ -386,7 +430,7 @@ include "../../config/session.php";
   <script src="../../../dist/js/adminlte.js"></script>
   <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
-    $(function () {
+    $(function() {
       //Initialize Select2 Elements
       $('.select2').select2()
 
@@ -402,7 +446,7 @@ include "../../config/session.php";
       scrollbarAutoHide: "leave",
       scrollbarClickScroll: true,
     };
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
       if (
         sidebarWrapper &&
