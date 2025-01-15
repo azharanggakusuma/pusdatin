@@ -518,34 +518,34 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kantor_pos.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Kantor pos/pos pembantu/rumah pos</label>
-                    <select name="" id="" class="form-control form-select">
+                    <select name="kantor_pos" id="kantor_pos" class="form-control form-select" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Beroperasi">Beroperasi</option>
-                      <option value="Jarang	beroperasi">Jarang beroperasi</option>
+                      <option value="Jarang beroperasi">Jarang beroperasi</option>
                       <option value="Tidak beroperasi">Tidak beroperasi</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Layanan pos keliling</label>
-                    <select name="" id="" class="form-control form-select">
+                    <select name="layanan_pos_keliling" id="layanan_pos_keliling" class="form-control form-select" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</label>
-                    <select name="" id="" class="form-control form-select">
+                    <select name="ekspedisi_swasta" id="ekspedisi_swasta" class="form-control form-select" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Beroperasi">Beroperasi</option>
-                      <option value="Jarang	beroperas">Jarang beroperas</option>
-                      <option value="Tidak	beroperasi">Tidak beroperasi</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Jarang beroperasi">Jarang beroperasi</option>
+                      <option value="Tidak beroperasi">Tidak beroperasi</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                 </div>
@@ -556,6 +556,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+
               <!-- /.row -->
             </div>
 
