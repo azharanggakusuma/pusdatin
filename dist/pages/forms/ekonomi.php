@@ -766,166 +766,158 @@ include "../../config/session.php";
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <form action="" method="post">
+      <form action="../../handlers/form_sarana_prasarana.php" method="post">
         <div class="row">
           <div class="col-12 mb-3">
             <table class="table">
               <thead>
                 <tr>
-                  <th>Jenis sarana dan prasarana ekonomi</th>
+                  <th>Jenis Sarana dan Prasarana Ekonomi</th>
                   <th>Jumlah Sarana</th>
                   <th>Kemudahan untuk Mencapai</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- BMT -->
+                <!-- Kelompok pertokoan -->
                 <tr>
-                  <td>Kelompok pertokoan (minimal 10 toko dan mengelompok dalam satu lokasi)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Kelompok pertokoan</td>
+                  <td><input type="number" name="kelompok_pertokoan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="kelompok_pertokoan_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
+                <!-- Pasar permanen -->
                 <tr>
-                  <td>Pasar dengan bangunan permanen (memiliki atap, lantai, dan dinding)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Pasar dengan bangunan permanen</td>
+                  <td><input type="number" name="pasar_permanen_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="atm_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="pasar_permanen_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- Agen Bank -->
+                <!-- Pasar semi permanen -->
                 <tr>
-                  <td> Pasar dengan bangunan semi permanen (memiliki atap dan lantai, tanpa dinding)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Pasar dengan bangunan semi permanen</td>
+                  <td><input type="number" name="pasar_semi_permanen_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="agen_bank_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="pasar_semi_permanen_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- BMT -->
+                <!-- Pasar tanpa bangunan -->
                 <tr>
-                  <td>Pasar tanpa bangunan (misalnya: pasar subuh, pasar terapung, dll.)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Pasar tanpa bangunan</td>
+                  <td><input type="number" name="pasar_tanpa_bangunan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="pasar_tanpa_bangunan_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
+                <!-- Minimarket -->
                 <tr>
-                  <td>Jumlah minimarket/swalayan/supermarket (tempat usaha di bangunan tetap untuk menjual berbagai jenis barang secara eceran dengan label harga, sistem pelayanan mandiri)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Minimarket/swalayan/supermarket</td>
+                  <td><input type="number" name="minimarket_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="minimarket_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
+                <!-- Restoran -->
                 <tr>
-                  <td>PRestoran/rumah makan (usaha pangan siap saji di bangunan tetap, pembeli biasanya dikenai pajak)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Restoran/rumah makan</td>
+                  <td><input type="number" name="restoran_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="restoran_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
+                <!-- Warung makan -->
                 <tr>
-                  <td> Warung/kedai makanan minuman (usaha pangan siap saji di bangunan tetap, pembeli biasanya tidak dikenai pajak)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Warung/kedai makanan minuman</td>
+                  <td><input type="number" name="warung_makan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="warung_makan_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-
-                <!-- BMT -->
+                <!-- Toko kelontong -->
                 <tr>
-                  <td>Toko/warung kelontong (tempat usaha di bangunan tetap untuk menjual berbagai jenis barang keperluan sehari hari secara eceran, tanpa ada sistem pelayanan mandiri)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Toko/warung kelontong</td>
+                  <td><input type="number" name="toko_kelontong_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="toko_kelontong_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
+                <!-- Hotel -->
                 <tr>
-                  <td>Hotel (menyediakan jasa akomodasi dan ada restoran, penginapan dengan izin usaha sebagai hotel)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Hotel</td>
+                  <td><input type="number" name="hotel_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="hotel_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
-                <!-- BMT -->
+                <!-- Penginapan -->
                 <tr>
-                  <td> Penginapan: hostel/motel/losmen/wisma (menyediakan akomodasi, penginapan dengan izin usaha bukan sebagai hotel)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                  <td>Penginapan (hostel/motel/losmen/wisma)</td>
+                  <td><input type="number" name="penginapan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
                   <td>
-                    <select name="bmt_kemudahan" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
-                      <option value="1">Sangat Mudah</option>
-                      <option value="2">Mudah</option>
-                      <option value="3">Sulit</option>
-                      <option value="4">Sangat Sulit</option>
+                    <select name="penginapan_kemudahan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sangat Mudah">Sangat Mudah</option>
+                      <option value="Mudah">Mudah</option>
+                      <option value="Sulit">Sulit</option>
+                      <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
                   </td>
                 </tr>
-                <!-- ATM -->
               </tbody>
             </table>
           </div>
@@ -945,10 +937,38 @@ include "../../config/session.php";
             </div>
             <div class="modal-body">
               <ul>
-                <li>Sarana dan prasarana ekonomi di desa/kelurahan</li>
-                <li>isi jenis sarana dan prasarana ekonomi</li>
-                <li>isi jumlah Sarana</li>
-                <li>Pilih kemudahan untuk mencapai </li>
+                <li>Sarana dan Prasarana Ekonomi di Desa/Kelurahan</li>
+                <li>Isi jumlah sarana:</li>
+                <ul>
+                  <li>Kolom <b>Jumlah Sarana</b> wajib diisi dengan angka. Gunakan angka 0 jika jenis sarana tidak tersedia.</li>
+                  <li>Angka harus berupa bilangan bulat tanpa desimal.</li>
+                </ul>
+                <li>Pilih tingkat kemudahan untuk mencapai lokasi sarana:</li>
+                <ul>
+                  <li><b>Sangat Mudah:</b> Tidak ada hambatan untuk mencapai lokasi sarana tersebut.</li>
+                  <li><b>Mudah:</b> Ada hambatan kecil, tetapi dapat dicapai dengan usaha minimal.</li>
+                  <li><b>Sulit:</b> Hambatan cukup besar, membutuhkan usaha lebih untuk mencapai lokasi.</li>
+                  <li><b>Sangat Sulit:</b> Hambatan sangat besar, sulit untuk diakses.</li>
+                </ul>
+                <li>Jenis Sarana dan Prasarana yang Diisi:</li>
+                <ul>
+                  <li><b>Kelompok Pertokoan:</b> Sekumpulan minimal 10 toko dalam satu lokasi.</li>
+                  <li><b>Pasar Permanen:</b> Pasar dengan bangunan lengkap (atap, lantai, dinding).</li>
+                  <li><b>Pasar Semi Permanen:</b> Pasar dengan atap dan lantai, tetapi tanpa dinding.</li>
+                  <li><b>Pasar Tanpa Bangunan:</b> Pasar tradisional seperti pasar subuh atau terapung.</li>
+                  <li><b>Minimarket/Swalayan/Supermarket:</b> Bangunan permanen untuk menjual barang eceran dengan sistem harga tetap dan pelayanan mandiri.</li>
+                  <li><b>Restoran/Rumah Makan:</b> Tempat makan dengan fasilitas tetap dan biasanya dikenakan pajak.</li>
+                  <li><b>Warung/Kedai Makanan Minuman:</b> Tempat makan kecil tanpa fasilitas formal atau pajak.</li>
+                  <li><b>Toko/Warung Kelontong:</b> Tempat usaha untuk menjual barang sehari-hari tanpa sistem pelayanan mandiri.</li>
+                  <li><b>Hotel:</b> Bangunan penginapan resmi dengan izin sebagai hotel.</li>
+                  <li><b>Penginapan:</b> Hostel, motel, losmen, atau wisma tanpa izin usaha sebagai hotel.</li>
+                </ul>
+                <li>Kewajiban Pengisian:</li>
+                <ul>
+                  <li>Semua kolom <b>Jumlah Sarana</b> dan <b>Kemudahan</b> harus diisi.</li>
+                  <li>Pastikan dropdown tidak berada pada posisi default (<b>--- Pilih ---</b>).</li>
+                </ul>
+                <li>Validasi Data: Sistem akan memeriksa pengisian dan memberikan peringatan jika ada kesalahan atau data yang belum diisi.</li>
               </ul>
             </div>
             <div class="modal-footer">
@@ -957,6 +977,7 @@ include "../../config/session.php";
           </div>
         </div>
       </div>
+
     </div>
   </div>
   </div> <!--end::Container-->
