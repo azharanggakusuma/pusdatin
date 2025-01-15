@@ -141,11 +141,11 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_sentra_industri.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sentra Industri Unggulan Desa</label>
-                    <select name="" id="publicSpaceStatus" class="form-control">
+                    <select name="keberadaan" id="publicSpaceStatus" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -185,6 +185,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+
               <!-- /.row -->
             </div>
 
