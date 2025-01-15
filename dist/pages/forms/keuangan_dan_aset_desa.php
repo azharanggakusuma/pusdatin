@@ -146,13 +146,13 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
                     <p style="margin-left: 20px;">1. Tanah Bengkok</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" name="tanah_bengkok" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
                     <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" name="tanah_titi_sara" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
                     <p style="margin-left: 20px;">3. Kebun Desa</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" name="kebun_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
                     <p style="margin-left: 20px;">4. Sawah Desa</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" name="sawah_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
                   </div>
                 </div>
 
@@ -219,7 +219,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sistem Informasi Desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_sistem_informasi_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Jarang	digunakan">Ada, Jarang digunakan</option>
@@ -229,7 +229,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sistem Keuangan Desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_sistem_keuangan_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Jarang	digunakan">Ada, Jarang digunakan</option>
@@ -299,11 +299,11 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah unit usaha BUMDes</label>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_unit_usaha_bumdes" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tanah kas desa/ulayat</label>
-                    <select name="" id="" class="form-control">
+                    <select name="tanah_kas_desa_ulayat" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -311,7 +311,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tambatan perahu</label>
-                    <select name="" id="" class="form-control">
+                    <select name="tambahan_perahu" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -319,7 +319,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pasar desa Ada (pasar hewan, pelelangan ikan yang dikelola desa, pelelangan hasil pertanian)</label>
-                    <select name="" id="" class="form-control">
+                    <select name="pasar_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -327,7 +327,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Bangunan milik desa (balai desa, balai rakyat, lapangan olah raga, dll)</label>
-                    <select name="" id="" class="form-control">
+                    <select name="bangunan_milik_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -335,7 +335,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Hutan milik desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="hutan_milik_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -343,7 +343,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Mata air milik desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="mata_air_milik_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -351,7 +351,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tempat wisata/Pemandian umum</label>
-                    <select name="" id="" class="form-control">
+                    <select name="tempat_wisata_pemandian_umum" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -359,7 +359,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Aset lainnya milik desa (kekayaan asli desa, hibah/sumbangan/sejenisnya dll)</label>
-                    <select name="" id="" class="form-control">
+                    <select name="aset_lainnya_milik_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -426,7 +426,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Ketersedian RPJMDes</label>
-                    <select name="" id="publicSpaceStatus" class="form-control">
+                    <select name="ketersedian_rpjmdes" id="publicSpaceStatus" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -461,7 +461,7 @@ include "../../config/session.php";
                 </script>
                 <div class="form-group mb-3">
                   <label class="mb-2">Ketersediaan RKPDes</label>
-                  <select name="" id="" class="form-control">
+                  <select name="ketersediaan_rpkdes" id="" class="form-control">
                     <option value="" disabled selected> --- Pilih --- </option>
                     <option value="Ada">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -528,11 +528,11 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Peraturan Yang dimiliki Desa</label>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_peraturan_yang_dimiliki_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Peraturan Kepala Desa</label>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_peraturan_kepala_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   </div>
                 </div>
 
@@ -596,7 +596,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Antar Desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_kerjasama_antar_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -604,7 +604,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Desa dengan Pihak Ketiga</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_kerjasama_desa_dengan_pihak_ketiga" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -672,7 +672,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pendamping lokal desa</label>
-                    <select name="" id="" class="form-control">
+                    <select name="keberadaan_pemdamping_lokal_desa" id="" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada, Aktif">Ada, Aktif</option>
                       <option value="Ada, Tidak Ada">Ada, Tidak Aktif</option>
@@ -740,7 +740,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kader Pembangunan Manusia (KPM)</label>
-                    <select name="" id="kpm" class="form-control">
+                    <select name="keberadaan_kader_pembangunan_manusia" id="kpm" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada, Aktif">Ada, Aktif</option>
                       <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
@@ -750,7 +750,7 @@ include "../../config/session.php";
                 </div>
                 <div class="form-group mb-3 KaderInfo" style="display: none;">
                   <label class="mb-2">Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota</label>
-                  <select name="" id="" class="form-control">
+                  <select name="apakah_ada_kpm_yang_mendapatkan_pembinaan_dari_pemerintah_kabupaten/kota" id="" class="form-control">
                     <option value="" disabled selected> --- Pilih --- </option>
                     <option value="Ada">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -835,21 +835,21 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Realiasi Pendapatan Desa Tahun Anggaran .......... (Rupiah)</label>
                     <p style="margin-left: 20px;">1. Pendapatan Asli Desa (PADes)</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="pendapatan_asli_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">2. Dana Desa (bersumber dari APBN)</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="dana_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima kabupaten/kota)</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="alokasi_dana_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">5. Bantuan keuangan dari APBD Provinsi</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="bantuan_keuangan_dari_apbd_provinsi" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">6. Bantuan keuangan dari APBD Kabupaten/kota</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="bantuan_keuangan_dari_apbd" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">7. Hibah dan sumbangan dari pihak ketiga</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="hibah_dan_sumbangan_dari_pihak_ketiga" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                     <p style="margin-left: 20px;">8. Lain–lain pendapatan desa yang sah</p>
-                    <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name=" Lain_lain_pendapatan_desa_yang_sah" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   </div>
 
                   <div class="mb-2">
@@ -895,15 +895,15 @@ include "../../config/session.php";
                 <div class="form-group mb-3">
                   <label class="mb-2">Realiasi Belanja Desa Tahun Anggaran .......... (Rupiah) </label>
                   <p style="margin-left: 20px;">1. Bidang Penyelenggaraan Pemerintahan Desa</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="bidang_penyelenggaraan_pemerintahan_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   <p style="margin-left: 20px;">2. Bidang Pelaksanaan Pembangunan Desa</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="bidang_pelaksanaan_pembangunan_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   <p style="margin-left: 20px;">3. Bidang Pembinaan Kemasyarakatan</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="bidang_pembinaan_kemasyarakatan" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   <p style="margin-left: 20px;">4. Bidang Pemberdayaan Masyarakat</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="bidang_pemberdayaan_masyarakat" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                   <p style="margin-left: 20px;">5. Bidang Tak Terduga/Belanja Bidang Penanggulangan Bencana, Keadaan Darurat dan Mendesak</p>
-                  <input type="number" name="" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <input type="number" name="bidang_tak_terduga/belanja_bidang_penanggulangan_bencana_keadaan_darurat_dan_mendesak" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                 </div>
 
                 <div class="mb-2">
@@ -947,7 +947,7 @@ include "../../config/session.php";
             <div class="row">
               <div class="form-group mb-3">
                 <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
-                <select name="" id="" class="form-control form-select">
+                <select name="status_keaktifan" id="" class="form-control form-select">
                   <option value="" disabled selected> --- Pilih --- </option>
                   <option value="Aktif">Aktif</option>
                   <option value="Tidak Aktif">Tidak Aktif</option>
@@ -956,7 +956,7 @@ include "../../config/session.php";
 
               <div class="form-group mb-3">
                 <label class="mb-2">Status Badan Hukum</label>
-                <select name="" id="" class="form-control form-select">
+                <select name="status_badan_hukum" id="" class="form-control form-select">
                   <option value="" disabled selected> --- Pilih --- </option>
                   <option value="Sudah Memiliki Badan Hukum">Sudah Memiliki Badan Hukum</option>
                   <option value="Belum Memiliki Badan">Belum Memiliki Badan</option>
@@ -1024,7 +1024,7 @@ include "../../config/session.php";
         <div class="row">
           <div class="form-group mb-3">
             <label class="mb-2">Jumlah paket pengadaan barang dan jasa yang dilaksanakan</label>
-            <input type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
+            <input name="jumlah_paket_pengadaan_barang_dan_jasa_yang_dilaksanakan" type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
           </div>
         </div>
         <div class="mb-2">
