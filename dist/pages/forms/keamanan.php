@@ -141,18 +141,17 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_perkelahian_massal.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Kejadian perkelahian massal di desa/kelurahan selama setahun	terakhir</label>
-                    <select name="kejadian_perkelahian_massal" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Kejadian Perkelahian Massal di Desa/Kelurahan Selama Setahun Terakhir</label>
+                    <select name="kejadian" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -172,7 +171,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada kejadian perkelahian massal di desa/kelurahan selama setahun terakhir</li>
+                      <li>Pilih <b>Ada</b> jika terjadi perkelahian massal di desa/kelurahan selama setahun terakhir.</li>
+                      <li>Pilih <b>Tidak Ada</b> jika tidak terjadi perkelahian massal.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -209,50 +209,49 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_keamanan_lingkungan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembangunan/pemeliharaan pos keamanan lingkungan</label>
-                    <select name="pembangunan_pos_keamanan" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pembangunan_pos_keamanan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembentukan/pengaturan regu keamanan</label>
-                    <select name="pembentukan_regu_keamanan" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pembentukan_regu_keamanan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Penambahan jumlah anggota hansip/linmas</label>
-                    <select name="penambahan_anggota_hansip" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="penambahan_anggota_hansip" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan</label>
-                    <select name="pelaporan_tamu_menginap" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pelaporan_tamu_menginap" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga</label>
-                    <select name="pengaktifan_sistem_keamanan" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pengaktifan_sistem_keamanan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -276,15 +275,15 @@ include "../../config/session.php";
                     </ul>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button> 
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
                 </div>
-              </div>                    
+              </div>
             </div>
-          </div>          
+          </div>
 
           <!-- end -->
-          <div class="card card-primary card-outline mb-4"> 
+          <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Anggota Hansip/ Linmas dan poskamling di desa/kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modallinmas">
@@ -309,14 +308,13 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_linmas_poskamling.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah anggota linmas/hansip di desa/kelurahan</label>
-                    <input type="number" name="jemlah_anggota_linmas" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_anggota_linmas" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -373,18 +371,17 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_keberadaan_pos_polisi.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan</label>
-                    <select name="keberadaan_pos_polisi" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_pos_polisi" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -404,7 +401,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan</li>
+                      <li>Pilih <b>Ada</b> jika terdapat pos polisi (termasuk kantor polisi) di desa/kelurahan.</li>
+                      <li>Pilih <b>Tidak Ada</b> jika tidak terdapat pos polisi di desa/kelurahan.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -414,7 +412,6 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
