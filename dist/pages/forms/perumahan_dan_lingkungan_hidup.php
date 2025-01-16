@@ -115,19 +115,20 @@ include "../../config/session.php";
               <form action="" method="post">
                 <div class="row">
                   <div class="form-group">
-                    <h5 class="mb-3">A. Jumlah Keluraga Pengguna Listrik :</h5>
+                    <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik :</h5>
                     <li class="mb-1">PLN (Perusahaan Listrik Negara)</li>
-                    <input name="PLN" min="0" type="number" class="form-control mb-1" placeholder="Isikan Dengan Angka"
-                      style="width: 100%;" required>
+                    <input required required name="PLN" min="0" type="number" class="form-control mb-1"
+                      placeholder="Isikan Dengan Angka" style="width: 100%;" required>
                     <li class="mb-1">Non-PLN (Misalnya: Swasta, Swadaya, Atau Perseorangan)</li>
-                    <input name="Non_PLN" min="0" type="number" class="form-control mb-4"
+                    <input required required name="Non_PLN" min="0" type="number" class="form-control mb-4"
                       placeholder="Isikan Dengan Angka" style="width: 100%;" required>
                     <h5 class="mb-2">B. Jumlah Keluraga Bukan Pengguna Listrik:</h5>
-                    <input name="Bukan_pengguna_listrik" type="number" class="form-control mb-4" placeholder=""
-                      style="width: 100%;" required>
+                    <input required name="Bukan_pengguna_listrik" type="number" class="form-control mb-4"
+                      placeholder="Isi Dengan Angka" style="width: 100%;" required>
 
                     <h5 class="mb-2">C. Keluarga Yang Menggunakan Lampu Tenaga Surya:</h5>
-                    <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control" required>
+                    <select required name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control"
+                      required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
@@ -203,7 +204,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Penerangan Di Jalan Desa/Kelurahan Yang Menggunakan Lampu Tenaga Surya</label>
-                    <select name="Lampu_Tenaga_Surya" id="penetapan_batas_desa" class="form-control">
+                    <select required name="Lampu_Tenaga_Surya" id="penetapan_batas_desa" class="form-control">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -212,7 +213,7 @@ include "../../config/session.php";
 
                   <div class="form-group mb-3">
                     <label class="mb-2">Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                    <select name="penerangan_jalan_utama" id="penerangan_jalan_utama" class="form-control">
+                    <select required name="penerangan_jalan_utama" id="penerangan_jalan_utama" class="form-control">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
@@ -221,18 +222,17 @@ include "../../config/session.php";
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Sumber Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                      <select name="sumber_penerangan" id="sumber_penerangan" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Listrik Diusahakan Oleh Pemerintah">Listrik Diusahakan Oleh Pemerintah</option>
-                        <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah
-                        </option>
-                        <option value="Non Listrik">Non Listrik</option>
-                      </select>
-                    </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Sumber Penerangan Di Jalan Utama Desa/Kelurahan</label>
+                    <select required name="sumber_penerangan" id="sumber_penerangan" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Listrik Diusahakan Oleh Pemerintah">Listrik Diusahakan Oleh Pemerintah</option>
+                      <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah
+                      </option>
+                      <option value="Non Listrik">Non Listrik</option>
+                    </select>
                   </div>
+
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -317,7 +317,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Tempat pembuangan sampah sementara (TPS)</label>
-                    <select name="TPS" id="TPS" class="form-control">
+                    <select required name="TPS" id="TPS" class="form-control">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Digunakan">Ada, Digunakan </option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
@@ -326,7 +326,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r)</label>
-                    <select name="TPS3R" id="TPS3R" class="form-control">
+                    <select required name="TPS3R" id="TPS3R" class="form-control">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Digunakan">Ada, Digunakan </option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
@@ -336,7 +336,7 @@ include "../../config/session.php";
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
-                  <select name="bank_sampah" id="bank_sampah" class="form-control">
+                  <select required name="bank_sampah" id="bank_sampah" class="form-control">
                     <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                     <option value="Ada">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
@@ -433,7 +433,7 @@ include "../../config/session.php";
                       Wilayah desa/kelurahan dilalui saluran udara tegangan ekstra tinggi (SUTET) / Saluran Udara
                       Tegangan Tinggi (SUUT) / Saluran Udara Tegangan Tinggi Arus Searah (SUTTAS)
                     </label>
-                    <select name="SUTET" id="TPS" class="form-control">
+                    <select required name="SUTET" id="TPS" class="form-control">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
@@ -443,7 +443,7 @@ include "../../config/session.php";
 
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Pemukiman Di Bawah SUTET/SUTT/SUTTAS</label>
-                    <select name="keberadaan_dibawah_sutet" id="keberadaan_dibawah_sutet" class="form-control"
+                    <select required name="keberadaan_dibawah_sutet" id="keberadaan_dibawah_sutet" class="form-control"
                       onchange="togglePemukimanInput()">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
@@ -454,7 +454,7 @@ include "../../config/session.php";
 
                 <div class="form-group mb-3" id="pemukiman_form" style="display: none;">
                   <label class="mb-2">Jumlah Pemukiman di Bawah SUTET/SUTT/SUTTAS</label>
-                  <input name="jumlah_pemukiman_dibawah_sutet" type="number" min="0" class="form-control"
+                  <input required name="jumlah_pemukiman_dibawah_sutet" type="number" min="0" class="form-control"
                     placeholder="Isi Dengan Angka" />
                 </div>
 
@@ -553,31 +553,37 @@ include "../../config/session.php";
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sungai Yang Melintasi</label>
                     <select name="keberadaan_sungai" id="keberadaan_sungai" class="form-control"
-                      onchange="toggleSungaiContainer()">
+                      onchange="toggleSungaiInput()">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
+
                   <div id="daftar_sungai" style="display: none;">
                     <div class="form-group mb-3">
-                      <label class="mb-2">Nama Sungai Yang Melintasi Ke - 1</label>
-                      <input name="nama_sungai_1" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                      <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Yang Melintasi Ke -
+                        1</label>
+                      <input required name="nama_sungai_1" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 2</label>
-                      <input name="nama_sungai_2" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                      <input required name="nama_sungai_2" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 3</label>
-                      <input name="nama_sungai_3" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                      <input required name="nama_sungai_3" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 4</label>
-                      <input name="nama_sungai_4" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                      <input required name="nama_sungai_4" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
                     </div>
                   </div>
                 </div>
@@ -590,16 +596,17 @@ include "../../config/session.php";
               </form>
 
               <script>
-                function toggleSungaiContainer() {
-                  const keberadaanSungai = document.getElementById('keberadaan_sungai').value;
-                  const daftarSungai = document.getElementById('daftar_sungai');
-                  if (keberadaanSungai === 'Ada') {
-                    daftarSungai.style.display = 'block';
+                function toggleSungaiInput() {
+                  const keberadaan = document.getElementById('keberadaan_sungai').value;
+                  const pemukimanForm = document.getElementById('daftar_sungai');
+                  if (keberadaan === 'Ada') {
+                    pemukimanForm.style.display = 'block';
                   } else {
-                    daftarSungai.style.display = 'none';
+                    pemukimanForm.style.display = 'none';
                   }
                 }
               </script>
+
 
               <!-- /.row -->
             </div>
@@ -642,6 +649,243 @@ include "../../config/session.php";
           </div>
           <!-- END::Keberadaan Sungai yang melintasi wilayah desa -->
 
+          <!-- BEGIN:: Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#danau">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form_50">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".toggle-form_50").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa</label>
+                    <select name="keberadaan_danau" id="keberadaan_danau" class="form-control"
+                      onchange="toggleDanauInput()">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+
+                  <div id="daftar_danau" style="display: none;">
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 1</label>
+                      <input required name="nama_danau_1" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 2</label>
+                      <input required name="nama_danau_2" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 3</label>
+                      <input required name="nama_danau_3" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 4</label>
+                      <input required name="nama_danau_4" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+
+              <script>
+                function toggleDanauInput() {
+                  const keberadaan = document.getElementById('keberadaan_danau').value;
+                  const pemukimanForm = document.getElementById('daftar_danau');
+                  if (keberadaan === 'Ada') {
+                    pemukimanForm.style.display = 'block';
+                  } else {
+                    pemukimanForm.style.display = 'none';
+                  }
+                }
+              </script>
+
+
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="danau" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isikan keberadaan danau/waduk/situ yang melintasi desa/kelurahan pada kolom pertama, dengan
+                        pilihan:
+                        <ul>
+                          <li><strong>Ada</strong> jika ada danau/waduk/situ yang melintasi wilayah desa/kelurahan.</li>
+                          <li><strong>Tidak Ada</strong> jika tidak ada danau/waduk/situ yang melintasi wilayah
+                            desa/kelurahan.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>Jika ada danau/waduk/situ yang melintasi wilayah, isikan nama-nama danau/waduk/situ tersebut
+                        pada kolom
+                        berikutnya, dengan format:
+                        <ul>
+                          <li><strong>Nama danau/waduk/situ yang berada di wilayah desa Ke - 1</strong> jika ada satu
+                            danau/waduk/situ.</li>
+                          <li><strong>Nama danau/waduk/situ yang berada di wilayah desa Ke - 2</strong> jika ada dua
+                            danau/waduk/situ, dan seterusnya.</li>
+                          <li>Jika tidak ada maka isi dengan tanda ( - )
+                          </li>
+                        </ul>
+                      </li>
+                      <li>Pastikan untuk menuliskan nama sungai dengan benar agar data yang terkumpul akurat.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END::Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa -->
+
+          <!-- BEGIN:: Keberadaan Permukiman Di Bantaran Sungai -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan Permukiman Di Bantaran Sungai</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#danau">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form_3123">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".toggle-form_3123").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Pemukiman Di Bantaran Sungai</label>
+                    <select name="keberadaan_pemukiman_bantaran" id="keberadaan_pemukiman_bantaran" class="form-control"
+                      onchange="toggleBantaranInput()">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+
+                  <div id="jumlah_pemukiman_bantaran" style="display: none;">
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Jumlah Pemukiman Di Bantaran Sungai</label>
+                      <input required name="pemukiman_bantaran" type="number" min="0" class="form-control"
+                        placeholder="Isi Dengan Angka">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+
+              <script>
+                function toggleBantaranInput() {
+                  const keberadaan = document.getElementById('keberadaan_pemukiman_bantaran').value;
+                  const pemukimanForm = document.getElementById('jumlah_pemukiman_bantaran');
+                  if (keberadaan === 'Ada') {
+                    pemukimanForm.style.display = 'block';
+                  } else {
+                    pemukimanForm.style.display = 'none';
+                  }
+                }
+              </script>
+
+
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="danau" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isikan keberadaan permukiman di bantaran sungai pada kolom pertama, dengan pilihan:
+                        <ul>
+                          <li><strong>Ada</strong> jika terdapat permukiman di bantaran sungai di wilayah
+                            desa/kelurahan.</li>
+                          <li><strong>Tidak Ada</strong> jika tidak terdapat permukiman di bantaran sungai di wilayah
+                            desa/kelurahan.</li>
+                        </ul>
+                      </li>
+                      <li>Jika ada permukiman di bantaran sungai, isikan jumlahnya pada kolom berikutnya dengan format:
+                        <ul>
+                          <li>Masukkan angka yang mencerminkan jumlah permukiman di bantaran sungai.</li>
+                          <li>Pastikan jumlah yang diisikan akurat dan berdasarkan data terkini.</li>
+                        </ul>
+                      </li>
+                      <li>Jika tidak ada permukiman di bantaran sungai, kolom jumlah akan otomatis dinonaktifkan.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END::Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa -->
+
           <!-- BEGIN:: Banyaknya embung dan Keberadaan Lokasi Mata Air -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
@@ -672,7 +916,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Embung</label>
-                    <input name="jumlah_embung" class="form-control" type="number" min="0"
+                    <input required name="jumlah_embung" class="form-control" type="number" min="0"
                       placeholder="Isi Dengan Angka">
                   </div>
                   <div class="form-group mb-3">
@@ -684,15 +928,6 @@ include "../../config/session.php";
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
-                  <select name="bank_sampah" id="bank_sampah" class="form-control">
-                    <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
-                    <option value="Non Listrik">Non Listrik</option>
-                  </select>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -778,7 +1013,7 @@ include "../../config/session.php";
                   <div id="jumlah_pemukiman_kumuh" style="display: none;">
                     <div class="form-group mb-3">
                       <label class="mb-2">Jumlah Pemukiman Kumuh</label>
-                      <input name="jumlah_pemukiman_kumuh" type="text" class="form-control"
+                      <input required name="jumlah_pemukiman_kumuh" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
                     </div>
                   </div>
@@ -866,7 +1101,7 @@ include "../../config/session.php";
                       Keberadaan Lokasi Penggalian Golongan C (Misalnya: Batu Kali, Pasir, Kapur, Kaolin, Pasir Kuarsa,
                       Tanah Liat, Dll.)
                     </label>
-                    <select name="galian" id="TPS" class="form-control">
+                    <select required name="galian" id="TPS" class="form-control">
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -934,7 +1169,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Sarana Prasarana Kebersihan</label>
-                    <input class="form-control" type="number" min="0" name="prasarana_kebersihan"
+                    <input required class="form-control" type="number" min="0" name="prasarana_kebersihan"
                       placeholder="Isi Dengan Angka" required>
                   </div>
                 </div>
@@ -987,7 +1222,7 @@ include "../../config/session.php";
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus"); 
+                      $icon.toggleClass("fa-minus fa-plus");
                     });
                   });
                 </script>
@@ -999,7 +1234,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Rumah Tidak Layak Huni</label>
-                    <input class="form-control" type="number" min="0" name="rumah_tidak_layak_huni"
+                    <input required class="form-control" type="number" min="0" name="rumah_tidak_layak_huni"
                       placeholder="Isi Dengan Angka" required>
                   </div>
                 </div>
@@ -1023,7 +1258,7 @@ include "../../config/session.php";
                   <div class="modal-body">
                     <ul>
                       <li>Isi Dengan Angka</li>
-            
+
                     </ul>
                   </div>
                   <div class="modal-footer">
