@@ -308,14 +308,13 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_linmas_poskamling.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah anggota linmas/hansip di desa/kelurahan</label>
-                    <input type="number" name="jemlah_anggota_linmas" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_anggota_linmas" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
