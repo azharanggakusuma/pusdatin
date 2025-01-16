@@ -214,30 +214,29 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_pemanfaatan_sistem.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sistem Informasi Desa</label>
-                    <select name="keberadaan_sistem_informasi_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_sistem_informasi_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
-                      <option value="Ada, Jarang	digunakan">Ada, Jarang digunakan</option>
-                      <option value="Ada, Tidak	digunakan">Ada, Tidak digunakan</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Ada, Jarang digunakan">Ada, Jarang digunakan</option>
+                      <option value="Ada, Tidak digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sistem Keuangan Desa</label>
-                    <select name="keberadaan_sistem_keuangan_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_sistem_keuangan_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
-                      <option value="Ada, Jarang	digunakan">Ada, Jarang digunakan</option>
-                      <option value="Ada, Tidak	digunakan">Ada, Tidak digunakan</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Ada, Jarang digunakan">Ada, Jarang digunakan</option>
+                      <option value="Ada, Tidak digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -256,8 +255,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih yang sesuai untuk keberadaan sistem informasi desa </li>
-                      <li>Pilih yang sesuai untuk keberadaan sistem keuangan desa </li>
+                      <li>Pilih yang sesuai untuk keberadaan sistem informasi desa.</li>
+                      <li>Pilih yang sesuai untuk keberadaan sistem keuangan desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
