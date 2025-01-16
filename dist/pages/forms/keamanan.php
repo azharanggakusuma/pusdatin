@@ -371,18 +371,17 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_keberadaan_pos_polisi.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan</label>
-                    <select name="keberadaan_pos_polisi" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_pos_polisi" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -402,7 +401,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan</li>
+                      <li>Pilih <b>Ada</b> jika terdapat pos polisi (termasuk kantor polisi) di desa/kelurahan.</li>
+                      <li>Pilih <b>Tidak Ada</b> jika tidak terdapat pos polisi di desa/kelurahan.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -412,7 +412,6 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
