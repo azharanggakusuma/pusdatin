@@ -106,21 +106,22 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Tim Penggerak PKK</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_tim_penggerak_pkk">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Kader PKK</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_kader_pkk">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Kelompok PKK</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_kelompok_pkk">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Kelompok Dasa Wisma</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_kelompok_dasa_wisma">
                   </div>
                 </div>
+
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -182,7 +183,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Karang Taruna dan anggota/pengurus Karang Taruna</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" name="jumlah_karang_taruna" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -246,7 +247,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Posyandu</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" name="jumlah_posyandu" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -310,11 +311,11 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Laki-Laki</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" name="jumlah_anggota_laki_lpmd" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Perempuan</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" name="jumlah_anggota_perempuan_lpmd" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                 </div>
 
