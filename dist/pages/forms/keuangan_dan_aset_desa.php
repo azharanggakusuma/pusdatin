@@ -999,11 +999,11 @@ include "../../config/session.php";
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <form action="" method="post">
+            <form action="../../handlers/form_pengadaan_barang_jasa.php" method="post">
               <div class="row">
                 <div class="form-group mb-3">
-                  <label class="mb-2">Jumlah paket pengadaan barang dan jasa yang dilaksanakan</label>
-                  <input name="jumlah_paket_pengadaan_barang_dan_jasa_yang_dilaksanakan" type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
+                  <label class="mb-2">Jumlah Paket Pengadaan Barang dan Jasa yang Dilaksanakan</label>
+                  <input name="jumlah_paket_pengadaan_barang_dan_jasa_yang_dilaksanakan" type="number" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
                 </div>
               </div>
               <div class="mb-2">
@@ -1024,8 +1024,7 @@ include "../../config/session.php";
                 </div>
                 <div class="modal-body">
                   <ul>
-                    <li>Isi dengan angka Jumlah paket pengadaan barang dan jasa yang dilaksanakan </li>
-                    <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
+                    <li>Isi dengan angka jumlah paket pengadaan barang dan jasa yang dilaksanakan.</li>
                   </ul>
                 </div>
                 <div class="modal-footer">
@@ -1035,7 +1034,6 @@ include "../../config/session.php";
             </div>
           </div>
         </div>
-
 
     </main> <!--end::App Main--> <!--begin::Footer-->
 
