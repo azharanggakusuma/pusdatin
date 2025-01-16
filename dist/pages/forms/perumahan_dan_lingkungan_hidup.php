@@ -90,16 +90,16 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#pln">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool toggle-form_1">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                    $(".toggle-form_1").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -117,14 +117,14 @@ include "../../config/session.php";
                   <div class="form-group">
                     <h5 class="mb-3">A. Jumlah Keluraga Pengguna Listrik :</h5>
                     <li class="mb-1">PLN (Perusahaan Listrik Negara)</li>
-                    <input name="PLN" min="0" type="number" id="" name="" class="form-control mb-1"
-                      placeholder="Isikan Dengan Angka" style="width: 100%;" Required>
+                    <input name="PLN" min="0" type="number" class="form-control mb-1" placeholder="Isikan Dengan Angka"
+                      style="width: 100%;" required>
                     <li class="mb-1">Non-PLN (Misalnya: Swasta, Swadaya, Atau Perseorangan)</li>
-                    <input name="Non_PLN" min="0" type="number" id="" name="" class="form-control mb-4"
-                      placeholder="Isikan Dengan Angka" style="width: 100%;" Required>
+                    <input name="Non_PLN" min="0" type="number" class="form-control mb-4"
+                      placeholder="Isikan Dengan Angka" style="width: 100%;" required>
                     <h5 class="mb-2">B. Jumlah Keluraga Bukan Pengguna Listrik:</h5>
-                    <input name="Bukan_pengguna_listrik" type="number" id="" name="" class="form-control mb-4"
-                      placeholder="" style="width: 100%;" Required>
+                    <input name="Bukan_pengguna_listrik" type="number" class="form-control mb-4" placeholder=""
+                      style="width: 100%;" required>
 
                     <h5 class="mb-2">C. Keluarga Yang Menggunakan Lampu Tenaga Surya:</h5>
                     <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control" required>
@@ -146,20 +146,21 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="pln" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <h5 class="modal-title" id="modalInfoLabel">Aturan Pengisian Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isikan jumlah keluarga yang menggunakan listrik PLN pada kolom pertama.</li>
+                      <li>Isikan jumlah keluarga yang menggunakan listrik non-PLN pada kolom kedua.</li>
+                      <li>Isikan jumlah keluarga yang tidak menggunakan listrik pada kolom ketiga.</li>
+                      <li>Pilih kondisi penggunaan lampu tenaga surya pada kolom keempat sesuai dengan kondisi desa
+                        Anda.</li>
+                      <li>Pastikan semua data yang dimasukkan sudah benar sebelum menyimpan.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -169,22 +170,23 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya -->
 
           <!-- BEGIN:: Penerangan di jalan utama desa/kelurahan -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Penerangan di jalan utama desa/kelurahan</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#penerangan">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool toggle-form_2">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                    $(".toggle-form_2").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -242,7 +244,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="penerangan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -251,11 +253,27 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isikan kondisi penerangan di jalan desa/kelurahan yang menggunakan lampu tenaga surya pada
+                        kolom pertama.</li>
+                      <li>Isikan kondisi penerangan di jalan utama desa/kelurahan pada kolom kedua, dengan pilihan:
+                        <ul>
+                          <li><strong>Ada, Sebagian Besar</strong> jika penerangan sudah cukup di sebagian besar jalan
+                            utama.</li>
+                          <li><strong>Ada, Sebagian Kecil</strong> jika hanya sebagian kecil jalan utama yang sudah
+                            diterangi.</li>
+                          <li><strong>Tidak Ada</strong> jika tidak ada penerangan di jalan utama sama sekali.</li>
+                        </ul>
+                      </li>
+                      <li>Isikan sumber penerangan pada kolom ketiga, dengan pilihan:
+                        <ul>
+                          <li><strong>Listrik Diusahakan Oleh Pemerintah</strong> jika penerangan menggunakan listrik
+                            yang disediakan oleh pemerintah.</li>
+                          <li><strong>Listrik Diusahakan Oleh Non Pemerintah</strong> jika penerangan menggunakan
+                            listrik yang disediakan oleh pihak swasta atau lainnya.</li>
+                          <li><strong>Non Listrik</strong> jika penerangan menggunakan sumber selain listrik.</li>
+                        </ul>
+                      </li>
+                      <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -265,6 +283,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Penerangan di jalan utama desa/kelurahan -->
 
           <!-- BEGIN:: Keberadaan Tempat Pembuangan Sampah Sementara (Tps) , Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r) Dan Bank Sampah -->
@@ -272,16 +291,16 @@ include "../../config/session.php";
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan Tempat Pembuangan Sampah Sementara (Tps) , Tempat Penampungan Sementara
                 Reduce,Reuse,Recycle (Tps3r) Dan Bank Sampah</h3>
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#tps">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool 4_toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                    $(".4_toggle-form").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -334,7 +353,7 @@ include "../../config/session.php";
             </div>
 
             <!-- Modal Info -->
-            <div class="modal fade" id="modalPKH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="tps" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -343,11 +362,32 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isikan kondisi tempat pembuangan sampah sementara (TPS) pada kolom pertama, dengan pilihan:
+                        <ul>
+                          <li><strong>Ada, Digunakan</strong> jika TPS tersedia dan sedang digunakan di desa/kelurahan.
+                          </li>
+                          <li><strong>Ada, Tidak Digunakan</strong> jika TPS ada tetapi tidak digunakan.</li>
+                          <li><strong>Tidak Ada</strong> jika TPS tidak ada sama sekali.</li>
+                        </ul>
+                      </li>
+                      <li>Isikan kondisi tempat penampungan sementara Reduce, Reuse, Recycle (TPS3R) pada kolom kedua,
+                        dengan pilihan:
+                        <ul>
+                          <li><strong>Ada, Digunakan</strong> jika TPS3R tersedia dan sedang digunakan di
+                            desa/kelurahan.</li>
+                          <li><strong>Ada, Tidak Digunakan</strong> jika TPS3R ada tetapi tidak digunakan.</li>
+                          <li><strong>Tidak Ada</strong> jika TPS3R tidak ada sama sekali.</li>
+                        </ul>
+                      </li>
+                      <li>Isikan keberadaan bank sampah pada kolom ketiga, dengan pilihan:
+                        <ul>
+                          <li><strong>Ada</strong> jika bank sampah tersedia di desa/kelurahan.</li>
+                          <li><strong>Tidak Ada</strong> jika tidak ada bank sampah sama sekali.</li>
+                          <li><strong>Non Listrik</strong> jika bank sampah menggunakan fasilitas non-listrik untuk
+                            operasionalnya.</li>
+                        </ul>
+                      </li>
+                      <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -368,12 +408,12 @@ include "../../config/session.php";
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool 3_toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function () {
-                    $(".toggle-form").on("click", function () {
+                    $(".3_toggle-form").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -450,11 +490,26 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Pilih kondisi apakah wilayah desa/kelurahan dilalui oleh saluran udara tegangan ekstra tinggi
+                        (SUTET), saluran udara tegangan tinggi (SUUT), atau saluran udara tegangan tinggi arus searah
+                        (SUTTAS).</li>
+                      <li>Jika wilayah desa/kelurahan dilalui oleh saluran udara tegangan ekstra tinggi atau saluran
+                        udara tegangan tinggi, pilih salah satu dari opsi berikut:
+                        <ul>
+                          <li><strong>Ada, Digunakan</strong> jika saluran udara tersebut aktif dan digunakan untuk
+                            distribusi energi listrik.</li>
+                          <li><strong>Ada, Tidak Digunakan</strong> jika saluran udara tersebut ada, namun tidak aktif
+                            atau tidak digunakan.</li>
+                          <li><strong>Tidak Ada</strong> jika wilayah desa/kelurahan tidak dilalui oleh saluran udara
+                            tersebut.</li>
+                        </ul>
+                      </li>
+                      <li>Jika ada pemukiman yang terletak di bawah SUTET/SUTT/SUTTAS, pilih opsi <strong>Ada</strong>,
+                        dan isikan jumlah pemukiman di bawah saluran udara tersebut pada kolom yang disediakan. Jika
+                        tidak ada pemukiman di bawah saluran udara tersebut, pilih opsi <strong>Tidak Ada</strong>.</li>
+                      <li>Pastikan untuk mengisi dengan angka yang sesuai untuk jumlah pemukiman, jika diperlukan.</li>
+                      <li>Jika wilayah Anda tidak dilalui oleh saluran udara tegangan tinggi, cukup pilih <strong>Tidak
+                          Ada</strong> untuk semua pertanyaan.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -464,7 +519,522 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Keberadaan permukiman di bawah SUTET/SUTT/SUTTAS -->
+
+          <!-- BEGIN:: Keberadaan Sungai yang melintasi wilayah desa -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan Sungai Yang Melintasi Wilayah Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#sungai">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form_5">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".toggle-form_5").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Sungai Yang Melintasi</label>
+                    <select name="keberadaan_sungai" id="keberadaan_sungai" class="form-control"
+                      onchange="toggleSungaiContainer()">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                  <div id="daftar_sungai" style="display: none;">
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama Sungai Yang Melintasi Ke - 1</label>
+                      <input name="nama_sungai_1" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama Sungai Yang Melintasi Ke - 2</label>
+                      <input name="nama_sungai_2" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama Sungai Yang Melintasi Ke - 3</label>
+                      <input name="nama_sungai_3" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Nama Sungai Yang Melintasi Ke - 4</label>
+                      <input name="nama_sungai_4" type="text" class="form-control" placeholder="Isi Dengan nama sungai">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+
+              <script>
+                function toggleSungaiContainer() {
+                  const keberadaanSungai = document.getElementById('keberadaan_sungai').value;
+                  const daftarSungai = document.getElementById('daftar_sungai');
+                  if (keberadaanSungai === 'Ada') {
+                    daftarSungai.style.display = 'block';
+                  } else {
+                    daftarSungai.style.display = 'none';
+                  }
+                }
+              </script>
+
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="sungai" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isikan keberadaan sungai yang melintasi desa/kelurahan pada kolom pertama, dengan pilihan:
+                        <ul>
+                          <li><strong>Ada</strong> jika ada sungai yang melintasi wilayah desa/kelurahan.</li>
+                          <li><strong>Tidak Ada</strong> jika tidak ada sungai yang melintasi wilayah desa/kelurahan.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>Jika ada sungai yang melintasi wilayah, isikan nama-nama sungai tersebut pada kolom
+                        berikutnya, dengan format:
+                        <ul>
+                          <li><strong>Nama Sungai Ke - 1</strong> jika ada satu sungai.</li>
+                          <li><strong>Nama Sungai Ke - 2</strong> jika ada dua sungai, dan seterusnya.</li>
+                          <li>Jika lebih dari 4 sungai yang melintasi wilayah, pilihlah yang paling penting atau utama.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>Pastikan untuk menuliskan nama sungai dengan benar agar data yang terkumpul akurat.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END::Keberadaan Sungai yang melintasi wilayah desa -->
+
+          <!-- BEGIN:: Banyaknya embung dan Keberadaan Lokasi Mata Air -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Banyaknya embung dan Keberadaan Lokasi Mata Air</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#EMBUNG">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool 100_toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".100_toggle-form").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah Embung</label>
+                    <input name="jumlah_embung" class="form-control" type="number" min="0"
+                      placeholder="Isi Dengan Angka">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Lokasi Mata Air</label>
+                    <select name="mata_air" id="mata_air" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada, Dikelola">ADA, DIKELOLA </option>
+                      <option value="Ada, Tidak Dikelola">ADA, TIDAK DIKELOLA</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
+                  <select name="bank_sampah" id="bank_sampah" class="form-control">
+                    <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Non Listrik">Non Listrik</option>
+                  </select>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="EMBUNG" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isikan jumlah embung yang ada di desa/kelurahan pada kolom pertama, dengan format angka
+                        (misal: 1, 2, 3).</li>
+                      <li>Untuk kolom lokasi mata air, pilih salah satu opsi yang sesuai dengan kondisi di
+                        desa/kelurahan Anda:</li>
+                      <ul>
+                        <li><strong>Ada, Dikelola</strong> jika ada mata air yang dikelola oleh pihak tertentu.</li>
+                        <li><strong>Ada, Tidak Dikelola</strong> jika ada mata air yang tidak dikelola atau tidak ada
+                          pengelolaan resmi.</li>
+                        <li><strong>Tidak Ada</strong> jika tidak ada mata air di wilayah tersebut.</li>
+                      </ul>
+                      <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi yang ada di desa/kelurahan Anda.
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END::Banyaknya embung dan Keberadaan Lokasi Mata Air -->
+
+          <!-- BEGIN:: Keberadaan permukiman kumuh (sanitasi lingkungan buruk, bangunan padat dan sebagian besar tidak layak huni)  ) -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan permukiman kumuh (sanitasi lingkungan buruk, bangunan padat dan sebagian
+                besar tidak layak huni) </h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#KUMUH">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool 129">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".129").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Permukiman Kumuh (Sanitasi Lingkungan Buruk, Bangunan Padat Dan
+                      Sebagian Besar Tidak Layak Huni)Di Desa/Kelurahan</label>
+                    <select name="keberadaan_pemukiman_kumuh" id="keberadaan_pemukiman_kumuh" class="form-control"
+                      onchange="toggleSungaiContainer()">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                  <div id="jumlah_pemukiman_kumuh" style="display: none;">
+                    <div class="form-group mb-3">
+                      <label class="mb-2">Jumlah Pemukiman Kumuh</label>
+                      <input name="jumlah_pemukiman_kumuh" type="text" class="form-control"
+                        placeholder="Isi Dengan nama sungai">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+
+              <script>
+                function toggleSungaiContainer() {
+                  const keberadaanSungai = document.getElementById('keberadaan_pemukiman_kumuh').value;
+                  const daftarPemukimanKumuh = document.getElementById('jumlah_pemukiman_kumuh');
+                  if (keberadaanSungai === 'Ada') {
+                    daftarPemukimanKumuh.style.display = 'block';
+                  } else {
+                    daftarPemukimanKumuh.style.display = 'none';
+                  }
+                }
+              </script>
+
+              <!-- /.row -->
+            </div>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="KUMUH" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isikan apakah terdapat permukiman kumuh di desa/kelurahan pada kolom pertama.</li>
+                      <li>Jika jawabannya <strong>Ada</strong>, maka akan muncul kolom tambahan untuk mengisi jumlah
+                        permukiman kumuh yang ada di desa/kelurahan Anda. Masukkan angka yang sesuai dengan jumlah
+                        permukiman kumuh yang ada.</li>
+                      <li>Jika jawabannya <strong>Tidak Ada</strong>, kolom jumlah permukiman kumuh tidak akan
+                        ditampilkan.</li>
+                      <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END::Keberadaan permukiman kumuh (sanitasi lingkungan buruk, bangunan padat dan sebagian besar tidak layak huni)  ) -->
+
+          <!-- BEGIN:: Keberadaan Lokasi Penggalian Golongan C -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Keberadaan Lokasi Penggalian Golongan C</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalGolonganC">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool 200_toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".200_toggle-form").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">
+                      Keberadaan Lokasi Penggalian Golongan C (Misalnya: Batu Kali, Pasir, Kapur, Kaolin, Pasir Kuarsa,
+                      Tanah Liat, Dll.)
+                    </label>
+                    <select name="galian" id="TPS" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalGolonganC" tabindex="-1" aria-labelledby="aturanModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Silahkan Pilih Antara Ada Atau Tidak Ada</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Keberadaan Lokasi Penggalian Golongan C -->
+
+          <!-- BEGIN:: Jumlah Sarana Prasarana Kebersihan -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jumlah Sarana Prasarana Kebersihan</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKebersihan">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool 20000_toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".20000_toggle-form").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah Sarana Prasarana Kebersihan</label>
+                    <input class="form-control" type="number" min="0" name="prasarana_kebersihan"
+                      placeholder="Isi Dengan Angka" required>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalKebersihan" tabindex="-1" aria-labelledby="aturanModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Dengan Angka</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Jumlah Sarana Prasarana Kebersihan -->
+
+          <!-- BEGIN:: Jumlah Rumah Tidak Layak Huni -->
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Jumlah Rumah Tidak Layak Huni</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalRumah">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool 2000_toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function () {
+                    $(".2000_toggle-form").on("click", function () {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Jumlah Rumah Tidak Layak Huni</label>
+                    <input class="form-control" type="number" min="0" name="rumah_tidak_layak_huni"
+                      placeholder="Isi Dengan Angka" required>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalRumah" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Dengan Angka</li>
+            
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Jumlah Rumah Tidak Layak Huni -->
+
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
