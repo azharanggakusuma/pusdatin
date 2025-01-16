@@ -293,78 +293,77 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_badan_usaha_aset_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah unit usaha BUMDes</label>
-                    <input type="number" name="jumlah_unit_usaha_bumdes" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_unit_usaha_bumdes" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tanah kas desa/ulayat</label>
-                    <select name="tanah_kas_desa_ulayat" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="tanah_kas_desa_ulayat" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tambatan perahu</label>
-                    <select name="tambahan_perahu" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="tambatan_perahu" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Pasar desa Ada (pasar hewan, pelelangan ikan yang dikelola desa, pelelangan hasil pertanian)</label>
-                    <select name="pasar_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Pasar desa</label>
+                    <select name="pasar_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Bangunan milik desa (balai desa, balai rakyat, lapangan olah raga, dll)</label>
-                    <select name="bangunan_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Bangunan milik desa</label>
+                    <select name="bangunan_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Hutan milik desa</label>
-                    <select name="hutan_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="hutan_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Mata air milik desa</label>
-                    <select name="mata_air_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="mata_air_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tempat wisata/Pemandian umum</label>
-                    <select name="tempat_wisata_pemandian_umum" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="tempat_wisata_pemandian_umum" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Aset lainnya milik desa (kekayaan asli desa, hibah/sumbangan/sejenisnya dll)</label>
-                    <select name="aset_lainnya_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Aset lainnya milik desa</label>
+                    <select name="aset_lainnya_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -383,7 +382,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, sesuai Kepemilikan Badan Usaha Dan Aset Desa</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b>, sesuai dengan kepemilikan badan usaha dan aset desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
