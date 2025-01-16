@@ -238,8 +238,8 @@ include "../../config/session.php";
               </div>
             </div>
             <script>
-              $(document).ready(function() {
-                $(".BATASWILAYAH").on("click", function() {
+              $(document).ready(function () {
+                $(".BATASWILAYAH").on("click", function () {
                   var $icon = $(this).find("i");
                   var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -264,8 +264,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".JARAKKANTOR").on("click", function() {
+                  $(document).ready(function () {
+                    $(".JARAKKANTOR").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -366,8 +366,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".IDM").on("click", function() {
+                  $(document).ready(function () {
+                    $(".IDM").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -444,8 +444,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".toggle-form6").on("click", function() {
+                  $(document).ready(function () {
+                    $(".toggle-form6").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -525,8 +525,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".STATUSPEMERINTAHAN").on("click", function() {
+                  $(document).ready(function () {
+                    $(".STATUSPEMERINTAHAN").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -597,8 +597,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".toggle-form5").on("click", function() {
+                  $(document).ready(function () {
+                    $(".toggle-form5").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -616,7 +616,8 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2">Penetapan Batas Desa</label>
-                      <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control">
+                      <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control"
+                        onchange="toggleInputFields()">
                         <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
                         <option value="SUDAH ADA">SUDAH ADA</option>
                         <option value="BELUM ADA">BELUM ADA</option>
@@ -624,10 +625,10 @@ include "../../config/session.php";
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="form_no_surat_batas_desa" style="display: none;">
                       <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
                       <input type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control"
-                        placeholder="Masukkan No Peraturan" readonly>
+                        placeholder="Masukkan No Peraturan">
                     </div>
                   </div>
                 </div>
@@ -635,7 +636,8 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2">Ketersediaan Peta Desa</label>
-                      <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control">
+                      <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control"
+                        onchange="toggleInputFields()">
                         <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
                         <option value="ADA">ADA</option>
                         <option value="TIDAK ADA">TIDAK ADA</option>
@@ -643,10 +645,10 @@ include "../../config/session.php";
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="form_no_surat_peta_desa" style="display: none;">
                       <label class="mb-2">No SK/Perbup/Perda tentang Peta Desa</label>
                       <input type="text" name="no_surat_peta_desa" id="no_surat_peta_desa" class="form-control"
-                        placeholder="Masukkan No Peraturan" readonly>
+                        placeholder="Masukkan No Peraturan">
                     </div>
                   </div>
                 </div>
@@ -656,6 +658,29 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
+
+              <script>
+                function toggleInputFields() {
+                  // Toggle for Penetapan Batas Desa
+                  const batasDesaSelect = document.getElementById('penetapan_batas_desa');
+                  const batasDesaInput = document.getElementById('form_no_surat_batas_desa');
+                  if (batasDesaSelect.value === 'SUDAH ADA') {
+                    batasDesaInput.style.display = 'block';
+                  } else {
+                    batasDesaInput.style.display = 'none';
+                  }
+
+                  // Toggle for Ketersediaan Peta Desa
+                  const petaDesaSelect = document.getElementById('ketersediaan_peta_desa');
+                  const petaDesaInput = document.getElementById('form_no_surat_peta_desa');
+                  if (petaDesaSelect.value === 'ADA') {
+                    petaDesaInput.style.display = 'block';
+                  } else {
+                    petaDesaInput.style.display = 'none';
+                  }
+                }
+              </script>
+
             </div>
           </div>
           <!-- END::Ketersediaan Penetapan Batas dan Peta Desa -->
@@ -697,8 +722,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".BANYAKDUSUN").on("click", function() {
+                  $(document).ready(function () {
+                    $(".BANYAKDUSUN").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -769,8 +794,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".toggle-form1").on("click", function() {
+                  $(document).ready(function () {
+                    $(".toggle-form1").on("click", function () {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -837,8 +862,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".TOPOGRAFI").on("click", function() {
+                  $(document).ready(function () {
+                    $(".TOPOGRAFI").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -904,7 +929,8 @@ include "../../config/session.php";
             <div class="card-header mb-3">
               <h3 class="card-title">Keberadaan, Status, Kondisi, dan Lokasi Kantor Kepala Desa/Lurah</h3>
               <!-- Aturan Pengisian Button -->
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalKepemilikanKantor">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal"
+                data-bs-target="#modalKepemilikanKantor">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -912,8 +938,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".toggle-form4").on("click", function() {
+                  $(document).ready(function () {
+                    $(".toggle-form4").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -987,7 +1013,8 @@ include "../../config/session.php";
               </form>
             </div>
             <!-- Modal Info -->
-            <div class="modal fade" id="modalKepemilikanKantor" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalKepemilikanKantor" tabindex="-1" aria-labelledby="aturanModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -996,7 +1023,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan kondisi kantor kepala desa/lurah Anda.</li>
+                      <li>Pilih salah satu dari pilihan yang tersedia sesuai dengan kondisi kantor kepala desa/lurah
+                        Anda.</li>
                       <li>Pastikan semua kolom diisi. Jika salah satu kolom kosong, data tidak akan disimpan.</li>
                       <li>Setelah mengisi semua kolom, klik tombol <strong>Simpan</strong>.</li>
                     </ul>
@@ -1016,7 +1044,8 @@ include "../../config/session.php";
             <div class="card-header mb-3">
               <h3 class="card-title">Titik Koordinat Kantor Desa</h3>
               <!-- Aturan Pengisian Button -->
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalTitikKoordinatKantorDesa">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal"
+                data-bs-target="#modalTitikKoordinatKantorDesa">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
@@ -1024,8 +1053,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function() {
-                    $(".toggle-form3").on("click", function() {
+                  $(document).ready(function () {
+                    $(".toggle-form3").on("click", function () {
                       var $icon = $(this).find("i"); // Ambil ikon tombol
                       var $cardBody = $(this).closest(".card").find(".card-body"); // Ambil elemen card-body
 
@@ -1044,14 +1073,14 @@ include "../../config/session.php";
                   <!-- /.form-group -->
                   <div class="form-group mb-3">
                     <label class="mb-2">Koordinat Lintang (Latitude)</label>
-                    <input type="text" class="form-control" name="koordinat_lintang" placeholder="Masukkan koordinat lintang"
-                      style="width: 100%;">
+                    <input type="text" class="form-control" name="koordinat_lintang"
+                      placeholder="Masukkan koordinat lintang" style="width: 100%;">
                   </div>
 
                   <div class="form-group mb-3">
                     <label class="mb-2">Koordinat Bujur (Longitude)</label>
-                    <input type="text" class="form-control" name="koordinat_bujur" placeholder="Masukkan koordinat bujur"
-                      style="width: 100%;">
+                    <input type="text" class="form-control" name="koordinat_bujur"
+                      placeholder="Masukkan koordinat bujur" style="width: 100%;">
                   </div>
                   <div class="mb-3">
                     <div class="mb-2">
@@ -1147,7 +1176,7 @@ include "../../config/session.php";
   <script src="../../../dist/js/adminlte.js"></script>
   <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
-    $(function() {
+    $(function () {
       //Initialize Select2 Elements
       $('.select2').select2()
 
@@ -1163,7 +1192,7 @@ include "../../config/session.php";
       scrollbarAutoHide: "leave",
       scrollbarClickScroll: true,
     };
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
       if (
         sidebarWrapper &&
