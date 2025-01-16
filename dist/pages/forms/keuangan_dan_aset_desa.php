@@ -578,26 +578,25 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kerjasama_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Antar Desa</label>
-                    <select name="keberadaan_kerjasama_antar_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_kerjasama_antar_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Desa dengan Pihak Ketiga</label>
-                    <select name="keberadaan_kerjasama_desa_dengan_pihak_ketiga" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_kerjasama_desa_dengan_pihak_ketiga" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -616,8 +615,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan Kerjasama Antar Desa</li>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan Kerjasama Desa dengan Pihak Ketiga</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b>, Keberadaan Kerjasama Antar Desa.</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b>, Keberadaan Kerjasama Desa dengan Pihak Ketiga.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
