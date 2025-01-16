@@ -145,13 +145,13 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
-                    <p style="margin-left: 20px;">1. Tanah Bengkok</p>
+                    <p>1. Tanah Bengkok</p>
                     <input type="number" step="0.01" name="tanah_bengkok" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
-                    <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
+                    <p>2. Tanah Titi Sara</p>
                     <input type="number" step="0.01" name="tanah_titi_sara" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
-                    <p style="margin-left: 20px;">3. Kebun Desa</p>
+                    <p>3. Kebun Desa</p>
                     <input type="number" step="0.01" name="kebun_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
-                    <p style="margin-left: 20px;">4. Sawah Desa</p>
+                    <p>4. Sawah Desa</p>
                     <input type="number" step="0.01" name="sawah_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                   </div>
                 </div>
@@ -812,33 +812,33 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_realisasi_anggaran_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Realiasi Pendapatan Desa Tahun Anggaran .......... (Rupiah)</label>
-                    <p style="margin-left: 20px;">1. Pendapatan Asli Desa (PADes)</p>
-                    <input type="number" name="pendapatan_asli_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">2. Dana Desa (bersumber dari APBN)</p>
-                    <input type="number" name="dana_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
-                    <input type="number" name="bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima kabupaten/kota)</p>
-                    <input type="number" name="alokasi_dana_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">5. Bantuan keuangan dari APBD Provinsi</p>
-                    <input type="number" name="bantuan_keuangan_dari_apbd_provinsi" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">6. Bantuan keuangan dari APBD Kabupaten/kota</p>
-                    <input type="number" name="bantuan_keuangan_dari_apbd" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">7. Hibah dan sumbangan dari pihak ketiga</p>
-                    <input type="number" name="hibah_dan_sumbangan_dari_pihak_ketiga" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">8. Lain–lain pendapatan desa yang sah</p>
-                    <input type="number" name=" Lain_lain_pendapatan_desa_yang_sah" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <label class="mb-2">Realisasi Pendapatan Desa Tahun Anggaran</label>
+                    <p>1. Pendapatan Asli Desa (PADes)</p>
+                    <input type="number" step="0.01" name="pendapatan_asli_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>2. Dana Desa (bersumber dari APBN)</p>
+                    <input type="number" step="0.01" name="dana_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
+                    <input type="number" step="0.01" name="bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>4. Alokasi Dana Desa</p>
+                    <input type="number" step="0.01" name="alokasi_dana_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>5. Bantuan keuangan dari APBD Provinsi</p>
+                    <input type="number" step="0.01" name="bantuan_keuangan_dari_apbd_provinsi" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>6. Bantuan keuangan dari APBD Kabupaten/Kota</p>
+                    <input type="number" step="0.01" name="bantuan_keuangan_dari_apbd" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>7. Hibah dan sumbangan dari pihak ketiga</p>
+                    <input type="number" step="0.01" name="hibah_dan_sumbangan_dari_pihak_ketiga" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>8. Lain–lain pendapatan desa yang sah</p>
+                    <input type="number" step="0.01" name="lain_lain_pendapatan_desa_yang_sah" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
-
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp; Simpan
-                    </button>
-                  </div>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
               </form>
               <!-- /.row -->
             </div>
@@ -876,15 +876,15 @@ include "../../config/session.php";
               <div class="row">
                 <div class="form-group mb-3">
                   <label class="mb-2">Realiasi Belanja Desa Tahun Anggaran .......... (Rupiah) </label>
-                  <p style="margin-left: 20px;">1. Bidang Penyelenggaraan Pemerintahan Desa</p>
+                  <p>1. Bidang Penyelenggaraan Pemerintahan Desa</p>
                   <input type="number" name="bidang_penyelenggaraan_pemerintahan_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">2. Bidang Pelaksanaan Pembangunan Desa</p>
+                  <p>2. Bidang Pelaksanaan Pembangunan Desa</p>
                   <input type="number" name="bidang_pelaksanaan_pembangunan_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">3. Bidang Pembinaan Kemasyarakatan</p>
+                  <p>3. Bidang Pembinaan Kemasyarakatan</p>
                   <input type="number" name="bidang_pembinaan_kemasyarakatan" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">4. Bidang Pemberdayaan Masyarakat</p>
+                  <p>4. Bidang Pemberdayaan Masyarakat</p>
                   <input type="number" name="bidang_pemberdayaan_masyarakat" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">5. Bidang Tak Terduga/Belanja Bidang Penanggulangan Bencana, Keadaan Darurat dan Mendesak</p>
+                  <p>5. Bidang Tak Terduga/Belanja Bidang Penanggulangan Bencana, Keadaan Darurat dan Mendesak</p>
                   <input type="number" name="bidang_tak_terduga/belanja_bidang_penanggulangan_bencana_keadaan_darurat_dan_mendesak" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
                 </div>
 
