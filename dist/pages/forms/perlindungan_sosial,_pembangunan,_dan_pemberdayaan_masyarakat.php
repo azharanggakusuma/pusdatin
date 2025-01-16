@@ -106,19 +106,19 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima Bantuan PKH (Kepala Keluarga)</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" name="penerima_pkh" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima BLT Dana Desa</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" name="penerima_blt_dana_desa" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Penerima Bantuan Pangan Non Tunai (BPNT) </label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <label class="mb-2">Jumlah Penerima Bantuan Pangan Non Tunai (BPNT)</label>
+                    <input type="number" class="form-control" name="penerima_bpnt" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Penerima PBI Jaminan Kesehatan </label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <label class="mb-2">Jumlah Penerima PBI Jaminan Kesehatan</label>
+                    <input type="number" class="form-control" name="penerima_pbi_jk" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -141,11 +141,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Isikan jumlah penerima bantuan sesuai data yang ada.</li>
+                      <li>Pastikan jumlah yang dimasukkan adalah angka yang valid.</li>
+                      <li>Isi jumlah sesuai dengan kategori bantuan yang sesuai.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -164,7 +162,7 @@ include "../../config/session.php";
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form">
+                <button type="button" class="btn btn-tool toggle-form1">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
@@ -186,7 +184,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah SKTM yang Dikeluarkan</label>
-                    <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <input type="number" class="form-control" name="jumlah_sktm" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
                   </div>
                 </div>
 
@@ -209,11 +207,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Masukkan jumlah SKTM yang dikeluarkan sesuai dengan data yang ada di desa/kelurahan.</li>
+                      <li>Jumlah harus berupa angka yang valid dan tepat.</li>
+                      <li>Isi sesuai dengan jumlah yang benar-benar tercatat.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -225,6 +221,7 @@ include "../../config/session.php";
           </div>
 
         </div> <!--end::Container-->
+
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 

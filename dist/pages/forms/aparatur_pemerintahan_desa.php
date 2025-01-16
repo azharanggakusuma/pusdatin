@@ -107,15 +107,15 @@ include "../../config/session.php";
                   <!-- /.form-group -->
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Kepala Desa/Lurah</label>
-                    <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required>
+                    <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required name="nama_kepala_desa">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Umur</label>
-                    <input required type="number" min="0" class="form-control" placeholder="Masukkan Umur" style="width: 100%;" required>
+                    <input required type="number" min="0" class="form-control" placeholder="Masukkan Umur" style="width: 100%;" required name="umur_kepala_desa">
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenis kelamin</label>
-                    <select required name="" id="" class="form-control">
+                    <select required name="jenis_kelamin" id="" class="form-control">
                       <option value="" disabled selected>---Pilih Jenis Kelamin---</option>
                       <option value="LAKI-LAKI">LAKI - LAKI</option>
                       <option value="PEREMPUAN"> PEREMPUAN </option>
@@ -123,7 +123,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pendidikan Tertinggi yang ditamatkan</label>
-                    <select required name="" id="" class="form-control">
+                    <select required name="pendidikan_terakhir" id="" class="form-control">
                       <option value="" disabled selected>---Pilih Pendidikan Terakhir---</option>
                       <option value="Tidak pernah sekolah">Tidak pernah sekolah</option>
                       <option value="Tidak tamat SD/Sederajat">Tidak tamat SD/Sederajat</option>
@@ -138,9 +138,10 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tahun Mulai Menjabat</label>
-                    <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun mulai menjabat" style="width: 100%;" required>
+                    <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun mulai menjabat" style="width: 100%;" required name="tahun_mulai_menjabat">
                   </div>
                 </div>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -210,39 +211,37 @@ include "../../config/session.php";
                         </tr>
                       </thead>
                       <tbody>
-                        <!--  -->
+                        <!-- Sekretaris Desa/Kelurahan -->
                         <tr>
                           <td>Sekretaris Desa/Kelurahan</td>
                           <td><input type="number" name="skd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="skd_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
+                        <!-- Kaur (kaur keuangan, dll) -->
                         <tr>
                           <td>Kaur (kaur keuangan, dll)</td>
                           <td><input type="number" name="kaur_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="kaur_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- Agen Bank -->
+                        <!-- Kasi kesejahteraan, dll -->
                         <tr>
                           <td>Kasi kasi kesejahteraan, dll</td>
                           <td><input type="number" name="kkk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="kkk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- BMT -->
+                        <!-- Pelaksana Kewilayahan -->
                         <tr>
                           <td>Pelaksana Kewilayahan</td>
                           <td><input type="number" name="pk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="pk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- Staf/Pegawai Desa Lainnya -->
                         <tr>
                           <td>Staf/Pegawai Desa Lainnya</td>
                           <td><input type="number" name="staf_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="staf_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- Jumlah Total -->
                         <tr>
                           <td>Jumlah Total</td>
                           <td><input type="number" name="jumlah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
@@ -258,6 +257,7 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
+
 
             <!-- Modal Info -->
             <div class="modal fade" id="modalPerdes" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
@@ -319,67 +319,61 @@ include "../../config/session.php";
                         </tr>
                       </thead>
                       <tbody>
-                        <!--  -->
+                        <!-- Tidak pernah sekolah -->
                         <tr>
                           <td>Tidak pernah sekolah</td>
                           <td><input type="number" name="tidaksekolah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="tidaksekolah_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
+                        <!-- Tidak tamat SD/Sederajat -->
                         <tr>
                           <td>Tidak tamat SD/Sederajat</td>
                           <td><input type="number" name="tidaksd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="tidaksd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- Agen Bank -->
+                        <!-- Tamat SD/Sederajat -->
                         <tr>
                           <td>Tamat SD/Sederajat</td>
                           <td><input type="number" name="sd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="sd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- BMT -->
+                        <!-- SMP/Sederajat -->
                         <tr>
                           <td>SMP/Sederajat</td>
                           <td><input type="number" name="smp_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="smp_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- SMU/Sederajat -->
                         <tr>
                           <td>SMU/Sederajat</td>
                           <td><input type="number" name="smu_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="smu_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- Akademi/DIII -->
                         <tr>
                           <td>Akademi/DIII</td>
                           <td><input type="number" name="d3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="d3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- Diploma IV/S1 -->
                         <tr>
                           <td>Diploma IV/S1</td>
                           <td><input type="number" name="s1_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="s1_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- S2 -->
                         <tr>
                           <td>S2</td>
                           <td><input type="number" name="s2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="s2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- S3 -->
                         <tr>
                           <td>S3</td>
                           <td><input type="number" name="s3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                           <td><input type="number" name="s3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
                         </tr>
-                        <!-- ATM -->
-                        <!-- BMT -->
+                        <!-- Jumlah Total -->
                         <tr>
                           <td>Jumlah Total</td>
                           <td><input type="number" name="jumlah2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
@@ -395,6 +389,7 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
+
 
             <!-- Modal Info -->
             <div class="modal fade" id="modalPerdesPend" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
@@ -448,7 +443,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Badan Permusyawaratan Desa/Lembaga Musyawarah Kelurahan</label>
-                    <select name="" id="keberadaanBPD" class="form-control">
+                    <select name="keberadaan_bpd" id="keberadaanBPD" class="form-control">
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -456,7 +451,7 @@ include "../../config/session.php";
                   </div>
                 </div>
                 <div class="form-group mb-3" id="jumlahAnggotaBPD" style="display: none;">
-                <label class="mb-2" style="font-weight: bold;">Jumlah Anggota BPD</label>
+                  <label class="mb-2" style="font-weight: bold;">Jumlah Anggota BPD</label>
                   <div class="form-group mb-3">
                     <div class="row">
                       <div class="col-md-4">
@@ -468,6 +463,7 @@ include "../../config/session.php";
                         <input type="number" class="form-control" min="0" name="perempuan" id="perempuan" placeholder=" --- Masukkan jumlah --- ">
                       </div>
                     </div>
+
                   </div>
                 </div>
                 <div class="form-group mb-3" id="kegiatanMusyawarahDesa" style="display: none;">

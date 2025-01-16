@@ -141,21 +141,20 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_tanah_kas_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
-                    <p style="margin-left: 20px;">1. Tanah Bengkok</p>
-                    <input type="number" name="tanah_bengkok" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                    <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
-                    <input type="number" name="tanah_titi_sara" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                    <p style="margin-left: 20px;">3. Kebun Desa</p>
-                    <input type="number" name="kebun_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
-                    <p style="margin-left: 20px;">4. Sawah Desa</p>
-                    <input type="number" name="sawah_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <p>1. Tanah Bengkok</p>
+                    <input type="number" step="0.01" name="tanah_bengkok" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
+                    <p>2. Tanah Titi Sara</p>
+                    <input type="number" step="0.01" name="tanah_titi_sara" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
+                    <p>3. Kebun Desa</p>
+                    <input type="number" step="0.01" name="kebun_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
+                    <p>4. Sawah Desa</p>
+                    <input type="number" step="0.01" name="sawah_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -174,11 +173,11 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi Luas Tanah Kas Desa (Hektar) dalam angka berbentuk desimal</li>
-                      <li>Isi luas Tanah Bengkok </li>
-                      <li>Isi luas Tanah Titi Sara</li>
-                      <li>isi luas Kebun Desa</li>
-                      <li>Isi luas Sawah Desa </li>
+                      <li>Isi luas Tanah Kas Desa (Hektar) dalam angka berbentuk desimal.</li>
+                      <li>Isi luas Tanah Bengkok.</li>
+                      <li>Isi luas Tanah Titi Sara.</li>
+                      <li>Isi luas Kebun Desa.</li>
+                      <li>Isi luas Sawah Desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -215,30 +214,29 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_pemanfaatan_sistem.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sistem Informasi Desa</label>
-                    <select name="keberadaan_sistem_informasi_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_sistem_informasi_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
-                      <option value="Ada, Jarang	digunakan">Ada, Jarang digunakan</option>
-                      <option value="Ada, Tidak	digunakan">Ada, Tidak digunakan</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Ada, Jarang digunakan">Ada, Jarang digunakan</option>
+                      <option value="Ada, Tidak digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sistem Keuangan Desa</label>
-                    <select name="keberadaan_sistem_keuangan_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_sistem_keuangan_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Digunakan">Ada, Digunakan</option>
-                      <option value="Ada, Jarang	digunakan">Ada, Jarang digunakan</option>
-                      <option value="Ada, Tidak	digunakan">Ada, Tidak digunakan</option>
-                      <option value="Tidak	ada">Tidak ada</option>
+                      <option value="Ada, Jarang digunakan">Ada, Jarang digunakan</option>
+                      <option value="Ada, Tidak digunakan">Ada, Tidak digunakan</option>
+                      <option value="Tidak ada">Tidak ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -257,8 +255,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih yang sesuai untuk keberadaan sistem informasi desa </li>
-                      <li>Pilih yang sesuai untuk keberadaan sistem keuangan desa </li>
+                      <li>Pilih yang sesuai untuk keberadaan sistem informasi desa.</li>
+                      <li>Pilih yang sesuai untuk keberadaan sistem keuangan desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -295,78 +293,77 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_badan_usaha_aset_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah unit usaha BUMDes</label>
-                    <input type="number" name="jumlah_unit_usaha_bumdes" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_unit_usaha_bumdes" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tanah kas desa/ulayat</label>
-                    <select name="tanah_kas_desa_ulayat" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="tanah_kas_desa_ulayat" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tambatan perahu</label>
-                    <select name="tambahan_perahu" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="tambatan_perahu" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Pasar desa Ada (pasar hewan, pelelangan ikan yang dikelola desa, pelelangan hasil pertanian)</label>
-                    <select name="pasar_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Pasar desa</label>
+                    <select name="pasar_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Bangunan milik desa (balai desa, balai rakyat, lapangan olah raga, dll)</label>
-                    <select name="bangunan_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Bangunan milik desa</label>
+                    <select name="bangunan_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Hutan milik desa</label>
-                    <select name="hutan_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="hutan_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Mata air milik desa</label>
-                    <select name="mata_air_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="mata_air_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tempat wisata/Pemandian umum</label>
-                    <select name="tempat_wisata_pemandian_umum" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="tempat_wisata_pemandian_umum" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Aset lainnya milik desa (kekayaan asli desa, hibah/sumbangan/sejenisnya dll)</label>
-                    <select name="aset_lainnya_milik_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Aset lainnya milik desa</label>
+                    <select name="aset_lainnya_milik_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -385,7 +382,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, sesuai Kepemilikan Badan Usaha Dan Aset Desa</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b>, sesuai dengan kepemilikan badan usaha dan aset desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -422,50 +419,32 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_ketersediaan_rpjmdes_rkpdes.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Ketersedian RPJMDes</label>
-                    <select name="ketersedian_rpjmdes" id="publicSpaceStatus" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Ketersediaan RPJMDes</label>
+                    <select name="ketersediaan_rpjmdes" id="ketersediaan_rpjmdes" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="form-group mb-3" id="taunawalInfo" style="display: none;">
-                  <label class="mb-2">Periode Tahun Awal RPJMDes</label>
-                  <input type="number" class="form-control" name="taun_awal" id="taun_awal" placeholder=" --- Masukkan Tahun --- ">
-                </div>
-                <div class="form-group mb-3" id="taunberakhirInfo" style="display: none;">
-                  <label class="mb-2">Periode Tahun Berakhir RPJMDes</label>
-                  <input type="number" class="form-control" name="taun_akhir" id="taun_akhir" placeholder=" --- Masukkan Tahun --- ">
-                </div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    const publicSpaceStatus = document.getElementById('publicSpaceStatus');
-                    const sentraIndustriInfo = document.getElementById('taunawalInfo');
-                    const muatanUsahaInfo = document.getElementById('taunberakhirInfo');
-
-                    publicSpaceStatus.addEventListener('change', function() {
-                      if (this.value === 'Ada') {
-                        sentraIndustriInfo.style.display = 'block';
-                        muatanUsahaInfo.style.display = 'block';
-                      } else {
-                        sentraIndustriInfo.style.display = 'none';
-                        muatanUsahaInfo.style.display = 'none';
-                      }
-                    });
-                  });
-                </script>
-                <div class="form-group mb-3">
-                  <label class="mb-2">Ketersediaan RKPDes</label>
-                  <select name="ketersediaan_rpkdes" id="" class="form-control">
-                    <option value="" disabled selected> --- Pilih --- </option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
-                  </select>
+                  <div class="form-group mb-3" id="tahun_rpjmdes_awal" style="display: none;">
+                    <label class="mb-2">Periode Tahun Awal RPJMDes</label>
+                    <input type="number" name="tahun_awal_rpjmdes" class="form-control" placeholder="--- Masukkan Tahun ---">
+                  </div>
+                  <div class="form-group mb-3" id="tahun_rpjmdes_akhir" style="display: none;">
+                    <label class="mb-2">Periode Tahun Akhir RPJMDes</label>
+                    <input type="number" name="tahun_akhir_rpjmdes" class="form-control" placeholder="--- Masukkan Tahun ---">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Ketersediaan RKPDes</label>
+                    <select name="ketersediaan_rkpdes" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -485,9 +464,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Ketersedian RPJMDes</li>
-                      <li>Jika Ada lanjut mengisi Tahun Awal dan Tahun Akhir RPJMDes</li>
-                      <li>Pilih Ada/Tidak Ada, Ketersedian RKPDes</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b> untuk ketersediaan RPJMDes.</li>
+                      <li>Jika memilih <b>Ada</b>, isi <b>Tahun Awal</b> dan <b>Tahun Akhir</b>.</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b> untuk ketersediaan RKPDes.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -496,6 +475,14 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
+
+            <script>
+              document.getElementById('ketersediaan_rpjmdes').addEventListener('change', function() {
+                const display = this.value === 'Ada' ? 'block' : 'none';
+                document.getElementById('tahun_rpjmdes_awal').style.display = display;
+                document.getElementById('tahun_rpjmdes_akhir').style.display = display;
+              });
+            </script>
           </div>
 
           <!--end::Row-->
@@ -524,18 +511,17 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_peraturan_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Jumlah Peraturan Yang dimiliki Desa</label>
-                    <input type="number" name="jumlah_peraturan_yang_dimiliki_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <label class="mb-2">Jumlah Peraturan Yang Dimiliki Desa</label>
+                    <input type="number" name="jumlah_peraturan_yang_dimiliki_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Peraturan Kepala Desa</label>
-                    <input type="number" name="jumlah_peraturan_kepala_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <input type="number" name="jumlah_peraturan_kepala_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -554,8 +540,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi jumlah Peraturan Yang dimiliki Desa</li>
-                      <li>Isi Jumlah Peraturan Kepala Desa</li>
+                      <li>Isi jumlah Peraturan Yang Dimiliki Desa.</li>
+                      <li>Isi jumlah Peraturan Kepala Desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -592,26 +578,25 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kerjasama_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Antar Desa</label>
-                    <select name="keberadaan_kerjasama_antar_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_kerjasama_antar_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Desa dengan Pihak Ketiga</label>
-                    <select name="keberadaan_kerjasama_desa_dengan_pihak_ketiga" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_kerjasama_desa_dengan_pihak_ketiga" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -630,8 +615,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan Kerjasama Antar Desa</li>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan Kerjasama Desa dengan Pihak Ketiga</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b>, Keberadaan Kerjasama Antar Desa.</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b>, Keberadaan Kerjasama Desa dengan Pihak Ketiga.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -668,19 +653,18 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_pendamping_lokal_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pendamping lokal desa</label>
-                    <select name="keberadaan_pemdamping_lokal_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_pendamping_lokal_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Aktif">Ada, Aktif</option>
-                      <option value="Ada, Tidak Ada">Ada, Tidak Aktif</option>
+                      <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -699,7 +683,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan pendamping lokal desa</li>
+                      <li>Pilih <b>Ada, Aktif</b>, <b>Ada, Tidak Aktif</b>, atau <b>Tidak Ada</b>, sesuai dengan keberadaan pendamping lokal desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -736,12 +720,12 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kpm.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kader Pembangunan Manusia (KPM)</label>
-                    <select name="keberadaan_kader_pembangunan_manusia" id="kpm" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_kader_pembangunan_manusia" id="kpm" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Aktif">Ada, Aktif</option>
                       <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -750,29 +734,27 @@ include "../../config/session.php";
                 </div>
                 <div class="form-group mb-3 KaderInfo" style="display: none;">
                   <label class="mb-2">Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota</label>
-                  <select name="apakah_ada_kpm_yang_mendapatkan_pembinaan_dari_pemerintah_kabupaten/kota" id="" class="form-control">
-                    <option value="" disabled selected> --- Pilih --- </option>
+                  <select name="pembinaan_kpm_dari_pemkab_kota" class="form-control">
+                    <option value="" disabled selected>--- Pilih ---</option>
                     <option value="Ada">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
                   </select>
                 </div>
 
-
                 <script>
                   document.addEventListener("DOMContentLoaded", function() {
-                    const publicSpaceStatus = document.getElementById('kpm');
-                    const additionalInfo = document.querySelector('.KaderInfo');
+                    const kpmSelect = document.getElementById('kpm');
+                    const kaderInfo = document.querySelector('.KaderInfo');
 
-                    publicSpaceStatus.addEventListener('change', function() {
+                    kpmSelect.addEventListener('change', function() {
                       if (this.value === 'Ada, Aktif' || this.value === 'Ada, Tidak Aktif') {
-                        additionalInfo.style.display = 'block';
+                        kaderInfo.style.display = 'block';
                       } else {
-                        additionalInfo.style.display = 'none';
+                        kaderInfo.style.display = 'none';
                       }
                     });
                   });
                 </script>
-
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -792,8 +774,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Keaktifan Keberadaan Kader Pembangunan Manusia (KPM)</li>
-                      <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
+                      <li>Pilih Keaktifan Keberadaan Kader Pembangunan Manusia (KPM).</li>
+                      <li>Jika Ada, isi informasi tambahan apakah KPM mendapatkan pembinaan dari Pemerintah Kabupaten/Kota.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -830,28 +812,136 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_realisasi_anggaran_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Realiasi Pendapatan Desa Tahun Anggaran .......... (Rupiah)</label>
-                    <p style="margin-left: 20px;">1. Pendapatan Asli Desa (PADes)</p>
-                    <input type="number" name="pendapatan_asli_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">2. Dana Desa (bersumber dari APBN)</p>
-                    <input type="number" name="dana_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
-                    <input type="number" name="bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">4. Alokasi Dana Desa (bagian dari dana perimbangan yang diterima kabupaten/kota)</p>
-                    <input type="number" name="alokasi_dana_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">5. Bantuan keuangan dari APBD Provinsi</p>
-                    <input type="number" name="bantuan_keuangan_dari_apbd_provinsi" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">6. Bantuan keuangan dari APBD Kabupaten/kota</p>
-                    <input type="number" name="bantuan_keuangan_dari_apbd" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">7. Hibah dan sumbangan dari pihak ketiga</p>
-                    <input type="number" name="hibah_dan_sumbangan_dari_pihak_ketiga" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                    <p style="margin-left: 20px;">8. Lain–lain pendapatan desa yang sah</p>
-                    <input type="number" name=" Lain_lain_pendapatan_desa_yang_sah" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                    <label class="mb-2">Realisasi Pendapatan Desa Tahun Anggaran</label>
+                    <p>1. Pendapatan Asli Desa (PADes)</p>
+                    <input type="number" step="0.01" name="pendapatan_asli_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>2. Dana Desa (bersumber dari APBN)</p>
+                    <input type="number" step="0.01" name="dana_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
+                    <input type="number" step="0.01" name="bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>4. Alokasi Dana Desa</p>
+                    <input type="number" step="0.01" name="alokasi_dana_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>5. Bantuan keuangan dari APBD Provinsi</p>
+                    <input type="number" step="0.01" name="bantuan_keuangan_dari_apbd_provinsi" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>6. Bantuan keuangan dari APBD Kabupaten/Kota</p>
+                    <input type="number" step="0.01" name="bantuan_keuangan_dari_apbd" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>7. Hibah dan sumbangan dari pihak ketiga</p>
+                    <input type="number" step="0.01" name="hibah_dan_sumbangan_dari_pihak_ketiga" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>8. Lain–lain pendapatan desa yang sah</p>
+                    <input type="number" step="0.01" name="lain_lain_pendapatan_desa_yang_sah" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                   </div>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
 
+            </div>
+
+            <!--end::Row-->
+          </div>
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Realisasi Anggaran Belanja Desa</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbelanja">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_realisasi_anggaran_belanja_desa.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Realisasi Belanja Desa Tahun Anggaran</label>
+                    <p>1. Bidang Penyelenggaraan Pemerintahan Desa</p>
+                    <input type="number" step="0.01" name="bidang_penyelenggaraan_pemerintahan_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>2. Bidang Pelaksanaan Pembangunan Desa</p>
+                    <input type="number" step="0.01" name="bidang_pelaksanaan_pembangunan_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>3. Bidang Pembinaan Kemasyarakatan</p>
+                    <input type="number" step="0.01" name="bidang_pembinaan_kemasyarakatan" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>4. Bidang Pemberdayaan Masyarakat</p>
+                    <input type="number" step="0.01" name="bidang_pemberdayaan_masyarakat" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <p>5. Bidang Tak Terduga</p>
+                    <input type="number" step="0.01" name="bidang_tak_terduga" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <!-- /.row -->
+              <!--end::Row-->
+            </div>
+          </div> <!--end::Container-->
+
+          <div class="card card-primary card-outline mb-4">
+            <div class="card-header mb-3">
+              <h3 class="card-title">Data BUMDes</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbumdes">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="../../handlers/form_bumdes.php" method="post">
+                <div class="row">
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
+                    <select name="status_keaktifan" class="form-control form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Aktif">Aktif</option>
+                      <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Status Badan Hukum</label>
+                    <select name="status_badan_hukum" class="form-control form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Sudah Memiliki Badan Hukum">Sudah Memiliki Badan Hukum</option>
+                      <option value="Belum Memiliki Badan">Belum Memiliki Badan</option>
+                    </select>
+                  </div>
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
                       <i class="fas fa-save"></i> &nbsp; Simpan
@@ -860,15 +950,34 @@ include "../../config/session.php";
               </form>
               <!-- /.row -->
             </div>
-          </div>
-
-          <!--end::Row-->
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalbumdes" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Pilih Status Keaktifan (Aktif/Tidak Aktif).</li>
+                      <li>Pilih Status Badan Hukum.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!--end::App Content-->
         </div>
 
+        <!--end::Row-->
         <div class="card card-primary card-outline mb-4">
           <div class="card-header mb-3">
-            <h3 class="card-title">Realisasi Anggaran Belanja Desa</h3>
-            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbelanja">
+            <h3 class="card-title">Jumlah pengadaan barang dan jasa di Desa</h3>
+            <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpengadaan">
               <i class="fas fa-info-circle"></i>
             </button>
             <div class="card-tools">
@@ -885,182 +994,50 @@ include "../../config/session.php";
                     $icon.toggleClass("fa-minus fa-plus");
                   });
                 });
-              </script>    
+              </script>
             </div>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <form action="" method="post">
+            <form action="../../handlers/form_pengadaan_barang_jasa.php" method="post">
               <div class="row">
                 <div class="form-group mb-3">
-                  <label class="mb-2">Realiasi Belanja Desa Tahun Anggaran .......... (Rupiah) </label>
-                  <p style="margin-left: 20px;">1. Bidang Penyelenggaraan Pemerintahan Desa</p>
-                  <input type="number" name="bidang_penyelenggaraan_pemerintahan_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">2. Bidang Pelaksanaan Pembangunan Desa</p>
-                  <input type="number" name="bidang_pelaksanaan_pembangunan_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">3. Bidang Pembinaan Kemasyarakatan</p>
-                  <input type="number" name="bidang_pembinaan_kemasyarakatan" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">4. Bidang Pemberdayaan Masyarakat</p>
-                  <input type="number" name="bidang_pemberdayaan_masyarakat" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
-                  <p style="margin-left: 20px;">5. Bidang Tak Terduga/Belanja Bidang Penanggulangan Bencana, Keadaan Darurat dan Mendesak</p>
-                  <input type="number" name="bidang_tak_terduga/belanja_bidang_penanggulangan_bencana_keadaan_darurat_dan_mendesak" id="" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---">
+                  <label class="mb-2">Jumlah Paket Pengadaan Barang dan Jasa yang Dilaksanakan</label>
+                  <input name="jumlah_paket_pengadaan_barang_dan_jasa_yang_dilaksanakan" type="number" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
                 </div>
-
-                <div class="mb-2">
-                  <button type="submit" class="btn btn-primary mt-3">
-                    <i class="fas fa-save"></i> &nbsp; Simpan
-                  </button>
-                </div>
-            </form>
-            <!-- /.row -->
-          </div>
-
-          <!--end::Row-->
-        </div>
-      </div> <!--end::Container-->
-      <div class="card card-primary card-outline mb-4">
-        <div class="card-header mb-3">
-          <h3 class="card-title">Data BUMDes</h3>
-          <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalbumdes">
-            <i class="fas fa-info-circle"></i>
-          </button>
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool toggle-form">
-              <i class="fas fa-minus"></i>
-            </button>
-            <script>
-              $(document).ready(function() {
-                $(".toggle-form").on("click", function() {
-                  var $icon = $(this).find("i");
-                  var $cardBody = $(this).closest(".card").find(".card-body");
-
-                  $cardBody.slideToggle();
-                  $icon.toggleClass("fa-minus fa-plus");
-                });
-              });
-            </script>
-          </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <form action="" method="post">
-            <div class="row">
-              <div class="form-group mb-3">
-                <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
-                <select name="status_keaktifan" id="" class="form-control form-select">
-                  <option value="" disabled selected> --- Pilih --- </option>
-                  <option value="Aktif">Aktif</option>
-                  <option value="Tidak Aktif">Tidak Aktif</option>
-                </select>
               </div>
-
-              <div class="form-group mb-3">
-                <label class="mb-2">Status Badan Hukum</label>
-                <select name="status_badan_hukum" id="" class="form-control form-select">
-                  <option value="" disabled selected> --- Pilih --- </option>
-                  <option value="Sudah Memiliki Badan Hukum">Sudah Memiliki Badan Hukum</option>
-                  <option value="Belum Memiliki Badan">Belum Memiliki Badan</option>
-                </select>
-              </div>
-
               <div class="mb-2">
                 <button type="submit" class="btn btn-primary mt-3">
                   <i class="fas fa-save"></i> &nbsp; Simpan
                 </button>
               </div>
-          </form>
-          <!-- /.row -->
-        </div>
-        <!-- Modal Info -->
-        <div class="modal fade" id="modalbumdes" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <ul>
-                  <li>Pilih Status Keaktifan (Aktif/Tidak Aktif)</li>
-                  <li>Pilih Status Badan Hukum</li>
-                </ul>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </form>
+            <!-- /.row -->
+          </div>
+          <!-- Modal Info -->
+          <div class="modal fade" id="modalpengadaan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul>
+                    <li>Isi dengan angka jumlah paket pengadaan barang dan jasa yang dilaksanakan.</li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div> <!--end::App Content-->
-  </div>
 
-  <!--end::Row-->
-  <div class="card card-primary card-outline mb-4">
-    <div class="card-header mb-3">
-      <h3 class="card-title">Jumlah pengadaan barang dan jasa di Desa</h3>
-      <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalpengadaan">
-        <i class="fas fa-info-circle"></i>
-      </button>
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool toggle-form">
-          <i class="fas fa-minus"></i>
-        </button>
-        <script>
-          $(document).ready(function() {
-            $(".toggle-form").on("click", function() {
-              var $icon = $(this).find("i");
-              var $cardBody = $(this).closest(".card").find(".card-body");
+    </main> <!--end::App Main--> <!--begin::Footer-->
 
-              $cardBody.slideToggle();
-              $icon.toggleClass("fa-minus fa-plus");
-            });
-          });
-        </script>
-      </div>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <form action="" method="post">
-        <div class="row">
-          <div class="form-group mb-3">
-            <label class="mb-2">Jumlah paket pengadaan barang dan jasa yang dilaksanakan</label>
-            <input name="jumlah_paket_pengadaan_barang_dan_jasa_yang_dilaksanakan" type="number" id="bts-count" class="form-control" placeholder=" --- Masukkan jumlah --- " min="0">
-          </div>
-        </div>
-        <div class="mb-2">
-          <button type="submit" class="btn btn-primary mt-3">
-            <i class="fas fa-save"></i> &nbsp; Simpan
-          </button>
-        </div>
-      </form>
-      <!-- /.row -->
-    </div>
-    <!-- Modal Info -->
-    <div class="modal fade" id="modalpengadaan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <ul>
-              <li>Isi dengan angka Jumlah paket pengadaan barang dan jasa yang dilaksanakan </li>
-              <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  </main> <!--end::App Main--> <!--begin::Footer-->
-
-  <?php include("../../components/footer.php"); ?>
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
