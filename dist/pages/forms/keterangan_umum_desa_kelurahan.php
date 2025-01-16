@@ -145,14 +145,14 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="batas_utara" class="mb-2">Sebelah Utara</label>
-                      <input type="text" id="batas_utara" name="batas_utara" class="form-control"
+                      <input required type="text" id="batas_utara" name="batas_utara" class="form-control"
                         placeholder="Masukkan nama desa">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="kec_utara" class="mb-2">Kecamatan</label>
-                      <input type="text" id="kec_utara" name="kec_utara" class="form-control"
+                      <input required type="text" id="kec_utara" name="kec_utara" class="form-control"
                         placeholder="Masukkan nama kecamatan">
                     </div>
                   </div>
@@ -161,14 +161,14 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="batas_selatan" class="mb-2">Sebelah Selatan</label>
-                      <input type="text" id="batas_selatan" name="batas_selatan" class="form-control"
+                      <input required type="text" id="batas_selatan" name="batas_selatan" class="form-control"
                         placeholder="Masukkan nama desa">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="kec_selatan" class="mb-2">Kecamatan</label>
-                      <input type="text" id="kec_selatan" name="kec_selatan" class="form-control"
+                      <input required type="text" id="kec_selatan" name="kec_selatan" class="form-control"
                         placeholder="Masukkan nama kecamatan">
                     </div>
                   </div>
@@ -177,14 +177,14 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="batas_timur" class="mb-2">Sebelah Timur</label>
-                      <input type="text" id="batas_timur" name="batas_timur" class="form-control"
+                      <input required type="text" id="batas_timur" name="batas_timur" class="form-control"
                         placeholder="Masukkan nama desa">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="kec_timur" class="mb-2">Kecamatan</label>
-                      <input type="text" id="kec_timur" name="kec_timur" class="form-control"
+                      <input required type="text" id="kec_timur" name="kec_timur" class="form-control"
                         placeholder="Masukkan nama kecamatan">
                     </div>
                   </div>
@@ -193,14 +193,14 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="batas_barat" class="mb-2">Sebelah Barat</label>
-                      <input type="text" id="batas_barat" name="batas_barat" class="form-control"
+                      <input required type="text" id="batas_barat" name="batas_barat" class="form-control"
                         placeholder="Masukkan nama desa">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label for="kec_barat" class="mb-2">Kecamatan</label>
-                      <input type="text" id="kec_barat" name="kec_barat" class="form-control"
+                      <input required type="text" id="kec_barat" name="kec_barat" class="form-control"
                         placeholder="Masukkan nama kecamatan">
                     </div>
                   </div>
@@ -283,14 +283,14 @@ include "../../config/session.php";
                   <!-- Jarak ke Ibukota Kecamatan -->
                   <div class="form-group mb-3">
                     <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
-                    <input type="text" id="jarak_ke_ibukota_kecamatan" name="jarak_ke_ibukota_kecamatan"
+                    <input required type="text" id="jarak_ke_ibukota_kecamatan" name="jarak_ke_ibukota_kecamatan"
                       class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
                   </div>
 
                   <!-- Jarak ke Ibukota Kabupaten/Kota -->
                   <div class="form-group mb-3">
                     <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
-                    <input type="text" id="jarak_ke_ibukota_kabupaten" name="jarak_ke_ibukota_kabupaten"
+                    <input required type="text" id="jarak_ke_ibukota_kabupaten" name="jarak_ke_ibukota_kabupaten"
                       class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
                   </div>
 
@@ -385,7 +385,7 @@ include "../../config/session.php";
                 <div class="mb-3">
                   <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal)
                     2024</label>
-                  <select name="status_2024" id="" class="form-control">
+                  <select required name="status_2024" id="" class="form-control">
                     <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
                     <option value="MANDIRI">MANDIRI</option>
                     <option value="MAJU">MAJU</option>
@@ -462,23 +462,23 @@ include "../../config/session.php";
               <form action="../../handlers/form_alamat_website_medsos.php" method="post">
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Website Desa</label>
-                  <input type="text" name="alamat_website" class="form-control" placeholder="Masukkan alamat website">
+                  <input required type="text" name="alamat_website" class="form-control" placeholder="Masukkan alamat website">
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Email Desa</label>
-                  <input type="email" name="alamat_email" class="form-control" placeholder="Masukkan alamat email">
+                  <input required type="email" name="alamat_email" class="form-control" placeholder="Masukkan alamat email">
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Facebook Desa</label>
-                  <input type="text" name="alamat_facebook" class="form-control" placeholder="Masukkan alamat Facebook">
+                  <input required type="text" name="alamat_facebook" class="form-control" placeholder="Masukkan alamat Facebook">
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Twitter Desa</label>
-                  <input type="text" name="alamat_twitter" class="form-control" placeholder="Masukkan alamat Twitter">
+                  <input required type="text" name="alamat_twitter" class="form-control" placeholder="Masukkan alamat Twitter">
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat YouTube Desa</label>
-                  <input type="text" name="alamat_youtube" class="form-control" placeholder="Masukkan alamat YouTube">
+                  <input required type="text" name="alamat_youtube" class="form-control" placeholder="Masukkan alamat YouTube">
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -543,7 +543,7 @@ include "../../config/session.php";
               <form action="../../handlers/form_status_pemerintahan.php" method="post">
                 <div class="mb-3">
                   <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
-                  <select name="status_2024" id="" class="form-control">
+                   required name="status_2024" id="" class="form-control">
                     <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
                     <option value="DESA">DESA</option>
                     <option value="KELURAHAN">KELURAHAN</option>
@@ -617,7 +617,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2">Penetapan Batas Desa</label>
-                      <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control" onchange="toggleInputFields()" required>
+                       required name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control" onchange="toggleInputFields()" required>
                         <option value="" disabled selected>-- Pilih Penetapan Batas Desa --</option>
                         <option value="SUDAH ADA">SUDAH ADA</option>
                         <option value="BELUM ADA">BELUM ADA</option>
@@ -627,7 +627,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3" id="form_no_surat_batas_desa" style="display: none;">
                       <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
-                      <input type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control" placeholder="Masukkan No Peraturan">
+                      <input required type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control" placeholder="Masukkan No Peraturan">
                     </div>
                   </div>
                 </div>
@@ -636,7 +636,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2">Ketersediaan Peta Desa</label>
-                      <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control" onchange="toggleInputFields()" required>
+                       required name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control" onchange="toggleInputFields()" required>
                         <option value="" disabled selected>-- Pilih Ketersediaan Peta Desa --</option>
                         <option value="ADA">ADA</option>
                         <option value="TIDAK ADA">TIDAK ADA</option>
@@ -879,7 +879,7 @@ include "../../config/session.php";
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Topografi Terluas Wilayah Desa</label>
-                    <select name="topografi_terluas_wilayah_desa" class="form-control">
+                     required name="topografi_terluas_wilayah_desa" class="form-control">
                       <option value="" disabled selected>-- Silahkan Pilih --</option>
                       <option value="LERENG/PUNCAK">LERENG/PUNCAK</option>
                       <option value="LEMBAH">LEMBAH</option>
@@ -956,7 +956,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2">Keberadaan kantor kepala desa/lurah</label>
-                      <select name="keberadaan_kantor" id="keberadaan_kantor" class="form-control" required>
+                       required name="keberadaan_kantor" id="keberadaan_kantor" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Ada/Tidak Ada --</option>
                         <option value="ADA">ADA</option>
                         <option value="TIDAK ADA">TIDAK ADA</option>
@@ -968,7 +968,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2">Status Kantor Kepala Desa/Lurah</label>
-                      <select name="status_kantor" id="status_kantor" class="form-control" required>
+                       required name="status_kantor" id="status_kantor" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Aset Desa/Bukan Aset Desa --</option>
                         <option value="ASET DESA">ASET DESA</option>
                         <option value="BUKAN ASET DESA">BUKAN ASET DESA</option>
@@ -982,7 +982,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2" for="kondisi_kantor">Kondisi Kantor Kepala Desa/Balai Desa</label>
-                      <select name="kondisi_kantor" id="kondisi_kantor" class="form-control" required>
+                       required name="kondisi_kantor" id="kondisi_kantor" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Kondisi Kantor Kepala Desa --</option>
                         <option value="ADA, LAYAK">ADA, LAYAK</option>
                         <option value="ADA, TIDAK LAYAK">ADA, TIDAK LAYAK</option>
@@ -995,7 +995,7 @@ include "../../config/session.php";
                   <div class="col-md-6">
                     <div class="form-group mb-3">
                       <label class="mb-2" for="lokasi_kantor">Lokasi Kantor Kepala Desa/Lurah</label>
-                      <select name="lokasi_kantor" id="lokasi_kantor" class="form-control" required>
+                       required name="lokasi_kantor" id="lokasi_kantor" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Lokasi Kantor Kepala Desa --</option>
                         <option value="Di dalam wilayah desa/kelurahan">Di dalam wilayah desa/kelurahan</option>
                         <option value="Di Luar Wilayah Desa/Kelurahan">Di Luar Wilayah Desa/Kelurahan</option>
