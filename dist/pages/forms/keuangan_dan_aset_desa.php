@@ -419,50 +419,32 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_ketersediaan_rpjmdes_rkpdes.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Ketersedian RPJMDes</label>
-                    <select name="ketersedian_rpjmdes" id="publicSpaceStatus" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Ketersediaan RPJMDes</label>
+                    <select name="ketersediaan_rpjmdes" id="ketersediaan_rpjmdes" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="form-group mb-3" id="taunawalInfo" style="display: none;">
-                  <label class="mb-2">Periode Tahun Awal RPJMDes</label>
-                  <input type="number" class="form-control" name="taun_awal" id="taun_awal" placeholder=" --- Masukkan Tahun --- ">
-                </div>
-                <div class="form-group mb-3" id="taunberakhirInfo" style="display: none;">
-                  <label class="mb-2">Periode Tahun Berakhir RPJMDes</label>
-                  <input type="number" class="form-control" name="taun_akhir" id="taun_akhir" placeholder=" --- Masukkan Tahun --- ">
-                </div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    const publicSpaceStatus = document.getElementById('publicSpaceStatus');
-                    const sentraIndustriInfo = document.getElementById('taunawalInfo');
-                    const muatanUsahaInfo = document.getElementById('taunberakhirInfo');
-
-                    publicSpaceStatus.addEventListener('change', function() {
-                      if (this.value === 'Ada') {
-                        sentraIndustriInfo.style.display = 'block';
-                        muatanUsahaInfo.style.display = 'block';
-                      } else {
-                        sentraIndustriInfo.style.display = 'none';
-                        muatanUsahaInfo.style.display = 'none';
-                      }
-                    });
-                  });
-                </script>
-                <div class="form-group mb-3">
-                  <label class="mb-2">Ketersediaan RKPDes</label>
-                  <select name="ketersediaan_rpkdes" id="" class="form-control">
-                    <option value="" disabled selected> --- Pilih --- </option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
-                  </select>
+                  <div class="form-group mb-3" id="tahun_rpjmdes_awal" style="display: none;">
+                    <label class="mb-2">Periode Tahun Awal RPJMDes</label>
+                    <input type="number" name="tahun_awal_rpjmdes" class="form-control" placeholder="--- Masukkan Tahun ---">
+                  </div>
+                  <div class="form-group mb-3" id="tahun_rpjmdes_akhir" style="display: none;">
+                    <label class="mb-2">Periode Tahun Akhir RPJMDes</label>
+                    <input type="number" name="tahun_akhir_rpjmdes" class="form-control" placeholder="--- Masukkan Tahun ---">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Ketersediaan RKPDes</label>
+                    <select name="ketersediaan_rkpdes" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -482,9 +464,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Ketersedian RPJMDes</li>
-                      <li>Jika Ada lanjut mengisi Tahun Awal dan Tahun Akhir RPJMDes</li>
-                      <li>Pilih Ada/Tidak Ada, Ketersedian RKPDes</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b> untuk ketersediaan RPJMDes.</li>
+                      <li>Jika memilih <b>Ada</b>, isi <b>Tahun Awal</b> dan <b>Tahun Akhir</b>.</li>
+                      <li>Pilih <b>Ada</b> atau <b>Tidak Ada</b> untuk ketersediaan RKPDes.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -493,6 +475,14 @@ include "../../config/session.php";
                 </div>
               </div>
             </div>
+
+            <script>
+              document.getElementById('ketersediaan_rpjmdes').addEventListener('change', function() {
+                const display = this.value === 'Ada' ? 'block' : 'none';
+                document.getElementById('tahun_rpjmdes_awal').style.display = display;
+                document.getElementById('tahun_rpjmdes_akhir').style.display = display;
+              });
+            </script>
           </div>
 
           <!--end::Row-->
