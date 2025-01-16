@@ -653,19 +653,18 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_pendamping_lokal_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pendamping lokal desa</label>
-                    <select name="keberadaan_pemdamping_lokal_desa" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_pendamping_lokal_desa" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Aktif">Ada, Aktif</option>
-                      <option value="Ada, Tidak Ada">Ada, Tidak Aktif</option>
+                      <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -684,7 +683,7 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada, Keberadaan pendamping lokal desa</li>
+                      <li>Pilih <b>Ada, Aktif</b>, <b>Ada, Tidak Aktif</b>, atau <b>Tidak Ada</b>, sesuai dengan keberadaan pendamping lokal desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
