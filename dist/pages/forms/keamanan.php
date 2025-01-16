@@ -141,18 +141,17 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_perkelahian_massal.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Kejadian perkelahian massal di desa/kelurahan selama setahun	terakhir</label>
-                    <select name="kejadian_perkelahian_massal" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <label class="mb-2">Kejadian Perkelahian Massal di Desa/Kelurahan Selama Setahun Terakhir</label>
+                    <select name="kejadian" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -172,7 +171,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Ada/Tidak Ada kejadian perkelahian massal di desa/kelurahan selama setahun terakhir</li>
+                      <li>Pilih <b>Ada</b> jika terjadi perkelahian massal di desa/kelurahan selama setahun terakhir.</li>
+                      <li>Pilih <b>Tidak Ada</b> jika tidak terjadi perkelahian massal.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -276,15 +276,15 @@ include "../../config/session.php";
                     </ul>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button> 
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                   </div>
                 </div>
-              </div>                    
+              </div>
             </div>
-          </div>          
+          </div>
 
           <!-- end -->
-          <div class="card card-primary card-outline mb-4"> 
+          <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Anggota Hansip/ Linmas dan poskamling di desa/kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modallinmas">
