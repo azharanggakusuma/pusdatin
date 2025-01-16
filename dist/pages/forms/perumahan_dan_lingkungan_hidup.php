@@ -987,7 +987,7 @@ include "../../config/session.php";
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
-                      $icon.toggleClass("fa-minus fa-plus");
+                      $icon.toggleClass("fa-minus fa-plus"); 
                     });
                   });
                 </script>
