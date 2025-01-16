@@ -209,50 +209,49 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_keamanan_lingkungan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembangunan/pemeliharaan pos keamanan lingkungan</label>
-                    <select name="pembangunan_pos_keamanan" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pembangunan_pos_keamanan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembentukan/pengaturan regu keamanan</label>
-                    <select name="pembentukan_regu_keamanan" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pembentukan_regu_keamanan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Penambahan jumlah anggota hansip/linmas</label>
-                    <select name="penambahan_anggota_hansip" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="penambahan_anggota_hansip" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan</label>
-                    <select name="pelaporan_tamu_menginap" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pelaporan_tamu_menginap" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga</label>
-                    <select name="pengaktifan_sistem_keamanan" id="" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="pengaktifan_sistem_keamanan" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
