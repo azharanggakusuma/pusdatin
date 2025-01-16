@@ -141,21 +141,20 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_tanah_kas_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Luas Tanah Kas Desa (Hektar)</label>
                     <p style="margin-left: 20px;">1. Tanah Bengkok</p>
-                    <input type="number" name="tanah_bengkok" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" step="0.01" name="tanah_bengkok" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <p style="margin-left: 20px;">2. Tanah Titi Sara</p>
-                    <input type="number" name="tanah_titi_sara" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" step="0.01" name="tanah_titi_sara" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <p style="margin-left: 20px;">3. Kebun Desa</p>
-                    <input type="number" name="kebun_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" step="0.01" name="kebun_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <p style="margin-left: 20px;">4. Sawah Desa</p>
-                    <input type="number" name="sawah_desa" id="" class="form-control mb-3" placeholder=" --- Masukkan angka(desimal) ---">
+                    <input type="number" step="0.01" name="sawah_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -174,11 +173,11 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isi Luas Tanah Kas Desa (Hektar) dalam angka berbentuk desimal</li>
-                      <li>Isi luas Tanah Bengkok </li>
-                      <li>Isi luas Tanah Titi Sara</li>
-                      <li>isi luas Kebun Desa</li>
-                      <li>Isi luas Sawah Desa </li>
+                      <li>Isi luas Tanah Kas Desa (Hektar) dalam angka berbentuk desimal.</li>
+                      <li>Isi luas Tanah Bengkok.</li>
+                      <li>Isi luas Tanah Titi Sara.</li>
+                      <li>Isi luas Kebun Desa.</li>
+                      <li>Isi luas Sawah Desa.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -885,7 +884,7 @@ include "../../config/session.php";
                     $icon.toggleClass("fa-minus fa-plus");
                   });
                 });
-              </script>    
+              </script>
             </div>
           </div>
           <!-- /.card-header -->
