@@ -720,12 +720,12 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kpm.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kader Pembangunan Manusia (KPM)</label>
-                    <select name="keberadaan_kader_pembangunan_manusia" id="kpm" class="form-control">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="keberadaan_kader_pembangunan_manusia" id="kpm" class="form-control" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Ada, Aktif">Ada, Aktif</option>
                       <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -734,29 +734,27 @@ include "../../config/session.php";
                 </div>
                 <div class="form-group mb-3 KaderInfo" style="display: none;">
                   <label class="mb-2">Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota</label>
-                  <select name="apakah_ada_kpm_yang_mendapatkan_pembinaan_dari_pemerintah_kabupaten/kota" id="" class="form-control">
-                    <option value="" disabled selected> --- Pilih --- </option>
+                  <select name="pembinaan_kpm_dari_pemkab_kota" class="form-control">
+                    <option value="" disabled selected>--- Pilih ---</option>
                     <option value="Ada">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
                   </select>
                 </div>
 
-
                 <script>
                   document.addEventListener("DOMContentLoaded", function() {
-                    const publicSpaceStatus = document.getElementById('kpm');
-                    const additionalInfo = document.querySelector('.KaderInfo');
+                    const kpmSelect = document.getElementById('kpm');
+                    const kaderInfo = document.querySelector('.KaderInfo');
 
-                    publicSpaceStatus.addEventListener('change', function() {
+                    kpmSelect.addEventListener('change', function() {
                       if (this.value === 'Ada, Aktif' || this.value === 'Ada, Tidak Aktif') {
-                        additionalInfo.style.display = 'block';
+                        kaderInfo.style.display = 'block';
                       } else {
-                        additionalInfo.style.display = 'none';
+                        kaderInfo.style.display = 'none';
                       }
                     });
                   });
                 </script>
-
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -776,8 +774,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Keaktifan Keberadaan Kader Pembangunan Manusia (KPM)</li>
-                      <li>Jika Ada, lanjut isi (Apakah ada KPM yang mendapatkan pembinaan dari Pemerintah Kabupaten/Kota) </li>
+                      <li>Pilih Keaktifan Keberadaan Kader Pembangunan Manusia (KPM).</li>
+                      <li>Jika Ada, isi informasi tambahan apakah KPM mendapatkan pembinaan dari Pemerintah Kabupaten/Kota.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
