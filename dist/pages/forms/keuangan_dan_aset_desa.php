@@ -897,8 +897,8 @@ include "../../config/session.php";
               <!-- /.row -->
               <!--end::Row-->
             </div>
-
           </div> <!--end::Container-->
+
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Data BUMDes</h3>
@@ -924,26 +924,24 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_bumdes.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Status Keaktifan (Aktif/Tidak Aktif)</label>
-                    <select name="status_keaktifan" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="status_keaktifan" class="form-control form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Aktif">Aktif</option>
                       <option value="Tidak Aktif">Tidak Aktif</option>
                     </select>
                   </div>
-
                   <div class="form-group mb-3">
                     <label class="mb-2">Status Badan Hukum</label>
-                    <select name="status_badan_hukum" id="" class="form-control form-select">
-                      <option value="" disabled selected> --- Pilih --- </option>
+                    <select name="status_badan_hukum" class="form-control form-select" required>
+                      <option value="" disabled selected>--- Pilih ---</option>
                       <option value="Sudah Memiliki Badan Hukum">Sudah Memiliki Badan Hukum</option>
                       <option value="Belum Memiliki Badan">Belum Memiliki Badan</option>
                     </select>
                   </div>
-
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
                       <i class="fas fa-save"></i> &nbsp; Simpan
@@ -962,8 +960,8 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Pilih Status Keaktifan (Aktif/Tidak Aktif)</li>
-                      <li>Pilih Status Badan Hukum</li>
+                      <li>Pilih Status Keaktifan (Aktif/Tidak Aktif).</li>
+                      <li>Pilih Status Badan Hukum.</li>
                     </ul>
                   </div>
                   <div class="modal-footer">
