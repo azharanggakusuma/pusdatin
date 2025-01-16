@@ -126,7 +126,7 @@ include "../../config/session.php";
                     <input name="Bukan_pengguna_listrik" type="number" id="" name="" class="form-control mb-4"
                       placeholder="" style="width: 100%;" Required>
 
-                    <h5 class="mb-2">B. Keluarga Yang Menggunakan Lampu Tenaga Surya:</h5>
+                    <h5 class="mb-2">C. Keluarga Yang Menggunakan Lampu Tenaga Surya:</h5>
                     <select name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
@@ -199,26 +199,23 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="" method="post">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Penerangan Di Jalan Desa/Kelurahan Yang Menggunakan Lampu Tenaga Surya</label>
-                      <select name="Lampu_Tenaga_Surya" id="penetapan_batas_desa" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada">Ada</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                      </select>
-                    </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Penerangan Di Jalan Desa/Kelurahan Yang Menggunakan Lampu Tenaga Surya</label>
+                    <select name="Lampu_Tenaga_Surya" id="penetapan_batas_desa" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                      <select name="penerangan_jalan_utama" id="penerangan_jalan_utama" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
-                        <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                      </select>
-                    </div>
+
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Penerangan Di Jalan Utama Desa/Kelurahan</label>
+                    <select name="penerangan_jalan_utama" id="penerangan_jalan_utama" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
+                      <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
                 </div>
                 <div class="row">
@@ -299,41 +296,33 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Keberadaan Tempat pembuangan sampah sementara (TPS)</label>
-                      <select name="TPS" id="TPS" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada, Digunakan">Ada, Digunakan </option>
-                        <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                      </select>
-                    </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Tempat pembuangan sampah sementara (TPS)</label>
+                    <select name="TPS" id="TPS" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada, Digunakan">Ada, Digunakan </option>
+                      <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r)</label>
-                      <select name="TPS3R" id="TPS3R" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada, Digunakan">Ada, Digunakan </option>
-                        <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                      </select>
-                    </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r)</label>
+                    <select name="TPS3R" id="TPS3R" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada, Digunakan">Ada, Digunakan </option>
+                      <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
-                      <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada">Ada</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                        <option value="Non Listrik">Non Listrik</option>
-                      </select>
-                    </div>
-                  </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
+                  <select name="bank_sampah" id="bank_sampah" class="form-control">
+                    <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Non Listrik">Non Listrik</option>
+                  </select>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -370,10 +359,11 @@ include "../../config/session.php";
           </div>
           <!-- END::Keberadaan Tempat pembuangan sampah sementara (TPS) , Tempat Penampungan Sementara Reduce,Reuse,Recycle (TPS3R) dan Bank Sampah -->
 
-          <!-- BEGIN:: Wilayah desa/kelurahan dilalui Saluran Udara Tegangan Ekstra Tinggi (SUTET) / Saluran Udara Tegangan Tinggi(SUTT) / Saluran Udara Tegangan Tinggi Arus Searah (SUTTAS) -->
+          <!-- BEGIN:: Keberadaan permukiman di bawah SUTET/SUTT/SUTTAS -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Wilayah Desa/Kelurahan Dilalui Saluran Udara Tegangan Ekstra Tinggi (Sutet) / Saluran Udara Tegangan Tinggi(Sutt) / Saluran Udara Tegangan Tinggi Arus Searah (Suttas)</h3>
+              <h3 class="card-title">Wilayah Desa/Kelurahan Dilalui Saluran Udara Tegangan Ekstra Tinggi (Sutet) /
+                Saluran Udara Tegangan Tinggi(Sutt) / Saluran Udara Tegangan Tinggi Arus Searah (Suttas)</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalPKH">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -398,48 +388,55 @@ include "../../config/session.php";
             <div class="card-body">
               <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">wilayah desa/kelurahan dilalui saluran udara tegangan ekstra tinggi (SUTET) / Saluran Udara Tegangan Tinggi (SUUT) / Saluran Udara Tegangan Tinggi Arus Searah (SUTTAS)</label>
-                      <select name="TPS" id="TPS" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option> 
-                        <option value="Ada, Digunakan">Ada, Digunakan </option>
-                        <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                      </select>
-                    </div>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">
+                      Wilayah desa/kelurahan dilalui saluran udara tegangan ekstra tinggi (SUTET) / Saluran Udara
+                      Tegangan Tinggi (SUUT) / Saluran Udara Tegangan Tinggi Arus Searah (SUTTAS)
+                    </label>
+                    <select name="SUTET" id="TPS" class="form-control">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada, Digunakan">Ada, Digunakan</option>
+                      <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r)</label>
-                      <select name="TPS3R" id="TPS3R" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada, Digunakan">Ada, Digunakan </option>
-                        <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
-                      <select name="ketersediaan_peta_desa" id="ketersediaan_peta_desa" class="form-control">
-                        <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                        <option value="Ada">Ada</option>
-                        <option value="Tidak Ada">Tidak Ada</option>
-                        <option value="Non Listrik">Non Listrik</option>
-                      </select>
-                    </div>
+
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Pemukiman Di Bawah SUTET/SUTT/SUTTAS</label>
+                    <select name="keberadaan_dibawah_sutet" id="keberadaan_dibawah_sutet" class="form-control"
+                      onchange="togglePemukimanInput()">
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                    </select>
                   </div>
                 </div>
+
+                <div class="form-group mb-3" id="pemukiman_form" style="display: none;">
+                  <label class="mb-2">Jumlah Pemukiman di Bawah SUTET/SUTT/SUTTAS</label>
+                  <input name="jumlah_pemukiman_dibawah_sutet" type="number" min="0" class="form-control"
+                    placeholder="Isi Dengan Angka" />
+                </div>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
               </form>
+
+              <script>
+                function togglePemukimanInput() {
+                  const keberadaan = document.getElementById('keberadaan_dibawah_sutet').value;
+                  const pemukimanForm = document.getElementById('pemukiman_form');
+                  if (keberadaan === 'Ada') {
+                    pemukimanForm.style.display = 'block';
+                  } else {
+                    pemukimanForm.style.display = 'none';
+                  }
+                }
+              </script>
+
               <!-- /.row -->
             </div>
 
@@ -467,7 +464,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-          <!-- END::Wilayah Desa/Kelurahan Dilalui Saluran Udara Tegangan Ekstra Tinggi (Sutet) / Saluran Udara Tegangan Tinggi(Sutt) / Saluran Udara Tegangan Tinggi Arus Searah (Suttas) -->
+          <!-- END::Keberadaan permukiman di bawah SUTET/SUTT/SUTTAS -->
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
