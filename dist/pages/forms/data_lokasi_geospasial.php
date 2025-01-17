@@ -121,13 +121,20 @@ include "../../config/session.php";
             document.addEventListener("DOMContentLoaded", function() {
               const jumlahTempatInput = document.getElementById('jumlahTempat');
               const formContainer = document.getElementById('dynamicForms');
+              const maxForms = 50;
 
               jumlahTempatInput.addEventListener('input', function() {
                 const jumlah = parseInt(this.value);
                 formContainer.innerHTML = ''; // Bersihkan form lama
 
                 if (!isNaN(jumlah) && jumlah > 0) {
-                  for (let i = 1; i <= jumlah; i++) {
+                  if (jumlah > 50) {
+                    alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                    jumlahTempatInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                  }
+
+                  const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                  for (let i = 1; i <= maxJumlah; i++) {
                     const formTemplate = `
                   <div class="card mb-4">
                     <div class="card-header">
@@ -245,7 +252,13 @@ include "../../config/session.php";
                 formContainer.innerHTML = ''; // Bersihkan form lama
 
                 if (!isNaN(jumlah) && jumlah > 0) {
-                  for (let i = 1; i <= jumlah; i++) {
+                  if (jumlah > 50) {
+                    alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                    jumlahPotensiInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                  }
+
+                  const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                  for (let i = 1; i <= maxJumlah; i++) {
                     const formTemplate = `
                   <div class="card mb-4">
                     <div class="card-header">
@@ -386,7 +399,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahSekolahInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -523,7 +542,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPesantrenInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -642,7 +667,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahRumahSakitInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -761,7 +792,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPuskesmasInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -881,7 +918,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPustuInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -999,7 +1042,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPoliklinikInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -1117,7 +1166,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahApotekInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -1235,7 +1290,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPraktekDokterInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -1353,7 +1414,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPraktekBidanInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -1471,7 +1538,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPoskesdesInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -1589,7 +1662,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPolindesInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
@@ -1708,7 +1787,13 @@ include "../../config/session.php";
                   formContainer.innerHTML = '';
 
                   if (!isNaN(jumlah) && jumlah > 0) {
-                    for (let i = 1; i <= jumlah; i++) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPosyanduInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                    }
+
+                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
