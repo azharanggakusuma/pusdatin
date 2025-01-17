@@ -63,6 +63,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perumahan_dan_lingkungan_hidup.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perumahan_dan_lingkungan_hidup.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perumahan_dan_lingkungan_hidup.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -89,17 +128,17 @@ include "../../config/session.php";
           <!-- BEGIN:: Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya</h3>
+              <h3 class="card-title">Jumlah Keluarga Pengguna Listrik dan Lampu Tenaga Surya</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#pln">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form_1">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_1").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -112,23 +151,18 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../handlers/form_pengguna_listrik.php" method="post">
                 <div class="row">
                   <div class="form-group">
-                    <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik :</h5>
+                    <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik:</h5>
                     <li class="mb-1">PLN (Perusahaan Listrik Negara)</li>
-                    <input required required name="PLN" min="0" type="number" class="form-control mb-1"
-                      placeholder="Isikan Dengan Angka" style="width: 100%;" required>
+                    <input name="jumlah_pln" type="number" class="form-control mb-1" placeholder="--- Masukkan jumlah ---" min="0" required>
                     <li class="mb-1">Non-PLN (Misalnya: Swasta, Swadaya, Atau Perseorangan)</li>
-                    <input required required name="Non_PLN" min="0" type="number" class="form-control mb-4"
-                      placeholder="Isikan Dengan Angka" style="width: 100%;" required>
+                    <input name="jumlah_non_pln" type="number" class="form-control mb-4" placeholder="--- Masukkan jumlah ---" min="0" required>
                     <h5 class="mb-2">B. Jumlah Keluraga Bukan Pengguna Listrik:</h5>
-                    <input required name="Bukan_pengguna_listrik" type="number" class="form-control mb-4"
-                      placeholder="Isi Dengan Angka" style="width: 100%;" required>
-
-                    <h5 class="mb-2">C. Keluarga Yang Menggunakan Lampu Tenaga Surya:</h5>
-                    <select required name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control"
-                      required>
+                    <input name="jumlah_bukan_pengguna_listrik" type="number" class="form-control mb-4" placeholder="--- Masukkan jumlah ---" min="0" required>
+                    <h5 class="mb-2">C. Keluarga yang Menggunakan Lampu Tenaga Surya:</h5>
+                    <select name="penggunaan_lampu_tenaga_surya" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
@@ -136,16 +170,13 @@ include "../../config/session.php";
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="pln" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -159,8 +190,7 @@ include "../../config/session.php";
                       <li>Isikan jumlah keluarga yang menggunakan listrik PLN pada kolom pertama.</li>
                       <li>Isikan jumlah keluarga yang menggunakan listrik non-PLN pada kolom kedua.</li>
                       <li>Isikan jumlah keluarga yang tidak menggunakan listrik pada kolom ketiga.</li>
-                      <li>Pilih kondisi penggunaan lampu tenaga surya pada kolom keempat sesuai dengan kondisi desa
-                        Anda.</li>
+                      <li>Pilih kondisi penggunaan lampu tenaga surya pada kolom keempat sesuai dengan kondisi desa Anda.</li>
                       <li>Pastikan semua data yang dimasukkan sudah benar sebelum menyimpan.</li>
                     </ul>
                   </div>
@@ -186,8 +216,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_2").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_2").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -299,8 +329,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".4_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".4_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -412,8 +442,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".3_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".3_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -534,8 +564,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_5").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_5").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -661,8 +691,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_50").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_50").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -792,8 +822,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_3123").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_3123").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -898,8 +928,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".100_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".100_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -984,8 +1014,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".129").on("click", function () {
+                  $(document).ready(function() {
+                    $(".129").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -1081,8 +1111,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".200_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".200_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1152,8 +1182,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".20000_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".20000_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1217,8 +1247,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".2000_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".2000_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1319,7 +1349,7 @@ include "../../config/session.php";
   <script src="../../../dist/js/adminlte.js"></script>
   <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
-    $(function () {
+    $(function() {
       //Initialize Select2 Elements
       $('.select2').select2()
 
@@ -1335,7 +1365,7 @@ include "../../config/session.php";
       scrollbarAutoHide: "leave",
       scrollbarClickScroll: true,
     };
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
       if (
         sidebarWrapper &&
