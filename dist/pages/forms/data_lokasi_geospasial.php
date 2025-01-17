@@ -1786,42 +1786,16 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Pos Kesehatan Desa (POSKESDES)</h3>
-
-              <!-- BEGIN:: INFO BUTTON -->
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#infoModalPoskesdes">
                 <i class="fas fa-info-circle"></i>
               </button>
-              <!-- Modal Info -->
-              <div class="modal fade" id="infoModalPoskesdes" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data POSKESDES</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <ul>
-                        <li>Isi Nama POSKESDES dengan nama resmi pos kesehatan desa.</li>
-                        <li>Isi Alamat POSKESDES dengan lengkap dan benar.</li>
-                        <li>Isi Nama Kecamatan tempat POSKESDES berada.</li>
-                        <li>Koordinat Lintang dan Bujur diisi dalam format derajat desimal.</li>
-                      </ul>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- END:: INFO BUTTON -->
-
               <div class="card-tools">
-                <button type="button" class="btn btn-tool addButton8">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function() {
-                    $(".addButton8").on("click", function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1831,81 +1805,146 @@ include "../../config/session.php";
                 </script>
               </div>
             </div>
-            <!-- /.card-header -->
+
             <div class="card-body">
-              <div class="form-group mb-3">
-                <label class="mb-2">Jumlah POSKESDES</label>
-                <input type="number" id="jumlahPoskesdes" class="form-control" placeholder="Masukkan jumlah POSKESDES" min="0" step="1" required>
-              </div>
+              <form action="../../handlers/form_poskesdes.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jumlah POSKESDES</label>
+                  <input
+                    type="number"
+                    id="jumlahPoskesdes"
+                    name="jumlah_poskesdes"
+                    class="form-control"
+                    placeholder="Masukkan jumlah POSKESDES"
+                    min="0"
+                    max="50"
+                    step="1"
+                    required />
+                </div>
 
-              <!-- Container untuk Form Dinamis -->
-              <div id="dynamicFormsPoskesdes" class="mt-4"></div>
+                <!-- Container untuk Form Dinamis -->
+                <div id="dynamicFormsPoskesdes" class="mt-4"></div>
 
-              <div class="mb-2">
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
-              </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
             </div>
 
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const jumlahPoskesdesInput = document.getElementById('jumlahPoskesdes');
-                const formContainer = document.getElementById('dynamicFormsPoskesdes');
+                const jumlahPoskesdesInput = document.getElementById("jumlahPoskesdes");
+                const formContainer = document.getElementById("dynamicFormsPoskesdes");
 
-                jumlahPoskesdesInput.addEventListener('input', function() {
+                jumlahPoskesdesInput.addEventListener("input", function() {
                   const jumlah = parseInt(this.value);
-                  formContainer.innerHTML = '';
+                  formContainer.innerHTML = "";
 
                   if (!isNaN(jumlah) && jumlah > 0) {
                     if (jumlah > 50) {
                       alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
-                      jumlahPoskesdesInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                      jumlahPoskesdesInput.value = 50;
                     }
 
-                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    const maxJumlah = Math.min(jumlah, 50);
                     for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
-                  <h2 class="card-title mb-3">POSKESDES Ke-${i}</h2>
+                  <h4 class="card-title">POSKESDES Ke-${i}</h4>
                 </div>
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama POSKESDES</label>
-                    <input id="nama_poskesdes_ke${i}" type="text" class="form-control" placeholder="Masukkan Nama POSKESDES">
+                    <input
+                      name="nama_poskesdes_${i}"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan Nama POSKESDES"
+                      required
+                    />
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Alamat POSKESDES</label>
-                    <textarea id="alamat_poskesdes_ke${i}" class="form-control" rows="3" placeholder="Isi Alamat POSKESDES"></textarea>
+                    <textarea
+                      name="alamat_poskesdes_${i}"
+                      class="form-control"
+                      rows="3"
+                      placeholder="Isi Alamat POSKESDES"
+                      required
+                    ></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Kecamatan</label>
-                    <input id="nama_kecamatan_ke${i}" type="text" class="form-control" placeholder="Masukkan Nama Kecamatan">
+                    <input
+                      name="nama_kecamatan_${i}"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan Nama Kecamatan"
+                      required
+                    />
                   </div>
                   <div class="titik_koordinat">
-                    <label for="titik_koordinat_ke${i}">Titik Koordinat</label>
+                    <label>Titik Koordinat</label>
                     <div class="row">
                       <div class="col-md-6">
-                        <label for="koordinat_lintang_ke${i}">Koordinat Lintang</label>
-                        <input id="koordinat_lintang_ke${i}" type="text" class="form-control" placeholder="-6.8796 LS">
+                        <label>Koordinat Lintang</label>
+                        <input
+                          name="koordinat_lintang_${i}"
+                          type="text"
+                          class="form-control"
+                          placeholder="-6.8796 LS"
+                          required
+                        />
                       </div>
                       <div class="col-md-6">
-                        <label for="koordinat_bujur_ke${i}">Koordinat Bujur</label>
-                        <input id="koordinat_bujur_ke${i}" type="text" class="form-control" placeholder="108.5538 BT">
+                        <label>Koordinat Bujur</label>
+                        <input
+                          name="koordinat_bujur_${i}"
+                          type="text"
+                          class="form-control"
+                          placeholder="108.5538 BT"
+                          required
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             `;
-                      formContainer.insertAdjacentHTML('beforeend', formTemplate);
+                      formContainer.insertAdjacentHTML("beforeend", formTemplate);
                     }
                   }
                 });
               });
             </script>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="infoModalPoskesdes" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data POSKESDES</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Nama POSKESDES dengan nama resmi pos kesehatan desa.</li>
+                      <li>Isi Alamat POSKESDES dengan lengkap dan benar.</li>
+                      <li>Isi Nama Kecamatan tempat POSKESDES berada.</li>
+                      <li>Koordinat Lintang dan Bujur diisi dalam format derajat desimal.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
