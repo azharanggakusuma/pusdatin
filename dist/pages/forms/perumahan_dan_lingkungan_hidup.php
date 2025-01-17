@@ -301,24 +301,22 @@ include "../../config/session.php";
             </div>
           </div>
 
-
           <!-- END::Penerangan di jalan utama desa/kelurahan -->
 
           <!-- BEGIN:: Keberadaan Tempat Pembuangan Sampah Sementara (Tps) , Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r) Dan Bank Sampah -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan Tempat Pembuangan Sampah Sementara (Tps) , Tempat Penampungan Sementara
-                Reduce,Reuse,Recycle (Tps3r) Dan Bank Sampah</h3>
+              <h3 class="card-title">Keberadaan Tempat Pembuangan Sampah Sementara (TPS), TPS3R, dan Bank Sampah</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#tps">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool 4_toggle-form">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function() {
-                    $(".4_toggle-form").on("click", function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -331,35 +329,35 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_pengelolaan_sampah.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Tempat pembuangan sampah sementara (TPS)</label>
-                    <select required name="TPS" id="TPS" class="form-control">
+                    <label class="mb-2">Keberadaan Tempat Pembuangan Sampah Sementara (TPS)</label>
+                    <select name="tps" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                      <option value="Ada, Digunakan">Ada, Digunakan </option>
+                      <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r)</label>
-                    <select required name="TPS3R" id="TPS3R" class="form-control">
+                    <label class="mb-2">Tempat Penampungan Sementara Reduce, Reuse, Recycle (TPS3R)</label>
+                    <select name="tps3r" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                      <option value="Ada, Digunakan">Ada, Digunakan </option>
+                      <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
-                  <select required name="bank_sampah" id="bank_sampah" class="form-control">
-                    <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
-                    <option value="Non Listrik">Non Listrik</option>
-                  </select>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Bank Sampah di Desa/Kelurahan</label>
+                    <select name="bank_sampah" class="form-control" required>
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                      <option value="Non Listrik">Non Listrik</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -367,9 +365,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="tps" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -380,31 +376,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isikan kondisi tempat pembuangan sampah sementara (TPS) pada kolom pertama, dengan pilihan:
-                        <ul>
-                          <li><strong>Ada, Digunakan</strong> jika TPS tersedia dan sedang digunakan di desa/kelurahan.
-                          </li>
-                          <li><strong>Ada, Tidak Digunakan</strong> jika TPS ada tetapi tidak digunakan.</li>
-                          <li><strong>Tidak Ada</strong> jika TPS tidak ada sama sekali.</li>
-                        </ul>
-                      </li>
-                      <li>Isikan kondisi tempat penampungan sementara Reduce, Reuse, Recycle (TPS3R) pada kolom kedua,
-                        dengan pilihan:
-                        <ul>
-                          <li><strong>Ada, Digunakan</strong> jika TPS3R tersedia dan sedang digunakan di
-                            desa/kelurahan.</li>
-                          <li><strong>Ada, Tidak Digunakan</strong> jika TPS3R ada tetapi tidak digunakan.</li>
-                          <li><strong>Tidak Ada</strong> jika TPS3R tidak ada sama sekali.</li>
-                        </ul>
-                      </li>
-                      <li>Isikan keberadaan bank sampah pada kolom ketiga, dengan pilihan:
-                        <ul>
-                          <li><strong>Ada</strong> jika bank sampah tersedia di desa/kelurahan.</li>
-                          <li><strong>Tidak Ada</strong> jika tidak ada bank sampah sama sekali.</li>
-                          <li><strong>Non Listrik</strong> jika bank sampah menggunakan fasilitas non-listrik untuk
-                            operasionalnya.</li>
-                        </ul>
-                      </li>
+                      <li>Isi kondisi tempat pembuangan sampah sementara (TPS) pada kolom pertama.</li>
+                      <li>Isi kondisi tempat penampungan sementara Reduce, Reuse, Recycle (TPS3R) pada kolom kedua.</li>
+                      <li>Isi keberadaan bank sampah pada kolom ketiga.</li>
                       <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
                     </ul>
                   </div>
@@ -415,6 +389,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Keberadaan Tempat pembuangan sampah sementara (TPS) , Tempat Penampungan Sementara Reduce,Reuse,Recycle (TPS3R) dan Bank Sampah -->
 
           <!-- BEGIN:: Keberadaan permukiman di bawah SUTET/SUTT/SUTTAS -->
