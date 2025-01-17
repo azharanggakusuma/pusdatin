@@ -55,6 +55,46 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "lembaga_kemasyarakatan_di_desa_kelurahan.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "lembaga_kemasyarakatan_di_desa_kelurahan.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "lembaga_kemasyarakatan_di_desa_kelurahan.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -102,7 +142,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_data_pkk.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Tim Penggerak PKK</label>
@@ -179,7 +219,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_karang_taruna.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Karang Taruna dan anggota/pengurus Karang Taruna</label>
@@ -243,7 +283,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_posyandu.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Posyandu</label>
@@ -307,7 +347,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_lpmd.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Laki-Laki</label>

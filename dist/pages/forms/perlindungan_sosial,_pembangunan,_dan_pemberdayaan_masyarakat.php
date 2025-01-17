@@ -55,6 +55,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -102,7 +141,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_penerima_bantuan_sosial.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima Bantuan PKH (Kepala Keluarga)</label>
@@ -154,7 +193,6 @@ include "../../config/session.php";
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Jumlah Surat Keterangan Tidak Mampu/Miskin (SKTM) yang Dikeluarkan Pemerintah Desa</h3>
@@ -180,7 +218,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_sktm.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah SKTM yang Dikeluarkan</label>

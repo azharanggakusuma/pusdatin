@@ -63,6 +63,45 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perumahan_dan_lingkungan_hidup.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perumahan_dan_lingkungan_hidup.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "perumahan_dan_lingkungan_hidup.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -89,17 +128,17 @@ include "../../config/session.php";
           <!-- BEGIN:: Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya</h3>
+              <h3 class="card-title">Jumlah Keluarga Pengguna Listrik dan Lampu Tenaga Surya</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#pln">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool toggle-form_1">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_1").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -112,23 +151,18 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_pengguna_listrik.php" method="post">
                 <div class="row">
                   <div class="form-group">
-                    <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik :</h5>
+                    <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik:</h5>
                     <li class="mb-1">PLN (Perusahaan Listrik Negara)</li>
-                    <input required required name="PLN" min="0" type="number" class="form-control mb-1"
-                      placeholder="Isikan Dengan Angka" style="width: 100%;" required>
+                    <input name="jumlah_pln" type="number" class="form-control mb-1" placeholder="--- Masukkan jumlah ---" min="0" required>
                     <li class="mb-1">Non-PLN (Misalnya: Swasta, Swadaya, Atau Perseorangan)</li>
-                    <input required required name="Non_PLN" min="0" type="number" class="form-control mb-4"
-                      placeholder="Isikan Dengan Angka" style="width: 100%;" required>
+                    <input name="jumlah_non_pln" type="number" class="form-control mb-4" placeholder="--- Masukkan jumlah ---" min="0" required>
                     <h5 class="mb-2">B. Jumlah Keluraga Bukan Pengguna Listrik:</h5>
-                    <input required name="Bukan_pengguna_listrik" type="number" class="form-control mb-4"
-                      placeholder="Isi Dengan Angka" style="width: 100%;" required>
-
-                    <h5 class="mb-2">C. Keluarga Yang Menggunakan Lampu Tenaga Surya:</h5>
-                    <select required name="penetapan_batas_desa" id="penetapan_batas_desa" class="form-control"
-                      required>
+                    <input name="jumlah_bukan_pengguna_listrik" type="number" class="form-control mb-4" placeholder="--- Masukkan jumlah ---" min="0" required>
+                    <h5 class="mb-2">C. Keluarga yang Menggunakan Lampu Tenaga Surya:</h5>
+                    <select name="penggunaan_lampu_tenaga_surya" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
@@ -136,16 +170,13 @@ include "../../config/session.php";
                     </select>
                   </div>
                 </div>
-
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="pln" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -159,8 +190,7 @@ include "../../config/session.php";
                       <li>Isikan jumlah keluarga yang menggunakan listrik PLN pada kolom pertama.</li>
                       <li>Isikan jumlah keluarga yang menggunakan listrik non-PLN pada kolom kedua.</li>
                       <li>Isikan jumlah keluarga yang tidak menggunakan listrik pada kolom ketiga.</li>
-                      <li>Pilih kondisi penggunaan lampu tenaga surya pada kolom keempat sesuai dengan kondisi desa
-                        Anda.</li>
+                      <li>Pilih kondisi penggunaan lampu tenaga surya pada kolom keempat sesuai dengan kondisi desa Anda.</li>
                       <li>Pastikan semua data yang dimasukkan sudah benar sebelum menyimpan.</li>
                     </ul>
                   </div>
@@ -177,7 +207,7 @@ include "../../config/session.php";
           <!-- BEGIN:: Penerangan di jalan utama desa/kelurahan -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Penerangan di jalan utama desa/kelurahan</h3>
+              <h3 class="card-title">Penerangan di Jalan Utama Desa/Kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#penerangan">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -186,8 +216,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_2").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_2").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -200,11 +230,11 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_penerangan_jalan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Penerangan Di Jalan Desa/Kelurahan Yang Menggunakan Lampu Tenaga Surya</label>
-                    <select required name="Lampu_Tenaga_Surya" id="penetapan_batas_desa" class="form-control">
+                    <label class="mb-2">Penerangan di Jalan Desa/Kelurahan yang Menggunakan Lampu Tenaga Surya</label>
+                    <select name="lampu_tenaga_surya" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -212,27 +242,24 @@ include "../../config/session.php";
                   </div>
 
                   <div class="form-group mb-3">
-                    <label class="mb-2">Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                    <select required name="penerangan_jalan_utama" id="penerangan_jalan_utama" class="form-control">
+                    <label class="mb-2">Penerangan di Jalan Utama Desa/Kelurahan</label>
+                    <select name="penerangan_jalan_utama" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="row">
+
                   <div class="form-group mb-3">
-                    <label class="mb-2">Sumber Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                    <select required name="sumber_penerangan" id="sumber_penerangan" class="form-control">
+                    <label class="mb-2">Sumber Penerangan di Jalan Utama Desa/Kelurahan</label>
+                    <select name="sumber_penerangan" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Listrik Diusahakan Oleh Pemerintah">Listrik Diusahakan Oleh Pemerintah</option>
-                      <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah
-                      </option>
+                      <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah</option>
                       <option value="Non Listrik">Non Listrik</option>
                     </select>
                   </div>
-
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -240,9 +267,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="penerangan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -253,27 +278,19 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isikan kondisi penerangan di jalan desa/kelurahan yang menggunakan lampu tenaga surya pada
-                        kolom pertama.</li>
-                      <li>Isikan kondisi penerangan di jalan utama desa/kelurahan pada kolom kedua, dengan pilihan:
-                        <ul>
-                          <li><strong>Ada, Sebagian Besar</strong> jika penerangan sudah cukup di sebagian besar jalan
-                            utama.</li>
-                          <li><strong>Ada, Sebagian Kecil</strong> jika hanya sebagian kecil jalan utama yang sudah
-                            diterangi.</li>
-                          <li><strong>Tidak Ada</strong> jika tidak ada penerangan di jalan utama sama sekali.</li>
-                        </ul>
-                      </li>
-                      <li>Isikan sumber penerangan pada kolom ketiga, dengan pilihan:
-                        <ul>
-                          <li><strong>Listrik Diusahakan Oleh Pemerintah</strong> jika penerangan menggunakan listrik
-                            yang disediakan oleh pemerintah.</li>
-                          <li><strong>Listrik Diusahakan Oleh Non Pemerintah</strong> jika penerangan menggunakan
-                            listrik yang disediakan oleh pihak swasta atau lainnya.</li>
-                          <li><strong>Non Listrik</strong> jika penerangan menggunakan sumber selain listrik.</li>
-                        </ul>
-                      </li>
-                      <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
+                      <li>Isi kondisi penerangan di jalan desa/kelurahan yang menggunakan lampu tenaga surya pada kolom pertama.</li>
+                      <li>Isi kondisi penerangan di jalan utama desa/kelurahan pada kolom kedua, dengan pilihan:</li>
+                      <ul>
+                        <li><strong>Ada, Sebagian Besar</strong> jika penerangan sudah cukup di sebagian besar jalan utama.</li>
+                        <li><strong>Ada, Sebagian Kecil</strong> jika hanya sebagian kecil jalan utama yang sudah diterangi.</li>
+                        <li><strong>Tidak Ada</strong> jika tidak ada penerangan di jalan utama sama sekali.</li>
+                      </ul>
+                      <li>Isi sumber penerangan pada kolom ketiga, dengan pilihan:</li>
+                      <ul>
+                        <li><strong>Listrik Diusahakan Oleh Pemerintah</strong> jika penerangan menggunakan listrik yang disediakan oleh pemerintah.</li>
+                        <li><strong>Listrik Diusahakan Oleh Non Pemerintah</strong> jika penerangan menggunakan listrik yang disediakan oleh pihak swasta atau lainnya.</li>
+                        <li><strong>Non Listrik</strong> jika penerangan menggunakan sumber selain listrik.</li>
+                      </ul>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -289,18 +306,17 @@ include "../../config/session.php";
           <!-- BEGIN:: Keberadaan Tempat Pembuangan Sampah Sementara (Tps) , Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r) Dan Bank Sampah -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Keberadaan Tempat Pembuangan Sampah Sementara (Tps) , Tempat Penampungan Sementara
-                Reduce,Reuse,Recycle (Tps3r) Dan Bank Sampah</h3>
+              <h3 class="card-title">Keberadaan Tempat Pembuangan Sampah Sementara (TPS), TPS3R, dan Bank Sampah</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#tps">
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool 4_toggle-form">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".4_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -313,35 +329,35 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_pengelolaan_sampah.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Keberadaan Tempat pembuangan sampah sementara (TPS)</label>
-                    <select required name="TPS" id="TPS" class="form-control">
+                    <label class="mb-2">Keberadaan Tempat Pembuangan Sampah Sementara (TPS)</label>
+                    <select name="tps" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                      <option value="Ada, Digunakan">Ada, Digunakan </option>
+                      <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="mb-2">Tempat Penampungan Sementara Reduce,Reuse,Recycle (Tps3r)</label>
-                    <select required name="TPS3R" id="TPS3R" class="form-control">
+                    <label class="mb-2">Tempat Penampungan Sementara Reduce, Reuse, Recycle (TPS3R)</label>
+                    <select name="tps3r" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                      <option value="Ada, Digunakan">Ada, Digunakan </option>
+                      <option value="Ada, Digunakan">Ada, Digunakan</option>
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="mb-2">Keberadaan bank sampah di desa/kelurahan</label>
-                  <select required name="bank_sampah" id="bank_sampah" class="form-control">
-                    <option value="" disabled selected>-- Pilih Dengan Benar --</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
-                    <option value="Non Listrik">Non Listrik</option>
-                  </select>
+                  <div class="form-group mb-3">
+                    <label class="mb-2">Keberadaan Bank Sampah di Desa/Kelurahan</label>
+                    <select name="bank_sampah" class="form-control" required>
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="Ada">Ada</option>
+                      <option value="Tidak Ada">Tidak Ada</option>
+                      <option value="Non Listrik">Non Listrik</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -349,9 +365,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="tps" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -362,31 +376,9 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isikan kondisi tempat pembuangan sampah sementara (TPS) pada kolom pertama, dengan pilihan:
-                        <ul>
-                          <li><strong>Ada, Digunakan</strong> jika TPS tersedia dan sedang digunakan di desa/kelurahan.
-                          </li>
-                          <li><strong>Ada, Tidak Digunakan</strong> jika TPS ada tetapi tidak digunakan.</li>
-                          <li><strong>Tidak Ada</strong> jika TPS tidak ada sama sekali.</li>
-                        </ul>
-                      </li>
-                      <li>Isikan kondisi tempat penampungan sementara Reduce, Reuse, Recycle (TPS3R) pada kolom kedua,
-                        dengan pilihan:
-                        <ul>
-                          <li><strong>Ada, Digunakan</strong> jika TPS3R tersedia dan sedang digunakan di
-                            desa/kelurahan.</li>
-                          <li><strong>Ada, Tidak Digunakan</strong> jika TPS3R ada tetapi tidak digunakan.</li>
-                          <li><strong>Tidak Ada</strong> jika TPS3R tidak ada sama sekali.</li>
-                        </ul>
-                      </li>
-                      <li>Isikan keberadaan bank sampah pada kolom ketiga, dengan pilihan:
-                        <ul>
-                          <li><strong>Ada</strong> jika bank sampah tersedia di desa/kelurahan.</li>
-                          <li><strong>Tidak Ada</strong> jika tidak ada bank sampah sama sekali.</li>
-                          <li><strong>Non Listrik</strong> jika bank sampah menggunakan fasilitas non-listrik untuk
-                            operasionalnya.</li>
-                        </ul>
-                      </li>
+                      <li>Isi kondisi tempat pembuangan sampah sementara (TPS) pada kolom pertama.</li>
+                      <li>Isi kondisi tempat penampungan sementara Reduce, Reuse, Recycle (TPS3R) pada kolom kedua.</li>
+                      <li>Isi keberadaan bank sampah pada kolom ketiga.</li>
                       <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
                     </ul>
                   </div>
@@ -397,6 +389,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
           <!-- END::Keberadaan Tempat pembuangan sampah sementara (TPS) , Tempat Penampungan Sementara Reduce,Reuse,Recycle (TPS3R) dan Bank Sampah -->
 
           <!-- BEGIN:: Keberadaan permukiman di bawah SUTET/SUTT/SUTTAS -->
@@ -412,8 +405,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".3_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".3_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -426,7 +419,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_sutet.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">
@@ -534,8 +527,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_5").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_5").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -548,7 +541,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_keberadaan_sungai.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Sungai Yang Melintasi</label>
@@ -661,8 +654,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_50").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_50").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -675,7 +668,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_keberadaan_danau.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa</label>
@@ -792,8 +785,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".toggle-form_3123").on("click", function () {
+                  $(document).ready(function() {
+                    $(".toggle-form_3123").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -806,7 +799,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_keberadaan_permukiman_bantaran.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Pemukiman Di Bantaran Sungai</label>
@@ -898,8 +891,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".100_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".100_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -912,7 +905,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_embung.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Embung</label>
@@ -984,8 +977,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".129").on("click", function () {
+                  $(document).ready(function() {
+                    $(".129").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
 
@@ -998,7 +991,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_permukiman_kumuh.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Permukiman Kumuh (Sanitasi Lingkungan Buruk, Bangunan Padat Dan
@@ -1081,8 +1074,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".200_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".200_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1094,7 +1087,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+              <form action="../../handlers/form_lokasi_penggalian.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">
@@ -1152,8 +1145,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".20000_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".20000_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1165,7 +1158,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+              <form action="../../handlers/form_prasarana_kebersihan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Sarana Prasarana Kebersihan</label>
@@ -1217,8 +1210,8 @@ include "../../config/session.php";
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
-                  $(document).ready(function () {
-                    $(".2000_toggle-form").on("click", function () {
+                  $(document).ready(function() {
+                    $(".2000_toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -1230,7 +1223,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+              <form action="../../handlers/form_rumah_tidak_layak_huni.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Rumah Tidak Layak Huni</label>
@@ -1269,7 +1262,6 @@ include "../../config/session.php";
             </div>
           </div>
           <!-- END:: Jumlah Rumah Tidak Layak Huni -->
-
 
         </div> <!--end::Container-->
       </div> <!--end::App Content-->
@@ -1319,7 +1311,7 @@ include "../../config/session.php";
   <script src="../../../dist/js/adminlte.js"></script>
   <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
   <script>
-    $(function () {
+    $(function() {
       //Initialize Select2 Elements
       $('.select2').select2()
 
@@ -1335,7 +1327,7 @@ include "../../config/session.php";
       scrollbarAutoHide: "leave",
       scrollbarClickScroll: true,
     };
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
       if (
         sidebarWrapper &&

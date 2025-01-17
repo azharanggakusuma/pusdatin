@@ -55,6 +55,46 @@ include "../../config/session.php";
 
     <?php include('../../components/sidebar.php'); ?> <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php if (isset($_GET['status'])): ?>
+      <script>
+        let status = "<?= $_GET['status'] ?>";
+        if (status === 'success') {
+          Swal.fire({
+            title: "Berhasil!",
+            text: "Data berhasil ditambahkan.",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "aparatur_pemerintahan_desa.php";
+          });
+        } else if (status === 'error') {
+          Swal.fire({
+            title: "Gagal!",
+            text: "Terjadi kesalahan saat menambahkan data.",
+            icon: "error",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "aparatur_pemerintahan_desa.php";
+          });
+        } else if (status === 'warning') {
+          Swal.fire({
+            title: "Peringatan!",
+            text: "Mohon lengkapi semua data.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = "aparatur_pemerintahan_desa.php";
+          });
+        }
+      </script>
+    <?php endif; ?>
+
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -102,7 +142,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kepala_desa.php" method="post">
                 <div class="row"> <!-- /.col -->
                   <!-- /.form-group -->
                   <div class="form-group mb-3">
@@ -199,7 +239,7 @@ include "../../config/session.php";
 
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_perangkat_desa.php" method="post">
                 <div class="row">
                   <div class="col-12 mb-3">
                     <table class="table">
@@ -307,7 +347,7 @@ include "../../config/session.php";
 
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_perangkat_desa_pendidikan.php" method="post">
                 <div class="row">
                   <div class="col-12 mb-3">
                     <table class="table">
@@ -439,7 +479,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_badan_permusyawaratan_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Badan Permusyawaratan Desa/Lembaga Musyawarah Kelurahan</label>
