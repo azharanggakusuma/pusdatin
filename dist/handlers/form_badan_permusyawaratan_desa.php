@@ -25,10 +25,10 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Sanitize and prepare data from POST
-  $keberadaan_bpd = mysqli_real_escape_string($conn, $_POST['keberadaan_bpd']);
-  $jumlah_laki = ($keberadaan_bpd === 'Ada') ? mysqli_real_escape_string($conn, $_POST['laki_laki']) : null;
-  $jumlah_perempuan = ($keberadaan_bpd === 'Ada') ? mysqli_real_escape_string($conn, $_POST['perempuan']) : null;
-  $jumlah_kegiatan = ($keberadaan_bpd === 'Ada') ? mysqli_real_escape_string($conn, $_POST['kegiatanMusyawarahDesa']) : null;
+  $keberadaan_bpd = mysqli_real_escape_string($conn, $_POST['keberadaan_bpd'] ?? 'Tidak Ada');
+  $jumlah_laki = ($keberadaan_bpd === 'Ada') ? intval($_POST['laki_laki'] ?? 0) : null;
+  $jumlah_perempuan = ($keberadaan_bpd === 'Ada') ? intval($_POST['perempuan'] ?? 0) : null;
+  $jumlah_kegiatan = ($keberadaan_bpd === 'Ada') ? intval($_POST['kegiatanMusyawarahDesa'] ?? 0) : null;
 
   // Check if the record already exists for the same year
   $check_query = "SELECT id FROM tb_badan_permusyawaratan_desa WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
@@ -38,16 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // If record exists for the same year, update the existing record
     $sql = "UPDATE tb_badan_permusyawaratan_desa 
                 SET keberadaan_bpd = '$keberadaan_bpd', 
-                    jumlah_laki = '$jumlah_laki', 
-                    jumlah_perempuan = '$jumlah_perempuan', 
-                    jumlah_kegiatan = '$jumlah_kegiatan', 
+                    jumlah_laki = " . ($jumlah_laki !== null ? "'$jumlah_laki'" : "NULL") . ", 
+                    jumlah_perempuan = " . ($jumlah_perempuan !== null ? "'$jumlah_perempuan'" : "NULL") . ", 
+                    jumlah_kegiatan = " . ($jumlah_kegiatan !== null ? "'$jumlah_kegiatan'" : "NULL") . ", 
                     tahun = '$tahun' 
                 WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
   } else {
     // If record doesn't exist for the same year, insert a new record
     $sql = "INSERT INTO tb_badan_permusyawaratan_desa 
                 (keberadaan_bpd, jumlah_laki, jumlah_perempuan, jumlah_kegiatan, user_id, desa_id, tahun)
-                VALUES ('$keberadaan_bpd', '$jumlah_laki', '$jumlah_perempuan', '$jumlah_kegiatan', '$user_id', '$desa_id', '$tahun')";
+                VALUES (
+                    '$keberadaan_bpd', 
+                    " . ($jumlah_laki !== null ? "'$jumlah_laki'" : "NULL") . ", 
+                    " . ($jumlah_perempuan !== null ? "'$jumlah_perempuan'" : "NULL") . ", 
+                    " . ($jumlah_kegiatan !== null ? "'$jumlah_kegiatan'" : "NULL") . ", 
+                    '$user_id', '$desa_id', '$tahun')";
   }
 
   if (mysqli_query($conn, $sql)) {
