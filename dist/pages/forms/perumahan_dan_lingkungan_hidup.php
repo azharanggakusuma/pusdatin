@@ -126,7 +126,7 @@ include "../../config/session.php";
           <!-- Template Form -->
 
           <!-- BEGIN:: Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya -->
-          <div class="card card-primary card-outline mb-4">
+          <div class="card card-primary card-outline mb-4"> 
             <div class="card-header mb-3">
               <h3 class="card-title">Jumlah Keluarga Pengguna Listrik dan Lampu Tenaga Surya</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#pln">
@@ -151,7 +151,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../handlers/form_pengguna_listrik.php" method="post">
+              <form action="../../handlers/form_pengguna_listrik.php" method="post">
                 <div class="row">
                   <div class="form-group">
                     <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik:</h5>
