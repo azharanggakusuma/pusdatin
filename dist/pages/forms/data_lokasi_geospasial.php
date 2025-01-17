@@ -684,8 +684,6 @@ include "../../config/session.php";
               });
             </script>
           </div>
-
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Pusat Kesehatan Masyarakat (PUSKESMAS)</h3>
