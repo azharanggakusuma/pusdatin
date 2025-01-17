@@ -142,7 +142,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_kepala_desa.php" method="post">
                 <div class="row"> <!-- /.col -->
                   <!-- /.form-group -->
                   <div class="form-group mb-3">
