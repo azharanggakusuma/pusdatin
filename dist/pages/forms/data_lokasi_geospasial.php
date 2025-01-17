@@ -367,41 +367,16 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Sekolah/Lembaga Pendidikan Formal</h3>
-              <!-- BEGIN:: INFO BUTTON -->
-              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#aturanModalDesa">
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#modalSekolah">
                 <i class="fas fa-info-circle"></i>
               </button>
-              <div class="modal fade" id="aturanModalDesa" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <ul>
-                        <li>Isi Nama Sekolah</li>
-                        <li>Pilih Jenjang Pendidikan Yang Sesuai</li>
-                        <li>Pilih Status Sekolah Yang Sesuai</li>
-                        <li>Isi Nama Kecamatan Tempat Sekolah</li>
-                        <li>Pengisian Titik Kordinat Lintang Menggunakan Derajat Desimal, Contoh: -6.8796 LS</li>
-                        <li>Pengisian Titik Kordinat Bujur Menggunakan Derajat Desimal, Contoh: 108.5538 BT</li>
-                      </ul>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- END:: INFO BUTTON -->
               <div class="card-tools">
                 <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function() {
-                    $(".toggle-form2").on("click", function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -411,53 +386,60 @@ include "../../config/session.php";
                 </script>
               </div>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-              <div class="form-group mb-3">
-                <label class="mb-2">Jumlah Sekolah</label>
-                <input type="number" id="jumlahSekolah" class="form-control" placeholder="Masukkan jumlah sekolah" min="0" step="1" required>
-              </div>
-
-              <!-- Container untuk Form Dinamis -->
-              <div id="dynamicFormsSekolah" class="mt-4"></div>
-
-              <div class="mb-2">
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
-              </div>
+              <form action="../../handlers/form_sekolah.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jumlah Sekolah</label>
+                  <input
+                    type="number"
+                    id="jumlahSekolah"
+                    name="jumlah_sekolah"
+                    class="form-control"
+                    placeholder="Masukkan jumlah sekolah"
+                    min="0"
+                    max="50"
+                    step="1"
+                    required />
+                </div>
+                <div id="dynamicFormsSekolah" class="mt-4"></div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
             </div>
 
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const jumlahSekolahInput = document.getElementById('jumlahSekolah');
-                const formContainer = document.getElementById('dynamicFormsSekolah');
+                const jumlahSekolahInput = document.getElementById("jumlahSekolah");
+                const formContainer = document.getElementById("dynamicFormsSekolah");
 
-                jumlahSekolahInput.addEventListener('input', function() {
+                jumlahSekolahInput.addEventListener("input", function() {
                   const jumlah = parseInt(this.value);
-                  formContainer.innerHTML = '';
+                  formContainer.innerHTML = "";
 
                   if (!isNaN(jumlah) && jumlah > 0) {
                     if (jumlah > 50) {
                       alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
-                      jumlahSekolahInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                      jumlahSekolahInput.value = 50;
                     }
 
-                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    const maxJumlah = Math.min(jumlah, 50);
                     for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
-              <div class="border p-3 mb-3">
-                <div class="card-header mb-3">
-                  <h2 class="card-title mb-3">Sekolah Ke-${i}</h2>
+              <div class="card mb-4">
+                <div class="card-header">
+                  <h4 class="card-title">Sekolah Ke-${i}</h4>
                 </div>
-                <div class="row">
+                <div class="card-body">
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Sekolah</label>
-                    <input id="nama_sekolah_ke${i}" type="text" class="form-control" placeholder="Masukkan nama sekolah">
+                    <input name="nama_sekolah_${i}" type="text" placeholder="Masukkan nama sekolah" class="form-control" required />
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenjang Pendidikan</label>
-                    <select id="jenjang_sekolah_ke${i}" class="form-control select2bs4" style="width: 100%;">
+                    <select name="jenjang_pendidikan_${i}" class="form-control" required>
                       <option value="" disabled selected>---Pilih Jenjang Pendidikan---</option>
                       <option value="Paud">Paud</option>
                       <option value="Sekolah Dasar">Sekolah Dasar</option>
@@ -467,7 +449,7 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Status Sekolah</label>
-                    <select id="status_sekolah_ke${i}" class="form-control select2bs4" style="width: 100%;">
+                    <select name="status_sekolah_${i}" class="form-control" required>
                       <option value="" disabled selected>---Pilih Status Sekolah---</option>
                       <option value="Negeri">Negeri</option>
                       <option value="Swasta">Swasta</option>
@@ -475,34 +457,57 @@ include "../../config/session.php";
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Alamat Sekolah</label>
-                    <textarea id="alamat_sekolah_ke${i}" class="form-control" rows="3" placeholder="Masukkan alamat sekolah"></textarea>
+                    <textarea name="alamat_sekolah_${i}" class="form-control" rows="3" placeholder="Masukkan alamat sekolah" required></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Kecamatan</label>
-                    <input id="nama_kecamatan_ke${i}" type="text" class="form-control" placeholder="Masukkan nama kecamatan">
+                    <input name="nama_kecamatan_${i}" type="text" placeholder="Masukkan nama kecamatan" class="form-control" required />
                   </div>
                   <div class="titik_koordinat">
-                    <label for="titik_koordinat_ke${i}">Titik Koordinat</label>
+                    <label style="font-weight: bold;">Titik Koordinat</label>
                     <div class="row">
                       <div class="col-md-6">
-                        <label for="koordinat_lintang_ke${i}">Koordinat Lintang</label>
-                        <input id="koordinat_lintang_ke${i}" type="text" class="form-control" placeholder="-6.8796 LS">
+                        <label>Koordinat Lintang</label>
+                        <input name="koordinat_lintang_${i}" type="text" placeholder="-6.8796 LS" class="form-control" required />
                       </div>
                       <div class="col-md-6">
-                        <label for="koordinat_bujur_ke${i}">Koordinat Bujur</label>
-                        <input id="koordinat_bujur_ke${i}" type="text" class="form-control" placeholder="108.5538 BT">
+                        <label>Koordinat Bujur</label>
+                        <input name="koordinat_bujur_${i}" type="text" placeholder="108.5538 BT" class="form-control" required />
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            `;
-                      formContainer.insertAdjacentHTML('beforeend', formTemplate);
+              </div>`;
+                      formContainer.insertAdjacentHTML("beforeend", formTemplate);
                     }
                   }
                 });
               });
             </script>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalSekolah" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Nama Sekolah</li>
+                      <li>Pilih Jenjang Pendidikan yang sesuai</li>
+                      <li>Pilih Status Sekolah yang sesuai</li>
+                      <li>Isi Nama Kecamatan tempat sekolah</li>
+                      <li>Pengisian Titik Koordinat menggunakan derajat desimal (contoh: -6.8796 LS dan 108.5538 BT)</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="card card-primary card-outline mb-4">
