@@ -94,7 +94,6 @@ include "../../config/session.php";
       </script>
     <?php endif; ?>
 
-
     <main class="app-main">
       <!--begin::App Content Header-->
       <div class="app-content-header">
@@ -132,7 +131,6 @@ include "../../config/session.php";
                     $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
-
                       $cardBody.slideToggle();
                       $icon.toggleClass("fa-minus fa-plus");
                     });
@@ -141,106 +139,119 @@ include "../../config/session.php";
               </div>
             </div>
             <div class="card-body">
-              <div class="form-group mb-3">
-                <label class="mb-2">Jumlah Tempat Peribadatan</label>
-                <input type="number" id="jumlahTempat" class="form-control" placeholder="Isi angka/jumlah" min="0" max="50" step="1" style="width: 100%;" required>
-              </div>
+              <form action="../../handlers/form_tempat_peribadatan.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jumlah Tempat Peribadatan</label>
+                  <input
+                    type="number"
+                    id="jumlahTempat"
+                    name="jumlah_tempat"
+                    class="form-control"
+                    placeholder="Isi angka/jumlah"
+                    min="0"
+                    max="50"
+                    step="1"
+                    style="width: 100%;"
+                    required />
+                </div>
 
-              <!-- Container untuk Form Dinamis -->
-              <div id="dynamicForms" class="mt-4"></div>
+                <!-- Container untuk Form Dinamis -->
+                <div id="dynamicForms" class="mt-4"></div>
 
-              <div class="mb-2">
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
-              </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
             </div>
-          </div>
 
-          <script>
-            document.addEventListener("DOMContentLoaded", function() {
-              const jumlahTempatInput = document.getElementById('jumlahTempat');
-              const formContainer = document.getElementById('dynamicForms');
-              const maxForms = 50;
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const jumlahTempatInput = document.getElementById("jumlahTempat");
+                const formContainer = document.getElementById("dynamicForms");
+                const maxForms = 50;
 
-              jumlahTempatInput.addEventListener('input', function() {
-                const jumlah = parseInt(this.value);
-                formContainer.innerHTML = ''; // Bersihkan form lama
+                jumlahTempatInput.addEventListener("input", function() {
+                  const jumlah = parseInt(this.value);
+                  formContainer.innerHTML = ""; // Bersihkan form lama
 
-                if (!isNaN(jumlah) && jumlah > 0) {
-                  if (jumlah > 50) {
-                    alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
-                    jumlahTempatInput.value = 50; // Set nilai input menjadi 50 jika lebih
-                  }
+                  if (!isNaN(jumlah) && jumlah > 0) {
+                    if (jumlah > maxForms) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahTempatInput.value = maxForms; // Set nilai input menjadi 50 jika lebih
+                    }
 
-                  const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
-                  for (let i = 1; i <= maxJumlah; i++) {
-                    const formTemplate = `
-                  <div class="card mb-4">
-                    <div class="card-header">
-                      <h4 class="card-title">Tempat Peribadatan Ke-${i}</h4>
+                    const maxJumlah = Math.min(jumlah, maxForms); // Batas maksimal adalah 50
+                    for (let i = 1; i <= maxJumlah; i++) {
+                      const formTemplate = `
+            <div class="card mb-4">
+              <div class="card-header">
+                <h4 class="card-title">Tempat Peribadatan Ke-${i}</h4>
+              </div>
+              <div class="card-body">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jenis Tempat Ibadah</label>
+                  <select name="jenis_tempat_peribadatan_${i}" class="form-control" required>
+                    <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
+                    <option value="Masjid">Masjid</option>
+                    <option value="Mushola">Mushola</option>
+                    <option value="Gereja Protestan">Gereja Protestan</option>
+                    <option value="Gereja Katolik">Gereja Katolik</option>
+                    <option value="Pura">Pura</option>
+                    <option value="Vihara">Vihara</option>
+                    <option value="Klenteng">Klenteng</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2">Nama Tempat Peribadatan</label>
+                  <input name="nama_tempat_peribadatan_${i}" type="text" placeholder="Masukkan nama tempat peribadatan" class="form-control" required>
+                </div>
+                <div class="titik_koordinat">
+                  <label style="font-weight: bold;">Titik Koordinat</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Koordinat Lintang</label>
+                      <input name="titik_koordinat_lintang_${i}" type="text" placeholder="-6.8796 LS" class="form-control" required>
                     </div>
-                    <div class="card-body">
-                      <div class="form-group mb-3">
-                        <label class="mb-2">Jenis Tempat Ibadah</label>
-                        <select name="jenis_tempat_peribadatan_${i}" class="form-control">
-                          <option value="" disabled selected>---Pilih Jenis Tempat Ibadah---</option>
-                          <option value="Masjid">Masjid</option>
-                          <option value="Mushola">Mushola</option>
-                          <option value="Gereja Protestan">Gereja Protestan</option>
-                          <option value="Gereja Katolik">Gereja Katolik</option>
-                          <option value="Pura">Pura</option>
-                          <option value="Vihara">Vihara</option>
-                          <option value="Klenteng">Klenteng</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label class="mb-2">Nama Tempat Peribadatan</label>
-                        <input name="nama_tempat_peribadatan_${i}" type="text" placeholder="Masukkan nama tempat peribadatan" class="form-control" required>
-                      </div>
-                      <div class="titik_koordinat">
-                        <label style="font-weight: bold;">Titik Koordinat</label>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label>Koordinat Lintang</label>
-                            <input name="titik_koordinat_lintang_${i}" type="text" placeholder="-6.8796 LS" class="form-control" required>
-                          </div>
-                          <div class="col-md-6">
-                            <label>Koordinat Bujur</label>
-                            <input name="titik_koordinat_bujur_${i}" type="text" placeholder="108.5538 BT" class="form-control" required>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="col-md-6">
+                      <label>Koordinat Bujur</label>
+                      <input name="titik_koordinat_bujur_${i}" type="text" placeholder="108.5538 BT" class="form-control" required>
                     </div>
                   </div>
-                `;
-                    formContainer.insertAdjacentHTML('beforeend', formTemplate);
+                </div>
+              </div>
+            </div>
+            `;
+                      formContainer.insertAdjacentHTML("beforeend", formTemplate);
+                    }
                   }
-                }
+                });
               });
-            });
-          </script>
+            </script>
 
-          <!-- Modal Info -->
-          <div class="modal fade" id="modalTibadah" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <ul>
-                    <li>Isi sesuai petunjuk.</li>
-                    <li>Pastikan data yang dimasukkan benar.</li>
-                  </ul>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <!-- Modal Info -->
+            <div class="modal fade" id="modalTibadah" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aturanModalLabel">Aturan Pengisian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi sesuai petunjuk.</li>
+                      <li>Pastikan data yang dimasukkan benar.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
