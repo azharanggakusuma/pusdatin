@@ -905,7 +905,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_ketersediaan_penetapan_batas.php" method="post">
+              <form action="../../handlers/form_embung.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Embung</label>
