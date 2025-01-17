@@ -1947,74 +1947,73 @@ include "../../config/session.php";
 
 
           <div class="card card-primary card-outline mb-4">
-  <div class="card-header mb-3">
-    <h3 class="card-title">Daftar Pondok Bersalin Desa (POLINDES)</h3>
-    <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#infoModalPolindes">
-      <i class="fas fa-info-circle"></i>
-    </button>
-    <div class="card-tools">
-      <button type="button" class="btn btn-tool toggle-form">
-        <i class="fas fa-minus"></i>
-      </button>
-      <script>
-        $(document).ready(function () {
-          $(".toggle-form").on("click", function () {
-            var $icon = $(this).find("i");
-            var $cardBody = $(this).closest(".card").find(".card-body");
-            $cardBody.slideToggle();
-            $icon.toggleClass("fa-minus fa-plus");
-          });
-        });
-      </script>
-    </div>
-  </div>
+            <div class="card-header mb-3">
+              <h3 class="card-title">Daftar Pondok Bersalin Desa (POLINDES)</h3>
+              <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#infoModalPolindes">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool toggle-form">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <script>
+                  $(document).ready(function() {
+                    $(".toggle-form").on("click", function() {
+                      var $icon = $(this).find("i");
+                      var $cardBody = $(this).closest(".card").find(".card-body");
+                      $cardBody.slideToggle();
+                      $icon.toggleClass("fa-minus fa-plus");
+                    });
+                  });
+                </script>
+              </div>
+            </div>
 
-  <div class="card-body">
-    <form action="../../handlers/form_polindes.php" method="post">
-      <div class="form-group mb-3">
-        <label class="mb-2">Jumlah POLINDES</label>
-        <input
-          type="number"
-          id="jumlahPolindes"
-          name="jumlah_polindes"
-          class="form-control"
-          placeholder="Masukkan jumlah POLINDES"
-          min="0"
-          max="50"
-          step="1"
-          required
-        />
-      </div>
+            <div class="card-body">
+              <form action="../../handlers/form_polindes.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jumlah POLINDES</label>
+                  <input
+                    type="number"
+                    id="jumlahPolindes"
+                    name="jumlah_polindes"
+                    class="form-control"
+                    placeholder="Masukkan jumlah POLINDES"
+                    min="0"
+                    max="50"
+                    step="1"
+                    required />
+                </div>
 
-      <!-- Container for Dynamic Forms -->
-      <div id="dynamicFormsPolindes" class="mt-4"></div>
+                <!-- Container for Dynamic Forms -->
+                <div id="dynamicFormsPolindes" class="mt-4"></div>
 
-      <div class="mb-2">
-        <button type="submit" class="btn btn-primary mt-3">
-          <i class="fas fa-save"></i> &nbsp; Simpan
-        </button>
-      </div>
-    </form>
-  </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+            </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const jumlahPolindesInput = document.getElementById("jumlahPolindes");
-      const formContainer = document.getElementById("dynamicFormsPolindes");
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const jumlahPolindesInput = document.getElementById("jumlahPolindes");
+                const formContainer = document.getElementById("dynamicFormsPolindes");
 
-      jumlahPolindesInput.addEventListener("input", function () {
-        const jumlah = parseInt(this.value);
-        formContainer.innerHTML = "";
+                jumlahPolindesInput.addEventListener("input", function() {
+                  const jumlah = parseInt(this.value);
+                  formContainer.innerHTML = "";
 
-        if (!isNaN(jumlah) && jumlah > 0) {
-          if (jumlah > 50) {
-            alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
-            jumlahPolindesInput.value = 50;
-          }
+                  if (!isNaN(jumlah) && jumlah > 0) {
+                    if (jumlah > 50) {
+                      alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
+                      jumlahPolindesInput.value = 50;
+                    }
 
-          const maxJumlah = Math.min(jumlah, 50);
-          for (let i = 1; i <= maxJumlah; i++) {
-            const formTemplate = `
+                    const maxJumlah = Math.min(jumlah, 50);
+                    for (let i = 1; i <= maxJumlah; i++) {
+                      const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
                   <h4 class="card-title">POLINDES Ke-${i}</h4>
@@ -2078,77 +2077,51 @@ include "../../config/session.php";
                 </div>
               </div>
             `;
-            formContainer.insertAdjacentHTML("beforeend", formTemplate);
-          }
-        }
-      });
-    });
-  </script>
+                      formContainer.insertAdjacentHTML("beforeend", formTemplate);
+                    }
+                  }
+                });
+              });
+            </script>
 
-  <!-- Modal Info -->
-  <div class="modal fade" id="infoModalPolindes" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data POLINDES</h5>
-          <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul>
-            <li>Isi Nama POLINDES dengan nama resmi pondok bersalin desa.</li>
-            <li>Isi Alamat POLINDES dengan lengkap dan benar.</li>
-            <li>Isi Nama Kecamatan tempat POLINDES berada.</li>
-            <li>Koordinat Lintang dan Bujur diisi dalam format derajat desimal.</li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Modal Info -->
+            <div class="modal fade" id="infoModalPolindes" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data POLINDES</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Nama POLINDES dengan nama resmi pondok bersalin desa.</li>
+                      <li>Isi Alamat POLINDES dengan lengkap dan benar.</li>
+                      <li>Isi Nama Kecamatan tempat POLINDES berada.</li>
+                      <li>Koordinat Lintang dan Bujur diisi dalam format derajat desimal.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar POSYANDU</h3>
-
-              <!-- BEGIN:: INFO BUTTON -->
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#infoModalPosyandu">
                 <i class="fas fa-info-circle"></i>
               </button>
-              <!-- Modal Info -->
-              <div class="modal fade" id="infoModalPosyandu" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data POSYANDU</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <ul>
-                        <li>Isi Nama POSYANDU dengan nama resmi POSYANDU.</li>
-                        <li>Isi Alamat POSYANDU dengan lengkap dan benar.</li>
-                        <li>Isi Nama Kecamatan tempat POSYANDU berada.</li>
-                        <li>Koordinat Lintang dan Bujur diisi dalam format derajat desimal.</li>
-                      </ul>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- END:: INFO BUTTON -->
-
               <div class="card-tools">
-                <button type="button" class="btn btn-tool addButton11">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function() {
-                    $(".addButton11").on("click", function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -2158,82 +2131,146 @@ include "../../config/session.php";
                 </script>
               </div>
             </div>
-            <!-- /.card-header -->
 
             <div class="card-body">
-              <div class="form-group mb-3">
-                <label class="mb-2">Jumlah POSYANDU</label>
-                <input type="number" id="jumlahPosyandu" class="form-control" placeholder="Masukkan jumlah POSYANDU" min="0" step="1" required>
-              </div>
+              <form action="../../handlers/form_daftar_posyandu.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jumlah POSYANDU</label>
+                  <input
+                    type="number"
+                    id="jumlahPosyandu"
+                    name="jumlah_posyandu"
+                    class="form-control"
+                    placeholder="Masukkan jumlah POSYANDU"
+                    min="0"
+                    max="50"
+                    step="1"
+                    required />
+                </div>
 
-              <!-- Container for Dynamic Forms -->
-              <div id="dynamicFormsPosyandu" class="mt-4"></div>
+                <!-- Container for Dynamic Forms -->
+                <div id="dynamicFormsPosyandu" class="mt-4"></div>
 
-              <div class="mb-2">
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
-              </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
             </div>
 
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const jumlahPosyanduInput = document.getElementById('jumlahPosyandu');
-                const formContainer = document.getElementById('dynamicFormsPosyandu');
+                const jumlahPosyanduInput = document.getElementById("jumlahPosyandu");
+                const formContainer = document.getElementById("dynamicFormsPosyandu");
 
-                jumlahPosyanduInput.addEventListener('input', function() {
+                jumlahPosyanduInput.addEventListener("input", function() {
                   const jumlah = parseInt(this.value);
-                  formContainer.innerHTML = '';
+                  formContainer.innerHTML = "";
 
                   if (!isNaN(jumlah) && jumlah > 0) {
                     if (jumlah > 50) {
                       alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
-                      jumlahPosyanduInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                      jumlahPosyanduInput.value = 50;
                     }
 
-                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    const maxJumlah = Math.min(jumlah, 50);
                     for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
-                  <h2 class="card-title mb-3">POSYANDU Ke-${i}</h2>
+                  <h4 class="card-title">POSYANDU Ke-${i}</h4>
                 </div>
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama POSYANDU</label>
-                    <input id="nama_posyandu_ke${i}" type="text" class="form-control" placeholder="Masukkan Nama POSYANDU">
+                    <input
+                      name="nama_posyandu_${i}"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan Nama POSYANDU"
+                      required
+                    />
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Alamat POSYANDU</label>
-                    <textarea id="alamat_posyandu_ke${i}" class="form-control" rows="3" placeholder="Isi Alamat POSYANDU"></textarea>
+                    <textarea
+                      name="alamat_posyandu_${i}"
+                      class="form-control"
+                      rows="3"
+                      placeholder="Isi Alamat POSYANDU"
+                      required
+                    ></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Kecamatan</label>
-                    <input id="nama_kecamatan_ke${i}" type="text" class="form-control" placeholder="Masukkan Nama Kecamatan">
+                    <input
+                      name="nama_kecamatan_${i}"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan Nama Kecamatan"
+                      required
+                    />
                   </div>
                   <div class="titik_koordinat">
-                    <label for="titik_koordinat_ke${i}">Titik Koordinat</label>
+                    <label>Titik Koordinat</label>
                     <div class="row">
                       <div class="col-md-6">
-                        <label for="koordinat_lintang_ke${i}">Koordinat Lintang</label>
-                        <input id="koordinat_lintang_ke${i}" type="text" class="form-control" placeholder="-6.8796 LS">
+                        <label>Koordinat Lintang</label>
+                        <input
+                          name="koordinat_lintang_${i}"
+                          type="text"
+                          class="form-control"
+                          placeholder="-6.8796 LS"
+                          required
+                        />
                       </div>
                       <div class="col-md-6">
-                        <label for="koordinat_bujur_ke${i}">Koordinat Bujur</label>
-                        <input id="koordinat_bujur_ke${i}" type="text" class="form-control" placeholder="108.5538 BT">
+                        <label>Koordinat Bujur</label>
+                        <input
+                          name="koordinat_bujur_${i}"
+                          type="text"
+                          class="form-control"
+                          placeholder="108.5538 BT"
+                          required
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             `;
-                      formContainer.insertAdjacentHTML('beforeend', formTemplate);
+                      formContainer.insertAdjacentHTML("beforeend", formTemplate);
                     }
                   }
                 });
               });
             </script>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="infoModalPosyandu" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data POSYANDU</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Nama POSYANDU dengan nama resmi POSYANDU.</li>
+                      <li>Isi Alamat POSYANDU dengan lengkap dan benar.</li>
+                      <li>Isi Nama Kecamatan tempat POSYANDU berada.</li>
+                      <li>Koordinat Lintang dan Bujur diisi dalam format derajat desimal.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
 
         </div>
       </div>
