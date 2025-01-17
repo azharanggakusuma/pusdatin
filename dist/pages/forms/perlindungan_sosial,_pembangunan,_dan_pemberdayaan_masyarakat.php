@@ -68,7 +68,7 @@ include "../../config/session.php";
             timer: 3000,
             showConfirmButton: false
           }).then(() => {
-            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat";
+            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat.php";
           });
         } else if (status === 'error') {
           Swal.fire({
@@ -78,7 +78,7 @@ include "../../config/session.php";
             timer: 3000,
             showConfirmButton: false
           }).then(() => {
-            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat";
+            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat.php";
           });
         } else if (status === 'warning') {
           Swal.fire({
@@ -88,7 +88,7 @@ include "../../config/session.php";
             timer: 3000,
             showConfirmButton: false
           }).then(() => {
-            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat";
+            window.location.href = "perlindungan_sosial,_pembangunan,_dan_pemberdayaan_masyarakat.php";
           });
         }
       </script>
@@ -141,7 +141,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_penerima_bantuan_sosial.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima Bantuan PKH (Kepala Keluarga)</label>
@@ -192,7 +192,6 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
-
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
