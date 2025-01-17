@@ -126,7 +126,7 @@ include "../../config/session.php";
           <!-- Template Form -->
 
           <!-- BEGIN:: Jumlah Keluarga Pengguna Listrik Dan Lampu Tenaga Surya -->
-          <div class="card card-primary card-outline mb-4"> 
+          <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Jumlah Keluarga Pengguna Listrik dan Lampu Tenaga Surya</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#pln">
@@ -207,7 +207,7 @@ include "../../config/session.php";
           <!-- BEGIN:: Penerangan di jalan utama desa/kelurahan -->
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
-              <h3 class="card-title">Penerangan di jalan utama desa/kelurahan</h3>
+              <h3 class="card-title">Penerangan di Jalan Utama Desa/Kelurahan</h3>
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#penerangan">
                 <i class="fas fa-info-circle"></i>
               </button>
@@ -230,11 +230,11 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_penerangan_jalan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
-                    <label class="mb-2">Penerangan Di Jalan Desa/Kelurahan Yang Menggunakan Lampu Tenaga Surya</label>
-                    <select required name="Lampu_Tenaga_Surya" id="penetapan_batas_desa" class="form-control">
+                    <label class="mb-2">Penerangan di Jalan Desa/Kelurahan yang Menggunakan Lampu Tenaga Surya</label>
+                    <select name="lampu_tenaga_surya" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
@@ -242,27 +242,24 @@ include "../../config/session.php";
                   </div>
 
                   <div class="form-group mb-3">
-                    <label class="mb-2">Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                    <select required name="penerangan_jalan_utama" id="penerangan_jalan_utama" class="form-control">
+                    <label class="mb-2">Penerangan di Jalan Utama Desa/Kelurahan</label>
+                    <select name="penerangan_jalan_utama" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada, Sebagian Besar">Ada, Sebagian Besar</option>
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                   </div>
-                </div>
-                <div class="row">
+
                   <div class="form-group mb-3">
-                    <label class="mb-2">Sumber Penerangan Di Jalan Utama Desa/Kelurahan</label>
-                    <select required name="sumber_penerangan" id="sumber_penerangan" class="form-control">
+                    <label class="mb-2">Sumber Penerangan di Jalan Utama Desa/Kelurahan</label>
+                    <select name="sumber_penerangan" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Listrik Diusahakan Oleh Pemerintah">Listrik Diusahakan Oleh Pemerintah</option>
-                      <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah
-                      </option>
+                      <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah</option>
                       <option value="Non Listrik">Non Listrik</option>
                     </select>
                   </div>
-
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -270,9 +267,7 @@ include "../../config/session.php";
                   </button>
                 </div>
               </form>
-              <!-- /.row -->
             </div>
-
             <!-- Modal Info -->
             <div class="modal fade" id="penerangan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -283,27 +278,19 @@ include "../../config/session.php";
                   </div>
                   <div class="modal-body">
                     <ul>
-                      <li>Isikan kondisi penerangan di jalan desa/kelurahan yang menggunakan lampu tenaga surya pada
-                        kolom pertama.</li>
-                      <li>Isikan kondisi penerangan di jalan utama desa/kelurahan pada kolom kedua, dengan pilihan:
-                        <ul>
-                          <li><strong>Ada, Sebagian Besar</strong> jika penerangan sudah cukup di sebagian besar jalan
-                            utama.</li>
-                          <li><strong>Ada, Sebagian Kecil</strong> jika hanya sebagian kecil jalan utama yang sudah
-                            diterangi.</li>
-                          <li><strong>Tidak Ada</strong> jika tidak ada penerangan di jalan utama sama sekali.</li>
-                        </ul>
-                      </li>
-                      <li>Isikan sumber penerangan pada kolom ketiga, dengan pilihan:
-                        <ul>
-                          <li><strong>Listrik Diusahakan Oleh Pemerintah</strong> jika penerangan menggunakan listrik
-                            yang disediakan oleh pemerintah.</li>
-                          <li><strong>Listrik Diusahakan Oleh Non Pemerintah</strong> jika penerangan menggunakan
-                            listrik yang disediakan oleh pihak swasta atau lainnya.</li>
-                          <li><strong>Non Listrik</strong> jika penerangan menggunakan sumber selain listrik.</li>
-                        </ul>
-                      </li>
-                      <li>Pastikan untuk memilih opsi yang paling sesuai dengan kondisi di desa/kelurahan Anda.</li>
+                      <li>Isi kondisi penerangan di jalan desa/kelurahan yang menggunakan lampu tenaga surya pada kolom pertama.</li>
+                      <li>Isi kondisi penerangan di jalan utama desa/kelurahan pada kolom kedua, dengan pilihan:</li>
+                      <ul>
+                        <li><strong>Ada, Sebagian Besar</strong> jika penerangan sudah cukup di sebagian besar jalan utama.</li>
+                        <li><strong>Ada, Sebagian Kecil</strong> jika hanya sebagian kecil jalan utama yang sudah diterangi.</li>
+                        <li><strong>Tidak Ada</strong> jika tidak ada penerangan di jalan utama sama sekali.</li>
+                      </ul>
+                      <li>Isi sumber penerangan pada kolom ketiga, dengan pilihan:</li>
+                      <ul>
+                        <li><strong>Listrik Diusahakan Oleh Pemerintah</strong> jika penerangan menggunakan listrik yang disediakan oleh pemerintah.</li>
+                        <li><strong>Listrik Diusahakan Oleh Non Pemerintah</strong> jika penerangan menggunakan listrik yang disediakan oleh pihak swasta atau lainnya.</li>
+                        <li><strong>Non Listrik</strong> jika penerangan menggunakan sumber selain listrik.</li>
+                      </ul>
                     </ul>
                   </div>
                   <div class="modal-footer">
@@ -313,6 +300,7 @@ include "../../config/session.php";
               </div>
             </div>
           </div>
+
 
           <!-- END::Penerangan di jalan utama desa/kelurahan -->
 
