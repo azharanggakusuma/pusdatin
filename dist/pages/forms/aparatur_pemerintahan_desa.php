@@ -479,7 +479,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_badan_permusyawaratan_desa.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Badan Permusyawaratan Desa/Lembaga Musyawarah Kelurahan</label>
