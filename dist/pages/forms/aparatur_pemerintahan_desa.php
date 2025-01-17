@@ -239,7 +239,7 @@ include "../../config/session.php";
 
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="" method="post">
+              <form action="../../handlers/form_perangkat_desa.php" method="post">
                 <div class="row">
                   <div class="col-12 mb-3">
                     <table class="table">
