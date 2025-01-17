@@ -807,44 +807,16 @@ include "../../config/session.php";
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Pusat Kesehatan Masyarakat (PUSKESMAS)</h3>
-
-              <!-- BEGIN:: INFO BUTTON -->
               <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#infoModalPuskesmas">
                 <i class="fas fa-info-circle"></i>
               </button>
-              <!-- Modal Info -->
-              <div class="modal fade" id="infoModalPuskesmas" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="infoModalLabel">Panduan Pengisian Data PUSKESMAS</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <ul>
-                        <li>Isi Nama PUSKESMAS dengan lengkap sesuai nama resmi.</li>
-                        <li>Isi Alamat PUSKESMAS secara lengkap dan jelas.</li>
-                        <li>Isi Nama Kecamatan tempat PUSKESMAS berada.</li>
-                        <li>Pengisian Titik Koordinat Lintang menggunakan format derajat desimal, contoh: <strong>-6.8796 LS</strong>.</li>
-                        <li>Pengisian Titik Koordinat Bujur menggunakan format derajat desimal, contoh: <strong>108.5538 BT</strong>.</li>
-                        <li>Pastikan data yang diinputkan benar dan valid.</li>
-                      </ul>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- END:: INFO BUTTON -->
-
               <div class="card-tools">
-                <button type="button" class="btn btn-tool addButton2">
+                <button type="button" class="btn btn-tool toggle-form">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
                   $(document).ready(function() {
-                    $(".addButton2").on("click", function() {
+                    $(".toggle-form").on("click", function() {
                       var $icon = $(this).find("i");
                       var $cardBody = $(this).closest(".card").find(".card-body");
                       $cardBody.slideToggle();
@@ -854,81 +826,146 @@ include "../../config/session.php";
                 </script>
               </div>
             </div>
-            <!-- /.card-header -->
+
             <div class="card-body">
-              <div class="form-group mb-3">
-                <label class="mb-2">Jumlah PUSKESMAS</label>
-                <input type="number" id="jumlahPuskesmas" class="form-control" placeholder="Masukkan jumlah PUSKESMAS" min="0" step="1" required>
-              </div>
+              <form action="../../handlers/form_puskesmas.php" method="post">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Jumlah PUSKESMAS</label>
+                  <input
+                    type="number"
+                    id="jumlahPuskesmas"
+                    name="jumlah_puskesmas"
+                    class="form-control"
+                    placeholder="Masukkan jumlah PUSKESMAS"
+                    min="0"
+                    max="50"
+                    step="1"
+                    required />
+                </div>
 
-              <!-- Container untuk Form Dinamis -->
-              <div id="dynamicFormsPuskesmas" class="mt-4"></div>
+                <!-- Container untuk Form Dinamis -->
+                <div id="dynamicFormsPuskesmas" class="mt-4"></div>
 
-              <div class="mb-2">
-                <button type="submit" class="btn btn-primary mt-3">
-                  <i class="fas fa-save"></i> &nbsp; Simpan
-                </button>
-              </div>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
             </div>
 
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const jumlahPuskesmasInput = document.getElementById('jumlahPuskesmas');
-                const formContainer = document.getElementById('dynamicFormsPuskesmas');
+                const jumlahPuskesmasInput = document.getElementById("jumlahPuskesmas");
+                const formContainer = document.getElementById("dynamicFormsPuskesmas");
 
-                jumlahPuskesmasInput.addEventListener('input', function() {
+                jumlahPuskesmasInput.addEventListener("input", function() {
                   const jumlah = parseInt(this.value);
-                  formContainer.innerHTML = '';
+                  formContainer.innerHTML = "";
 
                   if (!isNaN(jumlah) && jumlah > 0) {
                     if (jumlah > 50) {
                       alert("Maksimal jumlah form yang dapat dibuat adalah 50.");
-                      jumlahPuskesmasInput.value = 50; // Set nilai input menjadi 50 jika lebih
+                      jumlahPuskesmasInput.value = 50;
                     }
 
-                    const maxJumlah = Math.min(jumlah, 50); // Batas maksimal adalah 50
+                    const maxJumlah = Math.min(jumlah, 50);
                     for (let i = 1; i <= maxJumlah; i++) {
                       const formTemplate = `
               <div class="border p-3 mb-3">
                 <div class="card-header mb-3">
-                  <h2 class="card-title mb-3">PUSKESMAS Ke-${i}</h2>
+                  <h4 class="card-title">PUSKESMAS Ke-${i}</h4>
                 </div>
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama PUSKESMAS</label>
-                    <input id="nama_puskesmas_ke${i}" type="text" class="form-control" placeholder="Masukkan Nama PUSKESMAS">
+                    <input
+                      name="nama_puskesmas_${i}"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan Nama PUSKESMAS"
+                      required
+                    />
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Alamat PUSKESMAS</label>
-                    <textarea id="alamat_puskesmas_ke${i}" class="form-control" rows="3" placeholder="Isi Alamat PUSKESMAS"></textarea>
+                    <textarea
+                      name="alamat_puskesmas_${i}"
+                      class="form-control"
+                      rows="3"
+                      placeholder="Isi Alamat PUSKESMAS"
+                      required
+                    ></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Kecamatan</label>
-                    <input id="nama_kecamatan_ke${i}" type="text" class="form-control" placeholder="Masukkan Nama Kecamatan">
+                    <input
+                      name="nama_kecamatan_puskesmas_${i}"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan Nama Kecamatan"
+                      required
+                    />
                   </div>
                   <div class="titik_koordinat">
-                    <label for="titik_koordinat_ke${i}">Titik Koordinat</label>
+                    <label>Titik Koordinat</label>
                     <div class="row">
                       <div class="col-md-6">
-                        <label for="koordinat_lintang_ke${i}">Koordinat Lintang</label>
-                        <input id="koordinat_lintang_ke${i}" type="text" class="form-control" placeholder="-6.8796 LS">
+                        <label>Koordinat Lintang</label>
+                        <input
+                          name="koordinat_lintang_${i}"
+                          type="text"
+                          class="form-control"
+                          placeholder="-6.8796 LS"
+                          required
+                        />
                       </div>
                       <div class="col-md-6">
-                        <label for="koordinat_bujur_ke${i}">Koordinat Bujur</label>
-                        <input id="koordinat_bujur_ke${i}" type="text" class="form-control" placeholder="108.5538 BT">
+                        <label>Koordinat Bujur</label>
+                        <input
+                          name="koordinat_bujur_${i}"
+                          type="text"
+                          class="form-control"
+                          placeholder="108.5538 BT"
+                          required
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             `;
-                      formContainer.insertAdjacentHTML('beforeend', formTemplate);
+                      formContainer.insertAdjacentHTML("beforeend", formTemplate);
                     }
                   }
                 });
               });
             </script>
+
+            <!-- Modal Info -->
+            <div class="modal fade" id="infoModalPuskesmas" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Panduan Pengisian Data PUSKESMAS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul>
+                      <li>Isi Nama PUSKESMAS dengan nama resmi yang terdaftar.</li>
+                      <li>Isi Alamat PUSKESMAS dengan lengkap.</li>
+                      <li>Isi Nama Kecamatan tempat PUSKESMAS berada.</li>
+                      <li>Masukkan koordinat dalam format derajat desimal.</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
