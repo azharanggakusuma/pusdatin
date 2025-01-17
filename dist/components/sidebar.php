@@ -30,25 +30,27 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-pencil-square"></i>
-                        <p>
-                            Formulir
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <?php while ($menu = $menu_result->fetch_assoc()) : ?>
-                            <li class="nav-item">
-                                <a href="<?php echo $base_path . $menu['url']; ?>" class="nav-link <?php echo $current_page == basename($menu['url']) ? 'active' : ''; ?>">
-                                    <i class="nav-icon bi bi-circle"></i>
-                                    <p><?php echo $menu['name']; ?></p>
-                                </a>
-                            </li>
-                        <?php endwhile; ?>
-                    </ul>
-                </li>
+                <?php if ($level == 'user') { ?>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-pencil-square"></i>
+                            <p>
+                                Formulir
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php while ($menu = $menu_result->fetch_assoc()) : ?>
+                                <li class="nav-item">
+                                    <a href="<?php echo $base_path . $menu['url']; ?>" class="nav-link <?php echo $current_page == basename($menu['url']) ? 'active' : ''; ?>">
+                                        <i class="nav-icon bi bi-circle"></i>
+                                        <p><?php echo $menu['name']; ?></p>
+                                    </a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+                <?php } ?>
 
                 <?php if ($level == 'admin') { ?>
                     <li class="nav-item">
