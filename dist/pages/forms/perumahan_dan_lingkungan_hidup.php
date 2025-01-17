@@ -1158,7 +1158,7 @@ include "../../config/session.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="../../handlers/form_keberadaan_lokasi_penggalian_golongan_c.php" method="post">
+              <form action="../../handlers/form_prasarana_kebersihan.php" method="post">
                 <div class="row">
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Sarana Prasarana Kebersihan</label>
