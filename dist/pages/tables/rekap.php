@@ -242,6 +242,7 @@ if ($type === 'pdf') {
                                         <th>Nama Desa</th>
                                         <th>Kecamatan</th>
                                         <th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
+                                        <th>Alamat Balai Desa/Kantor Kelurahan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -257,7 +258,8 @@ if ($type === 'pdf') {
                                             tb_enumerator.kode_desa,
                                             tb_enumerator.nama_desa,
                                             tb_enumerator.kecamatan,
-                                            tb_sk_pembentukan.sk_pembentukan
+                                            tb_sk_pembentukan.sk_pembentukan,
+                                            tb_balai_desa.alamat_balai
                                         FROM
                                             (
                                                 SELECT 
@@ -279,6 +281,11 @@ if ($type === 'pdf') {
                                         ON
                                             filtered_progress.desa_id = tb_sk_pembentukan.desa_id
                                             AND filtered_progress.tahun = tb_sk_pembentukan.tahun
+                                        LEFT JOIN
+                                            tb_balai_desa
+                                        ON
+                                            filtered_progress.desa_id = tb_balai_desa.desa_id
+                                            AND filtered_progress.tahun = tb_balai_desa.tahun
                                     ";
 
                                     // Tambahkan filter jika tahun dipilih
@@ -299,6 +306,7 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['nama_desa']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['kecamatan']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['sk_pembentukan']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_balai']) . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
