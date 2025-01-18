@@ -16,14 +16,14 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-// Ambil parameter jenis ekspor dan kode desa
+// Ambil parameter jenis ekspor, kode desa, dan filter tahun
 $type = $_GET['type'] ?? null;
 $kode_desa = $_GET['kode_desa'] ?? null;
 $filter_tahun = $_GET['filter_tahun'] ?? null;
 
 // Query untuk mengambil data desa
 $query = "
-    SELECT DISTINCT
+    SELECT 
         tb_enumerator.kode_desa,
         tb_enumerator.nama_desa,
         tb_enumerator.kecamatan,
@@ -34,6 +34,11 @@ $query = "
         tb_sk_pembentukan
     ON
         tb_enumerator.id_desa = tb_sk_pembentukan.desa_id
+    LEFT JOIN
+        user_progress
+    ON
+        tb_enumerator.id_desa = user_progress.desa_id
+        AND tb_sk_pembentukan.tahun = user_progress.tahun
 ";
 
 // Tambahkan filter jika desa dan/atau tahun dipilih
@@ -42,18 +47,15 @@ if ($kode_desa) {
     $where[] = "tb_enumerator.kode_desa = '$kode_desa'";
 }
 if ($filter_tahun) {
-    $where[] = "YEAR(user_progress.created_at) = '$filter_tahun'";
+    $where[] = "tb_sk_pembentukan.tahun = '$filter_tahun'";
 }
 
 if ($where) {
-    $query .= " LEFT JOIN user_progress ON tb_enumerator.id_desa = user_progress.desa_id WHERE " . implode(' AND ', $where);
+    $query .= " WHERE " . implode(' AND ', $where);
 }
 
-// Modify the query to include the GROUP BY clause
-$query .= " GROUP BY tb_enumerator.kode_desa, tb_enumerator.nama_desa, tb_enumerator.kecamatan, tb_sk_pembentukan.sk_pembentukan";
-
 // Eksekusi query
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
 
 // Fungsi untuk ekspor Excel
 if ($type === 'excel') {
@@ -78,24 +80,22 @@ if ($type === 'excel') {
     // Data dari database
     $rowNumber = 2;
     while ($row = mysqli_fetch_assoc($result)) {
-        // Insert data into respective columns (A to C)
         $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
         $sheet->setCellValue('C' . $rowNumber, $row['kecamatan']);
         $sheet->setCellValue('D' . $rowNumber, $row['sk_pembentukan']);
-
         $rowNumber++;
     }
 
-    // Style untuk semua tabel (columns A to C)
+    // Style untuk semua tabel
     $tableStyle = [
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
     ];
-    $sheet->getStyle('A1:C' . ($rowNumber - 1))->applyFromArray($tableStyle);
+    $sheet->getStyle('A1:D' . ($rowNumber - 1))->applyFromArray($tableStyle);
 
-    // Auto-size columns (ensure the text in column C is visible)
-    foreach (range('A', 'C') as $column) {
+    // Auto-size columns
+    foreach (range('A', 'D') as $column) {
         $sheet->getColumnDimension($column)->setAutoSize(true);
     }
 
@@ -114,15 +114,13 @@ if ($type === 'excel') {
 
 // Fungsi untuk ekspor PDF
 if ($type === 'pdf') {
-    $mpdf = new Mpdf([
-        'format' => 'A4-L', // Set ukuran kertas A4 dengan orientasi landscape
-    ]);
+    $mpdf = new Mpdf(['format' => 'A4-L']); // Set ukuran kertas A4 dengan orientasi landscape
 
     $html = '<h1 style="text-align: center;">Rekap Data</h1>';
     $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
     $html .= '<th>Kode Desa</th>';
-    $html .= '<th>Desa/Kelurahan</th>';
+    $html .= '<th>Nama Desa</th>';
     $html .= '<th>Kecamatan</th>';
     $html .= '<th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>';
     $html .= '</tr></thead><tbody>';
