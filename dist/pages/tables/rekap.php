@@ -233,9 +233,9 @@ if ($type === 'pdf') {
                             </div>
                         </div>
                         <div class="card-body p-0" style="overflow-x: auto;">
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="table-layout: auto; width: 100%;">
                                 <thead>
-                                    <tr>
+                                    <tr style="white-space: nowrap;">
                                         <th>#</th>
                                         <th>Periode Tahun</th>
                                         <th>Kode Desa</th>
@@ -310,7 +310,7 @@ if ($type === 'pdf') {
                                             echo "</tr>";
                                         }
                                     } else {
-                                        echo "<tr><td colspan='6' class='text-center'>Tidak ada data.</td></tr>";
+                                        echo "<tr><td colspan='7' class='text-center'>Tidak ada data.</td></tr>";
                                     }
                                     ?>
                                 </tbody>
