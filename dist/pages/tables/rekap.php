@@ -301,12 +301,12 @@ if ($type === 'pdf') {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
                                             echo "<td>" . $no++ . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tahun']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['kode_desa']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['nama_desa']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['kecamatan']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['sk_pembentukan']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['alamat_balai']) . "</td>";
+                                            echo "<td>" . (!empty($row['tahun']) ? htmlspecialchars($row['tahun']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
+                                            echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
+                                            echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
+                                            echo "<td>" . (!empty($row['kecamatan']) ? htmlspecialchars($row['kecamatan']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
+                                            echo "<td>" . (!empty($row['sk_pembentukan']) ? htmlspecialchars($row['sk_pembentukan']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
+                                            echo "<td>" . (!empty($row['alamat_balai']) ? htmlspecialchars($row['alamat_balai']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
