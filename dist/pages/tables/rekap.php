@@ -64,11 +64,11 @@ if ($type === 'excel') {
     $sheet = $spreadsheet->getActiveSheet();
 
     // Header tabel
-    $sheet->setCellValue('A1', 'Kode Desa');
-    $sheet->setCellValue('B1', 'Nama Desa');
-    $sheet->setCellValue('C1', 'Kecamatan');
-    $sheet->setCellValue('D1', 'Sk Pembentukan');
-    $sheet->setCellValue('E1', 'Tahun');
+    $sheet->setCellValue('A1', 'Periode Tahun');
+    $sheet->setCellValue('B1', 'Kode Desa');
+    $sheet->setCellValue('C1', 'Nama Desa');
+    $sheet->setCellValue('D1', 'Kecamatan');
+    $sheet->setCellValue('E1', 'Sk Pembentukan');
 
     // Style untuk header
     $headerStyle = [
@@ -82,11 +82,11 @@ if ($type === 'excel') {
     // Data dari database
     $rowNumber = 2;
     while ($row = mysqli_fetch_assoc($result)) {
-        $sheet->setCellValue('A' . $rowNumber, $row['kode_desa']);
-        $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
-        $sheet->setCellValue('C' . $rowNumber, $row['kecamatan']);
-        $sheet->setCellValue('D' . $rowNumber, $row['sk_pembentukan']);
-        $sheet->setCellValue('E' . $rowNumber, $row['tahun']);
+        $sheet->setCellValue('A' . $rowNumber, $row['tahun']);
+        $sheet->setCellValue('B' . $rowNumber, $row['kode_desa']);
+        $sheet->setCellValue('C' . $rowNumber, $row['nama_desa']);
+        $sheet->setCellValue('D' . $rowNumber, $row['kecamatan']);
+        $sheet->setCellValue('E' . $rowNumber, $row['sk_pembentukan']);
         $rowNumber++;
     }
 
