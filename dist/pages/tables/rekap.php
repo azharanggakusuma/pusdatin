@@ -151,11 +151,20 @@ if ($type === 'pdf') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE 4 | General Form Elements">
     <meta name="author" content="ColorlibHQ">
-    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
-    <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
+    <meta name="description"
+        content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
+    <meta name="keywords"
+        content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard">
+    <!--end::Primary Meta Tags--><!--begin::Fonts-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
+        integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+    <!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
+        integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
+    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
+        integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
+    <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="../../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
 
     <!-- Font Awesome -->
@@ -221,13 +230,16 @@ if ($type === 'pdf') {
                             <h3 class="card-title">Manage Report</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#filterModal">
+                                <button type="button" class="btn btn-tool" data-toggle="modal"
+                                    data-target="#filterModal">
                                     <i class="fas fa-filter"></i>&nbsp; Filter
                                 </button>
-                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#exportModal">
+                                <button type="button" class="btn btn-tool" data-toggle="modal"
+                                    data-target="#exportModal">
                                     <i class="fas fa-download"></i>&nbsp; Export
                                 </button>
-                                <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#previewModal">
+                                <button type="button" class="btn btn-tool" data-toggle="modal"
+                                    data-target="#previewModal">
                                     <i class="fas fa-table"></i> &nbsp; Preview
                                 </button>
                             </div>
@@ -241,8 +253,8 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Kode Desa</th>
                                         <th rowspan="2">Nama Desa</th>
                                         <th rowspan="2">Kecamatan</th>
-                                        <th rowspan="2">SK Pembentukan</th>
-                                        <th rowspan="2">Alamat Balai Desa</th>
+                                        <th rowspan="2">Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
+                                        <th rowspan="2">Alamat Balai Desa/Kantor Kelurahan</th>
                                         <th colspan="2">Batas Utara</th>
                                         <th colspan="2">Batas Selatan</th>
                                         <th colspan="2">Batas Timur</th>
@@ -250,66 +262,78 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Jarak ke Ibu Kota Kecamatan (km)</th>
                                         <th rowspan="2">Jarak ke Ibu Kota Kabupaten (km)</th>
                                         <th rowspan="2">Status Desa Membangun</th>
-                                        <th rowspan="2">Website</th>
-                                        <th rowspan="2">Email</th>
-                                        <th rowspan="2">Facebook</th>
-                                        <th rowspan="2">Twitter</th>
-                                        <th rowspan="2">YouTube</th>
+                                        <th rowspan="2">Alamat Website Desa</th>
+                                        <th rowspan="2">Alamat Email Desa</th>
+                                        <th rowspan="2">Alamat Facebook Desa</th>
+                                        <th rowspan="2">Alamat Twitter Desa</th>
+                                        <th rowspan="2">Alamat YouTube Desa</th>
                                         <th rowspan="2">Status Pemerintahan</th>
                                         <th rowspan="2">Penetapan Batas Desa</th>
-                                        <th rowspan="2">No Surat Batas Desa</th>
+                                        <th rowspan="2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</th>
                                         <th rowspan="2">Ketersediaan Peta Desa</th>
-                                        <th rowspan="2">No Surat Peta Desa</th>
-                                        <th rowspan="2">Jumlah Dusun</th>
-                                        <th rowspan="2">Jumlah RW</th>
-                                        <th rowspan="2">Jumlah RT</th>
-                                        <th rowspan="2">Luas Wilayah Desa (ha)</th>
+                                        <th rowspan="2">No SK/Perbup/Perda tentang Peta Desa</th>
+                                        <th rowspan="2">Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis</th>
+                                        <th rowspan="2">Banyaknya RW</th>
+                                        <th rowspan="2">Banyaknya RT</th>
+                                        <th rowspan="2">Luas Wilayah Desa</th>
                                         <th rowspan="2">Topografi Terluas Wilayah Desa</th>
-                                        <th rowspan="2">Keberadaan Kantor</th>
-                                        <th rowspan="2">Status Kantor</th>
-                                        <th rowspan="2">Kondisi Kantor</th>
-                                        <th rowspan="2">Lokasi Kantor</th>
-                                        <th rowspan="2">Koordinat Lintang</th>
-                                        <th rowspan="2">Koordinat Bujur</th>
-                                        <th rowspan="2">Jumlah Surat Kematian</th>
-                                        <th rowspan="2">Jumlah Penduduk Laki</th>
+                                        <th rowspan="2">Keberadaan kantor kepala desa/lurah</th>
+                                        <th rowspan="2">Status Kantor Kepala Desa/Lurah</th>
+                                        <th rowspan="2">Kondisi Kantor Kepala Desa/Balai Desa</th>
+                                        <th rowspan="2">Lokasi Kantor Kepala Desa/Lurah</th>
+                                        <th rowspan="2">Koordinat Lintang (Latitude)</th>
+                                        <th rowspan="2">Koordinat Bujur (Longitude)</th>
+                                        <th rowspan="2">Jumlah Surat Kematian Yang Dikeluarkan</th>
+                                        <th rowspan="2">Jumlah Penduduk Laki-Laki</th>
                                         <th rowspan="2">Jumlah Penduduk Perempuan</th>
                                         <th rowspan="2">Jumlah Kepala Keluarga</th>
-                                        <th rowspan="2">PMI Bekerja</th>
-                                        <th rowspan="2">Agen Pengerahan PMI</th>
-                                        <th rowspan="2">Layanan Rekomendasi PMI</th>
-                                        <th rowspan="2">Keberadaan WNA</th>
-                                        <th rowspan="2">Jumlah PLN</th>
-                                        <th rowspan="2">Jumlah Non-PLN</th>
-                                        <th rowspan="2">Jumlah Bukan Pengguna Listrik</th>
-                                        <th rowspan="2">Penggunaan Lampu Tenaga Surya</th>
-                                        <th rowspan="2">Lampu Tenaga Surya</th>
-                                        <th rowspan="2">Penerangan Jalan Utama</th>
-                                        <th rowspan="2">Sumber Penerangan</th>
-                                        <th rowspan="2">TPS</th>
-                                        <th rowspan="2">TPS3R</th>
-                                        <th rowspan="2">Bank Sampah</th>
-                                        <th rowspan="2">Status SUTET</th>
-                                        <th rowspan="2">Keberadaan Pemukiman (SUTET)</th>
-                                        <th rowspan="2">Jumlah Pemukiman (SUTET)</th>
-                                        <th rowspan="2">Keberadaan Sungai</th>
-                                        <th rowspan="2">Nama Sungai 1</th>
-                                        <th rowspan="2">Nama Sungai 2</th>
-                                        <th rowspan="2">Nama Sungai 3</th>
-                                        <th rowspan="2">Nama Sungai 4</th>
-                                        <th rowspan="2">Keberadaan Danau</th>
-                                        <th rowspan="2">Nama Danau 1</th>
-                                        <th rowspan="2">Nama Danau 2</th>
-                                        <th rowspan="2">Nama Danau 3</th>
-                                        <th rowspan="2">Nama Danau 4</th>
-                                        <th rowspan="2">Keberadaan Pemukiman Bantaran</th>
-                                        <th rowspan="2">Jumlah Pemukiman Bantaran</th>
+                                        <th rowspan="2">Keberadaan Warga Desa/Kelurahan yang Sedang Bekerja sebagai PMI
+                                            (Pekerja Migran Indonesia)/TKI di Luar Negeri</th>
+                                        <th rowspan="2">Keberadaan Agen (Seseorang/Sekelompok Orang/Perusahaan)
+                                            Pengerahan Pekerja Migran Indonesia/TKI ke Luar Negeri di Desa/Kelurahan
+                                        </th>
+                                        <th rowspan="2">Layanan Rekomendasi/Surat Keterangan Bagi Warga Desa/Kelurahan
+                                            yang Akan Bekerja Sebagai Pekerja Migran Indonesia/TKI di Luar Negeri</th>
+                                        <th rowspan="2">Keberadaan Warga Negara Asing (WNA) di Desa/Kelurahan</th>
+                                        <th rowspan="2">Jumlah Keluarga Pengguna Listrik PLN (Perusahaan Listrik Negara)
+                                        </th>
+                                        <th rowspan="2">Jumlah Keluarga Pengguna Listrik Non-PLN</th>
+                                        <th rowspan="2">Jumlah Keluraga Bukan Pengguna Listrik
+                                        </th>
+                                        <th rowspan="2">Keluarga yang Menggunakan Lampu Tenaga Surya
+                                        </th>
+                                        <th rowspan="2">Penerangan di Jalan Desa/Kelurahan yang Menggunakan Lampu Tenaga
+                                            Surya</th>
+                                        <th rowspan="2">Penerangan di Jalan Utama Desa/Kelurahan</th>
+                                        <th rowspan="2">Sumber Penerangan di Jalan Utama Desa/Kelurahan</th>
+                                        <th rowspan="2">Keberadaan Tempat Pembuangan Sampah Sementara (TPS)</th>
+                                        <th rowspan="2">Tempat Penampungan Sementara Reduce, Reuse, Recycle (TPS3R)</th>
+                                        <th rowspan="2">Keberadaan Bank Sampah di Desa/Kelurahan</th>
+                                        <th rowspan="2">Wilayah desa/kelurahan dilalui saluran udara tegangan ekstra
+                                            tinggi (SUTET) / Saluran Udara Tegangan Tinggi (SUUT) / Saluran Udara
+                                            Tegangan Tinggi Arus Searah (SUTTAS)</th>
+                                        <th rowspan="2">Keberadaan Pemukiman Di Bawah SUTET/SUTT/SUTTAS</th>
+                                        <th rowspan="2">Jumlah Pemukiman di Bawah SUTET/SUTT/SUTTAS</th>
+                                        <th rowspan="2">Keberadaan Sungai Yang Melintasi</th>
+                                        <th rowspan="2">Nama Sungai Yang Melintasi ke 1</th>
+                                        <th rowspan="2">Nama Sungai Yang Melintasi ke 2</th>
+                                        <th rowspan="2">Nama Sungai Yang Melintasi ke 3</th>
+                                        <th rowspan="2">Nama Sungai Yang Melintasi ke 4</th>
+                                        <th rowspan="2">Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa</th>
+                                        <th rowspan="2">Nama danau/waduk/situ yang berada di wilayah desa ke 1</th>
+                                        <th rowspan="2">Nama danau/waduk/situ yang berada di wilayah desa ke 2</th>
+                                        <th rowspan="2">Nama danau/waduk/situ yang berada di wilayah desa ke 3</th>
+                                        <th rowspan="2">Nama danau/waduk/situ yang berada di wilayah desa ke 4</th>
+                                        <th rowspan="2">Keberadaan Pemukiman Di Bantaran Sungai</th>
+                                        <th rowspan="2">Jumlah Pemukiman Di Bantaran Sungai</th>
                                         <th rowspan="2">Jumlah Embung</th>
                                         <th rowspan="2">Lokasi Mata Air</th>
-                                        <th rowspan="2">Keberadaan Kumuh</th>
-                                        <th rowspan="2">Jumlah Kumuh</th>
-                                        <th rowspan="2">Keberadaan Galian</th>
-                                        <th rowspan="2">Jumlah Prasarana</th>
+                                        <th rowspan="2">Keberadaan Permukiman Kumuh (Sanitasi Lingkungan Buruk, Bangunan
+                                            Padat Dan Sebagian Besar Tidak Layak Huni)Di Desa/Kelurahan</th>
+                                        <th rowspan="2">Jumlah Pemukiman Kumuh</th>
+                                        <th rowspan="2">Keberadaan Lokasi Penggalian Golongan C (Misalnya: Batu Kali,
+                                            Pasir, Kapur, Kaolin, Pasir Kuarsa, Tanah Liat, Dll.)</th>
+                                        <th rowspan="2">Jumlah Sarana Prasarana Kebersihan</th>
                                         <th rowspan="2">Jumlah Rumah Tidak Layak Huni</th>
                                         <th rowspan="2">Tanah Longsor</th>
                                         <th rowspan="2">Banjir</th>
@@ -322,11 +346,25 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Kebakaran Hutan</th>
                                         <th rowspan="2">Kekeringan</th>
                                         <th rowspan="2">Abrasi</th>
-                                        <th rowspan="2">Peringatan Dini</th>
-                                        <th rowspan="2">Peringatan Tsunami</th>
-                                        <th rowspan="2">Perlengkapan Keselamatan</th>
-                                        <th rowspan="2">Rambu Evakuasi</th>
-                                        <th rowspan="2">Infrastruktur</th>
+                                        <th rowspan="2">Sistem Peringatan Dini Bencana Alam</th>
+                                        <th rowspan="2">Sistem Peringatan Dini Khusus Tsunami</th>
+                                        <th rowspan="2">Perlengkapan Keselamatan (Perahu Karet, Tenda, Masker, dll)</th>
+                                        <th rowspan="2">Rambu-Rambu dan Jalur Evakuasi Bencana</th>
+                                        <th rowspan="2">Pembuatan, Perawatan, atau Normalisasi (Sungai, Kanal, Tanggul,
+                                            Parit, Drainase, Waduk, Pantai, dll.)</th>
+                                        <th rowspan="2">Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa</th>
+                                        <th rowspan="2">Keberadaan Bidan Desa yang menetap di Desa/Kelurahan</th>
+                                        <th rowspan="2">Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan</th>
+                                        <th rowspan="2">Muntaber/diare</th>
+                                        <th rowspan="2">Demam Berdarah</th>
+                                        <th rowspan="2">Campak</th>
+                                        <th rowspan="2">Malaria</th>
+                                        <th rowspan="2">Flu Burung/SARS</th>
+                                        <th rowspan="2">Hepatitis E</th>
+                                        <th rowspan="2">Difteri</th>
+                                        <th rowspan="2">Corona/COVID-19	</th>
+                                        <th rowspan="2">Lainnya</th>
+                                        <th rowspan="2">Lainnya (Status)</th>
                                     </tr>
                                     <tr style="white-space: nowrap;">
                                         <th>Wilayah</th>
@@ -708,13 +746,15 @@ if ($type === 'pdf') {
                 </div> <!--end::Container-->
 
                 <!-- Modal Filter Tahun -->
-                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form method="GET">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="filterModalLabel">Filter Berdasarkan Tahun</h5>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                                        style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
                                         &times;
                                     </button>
                                 </div>
@@ -738,7 +778,8 @@ if ($type === 'pdf') {
                                 </div>
                                 <div class="modal-footer">
                                     <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>-->
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> &nbsp; Simpan</button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> &nbsp;
+                                        Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -746,13 +787,15 @@ if ($type === 'pdf') {
                 </div>
 
                 <!-- Modal Export -->
-                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form method="GET">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                                        style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
                                         &times;
                                     </button>
                                 </div>
@@ -782,9 +825,11 @@ if ($type === 'pdf') {
 
                                 <div class="modal-footer">
                                     <!-- Untuk Ekspor Excel -->
-                                    <button type="submit" name="type" value="excel" class="btn btn-success"><i class="fas fa-file-excel"></i> &nbsp; Export Excel</button>
+                                    <button type="submit" name="type" value="excel" class="btn btn-success"><i
+                                            class="fas fa-file-excel"></i> &nbsp; Export Excel</button>
                                     <!-- Untuk Ekspor PDF -->
-                                    <button type="submit" name="type" value="pdf" class="btn btn-danger"><i class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
+                                    <button type="submit" name="type" value="pdf" class="btn btn-danger"><i
+                                            class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
                                 </div>
                             </form>
                         </div>
@@ -836,12 +881,15 @@ if ($type === 'pdf') {
                 ?>
 
                 <!-- Modal Preview -->
-                <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" style="max-width: 100vw; height: 100vh; margin: 0;">
+                <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen"
+                        style="max-width: 100vw; height: 100vh; margin: 0;">
                         <div class="modal-content" style="height: 100%; width: 100%;">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="previewModalLabel">Preview Data</h5>
-                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body" style="height: calc(100vh - 120px); overflow-y: auto;">
                                 <?php if ($data_found): ?>
@@ -851,16 +899,21 @@ if ($type === 'pdf') {
                                                 <th style="text-align: center; padding: 10px;">Kode Desa</th>
                                                 <th style="text-align: center; padding: 10px;">Nama Desa</th>
                                                 <th style="text-align: center; padding: 10px;">Kecamatan</th>
-                                                <th style="text-align: center; padding: 10px;">Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
+                                                <th style="text-align: center; padding: 10px;">Sk Pembentukan/Pengesahan
+                                                    Desa/Kelurahan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                                            <?php while ($row = mysqli_fetch_assoc($result)): ?>
                                                 <tr>
-                                                    <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['kode_desa']); ?></td>
-                                                    <td style="padding: 10px;"><?php echo htmlspecialchars($row['nama_desa']); ?></td>
-                                                    <td style="padding: 10px;"><?php echo htmlspecialchars($row['kecamatan']); ?></td>
-                                                    <td style="text-align: center; padding: 10px;"><?php echo htmlspecialchars($row['sk_pembentukan']); ?></td>
+                                                    <td style="text-align: center; padding: 10px;">
+                                                        <?php echo htmlspecialchars($row['kode_desa']); ?></td>
+                                                    <td style="padding: 10px;">
+                                                        <?php echo htmlspecialchars($row['nama_desa']); ?></td>
+                                                    <td style="padding: 10px;">
+                                                        <?php echo htmlspecialchars($row['kecamatan']); ?></td>
+                                                    <td style="text-align: center; padding: 10px;">
+                                                        <?php echo htmlspecialchars($row['sk_pembentukan']); ?></td>
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>
@@ -884,7 +937,8 @@ if ($type === 'pdf') {
 
     <!-- Tambahkan library Select2 dan tema Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css"
+        rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -910,12 +964,19 @@ if ($type === 'pdf') {
     <!-- dropzonejs -->
     <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
+        integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
+    <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+    <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+    <script src="../../../dist/js/adminlte.js"></script>
+    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
-        $(function() {
+        $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
 
@@ -931,7 +992,7 @@ if ($type === 'pdf') {
             scrollbarAutoHide: "leave",
             scrollbarClickScroll: true,
         };
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
             if (
                 sidebarWrapper &&
