@@ -368,7 +368,7 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Flu Burung/SARS</th>
                                         <th rowspan="2">Hepatitis E</th>
                                         <th rowspan="2">Difteri</th>
-                                        <th rowspan="2">Corona/COVID-19	</th>
+                                        <th rowspan="2">Corona/COVID-19 </th>
                                         <th rowspan="2">Lainnya</th>
                                         <th rowspan="2">Lainnya (Status)</th>
                                     </tr>
@@ -759,10 +759,7 @@ if ($type === 'pdf') {
                             <form method="GET">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="filterModalLabel">Filter Berdasarkan Tahun</h5>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
-                                        style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
-                                        &times;
-                                    </button>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <label for="filter_tahun">Pilih Tahun:</label>
@@ -794,81 +791,80 @@ if ($type === 'pdf') {
 
                 <!-- Modal Export -->
                 <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="GET" action="">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="GET" action="">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Filter Kecamatan -->
+                                    <label for="kode_kecamatan">Pilih Kecamatan:</label>
+                                    <select name="kode_kecamatan" id="kode_kecamatan" class="form-control mt-2 mb-3" onchange="loadDesa(this.value)">
+                                        <option value="">Semua Kecamatan</option>
+                                        <?php
+                                        $kecamatanResult = mysqli_query($conn, "SELECT DISTINCT kecamatan FROM tb_enumerator ORDER BY kecamatan ASC");
+                                        while ($kecamatan = mysqli_fetch_assoc($kecamatanResult)) {
+                                            echo "<option value='{$kecamatan['kecamatan']}'>{$kecamatan['kecamatan']}</option>";
+                                        }
+                                        ?>
+                                    </select>
+
+                                    <!-- Filter Desa -->
+                                    <label for="kode_desa">Pilih Desa:</label>
+                                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
+                                        <option value="">Semua Desa</option>
+                                        <!-- Desa akan dimuat dinamis berdasarkan pilihan kecamatan -->
+                                    </select>
+
+                                    <!-- Filter Tahun -->
+                                    <label for="filter_tahun">Pilih Tahun:</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                        <option value="">Semua Tahun</option>
+                                        <?php
+                                        $tahunResult = mysqli_query($conn, "SELECT DISTINCT tahun FROM tb_sk_pembentukan ORDER BY tahun DESC");
+                                        while ($tahun = mysqli_fetch_assoc($tahunResult)) {
+                                            echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!-- Tombol Ekspor Excel -->
+                                    <button type="submit" name="type" value="excel" class="btn btn-success">
+                                        <i class="fas fa-file-excel"></i> &nbsp; Export Excel
+                                    </button>
+                                    <!-- Tombol Ekspor PDF -->
+                                    <button type="submit" name="type" value="pdf" class="btn btn-danger">
+                                        <i class="fas fa-file-pdf"></i> &nbsp; Export PDF
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <!-- Filter Kecamatan -->
-                    <label for="kode_kecamatan">Pilih Kecamatan:</label>
-                    <select name="kode_kecamatan" id="kode_kecamatan" class="form-control mt-2 mb-3" onchange="loadDesa(this.value)">
-                        <option value="">Semua Kecamatan</option>
-                        <?php
-                        $kecamatanResult = mysqli_query($conn, "SELECT DISTINCT kecamatan FROM tb_enumerator ORDER BY kecamatan ASC");
-                        while ($kecamatan = mysqli_fetch_assoc($kecamatanResult)) {
-                            echo "<option value='{$kecamatan['kecamatan']}'>{$kecamatan['kecamatan']}</option>";
-                        }
-                        ?>
-                    </select>
 
-                    <!-- Filter Desa -->
-                    <label for="kode_desa">Pilih Desa:</label>
-                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
-                        <option value="">Semua Desa</option>
-                        <!-- Desa akan dimuat dinamis berdasarkan pilihan kecamatan -->
-                    </select>
+                <script>
+                    function loadDesa(kecamatan) {
+                        const desaSelect = document.getElementById('kode_desa');
+                        desaSelect.innerHTML = '<option value="">Memuat...</option>'; // Indikasi loading
 
-                    <!-- Filter Tahun -->
-                    <label for="filter_tahun">Pilih Tahun:</label>
-                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
-                        <option value="">Semua Tahun</option>
-                        <?php
-                        $tahunResult = mysqli_query($conn, "SELECT DISTINCT tahun FROM tb_sk_pembentukan ORDER BY tahun DESC");
-                        while ($tahun = mysqli_fetch_assoc($tahunResult)) {
-                            echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-
-                <div class="modal-footer">
-                    <!-- Tombol Ekspor Excel -->
-                    <button type="submit" name="type" value="excel" class="btn btn-success">
-                        <i class="fas fa-file-excel"></i> &nbsp; Export Excel
-                    </button>
-                    <!-- Tombol Ekspor PDF -->
-                    <button type="submit" name="type" value="pdf" class="btn btn-danger">
-                        <i class="fas fa-file-pdf"></i> &nbsp; Export PDF
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-function loadDesa(kecamatan) {
-    const desaSelect = document.getElementById('kode_desa');
-    desaSelect.innerHTML = '<option value="">Memuat...</option>'; // Indikasi loading
-
-    fetch(`get_desa.php?kecamatan=${kecamatan}`)
-        .then(response => response.json())
-        .then(data => {
-            desaSelect.innerHTML = '<option value="">Semua Desa</option>';
-            data.forEach(desa => {
-                desaSelect.innerHTML += `<option value="${desa.kode_desa}">${desa.nama_desa}</option>`;
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            desaSelect.innerHTML = '<option value="">Gagal Memuat Data</option>';
-        });
-}
-</script>
-
+                        fetch(`get_desa.php?kecamatan=${kecamatan}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                desaSelect.innerHTML = '<option value="">Semua Desa</option>';
+                                data.forEach(desa => {
+                                    desaSelect.innerHTML += `<option value="${desa.kode_desa}">${desa.nama_desa}</option>`;
+                                });
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                desaSelect.innerHTML = '<option value="">Gagal Memuat Data</option>';
+                            });
+                    }
+                </script>
 
                 <?php
                 // Query untuk mengambil data desa
@@ -1010,7 +1006,7 @@ function loadDesa(kecamatan) {
     <script src="../../../dist/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
-        $(function () {
+        $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
 
@@ -1026,7 +1022,7 @@ function loadDesa(kecamatan) {
             scrollbarAutoHide: "leave",
             scrollbarClickScroll: true,
         };
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
             if (
                 sidebarWrapper &&
