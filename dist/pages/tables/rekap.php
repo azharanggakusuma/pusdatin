@@ -247,6 +247,38 @@ if ($type === 'pdf') {
                                         <th colspan="2">Batas Selatan</th>
                                         <th colspan="2">Batas Timur</th>
                                         <th colspan="2">Batas Barat</th>
+                                        <th rowspan="2">Jarak ke Ibu Kota Kecamatan (km)</th>
+                                        <th rowspan="2">Jarak ke Ibu Kota Kabupaten (km)</th>
+                                        <th rowspan="2">Status Desa Membangun</th>
+                                        <th rowspan="2">Website</th>
+                                        <th rowspan="2">Email</th>
+                                        <th rowspan="2">Facebook</th>
+                                        <th rowspan="2">Twitter</th>
+                                        <th rowspan="2">YouTube</th>
+                                        <th rowspan="2">Status Pemerintahan</th>
+                                        <th rowspan="2">Penetapan Batas Desa</th>
+                                        <th rowspan="2">No Surat Batas Desa</th>
+                                        <th rowspan="2">Ketersediaan Peta Desa</th>
+                                        <th rowspan="2">No Surat Peta Desa</th>
+                                        <th rowspan="2">Jumlah Dusun</th>
+                                        <th rowspan="2">Jumlah RW</th>
+                                        <th rowspan="2">Jumlah RT</th>
+                                        <th rowspan="2">Luas Wilayah Desa (ha)</th>
+                                        <th rowspan="2">Topografi Terluas Wilayah Desa</th>
+                                        <th rowspan="2">Keberadaan Kantor</th>
+                                        <th rowspan="2">Status Kantor</th>
+                                        <th rowspan="2">Kondisi Kantor</th>
+                                        <th rowspan="2">Lokasi Kantor</th>
+                                        <th rowspan="2">Koordinat Lintang</th>
+                                        <th rowspan="2">Koordinat Bujur</th>
+                                        <th rowspan="2">Jumlah Surat Kematian</th>
+                                        <th rowspan="2">Jumlah Penduduk Laki</th>
+                                        <th rowspan="2">Jumlah Penduduk Perempuan</th>
+                                        <th rowspan="2">Jumlah Kepala Keluarga</th>
+                                        <th rowspan="2">PMI Bekerja</th>
+                                        <th rowspan="2">Agen Pengerahan PMI</th>
+                                        <th rowspan="2">Layanan Rekomendasi PMI</th>
+                                        <th rowspan="2">Keberadaan WNA</th>
                                     </tr>
                                     <tr style="white-space: nowrap;">
                                         <th>Wilayah</th>
@@ -267,53 +299,151 @@ if ($type === 'pdf') {
 
                                     // Query untuk mengambil data desa
                                     $query = "
-                SELECT 
-                    filtered_progress.tahun,
-                    tb_enumerator.kode_desa,
-                    tb_enumerator.nama_desa,
-                    tb_enumerator.kecamatan,
-                    tb_sk_pembentukan.sk_pembentukan,
-                    tb_balai_desa.alamat_balai,
-                    tb_batas_desa.batas_utara,
-                    tb_batas_desa.kec_utara,
-                    tb_batas_desa.batas_selatan,
-                    tb_batas_desa.kec_selatan,
-                    tb_batas_desa.batas_timur,
-                    tb_batas_desa.kec_timur,
-                    tb_batas_desa.batas_barat,
-                    tb_batas_desa.kec_barat
-                FROM
-                    (
-                        SELECT 
-                            desa_id,
-                            tahun,
-                            MIN(id) AS min_id
-                        FROM
-                            user_progress
-                        WHERE
-                            tahun IS NOT NULL
-                        GROUP BY desa_id, tahun
-                    ) AS filtered_progress
-                LEFT JOIN
-                    tb_enumerator
-                ON
-                    filtered_progress.desa_id = tb_enumerator.id_desa
-                LEFT JOIN
-                    tb_sk_pembentukan
-                ON
-                    filtered_progress.desa_id = tb_sk_pembentukan.desa_id
-                    AND filtered_progress.tahun = tb_sk_pembentukan.tahun
-                LEFT JOIN
-                    tb_balai_desa
-                ON
-                    filtered_progress.desa_id = tb_balai_desa.desa_id
-                    AND filtered_progress.tahun = tb_balai_desa.tahun
-                LEFT JOIN
-                    tb_batas_desa
-                ON
-                    filtered_progress.desa_id = tb_batas_desa.desa_id
-                    AND filtered_progress.tahun = tb_batas_desa.tahun
-            ";
+                                    SELECT 
+                                        filtered_progress.tahun,
+                                        tb_enumerator.kode_desa,
+                                        tb_enumerator.nama_desa,
+                                        tb_enumerator.kecamatan,
+                                        tb_sk_pembentukan.sk_pembentukan,
+                                        tb_balai_desa.alamat_balai,
+                                        tb_batas_desa.batas_utara,
+                                        tb_batas_desa.kec_utara,
+                                        tb_batas_desa.batas_selatan,
+                                        tb_batas_desa.kec_selatan,
+                                        tb_batas_desa.batas_timur,
+                                        tb_batas_desa.kec_timur,
+                                        tb_batas_desa.batas_barat,
+                                        tb_batas_desa.kec_barat,
+                                        tb_jarak_kantor_desa.jarak_ke_ibukota_kecamatan,
+                                        tb_jarak_kantor_desa.jarak_ke_ibukota_kabupaten,
+                                        tb_idm_status.status_idm,
+                                        tb_website_medsos.alamat_website,
+                                        tb_website_medsos.alamat_email,
+                                        tb_website_medsos.alamat_facebook,
+                                        tb_website_medsos.alamat_twitter,
+                                        tb_website_medsos.alamat_youtube,
+                                        tb_status_pemerintahan.status_pemerintahan,
+                                        tb_ketersediaan_penetapan_peta_desa.penetapan_batas_desa,
+                                        tb_ketersediaan_penetapan_peta_desa.no_surat_batas_desa,
+                                        tb_ketersediaan_penetapan_peta_desa.ketersediaan_peta_desa,
+                                        tb_ketersediaan_penetapan_peta_desa.no_surat_peta_desa,
+                                        tb_banyaknya_dusun_rt_rw.jumlah_dusun,
+                                        tb_banyaknya_dusun_rt_rw.jumlah_rw,
+                                        tb_banyaknya_dusun_rt_rw.jumlah_rt,
+                                        tb_luas_wilayah_desa.luas_wilayah_desa,
+                                        tb_topografi_terluas_wilayah_desa.topografi_terluas_wilayah_desa,
+                                        tb_kepemilikan_kantor.keberadaan_kantor,
+                                        tb_kepemilikan_kantor.status_kantor,
+                                        tb_kepemilikan_kantor.kondisi_kantor,
+                                        tb_kepemilikan_kantor.lokasi_kantor,
+                                        tb_titik_koordinat_kantor_desa.koordinat_lintang,
+                                        tb_titik_koordinat_kantor_desa.koordinat_bujur,
+                                        tb_kematian.jumlah_surat_kematian,
+                                        tb_penduduk_dan_keluarga.jumlah_penduduk_laki,
+                                        tb_penduduk_dan_keluarga.jumlah_penduduk_perempuan,
+                                        tb_penduduk_dan_keluarga.jumlah_kepala_keluarga,
+                                        tb_ketenagakerjaan.pmi_bekerja,
+                                        tb_ketenagakerjaan.agen_pengerahan_pmi,
+                                        tb_ketenagakerjaan.layanan_rekomendasi_pmi,
+                                        tb_ketenagakerjaan.keberadaan_wna
+                                    FROM
+                                        (
+                                            SELECT 
+                                                desa_id,
+                                                tahun,
+                                                MIN(id) AS min_id
+                                            FROM
+                                                user_progress
+                                            WHERE
+                                                tahun IS NOT NULL
+                                            GROUP BY desa_id, tahun
+                                        ) AS filtered_progress
+                                    LEFT JOIN
+                                        tb_enumerator
+                                    ON
+                                        filtered_progress.desa_id = tb_enumerator.id_desa
+                                    LEFT JOIN
+                                        tb_sk_pembentukan
+                                    ON
+                                        filtered_progress.desa_id = tb_sk_pembentukan.desa_id
+                                        AND filtered_progress.tahun = tb_sk_pembentukan.tahun
+                                    LEFT JOIN
+                                        tb_balai_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_balai_desa.desa_id
+                                        AND filtered_progress.tahun = tb_balai_desa.tahun
+                                    LEFT JOIN
+                                        tb_batas_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_batas_desa.desa_id
+                                        AND filtered_progress.tahun = tb_batas_desa.tahun
+                                    LEFT JOIN
+                                        tb_jarak_kantor_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_jarak_kantor_desa.desa_id
+                                        AND filtered_progress.tahun = tb_jarak_kantor_desa.tahun
+                                    LEFT JOIN
+                                        tb_idm_status
+                                    ON
+                                        filtered_progress.desa_id = tb_idm_status.desa_id
+                                        AND filtered_progress.tahun = tb_idm_status.tahun
+                                    LEFT JOIN
+                                        tb_website_medsos
+                                    ON
+                                        filtered_progress.desa_id = tb_website_medsos.desa_id
+                                        AND filtered_progress.tahun = tb_website_medsos.tahun
+                                    LEFT JOIN
+                                        tb_status_pemerintahan
+                                    ON
+                                        filtered_progress.desa_id = tb_status_pemerintahan.desa_id
+                                        AND filtered_progress.tahun = tb_status_pemerintahan.tahun
+                                    LEFT JOIN
+                                        tb_ketersediaan_penetapan_peta_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_ketersediaan_penetapan_peta_desa.desa_id
+                                        AND filtered_progress.tahun = tb_ketersediaan_penetapan_peta_desa.tahun
+                                    LEFT JOIN
+                                        tb_banyaknya_dusun_rt_rw
+                                    ON
+                                        filtered_progress.desa_id = tb_banyaknya_dusun_rt_rw.desa_id
+                                        AND filtered_progress.tahun = tb_banyaknya_dusun_rt_rw.tahun
+                                    LEFT JOIN
+                                        tb_luas_wilayah_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_luas_wilayah_desa.desa_id
+                                        AND filtered_progress.tahun = tb_luas_wilayah_desa.tahun
+                                    LEFT JOIN
+                                        tb_topografi_terluas_wilayah_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_topografi_terluas_wilayah_desa.desa_id
+                                        AND filtered_progress.tahun = tb_topografi_terluas_wilayah_desa.tahun
+                                    LEFT JOIN
+                                        tb_kepemilikan_kantor
+                                    ON
+                                        filtered_progress.desa_id = tb_kepemilikan_kantor.desa_id
+                                        AND filtered_progress.tahun = tb_kepemilikan_kantor.tahun
+                                    LEFT JOIN
+                                        tb_titik_koordinat_kantor_desa
+                                    ON
+                                        filtered_progress.desa_id = tb_titik_koordinat_kantor_desa.desa_id
+                                        AND filtered_progress.tahun = tb_titik_koordinat_kantor_desa.tahun
+                                    LEFT JOIN
+                                        tb_kematian
+                                    ON
+                                        filtered_progress.desa_id = tb_kematian.desa_id
+                                        AND filtered_progress.tahun = tb_kematian.tahun
+                                    LEFT JOIN
+                                        tb_penduduk_dan_keluarga
+                                    ON
+                                        filtered_progress.desa_id = tb_penduduk_dan_keluarga.desa_id
+                                        AND filtered_progress.tahun = tb_penduduk_dan_keluarga.tahun
+                                    LEFT JOIN
+                                        tb_ketenagakerjaan
+                                    ON
+                                        filtered_progress.desa_id = tb_ketenagakerjaan.desa_id
+                                        AND filtered_progress.tahun = tb_ketenagakerjaan.tahun
+                                    ";
+
 
                                     // Tambahkan filter jika tahun dipilih
                                     if ($filter_tahun) {
@@ -342,6 +472,38 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['kec_timur'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['batas_barat'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['kec_barat'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jarak_ke_ibukota_kecamatan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jarak_ke_ibukota_kabupaten'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['status_idm'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_website'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_email'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_facebook'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_twitter'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_youtube'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['status_pemerintahan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['penetapan_batas_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['no_surat_batas_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['ketersediaan_peta_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['no_surat_peta_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_dusun'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_rw'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_rt'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['luas_wilayah_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['topografi_terluas_wilayah_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_kantor'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['status_kantor'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kondisi_kantor'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['lokasi_kantor'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['koordinat_lintang'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['koordinat_bujur'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_surat_kematian'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_penduduk_laki'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_penduduk_perempuan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_kepala_keluarga'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pmi_bekerja'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['agen_pengerahan_pmi'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['layanan_rekomendasi_pmi'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_wna'] ?? "Belum Mengisi") . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
