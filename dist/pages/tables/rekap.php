@@ -11,46 +11,47 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use Mpdf\Mpdf;
 
-// Cek apakah koneksi ke database berhasil
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
-
-// Ambil parameter jenis ekspor, kode desa, dan filter tahun
+// Ambil parameter jenis ekspor, kode desa, kecamatan, dan filter tahun
 $type = $_GET['type'] ?? null;
 $kode_desa = $_GET['kode_desa'] ?? null;
+$kode_kecamatan = $_GET['kode_kecamatan'] ?? null;
 $filter_tahun = $_GET['filter_tahun'] ?? null;
 
-// Query untuk mengambil data desa
+// Query dasar
 $query = "
-    SELECT 
+    SELECT DISTINCT 
         tb_enumerator.kode_desa,
         tb_enumerator.nama_desa,
         tb_enumerator.kecamatan,
-        tb_sk_pembentukan.sk_pembentukan
+        tb_sk_pembentukan.sk_pembentukan,
+        tb_sk_pembentukan.tahun
     FROM
         tb_enumerator
     LEFT JOIN
         tb_sk_pembentukan
-    ON
-        tb_enumerator.id_desa = tb_sk_pembentukan.desa_id
+        ON tb_enumerator.id_desa = tb_sk_pembentukan.desa_id
     LEFT JOIN
-        user_progress
-    ON
-        tb_enumerator.id_desa = user_progress.desa_id
-        AND tb_sk_pembentukan.tahun = user_progress.tahun
+        (
+            SELECT DISTINCT desa_id, tahun 
+            FROM user_progress
+        ) AS filtered_user_progress
+        ON tb_enumerator.id_desa = filtered_user_progress.desa_id
+        AND tb_sk_pembentukan.tahun = filtered_user_progress.tahun
 ";
 
-// Tambahkan filter jika desa dan/atau tahun dipilih
+// Tambahkan filter berdasarkan input pengguna
 $where = [];
-if ($kode_desa) {
-    $where[] = "tb_enumerator.kode_desa = '$kode_desa'";
+if (!empty($kode_kecamatan)) {
+    $where[] = "tb_enumerator.kecamatan = '" . mysqli_real_escape_string($conn, $kode_kecamatan) . "'";
 }
-if ($filter_tahun) {
-    $where[] = "tb_sk_pembentukan.tahun = '$filter_tahun'";
+if (!empty($kode_desa)) {
+    $where[] = "tb_enumerator.kode_desa = '" . mysqli_real_escape_string($conn, $kode_desa) . "'";
+}
+if (!empty($filter_tahun)) {
+    $where[] = "tb_sk_pembentukan.tahun = '" . mysqli_real_escape_string($conn, $filter_tahun) . "'";
 }
 
-if ($where) {
+if (!empty($where)) {
     $query .= " WHERE " . implode(' AND ', $where);
 }
 
@@ -66,7 +67,8 @@ if ($type === 'excel') {
     $sheet->setCellValue('A1', 'Kode Desa');
     $sheet->setCellValue('B1', 'Nama Desa');
     $sheet->setCellValue('C1', 'Kecamatan');
-    $sheet->setCellValue('D1', 'Sk Pembentukan/Pengesahan Desa/Kelurahan');
+    $sheet->setCellValue('D1', 'Sk Pembentukan');
+    $sheet->setCellValue('E1', 'Tahun');
 
     // Style untuk header
     $headerStyle = [
@@ -75,7 +77,7 @@ if ($type === 'excel') {
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
     ];
-    $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);
+    $sheet->getStyle('A1:E1')->applyFromArray($headerStyle);
 
     // Data dari database
     $rowNumber = 2;
@@ -84,6 +86,7 @@ if ($type === 'excel') {
         $sheet->setCellValue('B' . $rowNumber, $row['nama_desa']);
         $sheet->setCellValue('C' . $rowNumber, $row['kecamatan']);
         $sheet->setCellValue('D' . $rowNumber, $row['sk_pembentukan']);
+        $sheet->setCellValue('E' . $rowNumber, $row['tahun']);
         $rowNumber++;
     }
 
@@ -92,10 +95,10 @@ if ($type === 'excel') {
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
     ];
-    $sheet->getStyle('A1:D' . ($rowNumber - 1))->applyFromArray($tableStyle);
+    $sheet->getStyle('A1:E' . ($rowNumber - 1))->applyFromArray($tableStyle);
 
     // Auto-size columns
-    foreach (range('A', 'D') as $column) {
+    foreach (range('A', 'E') as $column) {
         $sheet->getColumnDimension($column)->setAutoSize(true);
     }
 
@@ -122,7 +125,8 @@ if ($type === 'pdf') {
     $html .= '<th>Kode Desa</th>';
     $html .= '<th>Nama Desa</th>';
     $html .= '<th>Kecamatan</th>';
-    $html .= '<th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>';
+    $html .= '<th>Sk Pembentukan</th>';
+    $html .= '<th>Tahun</th>';
     $html .= '</tr></thead><tbody>';
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -131,6 +135,7 @@ if ($type === 'pdf') {
         $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
         $html .= '<td>' . htmlspecialchars($row['kecamatan']) . '</td>';
         $html .= '<td style="text-align: center;">' . htmlspecialchars($row['sk_pembentukan']) . '</td>';
+        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['tahun']) . '</td>';
         $html .= '</tr>';
     }
 
@@ -141,6 +146,7 @@ if ($type === 'pdf') {
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
@@ -787,54 +793,82 @@ if ($type === 'pdf') {
                 </div>
 
                 <!-- Modal Export -->
-                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form method="GET">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
-                                        style="all: unset; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; line-height: 1;">
-                                        &times;
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="kode_desa">Pilih Desa:</label>
-                                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
-                                        <option value="">Semua Desa</option>
-                                        <?php
-                                        $desaResult = mysqli_query($conn, "SELECT kode_desa, nama_desa FROM tb_enumerator");
-                                        while ($desa = mysqli_fetch_assoc($desaResult)) {
-                                            echo "<option value='{$desa['kode_desa']}'>{$desa['nama_desa']}</option>";
-                                        }
-                                        ?>
-                                    </select>
-
-                                    <label for="filter_tahun">Pilih Tahun:</label>
-                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
-                                        <option value="">Semua Tahun</option>
-                                        <?php
-                                        $tahunResult = mysqli_query($conn, "SELECT DISTINCT YEAR(created_at) AS tahun FROM user_progress ORDER BY tahun DESC");
-                                        while ($tahun = mysqli_fetch_assoc($tahunResult)) {
-                                            echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <!-- Untuk Ekspor Excel -->
-                                    <button type="submit" name="type" value="excel" class="btn btn-success"><i
-                                            class="fas fa-file-excel"></i> &nbsp; Export Excel</button>
-                                    <!-- Untuk Ekspor PDF -->
-                                    <button type="submit" name="type" value="pdf" class="btn btn-danger"><i
-                                            class="fas fa-file-pdf"></i> &nbsp; Export PDF</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="GET" action="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <!-- Filter Kecamatan -->
+                    <label for="kode_kecamatan">Pilih Kecamatan:</label>
+                    <select name="kode_kecamatan" id="kode_kecamatan" class="form-control mt-2 mb-3" onchange="loadDesa(this.value)">
+                        <option value="">Semua Kecamatan</option>
+                        <?php
+                        $kecamatanResult = mysqli_query($conn, "SELECT DISTINCT kecamatan FROM tb_enumerator ORDER BY kecamatan ASC");
+                        while ($kecamatan = mysqli_fetch_assoc($kecamatanResult)) {
+                            echo "<option value='{$kecamatan['kecamatan']}'>{$kecamatan['kecamatan']}</option>";
+                        }
+                        ?>
+                    </select>
+
+                    <!-- Filter Desa -->
+                    <label for="kode_desa">Pilih Desa:</label>
+                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
+                        <option value="">Semua Desa</option>
+                        <!-- Desa akan dimuat dinamis berdasarkan pilihan kecamatan -->
+                    </select>
+
+                    <!-- Filter Tahun -->
+                    <label for="filter_tahun">Pilih Tahun:</label>
+                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                        <option value="">Semua Tahun</option>
+                        <?php
+                        $tahunResult = mysqli_query($conn, "SELECT DISTINCT tahun FROM tb_sk_pembentukan ORDER BY tahun DESC");
+                        while ($tahun = mysqli_fetch_assoc($tahunResult)) {
+                            echo "<option value='{$tahun['tahun']}'>{$tahun['tahun']}</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <!-- Tombol Ekspor Excel -->
+                    <button type="submit" name="type" value="excel" class="btn btn-success">
+                        <i class="fas fa-file-excel"></i> &nbsp; Export Excel
+                    </button>
+                    <!-- Tombol Ekspor PDF -->
+                    <button type="submit" name="type" value="pdf" class="btn btn-danger">
+                        <i class="fas fa-file-pdf"></i> &nbsp; Export PDF
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function loadDesa(kecamatan) {
+    const desaSelect = document.getElementById('kode_desa');
+    desaSelect.innerHTML = '<option value="">Memuat...</option>'; // Indikasi loading
+
+    fetch(`get_desa.php?kecamatan=${kecamatan}`)
+        .then(response => response.json())
+        .then(data => {
+            desaSelect.innerHTML = '<option value="">Semua Desa</option>';
+            data.forEach(desa => {
+                desaSelect.innerHTML += `<option value="${desa.kode_desa}">${desa.nama_desa}</option>`;
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            desaSelect.innerHTML = '<option value="">Gagal Memuat Data</option>';
+        });
+}
+</script>
+
 
                 <?php
                 // Query untuk mengambil data desa
