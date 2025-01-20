@@ -346,231 +346,231 @@ if ($type === 'pdf') {
 
                                     // Query untuk mengambil data desa
                                     $query = "
-        SELECT 
-    filtered_progress.tahun,
-    tb_enumerator.kode_desa,
-    tb_enumerator.nama_desa,
-    tb_enumerator.kecamatan,
-    tb_sk_pembentukan.sk_pembentukan,
-    tb_balai_desa.alamat_balai,
-    tb_batas_desa.batas_utara,
-    tb_batas_desa.kec_utara,
-    tb_batas_desa.batas_selatan,
-    tb_batas_desa.kec_selatan,
-    tb_batas_desa.batas_timur,
-    tb_batas_desa.kec_timur,
-    tb_batas_desa.batas_barat,
-    tb_batas_desa.kec_barat,
-    tb_jarak_kantor_desa.jarak_ke_ibukota_kecamatan,
-    tb_jarak_kantor_desa.jarak_ke_ibukota_kabupaten,
-    tb_idm_status.status_idm,
-    tb_website_medsos.alamat_website,
-    tb_website_medsos.alamat_email,
-    tb_website_medsos.alamat_facebook,
-    tb_website_medsos.alamat_twitter,
-    tb_website_medsos.alamat_youtube,
-    tb_status_pemerintahan.status_pemerintahan,
-    tb_ketersediaan_penetapan_peta_desa.penetapan_batas_desa,
-    tb_ketersediaan_penetapan_peta_desa.no_surat_batas_desa,
-    tb_ketersediaan_penetapan_peta_desa.ketersediaan_peta_desa,
-    tb_ketersediaan_penetapan_peta_desa.no_surat_peta_desa,
-    tb_banyaknya_dusun_rt_rw.jumlah_dusun,
-    tb_banyaknya_dusun_rt_rw.jumlah_rw,
-    tb_banyaknya_dusun_rt_rw.jumlah_rt,
-    tb_luas_wilayah_desa.luas_wilayah_desa,
-    tb_topografi_terluas_wilayah_desa.topografi_terluas_wilayah_desa,
-    tb_kepemilikan_kantor.keberadaan_kantor,
-    tb_kepemilikan_kantor.status_kantor,
-    tb_kepemilikan_kantor.kondisi_kantor,
-    tb_kepemilikan_kantor.lokasi_kantor,
-    tb_titik_koordinat_kantor_desa.koordinat_lintang,
-    tb_titik_koordinat_kantor_desa.koordinat_bujur,
-    tb_kematian.jumlah_surat_kematian,
-    tb_penduduk_dan_keluarga.jumlah_penduduk_laki,
-    tb_penduduk_dan_keluarga.jumlah_penduduk_perempuan,
-    tb_penduduk_dan_keluarga.jumlah_kepala_keluarga,
-    tb_ketenagakerjaan.pmi_bekerja,
-    tb_ketenagakerjaan.agen_pengerahan_pmi,
-    tb_ketenagakerjaan.layanan_rekomendasi_pmi,
-    tb_ketenagakerjaan.keberadaan_wna,
-    tb_pengguna_listrik_lampu_surya.jumlah_pln,
-    tb_pengguna_listrik_lampu_surya.jumlah_non_pln,
-    tb_pengguna_listrik_lampu_surya.jumlah_bukan_pengguna_listrik,
-    tb_pengguna_listrik_lampu_surya.penggunaan_lampu_tenaga_surya,
-    tb_penerangan_jalan.lampu_tenaga_surya,
-    tb_penerangan_jalan.penerangan_jalan_utama,
-    tb_penerangan_jalan.sumber_penerangan,
-    tb_pengelolaan_sampah.tps,
-    tb_pengelolaan_sampah.tps3r,
-    tb_pengelolaan_sampah.bank_sampah,
-    tb_sutet.sutet_status,
-    tb_sutet.keberadaan_pemukiman AS keberadaan_pemukiman_sutet,
-    tb_sutet.jumlah_pemukiman AS jumlah_pemukiman_sutet,
-    tb_keberadaan_sungai.keberadaan_sungai,
-    tb_keberadaan_sungai.nama_sungai_1,
-    tb_keberadaan_sungai.nama_sungai_2,
-    tb_keberadaan_sungai.nama_sungai_3,
-    tb_keberadaan_sungai.nama_sungai_4,
-    tb_keberadaan_danau.keberadaan_danau,
-    tb_keberadaan_danau.nama_danau_1,
-    tb_keberadaan_danau.nama_danau_2,
-    tb_keberadaan_danau.nama_danau_3,
-    tb_keberadaan_danau.nama_danau_4,
-    tb_keberadaan_pemukiman_bantaran.keberadaan_pemukiman AS keberadaan_pemukiman_bantaran,
-    tb_keberadaan_pemukiman_bantaran.jumlah_pemukiman AS jumlah_pemukiman_bantaran,
-    tb_embung_mata_air.jumlah_embung,
-    tb_embung_mata_air.lokasi_mata_air,
-    tb_permukiman_kumuh.keberadaan_kumuh,
-    tb_permukiman_kumuh.jumlah_kumuh,
-    tb_lokasi_penggalian.keberadaan_galian,
-    tb_prasarana_kebersihan.jumlah_prasarana,
-    tb_rumah_tidak_layak_huni.jumlah_rumah,
-    tb_bencana_alam.tanah_longsor,
-    tb_bencana_alam.banjir,
-    tb_bencana_alam.banjir_bandang,
-    tb_bencana_alam.gempa_bumi,
-    tb_bencana_alam.tsunami,
-    tb_bencana_alam.gelombang_pasang,
-    tb_bencana_alam.angin_puyuh,
-    tb_bencana_alam.gunung_meletus,
-    tb_bencana_alam.kebakaran_hutan,
-    tb_bencana_alam.kekeringan,
-    tb_bencana_alam.abrasi,
-    tb_peringatan_bencana.peringatan_dini,
-    tb_peringatan_bencana.peringatan_tsunami,
-    tb_peringatan_bencana.perlengkapan_keselamatan,
-    tb_peringatan_bencana.rambu_evakuasi,
-    tb_peringatan_bencana.infrastruktur,
-    tb_taman_bacaan.keberadaan_tbm,
-    tb_keberadaan_bidan.keberadaan_bidan,
-    tb_keberadaan_dukun_bayi.keberadaan_dukun_bayi,
-    tb_klb_wabah.muntaber_diare,
-    tb_klb_wabah.demam_berdarah,
-    tb_klb_wabah.campak,
-    tb_klb_wabah.malaria,
-    tb_klb_wabah.flu_burung_sars,
-    tb_klb_wabah.hepatitis_e,
-    tb_klb_wabah.difteri,
-    tb_klb_wabah.corona_covid19,
-    tb_klb_wabah.lainnya_name,
-    tb_klb_wabah.lainnya_status
-FROM
-    (
-        SELECT 
-            desa_id,
-            tahun,
-            MIN(id) AS min_id
-        FROM
-            user_progress
-        WHERE
-            tahun IS NOT NULL
-        GROUP BY desa_id, tahun
-    ) AS filtered_progress
-LEFT JOIN
-    tb_enumerator ON filtered_progress.desa_id = tb_enumerator.id_desa
-LEFT JOIN
-    tb_sk_pembentukan ON filtered_progress.desa_id = tb_sk_pembentukan.desa_id
-    AND filtered_progress.tahun = tb_sk_pembentukan.tahun
-LEFT JOIN
-    tb_balai_desa ON filtered_progress.desa_id = tb_balai_desa.desa_id
-    AND filtered_progress.tahun = tb_balai_desa.tahun
-LEFT JOIN
-    tb_batas_desa ON filtered_progress.desa_id = tb_batas_desa.desa_id
-    AND filtered_progress.tahun = tb_batas_desa.tahun
-LEFT JOIN
-    tb_jarak_kantor_desa ON filtered_progress.desa_id = tb_jarak_kantor_desa.desa_id
-    AND filtered_progress.tahun = tb_jarak_kantor_desa.tahun
-LEFT JOIN
-    tb_idm_status ON filtered_progress.desa_id = tb_idm_status.desa_id
-    AND filtered_progress.tahun = tb_idm_status.tahun
-LEFT JOIN
-    tb_website_medsos ON filtered_progress.desa_id = tb_website_medsos.desa_id
-    AND filtered_progress.tahun = tb_website_medsos.tahun
-LEFT JOIN
-    tb_status_pemerintahan ON filtered_progress.desa_id = tb_status_pemerintahan.desa_id
-    AND filtered_progress.tahun = tb_status_pemerintahan.tahun
-LEFT JOIN
-    tb_ketersediaan_penetapan_peta_desa ON filtered_progress.desa_id = tb_ketersediaan_penetapan_peta_desa.desa_id
-    AND filtered_progress.tahun = tb_ketersediaan_penetapan_peta_desa.tahun
-LEFT JOIN
-    tb_banyaknya_dusun_rt_rw ON filtered_progress.desa_id = tb_banyaknya_dusun_rt_rw.desa_id
-    AND filtered_progress.tahun = tb_banyaknya_dusun_rt_rw.tahun
-LEFT JOIN
-    tb_luas_wilayah_desa ON filtered_progress.desa_id = tb_luas_wilayah_desa.desa_id
-    AND filtered_progress.tahun = tb_luas_wilayah_desa.tahun
-LEFT JOIN
-    tb_topografi_terluas_wilayah_desa ON filtered_progress.desa_id = tb_topografi_terluas_wilayah_desa.desa_id
-    AND filtered_progress.tahun = tb_topografi_terluas_wilayah_desa.tahun
-LEFT JOIN
-    tb_kepemilikan_kantor ON filtered_progress.desa_id = tb_kepemilikan_kantor.desa_id
-    AND filtered_progress.tahun = tb_kepemilikan_kantor.tahun
-LEFT JOIN
-    tb_titik_koordinat_kantor_desa ON filtered_progress.desa_id = tb_titik_koordinat_kantor_desa.desa_id
-    AND filtered_progress.tahun = tb_titik_koordinat_kantor_desa.tahun
-LEFT JOIN
-    tb_kematian ON filtered_progress.desa_id = tb_kematian.desa_id
-    AND filtered_progress.tahun = tb_kematian.tahun
-LEFT JOIN
-    tb_penduduk_dan_keluarga ON filtered_progress.desa_id = tb_penduduk_dan_keluarga.desa_id
-    AND filtered_progress.tahun = tb_penduduk_dan_keluarga.tahun
-LEFT JOIN
-    tb_ketenagakerjaan ON filtered_progress.desa_id = tb_ketenagakerjaan.desa_id
-    AND filtered_progress.tahun = tb_ketenagakerjaan.tahun
-LEFT JOIN
-    tb_pengguna_listrik_lampu_surya ON filtered_progress.desa_id = tb_pengguna_listrik_lampu_surya.desa_id
-    AND filtered_progress.tahun = tb_pengguna_listrik_lampu_surya.tahun
-LEFT JOIN
-    tb_penerangan_jalan ON filtered_progress.desa_id = tb_penerangan_jalan.desa_id
-    AND filtered_progress.tahun = tb_penerangan_jalan.tahun
-LEFT JOIN
-    tb_pengelolaan_sampah ON filtered_progress.desa_id = tb_pengelolaan_sampah.desa_id
-    AND filtered_progress.tahun = tb_pengelolaan_sampah.tahun
-LEFT JOIN
-    tb_sutet ON filtered_progress.desa_id = tb_sutet.desa_id
-    AND filtered_progress.tahun = tb_sutet.tahun
-LEFT JOIN
-    tb_keberadaan_sungai ON filtered_progress.desa_id = tb_keberadaan_sungai.desa_id
-    AND filtered_progress.tahun = tb_keberadaan_sungai.tahun
-LEFT JOIN
-    tb_keberadaan_danau ON filtered_progress.desa_id = tb_keberadaan_danau.desa_id
-    AND filtered_progress.tahun = tb_keberadaan_danau.tahun
-LEFT JOIN
-    tb_keberadaan_pemukiman_bantaran ON filtered_progress.desa_id = tb_keberadaan_pemukiman_bantaran.desa_id
-    AND filtered_progress.tahun = tb_keberadaan_pemukiman_bantaran.tahun
-LEFT JOIN
-    tb_embung_mata_air ON filtered_progress.desa_id = tb_embung_mata_air.desa_id
-    AND filtered_progress.tahun = tb_embung_mata_air.tahun
-LEFT JOIN
-    tb_permukiman_kumuh ON filtered_progress.desa_id = tb_permukiman_kumuh.desa_id
-    AND filtered_progress.tahun = tb_permukiman_kumuh.tahun
-LEFT JOIN
-    tb_lokasi_penggalian ON filtered_progress.desa_id = tb_lokasi_penggalian.desa_id
-    AND filtered_progress.tahun = tb_lokasi_penggalian.tahun
-LEFT JOIN
-    tb_prasarana_kebersihan ON filtered_progress.desa_id = tb_prasarana_kebersihan.desa_id
-    AND filtered_progress.tahun = tb_prasarana_kebersihan.tahun
-LEFT JOIN
-    tb_rumah_tidak_layak_huni ON filtered_progress.desa_id = tb_rumah_tidak_layak_huni.desa_id
-    AND filtered_progress.tahun = tb_rumah_tidak_layak_huni.tahun
-LEFT JOIN
-    tb_bencana_alam ON filtered_progress.desa_id = tb_bencana_alam.desa_id
-    AND filtered_progress.tahun = tb_bencana_alam.tahun
-LEFT JOIN
-    tb_peringatan_bencana ON filtered_progress.desa_id = tb_peringatan_bencana.desa_id
-    AND filtered_progress.tahun = tb_peringatan_bencana.tahun
-LEFT JOIN
-    tb_taman_bacaan ON filtered_progress.desa_id = tb_taman_bacaan.desa_id
-    AND filtered_progress.tahun = tb_taman_bacaan.tahun
-LEFT JOIN
-    tb_keberadaan_bidan ON filtered_progress.desa_id = tb_keberadaan_bidan.desa_id
-    AND filtered_progress.tahun = tb_keberadaan_bidan.tahun
-LEFT JOIN
-    tb_keberadaan_dukun_bayi ON filtered_progress.desa_id = tb_keberadaan_dukun_bayi.desa_id
-    AND filtered_progress.tahun = tb_keberadaan_dukun_bayi.tahun
-LEFT JOIN
-    tb_klb_wabah ON filtered_progress.desa_id = tb_klb_wabah.desa_id
-    AND filtered_progress.tahun = tb_klb_wabah.tahun
-        ";
+                                            SELECT 
+                                        filtered_progress.tahun,
+                                        tb_enumerator.kode_desa,
+                                        tb_enumerator.nama_desa,
+                                        tb_enumerator.kecamatan,
+                                        tb_sk_pembentukan.sk_pembentukan,
+                                        tb_balai_desa.alamat_balai,
+                                        tb_batas_desa.batas_utara,
+                                        tb_batas_desa.kec_utara,
+                                        tb_batas_desa.batas_selatan,
+                                        tb_batas_desa.kec_selatan,
+                                        tb_batas_desa.batas_timur,
+                                        tb_batas_desa.kec_timur,
+                                        tb_batas_desa.batas_barat,
+                                        tb_batas_desa.kec_barat,
+                                        tb_jarak_kantor_desa.jarak_ke_ibukota_kecamatan,
+                                        tb_jarak_kantor_desa.jarak_ke_ibukota_kabupaten,
+                                        tb_idm_status.status_idm,
+                                        tb_website_medsos.alamat_website,
+                                        tb_website_medsos.alamat_email,
+                                        tb_website_medsos.alamat_facebook,
+                                        tb_website_medsos.alamat_twitter,
+                                        tb_website_medsos.alamat_youtube,
+                                        tb_status_pemerintahan.status_pemerintahan,
+                                        tb_ketersediaan_penetapan_peta_desa.penetapan_batas_desa,
+                                        tb_ketersediaan_penetapan_peta_desa.no_surat_batas_desa,
+                                        tb_ketersediaan_penetapan_peta_desa.ketersediaan_peta_desa,
+                                        tb_ketersediaan_penetapan_peta_desa.no_surat_peta_desa,
+                                        tb_banyaknya_dusun_rt_rw.jumlah_dusun,
+                                        tb_banyaknya_dusun_rt_rw.jumlah_rw,
+                                        tb_banyaknya_dusun_rt_rw.jumlah_rt,
+                                        tb_luas_wilayah_desa.luas_wilayah_desa,
+                                        tb_topografi_terluas_wilayah_desa.topografi_terluas_wilayah_desa,
+                                        tb_kepemilikan_kantor.keberadaan_kantor,
+                                        tb_kepemilikan_kantor.status_kantor,
+                                        tb_kepemilikan_kantor.kondisi_kantor,
+                                        tb_kepemilikan_kantor.lokasi_kantor,
+                                        tb_titik_koordinat_kantor_desa.koordinat_lintang,
+                                        tb_titik_koordinat_kantor_desa.koordinat_bujur,
+                                        tb_kematian.jumlah_surat_kematian,
+                                        tb_penduduk_dan_keluarga.jumlah_penduduk_laki,
+                                        tb_penduduk_dan_keluarga.jumlah_penduduk_perempuan,
+                                        tb_penduduk_dan_keluarga.jumlah_kepala_keluarga,
+                                        tb_ketenagakerjaan.pmi_bekerja,
+                                        tb_ketenagakerjaan.agen_pengerahan_pmi,
+                                        tb_ketenagakerjaan.layanan_rekomendasi_pmi,
+                                        tb_ketenagakerjaan.keberadaan_wna,
+                                        tb_pengguna_listrik_lampu_surya.jumlah_pln,
+                                        tb_pengguna_listrik_lampu_surya.jumlah_non_pln,
+                                        tb_pengguna_listrik_lampu_surya.jumlah_bukan_pengguna_listrik,
+                                        tb_pengguna_listrik_lampu_surya.penggunaan_lampu_tenaga_surya,
+                                        tb_penerangan_jalan.lampu_tenaga_surya,
+                                        tb_penerangan_jalan.penerangan_jalan_utama,
+                                        tb_penerangan_jalan.sumber_penerangan,
+                                        tb_pengelolaan_sampah.tps,
+                                        tb_pengelolaan_sampah.tps3r,
+                                        tb_pengelolaan_sampah.bank_sampah,
+                                        tb_sutet.sutet_status,
+                                        tb_sutet.keberadaan_pemukiman AS keberadaan_pemukiman_sutet,
+                                        tb_sutet.jumlah_pemukiman AS jumlah_pemukiman_sutet,
+                                        tb_keberadaan_sungai.keberadaan_sungai,
+                                        tb_keberadaan_sungai.nama_sungai_1,
+                                        tb_keberadaan_sungai.nama_sungai_2,
+                                        tb_keberadaan_sungai.nama_sungai_3,
+                                        tb_keberadaan_sungai.nama_sungai_4,
+                                        tb_keberadaan_danau.keberadaan_danau,
+                                        tb_keberadaan_danau.nama_danau_1,
+                                        tb_keberadaan_danau.nama_danau_2,
+                                        tb_keberadaan_danau.nama_danau_3,
+                                        tb_keberadaan_danau.nama_danau_4,
+                                        tb_keberadaan_pemukiman_bantaran.keberadaan_pemukiman AS keberadaan_pemukiman_bantaran,
+                                        tb_keberadaan_pemukiman_bantaran.jumlah_pemukiman AS jumlah_pemukiman_bantaran,
+                                        tb_embung_mata_air.jumlah_embung,
+                                        tb_embung_mata_air.lokasi_mata_air,
+                                        tb_permukiman_kumuh.keberadaan_kumuh,
+                                        tb_permukiman_kumuh.jumlah_kumuh,
+                                        tb_lokasi_penggalian.keberadaan_galian,
+                                        tb_prasarana_kebersihan.jumlah_prasarana,
+                                        tb_rumah_tidak_layak_huni.jumlah_rumah,
+                                        tb_bencana_alam.tanah_longsor,
+                                        tb_bencana_alam.banjir,
+                                        tb_bencana_alam.banjir_bandang,
+                                        tb_bencana_alam.gempa_bumi,
+                                        tb_bencana_alam.tsunami,
+                                        tb_bencana_alam.gelombang_pasang,
+                                        tb_bencana_alam.angin_puyuh,
+                                        tb_bencana_alam.gunung_meletus,
+                                        tb_bencana_alam.kebakaran_hutan,
+                                        tb_bencana_alam.kekeringan,
+                                        tb_bencana_alam.abrasi,
+                                        tb_peringatan_bencana.peringatan_dini,
+                                        tb_peringatan_bencana.peringatan_tsunami,
+                                        tb_peringatan_bencana.perlengkapan_keselamatan,
+                                        tb_peringatan_bencana.rambu_evakuasi,
+                                        tb_peringatan_bencana.infrastruktur,
+                                        tb_taman_bacaan.keberadaan_tbm,
+                                        tb_keberadaan_bidan.keberadaan_bidan,
+                                        tb_keberadaan_dukun_bayi.keberadaan_dukun_bayi,
+                                        tb_klb_wabah.muntaber_diare,
+                                        tb_klb_wabah.demam_berdarah,
+                                        tb_klb_wabah.campak,
+                                        tb_klb_wabah.malaria,
+                                        tb_klb_wabah.flu_burung_sars,
+                                        tb_klb_wabah.hepatitis_e,
+                                        tb_klb_wabah.difteri,
+                                        tb_klb_wabah.corona_covid19,
+                                        tb_klb_wabah.lainnya_name,
+                                        tb_klb_wabah.lainnya_status
+                                    FROM
+                                        (
+                                            SELECT 
+                                                desa_id,
+                                                tahun,
+                                                MIN(id) AS min_id
+                                            FROM
+                                                user_progress
+                                            WHERE
+                                                tahun IS NOT NULL
+                                            GROUP BY desa_id, tahun
+                                        ) AS filtered_progress
+                                    LEFT JOIN
+                                        tb_enumerator ON filtered_progress.desa_id = tb_enumerator.id_desa
+                                    LEFT JOIN
+                                        tb_sk_pembentukan ON filtered_progress.desa_id = tb_sk_pembentukan.desa_id
+                                        AND filtered_progress.tahun = tb_sk_pembentukan.tahun
+                                    LEFT JOIN
+                                        tb_balai_desa ON filtered_progress.desa_id = tb_balai_desa.desa_id
+                                        AND filtered_progress.tahun = tb_balai_desa.tahun
+                                    LEFT JOIN
+                                        tb_batas_desa ON filtered_progress.desa_id = tb_batas_desa.desa_id
+                                        AND filtered_progress.tahun = tb_batas_desa.tahun
+                                    LEFT JOIN
+                                        tb_jarak_kantor_desa ON filtered_progress.desa_id = tb_jarak_kantor_desa.desa_id
+                                        AND filtered_progress.tahun = tb_jarak_kantor_desa.tahun
+                                    LEFT JOIN
+                                        tb_idm_status ON filtered_progress.desa_id = tb_idm_status.desa_id
+                                        AND filtered_progress.tahun = tb_idm_status.tahun
+                                    LEFT JOIN
+                                        tb_website_medsos ON filtered_progress.desa_id = tb_website_medsos.desa_id
+                                        AND filtered_progress.tahun = tb_website_medsos.tahun
+                                    LEFT JOIN
+                                        tb_status_pemerintahan ON filtered_progress.desa_id = tb_status_pemerintahan.desa_id
+                                        AND filtered_progress.tahun = tb_status_pemerintahan.tahun
+                                    LEFT JOIN
+                                        tb_ketersediaan_penetapan_peta_desa ON filtered_progress.desa_id = tb_ketersediaan_penetapan_peta_desa.desa_id
+                                        AND filtered_progress.tahun = tb_ketersediaan_penetapan_peta_desa.tahun
+                                    LEFT JOIN
+                                        tb_banyaknya_dusun_rt_rw ON filtered_progress.desa_id = tb_banyaknya_dusun_rt_rw.desa_id
+                                        AND filtered_progress.tahun = tb_banyaknya_dusun_rt_rw.tahun
+                                    LEFT JOIN
+                                        tb_luas_wilayah_desa ON filtered_progress.desa_id = tb_luas_wilayah_desa.desa_id
+                                        AND filtered_progress.tahun = tb_luas_wilayah_desa.tahun
+                                    LEFT JOIN
+                                        tb_topografi_terluas_wilayah_desa ON filtered_progress.desa_id = tb_topografi_terluas_wilayah_desa.desa_id
+                                        AND filtered_progress.tahun = tb_topografi_terluas_wilayah_desa.tahun
+                                    LEFT JOIN
+                                        tb_kepemilikan_kantor ON filtered_progress.desa_id = tb_kepemilikan_kantor.desa_id
+                                        AND filtered_progress.tahun = tb_kepemilikan_kantor.tahun
+                                    LEFT JOIN
+                                        tb_titik_koordinat_kantor_desa ON filtered_progress.desa_id = tb_titik_koordinat_kantor_desa.desa_id
+                                        AND filtered_progress.tahun = tb_titik_koordinat_kantor_desa.tahun
+                                    LEFT JOIN
+                                        tb_kematian ON filtered_progress.desa_id = tb_kematian.desa_id
+                                        AND filtered_progress.tahun = tb_kematian.tahun
+                                    LEFT JOIN
+                                        tb_penduduk_dan_keluarga ON filtered_progress.desa_id = tb_penduduk_dan_keluarga.desa_id
+                                        AND filtered_progress.tahun = tb_penduduk_dan_keluarga.tahun
+                                    LEFT JOIN
+                                        tb_ketenagakerjaan ON filtered_progress.desa_id = tb_ketenagakerjaan.desa_id
+                                        AND filtered_progress.tahun = tb_ketenagakerjaan.tahun
+                                    LEFT JOIN
+                                        tb_pengguna_listrik_lampu_surya ON filtered_progress.desa_id = tb_pengguna_listrik_lampu_surya.desa_id
+                                        AND filtered_progress.tahun = tb_pengguna_listrik_lampu_surya.tahun
+                                    LEFT JOIN
+                                        tb_penerangan_jalan ON filtered_progress.desa_id = tb_penerangan_jalan.desa_id
+                                        AND filtered_progress.tahun = tb_penerangan_jalan.tahun
+                                    LEFT JOIN
+                                        tb_pengelolaan_sampah ON filtered_progress.desa_id = tb_pengelolaan_sampah.desa_id
+                                        AND filtered_progress.tahun = tb_pengelolaan_sampah.tahun
+                                    LEFT JOIN
+                                        tb_sutet ON filtered_progress.desa_id = tb_sutet.desa_id
+                                        AND filtered_progress.tahun = tb_sutet.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_sungai ON filtered_progress.desa_id = tb_keberadaan_sungai.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_sungai.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_danau ON filtered_progress.desa_id = tb_keberadaan_danau.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_danau.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_pemukiman_bantaran ON filtered_progress.desa_id = tb_keberadaan_pemukiman_bantaran.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_pemukiman_bantaran.tahun
+                                    LEFT JOIN
+                                        tb_embung_mata_air ON filtered_progress.desa_id = tb_embung_mata_air.desa_id
+                                        AND filtered_progress.tahun = tb_embung_mata_air.tahun
+                                    LEFT JOIN
+                                        tb_permukiman_kumuh ON filtered_progress.desa_id = tb_permukiman_kumuh.desa_id
+                                        AND filtered_progress.tahun = tb_permukiman_kumuh.tahun
+                                    LEFT JOIN
+                                        tb_lokasi_penggalian ON filtered_progress.desa_id = tb_lokasi_penggalian.desa_id
+                                        AND filtered_progress.tahun = tb_lokasi_penggalian.tahun
+                                    LEFT JOIN
+                                        tb_prasarana_kebersihan ON filtered_progress.desa_id = tb_prasarana_kebersihan.desa_id
+                                        AND filtered_progress.tahun = tb_prasarana_kebersihan.tahun
+                                    LEFT JOIN
+                                        tb_rumah_tidak_layak_huni ON filtered_progress.desa_id = tb_rumah_tidak_layak_huni.desa_id
+                                        AND filtered_progress.tahun = tb_rumah_tidak_layak_huni.tahun
+                                    LEFT JOIN
+                                        tb_bencana_alam ON filtered_progress.desa_id = tb_bencana_alam.desa_id
+                                        AND filtered_progress.tahun = tb_bencana_alam.tahun
+                                    LEFT JOIN
+                                        tb_peringatan_bencana ON filtered_progress.desa_id = tb_peringatan_bencana.desa_id
+                                        AND filtered_progress.tahun = tb_peringatan_bencana.tahun
+                                    LEFT JOIN
+                                        tb_taman_bacaan ON filtered_progress.desa_id = tb_taman_bacaan.desa_id
+                                        AND filtered_progress.tahun = tb_taman_bacaan.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_bidan ON filtered_progress.desa_id = tb_keberadaan_bidan.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_bidan.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_dukun_bayi ON filtered_progress.desa_id = tb_keberadaan_dukun_bayi.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_dukun_bayi.tahun
+                                    LEFT JOIN
+                                        tb_klb_wabah ON filtered_progress.desa_id = tb_klb_wabah.desa_id
+                                        AND filtered_progress.tahun = tb_klb_wabah.tahun
+                                            ";
 
                                     // Tambahkan filter jika tahun dipilih
                                     if ($filter_tahun) {
