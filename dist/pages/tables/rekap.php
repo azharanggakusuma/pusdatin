@@ -236,13 +236,27 @@ if ($type === 'pdf') {
                             <table class="table table-striped" style="table-layout: auto; width: 100%;">
                                 <thead>
                                     <tr style="white-space: nowrap;">
-                                        <th>#</th>
-                                        <th>Periode Tahun</th>
-                                        <th>Kode Desa</th>
-                                        <th>Nama Desa</th>
+                                        <th rowspan="2">#</th>
+                                        <th rowspan="2">Periode Tahun</th>
+                                        <th rowspan="2">Kode Desa</th>
+                                        <th rowspan="2">Nama Desa</th>
+                                        <th rowspan="2">Kecamatan</th>
+                                        <th rowspan="2">SK Pembentukan</th>
+                                        <th rowspan="2">Alamat Balai Desa</th>
+                                        <th colspan="2">Batas Utara</th>
+                                        <th colspan="2">Batas Selatan</th>
+                                        <th colspan="2">Batas Timur</th>
+                                        <th colspan="2">Batas Barat</th>
+                                    </tr>
+                                    <tr style="white-space: nowrap;">
+                                        <th>Wilayah</th>
                                         <th>Kecamatan</th>
-                                        <th>Sk Pembentukan/Pengesahan Desa/Kelurahan</th>
-                                        <th>Alamat Balai Desa/Kantor Kelurahan</th>
+                                        <th>Wilayah</th>
+                                        <th>Kecamatan</th>
+                                        <th>Wilayah</th>
+                                        <th>Kecamatan</th>
+                                        <th>Wilayah</th>
+                                        <th>Kecamatan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -253,40 +267,53 @@ if ($type === 'pdf') {
 
                                     // Query untuk mengambil data desa
                                     $query = "
-                                        SELECT 
-                                            filtered_progress.tahun,
-                                            tb_enumerator.kode_desa,
-                                            tb_enumerator.nama_desa,
-                                            tb_enumerator.kecamatan,
-                                            tb_sk_pembentukan.sk_pembentukan,
-                                            tb_balai_desa.alamat_balai
-                                        FROM
-                                            (
-                                                SELECT 
-                                                    desa_id,
-                                                    tahun,
-                                                    MIN(id) AS min_id
-                                                FROM
-                                                    user_progress
-                                                WHERE
-                                                    tahun IS NOT NULL
-                                                GROUP BY desa_id, tahun
-                                            ) AS filtered_progress
-                                        LEFT JOIN
-                                            tb_enumerator
-                                        ON
-                                            filtered_progress.desa_id = tb_enumerator.id_desa
-                                        LEFT JOIN
-                                            tb_sk_pembentukan
-                                        ON
-                                            filtered_progress.desa_id = tb_sk_pembentukan.desa_id
-                                            AND filtered_progress.tahun = tb_sk_pembentukan.tahun
-                                        LEFT JOIN
-                                            tb_balai_desa
-                                        ON
-                                            filtered_progress.desa_id = tb_balai_desa.desa_id
-                                            AND filtered_progress.tahun = tb_balai_desa.tahun
-                                    ";
+                SELECT 
+                    filtered_progress.tahun,
+                    tb_enumerator.kode_desa,
+                    tb_enumerator.nama_desa,
+                    tb_enumerator.kecamatan,
+                    tb_sk_pembentukan.sk_pembentukan,
+                    tb_balai_desa.alamat_balai,
+                    tb_batas_desa.batas_utara,
+                    tb_batas_desa.kec_utara,
+                    tb_batas_desa.batas_selatan,
+                    tb_batas_desa.kec_selatan,
+                    tb_batas_desa.batas_timur,
+                    tb_batas_desa.kec_timur,
+                    tb_batas_desa.batas_barat,
+                    tb_batas_desa.kec_barat
+                FROM
+                    (
+                        SELECT 
+                            desa_id,
+                            tahun,
+                            MIN(id) AS min_id
+                        FROM
+                            user_progress
+                        WHERE
+                            tahun IS NOT NULL
+                        GROUP BY desa_id, tahun
+                    ) AS filtered_progress
+                LEFT JOIN
+                    tb_enumerator
+                ON
+                    filtered_progress.desa_id = tb_enumerator.id_desa
+                LEFT JOIN
+                    tb_sk_pembentukan
+                ON
+                    filtered_progress.desa_id = tb_sk_pembentukan.desa_id
+                    AND filtered_progress.tahun = tb_sk_pembentukan.tahun
+                LEFT JOIN
+                    tb_balai_desa
+                ON
+                    filtered_progress.desa_id = tb_balai_desa.desa_id
+                    AND filtered_progress.tahun = tb_balai_desa.tahun
+                LEFT JOIN
+                    tb_batas_desa
+                ON
+                    filtered_progress.desa_id = tb_batas_desa.desa_id
+                    AND filtered_progress.tahun = tb_batas_desa.tahun
+            ";
 
                                     // Tambahkan filter jika tahun dipilih
                                     if ($filter_tahun) {
@@ -301,12 +328,20 @@ if ($type === 'pdf') {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
                                             echo "<td>" . $no++ . "</td>";
-                                            echo "<td>" . (!empty($row['tahun']) ? htmlspecialchars($row['tahun']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
-                                            echo "<td>" . (!empty($row['kode_desa']) ? htmlspecialchars($row['kode_desa']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
-                                            echo "<td>" . (!empty($row['nama_desa']) ? htmlspecialchars($row['nama_desa']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
-                                            echo "<td>" . (!empty($row['kecamatan']) ? htmlspecialchars($row['kecamatan']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
-                                            echo "<td>" . (!empty($row['sk_pembentukan']) ? htmlspecialchars($row['sk_pembentukan']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
-                                            echo "<td>" . (!empty($row['alamat_balai']) ? htmlspecialchars($row['alamat_balai']) : "<span class='badge bg-warning text-dark'>Belum Mengisi</span>") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['tahun'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kode_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['nama_desa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kecamatan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['sk_pembentukan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['alamat_balai'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['batas_utara'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kec_utara'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['batas_selatan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kec_selatan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['batas_timur'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kec_timur'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['batas_barat'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kec_barat'] ?? "Belum Mengisi") . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
