@@ -486,6 +486,14 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Kemudahan untuk Mencapai Hotel</th>
                                         <th rowspan="2">Jumlah Sarana Penginapan (hostel/motel/losmen/wisma)</th>
                                         <th rowspan="2">Kemudahan untuk Mencapai Penginapan (hostel/motel/losmen/wisma)</th>
+                                        <th rowspan="2">Kejadian Perkelahian Massal di Desa/Kelurahan Selama Setahun Terakhir</th>
+                                        <th rowspan="2">Pembangunan/pemeliharaan pos keamanan lingkungan</th>
+                                        <th rowspan="2">Pembentukan/pengaturan regu keamanan</th>
+                                        <th rowspan="2">Penambahan jumlah anggota hansip/linmas</th>
+                                        <th rowspan="2">Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan</th>
+                                        <th rowspan="2">Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga</th>
+                                        <th rowspan="2">Jumlah anggota linmas/hansip di desa/kelurahan</th>
+                                        <th rowspan="2">Keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan</th>
                                     </tr>
                                     <tr style="white-space: nowrap;">
                                         <th>Wilayah</th>
