@@ -581,6 +581,7 @@ if ($type === 'pdf') {
                                         tb_prasarana_transportasi.keberadaan_angkutan_umum,
                                         tb_prasarana_transportasi.operasional_angkutan_umum,
                                         tb_prasarana_transportasi.jam_operasi_angkutan_umum,
+                                        tb_internet_transportasi.keberadaan_internet,
                                         tb_menara_telepon.jumlah_bts,
                                         tb_menara_telepon.jumlah_operator_telekomunikasi,
                                         tb_menara_telepon.sinyal_telepon,
@@ -721,6 +722,9 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_prasarana_transportasi ON filtered_progress.desa_id = tb_prasarana_transportasi.desa_id
                                         AND filtered_progress.tahun = tb_prasarana_transportasi.tahun
+                                    LEFT JOIN
+                                        tb_internet_transportasi ON filtered_progress.desa_id = tb_internet_transportasi.desa_id
+                                        AND filtered_progress.tahun = tb_internet_transportasi.tahun
                                     LEFT JOIN
                                         tb_menara_telepon ON filtered_progress.desa_id = tb_menara_telepon.desa_id
                                         AND filtered_progress.tahun = tb_menara_telepon.tahun
@@ -895,6 +899,7 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['keberadaan_angkutan_umum'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.keberadaan_angkutan_umum
                                             echo "<td>" . htmlspecialchars($row['operasional_angkutan_umum'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.operasional_angkutan_umum
                                             echo "<td>" . htmlspecialchars($row['jam_operasi_angkutan_umum'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.jam_operasi_angkutan_umum
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_internet'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['jumlah_bts'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.jumlah_bts
                                             echo "<td>" . htmlspecialchars($row['jumlah_operator_telekomunikasi'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.jumlah_operator_telekomunikasi
                                             echo "<td>" . htmlspecialchars($row['sinyal_telepon'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.sinyal_telepon
