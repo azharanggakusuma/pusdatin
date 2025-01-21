@@ -716,7 +716,15 @@ if ($type === 'pdf') {
                                         tb_sarana_prasarana.hotel_jumlah,
                                         tb_sarana_prasarana.hotel_kemudahan,
                                         tb_sarana_prasarana.penginapan_jumlah,
-                                        tb_sarana_prasarana.penginapan_kemudahan
+                                        tb_sarana_prasarana.penginapan_kemudahan,
+                                         tb_perkelahian_massal.kejadian,
+        tb_keamanan_lingkungan.pembangunan_pos_keamanan,
+        tb_keamanan_lingkungan.pembentukan_regu_keamanan,
+        tb_keamanan_lingkungan.penambahan_anggota_hansip,
+        tb_keamanan_lingkungan.pelaporan_tamu_menginap,
+        tb_keamanan_lingkungan.pengaktifan_sistem_keamanan,
+        tb_linmas_poskamling.jumlah_anggota_linmas,
+        tb_keberadaan_pos_polisi.keberadaan_pos_polisi
                                     FROM
                                         (
                                             SELECT 
@@ -881,6 +889,19 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_sarana_prasarana ON filtered_progress.desa_id = tb_sarana_prasarana.desa_id
                                         AND filtered_progress.tahun = tb_sarana_prasarana.tahun
+                                    LEFT JOIN
+                                        tb_perkelahian_massal ON filtered_progress.desa_id = tb_perkelahian_massal.desa_id
+                                        AND filtered_progress.tahun = tb_perkelahian_massal.tahun
+                                    LEFT JOIN
+                                        tb_keamanan_lingkungan ON filtered_progress.desa_id = tb_keamanan_lingkungan.desa_id
+                                        AND filtered_progress.tahun = tb_keamanan_lingkungan.tahun
+                                    LEFT JOIN
+                                        tb_linmas_poskamling ON filtered_progress.desa_id = tb_linmas_poskamling.desa_id
+                                        AND filtered_progress.tahun = tb_linmas_poskamling.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_pos_polisi ON filtered_progress.desa_id = tb_keberadaan_pos_polisi.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_pos_polisi.tahun
+
                                             ";
 
                                     // Tambahkan filter jika tahun dipilih
@@ -1118,7 +1139,14 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['hotel_kemudahan'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['penginapan_jumlah'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['penginapan_kemudahan'] ?? "Belum Mengisi") . "</td>";
-
+                                            echo "<td>" . htmlspecialchars($row['kejadian'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pembangunan_pos_keamanan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pembentukan_regu_keamanan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['penambahan_anggota_hansip'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pelaporan_tamu_menginap'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pengaktifan_sistem_keamanan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_anggota_linmas'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_pos_polisi'] ?? "Belum Mengisi") . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
