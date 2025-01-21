@@ -394,6 +394,35 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)</th>
                                         <th rowspan="2">Ruang Terbuka Hijau (RTH)</th>
                                         <th rowspan="2">Ruang Terbuka Non Hijau (RTNH)</th>
+                                        <th rowspan="2">Sepak bola</th>
+                                        <th rowspan="2">Bola voli</th>
+                                        <th rowspan="2">Bulu tangkis</th>
+                                        <th rowspan="2">Bola basket</th>
+                                        <th rowspan="2">Tenis lapangan</th>
+                                        <th rowspan="2">Tenis meja</th>
+                                        <th rowspan="2">Futsal</th>
+                                        <th rowspan="2">Renang</th>
+                                        <th rowspan="2">Bela diri (pencak silat, karate, dll.)</th>
+                                        <th rowspan="2">Bilyard</th>
+                                        <th rowspan="2">Fitness, aerobik, dll.</th>
+                                        <th rowspan="2">Fasilitas Lainnya</th>
+                                        <th rowspan="2">Kondisi Fasilitas lainnya</th>
+                                        <th rowspan="2">Lalu lintas dari/ke desa/kelurahan melalui</th>
+                                        <th rowspan="2">Jenis permukaan jalan darat antar desa/kelurahan yang terluas</th>
+                                        <th rowspan="2">Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih</th>
+                                        <th rowspan="2">Keberadaan angkutan umum</th>
+                                        <th rowspan="2">Operasional angkutan umum yang utama</th>
+                                        <th rowspan="2">Jam operasi angkutan umum yang utama</th>
+                                        <th rowspan="2">Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan</th>
+                                        <th rowspan="2">Jumlah menara telepon seluler atau Base Transceiver Station (BTS)</th>
+                                        <th rowspan="2">Jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</th>
+                                        <th rowspan="2">Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</th>
+                                        <th rowspan="2">Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan</th>
+                                        <th rowspan="2">Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah</th>
+                                        <th rowspan="2">Fasilitas internet di kantor kepala desa/lurah</th>
+                                        <th rowspan="2">Kantor pos/pos pembantu/rumah pos</th>
+                                        <th rowspan="2">Layanan pos keliling</th>
+                                        <th rowspan="2">Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</th>
                                     </tr>
                                     <tr style="white-space: nowrap;">
                                         <th>Wilayah</th>
