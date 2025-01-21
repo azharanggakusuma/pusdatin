@@ -591,8 +591,42 @@ if ($type === 'pdf') {
                                         tb_keberadaan_kantor_pos.kantor_pos,
                                         tb_keberadaan_kantor_pos.layanan_pos_keliling,
                                         tb_keberadaan_kantor_pos.ekspedisi_swasta,
-                                        
-                                        
+                                        tb_sentra_industri.keberadaan,
+                                        tb_sentra_industri.jumlah_sentra,
+                                        tb_sentra_industri.produk_utama,
+                                        tb_produk_unggulan.keberadaan,
+                                        tb_produk_unggulan.makanan_unggulan,
+                                        tb_produk_unggulan.non_makanan_unggulan,
+                                        tb_pangkalan_minyak.keberadaan_minyak_tanah,
+                                        tb_pangkalan_minyak.keberadaan_lpg,
+                                        tb_bank_operasi.bank_pemerintah,
+                                        tb_bank_operasi.bank_swasta,
+                                        tb_bank_operasi.bank_bpr,
+                                        tb_bank_operasi.jarak_bank_terdekat,
+                                        tb_koperasi.koperasi_kud,
+                                        tb_koperasi.koperasi_kopinkra,
+                                        tb_koperasi.koperasi_ksp,
+                                        tb_koperasi.koperasi_lainnya,
+                                        tb_koperasi.toko_kud,
+                                        tb_koperasi.toko_bumdesa,
+                                        tb_koperasi.toko_lainnya,
+                                        tb_sarana_ekonomi.bmt_jumlah,
+                                        tb_sarana_ekonomi.bmt_jarak,
+                                        tb_sarana_ekonomi.bmt_kemudahan,
+                                        tb_sarana_ekonomi.atm_jumlah,
+                                        tb_sarana_ekonomi.atm_jarak,
+                                        tb_sarana_ekonomi.atm_kemudahan,
+                                        tb_sarana_ekonomi.agen_bank_jumlah,
+                                        tb_sarana_ekonomi.agen_bank_jarak,
+                                        tb_sarana_ekonomi.agen_bank_kemudahan,
+                                        tb_sarana_prasarana.kelompok_pertokoan_jumlah,
+                                        tb_sarana_prasarana.kelompok_pertokoan_kemudahan,
+                                        tb_sarana_prasarana.pasar_permanen_jumlah,
+                                        tb_sarana_prasarana.pasar_permanen_kemudahan,
+                                        tb_sarana_prasarana.pasar_tanpa_bangunan_jumlah,
+                                        tb_sarana_prasarana.pasar_tanpa_bangunan_kemudahan,
+                                        tb_sarana_prasarana.minimarket_jumlah,
+                                        tb_sarana_prasarana.minimarket_kemudahan
                                     FROM
                                         (
                                             SELECT 
@@ -757,7 +791,6 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_sarana_prasarana ON filtered_progress.desa_id = tb_sarana_prasarana.desa_id
                                         AND filtered_progress.tahun = tb_sarana_prasarana.tahun
-
                                             ";
 
                                     // Tambahkan filter jika tahun dipilih
@@ -932,6 +965,37 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['kantor_pos'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.kantor_pos
                                             echo "<td>" . htmlspecialchars($row['layanan_pos_keliling'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.layanan_pos_keliling
                                             echo "<td>" . htmlspecialchars($row['ekspedisi_swasta'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.ekspedisi_swasta
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_sentra'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_sentra'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['produk_utama'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_produk'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['makanan_unggulan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['non_makanan_unggulan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_minyak_tanah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_lpg'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['bank_pemerintah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['bank_swasta'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['bank_bpr'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jarak_bank_terdekat'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['koperasi_kud'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['koperasi_kopinkra'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['koperasi_ksp'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['koperasi_lainnya'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['toko_kud'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['toko_bumdesa'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['toko_lainnya'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['bmt_jumlah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['bmt_jarak'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['bmt_kemudahan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['atm_jumlah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['atm_jarak'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['atm_kemudahan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kelompok_pertokoan_jumlah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['kelompok_pertokoan_kemudahan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pasar_permanen_jumlah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['pasar_permanen_kemudahan'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['warung_makan_jumlah'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['warung_makan_kemudahan'] ?? "Belum Mengisi") . "</td>";
 
                                             echo "</tr>";
                                         }
