@@ -497,7 +497,20 @@ if ($type === 'pdf') {
                                         tb_klb_wabah.difteri,
                                         tb_klb_wabah.corona_covid19,
                                         tb_klb_wabah.lainnya_name,
-                                        tb_klb_wabah.lainnya_status
+                                        tb_klb_wabah.lainnya_status,
+                                        tb_disabilitas.jumlah_tuna_netra,
+                                        tb_disabilitas.jumlah_tuna_rungu,
+                                        tb_disabilitas.jumlah_tuna_wicara,
+                                        tb_disabilitas.jumlah_tuna_rungu_wicara,
+                                        tb_disabilitas.jumlah_tuna_daksa,
+                                        tb_disabilitas.jumlah_tuna_grahita,
+                                        tb_disabilitas.jumlah_tuna_laras,
+                                        tb_disabilitas.jumlah_tuna_eks_kusta,
+                                        tb_disabilitas.jumlah_tuna_ganda,
+                                        tb_ruang_publik.status_ruang_publik,
+                                        tb_ruang_publik.ruang_terbuka_hijau,
+                                        tb_ruang_publik.ruang_terbuka_non_hijau
+
                                     FROM
                                         (
                                             SELECT 
@@ -614,6 +627,15 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_klb_wabah ON filtered_progress.desa_id = tb_klb_wabah.desa_id
                                         AND filtered_progress.tahun = tb_klb_wabah.tahun
+                                    LEFT JOIN
+                                        tb_tempat_ibadah ON filtered_progress.desa_id = tb_tempat_ibadah.desa_id
+                                        AND filtered_progress.tahun = tb_tempat_ibadah.tahun
+                                    LEFT JOIN
+                                        tb_disabilitas ON filtered_progress.desa_id = tb_disabilitas.desa_id
+                                        AND filtered_progress.tahun = tb_disabilitas.tahun
+                                    LEFT JOIN
+                                        tb_ruang_publik ON filtered_progress.desa_id = tb_ruang_publik.desa_id
+                                        AND filtered_progress.tahun = tb_ruang_publik.tahun
                                             ";
 
                                     // Tambahkan filter jika tahun dipilih
@@ -736,6 +758,29 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['corona_covid19'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['lainnya_name'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['lainnya_status'] ?? "Belum Mengisi") . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['jumlah_masjid'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_masjid
+                                            echo "<td>" . htmlspecialchars($row['jumlah_pura'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_pura
+                                            echo "<td>" . htmlspecialchars($row['jumlah_musala'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_musala
+                                            echo "<td>" . htmlspecialchars($row['jumlah_wihara'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_wihara
+                                            echo "<td>" . htmlspecialchars($row['jumlah_gereja_kristen'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_gereja_kristen
+                                            echo "<td>" . htmlspecialchars($row['jumlah_kelenteng'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_kelenteng
+                                            echo "<td>" . htmlspecialchars($row['jumlah_gereja_katolik'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_gereja_katolik
+                                            echo "<td>" . htmlspecialchars($row['jumlah_balai_basarah'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_balai_basarah
+                                            echo "<td>" . htmlspecialchars($row['jumlah_kapel'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_kapel
+                                            echo "<td>" . htmlspecialchars($row['lainnya'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.lainnya
+                                            echo "<td>" . htmlspecialchars($row['jumlah_lainnya'] ?? "Belum Mengisi") . "</td>"; // tb_tempat_ibadah.jumlah_lainnya
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_netra'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_netra
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_rungu'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_rungu
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_wicara'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_wicara
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_rungu_wicara'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_rungu_wicara
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_daksa'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_daksa
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_grahita'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_grahita
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_laras'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_laras
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_eks_kusta'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_eks_kusta
+                                            echo "<td>" . htmlspecialchars($row['jumlah_tuna_ganda'] ?? "Belum Mengisi") . "</td>"; // tb_disabilitas.jumlah_tuna_ganda
+                                            echo "<td>" . htmlspecialchars($row['status_ruang_publik'] ?? "Belum Mengisi") . "</td>"; // tb_ruang_publik.status_ruang_publik
+                                            echo "<td>" . htmlspecialchars($row['ruang_terbuka_hijau'] ?? "Belum Mengisi") . "</td>"; // tb_ruang_publik.ruang_terbuka_hijau
+                                            echo "<td>" . htmlspecialchars($row['ruang_terbuka_non_hijau'] ?? "Belum Mengisi") . "</td>"; // tb_ruang_publik.ruang_terbuka_non_hijau
                                             echo "</tr>";
                                         }
                                     } else {
