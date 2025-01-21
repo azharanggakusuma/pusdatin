@@ -371,6 +371,29 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Corona/COVID-19 </th>
                                         <th rowspan="2">Lainnya</th>
                                         <th rowspan="2">Lainnya (Status)</th>
+                                        <th rowspan="2">Jumlah Masjid</th>
+                                        <th rowspan="2">Jumlah Pura</th>
+                                        <th rowspan="2">Jumlah Surau/Langgar/Musala</th>
+                                        <th rowspan="2">Jumlah Wihara</th>
+                                        <th rowspan="2">Jumlah Gereja Kristen</th>
+                                        <th rowspan="2">Jumlah Kelenteng</th>
+                                        <th rowspan="2">Jumlah Gereja Katolik</th>
+                                        <th rowspan="2">Jumlah Balai Basarah</th>
+                                        <th rowspan="2">Jumlah Kapel</th>
+                                        <th rowspan="2">Tempat Ibadah Lainnya</th>
+                                        <th rowspan="2">Jumlah Lainnya</th>
+                                        <th rowspan="2">Jumlah tuna netra (buta)</th>
+                                        <th rowspan="2">Jumlah tuna rungu (tuli)</th>
+                                        <th rowspan="2">Jumlah tuna wicara (bisu)</th>
+                                        <th rowspan="2">Jumlah tuna rungu-wicara (tuli-bisu)</th>
+                                        <th rowspan="2">Jumlah tuna daksa (disabilitas tubuh)</th>
+                                        <th rowspan="2">Jumlah tuna grahita (keterbelakangan mental)</th>
+                                        <th rowspan="2">Jumlah tuna laras (eks-sakit jiwa)</th>
+                                        <th rowspan="2">Jumlah tuna eks-sakit kusta</th>
+                                        <th rowspan="2">Jumlah tuna ganda (fisik-mental)</th>
+                                        <th rowspan="2">Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)</th>
+                                        <th rowspan="2">Ruang Terbuka Hijau (RTH):</th>
+                                        <th rowspan="2">Ruang Terbuka Non Hijau (RTNH):</th>
                                     </tr>
                                     <tr style="white-space: nowrap;">
                                         <th>Wilayah</th>
