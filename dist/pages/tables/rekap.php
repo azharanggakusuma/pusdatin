@@ -392,8 +392,8 @@ if ($type === 'pdf') {
                                         <th rowspan="2">Jumlah tuna eks-sakit kusta</th>
                                         <th rowspan="2">Jumlah tuna ganda (fisik-mental)</th>
                                         <th rowspan="2">Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)</th>
-                                        <th rowspan="2">Ruang Terbuka Hijau (RTH):</th>
-                                        <th rowspan="2">Ruang Terbuka Non Hijau (RTNH):</th>
+                                        <th rowspan="2">Ruang Terbuka Hijau (RTH)</th>
+                                        <th rowspan="2">Ruang Terbuka Non Hijau (RTNH)</th>
                                     </tr>
                                     <tr style="white-space: nowrap;">
                                         <th>Wilayah</th>
@@ -532,8 +532,35 @@ if ($type === 'pdf') {
                                         tb_disabilitas.jumlah_tuna_ganda,
                                         tb_ruang_publik.status_ruang_publik,
                                         tb_ruang_publik.ruang_terbuka_hijau,
-                                        tb_ruang_publik.ruang_terbuka_non_hijau
-
+                                        tb_ruang_publik.ruang_terbuka_non_hijau,
+                                        tb_fasilitas_olahraga.sepak_bola,
+                                        tb_fasilitas_olahraga.bola_voli,
+                                        tb_fasilitas_olahraga.bulu_tangkis,
+                                        tb_fasilitas_olahraga.bola_basket,
+                                        tb_fasilitas_olahraga.tenis_lapangan,
+                                        tb_fasilitas_olahraga.tenis_meja,
+                                        tb_fasilitas_olahraga.futsal,
+                                        tb_fasilitas_olahraga.renang,
+                                        tb_fasilitas_olahraga.bela_diri,
+                                        tb_fasilitas_olahraga.bilyard,
+                                        tb_fasilitas_olahraga.fitness,
+                                        tb_fasilitas_olahraga.lainnya_nama,
+                                        tb_fasilitas_olahraga.lainnya_kondisi,
+                                        tb_prasarana_transportasi.lalu_lintas,
+                                        tb_prasarana_transportasi.jenis_permukaan_jalan,
+                                        tb_prasarana_transportasi.jalan_darat_bisa_dilalui,
+                                        tb_prasarana_transportasi.keberadaan_angkutan_umum,
+                                        tb_prasarana_transportasi.operasional_angkutan_umum,
+                                        tb_prasarana_transportasi.jam_operasi_angkutan_umum,
+                                        tb_menara_telepon.jumlah_bts,
+                                        tb_menara_telepon.jumlah_operator_telekomunikasi,
+                                        tb_menara_telepon.sinyal_telepon,
+                                        tb_menara_telepon.sinyal_internet,
+                                        tb_ketersediaan_internet.kondisi_komputer,
+                                        tb_ketersediaan_internet.fasilitas_internet,
+                                        tb_keberadaan_kantor_pos.kantor_pos,
+                                        tb_keberadaan_kantor_pos.layanan_pos_keliling,
+                                        tb_keberadaan_kantor_pos.ekspedisi_swasta
                                     FROM
                                         (
                                             SELECT 
@@ -659,6 +686,22 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_ruang_publik ON filtered_progress.desa_id = tb_ruang_publik.desa_id
                                         AND filtered_progress.tahun = tb_ruang_publik.tahun
+                                    LEFT JOIN
+                                        tb_fasilitas_olahraga ON filtered_progress.desa_id = tb_fasilitas_olahraga.desa_id
+                                        AND filtered_progress.tahun = tb_fasilitas_olahraga.tahun
+                                    LEFT JOIN
+                                        tb_prasarana_transportasi ON filtered_progress.desa_id = tb_prasarana_transportasi.desa_id
+                                        AND filtered_progress.tahun = tb_prasarana_transportasi.tahun
+                                    LEFT JOIN
+                                        tb_menara_telepon ON filtered_progress.desa_id = tb_menara_telepon.desa_id
+                                        AND filtered_progress.tahun = tb_menara_telepon.tahun
+                                    LEFT JOIN
+                                        tb_ketersediaan_internet ON filtered_progress.desa_id = tb_ketersediaan_internet.desa_id
+                                        AND filtered_progress.tahun = tb_ketersediaan_internet.tahun
+                                    LEFT JOIN
+                                        tb_keberadaan_kantor_pos ON filtered_progress.desa_id = tb_keberadaan_kantor_pos.desa_id
+                                        AND filtered_progress.tahun = tb_keberadaan_kantor_pos.tahun
+
                                             ";
 
                                     // Tambahkan filter jika tahun dipilih
@@ -804,6 +847,35 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['status_ruang_publik'] ?? "Belum Mengisi") . "</td>"; // tb_ruang_publik.status_ruang_publik
                                             echo "<td>" . htmlspecialchars($row['ruang_terbuka_hijau'] ?? "Belum Mengisi") . "</td>"; // tb_ruang_publik.ruang_terbuka_hijau
                                             echo "<td>" . htmlspecialchars($row['ruang_terbuka_non_hijau'] ?? "Belum Mengisi") . "</td>"; // tb_ruang_publik.ruang_terbuka_non_hijau
+                                            echo "<td>" . htmlspecialchars($row['sepak_bola'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.sepak_bola
+                                            echo "<td>" . htmlspecialchars($row['bola_voli'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.bola_voli
+                                            echo "<td>" . htmlspecialchars($row['bulu_tangkis'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.bulu_tangkis
+                                            echo "<td>" . htmlspecialchars($row['bola_basket'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.bola_basket
+                                            echo "<td>" . htmlspecialchars($row['tenis_lapangan'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.tenis_lapangan
+                                            echo "<td>" . htmlspecialchars($row['tenis_meja'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.tenis_meja
+                                            echo "<td>" . htmlspecialchars($row['futsal'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.futsal
+                                            echo "<td>" . htmlspecialchars($row['renang'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.renang
+                                            echo "<td>" . htmlspecialchars($row['bela_diri'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.bela_diri
+                                            echo "<td>" . htmlspecialchars($row['bilyard'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.bilyard
+                                            echo "<td>" . htmlspecialchars($row['fitness'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.fitness
+                                            echo "<td>" . htmlspecialchars($row['lainnya_nama'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.lainnya_nama
+                                            echo "<td>" . htmlspecialchars($row['lainnya_kondisi'] ?? "Belum Mengisi") . "</td>"; // tb_fasilitas_olahraga.lainnya_kondisi
+                                            echo "<td>" . htmlspecialchars($row['lalu_lintas'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.lalu_lintas
+                                            echo "<td>" . htmlspecialchars($row['jenis_permukaan_jalan'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.jenis_permukaan_jalan
+                                            echo "<td>" . htmlspecialchars($row['jalan_darat_bisa_dilalui'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.jalan_darat_bisa_dilalui
+                                            echo "<td>" . htmlspecialchars($row['keberadaan_angkutan_umum'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.keberadaan_angkutan_umum
+                                            echo "<td>" . htmlspecialchars($row['operasional_angkutan_umum'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.operasional_angkutan_umum
+                                            echo "<td>" . htmlspecialchars($row['jam_operasi_angkutan_umum'] ?? "Belum Mengisi") . "</td>"; // tb_prasarana_transportasi.jam_operasi_angkutan_umum
+                                            echo "<td>" . htmlspecialchars($row['jumlah_bts'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.jumlah_bts
+                                            echo "<td>" . htmlspecialchars($row['jumlah_operator_telekomunikasi'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.jumlah_operator_telekomunikasi
+                                            echo "<td>" . htmlspecialchars($row['sinyal_telepon'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.sinyal_telepon
+                                            echo "<td>" . htmlspecialchars($row['sinyal_internet'] ?? "Belum Mengisi") . "</td>"; // tb_menara_telepon.sinyal_internet
+                                            echo "<td>" . htmlspecialchars($row['kondisi_komputer'] ?? "Belum Mengisi") . "</td>"; // tb_ketersediaan_internet.kondisi_komputer
+                                            echo "<td>" . htmlspecialchars($row['fasilitas_internet'] ?? "Belum Mengisi") . "</td>"; // tb_ketersediaan_internet.fasilitas_internet
+                                            echo "<td>" . htmlspecialchars($row['kantor_pos'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.kantor_pos
+                                            echo "<td>" . htmlspecialchars($row['layanan_pos_keliling'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.layanan_pos_keliling
+                                            echo "<td>" . htmlspecialchars($row['ekspedisi_swasta'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.ekspedisi_swasta
+
                                             echo "</tr>";
                                         }
                                     } else {
