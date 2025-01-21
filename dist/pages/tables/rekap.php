@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include_once('../../config/conn.php');
 include "../../config/session.php";
 
@@ -9,6 +13,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use Mpdf\Mpdf;
 
 // Ambil parameter jenis ekspor, kode desa, kecamatan, dan filter tahun
@@ -24,7 +29,222 @@ $query = "
         tb_enumerator.nama_desa,
         tb_enumerator.kecamatan,
         tb_sk_pembentukan.sk_pembentukan,
-        tb_sk_pembentukan.tahun
+        tb_sk_pembentukan.tahun,
+        filtered_user_progress.tahun AS filtered_progress_tahun,
+        tb_balai_desa.alamat_balai,
+        tb_batas_desa.batas_utara,
+        tb_batas_desa.kec_utara,
+        tb_batas_desa.batas_selatan,
+        tb_batas_desa.kec_selatan,
+        tb_batas_desa.batas_timur,
+        tb_batas_desa.kec_timur,
+        tb_batas_desa.batas_barat,
+        tb_batas_desa.kec_barat,
+        tb_jarak_kantor_desa.jarak_ke_ibukota_kecamatan,
+        tb_jarak_kantor_desa.jarak_ke_ibukota_kabupaten,
+        tb_idm_status.status_idm,
+        tb_website_medsos.alamat_website,
+        tb_website_medsos.alamat_email,
+        tb_website_medsos.alamat_facebook,
+        tb_website_medsos.alamat_twitter,
+        tb_website_medsos.alamat_youtube,
+        tb_status_pemerintahan.status_pemerintahan,
+        tb_ketersediaan_penetapan_peta_desa.penetapan_batas_desa,
+        tb_ketersediaan_penetapan_peta_desa.no_surat_batas_desa,
+        tb_ketersediaan_penetapan_peta_desa.ketersediaan_peta_desa,
+        tb_ketersediaan_penetapan_peta_desa.no_surat_peta_desa,
+        tb_banyaknya_dusun_rt_rw.jumlah_dusun,
+        tb_banyaknya_dusun_rt_rw.jumlah_rw,
+        tb_banyaknya_dusun_rt_rw.jumlah_rt,
+        tb_luas_wilayah_desa.luas_wilayah_desa,
+        tb_topografi_terluas_wilayah_desa.topografi_terluas_wilayah_desa,
+        tb_kepemilikan_kantor.keberadaan_kantor,
+        tb_kepemilikan_kantor.status_kantor,
+        tb_kepemilikan_kantor.kondisi_kantor,
+        tb_kepemilikan_kantor.lokasi_kantor,
+        tb_titik_koordinat_kantor_desa.koordinat_lintang,
+        tb_titik_koordinat_kantor_desa.koordinat_bujur,
+        tb_kematian.jumlah_surat_kematian,
+        tb_penduduk_dan_keluarga.jumlah_penduduk_laki,
+        tb_penduduk_dan_keluarga.jumlah_penduduk_perempuan,
+        tb_penduduk_dan_keluarga.jumlah_kepala_keluarga,
+        tb_ketenagakerjaan.pmi_bekerja,
+        tb_ketenagakerjaan.agen_pengerahan_pmi,
+        tb_ketenagakerjaan.layanan_rekomendasi_pmi,
+        tb_ketenagakerjaan.keberadaan_wna,
+        tb_pengguna_listrik_lampu_surya.jumlah_pln,
+        tb_pengguna_listrik_lampu_surya.jumlah_non_pln,
+        tb_pengguna_listrik_lampu_surya.jumlah_bukan_pengguna_listrik,
+        tb_pengguna_listrik_lampu_surya.penggunaan_lampu_tenaga_surya,
+        tb_penerangan_jalan.lampu_tenaga_surya,
+        tb_penerangan_jalan.penerangan_jalan_utama,
+        tb_penerangan_jalan.sumber_penerangan,
+        tb_pengelolaan_sampah.tps,
+        tb_pengelolaan_sampah.tps3r,
+        tb_pengelolaan_sampah.bank_sampah,
+        tb_sutet.sutet_status,
+        tb_sutet.keberadaan_pemukiman AS keberadaan_pemukiman_sutet,
+        tb_sutet.jumlah_pemukiman AS jumlah_pemukiman_sutet,
+        tb_keberadaan_sungai.keberadaan_sungai,
+        tb_keberadaan_sungai.nama_sungai_1,
+        tb_keberadaan_sungai.nama_sungai_2,
+        tb_keberadaan_sungai.nama_sungai_3,
+        tb_keberadaan_sungai.nama_sungai_4,
+        tb_keberadaan_danau.keberadaan_danau,
+        tb_keberadaan_danau.nama_danau_1,
+        tb_keberadaan_danau.nama_danau_2,
+        tb_keberadaan_danau.nama_danau_3,
+        tb_keberadaan_danau.nama_danau_4,
+        tb_keberadaan_pemukiman_bantaran.keberadaan_pemukiman AS keberadaan_pemukiman_bantaran,
+        tb_keberadaan_pemukiman_bantaran.jumlah_pemukiman AS jumlah_pemukiman_bantaran,
+        tb_embung_mata_air.jumlah_embung,
+        tb_embung_mata_air.lokasi_mata_air,
+        tb_permukiman_kumuh.keberadaan_kumuh,
+        tb_permukiman_kumuh.jumlah_kumuh,
+        tb_lokasi_penggalian.keberadaan_galian,
+        tb_prasarana_kebersihan.jumlah_prasarana,
+        tb_rumah_tidak_layak_huni.jumlah_rumah,
+        tb_bencana_alam.tanah_longsor,
+        tb_bencana_alam.banjir,
+        tb_bencana_alam.banjir_bandang,
+        tb_bencana_alam.gempa_bumi,
+        tb_bencana_alam.tsunami,
+        tb_bencana_alam.gelombang_pasang,
+        tb_bencana_alam.angin_puyuh,
+        tb_bencana_alam.gunung_meletus,
+        tb_bencana_alam.kebakaran_hutan,
+        tb_bencana_alam.kekeringan,
+        tb_bencana_alam.abrasi,
+        tb_peringatan_bencana.peringatan_dini,
+        tb_peringatan_bencana.peringatan_tsunami,
+        tb_peringatan_bencana.perlengkapan_keselamatan,
+        tb_peringatan_bencana.rambu_evakuasi,
+        tb_peringatan_bencana.infrastruktur,
+        tb_taman_bacaan.keberadaan_tbm,
+        tb_keberadaan_bidan.keberadaan_bidan,
+        tb_keberadaan_dukun_bayi.keberadaan_dukun_bayi,
+        tb_klb_wabah.muntaber_diare,
+        tb_klb_wabah.demam_berdarah,
+        tb_klb_wabah.campak,
+        tb_klb_wabah.malaria,
+        tb_klb_wabah.flu_burung_sars,
+        tb_klb_wabah.hepatitis_e,
+        tb_klb_wabah.difteri,
+        tb_klb_wabah.corona_covid19,
+        tb_klb_wabah.lainnya_name,
+        tb_klb_wabah.lainnya_status,
+        tb_disabilitas.jumlah_tuna_netra,
+        tb_disabilitas.jumlah_tuna_rungu,
+        tb_disabilitas.jumlah_tuna_wicara,
+        tb_disabilitas.jumlah_tuna_rungu_wicara,
+        tb_disabilitas.jumlah_tuna_daksa,
+        tb_disabilitas.jumlah_tuna_grahita,
+        tb_disabilitas.jumlah_tuna_laras,
+        tb_disabilitas.jumlah_tuna_eks_kusta,
+        tb_disabilitas.jumlah_tuna_ganda,
+        tb_ruang_publik.status_ruang_publik,
+        tb_ruang_publik.ruang_terbuka_hijau,
+        tb_ruang_publik.ruang_terbuka_non_hijau,
+        tb_fasilitas_olahraga.sepak_bola,
+        tb_fasilitas_olahraga.bola_voli,
+        tb_fasilitas_olahraga.bulu_tangkis,
+        tb_fasilitas_olahraga.bola_basket,
+        tb_fasilitas_olahraga.tenis_lapangan,
+        tb_fasilitas_olahraga.tenis_meja,
+        tb_fasilitas_olahraga.futsal,
+        tb_fasilitas_olahraga.renang,
+        tb_fasilitas_olahraga.bela_diri,
+        tb_fasilitas_olahraga.bilyard,
+        tb_fasilitas_olahraga.fitness,
+        tb_fasilitas_olahraga.lainnya_nama,
+        tb_fasilitas_olahraga.lainnya_kondisi,
+        tb_prasarana_transportasi.lalu_lintas,
+        tb_prasarana_transportasi.jenis_permukaan_jalan,
+        tb_prasarana_transportasi.jalan_darat_bisa_dilalui,
+        tb_prasarana_transportasi.keberadaan_angkutan_umum,
+        tb_prasarana_transportasi.operasional_angkutan_umum,
+        tb_prasarana_transportasi.jam_operasi_angkutan_umum,
+        tb_internet_transportasi.keberadaan_internet,
+        tb_menara_telepon.jumlah_bts,
+        tb_menara_telepon.jumlah_operator_telekomunikasi,
+        tb_menara_telepon.sinyal_telepon,
+        tb_menara_telepon.sinyal_internet,
+        tb_ketersediaan_internet.kondisi_komputer,
+        tb_ketersediaan_internet.fasilitas_internet,
+        tb_keberadaan_kantor_pos.kantor_pos,
+        tb_keberadaan_kantor_pos.layanan_pos_keliling,
+        tb_keberadaan_kantor_pos.ekspedisi_swasta,
+        tb_sentra_industri.keberadaan,
+        tb_sentra_industri.jumlah_sentra,
+        tb_sentra_industri.produk_utama,
+        tb_produk_unggulan.keberadaan AS produk_unggulan_keberadaan,
+        tb_produk_unggulan.makanan_unggulan,
+        tb_produk_unggulan.non_makanan_unggulan,
+        tb_pangkalan_minyak.keberadaan_minyak_tanah,
+        tb_pangkalan_minyak.keberadaan_lpg,
+        tb_bank_operasi.bank_pemerintah,
+        tb_bank_operasi.bank_swasta,
+        tb_bank_operasi.bank_bpr,
+        tb_bank_operasi.jarak_bank_terdekat,
+        tb_koperasi.koperasi_kud,
+        tb_koperasi.koperasi_kopinkra,
+        tb_koperasi.koperasi_ksp,
+        tb_koperasi.koperasi_lainnya,
+        tb_koperasi.toko_kud,
+        tb_koperasi.toko_bumdesa,
+        tb_koperasi.toko_lainnya,
+        tb_sarana_ekonomi.bmt_jumlah,
+        tb_sarana_ekonomi.bmt_jarak,
+        tb_sarana_ekonomi.bmt_kemudahan,
+        tb_sarana_ekonomi.atm_jumlah,
+        tb_sarana_ekonomi.atm_jarak,
+        tb_sarana_ekonomi.atm_kemudahan,
+        tb_sarana_ekonomi.agen_bank_jumlah,
+        tb_sarana_ekonomi.agen_bank_jarak,
+        tb_sarana_ekonomi.agen_bank_kemudahan,
+        tb_sarana_ekonomi.valas_jumlah,
+        tb_sarana_ekonomi.valas_jarak,
+        tb_sarana_ekonomi.valas_kemudahan,
+        tb_sarana_ekonomi.pegadaian_jumlah,
+        tb_sarana_ekonomi.pegadaian_jarak,
+        tb_sarana_ekonomi.pegadaian_kemudahan,
+        tb_sarana_ekonomi.agen_tiket_jumlah,
+        tb_sarana_ekonomi.agen_tiket_jarak,
+        tb_sarana_ekonomi.agen_tiket_kemudahan,
+        tb_sarana_ekonomi.bengkel_jumlah,
+        tb_sarana_ekonomi.bengkel_jarak,
+        tb_sarana_ekonomi.bengkel_kemudahan,
+        tb_sarana_ekonomi.salon_jumlah,
+        tb_sarana_ekonomi.salon_jarak,
+        tb_sarana_ekonomi.salon_kemudahan,
+        tb_sarana_prasarana.kelompok_pertokoan_jumlah,
+        tb_sarana_prasarana.kelompok_pertokoan_kemudahan,
+        tb_sarana_prasarana.pasar_permanen_jumlah,
+        tb_sarana_prasarana.pasar_permanen_kemudahan,
+        tb_sarana_prasarana.pasar_semi_permanen_jumlah,
+        tb_sarana_prasarana.pasar_semi_permanen_kemudahan,
+        tb_sarana_prasarana.pasar_tanpa_bangunan_jumlah,
+        tb_sarana_prasarana.pasar_tanpa_bangunan_kemudahan,
+        tb_sarana_prasarana.minimarket_jumlah,
+        tb_sarana_prasarana.minimarket_kemudahan,
+        tb_sarana_prasarana.restoran_jumlah,
+        tb_sarana_prasarana.restoran_kemudahan,
+        tb_sarana_prasarana.warung_makan_jumlah,
+        tb_sarana_prasarana.warung_makan_kemudahan,
+        tb_sarana_prasarana.toko_kelontong_jumlah,
+        tb_sarana_prasarana.toko_kelontong_kemudahan,
+        tb_sarana_prasarana.hotel_jumlah,
+        tb_sarana_prasarana.hotel_kemudahan,
+        tb_sarana_prasarana.penginapan_jumlah,
+        tb_sarana_prasarana.penginapan_kemudahan,
+        tb_perkelahian_massal.kejadian,
+        tb_keamanan_lingkungan.pembangunan_pos_keamanan,
+        tb_keamanan_lingkungan.pembentukan_regu_keamanan,
+        tb_keamanan_lingkungan.penambahan_anggota_hansip,
+        tb_keamanan_lingkungan.pelaporan_tamu_menginap,
+        tb_keamanan_lingkungan.pengaktifan_sistem_keamanan,
+        tb_linmas_poskamling.jumlah_anggota_linmas,
+        tb_keberadaan_pos_polisi.keberadaan_pos_polisi
     FROM
         tb_enumerator
     LEFT JOIN
@@ -37,38 +257,179 @@ $query = "
         ) AS filtered_user_progress
         ON tb_enumerator.id_desa = filtered_user_progress.desa_id
         AND tb_sk_pembentukan.tahun = filtered_user_progress.tahun
+    LEFT JOIN tb_balai_desa
+        ON tb_enumerator.id_desa = tb_balai_desa.desa_id
+    LEFT JOIN tb_batas_desa
+        ON tb_enumerator.id_desa = tb_batas_desa.desa_id
+    LEFT JOIN tb_jarak_kantor_desa
+        ON tb_enumerator.id_desa = tb_jarak_kantor_desa.desa_id
+    LEFT JOIN tb_idm_status
+        ON tb_enumerator.id_desa = tb_idm_status.desa_id
+    LEFT JOIN tb_website_medsos
+        ON tb_enumerator.id_desa = tb_website_medsos.desa_id
+    LEFT JOIN tb_status_pemerintahan
+        ON tb_enumerator.id_desa = tb_status_pemerintahan.desa_id
+    LEFT JOIN tb_ketersediaan_penetapan_peta_desa
+        ON tb_enumerator.id_desa = tb_ketersediaan_penetapan_peta_desa.desa_id
+    LEFT JOIN tb_banyaknya_dusun_rt_rw
+        ON tb_enumerator.id_desa = tb_banyaknya_dusun_rt_rw.desa_id
+    LEFT JOIN tb_luas_wilayah_desa
+        ON tb_enumerator.id_desa = tb_luas_wilayah_desa.desa_id
+    LEFT JOIN tb_topografi_terluas_wilayah_desa
+        ON tb_enumerator.id_desa = tb_topografi_terluas_wilayah_desa.desa_id
+    LEFT JOIN tb_kepemilikan_kantor
+        ON tb_enumerator.id_desa = tb_kepemilikan_kantor.desa_id
+    LEFT JOIN tb_titik_koordinat_kantor_desa
+        ON tb_enumerator.id_desa = tb_titik_koordinat_kantor_desa.desa_id
+    LEFT JOIN tb_kematian
+        ON tb_enumerator.id_desa = tb_kematian.desa_id
+    LEFT JOIN tb_penduduk_dan_keluarga
+        ON tb_enumerator.id_desa = tb_penduduk_dan_keluarga.desa_id
+    LEFT JOIN tb_ketenagakerjaan
+        ON tb_enumerator.id_desa = tb_ketenagakerjaan.desa_id
+    LEFT JOIN tb_pengguna_listrik_lampu_surya
+        ON tb_enumerator.id_desa = tb_pengguna_listrik_lampu_surya.desa_id
+    LEFT JOIN tb_penerangan_jalan
+        ON tb_enumerator.id_desa = tb_penerangan_jalan.desa_id
+    LEFT JOIN tb_pengelolaan_sampah
+        ON tb_enumerator.id_desa = tb_pengelolaan_sampah.desa_id
+    LEFT JOIN tb_sutet
+        ON tb_enumerator.id_desa = tb_sutet.desa_id
+    LEFT JOIN tb_keberadaan_sungai
+        ON tb_enumerator.id_desa = tb_keberadaan_sungai.desa_id
+    LEFT JOIN tb_keberadaan_danau
+        ON tb_enumerator.id_desa = tb_keberadaan_danau.desa_id
+    LEFT JOIN tb_keberadaan_pemukiman_bantaran
+        ON tb_enumerator.id_desa = tb_keberadaan_pemukiman_bantaran.desa_id
+    LEFT JOIN tb_embung_mata_air
+        ON tb_enumerator.id_desa = tb_embung_mata_air.desa_id
+    LEFT JOIN tb_permukiman_kumuh
+        ON tb_enumerator.id_desa = tb_permukiman_kumuh.desa_id
+    LEFT JOIN tb_lokasi_penggalian
+        ON tb_enumerator.id_desa = tb_lokasi_penggalian.desa_id
+    LEFT JOIN tb_prasarana_kebersihan
+        ON tb_enumerator.id_desa = tb_prasarana_kebersihan.desa_id
+    LEFT JOIN tb_rumah_tidak_layak_huni
+        ON tb_enumerator.id_desa = tb_rumah_tidak_layak_huni.desa_id
+    LEFT JOIN tb_bencana_alam
+        ON tb_enumerator.id_desa = tb_bencana_alam.desa_id
+    LEFT JOIN tb_peringatan_bencana
+        ON tb_enumerator.id_desa = tb_peringatan_bencana.desa_id
+    LEFT JOIN tb_taman_bacaan
+        ON tb_enumerator.id_desa = tb_taman_bacaan.desa_id
+    LEFT JOIN tb_keberadaan_bidan
+        ON tb_enumerator.id_desa = tb_keberadaan_bidan.desa_id
+    LEFT JOIN tb_keberadaan_dukun_bayi
+        ON tb_enumerator.id_desa = tb_keberadaan_dukun_bayi.desa_id
+    LEFT JOIN tb_klb_wabah
+        ON tb_enumerator.id_desa = tb_klb_wabah.desa_id
+    LEFT JOIN tb_disabilitas
+        ON tb_enumerator.id_desa = tb_disabilitas.desa_id
+    LEFT JOIN tb_ruang_publik
+        ON tb_enumerator.id_desa = tb_ruang_publik.desa_id
+    LEFT JOIN tb_fasilitas_olahraga
+        ON tb_enumerator.id_desa = tb_fasilitas_olahraga.desa_id
+    LEFT JOIN tb_prasarana_transportasi
+        ON tb_enumerator.id_desa = tb_prasarana_transportasi.desa_id
+    LEFT JOIN tb_internet_transportasi
+        ON tb_enumerator.id_desa = tb_internet_transportasi.desa_id
+    LEFT JOIN tb_menara_telepon
+        ON tb_enumerator.id_desa = tb_menara_telepon.desa_id
+    LEFT JOIN tb_ketersediaan_internet
+        ON tb_enumerator.id_desa = tb_ketersediaan_internet.desa_id
+    LEFT JOIN tb_keberadaan_kantor_pos
+        ON tb_enumerator.id_desa = tb_keberadaan_kantor_pos.desa_id
+    LEFT JOIN tb_sentra_industri
+        ON tb_enumerator.id_desa = tb_sentra_industri.desa_id
+    LEFT JOIN tb_produk_unggulan
+        ON tb_enumerator.id_desa = tb_produk_unggulan.desa_id
+    LEFT JOIN tb_pangkalan_minyak
+        ON tb_enumerator.id_desa = tb_pangkalan_minyak.desa_id
+    LEFT JOIN tb_bank_operasi
+        ON tb_enumerator.id_desa = tb_bank_operasi.desa_id
+    LEFT JOIN tb_koperasi
+        ON tb_enumerator.id_desa = tb_koperasi.desa_id
+    LEFT JOIN tb_sarana_ekonomi
+        ON tb_enumerator.id_desa = tb_sarana_ekonomi.desa_id
+    LEFT JOIN tb_sarana_prasarana
+        ON tb_enumerator.id_desa = tb_sarana_prasarana.desa_id
+    LEFT JOIN tb_perkelahian_massal
+        ON tb_enumerator.id_desa = tb_perkelahian_massal.desa_id
+    LEFT JOIN tb_keamanan_lingkungan
+        ON tb_enumerator.id_desa = tb_keamanan_lingkungan.desa_id
+    LEFT JOIN tb_linmas_poskamling
+        ON tb_enumerator.id_desa = tb_linmas_poskamling.desa_id
+    LEFT JOIN tb_keberadaan_pos_polisi
+        ON tb_enumerator.id_desa = tb_keberadaan_pos_polisi.desa_id
 ";
 
 // Tambahkan filter berdasarkan input pengguna
 $where = [];
+$params = [];
+$types = '';
+
 if (!empty($kode_kecamatan)) {
-    $where[] = "tb_enumerator.kecamatan = '" . mysqli_real_escape_string($conn, $kode_kecamatan) . "'";
+    $where[] = "tb_enumerator.kecamatan = ?";
+    $params[] = $kode_kecamatan;
+    $types .= 's';
 }
 if (!empty($kode_desa)) {
-    $where[] = "tb_enumerator.kode_desa = '" . mysqli_real_escape_string($conn, $kode_desa) . "'";
+    $where[] = "tb_enumerator.kode_desa = ?";
+    $params[] = $kode_desa;
+    $types .= 's';
 }
 if (!empty($filter_tahun)) {
-    $where[] = "tb_sk_pembentukan.tahun = '" . mysqli_real_escape_string($conn, $filter_tahun) . "'";
+    $where[] = "tb_sk_pembentukan.tahun = ?";
+    $params[] = $filter_tahun;
+    $types .= 'i'; // Misalnya tahun adalah integer
 }
 
 if (!empty($where)) {
     $query .= " WHERE " . implode(' AND ', $where);
 }
 
+// Prepare statement untuk keamanan (Prepared Statements)
+$stmt = mysqli_prepare($conn, $query);
+if ($stmt === false) {
+    die("Failed to prepare the SQL statement: " . mysqli_error($conn));
+}
+
+// Bind parameters jika ada
+if (!empty($params)) {
+    mysqli_stmt_bind_param($stmt, $types, ...$params);
+}
+
 // Eksekusi query
-$result = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
+mysqli_stmt_execute($stmt);
+
+// Dapatkan hasil
+$result = mysqli_stmt_get_result($stmt);
+
+if (!$result) {
+    die("Error executing query: " . mysqli_error($conn));
+}
+
+// Cek apakah ada data
+if (mysqli_num_rows($result) == 0) {
+    die("Tidak ada data yang ditemukan dengan filter yang diberikan.");
+}
 
 // Fungsi untuk ekspor Excel
 if ($type === 'excel') {
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
-    // Header tabel
-    $sheet->setCellValue('A1', 'Periode Tahun');
-    $sheet->setCellValue('B1', 'Kode Desa');
-    $sheet->setCellValue('C1', 'Nama Desa');
-    $sheet->setCellValue('D1', 'Kecamatan');
-    $sheet->setCellValue('E1', 'Sk Pembentukan');
+    // Mengambil semua nama kolom
+    $fields = mysqli_fetch_fields($result);
+    $headers = [];
+    $columnIndex = 1; // 1-based index
+
+    foreach ($fields as $field) {
+        $headers[] = $field->name;
+        $columnLetter = Coordinate::stringFromColumnIndex($columnIndex);
+        $sheet->setCellValue($columnLetter . '1', $field->name);
+        $columnIndex++;
+    }
 
     // Style untuk header
     $headerStyle = [
@@ -77,16 +438,16 @@ if ($type === 'excel') {
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
     ];
-    $sheet->getStyle('A1:E1')->applyFromArray($headerStyle);
+    $lastColumn = Coordinate::stringFromColumnIndex(count($headers));
+    $sheet->getStyle('A1:' . $lastColumn . '1')->applyFromArray($headerStyle);
 
     // Data dari database
     $rowNumber = 2;
     while ($row = mysqli_fetch_assoc($result)) {
-        $sheet->setCellValue('A' . $rowNumber, $row['tahun']);
-        $sheet->setCellValue('B' . $rowNumber, $row['kode_desa']);
-        $sheet->setCellValue('C' . $rowNumber, $row['nama_desa']);
-        $sheet->setCellValue('D' . $rowNumber, $row['kecamatan']);
-        $sheet->setCellValue('E' . $rowNumber, $row['sk_pembentukan']);
+        foreach ($headers as $index => $header) {
+            $columnLetter = Coordinate::stringFromColumnIndex($index + 1);
+            $sheet->setCellValue($columnLetter . $rowNumber, $row[$header]);
+        }
         $rowNumber++;
     }
 
@@ -95,11 +456,12 @@ if ($type === 'excel') {
         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
     ];
-    $sheet->getStyle('A1:E' . ($rowNumber - 1))->applyFromArray($tableStyle);
+    $sheet->getStyle('A1:' . $lastColumn . ($rowNumber - 1))->applyFromArray($tableStyle);
 
     // Auto-size columns
-    foreach (range('A', 'E') as $column) {
-        $sheet->getColumnDimension($column)->setAutoSize(true);
+    for ($i = 1; $i <= count($headers); $i++) {
+        $columnLetter = Coordinate::stringFromColumnIndex($i);
+        $sheet->getColumnDimension($columnLetter)->setAutoSize(true);
     }
 
     // Membersihkan buffer output
@@ -117,25 +479,37 @@ if ($type === 'excel') {
 
 // Fungsi untuk ekspor PDF
 if ($type === 'pdf') {
-    $mpdf = new Mpdf(['format' => 'A4-L']); // Set ukuran kertas A4 dengan orientasi landscape
+    // Karena banyak kolom, gunakan ukuran kertas lebih besar atau orientasi landscape
+    $mpdf = new Mpdf(['format' => 'A3-L']); // A3 dengan orientasi landscape
 
+    // Mengambil semua nama kolom
+    $fields = mysqli_fetch_fields($result);
+    $headers = [];
+    foreach ($fields as $field) {
+        $headers[] = $field->name;
+    }
+
+    // Mulai membangun HTML
     $html = '<h1 style="text-align: center;">Rekap Data</h1>';
-    $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse;">';
+    $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse; font-size: 8px;">';
     $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
-    $html .= '<th>Kode Desa</th>';
-    $html .= '<th>Nama Desa</th>';
-    $html .= '<th>Kecamatan</th>';
-    $html .= '<th>Sk Pembentukan</th>';
-    $html .= '<th>Tahun</th>';
+
+    // Header tabel
+    foreach ($headers as $header) {
+        $html .= '<th>' . htmlspecialchars($header) . '</th>';
+    }
     $html .= '</tr></thead><tbody>';
 
+    // Reset pointer hasil query
+    mysqli_data_seek($result, 0);
+
+    // Data dari database
     while ($row = mysqli_fetch_assoc($result)) {
         $html .= '<tr>';
-        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['kode_desa']) . '</td>';
-        $html .= '<td>' . htmlspecialchars($row['nama_desa']) . '</td>';
-        $html .= '<td>' . htmlspecialchars($row['kecamatan']) . '</td>';
-        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['sk_pembentukan']) . '</td>';
-        $html .= '<td style="text-align: center;">' . htmlspecialchars($row['tahun']) . '</td>';
+        foreach ($headers as $header) {
+            $cellData = htmlspecialchars($row[$header]);
+            $html .= '<td>' . $cellData . '</td>';
+        }
         $html .= '</tr>';
     }
 
@@ -146,7 +520,6 @@ if ($type === 'pdf') {
     exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
