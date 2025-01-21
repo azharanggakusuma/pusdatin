@@ -638,56 +638,7 @@ if ($type === 'pdf') {
                                         tb_sarana_prasarana.restoran_jumlah,
                                         tb_sarana_prasarana.restoran_kemudahan,
                                         tb_sarana_prasarana.hotel_jumlah,
-                                        tb_sarana_prasarana.hotel_kemudahan,
-                                        tb_sentra_industri.keberadaan AS keberadaan_sentra,
-                                        tb_sentra_industri.jumlah_sentra,
-                                        tb_sentra_industri.produk_utama,
-                                        tb_produk_unggulan.keberadaan AS keberadaan_produk,
-                                        tb_produk_unggulan.makanan_unggulan,
-                                        tb_produk_unggulan.non_makanan_unggulan,
-                                        tb_pangkalan_minyak.keberadaan_minyak_tanah,
-                                        tb_pangkalan_minyak.keberadaan_lpg,
-                                        tb_bank_operasi.bank_pemerintah,
-                                        tb_bank_operasi.bank_swasta,
-                                        tb_bank_operasi.bank_bpr,
-                                        tb_bank_operasi.jarak_bank_terdekat,
-                                        tb_koperasi.koperasi_kud,
-                                        tb_koperasi.koperasi_kopinkra,
-                                        tb_koperasi.koperasi_ksp,
-                                        tb_koperasi.koperasi_lainnya,
-                                        tb_koperasi.toko_kud,
-                                        tb_koperasi.toko_bumdesa,
-                                        tb_koperasi.toko_lainnya,
-                                        tb_sarana_ekonomi.bmt_jumlah,
-                                        tb_sarana_ekonomi.bmt_jarak,
-                                        tb_sarana_ekonomi.bmt_kemudahan,
-                                        tb_sarana_ekonomi.atm_jumlah,
-                                        tb_sarana_ekonomi.atm_jarak,
-                                        tb_sarana_ekonomi.atm_kemudahan,
-                                        tb_sarana_ekonomi.agen_bank_jumlah,
-                                        tb_sarana_ekonomi.agen_bank_jarak,
-                                        tb_sarana_ekonomi.agen_bank_kemudahan,
-                                        tb_sarana_prasarana.kelompok_pertokoan_jumlah,
-                                        tb_sarana_prasarana.kelompok_pertokoan_kemudahan,
-                                        tb_sarana_prasarana.pasar_permanen_jumlah,
-                                        tb_sarana_prasarana.pasar_permanen_kemudahan,
-                                        tb_sarana_prasarana.pasar_semi_permanen_jumlah,
-                                        tb_sarana_prasarana.pasar_semi_permanen_kemudahan,
-                                        tb_sarana_prasarana.pasar_tanpa_bangunan_jumlah,
-                                        tb_sarana_prasarana.pasar_tanpa_bangunan_kemudahan,
-                                        tb_sarana_prasarana.minimarket_jumlah,
-                                        tb_sarana_prasarana.minimarket_kemudahan,
-                                        tb_sarana_prasarana.restoran_jumlah,
-                                        tb_sarana_prasarana.restoran_kemudahan,
-                                        tb_sarana_prasarana.warung_makan_jumlah,
-                                        tb_sarana_prasarana.warung_makan_kemudahan,
-                                        tb_sarana_prasarana.toko_kelontong_jumlah,
-                                        tb_sarana_prasarana.toko_kelontong_kemudahan,
-                                        tb_sarana_prasarana.hotel_jumlah,
-                                        tb_sarana_prasarana.hotel_kemudahan,
-                                        tb_sarana_prasarana.penginapan_jumlah,
-                                        tb_sarana_prasarana.penginapan_kemudahan
-
+                                        tb_sarana_prasarana.hotel_kemudahan
                                     FROM
                                         (
                                             SELECT 
@@ -831,27 +782,6 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_keberadaan_kantor_pos ON filtered_progress.desa_id = tb_keberadaan_kantor_pos.desa_id
                                         AND filtered_progress.tahun = tb_keberadaan_kantor_pos.tahun
-                                    LEFT JOIN
-                                        tb_sentra_industri ON filtered_progress.desa_id = tb_sentra_industri.desa_id
-                                        AND filtered_progress.tahun = tb_sentra_industri.tahun
-                                    LEFT JOIN
-                                        tb_produk_unggulan ON filtered_progress.desa_id = tb_produk_unggulan.desa_id
-                                        AND filtered_progress.tahun = tb_produk_unggulan.tahun
-                                    LEFT JOIN
-                                        tb_pangkalan_minyak ON filtered_progress.desa_id = tb_pangkalan_minyak.desa_id
-                                        AND filtered_progress.tahun = tb_pangkalan_minyak.tahun
-                                    LEFT JOIN
-                                        tb_bank_operasi ON filtered_progress.desa_id = tb_bank_operasi.desa_id
-                                        AND filtered_progress.tahun = tb_bank_operasi.tahun
-                                    LEFT JOIN
-                                        tb_koperasi ON filtered_progress.desa_id = tb_koperasi.desa_id
-                                        AND filtered_progress.tahun = tb_koperasi.tahun
-                                    LEFT JOIN
-                                        tb_sarana_ekonomi ON filtered_progress.desa_id = tb_sarana_ekonomi.desa_id
-                                        AND filtered_progress.tahun = tb_sarana_ekonomi.tahun
-                                    LEFT JOIN
-                                        tb_sarana_prasarana ON filtered_progress.desa_id = tb_sarana_prasarana.desa_id
-                                        AND filtered_progress.tahun = tb_sarana_prasarana.tahun
                                     LEFT JOIN
                                         tb_sentra_industri ON filtered_progress.desa_id = tb_sentra_industri.desa_id
                                         AND filtered_progress.tahun = tb_sentra_industri.tahun
@@ -1048,67 +978,6 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['kantor_pos'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.kantor_pos
                                             echo "<td>" . htmlspecialchars($row['layanan_pos_keliling'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.layanan_pos_keliling
                                             echo "<td>" . htmlspecialchars($row['ekspedisi_swasta'] ?? "Belum Mengisi") . "</td>"; // tb_keberadaan_kantor_pos.ekspedisi_swasta
-                                            // tb_sentra_industri
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_sentra'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['jumlah_sentra'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['produk_utama'] ?? "Belum Mengisi") . "</td>";
-
-                                            // tb_produk_unggulan
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_produk'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['makanan_unggulan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['non_makanan_unggulan'] ?? "Belum Mengisi") . "</td>";
-
-                                            // tb_pangkalan_minyak
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_minyak_tanah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_lpg'] ?? "Belum Mengisi") . "</td>";
-
-                                            // tb_bank_operasi
-                                            echo "<td>" . htmlspecialchars($row['bank_pemerintah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['bank_swasta'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['bank_bpr'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['jarak_bank_terdekat'] ?? "Belum Mengisi") . "</td>";
-
-                                            // tb_koperasi
-                                            echo "<td>" . htmlspecialchars($row['koperasi_kud'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['koperasi_kopinkra'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['koperasi_ksp'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['koperasi_lainnya'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['toko_kud'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['toko_bumdesa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['toko_lainnya'] ?? "Belum Mengisi") . "</td>";
-
-                                            // tb_sarana_ekonomi
-                                            echo "<td>" . htmlspecialchars($row['bmt_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['bmt_jarak'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['bmt_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['atm_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['atm_jarak'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['atm_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['agen_bank_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['agen_bank_jarak'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['agen_bank_kemudahan'] ?? "Belum Mengisi") . "</td>";
-
-                                            // tb_sarana_prasarana
-                                            echo "<td>" . htmlspecialchars($row['kelompok_pertokoan_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['kelompok_pertokoan_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_permanen_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_permanen_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_semi_permanen_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_semi_permanen_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_tanpa_bangunan_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_tanpa_bangunan_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['minimarket_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['minimarket_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['restoran_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['restoran_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['warung_makan_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['warung_makan_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['toko_kelontong_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['toko_kelontong_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['hotel_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['hotel_kemudahan'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['penginapan_jumlah'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['penginapan_kemudahan'] ?? "Belum Mengisi") . "</td>";
 
                                             echo "</tr>";
                                         }
