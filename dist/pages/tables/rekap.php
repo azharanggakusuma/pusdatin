@@ -1,13 +1,12 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+// Sertakan file koneksi dan sesi
 include_once('../../config/conn.php');
 include "../../config/session.php";
 
+// Autoload dependencies melalui Composer
 require __DIR__ . '/../../../vendor/autoload.php';
 
+// Gunakan namespace yang diperlukan
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -16,21 +15,477 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use Mpdf\Mpdf;
 
-// Ambil parameter jenis ekspor, kode desa, kecamatan, dan filter tahun
+// Ambil parameter jenis ekspor, kode desa, kecamatan, dan filter tahun dari URL
 $type = $_GET['type'] ?? null;
 $kode_desa = $_GET['kode_desa'] ?? null;
 $kode_kecamatan = $_GET['kode_kecamatan'] ?? null;
 $filter_tahun = $_GET['filter_tahun'] ?? null;
 
-// Query dasar
+// Definisikan nama kolom asli dari database tanpa prefiks tabel
+$columns = [
+    'tahun',
+    'kode_desa',
+    'nama_desa',
+    'kecamatan',
+    'sk_pembentukan',
+    'alamat_balai',
+    'batas_utara',
+    'kec_utara',
+    'batas_selatan',
+    'kec_selatan',
+    'batas_timur',
+    'kec_timur',
+    'batas_barat',
+    'kec_barat',
+    'jarak_ke_ibukota_kecamatan',
+    'jarak_ke_ibukota_kabupaten',
+    'status_idm',
+    'alamat_website',
+    'alamat_email',
+    'alamat_facebook',
+    'alamat_twitter',
+    'alamat_youtube',
+    'status_pemerintahan',
+    'penetapan_batas_desa',
+    'no_surat_batas_desa',
+    'ketersediaan_peta_desa',
+    'no_surat_peta_desa',
+    'jumlah_dusun',
+    'jumlah_rw',
+    'jumlah_rt',
+    'luas_wilayah_desa',
+    'topografi_terluas_wilayah_desa',
+    'keberadaan_kantor',
+    'status_kantor',
+    'kondisi_kantor',
+    'lokasi_kantor',
+    'koordinat_lintang',
+    'koordinat_bujur',
+    'jumlah_surat_kematian',
+    'jumlah_penduduk_laki',
+    'jumlah_penduduk_perempuan',
+    'jumlah_kepala_keluarga',
+    'pmi_bekerja',
+    'agen_pengerahan_pmi',
+    'layanan_rekomendasi_pmi',
+    'keberadaan_wna',
+    'jumlah_pln',
+    'jumlah_non_pln',
+    'jumlah_bukan_pengguna_listrik',
+    'penggunaan_lampu_tenaga_surya',
+    'lampu_tenaga_surya',
+    'penerangan_jalan_utama',
+    'sumber_penerangan',
+    'tps',
+    'tps3r',
+    'bank_sampah',
+    'sutet_status',
+    'keberadaan_pemukiman',
+    'jumlah_pemukiman',
+    'keberadaan_sungai',
+    'nama_sungai_1',
+    'nama_sungai_2',
+    'nama_sungai_3',
+    'nama_sungai_4',
+    'keberadaan_danau',
+    'nama_danau_1',
+    'nama_danau_2',
+    'nama_danau_3',
+    'nama_danau_4',
+    'keberadaan_pemukiman_bantaran',
+    'jumlah_pemukiman_bantaran',
+    'jumlah_embung',
+    'lokasi_mata_air',
+    'keberadaan_kumuh',
+    'jumlah_kumuh',
+    'keberadaan_galian',
+    'jumlah_prasarana',
+    'jumlah_rumah',
+    'tanah_longsor',
+    'banjir',
+    'banjir_bandang',
+    'gempa_bumi',
+    'tsunami',
+    'gelombang_pasang',
+    'angin_puyuh',
+    'gunung_meletus',
+    'kebakaran_hutan',
+    'kekeringan',
+    'abrasi',
+    'peringatan_dini',
+    'peringatan_tsunami',
+    'perlengkapan_keselamatan',
+    'rambu_evakuasi',
+    'infrastruktur',
+    'keberadaan_tbm',
+    'keberadaan_bidan',
+    'keberadaan_dukun_bayi',
+    'muntaber_diare',
+    'demam_berdarah',
+    'campak',
+    'malaria',
+    'flu_burung_sars',
+    'hepatitis_e',
+    'difteri',
+    'corona_covid19',
+    'lainnya_name',
+    'lainnya_status',
+    'jumlah_tuna_netra',
+    'jumlah_tuna_rungu',
+    'jumlah_tuna_wicara',
+    'jumlah_tuna_rungu_wicara',
+    'jumlah_tuna_daksa',
+    'jumlah_tuna_grahita',
+    'jumlah_tuna_laras',
+    'jumlah_tuna_eks_kusta',
+    'jumlah_tuna_ganda',
+    'status_ruang_publik',
+    'ruang_terbuka_hijau',
+    'ruang_terbuka_non_hijau',
+    'sepak_bola',
+    'bola_voli',
+    'bulu_tangkis',
+    'bola_basket',
+    'tenis_lapangan',
+    'tenis_meja',
+    'futsal',
+    'renang',
+    'bela_diri',
+    'bilyard',
+    'fitness',
+    'lainnya_nama_olahraga',
+    'lainnya_kondisi_olahraga',
+    'lalu_lintas',
+    'jenis_permukaan_jalan',
+    'jalan_darat_bisa_dilalui',
+    'keberadaan_angkutan_umum',
+    'operasional_angkutan_umum',
+    'jam_operasi_angkutan_umum',
+    'keberadaan_internet',
+    'jumlah_bts',
+    'jumlah_operator_telekomunikasi',
+    'sinyal_telepon',
+    'sinyal_internet',
+    'kondisi_komputer',
+    'fasilitas_internet',
+    'kantor_pos',
+    'layanan_pos_keliling',
+    'ekspedisi_swasta',
+    'keberadaan_sentra_industri',
+    'jumlah_sentra',
+    'produk_utama',
+    'keberadaan_produk_unggulan',
+    'makanan_unggulan',
+    'non_makanan_unggulan',
+    'keberadaan_minyak_tanah',
+    'keberadaan_lpg',
+    'bank_pemerintah',
+    'bank_swasta',
+    'bank_bpr',
+    'jarak_bank_terdekat',
+    'koperasi_kud',
+    'koperasi_kopinkra',
+    'koperasi_ksp',
+    'koperasi_lainnya',
+    'toko_kud',
+    'toko_bumdesa',
+    'toko_lainnya',
+    'bmt_jumlah',
+    'bmt_jarak',
+    'bmt_kemudahan',
+    'atm_jumlah',
+    'atm_jarak',
+    'atm_kemudahan',
+    'agen_bank_jumlah',
+    'agen_bank_jarak',
+    'agen_bank_kemudahan',
+    'valas_jumlah',
+    'valas_jarak',
+    'valas_kemudahan',
+    'pegadaian_jumlah',
+    'pegadaian_jarak',
+    'pegadaian_kemudahan',
+    'agen_tiket_jumlah',
+    'agen_tiket_jarak',
+    'agen_tiket_kemudahan',
+    'bengkel_jumlah',
+    'bengkel_jarak',
+    'bengkel_kemudahan',
+    'salon_jumlah',
+    'salon_jarak',
+    'salon_kemudahan',
+    'kelompok_pertokoan_jumlah',
+    'kelompok_pertokoan_kemudahan',
+    'pasar_permanen_jumlah',
+    'pasar_permanen_kemudahan',
+    'pasar_semi_permanen_jumlah',
+    'pasar_semi_permanen_kemudahan',
+    'pasar_tanpa_bangunan_jumlah',
+    'pasar_tanpa_bangunan_kemudahan',
+    'minimarket_jumlah',
+    'minimarket_kemudahan',
+    'restoran_jumlah',
+    'restoran_kemudahan',
+    'warung_makan_jumlah',
+    'warung_makan_kemudahan',
+    'toko_kelontong_jumlah',
+    'toko_kelontong_kemudahan',
+    'hotel_jumlah',
+    'hotel_kemudahan',
+    'penginapan_jumlah',
+    'penginapan_kemudahan',
+    'kejadian_perkelahian_massal',
+    'pembangunan_pos_keamanan',
+    'pembentukan_regu_keamanan',
+    'penambahan_anggota_hansip',
+    'pelaporan_tamu_menginap',
+    'pengaktifan_sistem_keamanan',
+    'jumlah_anggota_linmas',
+    'keberadaan_pos_polisi'
+];
+
+// Definisikan nama kolom yang akan ditampilkan di Excel dan PDF
+$headers = [
+    'Periode Tahun',
+    'Kode Desa',
+    'Nama Desa',
+    'Kecamatan',
+    'Sk Pembentukan/Pengesahan Desa/Kelurahan',
+    'Alamat Balai Desa/Kantor Kelurahan',
+    'Batas Utara',
+    'Kec Utara',
+    'Batas Selatan',
+    'Kec Selatan',
+    'Batas Timur',
+    'Kec Timur',
+    'Batas Barat',
+    'Kec Barat',
+    'Jarak ke Ibu Kota Kecamatan (km)',
+    'Jarak ke Ibu Kota Kabupaten (km)',
+    'Status Desa Membangun',
+    'Alamat Website Desa',
+    'Alamat Email Desa',
+    'Alamat Facebook Desa',
+    'Alamat Twitter Desa',
+    'Alamat YouTube Desa',
+    'Status Pemerintahan',
+    'Penetapan Batas Desa',
+    'No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa',
+    'Ketersediaan Peta Desa',
+    'No SK/Perbup/Perda tentang Peta Desa',
+    'Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis',
+    'Banyaknya RW',
+    'Banyaknya RT',
+    'Luas Wilayah Desa',
+    'Topografi Terluas Wilayah Desa',
+    'Keberadaan kantor kepala desa/lurah',
+    'Status Kantor Kepala Desa/Lurah',
+    'Kondisi Kantor Kepala Desa/Balai Desa',
+    'Lokasi Kantor Kepala Desa/Lurah',
+    'Koordinat Lintang (Latitude)',
+    'Koordinat Bujur (Longitude)',
+    'Jumlah Surat Kematian Yang Dikeluarkan',
+    'Jumlah Penduduk Laki-Laki',
+    'Jumlah Penduduk Perempuan',
+    'Jumlah Kepala Keluarga',
+    'Keberadaan Warga Desa/Kelurahan yang Sedang Bekerja sebagai PMI (Pekerja Migran Indonesia)/TKI di Luar Negeri',
+    'Keberadaan Agen (Seseorang/Sekelompok Orang/Perusahaan) Pengerahan Pekerja Migran Indonesia/TKI ke Luar Negeri di Desa/Kelurahan',
+    'Layanan Rekomendasi/Surat Keterangan Bagi Warga Desa/Kelurahan yang Akan Bekerja Sebagai Pekerja Migran Indonesia/TKI di Luar Negeri',
+    'Keberadaan Warga Negara Asing (WNA) di Desa/Kelurahan',
+    'Jumlah Keluarga Pengguna Listrik PLN (Perusahaan Listrik Negara)',
+    'Jumlah Keluarga Pengguna Listrik Non-PLN',
+    'Jumlah Keluraga Bukan Pengguna Listrik',
+    'Keluarga yang Menggunakan Lampu Tenaga Surya',
+    'Penerangan di Jalan Desa/Kelurahan yang Menggunakan Lampu Tenaga Surya',
+    'Penerangan di Jalan Utama Desa/Kelurahan',
+    'Sumber Penerangan di Jalan Utama Desa/Kelurahan',
+    'Keberadaan Tempat Pembuangan Sampah Sementara (TPS)',
+    'Tempat Penampungan Sementara Reduce, Reuse, Recycle (TPS3R)',
+    'Keberadaan Bank Sampah di Desa/Kelurahan',
+    'Wilayah desa/kelurahan dilalui saluran udara tegangan ekstra tinggi (SUTET) / Saluran Udara Tegangan Tinggi (SUUT) / Saluran Udara Tegangan Tinggi Arus Searah (SUTTAS)',
+    'Keberadaan Pemukiman Di Bawah SUTET/SUTT/SUTTAS',
+    'Jumlah Pemukiman di Bawah SUTET/SUTT/SUTTAS',
+    'Keberadaan Sungai Yang Melintasi',
+    'Nama Sungai Yang Melintasi ke 1',
+    'Nama Sungai Yang Melintasi ke 2',
+    'Nama Sungai Yang Melintasi ke 3',
+    'Nama Sungai Yang Melintasi ke 4',
+    'Keberadaan Danau/Waduk/Situ Yang Berada Di Wilayah Desa',
+    'Nama danau/waduk/situ yang berada di wilayah desa ke 1',
+    'Nama danau/waduk/situ yang berada di wilayah desa ke 2',
+    'Nama danau/waduk/situ yang berada di wilayah desa ke 3',
+    'Nama danau/waduk/situ yang berada di wilayah desa ke 4',
+    'Keberadaan Pemukiman Di Bantaran Sungai',
+    'Jumlah Pemukiman Di Bantaran Sungai',
+    'Jumlah Embung',
+    'Lokasi Mata Air',
+    'Keberadaan Permukiman Kumuh (Sanitasi Lingkungan Buruk, Bangunan Padat Dan Sebagian Besar Tidak Layak Huni)Di Desa/Kelurahan',
+    'Jumlah Pemukiman Kumuh',
+    'Keberadaan Lokasi Penggalian Golongan C (Misalnya: Batu Kali, Pasir, Kapur, Kaolin, Pasir Kuarsa, Tanah Liat, Dll.)',
+    'Jumlah Sarana Prasarana Kebersihan',
+    'Jumlah Rumah Tidak Layak Huni',
+    'Tanah Longsor',
+    'Banjir',
+    'Banjir Bandang',
+    'Gempa Bumi',
+    'Tsunami',
+    'Gelombang Pasang',
+    'Angin Puyuh',
+    'Gunung Meletus',
+    'Kebakaran Hutan',
+    'Kekeringan',
+    'Abrasi',
+    'Sistem Peringatan Dini Bencana Alam',
+    'Sistem Peringatan Dini Khusus Tsunami',
+    'Perlengkapan Keselamatan (Perahu Karet, Tenda, Masker, dll)',
+    'Rambu-Rambu dan Jalur Evakuasi Bencana',
+    'Pembuatan, Perawatan, atau Normalisasi (Sungai, Kanal, Tanggul, Parit, Drainase, Waduk, Pantai, dll.)',
+    'Keberadaan Taman Bacaan Masyarakat (TBM) / Perpustakaan Desa',
+    'Keberadaan Bidan Desa yang menetap di Desa/Kelurahan',
+    'Keberadaan Dukun Bayi/Paraji yang menetap di Desa/Kelurahan',
+    'Muntaber/diare',
+    'Demam Berdarah',
+    'Campak',
+    'Malaria',
+    'Flu Burung/SARS',
+    'Hepatitis E',
+    'Difteri',
+    'Corona/COVID-19',
+    'Lainnya',
+    'Lainnya (Status)',
+    'Jumlah Masjid',
+    'Jumlah Pura',
+    'Jumlah Surau/Langgar/Musala',
+    'Jumlah Wihara',
+    'Jumlah Gereja Kristen',
+    'Jumlah Kelenteng',
+    'Jumlah Gereja Katolik',
+    'Jumlah Balai Basarah',
+    'Jumlah Kapel',
+    'Tempat Ibadah Lainnya',
+    'Jumlah Lainnya',
+    'Jumlah tuna netra (buta)',
+    'Jumlah tuna rungu (tuli)',
+    'Jumlah tuna wicara (bisu)',
+    'Jumlah tuna rungu-wicara (tuli-bisu)',
+    'Jumlah tuna daksa (disabilitas tubuh)',
+    'Jumlah tuna grahita (keterbelakangan mental)',
+    'Jumlah tuna laras (eks-sakit jiwa)',
+    'Jumlah tuna eks-sakit kusta',
+    'Jumlah tuna ganda (fisik-mental)',
+    'Keberadaan Ruang publik terbuka yang peruntukan utamanya sebagai tempat bagi warga desa/kelurahan untuk bersantai/bermain tanpa perlu membayar (misalnya: lapangan terbuka/alun–alun, taman, dll.)',
+    'Ruang Terbuka Hijau (RTH)',
+    'Ruang Terbuka Non Hijau (RTNH)',
+    'Sepak bola',
+    'Bola voli',
+    'Bulu tangkis',
+    'Bola basket',
+    'Tenis lapangan',
+    'Tenis meja',
+    'Futsal',
+    'Renang',
+    'Bela diri (pencak silat, karate, dll.)',
+    'Bilyard',
+    'Fitness, aerobik, dll.',
+    'Fasilitas Lainnya',
+    'Kondisi Fasilitas lainnya',
+    'Lalu lintas dari/ke desa/kelurahan melalui',
+    'Jenis permukaan jalan darat antar desa/kelurahan yang terluas',
+    'Jalan darat antar desa/kelurahan dapat dilalui kendaraan bermotor roda 4 atau lebih',
+    'Keberadaan angkutan umum',
+    'Operasional angkutan umum yang utama',
+    'Jam operasi angkutan umum yang utama',
+    'Keberadaan internet untuk warnet, game online, dan fasilitas lainnya di desa/kelurahan',
+    'Jumlah menara telepon seluler atau Base Transceiver Station (BTS)',
+    'Jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa',
+    'Sinyal telepon seluler/handphone di sebagian besar wilayah desa/kelurahan',
+    'Sinyal internet telepon seluler/handphone di sebagian besar wilayah desa/kelurahan',
+    'Komputer/PC/laptop yang masih berfungsi di kantor kepala desa/lurah',
+    'Fasilitas internet di kantor kepala desa/lurah',
+    'Kantor pos/pos pembantu/rumah pos',
+    'Layanan pos keliling',
+    'Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta',
+    'Keberadaan Sentra Industri Unggulan Desa',
+    'Sentra Industri',
+    'Produk pada sentra industri yang mempunyai muatan usaha terbanyak',
+    'Keberadaan Produk barang unggulan/utama di desa/kelurahan (Makanan dan Non Makanan)',
+    'Produk barang unggulan/utama desa/kelurahan (makanan)',
+    'Produk barang unggulan/utama desa/kelurahan (non makanan)',
+    'Keberadaan pangkalan/agen/penjual minyak tanah (termasuk penjual minyak tanah keliling)',
+    'Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)',
+    'Jumlah Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)',
+    'Jumlah Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)',
+    'Jumlah Bank Perkreditan Rakyat (BPR)',
+    'Jika tidak ada bank, perkiraan jarak ke bank terdekat',
+    'Jumlah Koperasi Unit Desa (KUD)',
+    'Jumlah Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)/Usaha mikro',
+    'Jumlah Koperasi Simpan Pinjam (KSP/Kospin)',
+    'Jumlah Koperasi lainnya',
+    'Keberadaan Toko Milik KUD',
+    'Keberadaan Toko Milik BUM Desa',
+    'Keberadaan Toko Selain milik KUD/BUM Desa',
+    'Jumlah Sarana Baitul Maal Wa Tamwil (BMT)',
+    'Jarak Baitul Maal Wa Tamwil (BMT)',
+    'Kemudahan untuk Mencapai Baitul Maal Wa Tamwil (BMT)',
+    'Jumlah Sarana Anjungan Tunai Mandiri (ATM)',
+    'Jarak Anjungan Tunai Mandiri (ATM)',
+    'Kemudahan untuk Mencapai Anjungan Tunai Mandiri (ATM)',
+    'Jumlah Sarana Agen Bank',
+    'Jarak Agen Bank',
+    'Kemudahan untuk Mencapai Agen Bank',
+    'Jumlah Sarana Pedagang Valuta Asing',
+    'Jarak Pedagang Valuta Asing',
+    'Kemudahan untuk Mencapai Pedagang Valuta Asing',
+    'Jumlah Sarana Pergadaian',
+    'Jarak Pergadaian',
+    'Kemudahan untuk Mencapai Pergadaian',
+    'Jumlah Sarana Agen Tiket/Travel/Biro Perjalanan',
+    'Jarak Agen Tiket/Travel/Biro Perjalanan',
+    'Kemudahan untuk Mencapai Agen Tiket/Travel/Biro Perjalanan',
+    'Jumlah Sarana Bengkel Mobil/Motor',
+    'Jarak Bengkel Mobil/Motor',
+    'Kemudahan untuk Mencapai Bengkel Mobil/Motor',
+    'Jumlah Sarana Salon Kecantikan',
+    'Jarak Salon Kecantikan',
+    'Kemudahan untuk Mencapai Salon Kecantikan',
+    'Jumlah Sarana Kelompok pertokoan',
+    'Kemudahan untuk Mencapai Kelompok pertokoan',
+    'Jumlah Sarana Pasar dengan bangunan permanen',
+    'Kemudahan untuk Mencapai Pasar dengan bangunan permanen',
+    'Jumlah Sarana Pasar dengan bangunan semi permanen',
+    'Kemudahan untuk Mencapai Pasar dengan bangunan semi permanen',
+    'Jumlah Sarana Pasar tanpa bangunan',
+    'Kemudahan untuk Mencapai Pasar tanpa bangunan',
+    'Jumlah Sarana Minimarket/swalayan/supermarket',
+    'Kemudahan untuk Mencapai Minimarket/swalayan/supermarket',
+    'Jumlah Sarana Restoran/rumah makan',
+    'Kemudahan untuk Mencapai Restoran/rumah makan',
+    'Jumlah Sarana Warung/kedai makanan minuman',
+    'Kemudahan untuk Mencapai Warung/kedai makanan minuman',
+    'Jumlah Sarana Toko/warung kelontong',
+    'Kemudahan untuk Mencapai Toko/warung kelontong',
+    'Jumlah Sarana Hotel',
+    'Kemudahan untuk Mencapai Hotel',
+    'Jumlah Sarana Penginapan (hostel/motel/losmen/wisma)',
+    'Kemudahan untuk Mencapai Penginapan (hostel/motel/losmen/wisma)',
+    'Kejadian Perkelahian Massal di Desa/Kelurahan Selama Setahun Terakhir',
+    'Pembangunan/pemeliharaan pos keamanan lingkungan',
+    'Pembentukan/pengaturan regu keamanan',
+    'Penambahan jumlah anggota hansip/linmas',
+    'Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan',
+    'Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga',
+    'Jumlah anggota linmas/hansip di desa/kelurahan',
+    'Keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan'
+];
+
+// Query dasar tanpa alias (AS)
 $query = "
     SELECT DISTINCT 
+        tb_sk_pembentukan.tahun,
         tb_enumerator.kode_desa,
         tb_enumerator.nama_desa,
         tb_enumerator.kecamatan,
         tb_sk_pembentukan.sk_pembentukan,
-        tb_sk_pembentukan.tahun,
-        filtered_user_progress.tahun AS filtered_progress_tahun,
         tb_balai_desa.alamat_balai,
         tb_batas_desa.batas_utara,
         tb_batas_desa.kec_utara,
@@ -83,8 +538,8 @@ $query = "
         tb_pengelolaan_sampah.tps3r,
         tb_pengelolaan_sampah.bank_sampah,
         tb_sutet.sutet_status,
-        tb_sutet.keberadaan_pemukiman AS keberadaan_pemukiman_sutet,
-        tb_sutet.jumlah_pemukiman AS jumlah_pemukiman_sutet,
+        tb_sutet.keberadaan_pemukiman,
+        tb_sutet.jumlah_pemukiman,
         tb_keberadaan_sungai.keberadaan_sungai,
         tb_keberadaan_sungai.nama_sungai_1,
         tb_keberadaan_sungai.nama_sungai_2,
@@ -95,8 +550,8 @@ $query = "
         tb_keberadaan_danau.nama_danau_2,
         tb_keberadaan_danau.nama_danau_3,
         tb_keberadaan_danau.nama_danau_4,
-        tb_keberadaan_pemukiman_bantaran.keberadaan_pemukiman AS keberadaan_pemukiman_bantaran,
-        tb_keberadaan_pemukiman_bantaran.jumlah_pemukiman AS jumlah_pemukiman_bantaran,
+        tb_keberadaan_pemukiman_bantaran.keberadaan_pemukiman,
+        tb_keberadaan_pemukiman_bantaran.jumlah_pemukiman,
         tb_embung_mata_air.jumlah_embung,
         tb_embung_mata_air.lokasi_mata_air,
         tb_permukiman_kumuh.keberadaan_kumuh,
@@ -177,7 +632,7 @@ $query = "
         tb_sentra_industri.keberadaan,
         tb_sentra_industri.jumlah_sentra,
         tb_sentra_industri.produk_utama,
-        tb_produk_unggulan.keberadaan AS produk_unggulan_keberadaan,
+        tb_produk_unggulan.keberadaan,
         tb_produk_unggulan.makanan_unggulan,
         tb_produk_unggulan.non_makanan_unggulan,
         tb_pangkalan_minyak.keberadaan_minyak_tanah,
@@ -363,7 +818,7 @@ $query = "
         ON tb_enumerator.id_desa = tb_keberadaan_pos_polisi.desa_id
 ";
 
-// Tambahkan filter berdasarkan input pengguna
+// Tambahkan filter berdasarkan input pengguna dengan prepared statements
 $where = [];
 $params = [];
 $types = '';
@@ -416,109 +871,110 @@ if (mysqli_num_rows($result) == 0) {
 
 // Fungsi untuk ekspor Excel
 if ($type === 'excel') {
-    $spreadsheet = new Spreadsheet();
-    $sheet = $spreadsheet->getActiveSheet();
+    try {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
 
-    // Mengambil semua nama kolom
-    $fields = mysqli_fetch_fields($result);
-    $headers = [];
-    $columnIndex = 1; // 1-based index
-
-    foreach ($fields as $field) {
-        $headers[] = $field->name;
-        $columnLetter = Coordinate::stringFromColumnIndex($columnIndex);
-        $sheet->setCellValue($columnLetter . '1', $field->name);
-        $columnIndex++;
-    }
-
-    // Style untuk header
-    $headerStyle = [
-        'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
-        'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
-        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
-        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-    ];
-    $lastColumn = Coordinate::stringFromColumnIndex(count($headers));
-    $sheet->getStyle('A1:' . $lastColumn . '1')->applyFromArray($headerStyle);
-
-    // Data dari database
-    $rowNumber = 2;
-    while ($row = mysqli_fetch_assoc($result)) {
-        foreach ($headers as $index => $header) {
-            $columnLetter = Coordinate::stringFromColumnIndex($index + 1);
-            $sheet->setCellValue($columnLetter . $rowNumber, $row[$header]);
+        // Tetapkan nama kolom ke baris header Excel secara manual
+        $columnIndex = 1; // Kolom A
+        foreach ($headers as $header) {
+            $columnLetter = Coordinate::stringFromColumnIndex($columnIndex);
+            $sheet->setCellValue($columnLetter . '1', $header);
+            $columnIndex++;
         }
-        $rowNumber++;
+
+        // Style untuk header
+        $headerStyle = [
+            'font' => ['bold' => true, 'color' => ['rgb' => '000000']],
+            'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'D3D3D3']],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+            'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+        ];
+        $lastColumn = Coordinate::stringFromColumnIndex(count($headers));
+        $sheet->getStyle('A1:' . $lastColumn . '1')->applyFromArray($headerStyle);
+
+        // Data dari database
+        $rowNumber = 2;
+        while ($row = mysqli_fetch_assoc($result)) {
+            foreach ($columns as $index => $column) {
+                $columnLetter = Coordinate::stringFromColumnIndex($index + 1);
+                // Handle NULL values
+                $value = isset($row[$column]) ? $row[$column] : '';
+                $sheet->setCellValue($columnLetter . $rowNumber, $value);
+            }
+            $rowNumber++;
+        }
+
+        // Style untuk semua tabel
+        $tableStyle = [
+            'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $lastColumn . ($rowNumber - 1))->applyFromArray($tableStyle);
+
+        // Auto-size columns
+        for ($i = 1; $i <= count($headers); $i++) {
+            $columnLetter = Coordinate::stringFromColumnIndex($i);
+            $sheet->getColumnDimension($columnLetter)->setAutoSize(true);
+        }
+
+        // Membersihkan buffer output
+        if (ob_get_level()) {
+            ob_end_clean();
+        }
+
+        // Kirim file Excel ke browser
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="rekap_data_pusdatin.xlsx"');
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
+    } catch (Exception $e) {
+        die("Error exporting Excel: " . $e->getMessage());
     }
-
-    // Style untuk semua tabel
-    $tableStyle = [
-        'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-        'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-    ];
-    $sheet->getStyle('A1:' . $lastColumn . ($rowNumber - 1))->applyFromArray($tableStyle);
-
-    // Auto-size columns
-    for ($i = 1; $i <= count($headers); $i++) {
-        $columnLetter = Coordinate::stringFromColumnIndex($i);
-        $sheet->getColumnDimension($columnLetter)->setAutoSize(true);
-    }
-
-    // Membersihkan buffer output
-    if (ob_get_level()) {
-        ob_end_clean();
-    }
-
-    // Kirim file Excel ke browser
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment; filename="rekap_data_pusdatin.xlsx"');
-    $writer = new Xlsx($spreadsheet);
-    $writer->save('php://output');
-    exit;
 }
+
+// Reset pointer hasil query untuk ekspor PDF
+mysqli_data_seek($result, 0);
 
 // Fungsi untuk ekspor PDF
 if ($type === 'pdf') {
-    // Karena banyak kolom, gunakan ukuran kertas lebih besar atau orientasi landscape
-    $mpdf = new Mpdf(['format' => 'A3-L']); // A3 dengan orientasi landscape
+    try {
+        // Karena banyak kolom, gunakan ukuran kertas lebih besar atau orientasi landscape
+        $mpdf = new Mpdf(['format' => 'A3-L']); // A3 dengan orientasi landscape
 
-    // Mengambil semua nama kolom
-    $fields = mysqli_fetch_fields($result);
-    $headers = [];
-    foreach ($fields as $field) {
-        $headers[] = $field->name;
-    }
+        // Mulai membangun HTML
+        $html = '<h1 style="text-align: center;">Rekap Data</h1>';
+        $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse; font-size: 8px;">';
+        $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
 
-    // Mulai membangun HTML
-    $html = '<h1 style="text-align: center;">Rekap Data</h1>';
-    $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; border-collapse: collapse; font-size: 8px;">';
-    $html .= '<thead><tr style="background-color: #d3d3d3; text-align: center;">';
-
-    // Header tabel
-    foreach ($headers as $header) {
-        $html .= '<th>' . htmlspecialchars($header) . '</th>';
-    }
-    $html .= '</tr></thead><tbody>';
-
-    // Reset pointer hasil query
-    mysqli_data_seek($result, 0);
-
-    // Data dari database
-    while ($row = mysqli_fetch_assoc($result)) {
-        $html .= '<tr>';
+        // Header tabel secara manual
         foreach ($headers as $header) {
-            $cellData = htmlspecialchars($row[$header]);
-            $html .= '<td>' . $cellData . '</td>';
+            $html .= '<th>' . htmlspecialchars($header) . '</th>';
         }
-        $html .= '</tr>';
+        $html .= '</tr></thead><tbody>';
+
+        // Data dari database
+        while ($row = mysqli_fetch_assoc($result)) {
+            $html .= '<tr>';
+            foreach ($columns as $column) {
+                // Handle NULL values
+                $cellData = isset($row[$column]) ? htmlspecialchars($row[$column]) : '';
+                $html .= '<td>' . $cellData . '</td>';
+            }
+            $html .= '</tr>';
+        }
+
+        $html .= '</tbody></table>';
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('rekap_data_pusdatin.pdf', 'D');
+        exit;
+    } catch (Exception $e) {
+        die("Error exporting PDF: " . $e->getMessage());
     }
-
-    $html .= '</tbody></table>';
-
-    $mpdf->WriteHTML($html);
-    $mpdf->Output('rekap_data_pusdatin.pdf', 'D');
-    exit;
 }
+
 ?>
 
 <!DOCTYPE html>
