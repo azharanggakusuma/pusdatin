@@ -732,31 +732,7 @@ if ($type === 'pdf') {
                                         tb_keamanan_lingkungan.pelaporan_tamu_menginap,
                                         tb_keamanan_lingkungan.pengaktifan_sistem_keamanan,
                                         tb_linmas_poskamling.jumlah_anggota_linmas,
-                                        tb_keberadaan_pos_polisi.keberadaan_pos_polisi,
-                                        tb_tanah_kas_desa.tanah_bengkok,
-                                        tb_tanah_kas_desa.tanah_titi_sara,
-                                        tb_tanah_kas_desa.kebun_desa,
-                                        tb_tanah_kas_desa.sawah_desa,
-                                        tb_pemanfaatan_sistem.keberadaan_sistem_informasi_desa,
-                                        tb_pemanfaatan_sistem.keberadaan_sistem_keuangan_desa,
-                                        tb_badan_usaha_aset_desa.jumlah_unit_usaha_bumdes,
-                                        tb_badan_usaha_aset_desa.tanah_kas_desa_ulayat,
-                                        tb_badan_usaha_aset_desa.tambatan_perahu,
-                                        tb_badan_usaha_aset_desa.pasar_desa,
-                                        tb_badan_usaha_aset_desa.bangunan_milik_desa,
-                                        tb_badan_usaha_aset_desa.hutan_milik_desa,
-                                        tb_badan_usaha_aset_desa.mata_air_milik_desa,
-                                        tb_badan_usaha_aset_desa.tempat_wisata_pemandian_umum,
-                                        tb_badan_usaha_aset_desa.aset_lainnya_milik_desa,
-                                        tb_ketersediaan_rpjmdes_rkpdes.ketersediaan_rpjmdes,
-                                        tb_ketersediaan_rpjmdes_rkpdes.tahun_awal_rpjmdes,
-                                        tb_ketersediaan_rpjmdes_rkpdes.tahun_akhir_rpjmdes,
-                                        tb_ketersediaan_rpjmdes_rkpdes.ketersediaan_rkpdes,
-                                        tb_peraturan_desa.jumlah_peraturan_yang_dimiliki_desa,
-                                        tb_peraturan_desa.jumlah_peraturan_kepala_desa,
-                                        tb_kerjasama_desa.keberadaan_kerjasama_antar_desa,
-                                        tb_kerjasama_desa.keberadaan_kerjasama_desa_dengan_pihak_ketiga
-
+                                        tb_keberadaan_pos_polisi.keberadaan_pos_polisi
                                     FROM
                                         (
                                             SELECT 
@@ -933,24 +909,7 @@ if ($type === 'pdf') {
                                     LEFT JOIN
                                         tb_keberadaan_pos_polisi ON filtered_progress.desa_id = tb_keberadaan_pos_polisi.desa_id
                                         AND filtered_progress.tahun = tb_keberadaan_pos_polisi.tahun
-                                    LEFT JOIN
-                                        tb_tanah_kas_desa ON filtered_progress.desa_id = tb_tanah_kas_desa.desa_id
-                                        AND filtered_progress.tahun = tb_tanah_kas_desa.tahun
-                                    LEFT JOIN
-                                        tb_pemanfaatan_sistem ON filtered_progress.desa_id = tb_pemanfaatan_sistem.desa_id
-                                        AND filtered_progress.tahun = tb_pemanfaatan_sistem.tahun
-                                    LEFT JOIN
-                                        tb_badan_usaha_aset_desa ON filtered_progress.desa_id = tb_badan_usaha_aset_desa.desa_id
-                                        AND filtered_progress.tahun = tb_badan_usaha_aset_desa.tahun
-                                    LEFT JOIN
-                                        tb_ketersediaan_rpjmdes_rkpdes ON filtered_progress.desa_id = tb_ketersediaan_rpjmdes_rkpdes.desa_id
-                                        AND filtered_progress.tahun = tb_ketersediaan_rpjmdes_rkpdes.tahun
-                                    LEFT JOIN
-                                        tb_peraturan_desa ON filtered_progress.desa_id = tb_peraturan_desa.desa_id
-                                        AND filtered_progress.tahun = tb_peraturan_desa.tahun
-                                    LEFT JOIN
-                                        tb_kerjasama_desa ON filtered_progress.desa_id = tb_kerjasama_desa.desa_id
-                                        AND filtered_progress.tahun = tb_kerjasama_desa.tahun
+
                                             ";
 
                                     // Tambahkan filter jika tahun dipilih
@@ -1196,28 +1155,6 @@ if ($type === 'pdf') {
                                             echo "<td>" . htmlspecialchars($row['pengaktifan_sistem_keamanan'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['jumlah_anggota_linmas'] ?? "Belum Mengisi") . "</td>";
                                             echo "<td>" . htmlspecialchars($row['keberadaan_pos_polisi'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tanah_titi_sara'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['kebun_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['sawah_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_sistem_informasi_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_sistem_keuangan_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['jumlah_unit_usaha_bumdes'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tanah_kas_desa_ulayat'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tambatan_perahu'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['pasar_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['bangunan_milik_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['hutan_milik_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['mata_air_milik_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tempat_wisata_pemandian_umum'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['aset_lainnya_milik_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['ketersediaan_rpjmdes'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tahun_awal_rpjmdes'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['tahun_akhir_rpjmdes'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['ketersediaan_rkpdes'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['jumlah_peraturan_yang_dimiliki_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['jumlah_peraturan_kepala_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_kerjasama_antar_desa'] ?? "Belum Mengisi") . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['keberadaan_kerjasama_desa_dengan_pihak_ketiga'] ?? "Belum Mengisi") . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
