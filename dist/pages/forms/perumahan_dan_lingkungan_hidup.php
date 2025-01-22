@@ -46,6 +46,139 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_pengguna_listrik_lampu_surya
+$previous_pengguna_listrik_lampu_surya = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pengguna_listrik_lampu_surya',
+  ['jumlah_pln', 'jumlah_non_pln', 'jumlah_bukan_pengguna_listrik', 'penggunaan_lampu_tenaga_surya'],
+  'Pengguna Listrik dan Lampu Tenaga Surya',
+  $tahun
+);
+
+// tb_penerangan_jalan
+$previous_penerangan_jalan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_penerangan_jalan',
+  ['lampu_tenaga_surya', 'penerangan_jalan_utama', 'sumber_penerangan'],
+  'Penerangan Jalan',
+  $tahun
+);
+
+// tb_pengelolaan_sampah
+$previous_pengelolaan_sampah = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pengelolaan_sampah',
+  ['tps', 'tps3r', 'bank_sampah'],
+  'Pengelolaan Sampah',
+  $tahun
+);
+
+// tb_sutet
+$previous_sutet = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_sutet',
+  ['sutet_status', 'keberadaan_pemukiman', 'jumlah_pemukiman'],
+  'SUTET',
+  $tahun
+);
+
+// tb_keberadaan_sungai
+$previous_keberadaan_sungai = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_keberadaan_sungai',
+  ['keberadaan_sungai', 'nama_sungai_1', 'nama_sungai_2', 'nama_sungai_3', 'nama_sungai_4'],
+  'Keberadaan Sungai',
+  $tahun
+);
+
+// tb_keberadaan_danau
+$previous_keberadaan_danau = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_keberadaan_danau',
+  ['keberadaan_danau', 'nama_danau_1', 'nama_danau_2', 'nama_danau_3', 'nama_danau_4'],
+  'Keberadaan Danau',
+  $tahun
+);
+
+// tb_keberadaan_pemukiman_bantaran
+$previous_keberadaan_pemukiman_bantaran = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_keberadaan_pemukiman_bantaran',
+  ['keberadaan_pemukiman', 'jumlah_pemukiman'],
+  'Keberadaan Pemukiman Bantaran',
+  $tahun
+);
+
+// tb_embung_mata_air
+$previous_embung_mata_air = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_embung_mata_air',
+  ['jumlah_embung', 'lokasi_mata_air'],
+  'Embung dan Mata Air',
+  $tahun
+);
+
+// tb_permukiman_kumuh
+$previous_permukiman_kumuh = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_permukiman_kumuh',
+  ['keberadaan_kumuh', 'jumlah_kumuh'],
+  'Permukiman Kumuh',
+  $tahun
+);
+
+// tb_lokasi_penggalian
+$previous_lokasi_penggalian = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_lokasi_penggalian',
+  ['keberadaan_galian'],
+  'Lokasi Penggalian',
+  $tahun
+);
+
+// tb_prasarana_kebersihan
+$previous_prasarana_kebersihan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_prasarana_kebersihan',
+  ['jumlah_prasarana'],
+  'Prasarana Kebersihan',
+  $tahun
+);
+
+// tb_rumah_tidak_layak_huni
+$previous_rumah_tidak_layak_huni = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_rumah_tidak_layak_huni',
+  ['jumlah_rumah'],
+  'Rumah Tidak Layak Huni',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
