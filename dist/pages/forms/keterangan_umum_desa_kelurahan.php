@@ -348,6 +348,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label for="batas_timur" class="mb-2">Sebelah Timur</label>
                       <input required type="text" id="batas_timur" name="batas_timur" class="form-control"
                         placeholder="Masukkan nama desa">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'sebelah_timur', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -355,6 +362,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label for="kec_timur" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_timur" name="kec_timur" class="form-control"
                         placeholder="Masukkan nama kecamatan">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_timur', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
