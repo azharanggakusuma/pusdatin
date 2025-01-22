@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query_progress = "SELECT id 
                            FROM user_progress 
                            WHERE user_id = '$user_id' 
-                             AND form_name = 'Batas Desa'
+                             AND form_name = 'Batas Wilayah Desa'
                              AND tahun = '$tahun'";
         $result_progress = mysqli_query($conn, $query_progress);
 
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     created_at = '$created_at',
                                     tahun = '$tahun'
                                 WHERE user_id = '$user_id'
-                                  AND form_name = 'Batas Desa'
+                                  AND form_name = 'Batas Wilayah Desa'
                                   AND tahun = '$tahun'";
             mysqli_query($conn, $update_progress);
         } else {
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     user_id, form_name, is_locked, 
                                     desa_id, created_at, tahun
                                 ) VALUES (
-                                    '$user_id', 'Batas Desa', TRUE, 
+                                    '$user_id', 'Batas Wilayah Desa', TRUE, 
                                     '$desa_id', '$created_at', '$tahun'
                                 )";
             mysqli_query($conn, $insert_progress);
