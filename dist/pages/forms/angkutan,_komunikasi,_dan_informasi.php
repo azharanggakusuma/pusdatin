@@ -56,7 +56,7 @@ $previous_prasarana_transportasi = getPreviousYearData(
   $desa_id,
   'tb_prasarana_transportasi',
   ['lalu_lintas', 'jenis_permukaan_jalan', 'jalan_darat_bisa_dilalui', 'keberadaan_angkutan_umum', 'operasional_angkutan_umum', 'jam_operasi_angkutan_umum'],
-  'Prasarana Transportasi',
+  'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan',
   $tahun
 );
 
@@ -67,7 +67,7 @@ $previous_internet_transportasi = getPreviousYearData(
   $desa_id,
   'tb_internet_transportasi',
   ['keberadaan_internet'],
-  'Internet Transportasi',
+  'Keberadaan Internet',
   $tahun
 );
 
@@ -78,7 +78,7 @@ $previous_menara_telepon = getPreviousYearData(
   $desa_id,
   'tb_menara_telepon',
   ['jumlah_bts', 'jumlah_operator_telekomunikasi', 'sinyal_telepon', 'sinyal_internet'],
-  'Menara Telepon',
+  'Keberadaan Menara Telepon',
   $tahun
 );
 
@@ -89,7 +89,7 @@ $previous_ketersediaan_internet = getPreviousYearData(
   $desa_id,
   'tb_ketersediaan_internet',
   ['kondisi_komputer', 'fasilitas_internet'],
-  'Ketersediaan Internet',
+  'Ketersediaan Internet dan Komputer',
   $tahun
 );
 
@@ -103,6 +103,7 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
   'Keberadaan Kantor Pos',
   $tahun
 );
+
 
 ?>
 
@@ -256,6 +257,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Tanah">Tanah</option>
                       <option value="Lainnya">Lainnya</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_transportasi, 'lalu_lintas', 'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Jenis Permukaan Jalan -->
@@ -268,6 +276,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Selama musim kemarau">Selama musim kemarau</option>
                       <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_transportasi, 'jenis_permukaan_jalan', 'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Jalan Darat Bisa Dilalui -->
@@ -280,6 +295,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Selama musim kemarau">Selama musim kemarau</option>
                       <option value="Tidak dapat dilalui sepanjang tahun">Tidak dapat dilalui sepanjang tahun</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_transportasi, 'jalan_darat_bisa_dilalui', 'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Keberadaan Angkutan Umum -->
@@ -291,6 +313,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Ada, tanpa trayek tetap">Ada, tanpa trayek tetap</option>
                       <option value="Tidak ada angkutan umum">Tidak ada angkutan umum</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_transportasi, 'keberadaan_angkutan_umum', 'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Operasional Angkutan Umum yang Utama -->
@@ -301,6 +330,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Setiap hari">Setiap hari</option>
                       <option value="Tidak setiap hari">Tidak setiap hari</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_transportasi, 'operasional_angkutan_umum', 'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Jam Operasi Angkutan Umum yang Utama -->
@@ -311,6 +347,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Siang dan malam hari">Siang dan malam hari</option>
                       <option value="Hanya siang/malam hari">Hanya siang/malam hari</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_transportasi, 'jam_operasi_angkutan_umum', 'Prasarana dan Sarana Transportasi Antar Desa/Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -383,6 +426,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_internet_transportasi, 'keberadaan_internet', 'keberadaan_internet');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -449,11 +499,25 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                 <div class="mb-3">
                   <label for="bts-count" class="form-label">Jumlah menara telepon seluler atau Base Transceiver Station (BTS)</label>
                   <input type="number" name="jumlah_bts" id="bts-count" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_menara_telepon, 'jumlah_bts', 'Keberadaan Menara Telepon');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                   <label for="operator-count" class="form-label">Jumlah operator layanan komunikasi telepon seluler/handphone yang menjangkau di desa</label>
                   <input type="number" name="jumlah_operator_telekomunikasi" id="operator-count" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_menara_telepon, 'jumlah_operator_telekomunikasi', 'Keberadaan Menara Telepon');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -465,6 +529,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                     <option value="Sinyal lemah">Sinyal lemah</option>
                     <option value="Tidak ada sinyal">Tidak ada sinyal</option>
                   </select>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_menara_telepon, 'sinyal_telepon', 'Keberadaan Menara Telepon');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -476,6 +547,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                     <option value="2.5G/EG/GPRS">2.5G/EG/GPRS</option>
                     <option value="Tidak ada sinyal internet">Tidak ada sinyal internet</option>
                   </select>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_menara_telepon, 'sinyal_internet', 'Keberadaan Menara Telepon');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <!-- Submit button -->
@@ -551,6 +629,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Tidak digunakan">Tidak digunakan</option>
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketersediaan_internet, 'kondisi_komputer', 'Ketersediaan Internet dan Komputer');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Fasilitas internet di kantor kepala desa/lurah</label>
@@ -561,6 +646,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Tidak berfungsi">Tidak berfungsi</option>
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketersediaan_internet, 'fasilitas_internet', 'Ketersediaan Internet dan Komputer');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -632,6 +724,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Tidak beroperasi">Tidak beroperasi</option>
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_kantor_pos, 'kantor_pos', 'Keberadaan Kantor Pos');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Layanan pos keliling</label>
@@ -640,6 +739,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_kantor_pos, 'layanan_pos_keliling', 'Keberadaan Kantor Pos');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Perusahaan/agen jasa ekspedisi (pengiriman barang/dokumen) swasta</label>
@@ -650,6 +756,13 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                       <option value="Tidak beroperasi">Tidak beroperasi</option>
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_kantor_pos, 'ekspedisi_swasta', 'Keberadaan Kantor Pos');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
