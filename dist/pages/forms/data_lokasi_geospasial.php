@@ -46,6 +46,161 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_tempat_peribadatan
+$previous_tempat_peribadatan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_tempat_peribadatan',
+  ['jenis_tempat_peribadatan', 'nama_tempat_peribadatan', 'titik_koordinat_lintang', 'titik_koordinat_bujur'],
+  'Tempat Peribadatan',
+  $tahun
+);
+
+// tb_potensi_wisata
+$previous_potensi_wisata = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_potensi_wisata',
+  ['nama_potensi_wisata', 'jenis_wisata', 'titik_koordinat_lintang', 'titik_koordinat_bujur'],
+  'Potensi Wisata',
+  $tahun
+);
+
+// tb_sekolah
+$previous_sekolah = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_sekolah',
+  ['nama_sekolah', 'jenjang_pendidikan', 'status_sekolah', 'alamat_sekolah', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Sekolah',
+  $tahun
+);
+
+// tb_pondok_pesantren
+$previous_pondok_pesantren = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pondok_pesantren',
+  ['nama_pesantren', 'alamat_pesantren', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Pondok Pesantren',
+  $tahun
+);
+
+// tb_rumah_sakit
+$previous_rumah_sakit = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_rumah_sakit',
+  ['nama_rumah_sakit', 'alamat_rumah_sakit', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Rumah Sakit',
+  $tahun
+);
+
+// tb_puskesmas
+$previous_puskesmas = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_puskesmas',
+  ['nama_puskesmas', 'alamat_puskesmas', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Puskesmas',
+  $tahun
+);
+
+// tb_pustu
+$previous_pustu = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pustu',
+  ['nama_pustu', 'alamat_pustu', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Pustu',
+  $tahun
+);
+
+// tb_poliklinik
+$previous_poliklinik = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_poliklinik',
+  ['nama_poliklinik', 'alamat_poliklinik', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Poliklinik',
+  $tahun
+);
+
+// tb_apotek
+$previous_apotek = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_apotek',
+  ['nama_apotek', 'alamat_apotek', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Apotek',
+  $tahun
+);
+
+// tb_praktek_dokter
+$previous_praktek_dokter = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_praktek_dokter',
+  ['nama_praktek_dokter', 'alamat_praktek_dokter', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Praktek Dokter',
+  $tahun
+);
+
+// tb_praktek_bidan
+$previous_praktek_bidan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_praktek_bidan',
+  ['nama_praktek_bidan', 'alamat_praktek_bidan', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Praktek Bidan',
+  $tahun
+);
+
+// tb_poskesdes
+$previous_poskesdes = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_poskesdes',
+  ['nama_poskesdes', 'alamat_poskesdes', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Poskesdes',
+  $tahun
+);
+
+// tb_polindes
+$previous_polindes = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_polindes',
+  ['nama_polindes', 'alamat_polindes', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Polindes',
+  $tahun
+);
+
+// tb_daftar_posyandu
+$previous_daftar_posyandu = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_daftar_posyandu',
+  ['nama_posyandu', 'alamat_posyandu', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
+  'Daftar Posyandu',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
