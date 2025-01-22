@@ -50,7 +50,10 @@ $desa_id = $desa['id_desa'] ?? 0;
 $tahun = $_SESSION['tahun'] ?? date('Y');
 
 // Ambil data sebelumnya
-$previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_desa', ['batas_utara	', 'kec_utara', 'batas_selatan', 'kec_selatan', 'batas_timur', 'kec_timur', 'batas_barat', 'kec_barat	'], 'Batas Wilayah Desa', $tahun);
+$previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_desa', ['batas_utara', 'kec_utara', 'batas_selatan', 'kec_selatan', 'batas_timur', 'kec_timur', 'batas_barat', 'kec_barat	'], 'Batas Wilayah Desa', $tahun);
+$previous_jarak_kantor_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota', $tahun);
+$previous_idm_status = getPreviousYearData($conn, $user_id, $desa_id, 'tb_idm_status', ['status_idm'], 'Status Indeks Desa Membangun (IDM)', $tahun);
+
 ?>
 
 <!DOCTYPE html>
@@ -211,7 +214,7 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                       <label for="kec_utara" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_utara" name="kec_utara" class="form-control"
                         placeholder="Masukkan nama kecamatan">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
                           echo displayPreviousYearData($previous_batas_desa, 'kec_utara	', 'Batas Wilayah Desa');
@@ -227,7 +230,7 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                       <label for="batas_selatan" class="mb-2">Sebelah Selatan</label>
                       <input required type="text" id="batas_selatan" name="batas_selatan" class="form-control"
                         placeholder="Masukkan nama desa">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
                           echo displayPreviousYearData($previous_batas_desa, 'batas_selatan	', 'Batas Wilayah Desa');
@@ -241,7 +244,7 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                       <label for="kec_selatan" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_selatan" name="kec_selatan" class="form-control"
                         placeholder="Masukkan nama kecamatan">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
                           echo displayPreviousYearData($previous_batas_desa, 'kec_selatan	', 'Batas Wilayah Desa');
@@ -273,7 +276,7 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                       <label for="batas_barat" class="mb-2">Sebelah Barat</label>
                       <input required type="text" id="batas_barat" name="batas_barat" class="form-control"
                         placeholder="Masukkan nama desa">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
                           echo displayPreviousYearData($previous_batas_desa, 'batas_barat	', 'Batas Wilayah Desa');
@@ -287,7 +290,7 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                       <label for="kec_barat" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_barat" name="kec_barat" class="form-control"
                         placeholder="Masukkan nama kecamatan">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
                           echo displayPreviousYearData($previous_batas_desa, 'kec_utara	', 'Batas Wilayah Desa');
@@ -377,6 +380,13 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                     <label class="mb-2">Jarak ke Ibukota Kecamatan (km)</label>
                     <input required type="text" id="jarak_ke_ibukota_kecamatan" name="jarak_ke_ibukota_kecamatan"
                       class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_jarak_kantor_desa, 'jarak_ke_ibukota_kecamatan', 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Jarak ke Ibukota Kabupaten/Kota -->
@@ -384,6 +394,13 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
                     <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
                     <input required type="text" id="jarak_ke_ibukota_kabupaten" name="jarak_ke_ibukota_kabupaten"
                       class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
+                      <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_jarak_kantor_desa, 'jarak_ke_ibukota_kabupateb', 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Checkbox untuk menggunakan data tahun sebelumnya -->
