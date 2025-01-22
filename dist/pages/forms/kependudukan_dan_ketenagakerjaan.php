@@ -1,6 +1,85 @@
 <?php
 include_once "../../config/conn.php";
 include "../../config/session.php";
+
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil tahun dari session
+$tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_kematian
+$previous_kematian = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_kematian',
+  ['jumlah_surat_kematian'],
+  'Kematian',
+  $tahun
+);
+
+// tb_penduduk_dan_keluarga
+$previous_penduduk_keluarga = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_penduduk_dan_keluarga',
+  ['jumlah_penduduk_laki', 'jumlah_penduduk_perempuan', 'jumlah_kepala_keluarga'],
+  'Penduduk dan Keluarga',
+  $tahun
+);
+
+// tb_ketenagakerjaan
+$previous_ketenagakerjaan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_ketenagakerjaan',
+  ['pmi_bekerja', 'agen_pengerahan_pmi', 'layanan_rekomendasi_pmi', 'keberadaan_wna'],
+  'Ketenagakerjaan',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
