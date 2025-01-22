@@ -3,6 +3,56 @@ include_once "../../config/conn.php";
 include "../../config/session.php";
 ?>
 
+<?php
+// Ambil data pengguna yang sedang login
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
+
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// List of forms
+include('../../config/list_form.php');
+
+// Initialize an array to store form lock status
+$form_status = [];
+
+foreach ($forms as $form) {
+  // Check if the form is locked
+  $is_locked = false;
+  if ($level !== 'admin') { // Logika kunci hanya berlaku untuk level user
+    $query_progress = "SELECT is_locked FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form'";
+    $result_progress = mysqli_query($conn, $query_progress);
+    $progress = mysqli_fetch_assoc($result_progress);
+    $is_locked = $progress['is_locked'] ?? false;
+  }
+
+  // Store the status in the array
+  $form_status[$form] = $is_locked;
+}
+
+include("../../config/function.php");
+// Ambil ID pengguna
+$query_user = "SELECT id FROM users WHERE username = '$username'";
+$result_user = mysqli_query($conn, $query_user);
+$user = mysqli_fetch_assoc($result_user);
+$user_id = $user['id'] ?? 0;
+
+// Ambil ID desa
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
+$result_desa = mysqli_query($conn, $query_desa);
+$desa = mysqli_fetch_assoc($result_desa);
+$desa_id = $desa['id_desa'] ?? 0;
+
+// Ambil tahun dari session
+$tahun = $_SESSION['tahun'] ?? date('Y');
+
+// Ambil data sebelumnya
+$previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_desa', ['batas_utara	', 'kec_utara', 'batas_selatan', 'kec_selatan', 'batas_timur', 'kec_timur', 'batas_barat', 'kec_barat	'], 'Batas Wilayah Desa', $tahun);
+?>
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -147,6 +197,13 @@ include "../../config/session.php";
                       <label for="batas_utara" class="mb-2">Sebelah Utara</label>
                       <input required type="text" id="batas_utara" name="batas_utara" class="form-control"
                         placeholder="Masukkan nama desa">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_utara	', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -154,6 +211,13 @@ include "../../config/session.php";
                       <label for="kec_utara" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_utara" name="kec_utara" class="form-control"
                         placeholder="Masukkan nama kecamatan">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara	', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -163,6 +227,13 @@ include "../../config/session.php";
                       <label for="batas_selatan" class="mb-2">Sebelah Selatan</label>
                       <input required type="text" id="batas_selatan" name="batas_selatan" class="form-control"
                         placeholder="Masukkan nama desa">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_selatan	', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -170,6 +241,13 @@ include "../../config/session.php";
                       <label for="kec_selatan" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_selatan" name="kec_selatan" class="form-control"
                         placeholder="Masukkan nama kecamatan">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_selatan	', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -195,6 +273,13 @@ include "../../config/session.php";
                       <label for="batas_barat" class="mb-2">Sebelah Barat</label>
                       <input required type="text" id="batas_barat" name="batas_barat" class="form-control"
                         placeholder="Masukkan nama desa">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_barat	', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -202,6 +287,13 @@ include "../../config/session.php";
                       <label for="kec_barat" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_barat" name="kec_barat" class="form-control"
                         placeholder="Masukkan nama kecamatan">
+                        <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara	', 'Batas Wilayah Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
