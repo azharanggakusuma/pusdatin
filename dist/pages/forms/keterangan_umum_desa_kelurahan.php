@@ -56,90 +56,90 @@ $previous_idm_status = getPreviousYearData($conn, $user_id, $desa_id, 'tb_idm_st
 
 // tb_website_medsos
 $previous_website_medsos = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_website_medsos', 
-    ['alamat_website', 'alamat_email', 'alamat_facebook', 'alamat_twitter', 'alamat_youtube'], 
-    'Website dan Media Sosial', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_website_medsos',
+  ['alamat_website', 'alamat_email', 'alamat_facebook', 'alamat_twitter', 'alamat_youtube'],
+  'Website dan Media Sosial',
+  $tahun
 );
 
 // tb_status_pemerintahan
 $previous_status_pemerintahan = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_status_pemerintahan', 
-    ['status_pemerintahan'], 
-    'Status Pemerintahan', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_status_pemerintahan',
+  ['status_pemerintahan'],
+  'Status Pemerintahan',
+  $tahun
 );
 
 // tb_ketersediaan_penetapan_peta_desa
 $previous_ketersediaan_peta_desa = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_ketersediaan_penetapan_peta_desa', 
-    ['penetapan_batas_desa', 'no_surat_batas_desa', 'ketersediaan_peta_desa', 'no_surat_peta_desa'], 
-    'Ketersediaan dan Penetapan Peta Desa', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_ketersediaan_penetapan_peta_desa',
+  ['penetapan_batas_desa', 'no_surat_batas_desa', 'ketersediaan_peta_desa', 'no_surat_peta_desa'],
+  'Ketersediaan dan Penetapan Peta Desa',
+  $tahun
 );
 
 // tb_banyaknya_dusun_rt_rw
 $previous_banyaknya_dusun_rt_rw = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_banyaknya_dusun_rt_rw', 
-    ['jumlah_dusun', 'jumlah_rw', 'jumlah_rt'], 
-    'Banyaknya Dusun, RT, dan RW', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_banyaknya_dusun_rt_rw',
+  ['jumlah_dusun', 'jumlah_rw', 'jumlah_rt'],
+  'Banyaknya Dusun, RT, dan RW',
+  $tahun
 );
 
 // tb_luas_wilayah_desa
 $previous_luas_wilayah_desa = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_luas_wilayah_desa', 
-    ['luas_wilayah_desa'], 
-    'Luas Wilayah Desa', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_luas_wilayah_desa',
+  ['luas_wilayah_desa'],
+  'Luas Wilayah Desa',
+  $tahun
 );
 
 // tb_topografi_terluas_wilayah_desa
 $previous_topografi_wilayah_desa = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_topografi_terluas_wilayah_desa', 
-    ['topografi_terluas_wilayah_desa'], 
-    'Topografi Terluas Wilayah Desa', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_topografi_terluas_wilayah_desa',
+  ['topografi_terluas_wilayah_desa'],
+  'Topografi Terluas Wilayah Desa',
+  $tahun
 );
 
 // tb_kepemilikan_kantor
 $previous_kepemilikan_kantor = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_kepemilikan_kantor', 
-    ['keberadaan_kantor', 'status_kantor', 'kondisi_kantor', 'lokasi_kantor'], 
-    'Kepemilikan Kantor', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_kepemilikan_kantor',
+  ['keberadaan_kantor', 'status_kantor', 'kondisi_kantor', 'lokasi_kantor'],
+  'Kepemilikan Kantor',
+  $tahun
 );
 
 // tb_titik_koordinat_kantor_desa
 $previous_titik_koordinat_kantor_desa = getPreviousYearData(
-    $conn, 
-    $user_id, 
-    $desa_id, 
-    'tb_titik_koordinat_kantor_desa', 
-    ['koordinat_lintang', 'koordinat_bujur'], 
-    'Titik Koordinat Kantor Desa', 
-    $tahun
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_titik_koordinat_kantor_desa',
+  ['koordinat_lintang', 'koordinat_bujur'],
+  'Titik Koordinat Kantor Desa',
+  $tahun
 );
 
 ?>
@@ -339,7 +339,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                           ?>
                         </p>
                       <?php endif; ?>
-                    </div>
+                    </div> 
                   </div>
 
                   <!-- Sebelah Timur -->
@@ -348,10 +348,10 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label for="batas_timur" class="mb-2">Sebelah Timur</label>
                       <input required type="text" id="batas_timur" name="batas_timur" class="form-control"
                         placeholder="Masukkan nama desa">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'sebelah_timur', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_timur', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -362,7 +362,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label for="kec_timur" class="mb-2">Kecamatan</label>
                       <input required type="text" id="kec_timur" name="kec_timur" class="form-control"
                         placeholder="Masukkan nama kecamatan">
-                        <?php if ($level != 'admin'): ?>
+                      <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
                           echo displayPreviousYearData($previous_batas_desa, 'kec_timur', 'Batas Wilayah Desa');
@@ -496,7 +496,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <label class="mb-2">Jarak ke Ibukota Kabupaten/Kota (km)</label>
                     <input required type="text" id="jarak_ke_ibukota_kabupaten" name="jarak_ke_ibukota_kabupaten"
                       class="form-control" placeholder="Masukkan jarak" style="width: 100%;">
-                      <?php if ($level != 'admin'): ?>
+                    <?php if ($level != 'admin'): ?>
                       <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                         <?php
                         echo displayPreviousYearData($previous_jarak_kantor_desa, 'jarak_ke_ibukota_kabupateb', 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota');
