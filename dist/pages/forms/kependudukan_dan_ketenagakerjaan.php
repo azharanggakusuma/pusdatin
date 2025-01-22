@@ -214,7 +214,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool kematian">
+                <button type="button" class="btn btn-tool kematian"> 
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
