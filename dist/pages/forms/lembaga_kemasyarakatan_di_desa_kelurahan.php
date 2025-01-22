@@ -46,6 +46,51 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_data_pkk
+$previous_data_pkk = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_data_pkk',
+  ['jumlah_tim_penggerak_pkk', 'jumlah_kader_pkk', 'jumlah_kelompok_pkk', 'jumlah_kelompok_dasa_wisma'],
+  'Data PKK',
+  $tahun
+);
+
+// tb_karang_taruna
+$previous_karang_taruna = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_karang_taruna',
+  ['jumlah_karang_taruna'],
+  'Karang Taruna',
+  $tahun
+);
+
+// tb_posyandu
+$previous_posyandu = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_posyandu',
+  ['jumlah_posyandu'],
+  'Posyandu',
+  $tahun
+);
+
+// tb_lpmd
+$previous_lpmd = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_lpmd',
+  ['jumlah_anggota_laki', 'jumlah_anggota_perempuan'],
+  'Lembaga Pengembangan Masyarakat Desa (LPMD)',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
