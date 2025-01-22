@@ -46,6 +46,86 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_tanah_kas_desa
+$previous_tanah_kas_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_tanah_kas_desa',
+  ['tanah_bengkok', 'tanah_titi_sara', 'kebun_desa', 'sawah_desa'],
+  'Tanah Kas Desa',
+  $tahun
+);
+
+// tb_pemanfaatan_sistem
+$previous_pemanfaatan_sistem = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pemanfaatan_sistem',
+  ['keberadaan_sistem_informasi_desa', 'keberadaan_sistem_keuangan_desa'],
+  'Pemanfaatan Sistem',
+  $tahun
+);
+
+// tb_badan_usaha_aset_desa
+$previous_badan_usaha_aset_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_badan_usaha_aset_desa',
+  [
+    'jumlah_unit_usaha_bumdes',
+    'tanah_kas_desa_ulayat',
+    'tambatan_perahu',
+    'pasar_desa',
+    'bangunan_milik_desa',
+    'hutan_milik_desa',
+    'mata_air_milik_desa',
+    'tempat_wisata_pemandian_umum',
+    'aset_lainnya_milik_desa'
+  ],
+  'Badan Usaha dan Aset Desa',
+  $tahun
+);
+
+// tb_ketersediaan_rpjmdes_rkpdes
+$previous_ketersediaan_rpjmdes_rkpdes = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_ketersediaan_rpjmdes_rkpdes',
+  ['ketersediaan_rpjmdes', 'tahun_awal_rpjmdes', 'tahun_akhir_rpjmdes', 'ketersediaan_rkpdes'],
+  'Ketersediaan RPJMDES dan RKPDES',
+  $tahun
+);
+
+// tb_peraturan_desa
+$previous_peraturan_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_peraturan_desa',
+  ['jumlah_peraturan_yang_dimiliki_desa', 'jumlah_peraturan_kepala_desa'],
+  'Peraturan Desa',
+  $tahun
+);
+
+// tb_kerjasama_desa
+$previous_kerjasama_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_kerjasama_desa',
+  [
+    'keberadaan_kerjasama_antar_desa',
+    'keberadaan_kerjasama_desa_dengan_pihak_ketiga'
+  ],
+  'Kerjasama Desa',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
