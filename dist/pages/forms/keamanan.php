@@ -1,6 +1,9 @@
 <?php
 include_once "../../config/conn.php";
 include "../../config/session.php";
+?>
+
+<?php
 // Ambil data pengguna yang sedang login
 $username = $_SESSION['username'] ?? '';
 $level = $_SESSION['level'] ?? '';
