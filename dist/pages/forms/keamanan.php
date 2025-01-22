@@ -45,6 +45,57 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_perkelahian_massal
+$previous_perkelahian_massal = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_perkelahian_massal',
+  ['kejadian'],
+  'Perkelahian Massal',
+  $tahun
+);
+
+// tb_keamanan_lingkungan
+$previous_keamanan_lingkungan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_keamanan_lingkungan',
+  [
+    'pembangunan_pos_keamanan',
+    'pembentukan_regu_keamanan',
+    'penambahan_anggota_hansip',
+    'pelaporan_tamu_menginap',
+    'pengaktifan_sistem_keamanan'
+  ],
+  'Keamanan Lingkungan',
+  $tahun
+);
+
+// tb_linmas_poskamling
+$previous_linmas_poskamling = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_linmas_poskamling',
+  ['jumlah_anggota_linmas'],
+  'Linmas Poskamling',
+  $tahun
+);
+
+// tb_keberadaan_pos_polisi
+$previous_keberadaan_pos_polisi = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_keberadaan_pos_polisi',
+  ['keberadaan_pos_polisi'],
+  'Keberadaan Pos Polisi',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
