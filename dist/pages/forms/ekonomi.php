@@ -45,6 +45,130 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_sentra_industri
+$previous_sentra_industri = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_sentra_industri',
+  ['keberadaan', 'jumlah_sentra', 'produk_utama'],
+  'Sentra Industri',
+  $tahun
+);
+
+// tb_produk_unggulan
+$previous_produk_unggulan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_produk_unggulan',
+  ['keberadaan', 'makanan_unggulan', 'non_makanan_unggulan'],
+  'Produk Unggulan',
+  $tahun
+);
+
+// tb_pangkalan_minyak
+$previous_pangkalan_minyak = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pangkalan_minyak',
+  ['keberadaan_minyak_tanah', 'keberadaan_lpg'],
+  'Pangkalan Minyak',
+  $tahun
+);
+
+// tb_bank_operasi
+$previous_bank_operasi = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_bank_operasi',
+  ['bank_pemerintah', 'bank_swasta', 'bank_bpr', 'jarak_bank_terdekat'],
+  'Bank Operasi',
+  $tahun
+);
+
+// tb_koperasi
+$previous_koperasi = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_koperasi',
+  ['koperasi_kud', 'koperasi_kopinkra', 'koperasi_ksp', 'koperasi_lainnya', 'toko_kud', 'toko_bumdesa', 'toko_lainnya'],
+  'Koperasi',
+  $tahun
+);
+
+// tb_sarana_ekonomi
+$previous_sarana_ekonomi = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_sarana_ekonomi',
+  [
+    'bmt_jumlah',
+    'bmt_jarak',
+    'bmt_kemudahan',
+    'atm_jumlah',
+    'atm_jarak',
+    'atm_kemudahan',
+    'agen_bank_jumlah',
+    'agen_bank_jarak',
+    'agen_bank_kemudahan',
+    'valas_jumlah',
+    'valas_jarak',
+    'valas_kemudahan',
+    'pegadaian_jumlah',
+    'pegadaian_jarak',
+    'pegadaian_kemudahan',
+    'agen_tiket_jumlah',
+    'agen_tiket_jarak',
+    'agen_tiket_kemudahan',
+    'bengkel_jumlah',
+    'bengkel_jarak',
+    'bengkel_kemudahan',
+    'salon_jumlah',
+    'salon_jarak',
+    'salon_kemudahan'
+  ],
+  'Sarana Ekonomi',
+  $tahun
+);
+
+// tb_sarana_prasarana
+$previous_sarana_prasarana = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_sarana_prasarana',
+  [
+    'kelompok_pertokoan_jumlah',
+    'kelompok_pertokoan_kemudahan',
+    'pasar_permanen_jumlah',
+    'pasar_permanen_kemudahan',
+    'pasar_semi_permanen_jumlah',
+    'pasar_semi_permanen_kemudahan',
+    'pasar_tanpa_bangunan_jumlah',
+    'pasar_tanpa_bangunan_kemudahan',
+    'minimarket_jumlah',
+    'minimarket_kemudahan',
+    'restoran_jumlah',
+    'restoran_kemudahan',
+    'warung_makan_jumlah',
+    'warung_makan_kemudahan',
+    'toko_kelontong_jumlah',
+    'toko_kelontong_kemudahan',
+    'hotel_jumlah',
+    'hotel_kemudahan',
+    'penginapan_jumlah',
+    'penginapan_kemudahan'
+  ],
+  'Sarana Prasarana',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
