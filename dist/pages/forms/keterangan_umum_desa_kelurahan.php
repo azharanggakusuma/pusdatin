@@ -291,7 +291,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'batas_utara	', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_utara', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -305,7 +305,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara	', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -321,7 +321,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'batas_selatan	', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_selatan', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -335,7 +335,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'kec_selatan	', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_selatan', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -367,7 +367,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'batas_barat	', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'batas_barat', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -381,7 +381,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara	', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
