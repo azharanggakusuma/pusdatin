@@ -16,7 +16,7 @@ $level = $_SESSION['level'];
 $tahun = $_SESSION['tahun'] ?? date('Y');
 
 // Tentukan deskripsi berdasarkan level
-$role_description = ($level == 'admin') ? 'Diskominfo Kab. Cirebon' : 'Petugas';
+$role_description = ($level == 'admin') ? 'Admin' : 'Operator';
 
 // Periksa apakah 'progress' ada di session, jika tidak set default 0
 $progress = isset($_SESSION['progress']) ? $_SESSION['progress'] : 0;
