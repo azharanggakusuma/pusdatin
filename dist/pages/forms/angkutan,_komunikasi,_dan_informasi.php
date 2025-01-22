@@ -46,6 +46,62 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_prasarana_transportasi
+$previous_prasarana_transportasi = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_prasarana_transportasi',
+  ['lalu_lintas', 'jenis_permukaan_jalan', 'jalan_darat_bisa_dilalui', 'keberadaan_angkutan_umum', 'operasional_angkutan_umum', 'jam_operasi_angkutan_umum'],
+  'Prasarana Transportasi',
+  $tahun
+);
+
+// tb_internet_transportasi
+$previous_internet_transportasi = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_internet_transportasi',
+  ['keberadaan_internet'],
+  'Internet Transportasi',
+  $tahun
+);
+
+// tb_menara_telepon
+$previous_menara_telepon = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_menara_telepon',
+  ['jumlah_bts', 'jumlah_operator_telekomunikasi', 'sinyal_telepon', 'sinyal_internet'],
+  'Menara Telepon',
+  $tahun
+);
+
+// tb_ketersediaan_internet
+$previous_ketersediaan_internet = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_ketersediaan_internet',
+  ['kondisi_komputer', 'fasilitas_internet'],
+  'Ketersediaan Internet',
+  $tahun
+);
+
+// tb_keberadaan_kantor_pos
+$previous_keberadaan_kantor_pos = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_keberadaan_kantor_pos',
+  ['kantor_pos', 'layanan_pos_keliling', 'ekspedisi_swasta'],
+  'Keberadaan Kantor Pos',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
