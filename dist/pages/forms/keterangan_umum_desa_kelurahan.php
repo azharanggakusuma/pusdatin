@@ -54,6 +54,94 @@ $previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_
 $previous_jarak_kantor_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota', $tahun);
 $previous_idm_status = getPreviousYearData($conn, $user_id, $desa_id, 'tb_idm_status', ['status_idm'], 'Status Indeks Desa Membangun (IDM)', $tahun);
 
+// tb_website_medsos
+$previous_website_medsos = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_website_medsos', 
+    ['alamat_website', 'alamat_email', 'alamat_facebook', 'alamat_twitter', 'alamat_youtube'], 
+    'Website dan Media Sosial', 
+    $tahun
+);
+
+// tb_status_pemerintahan
+$previous_status_pemerintahan = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_status_pemerintahan', 
+    ['status_pemerintahan'], 
+    'Status Pemerintahan', 
+    $tahun
+);
+
+// tb_ketersediaan_penetapan_peta_desa
+$previous_ketersediaan_peta_desa = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_ketersediaan_penetapan_peta_desa', 
+    ['penetapan_batas_desa', 'no_surat_batas_desa', 'ketersediaan_peta_desa', 'no_surat_peta_desa'], 
+    'Ketersediaan dan Penetapan Peta Desa', 
+    $tahun
+);
+
+// tb_banyaknya_dusun_rt_rw
+$previous_banyaknya_dusun_rt_rw = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_banyaknya_dusun_rt_rw', 
+    ['jumlah_dusun', 'jumlah_rw', 'jumlah_rt'], 
+    'Banyaknya Dusun, RT, dan RW', 
+    $tahun
+);
+
+// tb_luas_wilayah_desa
+$previous_luas_wilayah_desa = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_luas_wilayah_desa', 
+    ['luas_wilayah_desa'], 
+    'Luas Wilayah Desa', 
+    $tahun
+);
+
+// tb_topografi_terluas_wilayah_desa
+$previous_topografi_wilayah_desa = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_topografi_terluas_wilayah_desa', 
+    ['topografi_terluas_wilayah_desa'], 
+    'Topografi Terluas Wilayah Desa', 
+    $tahun
+);
+
+// tb_kepemilikan_kantor
+$previous_kepemilikan_kantor = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_kepemilikan_kantor', 
+    ['keberadaan_kantor', 'status_kantor', 'kondisi_kantor', 'lokasi_kantor'], 
+    'Kepemilikan Kantor', 
+    $tahun
+);
+
+// tb_titik_koordinat_kantor_desa
+$previous_titik_koordinat_kantor_desa = getPreviousYearData(
+    $conn, 
+    $user_id, 
+    $desa_id, 
+    'tb_titik_koordinat_kantor_desa', 
+    ['koordinat_lintang', 'koordinat_bujur'], 
+    'Titik Koordinat Kantor Desa', 
+    $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
