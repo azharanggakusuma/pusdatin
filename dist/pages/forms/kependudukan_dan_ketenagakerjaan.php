@@ -237,6 +237,13 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2" for="jumlah_surat_kematian">Jumlah Surat Kematian Yang Dikeluarkan</label>
                     <input type="number" min="0" id="jumlah_surat_kematian" name="jumlah_surat_kematian" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kematian, 'jumlah_surat_kematian', 'Kematian');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -308,18 +315,39 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2" for="jumlah_penduduk_laki">Jumlah Penduduk Laki-Laki</label>
                     <input type="number" min="0" id="jumlah_penduduk_laki" name="jumlah_penduduk_laki" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_penduduk_keluarga, 'jumlah_penduduk_laki', 'Penduduk dan Keluarga');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Jumlah Penduduk Perempuan -->
                   <div class="form-group mb-3">
                     <label class="mb-2" for="jumlah_penduduk_perempuan">Jumlah Penduduk Perempuan</label>
                     <input type="number" min="0" id="jumlah_penduduk_perempuan" name="jumlah_penduduk_perempuan" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_penduduk_keluarga, 'jumlah_penduduk_perempuan', 'Penduduk dan Keluarga');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Jumlah Kepala Keluarga -->
                   <div class="form-group mb-3">
                     <label class="mb-2" for="jumlah_kepala_keluarga">Jumlah Kepala Keluarga</label>
                     <input type="number" min="0" id="jumlah_kepala_keluarga" name="jumlah_kepala_keluarga" class="form-control" placeholder="Isi Dengan Angka" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_penduduk_keluarga, 'jumlah_kepala_keluarga', 'Penduduk dan Keluarga');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -395,6 +423,13 @@ $previous_ketenagakerjaan = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketenagakerjaan, 'pmi_bekerja', 'Ketenagakerjaan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Keberadaan Agen Pengerahan PMI/TKI -->
@@ -405,6 +440,14 @@ $previous_ketenagakerjaan = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketenagakerjaan, 'agen_pengerahan_pmi', 'Ketenagakerjaan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                    
                   </div>
 
                   <!-- Layanan Rekomendasi PMI/TKI -->
@@ -415,6 +458,13 @@ $previous_ketenagakerjaan = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketenagakerjaan, 'layanan_rekomendasi_pmi', 'Ketenagakerjaan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <!-- Keberadaan WNA -->
@@ -425,6 +475,13 @@ $previous_ketenagakerjaan = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketenagakerjaan, 'keberadaan_wna', 'Ketenagakerjaan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
