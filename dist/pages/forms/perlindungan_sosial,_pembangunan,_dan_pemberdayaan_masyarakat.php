@@ -46,6 +46,29 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_penerima_bantuan_sosial
+$previous_penerima_bantuan_sosial = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_penerima_bantuan_sosial',
+  ['penerima_pkh', 'penerima_blt_dana_desa', 'penerima_bpnt', 'penerima_pbi_jk'],
+  'Penerima Bantuan Sosial',
+  $tahun
+);
+
+// tb_sktm
+$previous_sktm = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_sktm',
+  ['jumlah_sktm'],
+  'SKTM',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
