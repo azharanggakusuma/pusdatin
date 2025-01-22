@@ -46,6 +46,85 @@ $desa_id = $desa['id_desa'] ?? 0;
 
 // Ambil tahun dari session
 $tahun = $_SESSION['tahun'] ?? date('Y');
+
+// tb_kepala_desa
+$previous_kepala_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_kepala_desa',
+  ['nama_kepala_desa', 'umur', 'jenis_kelamin', 'pendidikan_terakhir', 'tahun_mulai_menjabat'],
+  'Kepala Desa',
+  $tahun
+);
+
+// tb_perangkat_desa
+$previous_perangkat_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_perangkat_desa',
+  [
+    'skd_laki',
+    'skd_perempuan',
+    'kaur_laki',
+    'kaur_perempuan',
+    'kkk_laki',
+    'kkk_perempuan',
+    'pk_laki',
+    'pk_perempuan',
+    'staf_laki',
+    'staf_perempuan',
+    'total_laki',
+    'total_perempuan'
+  ],
+  'Perangkat Desa',
+  $tahun
+);
+
+// tb_perangkat_desa_pendidikan
+$previous_perangkat_desa_pendidikan = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_perangkat_desa_pendidikan',
+  [
+    'tidak_sekolah_laki',
+    'tidak_sekolah_perempuan',
+    'tidak_tamat_sd_laki',
+    'tidak_tamat_sd_perempuan',
+    'tamat_sd_laki',
+    'tamat_sd_perempuan',
+    'smp_laki',
+    'smp_perempuan',
+    'smu_laki',
+    'smu_perempuan',
+    'd3_laki',
+    'd3_perempuan',
+    's1_laki',
+    's1_perempuan',
+    's2_laki',
+    's2_perempuan',
+    's3_laki',
+    's3_perempuan',
+    'total_laki',
+    'total_perempuan'
+  ],
+  'Perangkat Desa Pendidikan',
+  $tahun
+);
+
+// tb_badan_permusyawaratan_desa
+$previous_badan_permusyawaratan_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_badan_permusyawaratan_desa',
+  ['keberadaan_bpd', 'jumlah_laki', 'jumlah_perempuan', 'jumlah_kegiatan'],
+  'Badan Permusyawaratan Desa',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
