@@ -595,7 +595,7 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Bank Sampah di Desa/Kelurahan</label>
                     <select name="bank_sampah" class="form-control" required>
-                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option> 
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                       <option value="Non Listrik">Non Listrik</option>
