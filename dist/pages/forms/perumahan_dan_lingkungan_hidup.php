@@ -1774,7 +1774,7 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_rumah_tidak_layak_huni, 'jumlah_rumah', 'Jumlah Rumah Tidak Layak Huni');
+                          echo displayPreviousYearData($previous_rumah_tidak_layak_huni, 'jumlah_rumah', 'Jumlah Rumah Tidak Layak Huni'); 
                           ?>
                         </p>
                       <?php endif; ?>
