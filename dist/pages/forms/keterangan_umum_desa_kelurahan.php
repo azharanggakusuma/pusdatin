@@ -61,7 +61,7 @@ $previous_website_medsos = getPreviousYearData(
   $desa_id,
   'tb_website_medsos',
   ['alamat_website', 'alamat_email', 'alamat_facebook', 'alamat_twitter', 'alamat_youtube'],
-  'Website dan Media Sosial', 
+  'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki', 
   $tahun
 );
 
@@ -684,7 +684,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_website_medsos, 'alamat_website', 'Website dan Media Sosial');
+                          echo displayPreviousYearData($previous_website_medsos, 'alamat_website', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
                           ?>
                         </p>
                       <?php endif; ?>
