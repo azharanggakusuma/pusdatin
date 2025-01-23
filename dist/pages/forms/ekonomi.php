@@ -56,7 +56,7 @@ $previous_sentra_industri = getPreviousYearData(
   $desa_id,
   'tb_sentra_industri',
   ['keberadaan', 'jumlah_sentra', 'produk_utama'],
-  'Keberadaan Sentra Industri Unggulan Desa',
+  'Keberadaan Sentra Industri',
   $tahun
 );
 
@@ -67,7 +67,7 @@ $previous_produk_unggulan = getPreviousYearData(
   $desa_id,
   'tb_produk_unggulan',
   ['keberadaan', 'makanan_unggulan', 'non_makanan_unggulan'],
-  'Produk Unggulan',
+  'Keberadaan Produk Barang Unggulan',
   $tahun
 );
 
@@ -78,7 +78,7 @@ $previous_pangkalan_minyak = getPreviousYearData(
   $desa_id,
   'tb_pangkalan_minyak',
   ['keberadaan_minyak_tanah', 'keberadaan_lpg'],
-  'Pangkalan Minyak',
+  'Keberadaan Pangkalan Minyak Tanah dan LPG',
   $tahun
 );
 
@@ -438,12 +438,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_produk_unggulan, 'keberadaan', 'Keberadaan Produk Barang Unggulan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
                 <div class="form-group mb-3" id="productInfo" style="display: none;">
                   <label class="mb-2">Produk barang unggulan/utama desa/kelurahan</label>
                   <input type="text" class="form-control mb-2" name="makanan_unggulan" id="makanan_unggulan" placeholder=" --- Tuliskan Makanan --- ">
+                  <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_produk_unggulan, 'makanan_unggulan', 'Keberadaan Produk Barang Unggulan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   <input type="text" class="form-control" name="non_makanan_unggulan" id="non_makanan_unggulan" placeholder=" --- Tuliskan Non Makanan --- ">
+                  <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_produk_unggulan, 'non_makanan_unggulan', 'Keberadaan Produk Barang Unggulan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                 </div>
 
                 <script>
@@ -527,6 +548,13 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_pangkalan_minyak, 'keberadaan_minyak_tanah', 'Keberadaan Pangkalan Minyak Tanah dan LPG');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)</label>
@@ -535,6 +563,13 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_pangkalan_minyak, 'keberadaan_lpg', 'Keberadaan Pangkalan Minyak Tanah dan LPG');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
 
