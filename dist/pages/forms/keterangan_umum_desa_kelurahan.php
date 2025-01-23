@@ -339,7 +339,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                           ?>
                         </p>
                       <?php endif; ?>
-                    </div> 
+                    </div>
                   </div>
 
                   <!-- Sebelah Timur -->
@@ -499,7 +499,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                       <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                         <?php
-                        echo displayPreviousYearData($previous_jarak_kantor_desa, 'jarak_ke_ibukota_kabupateb', 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota');
+                        echo displayPreviousYearData($previous_jarak_kantor_desa, 'jarak_ke_ibukota_kabupaten', 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota');
                         ?>
                       </p>
                     <?php endif; ?>
