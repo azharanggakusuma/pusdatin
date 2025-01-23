@@ -356,6 +356,21 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_prasarana_transportasi"
+                        name="use_previous_prasarana_transportasi" value="1">
+                      <label class="form-check-label" for="use_previous_prasarana_transportasi">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+                
+                
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -435,6 +450,19 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_internet_transportasi"
+                        name="use_previous_internet_transportasi" value="1">
+                      <label class="form-check-label" for="use_previous_internet_transportasi">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -555,6 +583,19 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_menara_telepon"
+                        name="use_previous_menara_telepon" value="1">
+                      <label class="form-check-label" for="use_previous_menara_telepon">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <!-- Submit button -->
                 <div class="mb-2">
@@ -656,6 +697,18 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                   </div>
                 </div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_ketersediaan_internet"
+                        name="use_previous_ketersediaan_internet" value="1">
+                      <label class="form-check-label" for="use_previous_ketersediaan_internet">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -765,6 +818,19 @@ $previous_keberadaan_kantor_pos = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keberadaan_kantor_pos"
+                        name="use_previous_keberadaan_kantor_pos" value="1">
+                      <label class="form-check-label" for="use_previous_keberadaan_kantor_pos">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
