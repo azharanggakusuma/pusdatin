@@ -94,7 +94,7 @@ $previous_banyaknya_dusun_rt_rw = getPreviousYearData(
   $desa_id,
   'tb_banyaknya_dusun_rt_rw',
   ['jumlah_dusun', 'jumlah_rw', 'jumlah_rt'],
-  'Banyaknya Dusun, RT, dan RW',
+  'Banyaknya Dusun, Rukun Tetangga dan Rukun Warga',
   $tahun
 );
 
@@ -105,7 +105,7 @@ $previous_luas_wilayah_desa = getPreviousYearData(
   $desa_id,
   'tb_luas_wilayah_desa',
   ['luas_wilayah_desa'],
-  'Luas Wilayah Desa',
+  'Luas Wilayah Desa/Kelurahan',
   $tahun
 );
 
@@ -127,7 +127,7 @@ $previous_kepemilikan_kantor = getPreviousYearData(
   $desa_id,
   'tb_kepemilikan_kantor',
   ['keberadaan_kantor', 'status_kantor', 'kondisi_kantor', 'lokasi_kantor'],
-  'Kepemilikan Kantor',
+  'Keberadaan, Status, Kondisi, dan Lokasi Kantor Kepala Desa/Lurah',
   $tahun
 );
 
@@ -1102,7 +1102,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_dusun', 'Banyaknya Dusun, RT, dan RW');
+                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_dusun', 'Banyaknya Dusun, Rukun Tetangga dan Rukun Warga');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -1118,7 +1118,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_rw', 'Banyaknya Dusun, RT, dan RW');
+                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_rw', 'Banyaknya Dusun, Rukun Tetangga dan Rukun Warga');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -1134,7 +1134,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_rt', 'Banyaknya Dusun, RT, dan RW');
+                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_rt', 'Banyaknya Dusun, Rukun Tetangga dan Rukun Warga');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -1201,7 +1201,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                       <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                         <?php
-                        echo displayPreviousYearData($previous_luas_wilayah_desa, 'luas_wilayah_desa', 'Luas Wilayah Desa');
+                        echo displayPreviousYearData($previous_luas_wilayah_desa, 'luas_wilayah_desa', 'Luas Wilayah Desa/Kelurahan');
                         ?>
                       </p>
                     <?php endif; ?>
@@ -1386,7 +1386,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_kepemilikan_kantor, 'keberadaan_kantor', 'Kepemilikan Kantor');
+                          echo displayPreviousYearData($previous_kepemilikan_kantor, 'keberadaan_kantor', 'Keberadaan, Status, Kondisi, dan Lokasi Kantor Kepala Desa/Lurah');
                           ?>
                         </p>
                       <?php endif; ?>
