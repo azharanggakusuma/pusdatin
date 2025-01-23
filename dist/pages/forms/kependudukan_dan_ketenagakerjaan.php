@@ -214,7 +214,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                 <i class="fas fa-info-circle"></i>
               </button>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool kematian"> 
+                <button type="button" class="btn btn-tool kematian">
                   <i class="fas fa-minus"></i>
                 </button>
                 <script>
@@ -245,6 +245,18 @@ $previous_ketenagakerjaan = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
+
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_kematian" name="use_previous_kematian" value="1">
+                        <label class="form-check-label" for="use_previous_kematian">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
 
                 <div class="mb-2">
@@ -351,6 +363,18 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   </div>
                 </div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_penduduk_keluarga" name="use_penduduk_keluarga" value="1">
+                      <label class="form-check-label" for="use_penduduk_keluarga">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -447,7 +471,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                         ?>
                       </p>
                     <?php endif; ?>
-                    
+
                   </div>
 
                   <!-- Layanan Rekomendasi PMI/TKI -->
@@ -484,6 +508,18 @@ $previous_ketenagakerjaan = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_ketenagakerjaan" name="use_previous_ketenagakerjaan" value="1">
+                      <label class="form-check-label" for="use_previous_ketenagakerjaan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
