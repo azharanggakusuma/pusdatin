@@ -882,6 +882,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="SUDAH ADA">SUDAH ADA</option>
                         <option value="BELUM ADA">BELUM ADA</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_status_pemerintahan, 'status_pemerintahan', 'status_pemerintahan Desa');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
