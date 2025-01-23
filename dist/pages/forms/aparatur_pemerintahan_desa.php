@@ -112,7 +112,7 @@ $previous_perangkat_desa_pendidikan = getPreviousYearData(
     'total_laki',
     'total_perempuan'
   ],
-  'Perangkat Desa Pendidikan',
+  'Pendidikan Perangkat Desa',
   $tahun
 );
 
@@ -275,23 +275,23 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                     <label class="mb-2">Nama Kepala Desa/Lurah</label>
                     <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required name="nama_kepala_desa">
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_kepala_desa, 'nama_kepala_desa', 'Nama Kepala Desa/Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kepala_desa, 'nama_kepala_desa', 'Kepala Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Umur</label>
                     <input required type="number" min="0" class="form-control" placeholder="Masukkan Umur" style="width: 100%;" required name="umur_kepala_desa">
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_kepala_desa, 'umur', 'Nama Kepala Desa/Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kepala_desa, 'umur', 'Kepala Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenis kelamin</label>
@@ -301,12 +301,12 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                       <option value="PEREMPUAN"> PEREMPUAN </option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_kepala_desa, 'jenis_kelamin', 'Nama Kepala Desa/Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kepala_desa, 'jenis_kelamin', 'Kepala Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pendidikan Tertinggi yang ditamatkan</label>
@@ -323,23 +323,23 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                       <option value="S3">S3</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_kepala_desa, 'pendidikan_terakhir', 'Nama Kepala Desa/Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kepala_desa, 'pendidikan_terakhir', 'Kepala Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tahun Mulai Menjabat</label>
                     <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun mulai menjabat" style="width: 100%;" required name="tahun_mulai_menjabat">
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_kepala_desa, 'tahun_mulai_menjabat', 'Nama Kepala Desa/Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kepala_desa, 'tahun_mulai_menjabat', 'Kepala Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -415,38 +415,146 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                         <!-- Sekretaris Desa/Kelurahan -->
                         <tr>
                           <td>Sekretaris Desa/Kelurahan</td>
-                          <td><input type="number" name="skd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="skd_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="skd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'skd_laki', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="skd_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'skd_perempuan', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Kaur (kaur keuangan, dll) -->
                         <tr>
                           <td>Kaur (kaur keuangan, dll)</td>
-                          <td><input type="number" name="kaur_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="kaur_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="kaur_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'kaur_laki', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="kaur_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'kaur_perempuan', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Kasi kesejahteraan, dll -->
                         <tr>
                           <td>Kasi kasi kesejahteraan, dll</td>
-                          <td><input type="number" name="kkk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="kkk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="kkk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'kkk_laki', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="kkk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'kkk_perempuan', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Pelaksana Kewilayahan -->
                         <tr>
                           <td>Pelaksana Kewilayahan</td>
-                          <td><input type="number" name="pk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="pk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="pk_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'pk_laki', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="pk_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'pk_perempuan', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Staf/Pegawai Desa Lainnya -->
                         <tr>
                           <td>Staf/Pegawai Desa Lainnya</td>
-                          <td><input type="number" name="staf_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="staf_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="staf_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'staf_laki', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="staf_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'staf_perempuan', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Jumlah Total -->
                         <tr>
                           <td>Jumlah Total</td>
-                          <td><input type="number" name="jumlah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="jumlah_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="jumlah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'total_laki', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="jumlah_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa, 'total_perempuan', 'Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -523,62 +631,242 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                         <!-- Tidak pernah sekolah -->
                         <tr>
                           <td>Tidak pernah sekolah</td>
-                          <td><input type="number" name="tidaksekolah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="tidaksekolah_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="tidaksekolah_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'tidak_sekolah_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="tidaksekolah_peremuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'tidak_sekolah_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Tidak tamat SD/Sederajat -->
                         <tr>
                           <td>Tidak tamat SD/Sederajat</td>
-                          <td><input type="number" name="tidaksd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="tidaksd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="tidaksd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'tidak_tamat_sd_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="tidaksd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'tidak_tamat_sd_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Tamat SD/Sederajat -->
                         <tr>
                           <td>Tamat SD/Sederajat</td>
-                          <td><input type="number" name="sd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="sd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="sd_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'tamat_sd_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="sd_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'tamat_sd_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- SMP/Sederajat -->
                         <tr>
                           <td>SMP/Sederajat</td>
-                          <td><input type="number" name="smp_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="smp_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="smp_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'smp_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="smp_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'smp_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- SMU/Sederajat -->
                         <tr>
                           <td>SMU/Sederajat</td>
-                          <td><input type="number" name="smu_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="smu_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="smu_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'smu_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="smu_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'smu_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Akademi/DIII -->
                         <tr>
                           <td>Akademi/DIII</td>
-                          <td><input type="number" name="d3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="d3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="d3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'd3_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="d3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'd3_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Diploma IV/S1 -->
                         <tr>
                           <td>Diploma IV/S1</td>
-                          <td><input type="number" name="s1_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="s1_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="s1_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 's1_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="s1_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 's1_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- S2 -->
                         <tr>
                           <td>S2</td>
-                          <td><input type="number" name="s2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="s2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="s2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 's2_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="s2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 's2_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- S3 -->
                         <tr>
                           <td>S3</td>
-                          <td><input type="number" name="s3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="s3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="s3_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 's3_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="s3_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 's3_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                         <!-- Jumlah Total -->
                         <tr>
                           <td>Jumlah Total</td>
-                          <td><input type="number" name="jumlah2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
-                          <td><input type="number" name="jumlah2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- "></td>
+                          <td>
+                            <input type="number" name="jumlah2_laki_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'total_laki', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
+                          <td>
+                            <input type="number" name="jumlah2_perempuan_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- ">
+                            <?php if ($level != 'admin'): ?>
+                              <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                                <?php
+                                echo displayPreviousYearData($previous_perangkat_desa_pendidikan, 'total_perempuan', 'Pendidikan Perangkat Desa');
+                                ?>
+                              </p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -649,6 +937,13 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_permusyawaratan_desa, 'keberadaan_bpd', 'Badan Permusyawaratan Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="form-group mb-3" id="jumlahAnggotaBPD" style="display: none;">
@@ -658,10 +953,24 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                       <div class="col-md-4">
                         <label class="mb-2">Laki-Laki</label>
                         <input type="number" class="form-control" min="0" name="laki_laki" id="laki_laki" placeholder=" --- Masukkan jumlah --- ">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_badan_permusyawaratan_desa, 'jumlah_laki', 'Badan Permusyawaratan Desa');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                       </div>
                       <div class="col-md-4">
                         <label class="mb-2">Perempuan</label>
                         <input type="number" class="form-control" min="0" name="perempuan" id="perempuan" placeholder=" --- Masukkan jumlah --- ">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_badan_permusyawaratan_desa, 'jumlah_perempuan', 'Badan Permusyawaratan Desa');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                       </div>
                     </div>
 
@@ -670,6 +979,13 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                 <div class="form-group mb-3" id="kegiatanMusyawarahDesa" style="display: none;">
                   <label class="mb-2">Jumlah kegiatan musyawarah desa/kelurahan yang dilakukan selama setahun terakhir</label>
                   <input type="number" class="form-control" min="0" name="kegiatanMusyawarahDesa" id="kegiatanMusyawarahDesa" placeholder=" --- Masukkan jumlah --- ">
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_badan_permusyawaratan_desa, 'jumlah_kegiatan', 'Badan Permusyawaratan Desa');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <script>

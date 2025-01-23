@@ -2,29 +2,34 @@
 session_start();
 include "../config/conn.php";
 
-// Retrieve user ID from session
+// ============================
+// Mengambil ID Pengguna dan Tahun dari Session
+// ============================
 $username = $_SESSION['username'] ?? '';
+$tahun = $_SESSION['tahun'] ?? null;
+
+if (!$tahun || !$username) {
+    echo "Tahun atau pengguna tidak ditemukan. Pastikan Anda telah login.";
+    exit();
+}
+
+// ============================
+// Mengambil ID Pengguna dan ID Desa
+// ============================
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Retrieve year from session
-$tahun = $_SESSION['tahun'] ?? null;
-
-if (!$tahun) {
-    echo "Tahun tidak ditemukan. Pastikan Anda telah login dengan memilih tahun.";
-    exit();
-}
-
-// Retrieve village ID associated with the user
 $query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize and prepare data from POST
+    // ============================
+    // Sanitasi dan Persiapan Data dari POST
+    // ============================
     $tidak_sekolah_laki = mysqli_real_escape_string($conn, $_POST['tidaksekolah_laki_jumlah']);
     $tidak_sekolah_perempuan = mysqli_real_escape_string($conn, $_POST['tidaksekolah_peremuan_jumlah']);
     $tidak_tamat_sd_laki = mysqli_real_escape_string($conn, $_POST['tidaksd_laki_jumlah']);
@@ -46,27 +51,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $total_laki = mysqli_real_escape_string($conn, $_POST['jumlah2_laki_jumlah']);
     $total_perempuan = mysqli_real_escape_string($conn, $_POST['jumlah2_perempuan_jumlah']);
 
-    // Check if the record already exists for the same year
+    // ============================
+    // Cek apakah data untuk tahun yang sama sudah ada di database
+    // ============================
     $check_query = "SELECT id FROM tb_perangkat_desa_pendidikan WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
     $check_result = mysqli_query($conn, $check_query);
 
     if (mysqli_num_rows($check_result) > 0) {
-        // If record exists for the same year, update the existing record
+        // Jika data sudah ada, lakukan UPDATE
         $sql = "UPDATE tb_perangkat_desa_pendidikan 
-                SET tidak_sekolah_laki = '$tidak_sekolah_laki', tidak_sekolah_perempuan = '$tidak_sekolah_perempuan', 
-                    tidak_tamat_sd_laki = '$tidak_tamat_sd_laki', tidak_tamat_sd_perempuan = '$tidak_tamat_sd_perempuan', 
-                    tamat_sd_laki = '$tamat_sd_laki', tamat_sd_perempuan = '$tamat_sd_perempuan', 
-                    smp_laki = '$smp_laki', smp_perempuan = '$smp_perempuan', 
-                    smu_laki = '$smu_laki', smu_perempuan = '$smu_perempuan', 
-                    d3_laki = '$d3_laki', d3_perempuan = '$d3_perempuan', 
-                    s1_laki = '$s1_laki', s1_perempuan = '$s1_perempuan', 
-                    s2_laki = '$s2_laki', s2_perempuan = '$s2_perempuan', 
-                    s3_laki = '$s3_laki', s3_perempuan = '$s3_perempuan', 
-                    total_laki = '$total_laki', total_perempuan = '$total_perempuan', 
-                    tahun = '$tahun' 
-                WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
+                SET 
+                    tidak_sekolah_laki = '$tidak_sekolah_laki', 
+                    tidak_sekolah_perempuan = '$tidak_sekolah_perempuan', 
+                    tidak_tamat_sd_laki = '$tidak_tamat_sd_laki', 
+                    tidak_tamat_sd_perempuan = '$tidak_tamat_sd_perempuan', 
+                    tamat_sd_laki = '$tamat_sd_laki', 
+                    tamat_sd_perempuan = '$tamat_sd_perempuan', 
+                    smp_laki = '$smp_laki', 
+                    smp_perempuan = '$smp_perempuan', 
+                    smu_laki = '$smu_laki', 
+                    smu_perempuan = '$smu_perempuan', 
+                    d3_laki = '$d3_laki', 
+                    d3_perempuan = '$d3_perempuan', 
+                    s1_laki = '$s1_laki', 
+                    s1_perempuan = '$s1_perempuan', 
+                    s2_laki = '$s2_laki', 
+                    s2_perempuan = '$s2_perempuan', 
+                    s3_laki = '$s3_laki', 
+                    s3_perempuan = '$s3_perempuan', 
+                    total_laki = '$total_laki', 
+                    total_perempuan = '$total_perempuan' 
+                WHERE 
+                    user_id = '$user_id' AND 
+                    desa_id = '$desa_id' AND 
+                    tahun = '$tahun'";
     } else {
-        // If record doesn't exist for the same year, insert a new record
+        // Jika data belum ada, lakukan INSERT
         $sql = "INSERT INTO tb_perangkat_desa_pendidikan 
                 (tidak_sekolah_laki, tidak_sekolah_perempuan, tidak_tamat_sd_laki, tidak_tamat_sd_perempuan, 
                  tamat_sd_laki, tamat_sd_perempuan, smp_laki, smp_perempuan, 
@@ -81,14 +101,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         '$user_id', '$desa_id', '$tahun')";
     }
 
+    // ============================
+    // Eksekusi Query
+    // ============================
     if (mysqli_query($conn, $sql)) {
+        // ============================
+        // Kelola Progress Pengguna
+        // ============================
+        $form_name = 'Pendidikan Perangkat Desa';
+        $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form_name' AND tahun = '$tahun'";
+        $result_progress = mysqli_query($conn, $query_progress);
+
+        // Set created_at ke hari pertama tahun tersebut
+        $created_at = "$tahun-01-01 00:00:00";
+
+        if (mysqli_num_rows($result_progress) > 0) {
+            // Jika progress sudah ada, lakukan UPDATE
+            $update_progress = "UPDATE user_progress 
+                                SET 
+                                    is_locked  = TRUE, 
+                                    desa_id    = '$desa_id', 
+                                    created_at = '$created_at', 
+                                    tahun      = '$tahun' 
+                                WHERE 
+                                    user_id    = '$user_id' AND 
+                                    form_name  = '$form_name' AND 
+                                    tahun      = '$tahun'";
+            if (!mysqli_query($conn, $update_progress)) {
+                header("Location: ../pages/forms/aparatur_pemerintahan_desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
+                exit();
+            }
+        } else {
+            // Jika progress belum ada, lakukan INSERT
+            $insert_progress = "INSERT INTO user_progress (
+                                    user_id, 
+                                    form_name, 
+                                    is_locked, 
+                                    desa_id, 
+                                    created_at, 
+                                    tahun
+                                ) VALUES (
+                                    '$user_id',
+                                    '$form_name',
+                                    TRUE,
+                                    '$desa_id',
+                                    '$created_at',
+                                    '$tahun'
+                                )";
+            if (!mysqli_query($conn, $insert_progress)) {
+                header("Location: ../pages/forms/aparatur_pemerintahan_desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
+                exit();
+            }
+        }
+
+        // Redirect ke halaman form dengan status sukses
         header("Location: ../pages/forms/aparatur_pemerintahan_desa.php?status=success");
         exit();
     } else {
+        // Jika eksekusi query gagal, redirect dengan pesan error
         header("Location: ../pages/forms/aparatur_pemerintahan_desa.php?status=error&message=" . urlencode(mysqli_error($conn)));
         exit();
     }
 } else {
+    // Jika bukan metode POST, redirect dengan status warning
     header("Location: ../pages/forms/aparatur_pemerintahan_desa.php?status=warning");
     exit();
 }
