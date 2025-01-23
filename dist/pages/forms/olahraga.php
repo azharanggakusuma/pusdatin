@@ -244,203 +244,231 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php //if ($form_status['Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan']) : ?>
-                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan']) : 
+              ?>
+              <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>-->
-              <?php //else: ?>
-                <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
-                  <div class="row mb-3">
-                    <div class="col-md-6">
-                      <label for="sepakbola" class="form-label">Sepak bola</label>
-                      <select id="sepakbola" name="sepakbola" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'sepak_bola', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="bolavoli" class="form-label">Bola voli</label>
-                      <select id="bolavoli" name="bolavoli" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'bola_voli', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
+              <?php //else: 
+              ?>
+              <form action="../../handlers/form_fasilitas_olahraga.php" method="post">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="sepakbola" class="form-label">Sepak bola</label>
+                    <select id="sepakbola" name="sepakbola" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'sepak_bola', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
-
-                  <div class="row mb-3">
-                    <div class="col-md-6">
-                      <label for="bulutangkis" class="form-label">Bulu tangkis</label>
-                      <select id="bulutangkis" name="bulutangkis" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'bulu_tangkis', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="basket" class="form-label">Bola basket</label>
-                      <select id="basket" name="basket" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'bola_basket', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
+                  <div class="col-md-6">
+                    <label for="bolavoli" class="form-label">Bola voli</label>
+                    <select id="bolavoli" name="bolavoli" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'bola_voli', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
+                </div>
 
-                  <div class="row mb-3">
-                    <div class="col-md-6">
-                      <label for="tenislapangan" class="form-label">Tenis lapangan</label>
-                      <select id="tenislapangan" name="tenislapangan" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'tenis_lapangan', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="tenismeja" class="form-label">Tenis meja</label>
-                      <select id="tenismeja" name="tenismeja" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'tenis_meja', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="bulutangkis" class="form-label">Bulu tangkis</label>
+                    <select id="bulutangkis" name="bulutangkis" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'bulu_tangkis', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
-
-                  <div class="row mb-3">
-                    <div class="col-md-6">
-                      <label for="futsal" class="form-label">Futsal</label>
-                      <select id="futsal" name="futsal" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'futsal', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="renang" class="form-label">Renang</label>
-                      <select id="renang" name="renang" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'renang', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
+                  <div class="col-md-6">
+                    <label for="basket" class="form-label">Bola basket</label>
+                    <select id="basket" name="basket" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'bola_basket', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
+                </div>
 
-                  <div class="row mb-3">
-                    <div class="col-md-6">
-                      <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
-                      <select id="beladiri" name="beladiri" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'bela_diri', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="bilyard" class="form-label">Bilyard</label>
-                      <select id="bilyard" name="bilyard" class="form-select">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'bilyard', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="tenislapangan" class="form-label">Tenis lapangan</label>
+                    <select id="tenislapangan" name="tenislapangan" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'tenis_lapangan', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
+                  <div class="col-md-6">
+                    <label for="tenismeja" class="form-label">Tenis meja</label>
+                    <select id="tenismeja" name="tenismeja" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'tenis_meja', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                  </div>
+                </div>
 
-                  <div class="row mb-3">
-                    <div class="col-md-6">
-                      <label for="fitness" class="form-label">Fitness, aerobik, dll.</label>
-                      <select id="fitness" name="fitness" class="form-select">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="futsal" class="form-label">Futsal</label>
+                    <select id="futsal" name="futsal" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'futsal', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="renang" class="form-label">Renang</label>
+                    <select id="renang" name="renang" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'renang', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="beladiri" class="form-label">Bela diri (pencak silat, karate, dll.)</label>
+                    <select id="beladiri" name="beladiri" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'bela_diri', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="bilyard" class="form-label">Bilyard</label>
+                    <select id="bilyard" name="bilyard" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'bilyard', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="fitness" class="form-label">Fitness, aerobik, dll.</label>
+                    <select id="fitness" name="fitness" class="form-select">
+                      <option selected disabled>--- Pilih kondisi ---</option>
+                      <option value="Ada, baik">Ada, baik</option>
+                      <option value="Ada, rusak sedang">Ada, rusak sedang</option>
+                      <option value="Ada, rusak parah">Ada, rusak parah</option>
+                      <option value="Tidak ada">Tidak ada</option>
+                    </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'fitness', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
+                    <input type="text" class="form-control" id="lainnya" name="lainnya" placeholder="Nama lainnya">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_olahraga_data, 'lainnya_nama', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
+                    <div id="lainnyaSelect" style="display: none;">
+                      <select name="lainnyaSelect" class="form-select mt-2">
                         <option selected disabled>--- Pilih kondisi ---</option>
                         <option value="Ada, baik">Ada, baik</option>
                         <option value="Ada, rusak sedang">Ada, rusak sedang</option>
@@ -450,78 +478,60 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'fitness', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="lainnya" class="form-label">Lainnya (tuliskan)</label>
-                      <input type="text" class="form-control" id="lainnya" name="lainnya" placeholder="Nama lainnya">
-                      <select id="lainnyaSelect" name="lainnyaSelect" class="form-select mt-2" style="display: none;">
-                        <option selected disabled>--- Pilih kondisi ---</option>
-                        <option value="Ada, baik">Ada, baik</option>
-                        <option value="Ada, rusak sedang">Ada, rusak sedang</option>
-                        <option value="Ada, rusak parah">Ada, rusak parah</option>
-                        <option value="Tidak ada">Tidak ada</option>
-                      </select>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_olahraga_data, 'lainnya_nama', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
-                          echo " <br> ";
                           echo displayPreviousYearData($previous_olahraga_data, 'lainnya_kondisi', 'Ketersediaan fasilitas/lapangan olahraga di desa/kelurahan');
                           ?>
                         </p>
                       <?php endif; ?>
+                    </div>
 
-                      <script>
-                        $(document).ready(function() {
-                          // Function to toggle the visibility of lainnyaSelect based on conditions
-                          function toggleSelectVisibility() {
-                            var inputVal = $('#lainnya').val();
-                            var checkboxChecked = $('#use_previous_olahraga').is(':checked');
-                            // Show select if input is not empty or if the checkbox is checked
-                            if (inputVal || checkboxChecked) {
-                              $('#lainnyaSelect').show();
-                            } else {
-                              $('#lainnyaSelect').hide();
-                            }
+                    <script>
+                      $(document).ready(function() {
+                        // Function to toggle the visibility of lainnyaSelect based on conditions
+                        function toggleSelectVisibility() {
+                          var inputVal = $('#lainnya').val();
+                          var checkboxChecked = $('#use_previous_olahraga').is(':checked');
+                          // Show select if input is not empty or if the checkbox is checked
+                          if (inputVal || checkboxChecked) {
+                            $('#lainnyaSelect').show();
+                          } else {
+                            $('#lainnyaSelect').hide();
                           }
+                        }
 
-                          // Event listener for text input changes
-                          $('#lainnya').on('input', toggleSelectVisibility);
+                        // Event listener for text input changes
+                        $('#lainnya').on('input', toggleSelectVisibility);
 
-                          // Event listener for checkbox changes
-                          $('#use_previous_olahraga').on('change', toggleSelectVisibility);
+                        // Event listener for checkbox changes
+                        $('#use_previous_olahraga').on('change', toggleSelectVisibility);
 
-                          // Initial check in case the checkbox is pre-checked or input is pre-filled when the page loads
-                          toggleSelectVisibility();
-                        });
-                      </script>
+                        // Initial check in case the checkbox is pre-checked or input is pre-filled when the page loads
+                        toggleSelectVisibility();
+                      });
+                    </script>
 
+                  </div>
+                </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_olahraga" name="use_previous_olahraga" value="1">
+                      <label class="form-check-label" for="use_previous_olahraga">
+                        Gunakan data tahun sebelumnya
+                      </label>
                     </div>
                   </div>
+                <?php endif; ?>
 
-                  <?php if ($level != 'admin'): ?>
-                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
-                    <div class="form-group mb-3">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="use_previous_olahraga" name="use_previous_olahraga" value="1">
-                        <label class="form-check-label" for="use_previous_olahraga">
-                          Gunakan data tahun sebelumnya
-                        </label>
-                      </div>
-                    </div>
-                  <?php endif; ?>
-
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp; Simpan
-                    </button>
-                  </div>
-                </form>
-              <?php //endif; ?>
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <?php //endif; 
+              ?>
 
               <!-- /.row -->
             </div>
