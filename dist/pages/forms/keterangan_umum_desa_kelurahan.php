@@ -807,7 +807,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_status_form, 'status_pemerintahan', 'status_pemerintahan Desa');
+                      echo displayPreviousYearData($previous_status_pemerintahan, 'status_pemerintahan', 'status_pemerintahan Desa');
                       ?>
                     </p>
                   <?php endif; ?>
