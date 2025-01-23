@@ -326,7 +326,7 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_perkelahian_massal, 'pembangunan_pos_keamanan', 'Keamanan Lingkungan');
+                      echo displayPreviousYearData($previous_keamanan_lingkungan, 'pembangunan_pos_keamanan', 'Keamanan Lingkungan');
                       ?>
                     </p>
                   <?php endif; ?>
@@ -341,7 +341,7 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_perkelahian_massal, 'pembentukan_regu_keamanan', 'Keamanan Lingkungan');
+                      echo displayPreviousYearData($previous_keamanan_lingkungan, 'pembentukan_regu_keamanan', 'Keamanan Lingkungan');
                       ?>
                     </p>
                   <?php endif; ?>
@@ -356,7 +356,7 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_perkelahian_massal, 'penambahan_anggota_hansip', 'Keamanan Lingkungan');
+                      echo displayPreviousYearData($previous_keamanan_lingkungan, 'penambahan_anggota_hansip', 'Keamanan Lingkungan');
                       ?>
                     </p>
                   <?php endif; ?>
@@ -371,7 +371,7 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_perkelahian_massal, 'pelaporan_tamu_menginap', 'Keamanan Lingkungan');
+                      echo displayPreviousYearData($previous_keamanan_lingkungan, 'pelaporan_tamu_menginap', 'Keamanan Lingkungan');
                       ?>
                     </p>
                   <?php endif; ?>
@@ -386,7 +386,7 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_perkelahian_massal, 'pengaktifan_sistem_keamanan', 'Keamanan Lingkungan');
+                      echo displayPreviousYearData($previous_keamanan_lingkungan, 'pengaktifan_sistem_keamanan', 'Keamanan Lingkungan');
                       ?>
                     </p>
                   <?php endif; ?>
