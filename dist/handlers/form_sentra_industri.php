@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (mysqli_query($conn, $sql)) {
         // Update progress
-        $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Keberadaan Sentra Industri' AND tahun = '$tahun'";
+        $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Keberadaan Sentra Industri Unggulan Desa' AND tahun = '$tahun'";
         $result_progress = mysqli_query($conn, $query_progress);
 
         $created_at = $tahun . '-01-01 00:00:00';
@@ -63,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_num_rows($result_progress) > 0) {
             $update_progress = "UPDATE user_progress 
                                 SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$created_at', tahun = '$tahun' 
-                                WHERE user_id = '$user_id' AND form_name = 'Keberadaan Sentra Industri' AND tahun = '$tahun'";
+                                WHERE user_id = '$user_id' AND form_name = 'Keberadaan Sentra Industri Unggulan Desa' AND tahun = '$tahun'";
             mysqli_query($conn, $update_progress);
         } else {
             $insert_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id, created_at, tahun) 
-                                VALUES ('$user_id', 'Keberadaan Sentra Industri', TRUE, '$desa_id', '$created_at', '$tahun')";
+                                VALUES ('$user_id', 'Keberadaan Sentra Industri Unggulan Desa', TRUE, '$desa_id', '$created_at', '$tahun')";
             mysqli_query($conn, $insert_progress);
         }
 

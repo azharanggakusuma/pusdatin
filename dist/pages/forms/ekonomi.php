@@ -56,7 +56,7 @@ $previous_sentra_industri = getPreviousYearData(
   $desa_id,
   'tb_sentra_industri',
   ['keberadaan', 'jumlah_sentra', 'produk_utama'],
-  'Sentra Industri',
+  'Keberadaan Sentra Industri Unggulan Desa',
   $tahun
 );
 
@@ -321,15 +321,36 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_sentra_industri, 'keberadaan', 'Keberadaan Sentra Industri Unggulan Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
                 <div class="form-group mb-3" id="sentraIndustriInfo" style="display: none;">
                   <label class="mb-2">Sentra Industri</label>
                   <input type="number" class="form-control" name="sentra_industri" id="sentra_industri" placeholder=" --- Masukkan jumlah --- ">
+                  <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_sentra_industri, 'jumlah_sentra', 'Keberadaan Sentra Industri Unggulan Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                 </div>
                 <div class="form-group mb-3" id="muatanUsahaInfo" style="display: none;">
                   <label class="mb-2">Produk pada sentra industri yang mempunyai muatan usaha terbanyak</label>
                   <input type="text" class="form-control" name="muatan_usaha" id="muatan_usaha" placeholder=" --- Tuliskan produk --- ">
+                  <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_sentra_industri, 'produk_utama', 'Keberadaan Sentra Industri Unggulan Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                 </div>
 
                 <script>
