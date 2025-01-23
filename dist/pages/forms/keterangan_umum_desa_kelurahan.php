@@ -681,6 +681,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Website Desa</label>
                   <input required type="text" name="alamat_website" class="form-control" placeholder="Masukkan alamat website">
+                  <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_website_medsos, 'alamat_website', 'Website dan Media Sosial');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Email Desa</label>
