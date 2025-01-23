@@ -61,7 +61,7 @@ $previous_website_medsos = getPreviousYearData(
   $desa_id,
   'tb_website_medsos',
   ['alamat_website', 'alamat_email', 'alamat_facebook', 'alamat_twitter', 'alamat_youtube'],
-  'Website dan Media Sosial',
+  'Website dan Media Sosial', 
   $tahun
 );
 
