@@ -81,7 +81,7 @@ $previous_ketersediaan_peta_desa = getPreviousYearData(
   $conn,
   $user_id,
   $desa_id,
-  'tb_ketersediaan_penetapan_peta_desa',
+  'tb_ketersediaan_batas_peta',
   ['penetapan_batas_desa', 'no_surat_batas_desa', 'ketersediaan_peta_desa', 'no_surat_peta_desa'],
   'Ketersediaan dan Penetapan Peta Desa',
   $tahun
