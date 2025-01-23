@@ -61,4 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=warning");
     exit();
 }
-?>
+?> 
