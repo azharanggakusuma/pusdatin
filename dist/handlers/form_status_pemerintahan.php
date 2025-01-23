@@ -1,39 +1,74 @@
 <?php
+include '../config/conn.php';
 session_start();
-include "../config/conn.php";
 
-// Ambil user_id dari session berdasarkan username
+// ============================
+// Mengambil ID Pengguna dari Session
+// ============================
 $username = $_SESSION['username'] ?? '';
+if (empty($username)) {
+    echo "Username tidak ditemukan dalam session. Pastikan Anda telah login.";
+    exit();
+}
+
 $query_user = "SELECT id FROM users WHERE username = '$username'";
 $result_user = mysqli_query($conn, $query_user);
+
+if (!$result_user) {
+    echo "Terjadi kesalahan saat mengambil data pengguna: " . mysqli_error($conn);
+    exit();
+}
+
 $user = mysqli_fetch_assoc($result_user);
 $user_id = $user['id'] ?? 0;
 
-// Ambil tahun dari session
+if ($user_id === 0) {
+    echo "ID pengguna tidak ditemukan. Pastikan username yang valid.";
+    exit();
+}
+
+// ============================
+// Mengambil Tahun dari Session
+// ============================
 $tahun = $_SESSION['tahun'] ?? null;
+
 if (!$tahun) {
     echo "Tahun tidak ditemukan. Pastikan Anda telah login dengan memilih tahun.";
     exit();
 }
 
-// Ambil desa_id yang terkait dengan user dari tb_enumerator
-$query_desa = "SELECT id_desa 
-               FROM tb_enumerator 
-               WHERE user_id = '$user_id'
-               ORDER BY id_desa DESC 
-               LIMIT 1";
+// ============================
+// Mengambil ID Desa terkait Pengguna
+// ============================
+$query_desa = "SELECT id_desa FROM tb_enumerator WHERE user_id = '$user_id' ORDER BY id_desa DESC LIMIT 1";
 $result_desa = mysqli_query($conn, $query_desa);
+
+if (!$result_desa) {
+    echo "Terjadi kesalahan saat mengambil data desa: " . mysqli_error($conn);
+    exit();
+}
+
 $desa = mysqli_fetch_assoc($result_desa);
 $desa_id = $desa['id_desa'] ?? 0;
 
-// Proses hanya jika metode request adalah POST
+if ($desa_id === 0) {
+    echo "ID desa tidak ditemukan untuk pengguna ini.";
+    exit();
+}
+
+// ============================
+// Proses Jika Metode Request adalah POST
+// ============================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ambil dan amankan input dari form
+    // ============================
+    // Sanitasi dan Persiapan Data dari POST
+    // ============================
     $status_2024 = mysqli_real_escape_string($conn, $_POST['status_2024'] ?? '');
 
     // ============================
-    // Bagian VALIDASI DASAR
+    // VALIDASI DASAR
     // ============================
+
     // 1) Pastikan user memilih status (tidak boleh kosong)
     if (empty($status_2024)) {
         $message = "Anda harus memilih salah satu Status Pemerintahan.";
@@ -41,32 +76,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // (Opsional) Tambahan validasi: pastikan value sesuai pilihan yang diizinkan
-    $allowed_statuses = ["DESA","KELURAHAN","KAMPUNG","NAGARI","GAMPONG"];
+    // 2) Pastikan nilai input sesuai dengan pilihan yang diizinkan
+    $allowed_statuses = ["DESA", "KELURAHAN", "KAMPUNG", "NAGARI", "GAMPONG"];
     if (!in_array($status_2024, $allowed_statuses)) {
         $message = "Pilihan Status Pemerintahan tidak valid.";
         header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($message));
         exit();
     }
 
-    // Cek apakah data untuk tahun yang sama sudah ada di db
-    $check_query = "SELECT id 
-                    FROM tb_status_pemerintahan 
-                    WHERE user_id = '$user_id'
-                      AND desa_id = '$desa_id'
-                      AND tahun = '$tahun'";
+    // ============================
+    // Menambahkan atau Memperbarui Data di Database
+    // ============================
+
+    // Cek apakah data untuk tahun yang sama sudah ada di database
+    $check_query = "SELECT id FROM tb_status_pemerintahan WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun'";
     $check_result = mysqli_query($conn, $check_query);
 
+    if (!$check_result) {
+        $error_message = "Terjadi kesalahan saat memeriksa data: " . mysqli_error($conn);
+        header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($error_message));
+        exit();
+    }
+
     if (mysqli_num_rows($check_result) > 0) {
-        // Jika sudah ada, lakukan update
+        // Jika data sudah ada, lakukan UPDATE
         $sql = "UPDATE tb_status_pemerintahan
-                SET status_pemerintahan = '$status_2024',
+                SET 
+                    status_pemerintahan = '$status_2024',
                     tahun = '$tahun'
-                WHERE user_id = '$user_id'
-                  AND desa_id = '$desa_id'
-                  AND tahun = '$tahun'";
+                WHERE 
+                    user_id = '$user_id' AND 
+                    desa_id = '$desa_id' AND 
+                    tahun = '$tahun'";
     } else {
-        // Jika belum ada, insert baru
+        // Jika data belum ada, lakukan INSERT
         $sql = "INSERT INTO tb_status_pemerintahan (
                     status_pemerintahan,
                     tahun,
@@ -80,61 +123,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 )";
     }
 
-    // Eksekusi query
+    // Eksekusi Query
     if (mysqli_query($conn, $sql)) {
-        // Kelola user_progress
-        $query_progress = "SELECT id
-                           FROM user_progress
-                           WHERE user_id = '$user_id'
-                             AND form_name = 'Status Pemerintahan'
-                             AND tahun = '$tahun'";
+        // ============================
+        // Kelola Progress Pengguna
+        // ============================
+        $form_name = 'Status Pemerintahan Desa';
+        $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = '$form_name' AND tahun = '$tahun'";
         $result_progress = mysqli_query($conn, $query_progress);
 
-        // Tanggal awal tahun
-        $created_at = $tahun . '-01-01 00:00:00';
+        if (!$result_progress) {
+            $error_message = "Terjadi kesalahan saat memeriksa progress pengguna: " . mysqli_error($conn);
+            header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($error_message));
+            exit();
+        }
+
+        // Set created_at ke hari pertama tahun tersebut
+        $created_at = "$tahun-01-01 00:00:00";
 
         if (mysqli_num_rows($result_progress) > 0) {
-            // Update progress jika sudah ada
-            $update_progress = "UPDATE user_progress
-                                SET is_locked = TRUE,
-                                    desa_id = '$desa_id',
-                                    created_at = '$created_at',
-                                    tahun = '$tahun'
-                                WHERE user_id = '$user_id'
-                                  AND form_name = 'Status Pemerintahan'
-                                  AND tahun = '$tahun'";
-            mysqli_query($conn, $update_progress);
+            // Jika progress sudah ada, lakukan UPDATE
+            $update_progress = "UPDATE user_progress 
+                                SET 
+                                    is_locked  = TRUE, 
+                                    desa_id    = '$desa_id', 
+                                    created_at = '$created_at', 
+                                    tahun      = '$tahun' 
+                                WHERE 
+                                    user_id    = '$user_id' AND 
+                                    form_name  = '$form_name' AND 
+                                    tahun      = '$tahun'";
+            if (!mysqli_query($conn, $update_progress)) {
+                $error_message = "Terjadi kesalahan saat memperbarui progress pengguna: " . mysqli_error($conn);
+                header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($error_message));
+                exit();
+            }
         } else {
-            // Insert progress jika belum ada
+            // Jika progress belum ada, lakukan INSERT
             $insert_progress = "INSERT INTO user_progress (
-                                    user_id,
-                                    form_name,
-                                    is_locked,
-                                    desa_id,
-                                    created_at,
+                                    user_id, 
+                                    form_name, 
+                                    is_locked, 
+                                    desa_id, 
+                                    created_at, 
                                     tahun
                                 ) VALUES (
                                     '$user_id',
-                                    'Status Pemerintahan',
+                                    '$form_name',
                                     TRUE,
                                     '$desa_id',
                                     '$created_at',
                                     '$tahun'
                                 )";
-            mysqli_query($conn, $insert_progress);
+            if (!mysqli_query($conn, $insert_progress)) {
+                $error_message = "Terjadi kesalahan saat menambahkan progress pengguna: " . mysqli_error($conn);
+                header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($error_message));
+                exit();
+            }
         }
 
-        // Berhasil simpan
+        // Redirect ke halaman form dengan status sukses
         header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=success");
         exit();
     } else {
-        // Gagal eksekusi query
+        // Jika eksekusi query gagal, redirect dengan pesan error
         $error_message = "Terjadi kesalahan saat menyimpan data: " . mysqli_error($conn);
         header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=error&message=" . urlencode($error_message));
         exit();
     }
 } else {
-    // Jika bukan method POST
+    // Jika bukan metode POST, redirect dengan status warning
     header("Location: ../pages/forms/keterangan_umum_desa_kelurahan.php?status=warning");
     exit();
 }
