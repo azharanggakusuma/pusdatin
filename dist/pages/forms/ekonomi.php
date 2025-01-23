@@ -371,6 +371,18 @@ $previous_sarana_prasarana = getPreviousYearData(
                   });
                 </script>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_sentra_industri"
+                        name="use_previous_sentra_industri" value="1">
+                      <label class="form-check-label" for="use_previous_sentra_industri">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -482,6 +494,18 @@ $previous_sarana_prasarana = getPreviousYearData(
                   });
                 </script>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_produk_unggulan"
+                        name="use_previous_produk_unggulan" value="1">
+                      <label class="form-check-label" for="use_previous_produk_unggulan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -572,6 +596,19 @@ $previous_sarana_prasarana = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_pangkalan_minyak"
+                        name="use_previous_pangkalan_minyak" value="1">
+                      <label class="form-check-label" for="use_previous_pangkalan_minyak">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -671,6 +708,19 @@ $previous_sarana_prasarana = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
+
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_bank_operasi"
+                          name="use_previous_bank_operasi" value="1">
+                        <label class="form-check-label" for="use_previous_bank_operasi">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
@@ -816,6 +866,19 @@ $previous_sarana_prasarana = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                   </div>
+
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_koperasi"
+                          name="use_previous_koperasi" value="1">
+                        <label class="form-check-label" for="use_previous_koperasi">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
@@ -1178,6 +1241,20 @@ $previous_sarana_prasarana = getPreviousYearData(
             </table>
           </div>
         </div>
+
+        <?php if ($level != 'admin'): ?>
+          <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+          <div class="form-group mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="use_previous_sarana_ekonomi"
+                name="use_previous_sarana_ekonomi" value="1">
+              <label class="form-check-label" for="use_previous_sarana_ekonomi">
+                Gunakan data tahun sebelumnya
+              </label>
+            </div>
+          </div>
+        <?php endif; ?>
+        
         <button type="submit" class="btn btn-primary">
           <i class="fas fa-save"></i> &nbsp; Simpan
         </button>
@@ -1534,6 +1611,19 @@ $previous_sarana_prasarana = getPreviousYearData(
             </table>
           </div>
         </div>
+
+        <?php if ($level != 'admin'): ?>
+          <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+          <div class="form-group mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="use_previous_sarana_prasarana"
+                name="use_previous_sarana_prasarana" value="1">
+              <label class="form-check-label" for="use_previous_sarana_prasarana">
+                Gunakan data tahun sebelumnya
+              </label>
+            </div>
+          </div>
+        <?php endif; ?>
         <button type="submit" class="btn btn-primary">
           <i class="fas fa-save"></i> &nbsp; Simpan
         </button>
