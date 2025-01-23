@@ -274,10 +274,24 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Nama Kepala Desa/Lurah</label>
                     <input required type="text" class="form-control" placeholder="Masukkan nama" style="width: 100%;" required name="nama_kepala_desa">
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepala_desa, 'nama_kepala_desa', 'Nama Kepala Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Umur</label>
                     <input required type="number" min="0" class="form-control" placeholder="Masukkan Umur" style="width: 100%;" required name="umur_kepala_desa">
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepala_desa, 'umur', 'Nama Kepala Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jenis kelamin</label>
@@ -286,6 +300,13 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                       <option value="LAKI-LAKI">LAKI - LAKI</option>
                       <option value="PEREMPUAN"> PEREMPUAN </option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepala_desa, 'jenis_kelamin', 'Nama Kepala Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pendidikan Tertinggi yang ditamatkan</label>
@@ -301,10 +322,24 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                       <option value="S2">S2</option>
                       <option value="S3">S3</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepala_desa, 'pendidikan_terakhir', 'Nama Kepala Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tahun Mulai Menjabat</label>
                     <input required type="number" min="0" class="form-control" placeholder="Masukkan tahun mulai menjabat" style="width: 100%;" required name="tahun_mulai_menjabat">
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepala_desa, 'tahun_mulai_menjabat', 'Nama Kepala Desa/Kelurahan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
 
