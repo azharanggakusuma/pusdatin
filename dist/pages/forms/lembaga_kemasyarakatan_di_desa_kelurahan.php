@@ -239,21 +239,48 @@ $previous_lpmd = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Tim Penggerak PKK</label>
                     <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_tim_penggerak_pkk">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_data_pkk, 'jumlah_tim_penggerak_pkk', 'Data PKK');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Kader PKK</label>
                     <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_kader_pkk">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_data_pkk, 'jumlah_kader_pkk', 'Data PKK');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Kelompok PKK</label>
                     <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_kelompok_pkk">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_data_pkk, 'jumlah_kelompok_pkk', 'Data PKK');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Kelompok Dasa Wisma</label>
                     <input type="number" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required name="jumlah_kelompok_dasa_wisma">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_data_pkk, 'jumlah_kelompok_dasa_wisma', 'Data PKK');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
-
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -316,6 +343,13 @@ $previous_lpmd = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Karang Taruna dan anggota/pengurus Karang Taruna</label>
                     <input type="number" name="jumlah_karang_taruna" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_karang_taruna, 'jumlah_karang_taruna', 'Karang Taruna');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -380,6 +414,13 @@ $previous_lpmd = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Posyandu</label>
                     <input type="number" name="jumlah_posyandu" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_posyandu, 'jumlah_posyandu', 'Posyandu');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -444,10 +485,24 @@ $previous_lpmd = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Laki-Laki</label>
                     <input type="number" name="jumlah_anggota_laki_lpmd" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_lpmd, 'jumlah_anggota_laki', 'Lembaga Pengembangan Masyarakat Desa (LPMD)');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Perempuan</label>
                     <input type="number" name="jumlah_anggota_perempuan_lpmd" class="form-control" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_lpmd, 'jumlah_anggota_perempuan', 'Lembaga Pengembangan Masyarakat Desa (LPMD)');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
