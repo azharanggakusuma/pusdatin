@@ -56,7 +56,7 @@ $previous_penerima_bantuan_sosial = getPreviousYearData(
   $desa_id,
   'tb_penerima_bantuan_sosial',
   ['penerima_pkh', 'penerima_blt_dana_desa', 'penerima_bpnt', 'penerima_pbi_jk'],
-  'Penerima Bantuan Sosial',
+  'Jumlah Penerima Bantuan Sosial',
   $tahun
 );
 
@@ -67,7 +67,7 @@ $previous_sktm = getPreviousYearData(
   $desa_id,
   'tb_sktm',
   ['jumlah_sktm'],
-  'SKTM',
+  'Jumlah SKTM',
   $tahun
 );
 
@@ -216,18 +216,46 @@ $previous_sktm = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima Bantuan PKH (Kepala Keluarga)</label>
                     <input type="number" class="form-control" name="penerima_pkh" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_penerima_bantuan_sosial, 'penerima_pkh', 'Jumlah Penerima Bantuan Sosial');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima BLT Dana Desa</label>
                     <input type="number" class="form-control" name="penerima_blt_dana_desa" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_penerima_bantuan_sosial, 'penerima_blt_dana_desa', 'Jumlah Penerima Bantuan Sosial');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima Bantuan Pangan Non Tunai (BPNT)</label>
                     <input type="number" class="form-control" name="penerima_bpnt" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_penerima_bantuan_sosial, 'penerima_bpnt', 'Jumlah Penerima Bantuan Sosial');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Penerima PBI Jaminan Kesehatan</label>
                     <input type="number" class="form-control" name="penerima_pbi_jk" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_penerima_bantuan_sosial, 'penerima_pbi_jk', 'Jumlah Penerima Bantuan Sosial');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
 
@@ -293,6 +321,13 @@ $previous_sktm = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah SKTM yang Dikeluarkan</label>
                     <input type="number" class="form-control" name="jumlah_sktm" placeholder="Isi angka/jumlah" min="0" step="1" style="width: 100%;" required>
+                    <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_sktm, 'jumlah_sktm', 'Jumlah SKTM');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
 
