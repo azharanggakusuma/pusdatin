@@ -1303,7 +1303,7 @@ $previous_sarana_prasarana = getPreviousYearData(
                       echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_permanen_kemudahan', 'Sarana Prasarana');
                       ?>
                     </p>
-                  <?php endif; ?>
+                  <?php endif; ?>  
                   </td>
                 </tr>
                 <!-- Pasar semi permanen -->
