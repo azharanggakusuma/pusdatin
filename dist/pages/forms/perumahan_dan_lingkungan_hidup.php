@@ -1254,18 +1254,6 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     </div>
                   </div>
                 <?php endif; ?>
-                
-                <?php if ($level != 'admin'): ?>
-                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
-                  <div class="form-group mb-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="use_previous_keberadaan_pemukiman_bantaran" name="use_previous_keberadaan_pemukiman_bantaran" value="1">
-                      <label class="form-check-label" for="use_previous_keberadaan_pemukiman_bantaran">
-                        Gunakan data tahun sebelumnya
-                      </label>
-                    </div>
-                  </div>
-                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
