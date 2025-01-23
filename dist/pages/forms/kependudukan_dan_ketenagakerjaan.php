@@ -526,7 +526,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
-              </form>
+              </form> 
               <!-- /.row -->
             </div>
 
