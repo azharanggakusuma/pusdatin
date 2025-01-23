@@ -248,6 +248,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_perkelahian_massal, 'kejadian', 'Perkelahian Massal');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -316,6 +323,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_perkelahian_massal, 'pembangunan_pos_keamanan', 'Keamanan Lingkungan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pembentukan/pengaturan regu keamanan</label>
@@ -324,6 +338,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_perkelahian_massal, 'pembentukan_regu_keamanan', 'Keamanan Lingkungan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Penambahan jumlah anggota hansip/linmas</label>
@@ -332,6 +353,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_perkelahian_massal, 'penambahan_anggota_hansip', 'Keamanan Lingkungan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pelaporan tamu yang menginap lebih dari 24 jam ke aparat lingkungan</label>
@@ -340,6 +368,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_perkelahian_massal, 'pelaporan_tamu_menginap', 'Keamanan Lingkungan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pengaktifan sistem keamanan lingkungan berasal dari inisiatif warga</label>
@@ -348,6 +383,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_perkelahian_massal, 'pengaktifan_sistem_keamanan', 'Keamanan Lingkungan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -411,6 +453,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah anggota linmas/hansip di desa/kelurahan</label>
                     <input type="number" name="jumlah_anggota_linmas" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_linmas_poskamling, 'jumlah_anggota_linmas', 'Linmas Poskamling');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -478,6 +527,13 @@ $previous_keberadaan_pos_polisi = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_keberadaan_pos_polisi, 'keberadaan_pos_polisi', 'Keberadaan Pos Polisi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
