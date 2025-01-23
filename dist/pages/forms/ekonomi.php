@@ -56,7 +56,7 @@ $previous_sentra_industri = getPreviousYearData(
   $desa_id,
   'tb_sentra_industri',
   ['keberadaan', 'jumlah_sentra', 'produk_utama'],
-  'Keberadaan Sentra Industri',
+  'Keberadaan Sentra Industri Unggulan Desa',
   $tahun
 );
 
