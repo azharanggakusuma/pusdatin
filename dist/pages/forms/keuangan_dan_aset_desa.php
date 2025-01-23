@@ -356,39 +356,39 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <p>1. Tanah Bengkok</p>
                     <input type="number" step="0.01" name="tanah_bengkok" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_tanah_kas_desa, 'tanah_bengkok', 'Tanah Kas Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_tanah_kas_desa, 'tanah_bengkok', 'Tanah Kas Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>2. Tanah Titi Sara</p>
                     <input type="number" step="0.01" name="tanah_titi_sara" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_tanah_kas_desa, 'tanah_titi_sara', 'Tanah Kas Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_tanah_kas_desa, 'tanah_titi_sara', 'Tanah Kas Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>3. Kebun Desa</p>
                     <input type="number" step="0.01" name="kebun_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_tanah_kas_desa, 'kebun_desa', 'Tanah Kas Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_tanah_kas_desa, 'kebun_desa', 'Tanah Kas Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>4. Sawah Desa</p>
                     <input type="number" step="0.01" name="sawah_desa" class="form-control mb-3" placeholder="--- Masukkan angka (desimal) ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_tanah_kas_desa, 'sawah_desa', 'Tanah Kas Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_tanah_kas_desa, 'sawah_desa', 'Tanah Kas Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -462,12 +462,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_pemanfaatan_sistem, 'keberadaan_sistem_informasi_desa', 'Pemanfaatan Sistem');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pemanfaatan_sistem, 'keberadaan_sistem_informasi_desa', 'Pemanfaatan Sistem');
+                        ?>
+                      </p>
+                    <?php endif; ?>
 
                   </div>
                   <div class="form-group mb-3">
@@ -480,12 +480,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak ada">Tidak ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_pemanfaatan_sistem, 'keberadaan_sistem_keuangan_desa', 'Pemanfaatan Sistem');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pemanfaatan_sistem, 'keberadaan_sistem_keuangan_desa', 'Pemanfaatan Sistem');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -550,12 +550,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <label class="mb-2">Jumlah unit usaha BUMDes</label>
                     <input type="number" name="jumlah_unit_usaha_bumdes" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'jumlah_unit_usaha_bumdes', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'jumlah_unit_usaha_bumdes', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tanah kas desa/ulayat</label>
@@ -565,12 +565,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'tanah_kas_desa_ulayat', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'tanah_kas_desa_ulayat', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tambatan perahu</label>
@@ -580,12 +580,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'tambatan_perahu', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'tambatan_perahu', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Pasar desa</label>
@@ -595,12 +595,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'pasar_desa', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'pasar_desa', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Bangunan milik desa</label>
@@ -610,12 +610,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'bangunan_milik_desa', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'bangunan_milik_desa', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Hutan milik desa</label>
@@ -625,12 +625,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'hutan_milik_desa', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'hutan_milik_desa', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Mata air milik desa</label>
@@ -640,12 +640,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'mata_air_milik_desa', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'mata_air_milik_desa', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tempat wisata/Pemandian umum</label>
@@ -655,12 +655,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'tempat_wisata_pemandian_umum', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'tempat_wisata_pemandian_umum', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Aset lainnya milik desa</label>
@@ -670,12 +670,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'aset_lainnya_milik_desa', 'Badan Usaha dan Aset Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_badan_usaha_aset_desa, 'aset_lainnya_milik_desa', 'Badan Usaha dan Aset Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -743,34 +743,34 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'ketersediaan_rpjmdes', 'Ketersediaan RPJMDES dan RKPDES');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'ketersediaan_rpjmdes', 'Ketersediaan RPJMDES dan RKPDES');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3" id="tahun_rpjmdes_awal" style="display: none;">
                     <label class="mb-2">Periode Tahun Awal RPJMDes</label>
                     <input type="number" name="tahun_awal_rpjmdes" class="form-control" placeholder="--- Masukkan Tahun ---">
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'tahun_awal_rpjmdes', 'Ketersediaan RPJMDES dan RKPDES');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'tahun_awal_rpjmdes', 'Ketersediaan RPJMDES dan RKPDES');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3" id="tahun_rpjmdes_akhir" style="display: none;">
                     <label class="mb-2">Periode Tahun Akhir RPJMDes</label>
                     <input type="number" name="tahun_akhir_rpjmdes" class="form-control" placeholder="--- Masukkan Tahun ---">
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'tahun_akhir_rpjmdes', 'Ketersediaan RPJMDES dan RKPDES');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'tahun_akhir_rpjmdes', 'Ketersediaan RPJMDES dan RKPDES');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Ketersediaan RKPDes</label>
@@ -780,12 +780,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'ketersediaan_rkpdes', 'Ketersediaan RPJMDES dan RKPDES');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_ketersediaan_rpjmdes_rkpdes, 'ketersediaan_rkpdes', 'Ketersediaan RPJMDES dan RKPDES');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -859,23 +859,23 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <label class="mb-2">Jumlah Peraturan Yang Dimiliki Desa</label>
                     <input type="number" name="jumlah_peraturan_yang_dimiliki_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_peraturan_desa, 'jumlah_peraturan_yang_dimiliki_desa', 'Peraturan Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_peraturan_desa, 'jumlah_peraturan_yang_dimiliki_desa', 'Peraturan Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Jumlah Peraturan Kepala Desa</label>
                     <input type="number" name="jumlah_peraturan_kepala_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_peraturan_desa, 'jumlah_peraturan_kepala_desa', 'Peraturan Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_peraturan_desa, 'jumlah_peraturan_kepala_desa', 'Peraturan Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -944,12 +944,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_kerjasama_desa, 'keberadaan_kerjasama_antar_desa', 'Kerjasama Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kerjasama_desa, 'keberadaan_kerjasama_antar_desa', 'Kerjasama Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Kerjasama Desa dengan Pihak Ketiga</label>
@@ -959,12 +959,12 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_kerjasama_desa, 'keberadaan_kerjasama_desa_dengan_pihak_ketiga', 'Kerjasama Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_kerjasama_desa, 'keberadaan_kerjasama_desa_dengan_pihak_ketiga', 'Kerjasama Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1033,6 +1033,13 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_pendamping_lokal_desa, 'keberadaan_pendamping_lokal_desa', 'Keberadaan Pendamping Lokal Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1100,6 +1107,13 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Ada, Tidak Aktif">Ada, Tidak Aktif</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_kader_pembangunan_manusia, 'keberadaan_kader_pembangunan_manusia', 'Kader Pembangunan Manusia');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="form-group mb-3 KaderInfo" style="display: none;">
@@ -1109,6 +1123,13 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <option value="Ada">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
                   </select>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_keberadaan_kader_pembangunan_manusia, 'pembinaan_kpm_dari_pemkab_kota', 'Kader Pembangunan Manusia');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <script>
@@ -1188,20 +1209,76 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <label class="mb-2">Realisasi Pendapatan Desa Tahun Anggaran</label>
                     <p>1. Pendapatan Asli Desa (PADes)</p>
                     <input type="number" step="0.01" name="pendapatan_asli_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'pendapatan_asli_desa', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>2. Dana Desa (bersumber dari APBN)</p>
                     <input type="number" step="0.01" name="dana_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'dana_desa', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>3. Bagian dari hasil pajak daerah dan retribusi daerah</p>
                     <input type="number" step="0.01" name="bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>4. Alokasi Dana Desa</p>
                     <input type="number" step="0.01" name="alokasi_dana_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'alokasi_dana_desa', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>5. Bantuan keuangan dari APBD Provinsi</p>
                     <input type="number" step="0.01" name="bantuan_keuangan_dari_apbd_provinsi" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'bantuan_keuangan_dari_apbd_provinsi', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>6. Bantuan keuangan dari APBD Kabupaten/Kota</p>
                     <input type="number" step="0.01" name="bantuan_keuangan_dari_apbd" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'bantuan_keuangan_dari_apbd', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>7. Hibah dan sumbangan dari pihak ketiga</p>
                     <input type="number" step="0.01" name="hibah_dan_sumbangan_dari_pihak_ketiga" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'hibah_dan_sumbangan_dari_pihak_ketiga', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>8. Lain–lain pendapatan desa yang sah</p>
                     <input type="number" step="0.01" name="lain_lain_pendapatan_desa_yang_sah" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_desa, 'lain_lain_pendapatan_desa_yang_sah', 'Realisasi Anggaran Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1248,14 +1325,49 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <label class="mb-2">Realisasi Belanja Desa Tahun Anggaran</label>
                     <p>1. Bidang Penyelenggaraan Pemerintahan Desa</p>
                     <input type="number" step="0.01" name="bidang_penyelenggaraan_pemerintahan_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_belanja_desa, 'bidang_penyelenggaraan_pemerintahan_desa', 'Realisasi Anggaran Belanja Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>2. Bidang Pelaksanaan Pembangunan Desa</p>
                     <input type="number" step="0.01" name="bidang_pelaksanaan_pembangunan_desa" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_belanja_desa, 'bidang_pelaksanaan_pembangunan_desa', 'Realisasi Anggaran Belanja Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>3. Bidang Pembinaan Kemasyarakatan</p>
                     <input type="number" step="0.01" name="bidang_pembinaan_kemasyarakatan" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_belanja_desa, 'bidang_pembinaan_kemasyarakatan', 'Realisasi Anggaran Belanja Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>4. Bidang Pemberdayaan Masyarakat</p>
                     <input type="number" step="0.01" name="bidang_pemberdayaan_masyarakat" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_belanja_desa, 'bidang_pemberdayaan_masyarakat', 'Realisasi Anggaran Belanja Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p>5. Bidang Tak Terduga</p>
                     <input type="number" step="0.01" name="bidang_tak_terduga" class="form-control mb-3" placeholder="--- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_realisasi_anggaran_belanja_desa, 'bidang_tak_terduga', 'Realisasi Anggaran Belanja Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1303,6 +1415,13 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Aktif">Aktif</option>
                       <option value="Tidak Aktif">Tidak Aktif</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_, '', '');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Status Badan Hukum</label>
@@ -1374,6 +1493,13 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                 <div class="form-group mb-3">
                   <label class="mb-2">Jumlah Paket Pengadaan Barang dan Jasa yang Dilaksanakan</label>
                   <input name="jumlah_paket_pengadaan_barang_dan_jasa_yang_dilaksanakan" type="number" class="form-control" placeholder="--- Masukkan jumlah ---" min="0" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_, '', '');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
               </div>
               <div class="mb-2">
@@ -1404,7 +1530,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
             </div>
           </div>
         </div>
-                   
+
     </main> <!--end::App Main--> <!--begin::Footer-->
 
     <?php include("../../components/footer.php"); ?>
