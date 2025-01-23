@@ -1418,7 +1418,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php if ($level != 'admin'): ?>
                       <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                         <?php
-                        echo displayPreviousYearData($previous_, '', '');
+                        echo displayPreviousYearData($previous_bumdes, 'status_keaktifan', 'Badan Usaha Milik Desa (BUMDes)');
                         ?>
                       </p>
                     <?php endif; ?>
@@ -1430,6 +1430,13 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       <option value="Sudah Memiliki Badan Hukum">Sudah Memiliki Badan Hukum</option>
                       <option value="Belum Memiliki Badan">Belum Memiliki Badan</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_bumdes, 'status_badan_hukum', 'Badan Usaha Milik Desa (BUMDes)');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="mb-2">
                     <button type="submit" class="btn btn-primary mt-3">
@@ -1496,7 +1503,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                   <?php if ($level != 'admin'): ?>
                     <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                       <?php
-                      echo displayPreviousYearData($previous_, '', '');
+                      echo displayPreviousYearData($previous_pengadaan_barang_jasa, 'jumlah_paket_pengadaan_barang_dan_jasa', 'Pengadaan Barang dan Jasa');
                       ?>
                     </p>
                   <?php endif; ?>
