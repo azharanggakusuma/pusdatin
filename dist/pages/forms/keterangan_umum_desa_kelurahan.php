@@ -61,7 +61,7 @@ $previous_website_medsos = getPreviousYearData(
   $desa_id,
   'tb_website_medsos',
   ['alamat_website', 'alamat_email', 'alamat_facebook', 'alamat_twitter', 'alamat_youtube'],
-  'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki', 
+  'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki',
   $tahun
 );
 
@@ -72,7 +72,7 @@ $previous_status_pemerintahan = getPreviousYearData(
   $desa_id,
   'tb_status_pemerintahan',
   ['status_pemerintahan'],
-  'Status Pemerintahan',
+  'Status Pemerintahan Desa',
   $tahun
 );
 
@@ -605,12 +605,12 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
                   </select>
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_idm_status, 'status_idm', 'Status Indeks Desa Membangun (IDM)');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_idm_status, 'status_idm', 'Status Indeks Desa Membangun (IDM)');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -682,56 +682,56 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   <label class="mb-2">Alamat Website Desa</label>
                   <input required type="text" name="alamat_website" class="form-control" placeholder="Masukkan alamat website">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_website_medsos, 'alamat_website', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_website_medsos, 'alamat_website', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Email Desa</label>
                   <input required type="email" name="alamat_email" class="form-control" placeholder="Masukkan alamat email">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_website_medsos, 'alamat_email', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_website_medsos, 'alamat_email', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Facebook Desa</label>
                   <input required type="text" name="alamat_facebook" class="form-control" placeholder="Masukkan alamat Facebook">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_website_medsos, 'alamat_facebook', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_website_medsos, 'alamat_facebook', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat Twitter Desa</label>
                   <input required type="text" name="alamat_twitter" class="form-control" placeholder="Masukkan alamat Twitter">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_website_medsos, 'alamat_twitter', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_website_medsos, 'alamat_twitter', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="form-group mb-3">
                   <label class="mb-2">Alamat YouTube Desa</label>
                   <input required type="text" name="alamat_youtube" class="form-control" placeholder="Masukkan alamat YouTube">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_website_medsos, 'alamat_youtube', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_website_medsos, 'alamat_youtube', 'Ketersediaan Alamat website dan media sosial Desa/Kelurahan yang dimiliki');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -804,6 +804,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <option value="NAGARI">NAGARI</option>
                     <option value="GAMPONG">GAMPONG</option>
                   </select>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_status_form, 'status_pemerintahan', 'status_pemerintahan Desa');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
