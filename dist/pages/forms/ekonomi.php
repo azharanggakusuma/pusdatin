@@ -322,35 +322,35 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_sentra_industri, 'keberadaan', 'Keberadaan Sentra Industri Unggulan Desa');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_sentra_industri, 'keberadaan', 'Keberadaan Sentra Industri Unggulan Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="form-group mb-3" id="sentraIndustriInfo" style="display: none;">
                   <label class="mb-2">Sentra Industri</label>
                   <input type="number" class="form-control" name="sentra_industri" id="sentra_industri" placeholder=" --- Masukkan jumlah --- ">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_sentra_industri, 'jumlah_sentra', 'Keberadaan Sentra Industri Unggulan Desa');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sentra_industri, 'jumlah_sentra', 'Keberadaan Sentra Industri Unggulan Desa');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
                 <div class="form-group mb-3" id="muatanUsahaInfo" style="display: none;">
                   <label class="mb-2">Produk pada sentra industri yang mempunyai muatan usaha terbanyak</label>
                   <input type="text" class="form-control" name="muatan_usaha" id="muatan_usaha" placeholder=" --- Tuliskan produk --- ">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_sentra_industri, 'produk_utama', 'Keberadaan Sentra Industri Unggulan Desa');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sentra_industri, 'produk_utama', 'Keberadaan Sentra Industri Unggulan Desa');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <script>
@@ -439,32 +439,32 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_produk_unggulan, 'keberadaan', 'Keberadaan Produk Barang Unggulan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_produk_unggulan, 'keberadaan', 'Keberadaan Produk Barang Unggulan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="form-group mb-3" id="productInfo" style="display: none;">
                   <label class="mb-2">Produk barang unggulan/utama desa/kelurahan</label>
                   <input type="text" class="form-control mb-2" name="makanan_unggulan" id="makanan_unggulan" placeholder=" --- Tuliskan Makanan --- ">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_produk_unggulan, 'makanan_unggulan', 'Keberadaan Produk Barang Unggulan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_produk_unggulan, 'makanan_unggulan', 'Keberadaan Produk Barang Unggulan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   <input type="text" class="form-control" name="non_makanan_unggulan" id="non_makanan_unggulan" placeholder=" --- Tuliskan Non Makanan --- ">
                   <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_produk_unggulan, 'non_makanan_unggulan', 'Keberadaan Produk Barang Unggulan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_produk_unggulan, 'non_makanan_unggulan', 'Keberadaan Produk Barang Unggulan');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <script>
@@ -549,12 +549,12 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_pangkalan_minyak, 'keberadaan_minyak_tanah', 'Keberadaan Pangkalan Minyak Tanah dan LPG');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pangkalan_minyak, 'keberadaan_minyak_tanah', 'Keberadaan Pangkalan Minyak Tanah dan LPG');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan pangkalan/agen/penjual LPG (warung, toko, supermarket, penjual gas keliling)</label>
@@ -564,12 +564,12 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_pangkalan_minyak, 'keberadaan_lpg', 'Keberadaan Pangkalan Minyak Tanah dan LPG');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pangkalan_minyak, 'keberadaan_lpg', 'Keberadaan Pangkalan Minyak Tanah dan LPG');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -633,15 +633,43 @@ $previous_sarana_prasarana = getPreviousYearData(
                     <label class="mb-2">Jumlah bank yang beroperasi di desa/kelurahan</label>
                     <p style="margin-left: 20px;">1. Bank Umum Pemerintah (BRI, BNI, Mandiri, BPD, BTN)</p>
                     <input type="number" name="bank_pemerintah" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_bank_operasi, 'bank_pemerintah', 'Bank Operasi');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p style="margin-left: 20px;">2. Bank Umum Swasta (BCA, Permata, Sinarmas, CIMB, dll)</p>
                     <input type="number" name="bank_swasta" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_bank_operasi, 'bank_swasta', 'Bank Operasi');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <p style="margin-left: 20px;">3. Bank Perkreditan Rakyat (BPR)</p>
                     <input type="number" name="bank_bpr" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_bank_operasi, 'bank_bpr', 'Bank Operasi');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div class="form-group mb-3">
                     <label class="mb-2">Jika tidak ada bank, perkiraan jarak ke bank terdekat</label>
                     <input type="number" name="jarak_bank_terdekat" class="form-control" placeholder=" --- Masukkan jarak ---" step="0.01">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_bank_operasi, 'jarak_bank_terdekat', 'Bank Operasi');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div class="mb-2">
@@ -709,12 +737,40 @@ $previous_sarana_prasarana = getPreviousYearData(
                   <label class="mb-2">Jumlah koperasi di desa/kelurahan yang masih aktif</label>
                   <p style="margin-left: 20px;">1. Koperasi Unit Desa (KUD)</p>
                   <input type="number" name="koperasi_kud" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'koperasi_kud', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   <p style="margin-left: 20px;">2. Koperasi Industri Kecil dan Kerajinan Rakyat (Kopinkra)/Usaha mikro</p>
                   <input type="number" name="koperasi_kopinkra" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'koperasi_kopinkra', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   <p style="margin-left: 20px;">3. Koperasi Simpan Pinjam (KSP/Kospin)</p>
                   <input type="number" name="koperasi_ksp" class="form-control mb-3" placeholder=" --- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'koperasi_ksp', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   <p style="margin-left: 20px;">4. Koperasi lainnya</p>
                   <input type="number" name="koperasi_lainnya" class="form-control mb-3" placeholder=" --- Tuliskan Lainnya ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'koperasi_lainnya', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
 
                 <div class="row">
@@ -726,18 +782,39 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'toko_kud', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                     <p style="margin-left: 20px;">2. Milik BUM Desa</p>
                     <select name="toko_bumdesa" class="form-control mb-3" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'toko_bumdesa', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                     <p style="margin-left: 20px;">3. Selain milik KUD/BUM Desa</p>
                     <select name="toko_lainnya" class="form-control mb-3" required>
                       <option value="" disabled selected> --- Pilih --- </option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_koperasi, 'toko_lainnya', 'Koperasi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </div>
 
                   <div class="mb-2">
@@ -819,8 +896,22 @@ $previous_sarana_prasarana = getPreviousYearData(
               <tbody>
                 <tr>
                   <td>Baitul Maal Wa Tamwil (BMT)</td>
-                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="bmt_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'bmt_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="bmt_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'bmt_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="bmt_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -829,12 +920,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'bmt_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Anjungan Tunai Mandiri (ATM)</td>
-                  <td><input type="number" name="atm_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="atm_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="atm_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'atm_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="atm_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'atm_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="atm_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -843,12 +955,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'atm_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Agen Bank</td>
-                  <td><input type="number" name="agen_bank_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="agen_bank_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="agen_bank_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'agen_bank_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="agen_bank_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'agen_bank_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="agen_bank_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -857,12 +990,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'agen_bank_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Pedagang Valuta Asing</td>
-                  <td><input type="number" name="valas_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="valas_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="valas_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'valas_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="valas_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'valas_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="valas_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -871,12 +1025,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'valas_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Pergadaian</td>
-                  <td><input type="number" name="pegadaian_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="pegadaian_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="pegadaian_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'pegadaian_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="pegadaian_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'pegadaian_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="pegadaian_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -885,12 +1060,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'pegadaian_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Agen Tiket/Travel/Biro Perjalanan</td>
-                  <td><input type="number" name="agen_tiket_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="agen_tiket_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="agen_tiket_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'agen_tiket_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="agen_tiket_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'agen_tiket_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="agen_tiket_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -899,12 +1095,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'agen_tiket_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Bengkel Mobil/Motor</td>
-                  <td><input type="number" name="bengkel_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="bengkel_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="bengkel_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'bengkel_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="bengkel_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'bengkel_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="bengkel_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -913,12 +1130,33 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'bengkel_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>Salon Kecantikan</td>
-                  <td><input type="number" name="salon_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required></td>
-                  <td><input type="text" name="salon_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required></td>
+                  <td><input type="number" name="salon_jumlah" class="form-control" min="0" placeholder=" --- Masukkan jumlah --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'salon_jumlah', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
+                  <td><input type="text" name="salon_jarak" class="form-control" placeholder=" --- Masukkan jarak --- " required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'salon_jarak', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="salon_kemudahan" class="form-control" required>
                       <option value="" disabled selected> --- Pilih --- </option>
@@ -927,6 +1165,13 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_ekonomi, 'salon_kemudahan', 'Sarana Ekonomi');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
               </tbody>
@@ -1008,7 +1253,14 @@ $previous_sarana_prasarana = getPreviousYearData(
                 <!-- Kelompok pertokoan -->
                 <tr>
                   <td>Kelompok pertokoan</td>
-                  <td><input type="number" name="kelompok_pertokoan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="kelompok_pertokoan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'kelompok_pertokoan_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="kelompok_pertokoan_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1017,12 +1269,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'kelompok_pertokoan_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Pasar permanen -->
                 <tr>
                   <td>Pasar dengan bangunan permanen</td>
-                  <td><input type="number" name="pasar_permanen_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="pasar_permanen_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_permanen_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="pasar_permanen_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1031,12 +1297,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_permanen_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Pasar semi permanen -->
                 <tr>
                   <td>Pasar dengan bangunan semi permanen</td>
-                  <td><input type="number" name="pasar_semi_permanen_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="pasar_semi_permanen_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_semi_permanen_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="pasar_semi_permanen_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1045,12 +1325,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_semi_permanen_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Pasar tanpa bangunan -->
                 <tr>
                   <td>Pasar tanpa bangunan</td>
-                  <td><input type="number" name="pasar_tanpa_bangunan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="pasar_tanpa_bangunan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_tanpa_bangunan_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="pasar_tanpa_bangunan_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1059,12 +1353,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'pasar_tanpa_bangunan_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Minimarket -->
                 <tr>
                   <td>Minimarket/swalayan/supermarket</td>
-                  <td><input type="number" name="minimarket_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="minimarket_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'minimarket_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="minimarket_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1073,12 +1381,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'minimarket_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Restoran -->
                 <tr>
                   <td>Restoran/rumah makan</td>
-                  <td><input type="number" name="restoran_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="restoran_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'restoran_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="restoran_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1087,12 +1409,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'restoran_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Warung makan -->
                 <tr>
                   <td>Warung/kedai makanan minuman</td>
-                  <td><input type="number" name="warung_makan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="warung_makan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'warung_makan_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="warung_makan_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1101,12 +1437,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'warung_makan_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Toko kelontong -->
                 <tr>
                   <td>Toko/warung kelontong</td>
-                  <td><input type="number" name="toko_kelontong_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="toko_kelontong_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'toko_kelontong_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="toko_kelontong_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1115,12 +1465,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'toko_kelontong_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Hotel -->
                 <tr>
                   <td>Hotel</td>
-                  <td><input type="number" name="hotel_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="hotel_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'hotel_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="hotel_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1129,12 +1493,26 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'hotel_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
                 <!-- Penginapan -->
                 <tr>
                   <td>Penginapan (hostel/motel/losmen/wisma)</td>
-                  <td><input type="number" name="penginapan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required></td>
+                  <td><input type="number" name="penginapan_jumlah" class="form-control" min="0" placeholder="--- Masukkan jumlah ---" required>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'penginapan_jumlah', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?></td>
                   <td>
                     <select name="penginapan_kemudahan" class="form-control" required>
                       <option value="" disabled selected>--- Pilih ---</option>
@@ -1143,6 +1521,13 @@ $previous_sarana_prasarana = getPreviousYearData(
                       <option value="Sulit">Sulit</option>
                       <option value="Sangat Sulit">Sangat Sulit</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sarana_prasarana, 'penginapan_kemudahan', 'Sarana Prasarana');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                   </td>
                 </tr>
               </tbody>
