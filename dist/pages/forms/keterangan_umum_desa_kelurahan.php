@@ -604,6 +604,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <option value="TERTINGGAL">TERTINGGAL</option>
                     <option value="SANGAT TERTINGGAL">SANGAT TERTINGGAL</option>
                   </select>
+                  <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_idm_status, 'status_idm', 'Status Indeks Desa Membangun (IDM)');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
