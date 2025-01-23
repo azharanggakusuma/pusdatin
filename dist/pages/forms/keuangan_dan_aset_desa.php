@@ -128,6 +128,87 @@ $previous_kerjasama_desa = getPreviousYearData(
   $tahun
 );
 
+// tb_pendamping_lokal_desa (Keberadaan Pendamping Lokal Desa)
+$previous_keberadaan_pendamping_lokal_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pendamping_lokal_desa',
+  ['keberadaan_pendamping_lokal_desa'],
+  'Keberadaan Pendamping Lokal Desa',
+  $tahun
+);
+
+// tb_kader_pembangunan_manusia (Kader Pembangunan Manusia)
+$previous_keberadaan_kader_pembangunan_manusia = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_kader_pembangunan_manusia',
+  ['keberadaan_kader_pembangunan_manusia', 'pembinaan_kpm_dari_pemkab_kota'],
+  'Kader Pembangunan Manusia',
+  $tahun
+);
+
+// tb_realisasi_anggaran_desa (Realisasi Anggaran Desa)
+$previous_realisasi_anggaran_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_realisasi_anggaran_desa',
+  [
+    'pendapatan_asli_desa',
+    'dana_desa',
+    'bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah',
+    'alokasi_dana_desa',
+    'bantuan_keuangan_dari_apbd_provinsi',
+    'bantuan_keuangan_dari_apbd',
+    'hibah_dan_sumbangan_dari_pihak_ketiga',
+    'lain_lain_pendapatan_desa_yang_sah'
+  ],
+  'Realisasi Anggaran Desa',
+  $tahun
+);
+
+// tb_realisasi_anggaran_belanja_desa (Realisasi Anggaran Belanja Desa)
+$previous_realisasi_anggaran_belanja_desa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_realisasi_anggaran_belanja_desa',
+  [
+    'bidang_penyelenggaraan_pemerintahan_desa',
+    'bidang_pelaksanaan_pembangunan_desa',
+    'bidang_pembinaan_kemasyarakatan',
+    'bidang_pemberdayaan_masyarakat',
+    'bidang_tak_terduga'
+  ],
+  'Realisasi Anggaran Belanja Desa',
+  $tahun
+);
+
+// tb_bumdes (Badan Usaha Milik Desa (BUMDes))
+$previous_bumdes = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_bumdes',
+  ['status_keaktifan', 'status_badan_hukum'],
+  'Badan Usaha Milik Desa (BUMDes)',
+  $tahun
+);
+
+// tb_pengadaan_barang_jasa (Pengadaan Barang dan Jasa)
+$previous_pengadaan_barang_jasa = getPreviousYearData(
+  $conn,
+  $user_id,
+  $desa_id,
+  'tb_pengadaan_barang_jasa',
+  ['jumlah_paket_pengadaan_barang_dan_jasa'],
+  'Pengadaan Barang dan Jasa',
+  $tahun
+);
+
 ?>
 
 <!DOCTYPE html>
