@@ -883,18 +883,25 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="BELUM ADA">BELUM ADA</option>
                       </select>
                       <?php if ($level != 'admin'): ?>
-                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                      <?php
-                      echo displayPreviousYearData($previous_status_pemerintahan, 'status_pemerintahan', 'status_pemerintahan Desa');
-                      ?>
-                    </p>
-                  <?php endif; ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ketersediaan_peta_desa, 'penetapan_batas_desa', 'Ketersediaan dan Penetapan Peta Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3" id="form_no_surat_batas_desa" style="display: none;">
                       <label class="mb-2">No SK/Perbup/Perda/Perdes tentang Penetapan Batas Desa</label>
                       <input required type="text" name="no_surat_batas_desa" id="no_surat_batas_desa" class="form-control" placeholder="Masukkan No Peraturan">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ketersediaan_peta_desa, 'no_surat_batas_desa', 'Ketersediaan dan Penetapan Peta Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -908,12 +915,26 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="ADA">ADA</option>
                         <option value="TIDAK ADA">TIDAK ADA</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ketersediaan_peta_desa, 'ketersediaan_peta_desa', 'Ketersediaan dan Penetapan Peta Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3" id="form_no_surat_peta_desa" style="display: none;">
                       <label class="mb-2">No SK/Perbup/Perda tentang Peta Desa</label>
                       <input required type="text" name="no_surat_peta_desa" id="no_surat_peta_desa" class="form-control" placeholder="Masukkan No Peraturan">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_ketersediaan_peta_desa, 'no_surat_peta_desa', 'Ketersediaan dan Penetapan Peta Desa');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -1011,6 +1032,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label class="mb-2">Jumlah Dusun/Lingkungan/Sebutan Lain yang sejenis</label>
                       <input required type="number" name="jumlah_dusun" class="form-control" placeholder="Masukkan angka/jumlah"
                         min="0" step="1" style="width: 100%;">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_dusun', 'Banyaknya Dusun, RT, dan RW');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <!-- /.col -->
@@ -1020,6 +1048,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label class="mb-2">Banyaknya RW</label>
                       <input required type="number" name="jumlah_rw" class="form-control" placeholder="Masukkan angka/jumlah"
                         min="0" step="1" style="width: 100%;">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_rw', 'Banyaknya Dusun, RT, dan RW');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <!-- /.col -->
@@ -1029,6 +1064,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <label class="mb-2">Banyaknya RT</label>
                       <input required type="number" name="jumlah_rt" class="form-control" placeholder="Masukkan angka/jumlah"
                         min="0" step="1" style="width: 100%;">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_banyaknya_dusun_rt_rw, 'jumlah_rt', 'Banyaknya Dusun, RT, dan RW');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                   <!-- /.col -->
@@ -1078,7 +1120,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <label class="mb-2">Luas Wilayah Desa (Hektar)</label>
                     <input required type="number" id="luas_wilayah_desa" name="luas_wilayah_desa" class="form-control"
                       placeholder="Masukkan luas wilayah dalam hektar" style="width: 100%;" step="0.01" min="0">
-
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_luas_wilayah_desa, 'luas_wilayah_desa', 'Luas Wilayah Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1153,6 +1201,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <option value="DATARAN">DATARAN</option>
                       <option value="PESISIR PANTAI">PESISIR PANTAI</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_topografi_wilayah_desa, 'topografi_terluas_wilayah_desa', 'Topografi Terluas Wilayah Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1228,6 +1283,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="ADA">ADA</option>
                         <option value="TIDAK ADA">TIDAK ADA</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepemilikan_kantor, 'keberadaan_kantor', 'Kepemilikan Kantor');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -1240,6 +1302,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="ASET DESA">ASET DESA</option>
                         <option value="BUKAN ASET DESA">BUKAN ASET DESA</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepemilikan_kantor, 'status_kantor', 'Kepemilikan Kantor');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -1255,6 +1324,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="ADA, TIDAK LAYAK">ADA, TIDAK LAYAK</option>
                         <option value="TIDAK ADA">TIDAK ADA</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepemilikan_kantor, 'kondisi_kantor', 'Kepemilikan Kantor');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
 
@@ -1267,6 +1343,13 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                         <option value="Di dalam wilayah desa/kelurahan">Di dalam wilayah desa/kelurahan</option>
                         <option value="Di Luar Wilayah Desa/Kelurahan">Di Luar Wilayah Desa/Kelurahan</option>
                       </select>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_kepemilikan_kantor, 'lokasi_kantor', 'Kepemilikan Kantor');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -1340,12 +1423,26 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <label class="mb-2">Koordinat Lintang (Latitude)</label>
                     <input required type="text" class="form-control" name="koordinat_lintang"
                       placeholder="Masukkan koordinat lintang" style="width: 100%;">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_titik_koordinat_kantor_desa, 'koordinat_lintang', 'Titik Koordinat Kantor Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div class="form-group mb-3">
                     <label class="mb-2">Koordinat Bujur (Longitude)</label>
                     <input required type="text" class="form-control" name="koordinat_bujur"
                       placeholder="Masukkan koordinat bujur" style="width: 100%;">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_titik_koordinat_kantor_desa, 'koordinat_bujur', 'Titik Koordinat Kantor Desa');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="mb-3">
                     <div class="mb-2">
