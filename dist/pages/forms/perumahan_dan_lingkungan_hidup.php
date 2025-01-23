@@ -89,7 +89,7 @@ $previous_sutet = getPreviousYearData(
   $desa_id,
   'tb_sutet',
   ['sutet_status', 'keberadaan_pemukiman', 'jumlah_pemukiman'],
-  'SUTET',
+  'Wilayah SUTET/SUTT/SUTTAS',
   $tahun
 );
 
@@ -111,7 +111,7 @@ $previous_keberadaan_danau = getPreviousYearData(
   $desa_id,
   'tb_keberadaan_danau',
   ['keberadaan_danau', 'nama_danau_1', 'nama_danau_2', 'nama_danau_3', 'nama_danau_4'],
-  'Keberadaan Danau',
+  'Keberadaan Danau/Waduk/Situ',
   $tahun
 );
 
@@ -122,7 +122,7 @@ $previous_keberadaan_pemukiman_bantaran = getPreviousYearData(
   $desa_id,
   'tb_keberadaan_pemukiman_bantaran',
   ['keberadaan_pemukiman', 'jumlah_pemukiman'],
-  'Keberadaan Pemukiman Bantaran',
+  'Keberadaan Permukiman di Bantaran Sungai',
   $tahun
 );
 
@@ -133,7 +133,7 @@ $previous_embung_mata_air = getPreviousYearData(
   $desa_id,
   'tb_embung_mata_air',
   ['jumlah_embung', 'lokasi_mata_air'],
-  'Embung dan Mata Air',
+  'Banyaknya Embung dan Lokasi Mata Air',
   $tahun
 );
 
@@ -144,7 +144,7 @@ $previous_permukiman_kumuh = getPreviousYearData(
   $desa_id,
   'tb_permukiman_kumuh',
   ['keberadaan_kumuh', 'jumlah_kumuh'],
-  'Permukiman Kumuh',
+  'Keberadaan Permukiman Kumuh',
   $tahun
 );
 
@@ -155,7 +155,7 @@ $previous_lokasi_penggalian = getPreviousYearData(
   $desa_id,
   'tb_lokasi_penggalian',
   ['keberadaan_galian'],
-  'Lokasi Penggalian',
+  'Keberadaan Lokasi Penggalian Golongan C',
   $tahun
 );
 
@@ -166,7 +166,7 @@ $previous_prasarana_kebersihan = getPreviousYearData(
   $desa_id,
   'tb_prasarana_kebersihan',
   ['jumlah_prasarana'],
-  'Prasarana Kebersihan',
+  'Jumlah Sarana Prasarana Kebersihan',
   $tahun
 );
 
@@ -177,7 +177,7 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
   $desa_id,
   'tb_rumah_tidak_layak_huni',
   ['jumlah_rumah'],
-  'Rumah Tidak Layak Huni',
+  'Jumlah Rumah Tidak Layak Huni',
   $tahun
 );
 
@@ -337,10 +337,31 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <h5 class="mb-3">A. Jumlah Keluarga Pengguna Listrik:</h5>
                     <li class="mb-1">PLN (Perusahaan Listrik Negara)</li>
                     <input name="jumlah_pln" type="number" class="form-control mb-1" placeholder="--- Masukkan jumlah ---" min="0" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengguna_listrik_lampu_surya, 'jumlah_pln', 'Pengguna Listrik dan Lampu Tenaga Surya');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <li class="mb-1">Non-PLN (Misalnya: Swasta, Swadaya, Atau Perseorangan)</li>
                     <input name="jumlah_non_pln" type="number" class="form-control mb-4" placeholder="--- Masukkan jumlah ---" min="0" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengguna_listrik_lampu_surya, 'jumlah_non_pln', 'Pengguna Listrik dan Lampu Tenaga Surya');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <h5 class="mb-2">B. Jumlah Keluraga Bukan Pengguna Listrik:</h5>
                     <input name="jumlah_bukan_pengguna_listrik" type="number" class="form-control mb-4" placeholder="--- Masukkan jumlah ---" min="0" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengguna_listrik_lampu_surya, 'jumlah_bukan_pengguna_listrik', 'Pengguna Listrik dan Lampu Tenaga Surya');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                     <h5 class="mb-2">C. Keluarga yang Menggunakan Lampu Tenaga Surya:</h5>
                     <select name="penggunaan_lampu_tenaga_surya" class="form-control" required>
                       <option value="" disabled selected>-- Pilih Dengan Benar --</option>
@@ -348,6 +369,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengguna_listrik_lampu_surya, 'penggunaan_lampu_tenaga_surya', 'Pengguna Listrik dan Lampu Tenaga Surya');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -419,6 +447,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_penerangan_jalan, 'lampu_tenaga_surya', 'Penerangan Jalan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div class="form-group mb-3">
@@ -429,6 +464,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada, Sebagian Kecil">Ada, Sebagian Kecil</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_penerangan_jalan, 'penerangan_jalan_utama', 'Penerangan Jalan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div class="form-group mb-3">
@@ -439,6 +481,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Listrik Diusahakan Oleh Non Pemerintah">Listrik Diusahakan Oleh Non Pemerintah</option>
                       <option value="Non Listrik">Non Listrik</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_penerangan_jalan, 'sumber_penerangan', 'Penerangan Jalan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -519,6 +568,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengelolaan_sampah, 'tps', 'Pengelolaan Sampah');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Tempat Penampungan Sementara Reduce, Reuse, Recycle (TPS3R)</label>
@@ -528,6 +584,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengelolaan_sampah, 'tps3r', 'Pengelolaan Sampah');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Bank Sampah di Desa/Kelurahan</label>
@@ -537,6 +600,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                       <option value="Non Listrik">Non Listrik</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_pengelolaan_sampah, 'bank_sampah', 'Pengelolaan Sampah');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -612,6 +682,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada, Tidak Digunakan">Ada, Tidak Digunakan</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_sutet, 'sutet_status', 'Wilayah SUTET/SUTT/SUTTAS');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div class="form-group mb-3">
@@ -622,6 +699,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_sutet, 'keberadaan_pemukiman', 'Wilayah SUTET/SUTT/SUTTAS');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -629,6 +713,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   <label class="mb-2">Jumlah Pemukiman di Bawah SUTET/SUTT/SUTTAS</label>
                   <input required name="jumlah_pemukiman_dibawah_sutet" type="number" min="0" class="form-control"
                     placeholder="Isi Dengan Angka" />
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_sutet, 'jumlah_pemukiman', 'Wilayah SUTET/SUTT/SUTTAS');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-2">
@@ -731,32 +822,66 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_sungai, 'keberadaan_sungai', 'Keberadaan Sungai');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div id="daftar_sungai" style="display: none;">
                     <div class="form-group mb-3">
-                      <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Yang Melintasi Ke -
-                        1</label>
+                      <label class="mb-2">Nama Sungai Yang Melintasi Ke - 1</label>
                       <input required name="nama_sungai_1" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_1', 'Keberadaan Sungai');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 2</label>
                       <input required name="nama_sungai_2" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_2', 'Keberadaan Sungai');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 3</label>
                       <input required name="nama_sungai_3" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_3', 'Keberadaan Sungai');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 4</label>
                       <input required name="nama_sungai_4" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_4', 'Keberadaan Sungai');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -858,31 +983,66 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_danau, 'keberadaan_danau', 'Keberadaan Danau/Waduk/Situ');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                   </div>
 
                   <div id="daftar_danau" style="display: none;">
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 1</label>
                       <input required name="nama_danau_1" type="text" class="form-control"
-                        placeholder="Isi Dengan nama sungai">
+                        placeholder="Isi Dengan nama danau/waduk/situ">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_1', 'Keberadaan Danau/Waduk/Situ');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 2</label>
                       <input required name="nama_danau_2" type="text" class="form-control"
-                        placeholder="Isi Dengan nama sungai">
+                        placeholder="Isi Dengan nama danau/waduk/situ">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_2', 'Keberadaan Danau/Waduk/Situ');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 3</label>
                       <input required name="nama_danau_3" type="text" class="form-control"
-                        placeholder="Isi Dengan nama sungai">
+                        placeholder="Isi Dengan nama danau/waduk/situ">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_3', 'Keberadaan Danau/Waduk/Situ');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 4</label>
                       <input required name="nama_danau_4" type="text" class="form-control"
-                        placeholder="Isi Dengan nama sungai">
+                        placeholder="Isi Dengan nama danau/waduk/situ">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_4', 'Keberadaan Danau/Waduk/Situ');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -989,6 +1149,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_pemukiman_bantaran, 'keberadaan_pemukiman', 'Keberadaan Permukiman di Bantaran Sungai');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                   </div>
 
                   <div id="jumlah_pemukiman_bantaran" style="display: none;">
@@ -996,6 +1163,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <label class="mb-2">Jumlah Pemukiman Di Bantaran Sungai</label>
                       <input required name="pemukiman_bantaran" type="number" min="0" class="form-control"
                         placeholder="Isi Dengan Angka">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_keberadaan_pemukiman_bantaran, 'jumlah_pemukiman', 'Keberadaan Permukiman di Bantaran Sungai');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -1091,6 +1265,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <label class="mb-2">Jumlah Embung</label>
                     <input required name="jumlah_embung" class="form-control" type="number" min="0"
                       placeholder="Isi Dengan Angka">
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_embung_mata_air, 'jumlah_embung', 'Banyaknya Embung dan Lokasi Mata Air');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Lokasi Mata Air</label>
@@ -1100,6 +1281,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada, Tidak Dikelola">ADA, TIDAK DIKELOLA</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_embung_mata_air, 'lokasi_mata_air', 'Banyaknya Embung dan Lokasi Mata Air');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1182,12 +1370,26 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_permukiman_kumuh, 'keberadaan_kumuh', 'Keberadaan Permukiman Kumuh');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div id="jumlah_pemukiman_kumuh" style="display: none;">
                     <div class="form-group mb-3">
                       <label class="mb-2">Jumlah Pemukiman Kumuh</label>
-                      <input required name="jumlah_pemukiman_kumuh" type="text" class="form-control"
-                        placeholder="Isi Dengan nama sungai">
+                      <input required name="jumlah_pemukiman_kumuh" type="number" class="form-control"
+                        placeholder="Isi Dengan Angka">
+                        <?php if ($level != 'admin'): ?>
+                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                            <?php
+                            echo displayPreviousYearData($previous_permukiman_kumuh, 'jumlah_kumuh', 'Keberadaan Permukiman Kumuh');
+                            ?>
+                          </p>
+                        <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -1279,6 +1481,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_lokasi_penggalian, 'keberadaan_galian', 'Keberadaan Lokasi Penggalian Golongan C');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1344,6 +1553,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <label class="mb-2">Jumlah Sarana Prasarana Kebersihan</label>
                     <input required class="form-control" type="number" min="0" name="prasarana_kebersihan"
                       placeholder="Isi Dengan Angka" required>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_prasarana_kebersihan, 'jumlah_prasarana', 'Jumlah Sarana Prasarana Kebersihan');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
@@ -1409,6 +1625,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <label class="mb-2">Jumlah Rumah Tidak Layak Huni</label>
                     <input required class="form-control" type="number" min="0" name="rumah_tidak_layak_huni"
                       placeholder="Isi Dengan Angka" required>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_rumah_tidak_layak_huni, 'jumlah_rumah', 'Jumlah Rumah Tidak Layak Huni');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                   </div>
                 </div>
                 <div class="mb-2">
