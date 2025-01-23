@@ -402,6 +402,19 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </div>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3 mt-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_batas_desa" name="use_previous_batas_desa" value="1">
+                      <label class="form-check-label" for="use_previous_batas_desa">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -505,7 +518,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
 
-                  <!-- Checkbox untuk menggunakan data tahun sebelumnya -->
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_jarak_kantor_desa" name="use_previous_jarak_kantor_desa" value="1">
+                        <label class="form-check-label" for="use_previous_jarak_kantor_desa">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
                 </div>
                 <div class="mb-2">
@@ -612,6 +635,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3 mt-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_idm_status" name="use_previous_idm_status" value="1">
+                      <label class="form-check-label" for="use_previous_idm_status">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -733,6 +767,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_website_medsos" name="use_previous_website_medsos" value="1">
+                      <label class="form-check-label" for="use_previous_website_medsos">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -812,6 +857,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_status_pemerintahan" name="use_previous_status_pemerintahan" value="1">
+                      <label class="form-check-label" for="use_previous_status_pemerintahan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -938,6 +994,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </div>
                   </div>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3 mt-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_ketersediaan_peta_desa" name="use_previous_ketersediaan_peta_desa" value="1">
+                      <label class="form-check-label" for="use_previous_ketersediaan_peta_desa">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -1074,6 +1141,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </div>
                   </div>
                   <!-- /.col -->
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_banyaknya_dusun_rt_rw" name="use_previous_banyaknya_dusun_rt_rw" value="1">
+                        <label class="form-check-label" for="use_previous_banyaknya_dusun_rt_rw">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-3">
                   <div class="mb-2">
@@ -1128,6 +1206,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_luas_wilayah_desa" name="use_previous_luas_wilayah_desa" value="1">
+                        <label class="form-check-label" for="use_previous_luas_wilayah_desa">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1209,6 +1298,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_topografi_wilayah_desa" name="use_previous_topografi_wilayah_desa" value="1">
+                        <label class="form-check-label" for="use_previous_topografi_wilayah_desa">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1352,6 +1452,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php endif; ?>
                     </div>
                   </div>
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_kepemilikan_kantor" name="use_previous_kepemilikan_kantor" value="1">
+                        <label class="form-check-label" for="use_previous_kepemilikan_kantor">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1444,6 +1555,17 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
+                  <?php if ($level != 'admin'): ?>
+                    <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                    <div class="form-group mb-3 mt-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="use_previous_titik_koordinat_kantor_desa" name="use_previous_titik_koordinat_kantor_desa" value="1">
+                        <label class="form-check-label" for="use_previous_titik_koordinat_kantor_desa">
+                          Gunakan data tahun sebelumnya
+                        </label>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                   <div class="mb-3">
                     <div class="mb-2">
                       <button type="submit" class="btn btn-primary mt-3">
