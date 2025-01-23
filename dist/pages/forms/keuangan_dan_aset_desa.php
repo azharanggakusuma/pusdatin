@@ -1323,7 +1323,7 @@ $previous_kerjasama_desa = getPreviousYearData(
             </div>
           </div>
         </div>
-
+                   
     </main> <!--end::App Main--> <!--begin::Footer-->
 
     <?php include("../../components/footer.php"); ?>
