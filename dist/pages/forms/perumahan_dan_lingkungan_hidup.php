@@ -378,6 +378,17 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_listrik_lampu_surya" name="use_previous_listrik_lampu_surya" value="1">
+                      <label class="form-check-label" for="use_previous_listrik_lampu_surya">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -490,6 +501,17 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_penerangan_jalan" name="use_previous_penerangan_jalan" value="1">
+                      <label class="form-check-label" for="use_previous_penerangan_jalan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -609,6 +631,17 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_pengelolaan_sampah" name="use_previous_pengelolaan_sampah" value="1">
+                      <label class="form-check-label" for="use_previous_pengelolaan_sampah">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -721,6 +754,18 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_sutet" name="use_previous_sutet" value="1">
+                      <label class="form-check-label" for="use_previous_sutet">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -885,6 +930,18 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     </div>
                   </div>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keberadaan_sungai" name="use_previous_keberadaan_sungai" value="1">
+                      <label class="form-check-label" for="use_previous_keberadaan_sungai">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1046,6 +1103,18 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     </div>
                   </div>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_danau" name="use_previous_danau" value="1">
+                      <label class="form-check-label" for="use_previous_danau">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1173,6 +1242,30 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     </div>
                   </div>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keberadaan_pemukiman_bantaran" name="use_previous_keberadaan_pemukiman_bantaran" value="1">
+                      <label class="form-check-label" for="use_previous_keberadaan_pemukiman_bantaran">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keberadaan_pemukiman_bantaran" name="use_previous_keberadaan_pemukiman_bantaran" value="1">
+                      <label class="form-check-label" for="use_previous_keberadaan_pemukiman_bantaran">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1290,6 +1383,20 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_embung_mata_air"
+                        name="use_previous_embung_mata_air" value="1">
+                      <label class="form-check-label" for="use_previous_embung_mata_air">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -1393,6 +1500,19 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     </div>
                   </div>
                 </div>
+                
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_permukiman_kumuh"
+                        name="use_previous_permukiman_kumuh" value="1">
+                      <label class="form-check-label" for="use_previous_permukiman_kumuh">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1490,6 +1610,18 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_lokasi_penggalian"
+                        name="use_previous_lokasi_penggalian" value="1">
+                      <label class="form-check-label" for="use_previous_lokasi_penggalian">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -1562,6 +1694,20 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_prasarana_kebersihan"
+                        name="use_previous_prasarana_kebersihan" value="1">
+                      <label class="form-check-label" for="use_previous_prasarana_kebersihan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -1634,6 +1780,20 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_rumah_tidak_layak_huni"
+                        name="use_previous_rumah_tidak_layak_huni" value="1">
+                      <label class="form-check-label" for="use_previous_rumah_tidak_layak_huni">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
