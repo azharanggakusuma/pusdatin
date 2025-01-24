@@ -202,123 +202,180 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php //if ($form_status['SK pembentukan/pengesahan desa/kelurahan']) : ?>
-                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['SK pembentukan/pengesahan desa/kelurahan']) : 
+              ?>
+              <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>-->
-              <?php //else: ?>
-                <form action="../../handlers/form_sk_pembentukan.php" method="post">
-                  <div class="row">
-                    <div class="form-group">
-                      <select id="sk_pembentukan" name="sk_pembentukan" class="form-control mb-3" style="width: 100%;" required>
-                        <option value="" disabled selected>---Sk Pembentukan/Pengesahan Desa/Kelurahan---</option>
-                        <option value="PERMENDAGRI/KEPMENDAGRI">PERMENDAGRI/KEPMENDAGRI</option>
-                        <option value="PERDA PROVINSI">PERDA PROVINSI</option>
-                        <option value="PERDA KABUPATEN">PERDA KABUPATEN</option>
-                        <option value="SK GUBERNUR/BUPATI">SK GUBERNUR/BUPATI</option>
-                        <option value="Lainnya">LAINNYA (TULISKAN)</option>
-                      </select>
-                      <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_sk_pembentukan_data, 'sk_pembentukan', 'SK pembentukan/pengesahan desa/kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-
-                    <script>
-                      const selectElement = document.getElementById("sk_pembentukan");
-                      const inputLainnya = document.getElementById("inputLainnya");
-
-                      selectElement.addEventListener("change", function() {
-                        if (this.value === "Lainnya") {
-                          inputLainnya.style.display = "block";
-                          inputLainnya.required = true; // Menjadikan input wajib diisi
-                        } else {
-                          inputLainnya.style.display = "none";
-                          inputLainnya.required = false; // Menghapus kewajiban input
-                          inputLainnya.value = ""; // Mengosongkan input jika disembunyikan
-                        }
-                      });
-                    </script>
+              <?php //else: 
+              ?>
+              <form action="../../handlers/form_sk_pembentukan.php" method="post">
+                <div class="row">
+                  <div class="form-group">
+                    <select id="sk_pembentukan" name="sk_pembentukan" class="form-control mb-3" style="width: 100%;" required>
+                      <option value="" disabled selected>---Sk Pembentukan/Pengesahan Desa/Kelurahan---</option>
+                      <option value="PERMENDAGRI/KEPMENDAGRI">PERMENDAGRI/KEPMENDAGRI</option>
+                      <option value="PERDA PROVINSI">PERDA PROVINSI</option>
+                      <option value="PERDA KABUPATEN">PERDA KABUPATEN</option>
+                      <option value="SK GUBERNUR/BUPATI">SK GUBERNUR/BUPATI</option>
+                      <option value="Lainnya">LAINNYA (TULISKAN)</option>
+                    </select>
+                    <input type="text" id="inputLainnya" name="inputLainnya" class="form-control" placeholder="Silahkan Di Isi Dengan Benar" style="width: 100%; display: none;" required>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_sk_pembentukan_data, 'sk_pembentukan', 'SK pembentukan/pengesahan desa/kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
-                  <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
-                    <div class="form-group mb-3">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="use_previous_sk_pembentukan" name="use_previous_sk_pembentukan" value="1">
-                        <label class="form-check-label" for="use_previous_sk_pembentukan">
-                          Gunakan data tahun sebelumnya
-                        </label>
-                      </div>
-                    </div>
-                  <?php endif; ?>
-
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp; Simpan
-                    </button>
-                  </div>
-                </form>
-                <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    const skPembentukan = document.getElementById("sk_pembentukan");
+                  <script>
+                    const selectElement = document.getElementById("sk_pembentukan");
                     const inputLainnya = document.getElementById("inputLainnya");
-                    const usePreviousCheckbox = document.getElementById("use_previous_sk_pembentukan");
 
-                    // Data tahun sebelumnya
-                    const previousData = {
-                      skPembentukan: "<?php echo htmlspecialchars($previous_sk_pembentukan_data['sk_pembentukan'] ?? ''); ?>",
-                      inputLainnya: "<?php echo htmlspecialchars($previous_sk_pembentukan_data['inputLainnya'] ?? ''); ?>"
-                    };
-
-                    // Fungsi untuk mengatur data tahun sebelumnya ke form
-                    function populatePreviousData() {
-                      if (usePreviousCheckbox.checked) {
-                        // Set nilai ke elemen
-                        skPembentukan.value = previousData.skPembentukan || "";
-                        if (previousData.skPembentukan === "Lainnya") {
-                          inputLainnya.style.display = "block";
-                          inputLainnya.value = previousData.inputLainnya || "";
-                        } else {
-                          inputLainnya.style.display = "none";
-                        }
-
-                        // Buat elemen menjadi read-only jika diperlukan
-                        skPembentukan.setAttribute("readonly", true);
-                      } else {
-                        // Reset form jika checkbox tidak dicentang
-                        skPembentukan.value = "";
-                        inputLainnya.style.display = "none";
-                        inputLainnya.value = "";
-
-                        // Hapus atribut read-only
-                        skPembentukan.removeAttribute("readonly");
-                      }
-                    }
-
-                    // Event listener untuk checkbox
-                    usePreviousCheckbox.addEventListener("change", populatePreviousData);
-
-                    // Event listener untuk perubahan nilai skPembentukan
-                    skPembentukan.addEventListener("change", function() {
+                    selectElement.addEventListener("change", function() {
                       if (this.value === "Lainnya") {
                         inputLainnya.style.display = "block";
+                        inputLainnya.required = true; // Menjadikan input wajib diisi
                       } else {
                         inputLainnya.style.display = "none";
+                        inputLainnya.required = false; // Menghapus kewajiban input
+                        inputLainnya.value = ""; // Mengosongkan input jika disembunyikan
                       }
                     });
+                  </script>
+                </div>
 
-                    // Inisialisasi saat halaman dimuat
-                    populatePreviousData();
-                  });
-                </script>
-              <?php //endif; ?>
+                <!-- Checkbox to use previous year data -->
+                <?php if ($level != 'admin'): ?>
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_sk_pembentukan" name="use_previous_sk_pembentukan" value="1">
+                      <label class="form-check-label" for="use_previous_sk_pembentukan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select dan input
+                  const selectElement = document.getElementById("sk_pembentukan");
+                  const inputLainnya = document.getElementById("inputLainnya");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_sk_pembentukan");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    skPembentukan: "<?php echo htmlspecialchars($previous_sk_pembentukan_data['sk_pembentukan'] ?? ''); ?>",
+                    inputLainnya: "<?php echo htmlspecialchars($previous_sk_pembentukan_data['inputLainnya'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk menangani pilihan "Lainnya"
+                  function handleLainnyaOption() {
+                    if (selectElement.value === "Lainnya") {
+                      inputLainnya.style.display = "block";
+                      inputLainnya.required = true;
+                    } else {
+                      inputLainnya.style.display = "none";
+                      inputLainnya.required = false;
+                      inputLainnya.value = "";
+                    }
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select dan input
+                      selectElement.value = previousData.skPembentukan || "";
+
+                      // Jika data sebelumnya adalah "Lainnya"
+                      if (previousData.skPembentukan === "Lainnya") {
+                        inputLainnya.value = previousData.inputLainnya || "";
+                        inputLainnya.style.display = "block";
+                        inputLainnya.required = true;
+                      } else {
+                        inputLainnya.value = "";
+                        inputLainnya.style.display = "none";
+                        inputLainnya.required = false;
+                      }
+
+                      // Nonaktifkan pilihan lain
+                      for (let i = 0; i < selectElement.options.length; i++) {
+                        if (selectElement.options[i].value !== previousData.skPembentukan) {
+                          selectElement.options[i].disabled = true;
+                        }
+                      }
+
+                      // Buat select menjadi read-only
+                      selectElement.style.backgroundColor = "#f0f0f0";
+                      selectElement.style.cursor = "not-allowed";
+
+                      // Buat input lainnya read-only jika ada
+                      if (inputLainnya.style.display === "block") {
+                        inputLainnya.setAttribute("readonly", true);
+                        inputLainnya.style.backgroundColor = "#f0f0f0";
+                        inputLainnya.style.cursor = "not-allowed";
+                      }
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      selectElement.value = ""; // Kembali ke pilihan default
+                      inputLainnya.value = "";
+                      inputLainnya.style.display = "none";
+                      inputLainnya.required = false;
+
+                      // Aktifkan kembali semua pilihan
+                      for (let i = 0; i < selectElement.options.length; i++) {
+                        selectElement.options[i].disabled = false;
+                      }
+
+                      // Kembalikan style ke default
+                      selectElement.style.backgroundColor = "";
+                      selectElement.style.cursor = "default";
+                      inputLainnya.removeAttribute("readonly");
+                      inputLainnya.style.backgroundColor = "";
+                      inputLainnya.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input lainnya (hanya huruf, angka, spasi, dan karakter khusus)
+                  function validateInputLainnya() {
+                    inputLainnya.addEventListener('input', function() {
+                      // Hapus karakter yang tidak diinginkan, tetapi izinkan spasi dan karakter khusus
+                      this.value = this.value.replace(/[^a-zA-Z0-9\s\-/.,()]/g, '');
+
+                      // Opsional: Ubah huruf pertama setiap kata menjadi kapital
+                      this.value = this.value.replace(/\b\w/g, char => char.toUpperCase());
+                    });
+                  }
+
+                  // Event listener untuk select
+                  selectElement.addEventListener("change", handleLainnyaOption);
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Jalankan validasi input lainnya
+                  validateInputLainnya();
+
+                  // Inisialisasi saat halaman dimuat
+                  handleLainnyaOption();
+                  populatePreviousData();
+                });
+              </script>
+              <?php //endif; 
+              ?>
               <!-- /.row -->
             </div>
 
@@ -372,102 +429,154 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <?php //if ($form_status['Alamat Balai Desa/Kantor Kelurahan']) : ?>
-                <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+              <?php //if ($form_status['Alamat Balai Desa/Kantor Kelurahan']) : 
+              ?>
+              <!--<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
                   <i class="fas fa-lock me-2"></i>
                   <strong>Form Terkunci!</strong> Anda sudah mengisi form ini dan tidak dapat diubah kembali.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>-->
-              <?php //else: ?>
-                <form action="../../handlers/form_balai_desa.php" method="post">
-                  <div class="row">
-                    <!-- Alamat Balai Desa/Kelurahan -->
-                    <div class="form-group mb-3">
-                      <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
-                      <textarea name="alamat_balai" id="alamat_balai" class="form-control w-100" placeholder="isi alamat kantor desa" required style="height: 100px;"></textarea>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_balai_desa_data, 'alamat_balai', 'Alamat Balai Desa/Kantor Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
-
-                    <!-- Nama Kecamatan -->
-                    <div class="form-group">
-                      <label for="nama_kecamatan" class="mb-3">Nama Kecamatan</label>
-                      <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required placeholder="isi nama kecamatan">
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_balai_desa_data, 'nama_kecamatan', 'Alamat Balai Desa/Kantor Kelurahan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
-                    </div>
+              <?php //else: 
+              ?>
+              <form action="../../handlers/form_balai_desa.php" method="post">
+                <div class="row">
+                  <!-- Alamat Balai Desa/Kelurahan -->
+                  <div class="form-group mb-3">
+                    <label for="alamat_balai" class="mb-3">Alamat Balai Desa/Kelurahan</label>
+                    <textarea name="alamat_balai" id="alamat_balai" class="form-control w-100" placeholder="isi alamat kantor desa" required style="height: 100px;"></textarea>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_balai_desa_data, 'alamat_balai', 'Alamat Balai Desa/Kantor Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
-                  <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
-                    <div class="form-group mb-3">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="use_previous_balai_desa" name="use_previous_balai_desa" value="1">
-                        <label class="form-check-label" for="use_previous_balai_desa">
-                          Gunakan data tahun sebelumnya
-                        </label>
-                      </div>
-                    </div>
-                  <?php endif; ?>
-
-                  <div class="mb-2">
-                    <button type="submit" class="btn btn-primary mt-3">
-                      <i class="fas fa-save"></i> &nbsp; Simpan
-                    </button>
+                  <!-- Nama Kecamatan -->
+                  <div class="form-group">
+                    <label for="nama_kecamatan" class="mb-3">Nama Kecamatan</label>
+                    <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required placeholder="isi nama kecamatan">
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_balai_desa_data, 'nama_kecamatan', 'Alamat Balai Desa/Kantor Kelurahan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
-                </form>
+                </div>
 
-                <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    const alamatBalai = document.getElementById("alamat_balai");
-                    const namaKecamatan = document.getElementById("nama_kecamatan");
-                    const usePreviousCheckbox = document.getElementById("use_previous_balai_desa");
+                <!-- Checkbox to use previous year data -->
+                <?php if ($level != 'admin'): ?>
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_balai_desa" name="use_previous_balai_desa" value="1">
+                      <label class="form-check-label" for="use_previous_balai_desa">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
-                    // Data tahun sebelumnya
-                    const previousData = {
-                      alamatBalai: "<?php echo htmlspecialchars($previous_balai_desa_data['alamat_balai'] ?? ''); ?>",
-                      namaKecamatan: "<?php echo htmlspecialchars($previous_balai_desa_data['nama_kecamatan'] ?? ''); ?>"
-                    };
+                <div class="mb-2">
+                  <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-save"></i> &nbsp; Simpan
+                  </button>
+                </div>
+              </form>
 
-                    // Fungsi untuk mengatur data tahun sebelumnya ke form
-                    function populatePreviousData() {
-                      if (usePreviousCheckbox.checked) {
-                        // Set nilai ke elemen
-                        alamatBalai.value = previousData.alamatBalai || "";
-                        namaKecamatan.value = previousData.namaKecamatan || "";
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input
+                  const alamatBalai = document.getElementById("alamat_balai");
+                  const namaKecamatan = document.getElementById("nama_kecamatan");
 
-                        // Buat elemen menjadi read-only
-                        alamatBalai.setAttribute("readonly", true);
-                        namaKecamatan.setAttribute("readonly", true);
-                      } else {
-                        // Reset form jika checkbox tidak dicentang
-                        alamatBalai.value = "";
-                        namaKecamatan.value = "";
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_balai_desa");
 
-                        // Hapus atribut read-only
-                        alamatBalai.removeAttribute("readonly");
-                        namaKecamatan.removeAttribute("readonly");
-                      }
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    alamatBalai: "<?php echo htmlspecialchars($previous_balai_desa_data['alamat_balai'] ?? ''); ?>",
+                    namaKecamatan: "<?php echo htmlspecialchars($previous_balai_desa_data['nama_kecamatan'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input
+                      alamatBalai.value = previousData.alamatBalai || "";
+                      namaKecamatan.value = previousData.namaKecamatan || "";
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        alamatBalai,
+                        namaKecamatan
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      alamatBalai.value = "";
+                      namaKecamatan.value = "";
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        alamatBalai,
+                        namaKecamatan
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
                     }
+                  }
 
-                    // Event listener untuk checkbox
-                    usePreviousCheckbox.addEventListener("change", populatePreviousData);
+                  // Validasi input alamat
+                  function validateAlamatInput() {
+                    alamatBalai.addEventListener('input', function() {
+                      // Batasi panjang input
+                      if (this.value.length > 500) {
+                        this.value = this.value.slice(0, 500);
+                      }
+                    });
+                  }
 
-                    // Inisialisasi saat halaman dimuat
-                    populatePreviousData();
-                  });
-                </script>
-              <?php //endif; ?>
+                  // Validasi input nama kecamatan
+                  function validateKecamatanInput() {
+                    namaKecamatan.addEventListener('input', function() {
+                      // Hapus karakter selain huruf, spasi, dan tanda hubung
+                      this.value = this.value.replace(/[^a-zA-Z\s-]/g, '');
+
+                      // Ubah huruf pertama setiap kata menjadi kapital
+                      this.value = this.value.replace(/\b\w/g, char => char.toUpperCase());
+
+                      // Batasi panjang input
+                      if (this.value.length > 100) {
+                        this.value = this.value.slice(0, 100);
+                      }
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Jalankan validasi input
+                  validateAlamatInput();
+                  validateKecamatanInput();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
+              <?php //endif; 
+              ?>
               <!-- /.row -->
             </div>
 
