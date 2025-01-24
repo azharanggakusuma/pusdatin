@@ -613,7 +613,46 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
-              
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  const jarakKeIbukotaKecamatan = document.getElementById("jarak_ke_ibukota_kecamatan");
+                  const jarakKeIbukotaKabupaten = document.getElementById("jarak_ke_ibukota_kabupaten");
+                  const usePreviousCheckbox = document.getElementById("use_previous_jarak_kantor_desa");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jarakKeIbukotaKecamatan: "<?php echo htmlspecialchars($previous_jarak_kantor_desa['jarak_ke_ibukota_kecamatan'] ?? ''); ?>",
+                    jarakKeIbukotaKabupaten: "<?php echo htmlspecialchars($previous_jarak_kantor_desa['jarak_ke_ibukota_kabupaten'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke elemen
+                      jarakKeIbukotaKecamatan.value = previousData.jarakKeIbukotaKecamatan || "";
+                      jarakKeIbukotaKabupaten.value = previousData.jarakKeIbukotaKabupaten || "";
+
+                      // Buat elemen menjadi read-only jika diperlukan
+                      jarakKeIbukotaKecamatan.setAttribute("readonly", true);
+                      jarakKeIbukotaKabupaten.setAttribute("readonly", true);
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      jarakKeIbukotaKecamatan.value = "";
+                      jarakKeIbukotaKabupaten.value = "";
+
+                      // Hapus atribut read-only
+                      jarakKeIbukotaKecamatan.removeAttribute("readonly");
+                      jarakKeIbukotaKabupaten.removeAttribute("readonly");
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- Modal Info -->
             <div class="modal fade" id="modalJarakKantorDesa" tabindex="-1" aria-labelledby="aturanModalLabel"
@@ -691,7 +730,6 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-
               <form action="../../handlers/form_idm_status.php" method="post">
                 <div class="mb-3">
                   <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal)
