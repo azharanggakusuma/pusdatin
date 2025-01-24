@@ -732,9 +732,8 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
             <div class="card-body">
               <form action="../../handlers/form_idm_status.php" method="post">
                 <div class="mb-3">
-                  <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal)
-                    2024</label>
-                  <select required name="status_2024" id="" class="form-control">
+                  <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal)</label>
+                  <select required name="status_2024" id="status_2024" class="form-control">
                     <option value="" disabled selected>-- Pilih Status Desa Membangun --</option>
                     <option value="MANDIRI">MANDIRI</option>
                     <option value="MAJU">MAJU</option>
@@ -769,6 +768,38 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
               </form>
               <!-- /.row -->
             </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const statusSelect = document.getElementById("status_2024");
+                const usePreviousCheckbox = document.getElementById("use_previous_idm_status");
+
+                // Data tahun sebelumnya
+                const previousStatus = "<?php echo htmlspecialchars($previous_idm_status ?? ''); ?>";
+
+                // Fungsi untuk mengatur data tahun sebelumnya ke form
+                function populatePreviousData() {
+                  if (usePreviousCheckbox.checked) {
+                    // Set nilai ke elemen
+                    statusSelect.value = previousStatus || "";
+
+                    // Nonaktifkan select
+                    statusSelect.setAttribute("disabled", true);
+                  } else {
+                    // Reset form jika checkbox tidak dicentang
+                    statusSelect.value = "";
+
+                    // Aktifkan select
+                    statusSelect.removeAttribute("disabled");
+                  }
+                }
+
+                // Event listener untuk checkbox
+                usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                // Inisialisasi saat halaman dimuat
+                populatePreviousData();
+              });
+            </script>
           </div> <!--end::Container-->
           <!-- END:: PERKEMBANGAN IDM -->
 
