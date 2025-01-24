@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Insert data into the database
+    // Insert or update data into the database
     foreach ($data as $entry) {
         $jenis_tempat_peribadatan = $entry['jenis_tempat_peribadatan'] ?? '';
         $nama_tempat_peribadatan = $entry['nama_tempat_peribadatan'] ?? '';
@@ -50,14 +50,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $titik_koordinat_bujur = $entry['titik_koordinat_bujur'] ?? '';
 
         if ($jenis_tempat_peribadatan && $nama_tempat_peribadatan && $titik_koordinat_lintang && $titik_koordinat_bujur) {
-            $sql = "INSERT INTO tb_tempat_peribadatan 
-                    (jenis_tempat_peribadatan, nama_tempat_peribadatan, titik_koordinat_lintang, titik_koordinat_bujur, user_id, desa_id, tahun)
-                    VALUES ('$jenis_tempat_peribadatan', '$nama_tempat_peribadatan', '$titik_koordinat_lintang', '$titik_koordinat_bujur', '$user_id', '$desa_id', '$tahun')";
-            if (!mysqli_query($conn, $sql)) {
-                header("Location: ../pages/forms/data_lokasi_geospasial.php?status=error&message=" . urlencode(mysqli_error($conn)));
-                exit();
+            // Check if the record already exists
+            $check_query = "SELECT id FROM tb_tempat_peribadatan WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun' AND jenis_tempat_peribadatan = '$jenis_tempat_peribadatan' AND nama_tempat_peribadatan = '$nama_tempat_peribadatan'";
+            $check_result = mysqli_query($conn, $check_query);
+
+            if (mysqli_num_rows($check_result) > 0) {
+                // If record exists, update it
+                $update_sql = "UPDATE tb_tempat_peribadatan 
+                               SET titik_koordinat_lintang = '$titik_koordinat_lintang', 
+                                   titik_koordinat_bujur = '$titik_koordinat_bujur', 
+                                   tahun = '$tahun' 
+                               WHERE user_id = '$user_id' AND desa_id = '$desa_id' AND tahun = '$tahun' 
+                               AND jenis_tempat_peribadatan = '$jenis_tempat_peribadatan' 
+                               AND nama_tempat_peribadatan = '$nama_tempat_peribadatan'";
+                if (!mysqli_query($conn, $update_sql)) {
+                    header("Location: ../pages/forms/data_lokasi_geospasial.php?status=error&message=" . urlencode(mysqli_error($conn)));
+                    exit();
+                }
+            } else {
+                // If record doesn't exist, insert a new record
+                $insert_sql = "INSERT INTO tb_tempat_peribadatan 
+                               (jenis_tempat_peribadatan, nama_tempat_peribadatan, titik_koordinat_lintang, titik_koordinat_bujur, user_id, desa_id, tahun)
+                               VALUES ('$jenis_tempat_peribadatan', '$nama_tempat_peribadatan', '$titik_koordinat_lintang', '$titik_koordinat_bujur', '$user_id', '$desa_id', '$tahun')";
+                if (!mysqli_query($conn, $insert_sql)) {
+                    header("Location: ../pages/forms/data_lokasi_geospasial.php?status=error&message=" . urlencode(mysqli_error($conn)));
+                    exit();
+                }
             }
         }
+    }
+
+    // Check if progress entry exists for the same year
+    $query_progress = "SELECT id FROM user_progress WHERE user_id = '$user_id' AND form_name = 'Tempat Peribadatan' AND tahun = '$tahun'";
+    $result_progress = mysqli_query($conn, $query_progress);
+
+    // Set created_at to the first day of the year at 00:00:00
+    $created_at = $tahun . '-01-01 00:00:00';
+
+    if (mysqli_num_rows($result_progress) > 0) {
+        // If progress entry exists for the same year, update it
+        $update_progress = "UPDATE user_progress 
+                            SET is_locked = TRUE, desa_id = '$desa_id', created_at = '$created_at', tahun = '$tahun' 
+                            WHERE user_id = '$user_id' AND form_name = 'Tempat Peribadatan' AND tahun = '$tahun'";
+        mysqli_query($conn, $update_progress);
+    } else {
+        // If progress entry doesn't exist for the same year, insert a new entry
+        $insert_progress = "INSERT INTO user_progress (user_id, form_name, is_locked, desa_id, created_at, tahun) 
+                            VALUES ('$user_id', 'Tempat Peribadatan', TRUE, '$desa_id', '$created_at', '$tahun')";
+        mysqli_query($conn, $insert_progress);
     }
 
     header("Location: ../pages/forms/data_lokasi_geospasial.php?status=success");

@@ -78,7 +78,7 @@ $previous_sekolah = getPreviousYearData(
   $desa_id,
   'tb_sekolah',
   ['nama_sekolah', 'jenjang_pendidikan', 'status_sekolah', 'alamat_sekolah', 'nama_kecamatan', 'koordinat_lintang', 'koordinat_bujur'],
-  'Sekolah',
+  'Data Sekolah',
   $tahun
 );
 
@@ -893,7 +893,6 @@ $previous_daftar_posyandu = getPreviousYearData(
               </div>
             </div>
           </div>
-
 
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
