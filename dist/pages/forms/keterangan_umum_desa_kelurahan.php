@@ -1073,7 +1073,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
               <form action="../../handlers/form_status_pemerintahan.php" method="post">
                 <div class="mb-3">
                   <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
-                  <select name="status_2024" id="" class="form-control">
+                  <select name="status_2024" id="status_2024" class="form-control">
                     <option value="" disabled selected>-- Pilih Status Pemerintahan --</option>
                     <option value="DESA">DESA</option>
                     <option value="KELURAHAN">KELURAHAN</option>
