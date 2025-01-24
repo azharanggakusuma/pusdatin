@@ -50,7 +50,7 @@ $desa_id = $desa['id_desa'] ?? 0;
 $tahun = $_SESSION['tahun'] ?? date('Y');
 
 // Ambil data sebelumnya
-$previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_desa', ['batas_utara', 'kec_utara', 'batas_selatan', 'kec_selatan', 'batas_timur', 'kec_timur', 'batas_barat', 'kec_barat	'], 'Batas Wilayah Desa', $tahun);
+$previous_batas_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_batas_desa', ['batas_utara', 'kec_utara', 'batas_selatan', 'kec_selatan', 'batas_timur', 'kec_timur', 'batas_barat', 'kec_barat'], 'Batas Wilayah Desa', $tahun);
 $previous_jarak_kantor_desa = getPreviousYearData($conn, $user_id, $desa_id, 'tb_jarak_kantor_desa', ['jarak_ke_ibukota_kecamatan', 'jarak_ke_ibukota_kabupaten'], 'Jarak Kantor Desa ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota', $tahun);
 $previous_idm_status = getPreviousYearData($conn, $user_id, $desa_id, 'tb_idm_status', ['status_idm'], 'Status Indeks Desa Membangun (IDM)', $tahun);
 
@@ -395,7 +395,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php if ($level != 'admin'): ?>
                         <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
                           <?php
-                          echo displayPreviousYearData($previous_batas_desa, 'kec_utara', 'Batas Wilayah Desa');
+                          echo displayPreviousYearData($previous_batas_desa, 'kec_barat', 'Batas Wilayah Desa');
                           ?>
                         </p>
                       <?php endif; ?>
@@ -421,6 +421,82 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  const batasUtara = document.getElementById("batas_utara");
+                  const kecUtara = document.getElementById("kec_utara");
+                  const batasSelatan = document.getElementById("batas_selatan");
+                  const kecSelatan = document.getElementById("kec_selatan");
+                  const batasTimur = document.getElementById("batas_timur");
+                  const kecTimur = document.getElementById("kec_timur");
+                  const batasBarat = document.getElementById("batas_barat");
+                  const kecBarat = document.getElementById("kec_barat");
+                  const usePreviousCheckbox = document.getElementById("use_previous_batas_desa");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    batasUtara: "<?php echo htmlspecialchars($previous_batas_desa['batas_utara'] ?? ''); ?>",
+                    kecUtara: "<?php echo htmlspecialchars($previous_batas_desa['kec_utara'] ?? ''); ?>",
+                    batasSelatan: "<?php echo htmlspecialchars($previous_batas_desa['batas_selatan'] ?? ''); ?>",
+                    kecSelatan: "<?php echo htmlspecialchars($previous_batas_desa['kec_selatan'] ?? ''); ?>",
+                    batasTimur: "<?php echo htmlspecialchars($previous_batas_desa['batas_timur'] ?? ''); ?>",
+                    kecTimur: "<?php echo htmlspecialchars($previous_batas_desa['kec_timur'] ?? ''); ?>",
+                    batasBarat: "<?php echo htmlspecialchars($previous_batas_desa['batas_barat'] ?? ''); ?>",
+                    kecBarat: "<?php echo htmlspecialchars($previous_batas_desa['kec_barat'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke elemen
+                      batasUtara.value = previousData.batasUtara || "";
+                      kecUtara.value = previousData.kecUtara || "";
+                      batasSelatan.value = previousData.batasSelatan || "";
+                      kecSelatan.value = previousData.kecSelatan || "";
+                      batasTimur.value = previousData.batasTimur || "";
+                      kecTimur.value = previousData.kecTimur || "";
+                      batasBarat.value = previousData.batasBarat || "";
+                      kecBarat.value = previousData.kecBarat || "";
+
+                      // Buat elemen menjadi read-only jika diperlukan
+                      batasUtara.setAttribute("readonly", true);
+                      kecUtara.setAttribute("readonly", true);
+                      batasSelatan.setAttribute("readonly", true);
+                      kecSelatan.setAttribute("readonly", true);
+                      batasTimur.setAttribute("readonly", true);
+                      kecTimur.setAttribute("readonly", true);
+                      batasBarat.setAttribute("readonly", true);
+                      kecBarat.setAttribute("readonly", true);
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      batasUtara.value = "";
+                      kecUtara.value = "";
+                      batasSelatan.value = "";
+                      kecSelatan.value = "";
+                      batasTimur.value = "";
+                      kecTimur.value = "";
+                      batasBarat.value = "";
+                      kecBarat.value = "";
+
+                      // Hapus atribut read-only
+                      batasUtara.removeAttribute("readonly");
+                      kecUtara.removeAttribute("readonly");
+                      batasSelatan.removeAttribute("readonly");
+                      kecSelatan.removeAttribute("readonly");
+                      batasTimur.removeAttribute("readonly");
+                      kecTimur.removeAttribute("readonly");
+                      batasBarat.removeAttribute("readonly");
+                      kecBarat.removeAttribute("readonly");
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
 
             <!-- Modal Info -->
@@ -537,6 +613,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              
             </div>
             <!-- Modal Info -->
             <div class="modal fade" id="modalJarakKantorDesa" tabindex="-1" aria-labelledby="aturanModalLabel"
