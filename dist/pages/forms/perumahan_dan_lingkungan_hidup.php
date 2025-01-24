@@ -395,6 +395,150 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua elemen input dan select
+                  const jumlahPln = document.querySelector('input[name="jumlah_pln"]');
+                  const jumlahNonPln = document.querySelector('input[name="jumlah_non_pln"]');
+                  const jumlahBukanPenggunaListrik = document.querySelector('input[name="jumlah_bukan_pengguna_listrik"]');
+                  const penggunaanLampuTenagaSurya = document.querySelector('select[name="penggunaan_lampu_tenaga_surya"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_listrik_lampu_surya");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jumlahPln: "<?php echo htmlspecialchars($previous_pengguna_listrik_lampu_surya['jumlah_pln'] ?? ''); ?>",
+                    jumlahNonPln: "<?php echo htmlspecialchars($previous_pengguna_listrik_lampu_surya['jumlah_non_pln'] ?? ''); ?>",
+                    jumlahBukanPenggunaListrik: "<?php echo htmlspecialchars($previous_pengguna_listrik_lampu_surya['jumlah_bukan_pengguna_listrik'] ?? ''); ?>",
+                    penggunaanLampuTenagaSurya: "<?php echo htmlspecialchars($previous_pengguna_listrik_lampu_surya['penggunaan_lampu_tenaga_surya'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input dan select
+                      jumlahPln.value = previousData.jumlahPln || "";
+                      jumlahNonPln.value = previousData.jumlahNonPln || "";
+                      jumlahBukanPenggunaListrik.value = previousData.jumlahBukanPenggunaListrik || "";
+                      penggunaanLampuTenagaSurya.value = previousData.penggunaanLampuTenagaSurya || "";
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        jumlahPln,
+                        jumlahNonPln,
+                        jumlahBukanPenggunaListrik
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+
+                      // Nonaktifkan pilihan lain pada select
+                      for (let i = 0; i < penggunaanLampuTenagaSurya.options.length; i++) {
+                        if (penggunaanLampuTenagaSurya.options[i].value !== previousData.penggunaanLampuTenagaSurya) {
+                          penggunaanLampuTenagaSurya.options[i].disabled = true;
+                        }
+                      }
+
+                      // Styling select
+                      penggunaanLampuTenagaSurya.style.backgroundColor = "#f0f0f0";
+                      penggunaanLampuTenagaSurya.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      jumlahPln.value = "";
+                      jumlahNonPln.value = "";
+                      jumlahBukanPenggunaListrik.value = "";
+                      penggunaanLampuTenagaSurya.value = "";
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        jumlahPln,
+                        jumlahNonPln,
+                        jumlahBukanPenggunaListrik
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+
+                      // Aktifkan kembali semua pilihan pada select
+                      for (let i = 0; i < penggunaanLampuTenagaSurya.options.length; i++) {
+                        penggunaanLampuTenagaSurya.options[i].disabled = false;
+                      }
+
+                      // Reset styling select
+                      penggunaanLampuTenagaSurya.style.backgroundColor = "";
+                      penggunaanLampuTenagaSurya.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input numerik
+                  function validateNumericInput() {
+                    const numericInputs = [
+                      jumlahPln,
+                      jumlahNonPln,
+                      jumlahBukanPenggunaListrik
+                    ];
+
+                    numericInputs.forEach(input => {
+                      input.addEventListener('input', function() {
+                        // Hapus karakter non-numerik
+                        this.value = this.value.replace(/[^0-9]/g, '');
+
+                        // Hapus angka 0 di depan
+                        this.value = this.value.replace(/^0+/, '');
+
+                        // Batasi panjang input
+                        if (this.value.length > 6) {
+                          this.value = this.value.slice(0, 6);
+                        }
+                      });
+
+                      // Pastikan input tidak kosong
+                      input.addEventListener('change', function() {
+                        if (this.value === '') {
+                          this.value = '0';
+                        }
+                      });
+                    });
+                  }
+
+                  // Validasi logika total pengguna listrik
+                  function validateListrikLogic() {
+                    function checkListrikLogic() {
+                      const pln = parseInt(jumlahPln.value || 0);
+                      const nonPln = parseInt(jumlahNonPln.value || 0);
+                      const bukanPengguna = parseInt(jumlahBukanPenggunaListrik.value || 0);
+
+                      // Cek apakah total masuk akal
+                      const totalKeluarga = pln + nonPln + bukanPengguna;
+
+                      if (totalKeluarga > 10000) {
+                        alert('Jumlah keluarga tampaknya terlalu besar. Mohon periksa kembali.');
+                      }
+                    }
+
+                    jumlahPln.addEventListener('change', checkListrikLogic);
+                    jumlahNonPln.addEventListener('change', checkListrikLogic);
+                    jumlahBukanPenggunaListrik.addEventListener('change', checkListrikLogic);
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Jalankan validasi
+                  validateNumericInput();
+                  validateListrikLogic();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- Modal Info -->
             <div class="modal fade" id="pln" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
@@ -518,6 +662,116 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua elemen select
+                  const lampuTenagaSurya = document.querySelector('select[name="lampu_tenaga_surya"]');
+                  const peneranganJalanUtama = document.querySelector('select[name="penerangan_jalan_utama"]');
+                  const sumberPenerangan = document.querySelector('select[name="sumber_penerangan"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_penerangan_jalan");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    lampuTenagaSurya: "<?php echo htmlspecialchars($previous_penerangan_jalan['lampu_tenaga_surya'] ?? ''); ?>",
+                    peneranganJalanUtama: "<?php echo htmlspecialchars($previous_penerangan_jalan['penerangan_jalan_utama'] ?? ''); ?>",
+                    sumberPenerangan: "<?php echo htmlspecialchars($previous_penerangan_jalan['sumber_penerangan'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing select
+                      lampuTenagaSurya.value = previousData.lampuTenagaSurya || "";
+                      peneranganJalanUtama.value = previousData.peneranganJalanUtama || "";
+                      sumberPenerangan.value = previousData.sumberPenerangan || "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [
+                        lampuTenagaSurya,
+                        peneranganJalanUtama,
+                        sumberPenerangan
+                      ];
+
+                      // Nonaktifkan pilihan lain dan atur styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          if (select.options[i].value !== select.value) {
+                            select.options[i].disabled = true;
+                          }
+                        }
+
+                        select.style.backgroundColor = "#f0f0f0";
+                        select.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      lampuTenagaSurya.value = "";
+                      peneranganJalanUtama.value = "";
+                      sumberPenerangan.value = "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [
+                        lampuTenagaSurya,
+                        peneranganJalanUtama,
+                        sumberPenerangan
+                      ];
+
+                      // Aktifkan kembali semua pilihan dan reset styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          select.options[i].disabled = false;
+                        }
+
+                        select.style.backgroundColor = "";
+                        select.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Fungsi untuk menambahkan validasi tambahan
+                  function addAdditionalValidation() {
+                    // Contoh validasi logika antar pilihan
+
+                    // Jika lampu tenaga surya "Tidak Ada", maka batasi pilihan sumber penerangan
+                    lampuTenagaSurya.addEventListener('change', function() {
+                      if (this.value === "Tidak Ada") {
+                        // Nonaktifkan pilihan terkait lampu tenaga surya
+                        for (let i = 0; i < sumberPenerangan.options.length; i++) {
+                          if (sumberPenerangan.options[i].value === "Listrik Diusahakan Oleh Pemerintah") {
+                            sumberPenerangan.options[i].disabled = true;
+                          }
+                        }
+                      } else {
+                        // Aktifkan kembali semua pilihan
+                        for (let i = 0; i < sumberPenerangan.options.length; i++) {
+                          sumberPenerangan.options[i].disabled = false;
+                        }
+                      }
+                    });
+
+                    // Validasi hubungan antara penerangan jalan utama dan sumber penerangan
+                    peneranganJalanUtama.addEventListener('change', function() {
+                      if (this.value === "Tidak Ada") {
+                        sumberPenerangan.value = "Non Listrik";
+                        sumberPenerangan.disabled = true;
+                      } else {
+                        sumberPenerangan.disabled = false;
+                      }
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi tambahan
+                  addAdditionalValidation();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- Modal Info -->
             <div class="modal fade" id="penerangan" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
@@ -617,7 +871,7 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   <div class="form-group mb-3">
                     <label class="mb-2">Keberadaan Bank Sampah di Desa/Kelurahan</label>
                     <select name="bank_sampah" class="form-control" required>
-                      <option value="" disabled selected>-- Pilih Dengan Benar --</option> 
+                      <option value="" disabled selected>-- Pilih Dengan Benar --</option>
                       <option value="Ada">Ada</option>
                       <option value="Tidak Ada">Tidak Ada</option>
                       <option value="Non Listrik">Non Listrik</option>
@@ -648,6 +902,118 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua elemen select
+                  const tps = document.querySelector('select[name="tps"]');
+                  const tps3r = document.querySelector('select[name="tps3r"]');
+                  const bankSampah = document.querySelector('select[name="bank_sampah"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_pengelolaan_sampah");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    tps: "<?php echo htmlspecialchars($previous_pengelolaan_sampah['tps'] ?? ''); ?>",
+                    tps3r: "<?php echo htmlspecialchars($previous_pengelolaan_sampah['tps3r'] ?? ''); ?>",
+                    bankSampah: "<?php echo htmlspecialchars($previous_pengelolaan_sampah['bank_sampah'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing select
+                      tps.value = previousData.tps || "";
+                      tps3r.value = previousData.tps3r || "";
+                      bankSampah.value = previousData.bankSampah || "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [tps, tps3r, bankSampah];
+
+                      // Nonaktifkan pilihan lain dan atur styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          if (select.options[i].value !== select.value) {
+                            select.options[i].disabled = true;
+                          }
+                        }
+
+                        select.style.backgroundColor = "#f0f0f0";
+                        select.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      tps.value = "";
+                      tps3r.value = "";
+                      bankSampah.value = "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [tps, tps3r, bankSampah];
+
+                      // Aktifkan kembali semua pilihan dan reset styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          select.options[i].disabled = false;
+                        }
+
+                        select.style.backgroundColor = "";
+                        select.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Fungsi untuk menambahkan validasi tambahan
+                  function addAdditionalValidation() {
+                    // Validasi logika antar pilihan
+
+                    // Jika TPS tidak ada, maka batasi pilihan TPS3R
+                    tps.addEventListener('change', function() {
+                      if (this.value === "Tidak Ada") {
+                        tps3r.value = "Tidak Ada";
+                        tps3r.disabled = true;
+                      } else {
+                        tps3r.disabled = false;
+                      }
+                    });
+
+                    // Jika TPS3R tidak ada, maka batasi pilihan Bank Sampah
+                    tps3r.addEventListener('change', function() {
+                      if (this.value === "Tidak Ada") {
+                        bankSampah.value = "Tidak Ada";
+                        bankSampah.disabled = true;
+                      } else {
+                        bankSampah.disabled = false;
+                      }
+                    });
+
+                    // Tambahan validasi untuk kombinasi pilihan
+                    function validateSampahCombination() {
+                      const tpsValue = tps.value;
+                      const tps3rValue = tps3r.value;
+                      const bankSampahValue = bankSampah.value;
+
+                      // Contoh logika validasi
+                      if (tpsValue === "Tidak Ada" && tps3rValue === "Tidak Ada" && bankSampahValue === "Tidak Ada") {
+                        alert('Perhatian: Semua fasilitas pengelolaan sampah tidak tersedia!');
+                      }
+                    }
+
+                    // Tambahkan event listener untuk validasi
+                    [tps, tps3r, bankSampah].forEach(select => {
+                      select.addEventListener('change', validateSampahCombination);
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi tambahan
+                  addAdditionalValidation();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- Modal Info -->
             <div class="modal fade" id="tps" tabindex="-1" aria-labelledby="aturanModalLabel" aria-hidden="true">
@@ -746,15 +1112,15 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   <label class="mb-2">Jumlah Pemukiman di Bawah SUTET/SUTT/SUTTAS</label>
                   <input required name="jumlah_pemukiman_dibawah_sutet" type="number" min="0" class="form-control"
                     placeholder="Isi Dengan Angka" />
-                    <?php if ($level != 'admin'): ?>
-                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                        <?php
-                        echo displayPreviousYearData($previous_sutet, 'jumlah_pemukiman', 'Wilayah SUTET/SUTT/SUTTAS');
-                        ?>
-                      </p>
-                    <?php endif; ?>
+                  <?php if ($level != 'admin'): ?>
+                    <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                      <?php
+                      echo displayPreviousYearData($previous_sutet, 'jumlah_pemukiman', 'Wilayah SUTET/SUTT/SUTTAS');
+                      ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
-                
+
                 <?php if ($level != 'admin'): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
@@ -773,6 +1139,162 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua elemen select dan input
+                  const sutetStatus = document.getElementById("TPS");
+                  const keberadaanDibawahSutet = document.getElementById("keberadaan_dibawah_sutet");
+                  const jumlahPemukimanDibawahSutet = document.querySelector('input[name="jumlah_pemukiman_dibawah_sutet"]');
+                  const pemukimanForm = document.getElementById("pemukiman_form");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_sutet");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    sutetStatus: "<?php echo htmlspecialchars($previous_sutet['sutet_status'] ?? ''); ?>",
+                    keberadaanDibawahSutet: "<?php echo htmlspecialchars($previous_sutet['keberadaan_pemukiman'] ?? ''); ?>",
+                    jumlahPemukimanDibawahSutet: "<?php echo htmlspecialchars($previous_sutet['jumlah_pemukiman'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk menampilkan/menyembunyikan input jumlah pemukiman
+                  function togglePemukimanInput() {
+                    if (keberadaanDibawahSutet.value === "Ada") {
+                      pemukimanForm.style.display = "block";
+                      jumlahPemukimanDibawahSutet.required = true;
+                    } else {
+                      pemukimanForm.style.display = "none";
+                      jumlahPemukimanDibawahSutet.required = false;
+                      jumlahPemukimanDibawahSutet.value = "";
+                    }
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing select dan input
+                      sutetStatus.value = previousData.sutetStatus || "";
+                      keberadaanDibawahSutet.value = previousData.keberadaanDibawahSutet || "";
+
+                      // Atur visibility input pemukiman
+                      if (previousData.keberadaanDibawahSutet === "Ada") {
+                        pemukimanForm.style.display = "block";
+                        jumlahPemukimanDibawahSutet.value = previousData.jumlahPemukimanDibawahSutet || "";
+                      } else {
+                        pemukimanForm.style.display = "none";
+                        jumlahPemukimanDibawahSutet.value = "";
+                      }
+
+                      // Array select untuk iterasi
+                      const selectFields = [sutetStatus, keberadaanDibawahSutet];
+
+                      // Nonaktifkan pilihan lain dan atur styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          if (select.options[i].value !== select.value) {
+                            select.options[i].disabled = true;
+                          }
+                        }
+
+                        select.style.backgroundColor = "#f0f0f0";
+                        select.style.cursor = "not-allowed";
+                      });
+
+                      // Atur input jumlah pemukiman
+                      jumlahPemukimanDibawahSutet.setAttribute("readonly", true);
+                      jumlahPemukimanDibawahSutet.style.backgroundColor = "#f0f0f0";
+                      jumlahPemukimanDibawahSutet.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      sutetStatus.value = "";
+                      keberadaanDibawahSutet.value = "";
+                      pemukimanForm.style.display = "none";
+                      jumlahPemukimanDibawahSutet.value = "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [sutetStatus, keberadaanDibawahSutet];
+
+                      // Aktifkan kembali semua pilihan dan reset styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          select.options[i].disabled = false;
+                        }
+
+                        select.style.backgroundColor = "";
+                        select.style.cursor = "default";
+                      });
+
+                      // Reset input jumlah pemukiman
+                      jumlahPemukimanDibawahSutet.removeAttribute("readonly");
+                      jumlahPemukimanDibawahSutet.style.backgroundColor = "";
+                      jumlahPemukimanDibawahSutet.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input jumlah pemukiman
+                  function validatePemukimanInput() {
+                    jumlahPemukimanDibawahSutet.addEventListener('input', function() {
+                      // Hapus karakter non-numerik
+                      this.value = this.value.replace(/[^0-9]/g, '');
+
+                      // Batasi panjang input
+                      if (this.value.length > 5) {
+                        this.value = this.value.slice(0, 5);
+                      }
+
+                      // Hapus angka 0 di depan
+                      this.value = this.value.replace(/^0+/, '');
+                    });
+
+                    // Validasi logika antara status SUTET dan pemukiman
+                    sutetStatus.addEventListener('change', function() {
+                      if (this.value === "Tidak Ada") {
+                        keberadaanDibawahSutet.value = "Tidak Ada";
+                        keberadaanDibawahSutet.disabled = true;
+                        pemukimanForm.style.display = "none";
+                        jumlahPemukimanDibawahSutet.value = "";
+                      } else {
+                        keberadaanDibawahSutet.disabled = false;
+                      }
+                    });
+
+                    // Validasi hubungan antara keberadaan dan jumlah pemukiman
+                    keberadaanDibawahSutet.addEventListener('change', function() {
+                      togglePemukimanInput();
+
+                      if (this.value === "Tidak Ada") {
+                        jumlahPemukimanDibawahSutet.value = "0";
+                      }
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi input
+                  validatePemukimanInput();
+
+                  // Inisialisasi fungsi saat halaman dimuat
+                  togglePemukimanInput();
+                  populatePreviousData();
+                });
+
+                // Fungsi untuk toggle input pemukiman (untuk compatibility dengan atribut onchange di HTML)
+                function togglePemukimanInput() {
+                  const keberadaanDibawahSutet = document.getElementById("keberadaan_dibawah_sutet");
+                  const pemukimanForm = document.getElementById("pemukiman_form");
+                  const jumlahPemukimanDibawahSutet = document.querySelector('input[name="jumlah_pemukiman_dibawah_sutet"]');
+
+                  if (keberadaanDibawahSutet.value === "Ada") {
+                    pemukimanForm.style.display = "block";
+                    jumlahPemukimanDibawahSutet.required = true;
+                  } else {
+                    pemukimanForm.style.display = "none";
+                    jumlahPemukimanDibawahSutet.required = false;
+                    jumlahPemukimanDibawahSutet.value = "";
+                  }
+                }
+              </script>
 
               <script>
                 function togglePemukimanInput() {
@@ -881,56 +1403,56 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 1</label>
                       <input required name="nama_sungai_1" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_1', 'Keberadaan Sungai');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_1', 'Keberadaan Sungai');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 2</label>
                       <input required name="nama_sungai_2" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_2', 'Keberadaan Sungai');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_2', 'Keberadaan Sungai');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 3</label>
                       <input required name="nama_sungai_3" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_3', 'Keberadaan Sungai');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_3', 'Keberadaan Sungai');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama Sungai Yang Melintasi Ke - 4</label>
                       <input required name="nama_sungai_4" type="text" class="form-control"
                         placeholder="Isi Dengan nama sungai">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_4', 'Keberadaan Sungai');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_sungai, 'nama_sungai_4', 'Keberadaan Sungai');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
-                
+
                 <?php if ($level != 'admin'): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
@@ -949,6 +1471,167 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select dan container daftar sungai
+                  const keberadaanSungai = document.getElementById("keberadaan_sungai");
+                  const daftarSungai = document.getElementById("daftar_sungai");
+
+                  // Ambil input nama sungai
+                  const namaSungai1 = document.querySelector('input[name="nama_sungai_1"]');
+                  const namaSungai2 = document.querySelector('input[name="nama_sungai_2"]');
+                  const namaSungai3 = document.querySelector('input[name="nama_sungai_3"]');
+                  const namaSungai4 = document.querySelector('input[name="nama_sungai_4"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_keberadaan_sungai");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    keberadaanSungai: "<?php echo htmlspecialchars($previous_keberadaan_sungai['keberadaan_sungai'] ?? ''); ?>",
+                    namaSungai1: "<?php echo htmlspecialchars($previous_keberadaan_sungai['nama_sungai_1'] ?? ''); ?>",
+                    namaSungai2: "<?php echo htmlspecialchars($previous_keberadaan_sungai['nama_sungai_2'] ?? ''); ?>",
+                    namaSungai3: "<?php echo htmlspecialchars($previous_keberadaan_sungai['nama_sungai_3'] ?? ''); ?>",
+                    namaSungai4: "<?php echo htmlspecialchars($previous_keberadaan_sungai['nama_sungai_4'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk menampilkan/menyembunyikan input nama sungai
+                  function toggleSungaiInput() {
+                    if (keberadaanSungai.value === "Ada") {
+                      daftarSungai.style.display = "block";
+
+                      // Set required untuk input nama sungai
+                      const sungaiInputs = [namaSungai1, namaSungai2, namaSungai3, namaSungai4];
+                      sungaiInputs.forEach(input => input.required = true);
+                    } else {
+                      daftarSungai.style.display = "none";
+
+                      // Kosongkan dan hapus required dari input nama sungai
+                      const sungaiInputs = [namaSungai1, namaSungai2, namaSungai3, namaSungai4];
+                      sungaiInputs.forEach(input => {
+                        input.value = "";
+                        input.required = false;
+                      });
+                    }
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select keberadaan sungai
+                      keberadaanSungai.value = previousData.keberadaanSungai || "";
+
+                      // Atur visibility input nama sungai
+                      if (previousData.keberadaanSungai === "Ada") {
+                        daftarSungai.style.display = "block";
+
+                        // Set nilai input nama sungai
+                        namaSungai1.value = previousData.namaSungai1 || "";
+                        namaSungai2.value = previousData.namaSungai2 || "";
+                        namaSungai3.value = previousData.namaSungai3 || "";
+                        namaSungai4.value = previousData.namaSungai4 || "";
+
+                        // Nonaktifkan pilihan lain pada select
+                        for (let i = 0; i < keberadaanSungai.options.length; i++) {
+                          if (keberadaanSungai.options[i].value !== previousData.keberadaanSungai) {
+                            keberadaanSungai.options[i].disabled = true;
+                          }
+                        }
+
+                        // Styling select
+                        keberadaanSungai.style.backgroundColor = "#f0f0f0";
+                        keberadaanSungai.style.cursor = "not-allowed";
+
+                        // Set input nama sungai read-only
+                        const sungaiInputs = [namaSungai1, namaSungai2, namaSungai3, namaSungai4];
+                        sungaiInputs.forEach(input => {
+                          input.setAttribute("readonly", true);
+                          input.style.backgroundColor = "#f0f0f0";
+                          input.style.cursor = "not-allowed";
+                        });
+                      } else {
+                        daftarSungai.style.display = "none";
+                      }
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      keberadaanSungai.value = "";
+                      daftarSungai.style.display = "none";
+
+                      // Kosongkan input nama sungai
+                      const sungaiInputs = [namaSungai1, namaSungai2, namaSungai3, namaSungai4];
+                      sungaiInputs.forEach(input => {
+                        input.value = "";
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+
+                      // Aktifkan kembali semua pilihan pada select
+                      for (let i = 0; i < keberadaanSungai.options.length; i++) {
+                        keberadaanSungai.options[i].disabled = false;
+                      }
+
+                      // Reset styling select
+                      keberadaanSungai.style.backgroundColor = "";
+                      keberadaanSungai.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input nama sungai
+                  function validateSungaiInput() {
+                    const sungaiInputs = [namaSungai1, namaSungai2, namaSungai3, namaSungai4];
+
+                    sungaiInputs.forEach(input => {
+                      input.addEventListener('input', function() {
+                        // Hapus karakter selain huruf, spasi, dan tanda hubung
+                        this.value = this.value.replace(/[^a-zA-Z\s-]/g, '');
+
+                        // Ubah huruf pertama setiap kata menjadi kapital
+                        this.value = this.value.replace(/\b\w/g, char => char.toUpperCase());
+
+                        // Batasi panjang input
+                        if (this.value.length > 100) {
+                          this.value = this.value.slice(0, 100);
+                        }
+                      });
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi input
+                  validateSungaiInput();
+
+                  // Inisialisasi fungsi saat halaman dimuat
+                  toggleSungaiInput();
+                  populatePreviousData();
+                });
+
+                // Fungsi untuk toggle input sungai (untuk compatibility dengan atribut onchange di HTML)
+                function toggleSungaiInput() {
+                  const keberadaanSungai = document.getElementById("keberadaan_sungai");
+                  const daftarSungai = document.getElementById("daftar_sungai");
+
+                  if (keberadaanSungai.value === "Ada") {
+                    daftarSungai.style.display = "block";
+
+                    // Set required untuk input nama sungai
+                    const sungaiInputs = document.querySelectorAll('input[name^="nama_sungai_"]');
+                    sungaiInputs.forEach(input => input.required = true);
+                  } else {
+                    daftarSungai.style.display = "none";
+
+                    // Kosongkan dan hapus required dari input nama sungai
+                    const sungaiInputs = document.querySelectorAll('input[name^="nama_sung ai_"]');
+                    sungaiInputs.forEach(input => {
+                      input.value = "";
+                      input.required = false;
+                    });
+                  }
+                }
+              </script>
 
               <script>
                 function toggleSungaiInput() {
@@ -1041,12 +1724,12 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_danau, 'keberadaan_danau', 'Keberadaan Danau/Waduk/Situ');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_danau, 'keberadaan_danau', 'Keberadaan Danau/Waduk/Situ');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div id="daftar_danau" style="display: none;">
@@ -1054,56 +1737,56 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 1</label>
                       <input required name="nama_danau_1" type="text" class="form-control"
                         placeholder="Isi Dengan nama danau/waduk/situ">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_1', 'Keberadaan Danau/Waduk/Situ');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_1', 'Keberadaan Danau/Waduk/Situ');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 2</label>
                       <input required name="nama_danau_2" type="text" class="form-control"
                         placeholder="Isi Dengan nama danau/waduk/situ">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_2', 'Keberadaan Danau/Waduk/Situ');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_2', 'Keberadaan Danau/Waduk/Situ');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 3</label>
                       <input required name="nama_danau_3" type="text" class="form-control"
                         placeholder="Isi Dengan nama danau/waduk/situ">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_3', 'Keberadaan Danau/Waduk/Situ');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_3', 'Keberadaan Danau/Waduk/Situ');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
 
                     <div class="form-group mb-3">
                       <label class="mb-2">Nama danau/waduk/situ yang berada di wilayah desa Ke - 4</label>
                       <input required name="nama_danau_4" type="text" class="form-control"
                         placeholder="Isi Dengan nama danau/waduk/situ">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_4', 'Keberadaan Danau/Waduk/Situ');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_danau, 'nama_danau_4', 'Keberadaan Danau/Waduk/Situ');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
-                
+
                 <?php if ($level != 'admin'): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
@@ -1122,6 +1805,167 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select dan container daftar danau
+                  const keberadaanDanau = document.getElementById("keberadaan_danau");
+                  const daftarDanau = document.getElementById("daftar_danau");
+
+                  // Ambil input nama danau
+                  const namaDanau1 = document.querySelector('input[name="nama_danau_1"]');
+                  const namaDanau2 = document.querySelector('input[name="nama_danau_2"]');
+                  const namaDanau3 = document.querySelector('input[name="nama_danau_3"]');
+                  const namaDanau4 = document.querySelector('input[name="nama_danau_4"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_danau");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    keberadaanDanau: "<?php echo htmlspecialchars($previous_keberadaan_danau['keberadaan_danau'] ?? ''); ?>",
+                    namaDanau1: "<?php echo htmlspecialchars($previous_keberadaan_danau['nama_danau_1'] ?? ''); ?>",
+                    namaDanau2: "<?php echo htmlspecialchars($previous_keberadaan_danau['nama_danau_2'] ?? ''); ?>",
+                    namaDanau3: "<?php echo htmlspecialchars($previous_keberadaan_danau['nama_danau_3'] ?? ''); ?>",
+                    namaDanau4: "<?php echo htmlspecialchars($previous_keberadaan_danau['nama_danau_4'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk menampilkan/menyembunyikan input nama danau
+                  function toggleDanauInput() {
+                    if (keberadaanDanau.value === "Ada") {
+                      daftarDanau.style.display = "block";
+
+                      // Set required untuk input nama danau
+                      const danauInputs = [namaDanau1, namaDanau2, namaDanau3, namaDanau4];
+                      danauInputs.forEach(input => input.required = true);
+                    } else {
+                      daftarDanau.style.display = "none";
+
+                      // Kosongkan dan hapus required dari input nama danau
+                      const danauInputs = [namaDanau1, namaDanau2, namaDanau3, namaDanau4];
+                      danauInputs.forEach(input => {
+                        input.value = "";
+                        input.required = false;
+                      });
+                    }
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select keberadaan danau
+                      keberadaanDanau.value = previousData.keberadaanDanau || "";
+
+                      // Atur visibility input nama danau
+                      if (previousData.keberadaanDanau === "Ada") {
+                        daftarDanau.style.display = "block";
+
+                        // Set nilai input nama danau
+                        namaDanau1.value = previousData.namaDanau1 || "";
+                        namaDanau2.value = previousData.namaDanau2 || "";
+                        namaDanau3.value = previousData.namaDanau3 || "";
+                        namaDanau4.value = previousData.namaDanau4 || "";
+
+                        // Nonaktifkan pilihan lain pada select
+                        for (let i = 0; i < keberadaanDanau.options.length; i++) {
+                          if (keberadaanDanau.options[i].value !== previousData.keberadaanDanau) {
+                            keberadaanDanau.options[i].disabled = true;
+                          }
+                        }
+
+                        // Styling select
+                        keberadaanDanau.style.backgroundColor = "#f0f0f0";
+                        keberadaanDanau.style.cursor = "not-allowed";
+
+                        // Set input nama danau read-only
+                        const danauInputs = [namaDanau1, namaDanau2, namaDanau3, namaDanau4];
+                        danauInputs.forEach(input => {
+                          input.setAttribute("readonly", true);
+                          input.style.backgroundColor = "#f0f0f0";
+                          input.style.cursor = "not-allowed";
+                        });
+                      } else {
+                        daftarDanau.style.display = "none";
+                      }
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      keberadaanDanau.value = "";
+                      daftarDanau.style.display = "none";
+
+                      // Kosongkan input nama danau
+                      const danauInputs = [namaDanau1, namaDanau2, namaDanau3, namaDanau4];
+                      danauInputs.forEach(input => {
+                        input.value = "";
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+
+                      // Aktifkan kembali semua pilihan pada select
+                      for (let i = 0; i < keberadaanDanau.options.length; i++) {
+                        keberadaanDanau.options[i].disabled = false;
+                      }
+
+                      // Reset styling select
+                      keberadaanDanau.style.backgroundColor = "";
+                      keberadaanDanau.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input nama danau
+                  function validateDanauInput() {
+                    const danauInputs = [namaDanau1, namaDanau2, namaDanau3, namaDanau4];
+
+                    danauInputs.forEach(input => {
+                      input.addEventListener('input', function() {
+                        // Hapus karakter selain huruf, spasi, dan tanda hubung
+                        this.value = this.value.replace(/[^a-zA-Z\s-]/g, '');
+
+                        // Ubah huruf pertama setiap kata menjadi kapital
+                        this.value = this.value.replace(/\b\w/g, char => char.toUpperCase());
+
+                        // Batasi panjang input
+                        if (this.value.length > 100) {
+                          this.value = this.value.slice(0, 100);
+                        }
+                      });
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi input
+                  validateDanauInput();
+
+                  // Inisialisasi fungsi saat halaman dimuat
+                  toggleDanauInput();
+                  populatePreviousData();
+                });
+
+                // Fungsi untuk toggle input danau (untuk compatibility dengan atribut onchange di HTML)
+                function toggleDanauInput() {
+                  const keberadaanDanau = document.getElementById("keberadaan_danau");
+                  const daftarDanau = document.getElementById("daftar_danau");
+
+                  if (keberadaanDanau.value === "Ada") {
+                    daftarDanau.style.display = "block";
+
+                    // Set required untuk input nama danau
+                    const danauInputs = document.querySelectorAll('input[name^="nama_danau_"]');
+                    danauInputs.forEach(input => input.required = true);
+                  } else {
+                    daftarDanau.style.display = "none";
+
+                    // Kosongkan dan hapus required dari input nama danau
+                    const danauInputs = document.querySelectorAll('input[name^="nama_danau_"]');
+                    danauInputs.forEach(input => {
+                      input.value = "";
+                      input.required = false;
+                    });
+                  }
+                }
+              </script>
 
               <script>
                 function toggleDanauInput() {
@@ -1219,12 +2063,12 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <option value="Tidak Ada">Tidak Ada</option>
                     </select>
                     <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_pemukiman_bantaran, 'keberadaan_pemukiman', 'Keberadaan Permukiman di Bantaran Sungai');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_keberadaan_pemukiman_bantaran, 'keberadaan_pemukiman', 'Keberadaan Permukiman di Bantaran Sungai');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
 
                   <div id="jumlah_pemukiman_bantaran" style="display: none;">
@@ -1232,17 +2076,17 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <label class="mb-2">Jumlah Pemukiman Di Bantaran Sungai</label>
                       <input required name="pemukiman_bantaran" type="number" min="0" class="form-control"
                         placeholder="Isi Dengan Angka">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_keberadaan_pemukiman_bantaran, 'jumlah_pemukiman', 'Keberadaan Permukiman di Bantaran Sungai');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_keberadaan_pemukiman_bantaran, 'jumlah_pemukiman', 'Keberadaan Permukiman di Bantaran Sungai');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
-                
+
                 <?php if ($level != 'admin'): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
@@ -1261,6 +2105,142 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select dan container jumlah pemukiman
+                  const keberadaanPemukimanBantaran = document.getElementById("keberadaan_pemukiman_bantaran");
+                  const jumlahPemukimanBantaran = document.getElementById("jumlah_pemukiman_bantaran");
+
+                  // Ambil input jumlah pemukiman
+                  const pemukimanBantaran = document.querySelector('input[name="pemukiman_bantaran"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_keberadaan_pemukiman_bantaran");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    keberadaanPemukiman: "<?php echo htmlspecialchars($previous_keberadaan_pemukiman_bantaran['keberadaan_pemukiman'] ?? ''); ?>",
+                    jumlahPemukiman: "<?php echo htmlspecialchars($previous_keberadaan_pemukiman_bantaran['jumlah_pemukiman'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk menampilkan/menyembunyikan input jumlah pemukiman
+                  function toggleBantaranInput() {
+                    if (keberadaanPemukimanBantaran.value === "Ada") {
+                      jumlahPemukimanBantaran.style.display = "block";
+                      pemukimanBantaran.required = true;
+                    } else {
+                      jumlahPemukimanBantaran.style.display = "none";
+                      pemukimanBantaran.required = false;
+                      pemukimanBantaran.value = "";
+                    }
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select keberadaan pemukiman
+                      keberadaanPemukimanBantaran.value = previousData.keberadaanPemukiman || "";
+
+                      // Atur visibility input jumlah pemukiman
+                      if (previousData.keberadaanPemukiman === "Ada") {
+                        jumlahPemukimanBantaran.style.display = "block";
+                        pemukimanBantaran.value = previousData.jumlahPemukiman || "";
+
+                        // Nonaktifkan pilihan lain pada select
+                        for (let i = 0; i < keberadaanPemukimanBantaran.options.length; i++) {
+                          if (keberadaanPemukimanBantaran.options[i].value !== previousData.keberadaanPemukiman) {
+                            keberadaanPemukimanBantaran.options[i].disabled = true;
+                          }
+                        }
+
+                        // Styling select
+                        keberadaanPemukimanBantaran.style.backgroundColor = "#f0f0f0";
+                        keberadaanPemukimanBantaran.style.cursor = "not-allowed";
+
+                        // Set input jumlah pemukiman read-only
+                        pemukimanBantaran.setAttribute("readonly", true);
+                        pemukimanBantaran.style.backgroundColor = "#f0f0f0";
+                        pemukimanBantaran.style.cursor = "not-allowed";
+                      } else {
+                        jumlahPemukimanBantaran.style.display = "none";
+                      }
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      keberadaanPemukimanBantaran.value = "";
+                      jumlahPemukimanBantaran.style.display = "none";
+
+                      // Kosongkan input jumlah pemukiman
+                      pemukimanBantaran.value = "";
+                      pemukimanBantaran.removeAttribute("readonly");
+                      pemukimanBantaran.style.backgroundColor = "";
+                      pemukimanBantaran.style.cursor = "default";
+
+                      // Aktifkan kembali semua pilihan pada select
+                      for (let i = 0; i < keberadaanPemukimanBantaran.options.length; i++) {
+                        keberadaanPemukimanBantaran.options[i].disabled = false;
+                      }
+
+                      // Reset styling select
+                      keberadaanPemukimanBantaran.style.backgroundColor = "";
+                      keberadaanPemukimanBantaran.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input jumlah pemukiman
+                  function validatePemukimanInput() {
+                    pemukimanBantaran.addEventListener('input', function() {
+                      // Hapus karakter non-numerik
+                      this.value = this.value.replace(/[^0-9]/g, '');
+
+                      // Batasi panjang input
+                      if (this.value.length > 5) {
+                        this.value = this.value.slice(0, 5);
+                      }
+
+                      // Hapus angka 0 di depan
+                      this.value = this.value.replace(/^0+/, '');
+                    });
+
+                    // Tambahkan validasi logika
+                    function validatePemukimanLogic() {
+                      // Contoh validasi: Batasi jumlah pemukiman
+                      if (parseInt(pemukimanBantaran.value || 0) > 10000) {
+                        alert('Jumlah pemukiman tampaknya terlalu besar. Mohon periksa kembali.');
+                        pemukimanBantaran.value = '';
+                      }
+                    }
+
+                    pemukimanBantaran.addEventListener('change', validatePemukimanLogic);
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi input
+                  validatePemukimanInput();
+
+                  // Inisialisasi fungsi saat halaman dimuat
+                  toggleBantaranInput();
+                  populatePreviousData();
+                });
+
+                // Fungsi untuk toggle input bantaran (untuk compatibility dengan atribut onchange di HTML)
+                function toggleBantaranInput() {
+                  const keberadaanPemukimanBantaran = document.getElementById("keberadaan_pemukiman_bantaran");
+                  const jumlahPemukimanBantaran = document.getElementById("jumlah_pemukiman_bantaran");
+                  const pemukimanBantaran = document.querySelector('input[name="pemukiman_bantaran"]');
+
+                  if (keberadaanPemukimanBantaran.value === "Ada") {
+                    jumlahPemukimanBantaran.style.display = "block";
+                    pemukimanBantaran.required = true;
+                  } else {
+                    jumlahPemukimanBantaran.style.display = "none";
+                    pemukimanBantaran.required = false;
+                    pemukimanBantaran.value = "";
+                  }
+                }
+              </script>
 
               <script>
                 function toggleBantaranInput() {
@@ -1346,13 +2326,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <label class="mb-2">Jumlah Embung</label>
                     <input required name="jumlah_embung" class="form-control" type="number" min="0"
                       placeholder="Isi Dengan Angka">
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_embung_mata_air, 'jumlah_embung', 'Banyaknya Embung dan Lokasi Mata Air');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_embung_mata_air, 'jumlah_embung', 'Banyaknya Embung dan Lokasi Mata Air');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group mb-3">
                     <label class="mb-2">Lokasi Mata Air</label>
@@ -1391,6 +2371,137 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input dan select
+                  const jumlahEmbung = document.querySelector('input[name="jumlah_embung"]');
+                  const mataAir = document.getElementById("mata_air");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_embung_mata_air");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jumlahEmbung: "<?php echo htmlspecialchars($previous_embung_mata_air['jumlah_embung'] ?? ''); ?>",
+                    mataAir: "<?php echo htmlspecialchars($previous_embung_mata_air['lokasi_mata_air'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke input dan select
+                      jumlahEmbung.value = previousData.jumlahEmbung || "";
+                      mataAir.value = previousData.mataAir || "";
+
+                      // Buat input dan select menjadi read-only
+                      const inputFields = [jumlahEmbung];
+                      const selectFields = [mataAir];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+
+                      selectFields.forEach(select => {
+                        // Nonaktifkan pilihan lain
+                        for (let i = 0; i < select.options.length; i++) {
+                          if (select.options[i].value !== select.value) {
+                            select.options[i].disabled = true;
+                          }
+                        }
+
+                        select.style.backgroundColor = "#f0f0f0";
+                        select.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      jumlahEmbung.value = "";
+                      mataAir.value = "";
+
+                      // Hapus atribut readonly dari input
+                      const inputFields = [jumlahEmbung];
+                      const selectFields = [mataAir];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+
+                      selectFields.forEach(select => {
+                        // Aktifkan kembali semua pilihan
+                        for (let i = 0; i < select.options.length; i++) {
+                          select.options[i].disabled = false;
+                        }
+
+                        select.style.backgroundColor = "";
+                        select.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Validasi input jumlah embung
+                  function validateEmbungInput() {
+                    jumlahEmbung.addEventListener('input', function() {
+                      // Hapus karakter non-numerik
+                      this.value = this.value.replace(/[^0-9]/g, '');
+
+                      // Batasi panjang input
+                      if (this.value.length > 5) {
+                        this.value = this.value.slice(0, 5);
+                      }
+
+                      // Hapus angka 0 di depan
+                      this.value = this.value.replace(/^0+/, '');
+                    });
+
+                    // Tambahkan validasi logika
+                    function validateEmbungLogic() {
+                      const embungValue = parseInt(jumlahEmbung.value || 0);
+
+                      // Contoh validasi: Batasi jumlah embung
+                      if (embungValue > 100) {
+                        alert('Jumlah embung tampaknya terlalu besar. Mohon periksa kembali.');
+                        jumlahEmbung.value = '';
+                      }
+                    }
+
+                    jumlahEmbung.addEventListener('change', validateEmbungLogic);
+                  }
+
+                  // Validasi hubungan antara mata air dan embung
+                  function validateMataAirLogic() {
+                    mataAir.addEventListener('change', function() {
+                      // Jika mata air tidak ada, berikan peringatan jika jumlah embung > 0
+                      if (this.value === "Tidak Ada") {
+                        if (parseInt(jumlahEmbung.value || 0) > 0) {
+                          alert('Perhatian: Anda menginput jumlah embung lebih dari 0 meskipun tidak ada mata air.');
+                        }
+                      }
+                    });
+
+                    jumlahEmbung.addEventListener('change', function() {
+                      // Jika jumlah embung > 0, pastikan mata air tidak "Tidak Ada"
+                      if (parseInt(this.value || 0) > 0) {
+                        if (mataAir.value === "Tidak Ada") {
+                          alert('Perhatian: Anda menginput jumlah embung lebih dari 0 meskipun tidak ada mata air.');
+                        }
+                      }
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi input
+                  validateEmbungInput();
+                  validateMataAirLogic();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
 
@@ -1478,17 +2589,17 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                       <label class="mb-2">Jumlah Pemukiman Kumuh</label>
                       <input required name="jumlah_pemukiman_kumuh" type="number" class="form-control"
                         placeholder="Isi Dengan Angka">
-                        <?php if ($level != 'admin'): ?>
-                          <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                            <?php
-                            echo displayPreviousYearData($previous_permukiman_kumuh, 'jumlah_kumuh', 'Keberadaan Permukiman Kumuh');
-                            ?>
-                          </p>
-                        <?php endif; ?>
+                      <?php if ($level != 'admin'): ?>
+                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                          <?php
+                          echo displayPreviousYearData($previous_permukiman_kumuh, 'jumlah_kumuh', 'Keberadaan Permukiman Kumuh');
+                          ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
-                
+
                 <?php if ($level != 'admin'): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
@@ -1508,6 +2619,156 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select dan container jumlah pemukiman
+                  const keberadaanPemukimanKumuh = document.getElementById("keberadaan_pemukiman_kumuh");
+                  const jumlahPemukimanKumuh = document.getElementById("jumlah_pemukiman_kumuh");
+
+                  // Ambil input jumlah pemukiman kumuh
+                  const pemukimanKumuh = document.querySelector('input[name="jumlah_pemukiman_kumuh"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_permukiman_kumuh");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    keberadaanKumuh: "<?php echo htmlspecialchars($previous_permukiman_kumuh['keberadaan_kumuh'] ?? ''); ?>",
+                    jumlahKumuh: "<?php echo htmlspecialchars($previous_permukiman_kumuh['jumlah_kumuh'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk menampilkan/menyembunyikan input jumlah pemukiman kumuh
+                  function toggleSungaiContainer() {
+                    if (keberadaanPemukimanKumuh.value === "Ada") {
+                      jumlahPemukimanKumuh.style.display = "block";
+                      pemukimanKumuh.required = true;
+                    } else {
+                      jumlahPemukimanKumuh.style.display = "none";
+                      pemukimanKumuh.required = false;
+                      pemukimanKumuh.value = "";
+                    }
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select keberadaan pemukiman kumuh
+                      keberadaanPemukimanKumuh.value = previousData.keberadaanKumuh || "";
+
+                      // Atur visibility input jumlah pemukiman kumuh
+                      if (previousData.keberadaanKumuh === "Ada") {
+                        jumlahPemukimanKumuh.style.display = "block";
+                        pemukimanKumuh.value = previousData.jumlahKumuh || "";
+
+                        // Nonaktifkan pilihan lain pada select
+                        for (let i = 0; i < keberadaanPemukimanKumuh.options.length; i++) {
+                          if (keberadaanPemukimanKumuh.options[i].value !== previousData.keberadaanKumuh) {
+                            keberadaanPemukimanKumuh.options[i].disabled = true;
+                          }
+                        }
+
+                        // Styling select
+                        keberadaanPemukimanKumuh.style.backgroundColor = "#f0f0f0";
+                        keberadaanPemukimanKumuh.style.cursor = "not-allowed";
+
+                        // Set input jumlah pemukiman kumuh read-only
+                        pemukimanKumuh.setAttribute("readonly", true);
+                        pemukimanKumuh.style.backgroundColor = "#f0f0f0";
+                        pemukimanKumuh.style.cursor = "not-allowed";
+                      } else {
+                        jumlahPemukimanKumuh.style.display = "none";
+                      }
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      keberadaanPemukimanKumuh.value = "";
+                      jumlahPemukimanKumuh.style.display = "none";
+
+                      // Kosongkan input jumlah pemukiman kumuh
+                      pemukimanKumuh.value = "";
+                      pemukimanKumuh.removeAttribute("readonly");
+                      pemukimanKumuh.style.backgroundColor = "";
+                      pemukimanKumuh.style.cursor = "default";
+
+                      // Aktifkan kembali semua pilihan pada select
+                      for (let i = 0; i < keberadaanPemukimanKumuh.options.length; i++) {
+                        keberadaanPemukimanKumuh.options[i].disabled = false;
+                      }
+
+                      // Reset styling select
+                      keberadaanPemukimanKumuh.style.backgroundColor = "";
+                      keberadaanPemukimanKumuh.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input jumlah pemukiman kumuh
+                  function validatePemukimanKumuhInput() {
+                    pemukimanKumuh.addEventListener('input', function() {
+                      // Hapus karakter non-numerik
+                      this.value = this.value.replace(/[^0-9]/g, '');
+
+                      // Batasi panjang input
+                      if (this.value.length > 5) {
+                        this.value = this.value.slice(0, 5);
+                      }
+
+                      // Hapus angka 0 di depan
+                      this.value = this.value.replace(/^0+/, '');
+                    });
+
+                    // Tambahkan validasi logika
+                    function validatePemukimanKumuhLogic() {
+                      const pemukimanValue = parseInt(pemukimanKumuh.value || 0);
+
+                      // Contoh validasi: Batasi jumlah pemukiman kumuh
+                      if (pemukimanValue > 5000) {
+                        alert('Jumlah pemukiman kumuh tampaknya terlalu besar. Mohon periksa kembali.');
+                        pemukimanKumuh.value = '';
+                      }
+
+                      // Validasi persentase pemukiman kumuh
+                      function validatePemukimanPercentage() {
+                        // Misalkan total keluarga di desa adalah 10000
+                        const totalKeluarga = 10000;
+                        const persentasePemukimanKumuh = (pemukimanValue / totalKeluarga) * 100;
+
+                        if (persentasePemukimanKumuh > 30) {
+                          alert('Persentase pemukiman kumuh melebihi 30% dari total keluarga. Mohon periksa kembali.');
+                        }
+                      }
+
+                      validatePemukimanPercentage();
+                    }
+
+                    pemukimanKumuh.addEventListener('change', validatePemukimanKumuhLogic);
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi input
+                  validatePemukimanKumuhInput();
+
+                  // Inisialisasi fungsi saat halaman dimuat
+                  toggleSungaiContainer();
+                  populatePreviousData();
+                });
+
+                // Fungsi untuk toggle input pemukiman kumuh (untuk compatibility dengan atribut onchange di HTML)
+                function toggleSungaiContainer() {
+                  const keberadaanPemukimanKumuh = document.getElementById("keberadaan_pemukiman_kumuh");
+                  const jumlahPemukimanKumuh = document.getElementById("jumlah_pemukiman_kumuh");
+                  const pemukimanKumuh = document.querySelector('input[name="jumlah_pemukiman_kumuh"]');
+
+                  if (keberadaanPemukimanKumuh.value === "Ada") {
+                    jumlahPemukimanKumuh.style.display = "block";
+                    pemukimanKumuh.required = true;
+                  } else {
+                    jumlahPemukimanKumuh.style.display = "none";
+                    pemukimanKumuh.required = false;
+                    pemukimanKumuh.value = "";
+                  }
+                }
+              </script>
 
               <script>
                 function toggleSungaiContainer() {
@@ -1616,6 +2877,57 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select untuk lokasi penggalian
+                  const lokasiPenggalian = document.getElementById("TPS");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_lokasi_penggalian");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    keberadaanGalian: "<?php echo htmlspecialchars($previous_lokasi_penggalian['keberadaan_galian'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select lokasi penggalian
+                      lokasiPenggalian.value = previousData.keberadaanGalian || "";
+
+                      // Nonaktifkan pilihan lain pada select
+                      for (let i = 0; i < lokasiPenggalian.options.length; i++) {
+                        if (lokasiPenggalian.options[i].value !== previousData.keberadaanGalian) {
+                          lokasiPenggalian.options[i].disabled = true;
+                        }
+                      }
+
+                      // Styling select
+                      lokasiPenggalian.style.backgroundColor = "#f0f0f0";
+                      lokasiPenggalian.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      lokasiPenggalian.value = ""; // Kembali ke pilihan default
+
+                      // Aktifkan kembali semua pilihan
+                      for (let i = 0; i < lokasiPenggalian.options.length; i++) {
+                        lokasiPenggalian.options[i].disabled = false;
+                      }
+
+                      // Reset styling select
+                      lokasiPenggalian.style.backgroundColor = "";
+                      lokasiPenggalian.style.cursor = "default";
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- /.card-body -->
 
@@ -1673,13 +2985,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <label class="mb-2">Jumlah Sarana Prasarana Kebersihan</label>
                     <input required class="form-control" type="number" min="0" name="prasarana_kebersihan"
                       placeholder="Isi Dengan Angka" required>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_prasarana_kebersihan, 'jumlah_prasarana', 'Jumlah Sarana Prasarana Kebersihan');
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_prasarana_kebersihan, 'jumlah_prasarana', 'Jumlah Sarana Prasarana Kebersihan');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -1702,6 +3014,47 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input prasarana kebersihan
+                  const prasaranaKebersihan = document.querySelector('input[name="prasarana_kebersihan"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_prasarana_kebersihan");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jumlahPrasarana: "<?php echo htmlspecialchars($previous_prasarana_kebersihan['jumlah_prasarana'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke input prasarana kebersihan
+                      prasaranaKebersihan.value = previousData.jumlahPrasarana || "";
+
+                      // Buat input menjadi read-only
+                      prasaranaKebersihan.setAttribute("readonly", true);
+                      prasaranaKebersihan.style.backgroundColor = "#f0f0f0";
+                      prasaranaKebersihan.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      prasaranaKebersihan.value = "";
+
+                      // Hapus atribut readonly
+                      prasaranaKebersihan.removeAttribute("readonly");
+                      prasaranaKebersihan.style.backgroundColor = "";
+                      prasaranaKebersihan.style.cursor = "default";
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- /.card-body -->
 
@@ -1759,13 +3112,13 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                     <label class="mb-2">Jumlah Rumah Tidak Layak Huni</label>
                     <input required class="form-control" type="number" min="0" name="rumah_tidak_layak_huni"
                       placeholder="Isi Dengan Angka" required>
-                      <?php if ($level != 'admin'): ?>
-                        <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
-                          <?php
-                          echo displayPreviousYearData($previous_rumah_tidak_layak_huni, 'jumlah_rumah', 'Jumlah Rumah Tidak Layak Huni'); 
-                          ?>
-                        </p>
-                      <?php endif; ?>
+                    <?php if ($level != 'admin'): ?>
+                      <p style="font-size: 12px; margin-top: 10px; margin-left: 5px;">
+                        <?php
+                        echo displayPreviousYearData($previous_rumah_tidak_layak_huni, 'jumlah_rumah', 'Jumlah Rumah Tidak Layak Huni');
+                        ?>
+                      </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -1788,6 +3141,49 @@ $previous_rumah_tidak_layak_huni = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  const rumahTidakLayakHuni = document.querySelector('input[name="rumah_tidak_layak_huni"]');
+                  const usePreviousCheckbox = document.getElementById("use_previous_rumah_tidak_layak_huni");
+
+                  const previousData = {
+                    jumlahRumah: "<?php echo htmlspecialchars($previous_rumah_tidak_layak_huni['jumlah_rumah'] ?? ''); ?>"
+                  };
+
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      rumahTidakLayakHuni.value = previousData.jumlahRumah || "";
+                      rumahTidakLayakHuni.setAttribute("readonly", true);
+                      rumahTidakLayakHuni.style.backgroundColor = "#f0f0f0";
+                      rumahTidakLayakHuni.style.cursor = "not-allowed";
+                    } else {
+                      rumahTidakLayakHuni.value = "";
+                      rumahTidakLayakHuni.removeAttribute("readonly");
+                      rumahTidakLayakHuni.style.backgroundColor = "";
+                      rumahTidakLayakHuni.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi sederhana
+                  function validateInput() {
+                    rumahTidakLayakHuni.addEventListener('input', function() {
+                      // Hapus karakter non-numerik
+                      this.value = this.value.replace(/[^0-9]/g, '');
+
+                      // Batasi panjang input
+                      if (this.value.length > 5) {
+                        this.value = this.value.slice(0, 5);
+                      }
+                    });
+                  }
+
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi
+                  populatePreviousData();
+                  validateInput();
+                });
+              </script>
             </div>
             <!-- /.card-body -->
 
