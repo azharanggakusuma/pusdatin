@@ -265,6 +265,82 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input jumlah surat kematian
+                  const jumlahSuratKematian = document.getElementById("jumlah_surat_kematian");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_kematian");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jumlahSuratKematian: "<?php echo htmlspecialchars($previous_kematian['jumlah_surat_kematian'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke input
+                      jumlahSuratKematian.value = previousData.jumlahSuratKematian || "";
+
+                      // Buat input menjadi read-only
+                      jumlahSuratKematian.setAttribute("readonly", true);
+                      jumlahSuratKematian.style.backgroundColor = "#f0f0f0";
+                      jumlahSuratKematian.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      jumlahSuratKematian.value = "";
+
+                      // Hapus atribut readonly
+                      jumlahSuratKematian.removeAttribute("readonly");
+                      jumlahSuratKematian.style.backgroundColor = "";
+                      jumlahSuratKematian.style.cursor = "default";
+                    }
+                  }
+
+                  // Validasi input jumlah surat kematian
+                  function validateSuratKematianInput() {
+                    jumlahSuratKematian.addEventListener('input', function() {
+                      // Pastikan hanya angka positif
+                      this.value = this.value.replace(/[^0-9]/g, '');
+
+                      // Batasi panjang input (misalnya maks 5 digit)
+                      if (this.value.length > 5) {
+                        this.value = this.value.slice(0, 5);
+                      }
+
+                      // Pastikan tidak ada angka 0 di depan
+                      this.value = this.value.replace(/^0+/, '');
+                    });
+
+                    // Tambahkan event listener untuk memastikan input tidak negatif
+                    jumlahSuratKematian.addEventListener('change', function() {
+                      // Jika input kosong, set ke 0
+                      if (this.value === '') {
+                        this.value = '0';
+                      }
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Jalankan validasi input
+                  validateSuratKematianInput();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+
+                  // Tambahan: Mencegah input negatif secara langsung
+                  jumlahSuratKematian.addEventListener('keydown', function(e) {
+                    // Mencegah input tanda minus
+                    if (e.key === '-') {
+                      e.preventDefault();
+                    }
+                  });
+                });
+              </script>
               <!-- /.row -->
             </div>
 
@@ -381,6 +457,142 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input
+                  const jumlahPendudukLaki = document.getElementById("jumlah_penduduk_laki");
+                  const jumlahPendudukPerempuan = document.getElementById("jumlah_penduduk_perempuan");
+                  const jumlahKepalaKeluarga = document.getElementById("jumlah_kepala_keluarga");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_penduduk_keluarga");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jumlahPendudukLaki: "<?php echo htmlspecialchars($previous_penduduk_keluarga['jumlah_penduduk_laki'] ?? ''); ?>",
+                    jumlahPendudukPerempuan: "<?php echo htmlspecialchars($previous_penduduk_keluarga['jumlah_penduduk_perempuan'] ?? ''); ?>",
+                    jumlahKepalaKeluarga: "<?php echo htmlspecialchars($previous_penduduk_keluarga['jumlah_kepala_keluarga'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input
+                      jumlahPendudukLaki.value = previousData.jumlahPendudukLaki || "";
+                      jumlahPendudukPerempuan.value = previousData.jumlahPendudukPerempuan || "";
+                      jumlahKepalaKeluarga.value = previousData.jumlahKepalaKeluarga || "";
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        jumlahPendudukLaki,
+                        jumlahPendudukPerempuan,
+                        jumlahKepalaKeluarga
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      jumlahPendudukLaki.value = "";
+                      jumlahPendudukPerempuan.value = "";
+                      jumlahKepalaKeluarga.value = "";
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        jumlahPendudukLaki,
+                        jumlahPendudukPerempuan,
+                        jumlahKepalaKeluarga
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Validasi input penduduk dan keluarga
+                  function validatePendudukKeluargaInput() {
+                    const inputs = [
+                      jumlahPendudukLaki,
+                      jumlahPendudukPerempuan,
+                      jumlahKepalaKeluarga
+                    ];
+
+                    inputs.forEach(input => {
+                      input.addEventListener('input', function() {
+                        // Pastikan hanya angka positif
+                        this.value = this.value.replace(/[^0-9]/g, '');
+
+                        // Batasi panjang input (misalnya maks 6 digit)
+                        if (this.value.length > 6) {
+                          this.value = this.value.slice(0, 6);
+                        }
+
+                        // Pastikan tidak ada angka 0 di depan
+                        this.value = this.value.replace(/^0+/, '');
+                      });
+
+                      // Tambahkan event listener untuk memastikan input tidak negatif
+                      input.addEventListener('change', function() {
+                        // Jika input kosong, set ke 0
+                        if (this.value === '') {
+                          this.value = '0';
+                        }
+                      });
+                    });
+                  }
+
+                  // Validasi logika jumlah penduduk dan kepala keluarga
+                  function validatePendudukLogic() {
+                    function checkPendudukLogic() {
+                      const totalPenduduk = parseInt(jumlahPendudukLaki.value || 0) +
+                        parseInt(jumlahPendudukPerempuan.value || 0);
+                      const kepalaKeluarga = parseInt(jumlahKepalaKeluarga.value || 0);
+
+                      // Cek apakah jumlah kepala keluarga masuk akal
+                      if (kepalaKeluarga > totalPenduduk) {
+                        alert('Jumlah kepala keluarga tidak boleh melebihi total penduduk!');
+                        jumlahKepalaKeluarga.value = '';
+                      }
+                    }
+
+                    jumlahPendudukLaki.addEventListener('change', checkPendudukLogic);
+                    jumlahPendudukPerempuan.addEventListener('change', checkPendudukLogic);
+                    jumlahKepalaKeluarga.addEventListener('change', checkPendudukLogic);
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Jalankan validasi input
+                  validatePendudukKeluargaInput();
+                  validatePendudukLogic();
+
+                  // Tambahan: Mencegah input negatif secara langsung
+                  const inputs = [
+                    jumlahPendudukLaki,
+                    jumlahPendudukPerempuan,
+                    jumlahKepalaKeluarga
+                  ];
+
+                  inputs.forEach(input => {
+                    input.addEventListener('keydown', function(e) {
+                      // Mencegah input tanda minus
+                      if (e.key === '-') {
+                        e.preventDefault();
+                      }
+                    });
+                  });
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
 
@@ -526,7 +738,107 @@ $previous_ketenagakerjaan = getPreviousYearData(
                     <i class="fas fa-save"></i> &nbsp; Simpan
                   </button>
                 </div>
-              </form> 
+              </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua elemen select
+                  const pmiBekerja = document.getElementById("pmi_bekerja");
+                  const agenPengerahanPmi = document.getElementById("agen_pengerahan_pmi");
+                  const layananRekomendasiPmi = document.getElementById("layanan_rekomendasi_pmi");
+                  const keberadaanWna = document.getElementById("keberadaan_wna");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_ketenagakerjaan");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    pmiBekerja: "<?php echo htmlspecialchars($previous_ketenagakerjaan['pmi_bekerja'] ?? ''); ?>",
+                    agenPengerahanPmi: "<?php echo htmlspecialchars($previous_ketenagakerjaan['agen_pengerahan_pmi'] ?? ''); ?>",
+                    layananRekomendasiPmi: "<?php echo htmlspecialchars($previous_ketenagakerjaan['layanan_rekomendasi_pmi'] ?? ''); ?>",
+                    keberadaanWna: "<?php echo htmlspecialchars($previous_ketenagakerjaan['keberadaan_wna'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing select
+                      pmiBekerja.value = previousData.pmiBekerja || "";
+                      agenPengerahanPmi.value = previousData.agenPengerahanPmi || "";
+                      layananRekomendasiPmi.value = previousData.layananRekomendasiPmi || "";
+                      keberadaanWna.value = previousData.keberadaanWna || "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [
+                        pmiBekerja,
+                        agenPengerahanPmi,
+                        layananRekomendasiPmi,
+                        keberadaanWna
+                      ];
+
+                      // Nonaktifkan pilihan lain dan atur styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          if (select.options[i].value !== select.value) {
+                            select.options[i].disabled = true;
+                          }
+                        }
+
+                        select.style.backgroundColor = "#f0f0f0";
+                        select.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      pmiBekerja.value = "";
+                      agenPengerahanPmi.value = "";
+                      layananRekomendasiPmi.value = "";
+                      keberadaanWna.value = "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [
+                        pmiBekerja,
+                        agenPengerahanPmi,
+                        layananRekomendasiPmi,
+                        keberadaanWna
+                      ];
+
+                      // Aktifkan kembali semua pilihan dan reset styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          select.options[i].disabled = false;
+                        }
+
+                        select.style.backgroundColor = "";
+                        select.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Fungsi untuk menambahkan validasi tambahan
+                  function addAdditionalValidation() {
+                    // Contoh: Tambahkan logika validasi khusus jika diperlukan
+                    // Misalnya, memastikan konsistensi antar pilihan
+
+                    // Contoh sederhana: Jika PMI bekerja "Tidak Ada", maka layanan rekomendasi juga "Tidak Ada"
+                    pmiBekerja.addEventListener('change', function() {
+                      if (this.value === "Tidak Ada") {
+                        layananRekomendasiPmi.value = "Tidak Ada";
+                        layananRekomendasiPmi.disabled = true;
+                      } else {
+                        layananRekomendasiPmi.disabled = false;
+                      }
+                    });
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahkan validasi tambahan
+                  addAdditionalValidation();
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
 
