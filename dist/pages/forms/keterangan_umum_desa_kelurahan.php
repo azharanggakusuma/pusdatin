@@ -423,6 +423,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
               </form>
               <script>
                 document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua input field batas desa
                   const batasUtara = document.getElementById("batas_utara");
                   const kecUtara = document.getElementById("kec_utara");
                   const batasSelatan = document.getElementById("batas_selatan");
@@ -431,6 +432,8 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   const kecTimur = document.getElementById("kec_timur");
                   const batasBarat = document.getElementById("batas_barat");
                   const kecBarat = document.getElementById("kec_barat");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
                   const usePreviousCheckbox = document.getElementById("use_previous_batas_desa");
 
                   // Data tahun sebelumnya
@@ -448,7 +451,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   // Fungsi untuk mengatur data tahun sebelumnya ke form
                   function populatePreviousData() {
                     if (usePreviousCheckbox.checked) {
-                      // Set nilai ke elemen
+                      // Set nilai ke masing-masing input
                       batasUtara.value = previousData.batasUtara || "";
                       kecUtara.value = previousData.kecUtara || "";
                       batasSelatan.value = previousData.batasSelatan || "";
@@ -458,15 +461,19 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       batasBarat.value = previousData.batasBarat || "";
                       kecBarat.value = previousData.kecBarat || "";
 
-                      // Buat elemen menjadi read-only jika diperlukan
-                      batasUtara.setAttribute("readonly", true);
-                      kecUtara.setAttribute("readonly", true);
-                      batasSelatan.setAttribute("readonly", true);
-                      kecSelatan.setAttribute("readonly", true);
-                      batasTimur.setAttribute("readonly", true);
-                      kecTimur.setAttribute("readonly", true);
-                      batasBarat.setAttribute("readonly", true);
-                      kecBarat.setAttribute("readonly", true);
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        batasUtara, kecUtara,
+                        batasSelatan, kecSelatan,
+                        batasTimur, kecTimur,
+                        batasBarat, kecBarat
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
                     } else {
                       // Reset form jika checkbox tidak dicentang
                       batasUtara.value = "";
@@ -478,15 +485,19 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       batasBarat.value = "";
                       kecBarat.value = "";
 
-                      // Hapus atribut read-only
-                      batasUtara.removeAttribute("readonly");
-                      kecUtara.removeAttribute("readonly");
-                      batasSelatan.removeAttribute("readonly");
-                      kecSelatan.removeAttribute("readonly");
-                      batasTimur.removeAttribute("readonly");
-                      kecTimur.removeAttribute("readonly");
-                      batasBarat.removeAttribute("readonly");
-                      kecBarat.removeAttribute("readonly");
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        batasUtara, kecUtara,
+                        batasSelatan, kecSelatan,
+                        batasTimur, kecTimur,
+                        batasBarat, kecBarat
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
                     }
                   }
 
@@ -495,6 +506,27 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
 
                   // Inisialisasi saat halaman dimuat
                   populatePreviousData();
+
+                  // Validasi input hanya huruf dan spasi
+                  function validateTextInput(input) {
+                    input.addEventListener('input', function() {
+                      // Hapus karakter selain huruf dan spasi
+                      this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+
+                      // Ubah huruf pertama setiap kata menjadi kapital
+                      this.value = this.value.replace(/\b\w/g, char => char.toUpperCase());
+                    });
+                  }
+
+                  // Terapkan validasi pada semua input nama desa dan kecamatan
+                  const textInputs = [
+                    batasUtara, kecUtara,
+                    batasSelatan, kecSelatan,
+                    batasTimur, kecTimur,
+                    batasBarat, kecBarat
+                  ];
+
+                  textInputs.forEach(validateTextInput);
                 });
               </script>
             </div>
@@ -615,39 +647,76 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
               </form>
               <script>
                 document.addEventListener("DOMContentLoaded", function() {
-                  const jarakKeIbukotaKecamatan = document.getElementById("jarak_ke_ibukota_kecamatan");
-                  const jarakKeIbukotaKabupaten = document.getElementById("jarak_ke_ibukota_kabupaten");
+                  // Ambil elemen input jarak
+                  const jarakIbukotaKecamatan = document.getElementById("jarak_ke_ibukota_kecamatan");
+                  const jarakIbukotaKabupaten = document.getElementById("jarak_ke_ibukota_kabupaten");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
                   const usePreviousCheckbox = document.getElementById("use_previous_jarak_kantor_desa");
 
                   // Data tahun sebelumnya
                   const previousData = {
-                    jarakKeIbukotaKecamatan: "<?php echo htmlspecialchars($previous_jarak_kantor_desa['jarak_ke_ibukota_kecamatan'] ?? ''); ?>",
-                    jarakKeIbukotaKabupaten: "<?php echo htmlspecialchars($previous_jarak_kantor_desa['jarak_ke_ibukota_kabupaten'] ?? ''); ?>"
+                    jarakIbukotaKecamatan: "<?php echo htmlspecialchars($previous_jarak_kantor_desa['jarak_ke_ibukota_kecamatan'] ?? ''); ?>",
+                    jarakIbukotaKabupaten: "<?php echo htmlspecialchars($previous_jarak_kantor_desa['jarak_ke_ibukota_kabupaten'] ?? ''); ?>"
                   };
 
                   // Fungsi untuk mengatur data tahun sebelumnya ke form
                   function populatePreviousData() {
                     if (usePreviousCheckbox.checked) {
-                      // Set nilai ke elemen
-                      jarakKeIbukotaKecamatan.value = previousData.jarakKeIbukotaKecamatan || "";
-                      jarakKeIbukotaKabupaten.value = previousData.jarakKeIbukotaKabupaten || "";
+                      // Set nilai ke masing-masing input
+                      jarakIbukotaKecamatan.value = previousData.jarakIbukotaKecamatan || "";
+                      jarakIbukotaKabupaten.value = previousData.jarakIbukotaKabupaten || "";
 
-                      // Buat elemen menjadi read-only jika diperlukan
-                      jarakKeIbukotaKecamatan.setAttribute("readonly", true);
-                      jarakKeIbukotaKabupaten.setAttribute("readonly", true);
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        jarakIbukotaKecamatan,
+                        jarakIbukotaKabupaten
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
                     } else {
                       // Reset form jika checkbox tidak dicentang
-                      jarakKeIbukotaKecamatan.value = "";
-                      jarakKeIbukotaKabupaten.value = "";
+                      jarakIbukotaKecamatan.value = "";
+                      jarakIbukotaKabupaten.value = "";
 
-                      // Hapus atribut read-only
-                      jarakKeIbukotaKecamatan.removeAttribute("readonly");
-                      jarakKeIbukotaKabupaten.removeAttribute("readonly");
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        jarakIbukotaKecamatan,
+                        jarakIbukotaKabupaten
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
                     }
                   }
 
                   // Event listener untuk checkbox
                   usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Tambahan: Validasi input hanya angka dan desimal
+                  function validateNumericInput(input) {
+                    input.addEventListener('input', function() {
+                      // Hapus karakter non-numeric kecuali titik
+                      this.value = this.value.replace(/[^0-9.]/g, '');
+
+                      // Pastikan hanya satu titik desimal
+                      const parts = this.value.split('.');
+                      if (parts.length > 2) {
+                        this.value = parts[0] + '.' + parts.slice(1).join('');
+                      }
+                    });
+                  }
+
+                  // Terapkan validasi pada input
+                  validateNumericInput(jarakIbukotaKecamatan);
+                  validateNumericInput(jarakIbukotaKabupaten);
 
                   // Inisialisasi saat halaman dimuat
                   populatePreviousData();
@@ -770,36 +839,45 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
             </div>
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const statusDesa = document.getElementById("status_2024");
+                // Ambil elemen select untuk status IDM
+                const statusIdm = document.getElementById("status_2024");
+
+                // Checkbox untuk menggunakan data tahun sebelumnya
                 const usePreviousCheckbox = document.getElementById("use_previous_idm_status");
 
                 // Data tahun sebelumnya
                 const previousData = {
-                  statusDesa: "<?php echo htmlspecialchars($previous_idm_status['status_idm'] ?? ''); ?>"
+                  statusIdm: "<?php echo htmlspecialchars($previous_idm_status['status_idm'] ?? ''); ?>"
                 };
 
                 // Fungsi untuk mengatur data tahun sebelumnya ke form
                 function populatePreviousData() {
                   if (usePreviousCheckbox.checked) {
-                    // Set nilai ke elemen select
-                    statusDesa.value = previousData.statusDesa || "";
+                    // Set nilai ke select
+                    statusIdm.value = previousData.statusIdm || "";
 
-                    // Buat elemen menjadi read-only
-                    statusDesa.setAttribute("readonly", true);
+                    // Nonaktifkan pilihan lain
+                    for (let i = 0; i < statusIdm.options.length; i++) {
+                      if (statusIdm.options[i].value !== previousData.statusIdm) {
+                        statusIdm.options[i].disabled = true;
+                      }
+                    }
 
-                    // Tambahan: Ubah style untuk memberi visual feedback
-                    statusDesa.style.backgroundColor = "#f0f0f0";
-                    statusDesa.style.cursor = "not-allowed";
+                    // Buat select menjadi read-only
+                    statusIdm.style.backgroundColor = "#f0f0f0";
+                    statusIdm.style.cursor = "not-allowed";
                   } else {
                     // Reset form jika checkbox tidak dicentang
-                    statusDesa.value = ""; // atau pilih opsi default
+                    statusIdm.value = ""; // Kembali ke pilihan default
 
-                    // Hapus atribut readonly
-                    statusDesa.removeAttribute("readonly");
+                    // Aktifkan kembali semua pilihan
+                    for (let i = 0; i < statusIdm.options.length; i++) {
+                      statusIdm.options[i].disabled = false;
+                    }
 
                     // Kembalikan style ke default
-                    statusDesa.style.backgroundColor = "";
-                    statusDesa.style.cursor = "default";
+                    statusIdm.style.backgroundColor = "";
+                    statusIdm.style.cursor = "default";
                   }
                 }
 
@@ -1106,6 +1184,57 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div> <!--end::Footer-->
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select untuk status pemerintahan
+                  const statusPemerintahan = document.getElementById("status_2024");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_status_pemerintahan");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    statusPemerintahan: "<?php echo htmlspecialchars($previous_status_pemerintahan['status_pemerintahan'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select
+                      statusPemerintahan.value = previousData.statusPemerintahan || "";
+
+                      // Nonaktifkan pilihan lain
+                      for (let i = 0; i < statusPemerintahan.options.length; i++) {
+                        if (statusPemerintahan.options[i].value !== previousData.statusPemerintahan) {
+                          statusPemerintahan.options[i].disabled = true;
+                        }
+                      }
+
+                      // Buat select menjadi read-only
+                      statusPemerintahan.style.backgroundColor = "#f0f0f0";
+                      statusPemerintahan.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      statusPemerintahan.value = ""; // Kembali ke pilihan default
+
+                      // Aktifkan kembali semua pilihan
+                      for (let i = 0; i < statusPemerintahan.options.length; i++) {
+                        statusPemerintahan.options[i].disabled = false;
+                      }
+
+                      // Kembalikan style ke default
+                      statusPemerintahan.style.backgroundColor = "";
+                      statusPemerintahan.style.cursor = "default";
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
           </div> <!--end::Container-->
@@ -1243,7 +1372,119 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen-elemen select dan input
+                  const penetapanBatasDesa = document.getElementById("penetapan_batas_desa");
+                  const ketersediaanPetaDesa = document.getElementById("ketersediaan_peta_desa");
+                  const noSuratBatasDesa = document.getElementById("no_surat_batas_desa");
+                  const noSuratPetaDesa = document.getElementById("no_surat_peta_desa");
+                  const formNoSuratBatasDesa = document.getElementById("form_no_surat_batas_desa");
+                  const formNoSuratPetaDesa = document.getElementById("form_no_surat_peta_desa");
 
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_ketersediaan_peta_desa");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    penetapanBatasDesa: "<?php echo htmlspecialchars($previous_ketersediaan_peta_desa['penetapan_batas_desa'] ?? ''); ?>",
+                    ketersediaanPetaDesa: "<?php echo htmlspecialchars($previous_ketersediaan_peta_desa['ketersediaan_peta_desa'] ?? ''); ?>",
+                    noSuratBatasDesa: "<?php echo htmlspecialchars($previous_ketersediaan_peta_desa['no_surat_batas_desa'] ?? ''); ?>",
+                    noSuratPetaDesa: "<?php echo htmlspecialchars($previous_ketersediaan_peta_desa['no_surat_peta_desa'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur tampilan input tambahan
+                  function toggleInputFields() {
+                    // Logic untuk menampilkan/menyembunyikan input tambahan
+                    formNoSuratBatasDesa.style.display = (penetapanBatasDesa.value === "SUDAH ADA") ? "block" : "none";
+                    formNoSuratPetaDesa.style.display = (ketersediaanPetaDesa.value === "ADA") ? "block" : "none";
+                  }
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input
+                      penetapanBatasDesa.value = previousData.penetapanBatasDesa || "";
+                      ketersediaanPetaDesa.value = previousData.ketersediaanPetaDesa || "";
+                      noSuratBatasDesa.value = previousData.noSuratBatasDesa || "";
+                      noSuratPetaDesa.value = previousData.noSuratPetaDesa || "";
+
+                      // Nonaktifkan pilihan lain pada select
+                      for (let i = 0; i < penetapanBatasDesa.options.length; i++) {
+                        if (penetapanBatasDesa.options[i].value !== previousData.penetapanBatasDesa) {
+                          penetapanBatasDesa.options[i].disabled = true;
+                        }
+                      }
+
+                      for (let i = 0; i < ketersediaanPetaDesa.options.length; i++) {
+                        if (ketersediaanPetaDesa.options[i].value !== previousData.ketersediaanPetaDesa) {
+                          ketersediaanPetaDesa.options[i].disabled = true;
+                        }
+                      }
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        penetapanBatasDesa,
+                        ketersediaanPetaDesa,
+                        noSuratBatasDesa,
+                        noSuratPetaDesa
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+
+                      // Tampilkan input tambahan sesuai data
+                      toggleInputFields();
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      penetapanBatasDesa.value = "";
+                      ketersediaanPetaDesa.value = "";
+                      noSuratBatasDesa.value = "";
+                      noSuratPetaDesa.value = "";
+
+                      // Aktifkan kembali semua pilihan
+                      for (let i = 0; i < penetapanBatasDesa.options.length; i++) {
+                        penetapanBatasDesa.options[i].disabled = false;
+                      }
+
+                      for (let i = 0; i < ketersediaanPetaDesa.options.length; i++) {
+                        ketersediaanPetaDesa.options[i].disabled = false;
+                      }
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        penetapanBatasDesa,
+                        ketersediaanPetaDesa,
+                        noSuratBatasDesa,
+                        noSuratPetaDesa
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+
+                      // Sembunyikan input tambahan
+                      formNoSuratBatasDesa.style.display = "none";
+                      formNoSuratPetaDesa.style.display = "none";
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Event listener untuk select
+                  penetapanBatasDesa.addEventListener("change", toggleInputFields);
+                  ketersediaanPetaDesa.addEventListener("change", toggleInputFields);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <script>
                 function toggleInputFields() {
                   // Toggle for Penetapan Batas Desa
@@ -1394,6 +1635,71 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                 </div>
                 <!--end::Footer-->
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input
+                  const jumlahDusun = document.querySelector('input[name="jumlah_dusun"]');
+                  const jumlahRW = document.querySelector('input[name="jumlah_rw"]');
+                  const jumlahRT = document.querySelector('input[name="jumlah_rt"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_banyaknya_dusun_rt_rw");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    jumlahDusun: "<?php echo htmlspecialchars($previous_banyaknya_dusun_rt_rw['jumlah_dusun'] ?? ''); ?>",
+                    jumlahRW: "<?php echo htmlspecialchars($previous_banyaknya_dusun_rt_rw['jumlah_rw'] ?? ''); ?>",
+                    jumlahRT: "<?php echo htmlspecialchars($previous_banyaknya_dusun_rt_rw['jumlah_rt'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input
+                      jumlahDusun.value = previousData.jumlahDusun || "";
+                      jumlahRW.value = previousData.jumlahRW || "";
+                      jumlahRT.value = previousData.jumlahRT || "";
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        jumlahDusun,
+                        jumlahRW,
+                        jumlahRT
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      jumlahDusun.value = "";
+                      jumlahRW.value = "";
+                      jumlahRT.value = "";
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        jumlahDusun,
+                        jumlahRW,
+                        jumlahRT
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
           </div>
@@ -1456,6 +1762,47 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input luas wilayah desa
+                  const luasWilayahDesa = document.getElementById("luas_wilayah_desa");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_luas_wilayah_desa");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    luasWilayahDesa: "<?php echo htmlspecialchars($previous_luas_wilayah_desa['luas_wilayah_desa'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke input luas wilayah desa
+                      luasWilayahDesa.value = previousData.luasWilayahDesa || "";
+
+                      // Buat input menjadi read-only
+                      luasWilayahDesa.setAttribute("readonly", true);
+                      luasWilayahDesa.style.backgroundColor = "#f0f0f0";
+                      luasWilayahDesa.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      luasWilayahDesa.value = "";
+
+                      // Hapus atribut readonly
+                      luasWilayahDesa.removeAttribute("readonly");
+                      luasWilayahDesa.style.backgroundColor = "";
+                      luasWilayahDesa.style.cursor = "default";
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <div class="modal fade" id="modalLuasDesa" tabindex="-1" aria-labelledby="aturanModalLabel"
               aria-hidden="true">
@@ -1548,6 +1895,59 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen select untuk topografi terluas wilayah desa
+                  const topografiTerluasWilayahDesa = document.querySelector('select[name="topografi_terluas_wilayah_desa"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_topografi_wilayah_desa");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    topografiTerluasWilayahDesa: "<?php echo htmlspecialchars($previous_topografi_wilayah_desa['topografi_terluas_wilayah_desa'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke select
+                      topografiTerluasWilayahDesa.value = previousData.topografiTerluasWilayahDesa || "";
+
+                      // Nonaktifkan pilihan lain
+                      for (let i = 0; i < topografiTerluasWilayahDesa.options.length; i++) {
+                        if (topografiTerluasWilayahDesa.options[i].value !== previousData.topografiTerluasWilayahDesa) {
+                          topografiTerluasWilayahDesa.options[i].disabled = true;
+                        }
+                      }
+
+                      // Buat select menjadi read-only
+                      topografiTerluasWilayahDesa.setAttribute("readonly", true);
+                      topografiTerluasWilayahDesa.style.backgroundColor = "#f0f0f0";
+                      topografiTerluasWilayahDesa.style.cursor = "not-allowed";
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      topografiTerluasWilayahDesa.value = ""; // Kembali ke pilihan default
+
+                      // Aktifkan kembali semua pilihan
+                      for (let i = 0; i < topografiTerluasWilayahDesa.options.length; i++) {
+                        topografiTerluasWilayahDesa.options[i].disabled = false;
+                      }
+
+                      // Hapus atribut readonly
+                      topografiTerluasWilayahDesa.removeAttribute("readonly");
+                      topografiTerluasWilayahDesa.style.backgroundColor = "";
+                      topografiTerluasWilayahDesa.style.cursor = "default";
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
 
               <!-- /.row -->
             </div>
@@ -1702,6 +2102,87 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua elemen select
+                  const keberadaanKantor = document.getElementById("keberadaan_kantor");
+                  const statusKantor = document.getElementById("status_kantor");
+                  const kondisiKantor = document.getElementById("kondisi_kantor");
+                  const lokasiKantor = document.getElementById("lokasi_kantor");
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_kepemilikan_kantor");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    keberadaanKantor: "<?php echo htmlspecialchars($previous_kepemilikan_kantor['keberadaan_kantor'] ?? ''); ?>",
+                    statusKantor: "<?php echo htmlspecialchars($previous_kepemilikan_kantor['status_kantor'] ?? ''); ?>",
+                    kondisiKantor: "<?php echo htmlspecialchars($previous_kepemilikan_kantor['kondisi_kantor'] ?? ''); ?>",
+                    lokasiKantor: "<?php echo htmlspecialchars($previous_kepemilikan_kantor['lokasi_kantor'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing select
+                      keberadaanKantor.value = previousData.keberadaanKantor || "";
+                      statusKantor.value = previousData.statusKantor || "";
+                      kondisiKantor.value = previousData.kondisiKantor || "";
+                      lokasiKantor.value = previousData.lokasiKantor || "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [
+                        keberadaanKantor,
+                        statusKantor,
+                        kondisiKantor,
+                        lokasiKantor
+                      ];
+
+                      // Nonaktifkan pilihan lain dan atur styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          if (select.options[i].value !== select.value) {
+                            select.options[i].disabled = true;
+                          }
+                        }
+
+                        select.style.backgroundColor = "#f0f0f0";
+                        select.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      keberadaanKantor.value = "";
+                      statusKantor.value = "";
+                      kondisiKantor.value = "";
+                      lokasiKantor.value = "";
+
+                      // Array select untuk iterasi
+                      const selectFields = [
+                        keberadaanKantor,
+                        statusKantor,
+                        kondisiKantor,
+                        lokasiKantor
+                      ];
+
+                      // Aktifkan kembali semua pilihan dan reset styling
+                      selectFields.forEach(select => {
+                        for (let i = 0; i < select.options.length; i++) {
+                          select.options[i].disabled = false;
+                        }
+
+                        select.style.backgroundColor = "";
+                        select.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
             </div>
             <!-- Modal Info -->
             <div class="modal fade" id="modalKepemilikanKantor" tabindex="-1" aria-labelledby="aturanModalLabel"
@@ -1806,6 +2287,65 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </div>
                   </div> <!--end::Footer-->
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil elemen input koordinat
+                  const koordinatLintang = document.querySelector('input[name="koordinat_lintang"]');
+                  const koordinatBujur = document.querySelector('input[name="koordinat_bujur"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_titik_koordinat_kantor_desa");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    koordinatLintang: "<?php echo htmlspecialchars($previous_titik_koordinat_kantor_desa['koordinat_lintang'] ?? ''); ?>",
+                    koordinatBujur: "<?php echo htmlspecialchars($previous_titik_koordinat_kantor_desa['koordinat_bujur'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input
+                      koordinatLintang.value = previousData.koordinatLintang || "";
+                      koordinatBujur.value = previousData.koordinatBujur || "";
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        koordinatLintang,
+                        koordinatBujur
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      koordinatLintang.value = "";
+                      koordinatBujur.value = "";
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        koordinatLintang,
+                        koordinatBujur
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
             <!-- Modal Info -->
