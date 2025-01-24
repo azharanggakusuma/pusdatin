@@ -282,6 +282,19 @@ $previous_lpmd = getPreviousYearData(
                   </div>
                 </div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -353,6 +366,19 @@ $previous_lpmd = getPreviousYearData(
                   </div>
                 </div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -423,6 +449,19 @@ $previous_lpmd = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -505,6 +544,19 @@ $previous_lpmd = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
