@@ -770,26 +770,36 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
             </div>
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const statusSelect = document.getElementById("status_2024");
+                const statusDesa = document.getElementById("status_2024");
                 const usePreviousCheckbox = document.getElementById("use_previous_idm_status");
 
                 // Data tahun sebelumnya
-                const previousStatus = "<?php echo htmlspecialchars($previous_idm_status ?? ''); ?>";
+                const previousData = {
+                  statusDesa: "<?php echo htmlspecialchars($previous_idm_status['status_idm'] ?? ''); ?>"
+                };
 
                 // Fungsi untuk mengatur data tahun sebelumnya ke form
                 function populatePreviousData() {
                   if (usePreviousCheckbox.checked) {
-                    // Set nilai ke elemen
-                    statusSelect.value = previousStatus || "";
+                    // Set nilai ke elemen select
+                    statusDesa.value = previousData.statusDesa || "";
 
-                    // Nonaktifkan select
-                    statusSelect.setAttribute("disabled", true);
+                    // Buat elemen menjadi read-only
+                    statusDesa.setAttribute("readonly", true);
+
+                    // Tambahan: Ubah style untuk memberi visual feedback
+                    statusDesa.style.backgroundColor = "#f0f0f0";
+                    statusDesa.style.cursor = "not-allowed";
                   } else {
                     // Reset form jika checkbox tidak dicentang
-                    statusSelect.value = "";
+                    statusDesa.value = ""; // atau pilih opsi default
 
-                    // Aktifkan select
-                    statusSelect.removeAttribute("disabled");
+                    // Hapus atribut readonly
+                    statusDesa.removeAttribute("readonly");
+
+                    // Kembalikan style ke default
+                    statusDesa.style.backgroundColor = "";
+                    statusDesa.style.cursor = "default";
                   }
                 }
 
@@ -930,6 +940,83 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </button>
                 </div>
               </form>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  // Ambil semua input field
+                  const alamatWebsite = document.querySelector('input[name="alamat_website"]');
+                  const alamatEmail = document.querySelector('input[name="alamat_email"]');
+                  const alamatFacebook = document.querySelector('input[name="alamat_facebook"]');
+                  const alamatTwitter = document.querySelector('input[name="alamat_twitter"]');
+                  const alamatYoutube = document.querySelector('input[name="alamat_youtube"]');
+
+                  // Checkbox untuk menggunakan data tahun sebelumnya
+                  const usePreviousCheckbox = document.getElementById("use_previous_website_medsos");
+
+                  // Data tahun sebelumnya
+                  const previousData = {
+                    alamatWebsite: "<?php echo htmlspecialchars($previous_website_medsos['alamat_website'] ?? ''); ?>",
+                    alamatEmail: "<?php echo htmlspecialchars($previous_website_medsos['alamat_email'] ?? ''); ?>",
+                    alamatFacebook: "<?php echo htmlspecialchars($previous_website_medsos['alamat_facebook'] ?? ''); ?>",
+                    alamatTwitter: "<?php echo htmlspecialchars($previous_website_medsos['alamat_twitter'] ?? ''); ?>",
+                    alamatYoutube: "<?php echo htmlspecialchars($previous_website_medsos['alamat_youtube'] ?? ''); ?>"
+                  };
+
+                  // Fungsi untuk mengatur data tahun sebelumnya ke form
+                  function populatePreviousData() {
+                    if (usePreviousCheckbox.checked) {
+                      // Set nilai ke masing-masing input
+                      alamatWebsite.value = previousData.alamatWebsite || "";
+                      alamatEmail.value = previousData.alamatEmail || "";
+                      alamatFacebook.value = previousData.alamatFacebook || "";
+                      alamatTwitter.value = previousData.alamatTwitter || "";
+                      alamatYoutube.value = previousData.alamatYoutube || "";
+
+                      // Buat semua input menjadi read-only
+                      const inputFields = [
+                        alamatWebsite,
+                        alamatEmail,
+                        alamatFacebook,
+                        alamatTwitter,
+                        alamatYoutube
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.setAttribute("readonly", true);
+                        input.style.backgroundColor = "#f0f0f0";
+                        input.style.cursor = "not-allowed";
+                      });
+                    } else {
+                      // Reset form jika checkbox tidak dicentang
+                      alamatWebsite.value = "";
+                      alamatEmail.value = "";
+                      alamatFacebook.value = "";
+                      alamatTwitter.value = "";
+                      alamatYoutube.value = "";
+
+                      // Hapus atribut readonly dari semua input
+                      const inputFields = [
+                        alamatWebsite,
+                        alamatEmail,
+                        alamatFacebook,
+                        alamatTwitter,
+                        alamatYoutube
+                      ];
+
+                      inputFields.forEach(input => {
+                        input.removeAttribute("readonly");
+                        input.style.backgroundColor = "";
+                        input.style.cursor = "default";
+                      });
+                    }
+                  }
+
+                  // Event listener untuk checkbox
+                  usePreviousCheckbox.addEventListener("change", populatePreviousData);
+
+                  // Inisialisasi saat halaman dimuat
+                  populatePreviousData();
+                });
+              </script>
               <!-- /.row -->
             </div>
           </div> <!--end::Container-->
@@ -983,7 +1070,6 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-
               <form action="../../handlers/form_status_pemerintahan.php" method="post">
                 <div class="mb-3">
                   <label class="mb-2">Status Pemerintahan (Desa/Kelurahan/Kampung/Nagari/Gampong)</label>
