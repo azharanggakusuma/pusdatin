@@ -735,7 +735,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   <label class="mb-2">Status Desa Membangun (Mandiri/Maju/Berkembang/Tertinggal/Sangat Tertinggal)
                     2024</label>
                   <select required name="status_2024" id="" class="form-control">
-                    <option value="" disabled selected>-- Pilih Status Desa Membangun 2024 --</option>
+                    <option value="" disabled selected>-- Pilih Status Desa Membangun --</option>
                     <option value="MANDIRI">MANDIRI</option>
                     <option value="MAJU">MAJU</option>
                     <option value="BERKEMBANG">BERKEMBANG</option>
