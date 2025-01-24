@@ -360,6 +360,19 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicForms" class="mt-4"></div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -496,6 +509,19 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsWisata" class="mt-4"></div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -565,7 +591,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </script>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Sekolah/Lembaga Pendidikan Formal</h3>
@@ -604,6 +629,20 @@ $previous_daftar_posyandu = getPreviousYearData(
                     required />
                 </div>
                 <div id="dynamicFormsSekolah" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -753,6 +792,19 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPesantren" class="mt-4"></div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -885,6 +937,19 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsRumahSakit" class="mt-4"></div>
 
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-save"></i> &nbsp; Simpan
@@ -1005,7 +1070,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Pusat Kesehatan Masyarakat (PUSKESMAS)</h3>
@@ -1047,6 +1111,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPuskesmas" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1168,7 +1245,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Puskesmas Pembantu (PUSTU)</h3>
@@ -1210,6 +1286,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPustu" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1331,7 +1420,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Poliklinik Atau Balai Pengobatan</h3>
@@ -1373,6 +1461,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPoliklinik" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1495,7 +1596,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Apotek</h3>
@@ -1537,6 +1637,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsApotek" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1658,7 +1771,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Praktek Dokter</h3>
@@ -1700,6 +1812,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPraktekDokter" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1821,7 +1946,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Praktek Bidan</h3>
@@ -1863,6 +1987,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPraktekBidan" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -1984,7 +2121,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Pos Kesehatan Desa (POSKESDES)</h3>
@@ -2026,6 +2162,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPoskesdes" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -2147,7 +2296,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar Pondok Bersalin Desa (POLINDES)</h3>
@@ -2189,6 +2337,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container for Dynamic Forms -->
                 <div id="dynamicFormsPolindes" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
@@ -2310,7 +2471,6 @@ $previous_daftar_posyandu = getPreviousYearData(
             </div>
           </div>
 
-
           <div class="card card-primary card-outline mb-4">
             <div class="card-header mb-3">
               <h3 class="card-title">Daftar POSYANDU</h3>
@@ -2352,6 +2512,19 @@ $previous_daftar_posyandu = getPreviousYearData(
 
                 <!-- Container for Dynamic Forms -->
                 <div id="dynamicFormsPosyandu" class="mt-4"></div>
+
+                <?php if ($level != 'admin'): ?>
+                  <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
+                  <div class="form-group mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="use_previous_keamanan_lingkungan"
+                        name="use_previous_keamanan_lingkungan" value="1">
+                      <label class="form-check-label" for="use_previous_keamanan_lingkungan">
+                        Gunakan data tahun sebelumnya
+                      </label>
+                    </div>
+                  </div>
+                <?php endif; ?>
 
                 <div class="mb-2">
                   <button type="submit" class="btn btn-primary mt-3">
