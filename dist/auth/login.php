@@ -198,7 +198,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                     <div class="row">
                         <div class="d-grid gap-2 mt-2 mb-3">
-                            <input type="submit" class="btn btn-primary" value="Log In" id="submit-btn">
+                            <input type="submit" class="btn btn-primary" value="Log in" id="submit-btn">
                         </div>
                     </div>
                 </form>

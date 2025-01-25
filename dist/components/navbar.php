@@ -45,7 +45,7 @@ $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../.
 
                     <!-- Begin::Menu Footer -->
                     <li class="user-footer d-grid gap-2">
-                        <a href="<?php echo $base_path; ?>auth/logout.php" class="btn btn-danger btn-flat">Sign out</a>
+                        <a href="<?php echo $base_path; ?>auth/logout.php" class="btn btn-danger btn-flat">Log out</a>
                     </li>
                     <!-- End::Menu Footer -->
                 </ul>
