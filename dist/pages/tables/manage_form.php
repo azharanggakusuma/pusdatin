@@ -69,7 +69,10 @@ if (isset($_POST['all_forms_action'])) {
 }
 
 // Mengambil status form untuk setiap user dan form
-include('../../config/list_form.php');
+//include('../../config/list_form.php');
+$forms = [
+  'Data Enumerator'
+];
 ?>
 
 <!DOCTYPE html>
@@ -201,7 +204,7 @@ include('../../config/list_form.php');
                         <tr>
                           <td><?= $no++; ?></td>
                           <td><?= htmlspecialchars($status['name']); ?></td>
-                          <td><?= htmlspecialchars($form); ?></td>
+                          <td><?= htmlspecialchars($form === 'Data Enumerator' ? 'Data Desa' : $form); ?></td>
                           <td>
                             <span class="badge <?= $status['is_locked'] ? 'bg-danger' : 'bg-success'; ?>">
                               <?= $status['is_locked'] ? 'Locked' : 'Unlocked'; ?>
@@ -287,7 +290,7 @@ include('../../config/list_form.php');
                   <select name="form_name" id="form_name" class="form-select">
                     <option value="" disabled selected>Pilih Form</option>
                     <?php foreach ($forms as $form) { ?>
-                      <option value="<?= $form; ?>"><?= $form; ?></option>
+                      <option value="<?= $form; ?>"><?= $form === 'Data Enumerator' ? 'Data Desa' : $form; ?></option>
                     <?php } ?>
                   </select>
                 </div>
