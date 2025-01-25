@@ -3,7 +3,7 @@ $current_folder = basename(dirname($_SERVER['SCRIPT_NAME']));
 $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../../' : './';
 ?>
 
-<nav class="app-header navbar navbar-expand bg-body">
+<nav class="app-header navbar navbar-expand bg-body sticky-navbar">
     <div class="container-fluid">
         <!-- Begin::Start Navbar Links -->
         <ul class="navbar-nav">
@@ -55,3 +55,29 @@ $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../.
         <!-- End::End Navbar Links -->
     </div>
 </nav>
+
+<style>
+    .sticky-navbar {
+        position: sticky; /* Atau gunakan fixed jika ingin navbar tetap di atas */
+        top: 0; /* Menjaga navbar tetap di atas */
+        z-index: 1000; /* Pastikan navbar di atas elemen lain */
+        background-color: rgba(255, 255, 255, 0.8); /* Latar belakang transparan */
+        backdrop-filter: blur(10px); /* Efek blur di belakang navbar */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek kedalaman */
+        transition: background-color 0.3s; /* Transisi halus saat menggulir */
+    }
+    .sticky-navbar.scrolled {
+        background-color: rgba(255, 255, 255, 1); /* Latar belakang solid saat menggulir */
+    }
+</style>
+<script>
+    // Menambahkan kelas 'scrolled' saat menggulir
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.sticky-navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
