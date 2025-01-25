@@ -148,7 +148,7 @@ include "../../config/session.php";
       </div> <!--end::App Content-->
     </main> <!--end::App Main--> <!--begin::Footer-->
 
-    <?php include("../components/footer.php"); ?>
+    <?php include("../../components/footer.php"); ?>
   </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
   <!-- Tambahkan library Select2 dan tema Bootstrap -->
