@@ -98,4 +98,40 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
             </ul>
         </nav>
     </div>
+    <!-- Tombol Logout di bagian bawah -->
+    <div class="sidebar-footer">
+        <a href="<?php echo $base_path; ?>auth/logout.php" class="nav-link logout-button">
+            <i class="nav-icon bi bi-box-arrow-right"></i>
+            <span>Log out</span>
+        </a>
+    </div>
 </aside>
+
+<style>
+    .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 10px 0; /* Padding vertikal */
+        text-align: center; /* Rata tengah */
+        background-color: #343a40; /* Sesuaikan dengan warna sidebar */
+    }
+    .logout-button {
+        display: inline-flex; /* Menggunakan inline-flex untuk menjaga keselarasan */
+        align-items: center; /* Rata tengah secara vertikal */
+        color: #ffffff; /* Warna teks putih */
+        font-weight: 500; /* Teks normal */
+        text-decoration: none; /* Menghilangkan garis bawah */
+        padding: 10px 20px; /* Padding horizontal */
+        border-radius: 5px; /* Sudut membulat */
+        transition: background-color 0.3s, transform 0.3s; /* Efek transisi */
+    }
+    .logout-button:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Efek hover dengan latar belakang transparan */
+        transform: scale(1.05); /* Efek zoom saat hover */
+        color: #ffffff;
+    }
+    .logout-button i {
+        margin-right: 8px; /* Jarak antara ikon dan teks */
+    }
+</style>
