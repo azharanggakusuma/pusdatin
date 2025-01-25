@@ -63,7 +63,6 @@ $base_path = ($current_folder == 'forms' || $current_folder == 'tables') ? '../.
         z-index: 1000; /* Pastikan navbar di atas elemen lain */
         background-color: rgba(255, 255, 255, 0.8); /* Latar belakang transparan */
         backdrop-filter: blur(10px); /* Efek blur di belakang navbar */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek kedalaman */
         transition: background-color 0.3s; /* Transisi halus saat menggulir */
     }
     .sticky-navbar.scrolled {
