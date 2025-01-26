@@ -18,7 +18,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
         </a>
     </div>
     <div class="sidebar-wrapper">
-        <nav class="mt-2">
+        <nav class="mt-2 mb-5">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <?php if ($level == 'user'): ?>
                     <li class="nav-header mb-2"><b><i>Periode Tahun (<?php echo htmlspecialchars($tahun); ?>)</i></b></li>
