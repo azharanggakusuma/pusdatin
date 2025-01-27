@@ -1397,7 +1397,7 @@ if ($type === 'excel') {
             $groupSheet->getStyle("A1:{$lastColLetter}{$lastRow}")->applyFromArray([
                 'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
                 'alignment' => [
-                    'horizontal' => Alignment::HORIZONTAL_LEFT,
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
                     'vertical'   => Alignment::VERTICAL_CENTER
                 ]
             ]);
