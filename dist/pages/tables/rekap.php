@@ -1420,7 +1420,7 @@ if ($type === 'excel') {
          */
         if (ob_get_level()) ob_end_clean(); // Bersihkan output buffer
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="rekap_data_pusdatin_per_grup.xlsx"');
+        header('Content-Disposition: attachment; filename="rekap_data_pusdatin.xlsx"');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
         exit;
