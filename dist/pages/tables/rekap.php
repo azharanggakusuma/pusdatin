@@ -314,7 +314,7 @@ $groupedColumns = [
         'jumlah_penduduk_perempuan'        => 'Jumlah Penduduk Perempuan',
         'jumlah_kepala_keluarga'           => 'Jumlah Kepala Keluarga',
         'pmi_bekerja'                      => 'PMI Bekerja Luar Negeri',
-        'agen_pengerahan_pmi'             => 'Agen Pengerahan PMI',
+        'agen_pengerahan_pmi'              => 'Agen Pengerahan PMI',
         'layanan_rekomendasi_pmi'          => 'Layanan Rekomendasi PMI',
         'keberadaan_wna'                   => 'Keberadaan WNA',
     ],
