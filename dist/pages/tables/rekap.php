@@ -12,6 +12,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Mpdf\Mpdf;
 
 // Ambil parameter jenis ekspor, kode desa, kecamatan, dan filter tahun dari URL
@@ -1396,7 +1397,7 @@ if ($type === 'excel') {
             $groupSheet->getStyle("A1:{$lastColLetter}{$lastRow}")->applyFromArray([
                 'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
                 'alignment' => [
-                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'horizontal' => Alignment::HORIZONTAL_LEFT,
                     'vertical'   => Alignment::VERTICAL_CENTER
                 ]
             ]);
