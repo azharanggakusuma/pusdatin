@@ -1229,6 +1229,7 @@ function sanitizeSheetName($name, $maxLength = 31)
 /**
  * 5. Export ke EXCEL atau PDF
  */
+
 // ================= Export Excel (Multi-Sheet dengan Daftar Sheet Berisi Link) =================
 if ($type === 'excel') {
     try {
@@ -1336,12 +1337,12 @@ if ($type === 'excel') {
          * 6b. Membuat Sheet-Group
          */
         foreach ($groupedColumns as $groupName => $colsInGroup) {
-            // Tambahkan kolom 'tahun' dan 'Data Desa' sebagai kolom pertama
+            // Tambahkan kolom 'tahun', 'kode_desa', 'nama_desa', dan 'kecamatan' sebagai kolom pertama
             $finalCols = array_merge([
-                'tahun' => 'Periode Tahun',
-                'kode_desa' => 'Kode Desa',
-                'nama_desa' => 'Nama Desa',
-                'kecamatan' => 'Kecamatan'
+                'tahun'      => 'Periode Tahun',
+                'kode_desa'  => 'Kode Desa',
+                'nama_desa'  => 'Nama Desa',
+                'kecamatan'  => 'Kecamatan'
             ], $colsInGroup);
 
             // Dapatkan uniqueSheetName dari mapping
