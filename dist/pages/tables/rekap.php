@@ -1211,88 +1211,161 @@ if (!$result || mysqli_num_rows($result) == 0) {
 /**
  * 5. Export ke EXCEL atau PDF
  */
-// ============== Export Excel (PhpSpreadsheet) ==============
+// ================= Export Excel (Multi-Sheet dengan Daftar Sheet Berisi Link) =================
 if ($type === 'excel') {
     try {
+        // Inisialisasi Spreadsheet
         $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
+        $spreadsheet->removeSheetByIndex(0); // Hapus sheet default
 
-        // Style border + align center
-        $tableStyle = [
-            'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-            'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_CENTER,
-                'vertical' => Alignment::VERTICAL_CENTER
-            ]
-        ];
+        // Tarik seluruh data ke array
+        $allData = [];
+        while ($rowData = mysqli_fetch_assoc($result)) {
+            $allData[] = $rowData;
+        }
 
-        // Style header
+        /**
+         * 6a. Membuat Sheet Indeks ("Daftar Sheet")
+         */
+        $daftarSheet = $spreadsheet->createSheet();
+        $daftarSheet->setTitle('Daftar Sheet');
+
+        // Header untuk Daftar Sheet
+        $daftarSheet->setCellValue('A1', 'No');
+        $daftarSheet->setCellValue('B1', 'Nama Sheet');
+
+        // Definisi Style untuk Header Daftar Sheet
         $headerStyle = [
             'font' => ['bold' => true],
             'fill' => [
-                'fillType' => Fill::FILL_SOLID,
+                'fillType'   => Fill::FILL_SOLID,
                 'startColor' => ['rgb' => 'D3D3D3']
             ],
             'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_CENTER,
-                'vertical' => Alignment::VERTICAL_CENTER
+                'horizontal' => Alignment::HORIZONTAL_LEFT, // Rata kiri
+                'vertical'   => Alignment::VERTICAL_CENTER
             ],
             'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]]
         ];
 
-        // Buat multi-baris header: baris 1 = nama grup, baris 2 = nama kolom
-        $currentCol = 1; // Mulai kolom A
-        foreach ($groupedColumns as $groupName => $cols) {
-            $colSpan = count($cols);
-            $startColLetter = Coordinate::stringFromColumnIndex($currentCol);
-            $endColLetter   = Coordinate::stringFromColumnIndex($currentCol + $colSpan - 1);
-
-            // Merge cell untuk judul grup
-            $sheet->mergeCells($startColLetter . '1:' . $endColLetter . '1');
-            $sheet->setCellValue($startColLetter . '1', $groupName);
-
-            // Baris ke-2: header kolom
-            foreach ($cols as $dbCol => $headerCol) {
-                $colLetter = Coordinate::stringFromColumnIndex($currentCol);
-                $sheet->setCellValue($colLetter . '2', $headerCol);
-                $currentCol++;
-            }
-        }
-
         // Terapkan style header
-        $lastCol = Coordinate::stringFromColumnIndex($currentCol - 1);
-        $sheet->getStyle("A1:{$lastCol}2")->applyFromArray($headerStyle);
+        $daftarSheet->getStyle("A1:B1")->applyFromArray($headerStyle);
 
-        // Isi data (mulai baris 3)
-        $rowNumber = 3;
-        mysqli_data_seek($result, 0);
-
-        while ($rowData = mysqli_fetch_assoc($result)) {
-            $colIdx = 1;
-            // Loop tiap grup, lalu setiap kolom
-            foreach ($groupedColumns as $grName => $cols) {
-                foreach ($cols as $dbCol => $colHeader) {
-                    $value = isset($rowData[$dbCol]) ? $rowData[$dbCol] : '';
-                    $colLetter = Coordinate::stringFromColumnIndex($colIdx);
-                    $sheet->setCellValue($colLetter . $rowNumber, $value);
-                    $colIdx++;
-                }
-            }
-            $rowNumber++;
+        // Isi Daftar Sheet dengan nama grup dan hyperlink
+        $rowNum = 2;
+        $no = 1;
+        foreach ($groupedColumns as $groupName => $colsInGroup) {
+            // Tulis nomor
+            $daftarSheet->setCellValue('A' . $rowNum, $no);
+            
+            // Tulis nama sheet dengan hyperlink
+            $daftarSheet->setCellValue('B' . $rowNum, $groupName);
+            // Buat hyperlink ke sheet tersebut
+            $daftarSheet->getCell('B' . $rowNum)->getHyperlink()->setUrl("sheet://'" . $groupName . "'!A1");
+            // Tambahkan style untuk link
+            $daftarSheet->getStyle('B' . $rowNum)->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
+            $daftarSheet->getStyle('B' . $rowNum)->getFont()->setUnderline(true);
+            // Atur alignment rata kiri
+            $daftarSheet->getStyle('B' . $rowNum)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+            
+            $rowNum++;
+            $no++;
         }
 
-        // Terapkan style border keseluruhan
-        $sheet->getStyle("A1:{$lastCol}" . ($rowNumber - 1))->applyFromArray($tableStyle);
+        // Terapkan style tabel (borders dan alignment rata kiri)
+        $lastRowDaftar = $rowNum - 1;
+        $daftarSheet->getStyle("A1:B{$lastRowDaftar}")->applyFromArray([
+            'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT, // Rata kiri
+                'vertical'   => Alignment::VERTICAL_CENTER
+            ]
+        ]);
 
         // Auto-width kolom
-        for ($i = 1; $i <= ($currentCol - 1); $i++) {
-            $sheet->getColumnDimension(Coordinate::stringFromColumnIndex($i))->setAutoSize(true);
+        foreach (range('A', 'B') as $columnID) {
+            $daftarSheet->getColumnDimension($columnID)->setAutoSize(true);
         }
 
-        // Output ke browser
-        if (ob_get_level()) ob_end_clean();
+        /**
+         * 6b. Membuat Sheet-Group
+         */
+        foreach ($groupedColumns as $groupName => $colsInGroup) {
+            // Gabungkan kolom grup tanpa "Data Desa"
+            $finalCols = $colsInGroup;
+
+            // Buat sheet baru untuk grup
+            $groupSheet = $spreadsheet->createSheet();
+            $groupSheet->setTitle(substr($groupName, 0, 30)); // Judul sheet (max 31 karakter)
+
+            // Tulis header (baris 1)
+            $currentCol = 1;
+            foreach ($finalCols as $dbCol => $headerText) {
+                $colLetter = Coordinate::stringFromColumnIndex($currentCol);
+                $groupSheet->setCellValue($colLetter . '1', $headerText);
+                $currentCol++;
+            }
+
+            // Definisi Style untuk Header
+            $groupHeaderStyle = [
+                'font' => ['bold' => true],
+                'fill' => [
+                    'fillType'   => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'D3D3D3']
+                ],
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical'   => Alignment::VERTICAL_CENTER
+                ],
+                'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]]
+            ];
+
+            // Terapkan style header
+            $lastColLetter = Coordinate::stringFromColumnIndex($currentCol - 1);
+            $groupSheet->getStyle("A1:{$lastColLetter}1")->applyFromArray($groupHeaderStyle);
+
+            // Isi data mulai dari baris 2
+            $rowNumber = 2;
+            foreach ($allData as $rowArr) {
+                $colIdx = 1;
+                foreach ($finalCols as $dbCol => $headerText) {
+                    $value = isset($rowArr[$dbCol]) ? $rowArr[$dbCol] : '';
+                    $colLetter = Coordinate::stringFromColumnIndex($colIdx);
+                    $groupSheet->setCellValue($colLetter . $rowNumber, $value);
+                    $colIdx++;
+                }
+                $rowNumber++;
+            }
+
+            // Terapkan style tabel (borders dan alignment center)
+            $lastRow = $rowNumber - 1;
+            $groupSheet->getStyle("A1:{$lastColLetter}{$lastRow}")->applyFromArray([
+                'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical'   => Alignment::VERTICAL_CENTER
+                ]
+            ]);
+
+            // Auto-width kolom
+            for ($i = 1; $i <= count($finalCols); $i++) {
+                $colLetter = Coordinate::stringFromColumnIndex($i);
+                $groupSheet->getColumnDimension($colLetter)->setAutoSize(true);
+            }
+        }
+
+        /**
+         * 6c. Atur Sheet Indeks sebagai Sheet Aktif
+         */
+        // Pastikan "Daftar Sheet" adalah sheet pertama (index 0)
+        $spreadsheet->setActiveSheetIndexByName('Daftar Sheet');
+
+        /**
+         * 6d. Output ke Browser
+         */
+        if (ob_get_level()) ob_end_clean(); // Bersihkan output buffer
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="rekap_data_pusdatin.xlsx"');
+        header('Content-Disposition: attachment; filename="rekap_data_pusdatin_per_grup.xlsx"');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
         exit;
@@ -1304,10 +1377,11 @@ if ($type === 'excel') {
 // ============== Export PDF (mPDF) ==============
 if ($type === 'pdf') {
     try {
-        // Setting A3 Landscape
+        // Gunakan setting A3 Landscape
         $mpdf = new Mpdf(['format' => 'A3-L']);
 
-        // Bangun HTML
+        // Bangun HTML (satu tabel besar dengan multi-header).
+        // Di sini kita TIDAK memecah menjadi per-sheet, melainkan tetap digabung.
         $html = '
             <h2 style="text-align:center;">Rekap Data</h2>
             <table border="1" cellpadding="5" cellspacing="0" 
@@ -1334,7 +1408,7 @@ if ($type === 'pdf') {
         $html .= '</thead><tbody>';
 
         // Isi data
-        mysqli_data_seek($result, 0);
+        mysqli_data_seek($result, 0); // kembalikan pointer ke awal
         while ($row = mysqli_fetch_assoc($result)) {
             $html .= '<tr>';
             foreach ($groupedColumns as $grName => $cols) {
