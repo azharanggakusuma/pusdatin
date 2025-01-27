@@ -252,13 +252,18 @@ $allColumns = [
  *    Dibagi jadi beberapa "Bagian" (sesuai contoh awal).
  */
 $groupedColumns = [
-    'Bagian 1' => [
+    'Data Desa' => [
         'tahun'                            => 'Periode Tahun',
         'kode_desa'                        => 'Kode Desa',
         'nama_desa'                        => 'Nama Desa',
         'kecamatan'                        => 'Kecamatan',
+    ],
+
+    'Keterangan Tempat' => [
         'sk_pembentukan'                   => 'SK Pembentukan/Pengesahan Desa/Kelurahan',
         'alamat_balai'                     => 'Alamat Balai Desa/Kantor Kelurahan',
+    ],
+    'Keterangan Umum Desa Kelurahan' => [
         'batas_utara'                      => 'Batas Utara',
         'kec_utara'                        => 'Kec Utara',
         'batas_selatan'                    => 'Batas Selatan',
@@ -273,8 +278,6 @@ $groupedColumns = [
         'alamat_website'                   => 'Alamat Website Desa',
         'alamat_email'                     => 'Alamat Email Desa',
         'alamat_facebook'                  => 'Alamat Facebook Desa',
-    ],
-    'Bagian 2' => [
         'alamat_twitter'                   => 'Alamat Twitter Desa',
         'alamat_youtube'                   => 'Alamat YouTube Desa',
         'status_pemerintahan'              => 'Status Pemerintahan',
@@ -293,16 +296,18 @@ $groupedColumns = [
         'lokasi_kantor'                    => 'Lokasi Kantor',
         'koordinat_lintang'                => 'Koordinat Lintang',
         'koordinat_bujur'                  => 'Koordinat Bujur',
+    ],
+    'Kependudukan dan Ketenagakerjaan' => [
         'jumlah_surat_kematian'            => 'Jumlah Surat Kematian',
         'jumlah_penduduk_laki'             => 'Jumlah Penduduk Laki-Laki',
-    ],
-    'Bagian 3' => [
         'jumlah_penduduk_perempuan'        => 'Jumlah Penduduk Perempuan',
         'jumlah_kepala_keluarga'           => 'Jumlah Kepala Keluarga',
         'pmi_bekerja'                      => 'PMI Bekerja Luar Negeri',
         'agen_pengerahan_pmi'             => 'Agen Pengerahan PMI',
         'layanan_rekomendasi_pmi'          => 'Layanan Rekomendasi PMI',
         'keberadaan_wna'                   => 'Keberadaan WNA',
+    ],
+    'Perumahan dan Lingkungan Hidup' => [
         'jumlah_pln'                       => 'Pengguna Listrik PLN',
         'jumlah_non_pln'                   => 'Pengguna Listrik Non-PLN',
         'jumlah_bukan_pengguna_listrik'    => 'Bukan Pengguna Listrik',
@@ -316,8 +321,6 @@ $groupedColumns = [
         'sutet_status'                     => 'Wilayah Dilalui SUTET/SUUT/SUTTAS',
         'keberadaan_pemukiman'             => 'Pemukiman Bawah SUTET',
         'jumlah_pemukiman'                 => 'Jumlah Pemukiman Bawah SUTET',
-    ],
-    'Bagian 4' => [
         'keberadaan_sungai'                => 'Keberadaan Sungai',
         'nama_sungai_1'                    => 'Nama Sungai 1',
         'nama_sungai_2'                    => 'Nama Sungai 2',
@@ -337,9 +340,9 @@ $groupedColumns = [
         'keberadaan_galian'                => 'Lokasi Penggalian Gol. C',
         'jumlah_prasarana'                 => 'Jumlah Prasarana Kebersihan',
         'jumlah_rumah'                     => 'Jumlah RTLH',
-        'tanah_longsor'                    => 'Tanah Longsor',
     ],
-    'Bagian 5' => [
+    'Bencana Alam dan Mitigasi Bencana Alam' => [
+        'tanah_longsor'                    => 'Tanah Longsor',
         'banjir'                           => 'Banjir',
         'banjir_bandang'                   => 'Banjir Bandang',
         'gempa_bumi'                       => 'Gempa Bumi',
@@ -355,13 +358,13 @@ $groupedColumns = [
         'perlengkapan_keselamatan'         => 'Perlengkapan Keselamatan',
         'rambu_evakuasi'                   => 'Rambu & Jalur Evakuasi',
         'infrastruktur'                    => 'Pembangunan/Normalisasi',
+    ],
+    'Pendidikan dan Kesehatan' => [
         'keberadaan_tbm'                   => 'Keberadaan TBM/Perpustakaan',
         'keberadaan_bidan'                 => 'Keberadaan Bidan',
         'keberadaan_dukun_bayi'            => 'Keberadaan Dukun Bayi',
         'muntaber_diare'                   => 'Muntaber/Diare',
         'demam_berdarah'                   => 'Demam Berdarah',
-    ],
-    'Bagian 6' => [
         'campak'                           => 'Campak',
         'malaria'                          => 'Malaria',
         'flu_burung_sars'                  => 'Flu Burung/SARS',
@@ -370,9 +373,23 @@ $groupedColumns = [
         'corona_covid19'                   => 'COVID-19',
         'lainnya_name'                     => 'Penyakit Lainnya (Nama)',
         'lainnya_status'                   => 'Penyakit Lainnya (Status)',
-        'jumlah_tuna_netra'               => 'Jml Tuna Netra',
-        'jumlah_tuna_rungu'               => 'Jml Tuna Rungu',
-        'jumlah_tuna_wicara'              => 'Jml Tuna Wicara',
+    ],
+    'Sosial Budaya' => [
+        'jumlah_masjid'                   => 'Masjid',
+        'jumlah_pura'                     => 'Surau/Langgar/Musala',
+        'jumlah_musal'                    => 'Wihara',
+        'jumlah_wihara'                   => 'Gereja Kristen',
+        'jumlah_gereja_kristen'           => 'Kelenteng',
+        'jumlah_kelenteng'                => 'Gereja Katolik',
+        'jumlah_gereja_katolik'           => 'Gereja Katolik',
+        'jumlah_balai_basarah'            => 'Balai Basarah',
+        'jumlah_kape'                     => 'Kapel',
+        'lainnya'                         => 'Lainnya',
+        'jumlah_lainnya'                  => 'Jumlah (Lainnya)',
+
+        'jumlah_tuna_netra'               => 'Tuna Netra',
+        'jumlah_tuna_rungu'               => 'Tuna Rungu',
+        'jumlah_tuna_wicara'              => 'Tuna Wicara',
         'jumlah_tuna_rungu_wicara'        => 'Tuna Rungu-Wicara',
         'jumlah_tuna_daksa'               => 'Tuna Daksa',
         'jumlah_tuna_grahita'             => 'Tuna Grahita',
@@ -383,7 +400,7 @@ $groupedColumns = [
         'ruang_terbuka_hijau'             => 'Ruang Terbuka Hijau',
         'ruang_terbuka_non_hijau'         => 'Ruang Terbuka Non Hijau',
     ],
-    'Bagian 7' => [
+    'Olahraga' => [
         'sepak_bola'                      => 'Sepak Bola',
         'bola_voli'                       => 'Bola Voli',
         'bulu_tangkis'                    => 'Bulu Tangkis',
@@ -404,8 +421,6 @@ $groupedColumns = [
         'operasional_angkutan_umum'       => 'Operasional Angkutan Umum',
         'jam_operasi_angkutan_umum'       => 'Jam Operasi Angkutan Umum',
         'keberadaan_internet'             => 'Keberadaan Internet (Warnet,dll)',
-    ],
-    'Bagian 8' => [
         'jumlah_bts'                      => 'Jumlah BTS',
         'jumlah_operator_telekomunikasi'  => 'Jumlah Operator Telekomunikasi',
         'sinyal_telepon'                  => 'Sinyal Telepon',
@@ -423,9 +438,9 @@ $groupedColumns = [
         'non_makanan_unggulan'            => 'Produk Non-Makanan Unggulan',
         'keberadaan_minyak_tanah'         => 'Penjual Minyak Tanah',
         'keberadaan_lpg'                  => 'Penjual LPG',
-        'bank_pemerintah'                 => 'Bank Pemerintah (jml)',
-        'bank_swasta'                     => 'Bank Swasta (jml)',
-        'bank_bpr'                        => 'Bank BPR (jml)',
+        'bank_pemerintah'                 => 'Bank Pemerintah (',
+        'bank_swasta'                     => 'Bank Swasta (',
+        'bank_bpr'                        => 'Bank BPR (',
     ],
     'Bagian 9' => [
         'jarak_bank_terdekat'             => 'Jarak Bank Terdekat',
@@ -462,27 +477,27 @@ $groupedColumns = [
         'salon_jumlah'                   => 'Jumlah Salon',
         'salon_jarak'                    => 'Jarak Salon',
         'salon_kemudahan'                => 'Kemudahan Akses Salon',
-        'kelompok_pertokoan_jumlah'      => 'Kelompok Pertokoan (jml)',
+        'kelompok_pertokoan_jumlah'      => 'Kelompok Pertokoan (',
         'kelompok_pertokoan_kemudahan'   => 'Akses Kelompok Pertokoan',
-        'pasar_permanen_jumlah'          => 'Pasar Permanen (jml)',
+        'pasar_permanen_jumlah'          => 'Pasar Permanen (',
         'pasar_permanen_kemudahan'       => 'Akses Pasar Permanen',
-        'pasar_semi_permanen_jumlah'     => 'Pasar Semi Permanen (jml)',
+        'pasar_semi_permanen_jumlah'     => 'Pasar Semi Permanen (',
         'pasar_semi_permanen_kemudahan'  => 'Akses Pasar Semi Permanen',
     ],
     'Bagian 11' => [
-        'pasar_tanpa_bangunan_jumlah'     => 'Pasar Tanpa Bangunan (jml)',
+        'pasar_tanpa_bangunan_jumlah'     => 'Pasar Tanpa Bangunan (',
         'pasar_tanpa_bangunan_kemudahan'  => 'Akses Pasar Tanpa Bangunan',
-        'minimarket_jumlah'               => 'Minimarket/Swalayan (jml)',
+        'minimarket_jumlah'               => 'Minimarket/Swalayan (',
         'minimarket_kemudahan'            => 'Akses Minimarket/Swalayan',
-        'restoran_jumlah'                 => 'Restoran/Rmh Makan (jml)',
+        'restoran_jumlah'                 => 'Restoran/Rmh Makan (',
         'restoran_kemudahan'              => 'Akses Restoran/Rmh Makan',
-        'warung_makan_jumlah'             => 'Warung Makan (jml)',
+        'warung_makan_jumlah'             => 'Warung Makan (',
         'warung_makan_kemudahan'          => 'Akses Warung Makan',
-        'toko_kelontong_jumlah'           => 'Toko Kelontong (jml)',
+        'toko_kelontong_jumlah'           => 'Toko Kelontong (',
         'toko_kelontong_kemudahan'        => 'Akses Toko Kelontong',
-        'hotel_jumlah'                    => 'Hotel (jml)',
+        'hotel_jumlah'                    => 'Hotel (',
         'hotel_kemudahan'                 => 'Akses Hotel',
-        'penginapan_jumlah'               => 'Penginapan (jml)',
+        'penginapan_jumlah'               => 'Penginapan (',
         'penginapan_kemudahan'            => 'Akses Penginapan',
         'kejadian_perkelahian_massal'     => 'Kejadian Perkelahian Massal',
         'pembangunan_pos_keamanan'        => 'Pembangunan Pos Keamanan',
@@ -678,6 +693,19 @@ SELECT DISTINCT
     tb_klb_wabah.corona_covid19,
     tb_klb_wabah.lainnya_name,
     tb_klb_wabah.lainnya_status,
+
+    /* Tempat Ibadah */
+    tb_tempat_ibadah.jumlah_masjid,
+    tb_tempat_ibadah.jumlah_pura,
+    tb_tempat_ibadah.jumlah_musala,
+    tb_tempat_ibadah.jumlah_wihara,	
+    tb_tempat_ibadah.jumlah_gereja_kristen,	
+    tb_tempat_ibadah.jumlah_kelenteng,	
+    tb_tempat_ibadah.jumlah_gereja_katolik,	
+    tb_tempat_ibadah.jumlah_balai_basarah,	
+    tb_tempat_ibadah.jumlah_kapel,	
+    tb_tempat_ibadah.lainnya,
+    tb_tempat_ibadah.jumlah_lainnya,	
 
     /* Disabilitas */
     tb_disabilitas.jumlah_tuna_netra,
@@ -1007,6 +1035,11 @@ LEFT JOIN tb_keberadaan_dukun_bayi
 LEFT JOIN tb_klb_wabah
     ON tb_klb_wabah.desa_id = tb_enumerator.id_desa
    AND tb_klb_wabah.tahun   = filtered_user_progress.tahun
+
+/* Tempat Ibadah */
+LEFT JOIN tb_tempat_ibadah
+    ON tb_tempat_ibadah.desa_id = tb_enumerator.id_desa
+   AND tb_tempat_ibadah.tahun   = filtered_user_progress.tahun
 
 /* Disabilitas */
 LEFT JOIN tb_disabilitas
@@ -1779,6 +1812,17 @@ if ($type === 'pdf') {
                                         tb_klb_wabah.corona_covid19,
                                         tb_klb_wabah.lainnya_name,
                                         tb_klb_wabah.lainnya_status,
+                                        tb_tempat_ibadah.jumlah_masjid,
+                                        tb_tempat_ibadah.jumlah_pura,
+                                        tb_tempat_ibadah.jumlah_musala,
+                                        tb_tempat_ibadah.jumlah_wihara,	
+                                        tb_tempat_ibadah.jumlah_gereja_kristen,	
+                                        tb_tempat_ibadah.jumlah_kelenteng,	
+                                        tb_tempat_ibadah.jumlah_gereja_katolik,	
+                                        tb_tempat_ibadah.jumlah_balai_basarah,	
+                                        tb_tempat_ibadah.jumlah_kapel,	
+                                        tb_tempat_ibadah.lainnya,
+                                        tb_tempat_ibadah.jumlah_lainnya,
                                         tb_disabilitas.jumlah_tuna_netra,
                                         tb_disabilitas.jumlah_tuna_rungu,
                                         tb_disabilitas.jumlah_tuna_wicara,
@@ -3010,6 +3054,17 @@ if ($type === 'pdf') {
                         tb_klb_wabah.corona_covid19,
                         tb_klb_wabah.lainnya_name,
                         tb_klb_wabah.lainnya_status,
+                        tb_tempat_ibadah.jumlah_masjid,
+                        tb_tempat_ibadah.jumlah_pura,
+                        tb_tempat_ibadah.jumlah_musala,
+                        tb_tempat_ibadah.jumlah_wihara,	
+                        tb_tempat_ibadah.jumlah_gereja_kristen,	
+                        tb_tempat_ibadah.jumlah_kelenteng,	
+                        tb_tempat_ibadah.jumlah_gereja_katolik,	
+                        tb_tempat_ibadah.jumlah_balai_basarah,	
+                        tb_tempat_ibadah.jumlah_kapel,	
+                        tb_tempat_ibadah.lainnya,
+                        tb_tempat_ibadah.jumlah_lainnya,
                         tb_disabilitas.jumlah_tuna_netra,
                         tb_disabilitas.jumlah_tuna_rungu,
                         tb_disabilitas.jumlah_tuna_wicara,
@@ -3200,6 +3255,8 @@ if ($type === 'pdf') {
                         ON tb_enumerator.id_desa = tb_keberadaan_dukun_bayi.desa_id
                     LEFT JOIN tb_klb_wabah
                         ON tb_enumerator.id_desa = tb_klb_wabah.desa_id
+                    LEFT JOIN tb_tempat_ibadah
+                        ON tb_enumerator.id_desa = tb_tempat_ibadah.desa_id
                     LEFT JOIN tb_disabilitas
                         ON tb_enumerator.id_desa = tb_disabilitas.desa_id
                     LEFT JOIN tb_ruang_publik
