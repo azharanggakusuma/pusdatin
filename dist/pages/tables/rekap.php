@@ -1208,6 +1208,24 @@ if (!$result || mysqli_num_rows($result) == 0) {
     die("Tidak ada data yang ditemukan dengan filter yang diberikan.");
 }
 
+
+/**
+ * Fungsi untuk membersihkan nama sheet dari karakter ilegal dan memastikan panjang <=31
+ */
+function sanitizeSheetName($name, $maxLength = 31)
+{
+    // Hilangkan karakter ilegal
+    $illegalChars = ['\\', '/', '?', '*', '[', ']', ':'];
+    $name = str_replace($illegalChars, '', $name);
+
+    // Truncate nama jika diperlukan
+    if (strlen($name) > $maxLength) {
+        $name = substr($name, 0, $maxLength);
+    }
+
+    return $name;
+}
+
 /**
  * 5. Export ke EXCEL atau PDF
  */
@@ -1251,23 +1269,50 @@ if ($type === 'excel') {
         // Terapkan style header
         $daftarSheet->getStyle("A1:B1")->applyFromArray($headerStyle);
 
+        // Array untuk menyimpan nama sheet yang sudah ada untuk memastikan unik
+        $existingSheetNames = ['Daftar Sheet'];
+
+        // Mapping grupName ke uniqueSheetName
+        $sheetNameMap = [];
+
         // Isi Daftar Sheet dengan nama grup dan hyperlink
         $rowNum = 2;
         $no = 1;
         foreach ($groupedColumns as $groupName => $colsInGroup) {
+            // Sanitasi nama sheet dan pastikan panjang <=31
+            $sanitizedGroupSheetName = sanitizeSheetName($groupName, 31);
+
+            // Pastikan nama sheet unik
+            $uniqueSheetName = $sanitizedGroupSheetName;
+            $counter = 1;
+            while (in_array($uniqueSheetName, $existingSheetNames)) {
+                // Tambahkan nomor di akhir nama sheet untuk memastikan unik
+                $suffix = " ($counter)";
+                // Pastikan total panjang nama sheet tidak melebihi 31 karakter
+                $trimLength = 31 - strlen($suffix);
+                $uniqueSheetName = substr($sanitizedGroupSheetName, 0, $trimLength) . $suffix;
+                $counter++;
+            }
+
+            // Simpan mapping grupName ke uniqueSheetName
+            $sheetNameMap[$groupName] = $uniqueSheetName;
+
+            // Tambahkan nama sheet yang unik ke array existingSheetNames
+            $existingSheetNames[] = $uniqueSheetName;
+
             // Tulis nomor
             $daftarSheet->setCellValue('A' . $rowNum, $no);
-            
+
             // Tulis nama sheet dengan hyperlink
             $daftarSheet->setCellValue('B' . $rowNum, $groupName);
             // Buat hyperlink ke sheet tersebut
-            $daftarSheet->getCell('B' . $rowNum)->getHyperlink()->setUrl("sheet://'" . $groupName . "'!A1");
+            $daftarSheet->getCell('B' . $rowNum)->getHyperlink()->setUrl("sheet://'" . $uniqueSheetName . "'!A1");
             // Tambahkan style untuk link
             $daftarSheet->getStyle('B' . $rowNum)->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
             $daftarSheet->getStyle('B' . $rowNum)->getFont()->setUnderline(true);
             // Atur alignment rata kiri
             $daftarSheet->getStyle('B' . $rowNum)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-            
+
             $rowNum++;
             $no++;
         }
@@ -1291,12 +1336,15 @@ if ($type === 'excel') {
          * 6b. Membuat Sheet-Group
          */
         foreach ($groupedColumns as $groupName => $colsInGroup) {
-            // Gabungkan kolom grup tanpa "Data Desa"
-            $finalCols = $colsInGroup;
+            // Tambahkan kolom 'tahun' sebagai kolom pertama
+            $finalCols = array_merge(['tahun' => 'Periode Tahun'], $colsInGroup);
+
+            // Dapatkan uniqueSheetName dari mapping
+            $uniqueSheetName = $sheetNameMap[$groupName];
 
             // Buat sheet baru untuk grup
             $groupSheet = $spreadsheet->createSheet();
-            $groupSheet->setTitle(substr($groupName, 0, 30)); // Judul sheet (max 31 karakter)
+            $groupSheet->setTitle(substr($uniqueSheetName, 0, 31)); // Judul sheet (max 31 karakter)
 
             // Tulis header (baris 1)
             $currentCol = 1;
