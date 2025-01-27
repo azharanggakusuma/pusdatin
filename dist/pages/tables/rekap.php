@@ -1336,8 +1336,13 @@ if ($type === 'excel') {
          * 6b. Membuat Sheet-Group
          */
         foreach ($groupedColumns as $groupName => $colsInGroup) {
-            // Tambahkan kolom 'tahun' sebagai kolom pertama
-            $finalCols = array_merge(['tahun' => 'Periode Tahun'], $colsInGroup);
+            // Tambahkan kolom 'tahun' dan 'Data Desa' sebagai kolom pertama
+            $finalCols = array_merge([
+                'tahun' => 'Periode Tahun',
+                'kode_desa' => 'Kode Desa',
+                'nama_desa' => 'Nama Desa',
+                'kecamatan' => 'Kecamatan'
+            ], $colsInGroup);
 
             // Dapatkan uniqueSheetName dari mapping
             $uniqueSheetName = $sheetNameMap[$groupName];
