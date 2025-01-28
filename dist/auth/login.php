@@ -22,7 +22,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/adminlte.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="../img/kominfo.png" type="image/x-icon">
     <style>
         .login-box {
@@ -120,47 +120,50 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <?php
                 if (isset($_GET['error']) && $_GET['error'] == 'true') {
                     echo '<script>
-                                swal({
-                                    title: "Login Gagal!",
-                                    text: "Username atau password salah.",
-                                    icon: "error",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    window.location.href = "login.php";
-                                });
-                              </script>';
+            Swal.fire({
+                title: "Login Gagal!",
+                text: "Username atau password salah.",
+                icon: "error",
+                timer: 3000,
+                timerProgressBar: true, // Menampilkan progres timer
+                showConfirmButton: false // Tidak ada tombol konfirmasi
+            }).then(() => {
+                window.location.href = "login.php";
+            });
+          </script>';
                 }
                 if (isset($_GET['success']) && $_GET['success'] == 'true') {
                     echo '<script>
-                                swal({
-                                    title: "Login Berhasil!",
-                                    text: "Selamat datang di sistem.",
-                                    icon: "success",
-                                    timer: 3000,
-                                    buttons: false
-                                }).then(() => {
-                                    setTimeout(() => {
-                                        window.location.href = "../index.php";
-                                    }, 500);
-                                });
-                              </script>';
+            Swal.fire({
+                title: "Login Berhasil!",
+                text: "Selamat datang di sistem.",
+                icon: "success",
+                timer: 3000,
+                timerProgressBar: true, // Menampilkan progres timer
+                showConfirmButton: false // Tidak ada tombol konfirmasi
+            }).then(() => {
+                setTimeout(() => {
+                    window.location.href = "../index.php";
+                }, 500);
+            });
+          </script>';
                 }
                 if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
                     echo '<script>
-                                swal({
-                                    title: "Berhasil Logout!",
-                                    text: "Anda telah logout dari sistem.",
-                                    icon: "success",
-                                    timer: 3000,
-                                    buttons: false,
-                                    className: "swal-modal-fadeout"
-                                }).then(function() {
-                                    window.location.href = "login.php";
-                                });
-                            </script>';
+            Swal.fire({
+                title: "Berhasil Logout!",
+                text: "Anda telah logout dari sistem.",
+                icon: "success",
+                timer: 3000,
+                timerProgressBar: true, // Menampilkan progres timer
+                showConfirmButton: false // Tidak ada tombol konfirmasi
+            }).then(function() {
+                window.location.href = "login.php";
+            });
+          </script>';
                 }
                 ?>
+
                 <form action="proses_login.php" method="post" id="login-form">
                     <div class="input-group mb-3">
                         <div class="input-group-text">
@@ -228,12 +231,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                 const recaptchaResponse = grecaptcha.getResponse();
                 if (!recaptchaResponse) {
                     event.preventDefault(); // Mencegah form untuk disubmit
-                    swal({
+                    Swal.fire({
                         title: "reCAPTCHA belum dicentang!",
                         text: "Harap centang kotak reCAPTCHA untuk melanjutkan.",
                         icon: "warning",
-                        buttons: false,
-                        timer: 3000
+                        timer: 3000, // Menampilkan selama 3 detik
+                        timerProgressBar: true, // Menampilkan progres timer
+                        showConfirmButton: false // Tidak ada tombol konfirmasi
                     });
                 }
             });
