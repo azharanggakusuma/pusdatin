@@ -2662,7 +2662,7 @@ if ($type === 'pdf') {
                                             echo "<option value='{$kecamatan['kecamatan']}'>{$kecamatan['kecamatan']}</option>";
                                         }
                                         ?>
-                                    </select>
+                                    </select> 
 
                                     <!-- Filter Desa -->
                                     <label for="kode_desa">Pilih Desa:</label>
