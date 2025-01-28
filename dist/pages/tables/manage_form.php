@@ -116,7 +116,8 @@ $forms = [
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
@@ -328,32 +329,35 @@ $forms = [
         </div>
       </div>
 
-      <!-- SweetAlert Notifikasi -->
+      <!-- SweetAlert2 Notifikasi -->
       <?php if (!empty($sweetalert_message)): ?>
         <script>
-          swal({
+          Swal.fire({
             title: "Berhasil!",
             text: "<?= $sweetalert_message; ?>",
             icon: "success",
-            timer: 3000,
-            buttons: false
+            timer: 3000, // Menampilkan selama 3 detik
+            timerProgressBar: true, // Menampilkan progres timer
+            showConfirmButton: false // Tidak ada tombol
           }).then(() => {
             window.location.href = "manage_form.php";
           });
         </script>
       <?php elseif (!empty($error_message)): ?>
         <script>
-          swal({
+          Swal.fire({
             title: "Gagal!",
             text: "<?= $error_message; ?>",
             icon: "error",
-            timer: 3000,
-            buttons: false
+            timer: 3000, // Menampilkan selama 3 detik
+            timerProgressBar: true, // Menampilkan progres timer
+            showConfirmButton: false // Tidak ada tombol
           }).then(() => {
             window.location.href = "manage_form.php";
           });
         </script>
       <?php endif; ?>
+
 
     </main>
 
