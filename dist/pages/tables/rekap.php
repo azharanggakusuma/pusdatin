@@ -1429,6 +1429,8 @@ if ($type === 'excel') {
     }
 }
 
+
+
 // ============== Export PDF (mPDF) ==============
 if ($type === 'pdf') {
     try {
@@ -1565,7 +1567,9 @@ if ($type === 'pdf') {
         die("Error exporting PDF: " . $e->getMessage());
     }
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
