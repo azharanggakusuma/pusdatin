@@ -368,6 +368,9 @@ if ($result->num_rows > 0) {
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse" data-bs-toggle="modal" data-bs-target="#addUserModal">
                                     <i class="fas fa-user-plus"></i> &nbsp; Add User
                                 </button>
+                                <button type="button" class="btn btn-tool" data-bs-toggle="modal" data-bs-target="#printAllModal">
+                                    <i class="fas fa-print"></i> Print User
+                                </button>
                             </div>
                         </div>
                         <div class="card-body p-0" style="overflow-x: auto;">
@@ -422,7 +425,11 @@ if ($result->num_rows > 0) {
                                                         onclick="setDeleteUserId(<?= $user['id'] ?>)">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
-
+                                                    &nbsp;
+                                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#printUserModal"
+                                                        onclick="loadUserData('<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
+                                                        <i class="fas fa-print"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -452,6 +459,120 @@ if ($result->num_rows > 0) {
                         </div>
                     </div>
                     <!-- /.card -->
+
+                    <div class="modal fade" id="printAllModal" tabindex="-1" aria-labelledby="printAllModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content shadow-sm rounded-3">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="printAllModalLabel">Print Semua Data</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body" id="printAllContent">
+                                    <h6 class="text-center mb-4">Data Semua User</h6>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>User</th>
+                                                <th>Username</th>
+                                                <th>Password</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($users as $index => $user): ?>
+                                                <tr>
+                                                    <td><?= $index + 1 ?></td>
+                                                    <td><?= htmlspecialchars($user['name']) ?></td>
+                                                    <td><?= htmlspecialchars($user['username']) ?></td>
+                                                    <td><?= str_repeat('•', min(strlen($user['password']), 10)) ?></td>
+                                                    <td><?= htmlspecialchars($user['level']) ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-primary" onclick="printContent('printAllContent')">Cetak</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="printUserModal" tabindex="-1" aria-labelledby="printUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content shadow-sm rounded-3">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="printUserModalLabel">Print Data User</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body" id="printUserContent">
+                                    <h6 class="text-center mb-4">Detail User</h6>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Nama</th>
+                                            <td id="printName"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Username</th>
+                                            <td id="printUsername"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Password</th>
+                                            <td id="printPassword"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Level</th>
+                                            <td id="printLevel"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-primary" onclick="printContent('printUserContent')">Cetak</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function loadUserData(name, username, password, level) {
+                            document.getElementById('printName').textContent = name;
+                            document.getElementById('printUsername').textContent = username;
+                            document.getElementById('printPassword').textContent = '••••••••••'; // Gunakan bullet
+                            document.getElementById('printLevel').textContent = level;
+                        }
+
+                        function printContent(elementId) {
+                            const content = document.getElementById(elementId).innerHTML;
+                            const printWindow = window.open('', '_blank');
+                            printWindow.document.write(`
+                                <html>
+                                    <head>
+                                        <title>Cetak Data</title>
+                                        <style>
+                                            body { font-family: Arial, sans-serif; margin: 20px; }
+                                            table { width: 100%; border-collapse: collapse; }
+                                            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                                            th { background-color: #f4f4f4; }
+                                        </style>
+                                    </head>
+                                    <body>
+                                        ${content}
+                                    </body>
+                                </html>
+                            `);
+                            printWindow.document.close();
+                            printWindow.print();
+                        }
+                    </script>
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
