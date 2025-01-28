@@ -1534,10 +1534,20 @@ if ($type === 'pdf') {
                     $cellData = isset($rowArr[$dbCol]) ? htmlspecialchars($rowArr[$dbCol]) : '-';
                     // Tentukan apakah kolom tersebut berisi teks panjang
                     $isTextColumn = in_array($dbCol, [
-                        'nama_desa', 'alamat_balai', 'alamat_website', 'alamat_email',
-                        'alamat_facebook', 'alamat_twitter', 'alamat_youtube', 'status_pemerintahan',
-                        'perlengkapan_keselamatan', 'lainnya_name', 'lainnya_status',
-                        'makanan_unggulan', 'non_makanan_unggulan', 'lainnya_nama_olahraga',
+                        'nama_desa',
+                        'alamat_balai',
+                        'alamat_website',
+                        'alamat_email',
+                        'alamat_facebook',
+                        'alamat_twitter',
+                        'alamat_youtube',
+                        'status_pemerintahan',
+                        'perlengkapan_keselamatan',
+                        'lainnya_name',
+                        'lainnya_status',
+                        'makanan_unggulan',
+                        'non_makanan_unggulan',
+                        'lainnya_nama_olahraga',
                         'lainnya_kondisi_olahraga'
                     ]);
                     $textAlign = $isTextColumn ? 'left' : 'center';
@@ -2630,11 +2640,17 @@ if ($type === 'pdf') {
                     </div>
                 </div>
 
+                <!-- SweetAlert CSS -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+                <!-- SweetAlert JS -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
                 <!-- Modal Export -->
                 <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="GET" action="">
+                            <form id="exportForm" method="GET" action="">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
@@ -2674,11 +2690,11 @@ if ($type === 'pdf') {
 
                                 <div class="modal-footer">
                                     <!-- Tombol Ekspor Excel -->
-                                    <button type="submit" name="type" value="excel" class="btn btn-success">
+                                    <button type="button" id="exportExcelBtn" class="btn btn-success">
                                         <i class="fas fa-file-excel"></i> &nbsp; Export Excel
                                     </button>
                                     <!-- Tombol Ekspor PDF -->
-                                    <button type="submit" name="type" value="pdf" class="btn btn-danger">
+                                    <button type="button" id="exportPdfBtn" class="btn btn-danger">
                                         <i class="fas fa-file-pdf"></i> &nbsp; Export PDF
                                     </button>
                                 </div>
@@ -2688,11 +2704,12 @@ if ($type === 'pdf') {
                 </div>
 
                 <script>
+                    // Function to load Desa based on Kecamatan
                     function loadDesa(kecamatan) {
                         const desaSelect = document.getElementById('kode_desa');
                         desaSelect.innerHTML = '<option value="">Memuat...</option>'; // Indikasi loading
 
-                        fetch(`get_desa.php?kecamatan=${kecamatan}`)
+                        fetch(`get_desa.php?kecamatan=${encodeURIComponent(kecamatan)}`)
                             .then(response => response.json())
                             .then(data => {
                                 desaSelect.innerHTML = '<option value="">Semua Desa</option>';
@@ -2705,6 +2722,61 @@ if ($type === 'pdf') {
                                 desaSelect.innerHTML = '<option value="">Gagal Memuat Data</option>';
                             });
                     }
+
+                    // Function to initiate download via iframe
+                    function initiateDownload(url) {
+                        // Create a hidden iframe
+                        const iframe = document.createElement('iframe');
+                        iframe.style.display = 'none';
+                        iframe.src = url;
+                        document.body.appendChild(iframe);
+                    }
+
+                    // Function to handle export (common for both Excel and PDF)
+                    function handleExport(type) {
+                        const form = document.getElementById('exportForm');
+                        const formData = new FormData(form);
+                        formData.append('type', type);
+
+                        // Construct the query string
+                        const queryString = new URLSearchParams(formData).toString();
+                        const downloadUrl = form.action + '?' + queryString;
+
+                        // Show loading SweetAlert
+                        Swal.fire({
+                            title: 'Tunggu Sebentar...',
+                            text: 'Data sedang diproses untuk diekspor.',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        // Initiate download
+                        initiateDownload(downloadUrl);
+
+                        // Listen for the download to start by checking for iframe load
+                        // This is a workaround since detecting download completion isn't straightforward
+                        // We'll assume the download starts shortly after the iframe is loaded
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Data berhasil diunduh.',
+                                showConfirmButton: false,
+                                timer: 2000, // Alert will close after 2 seconds
+                                timerProgressBar: true
+                            });
+                        }, 3000); // Adjust the delay as needed based on server response time
+                    }
+
+                    document.getElementById('exportExcelBtn').addEventListener('click', function() {
+                        handleExport('excel');
+                    });
+
+                    document.getElementById('exportPdfBtn').addEventListener('click', function() {
+                        handleExport('pdf');
+                    });
                 </script>
 
                 <?php
