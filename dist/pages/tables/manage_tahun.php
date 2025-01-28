@@ -86,17 +86,21 @@ if ($result->num_rows > 0) {
       <div class="app-content">
         <div class="container-fluid">
 
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
           <?php if (isset($_GET['messageadd'])): ?>
             <script>
               let messageadd = "<?= $_GET['messageadd'] ?>";
               let reason = "<?= $_GET['reason'] ?? '' ?>";
+
               if (messageadd === 'success') {
-                swal({
+                Swal.fire({
                   title: "Berhasil!",
                   text: "Data tahun berhasil ditambahkan.",
                   icon: "success",
                   timer: 3000,
-                  buttons: false
+                  timerProgressBar: true, // Mengaktifkan progres timer
+                  showConfirmButton: false // Tombol tidak ditampilkan
                 }).then(() => {
                   window.location.href = "manage_tahun.php";
                 });
@@ -109,12 +113,13 @@ if ($result->num_rows > 0) {
                 } else {
                   errorMessage = "Terjadi kesalahan saat menambahkan data.";
                 }
-                swal({
+                Swal.fire({
                   title: "Gagal!",
                   text: errorMessage,
                   icon: "error",
                   timer: 3000,
-                  buttons: false
+                  timerProgressBar: true, // Mengaktifkan progres timer
+                  showConfirmButton: false // Tombol tidak ditampilkan
                 }).then(() => {
                   window.location.href = "manage_tahun.php";
                 });
@@ -126,13 +131,15 @@ if ($result->num_rows > 0) {
             <script>
               let messageedit = "<?= $_GET['messageedit'] ?>";
               let reason = "<?= $_GET['reason'] ?? '' ?>";
+
               if (messageedit === 'success') {
-                swal({
+                Swal.fire({
                   title: "Berhasil!",
                   text: "Data tahun berhasil diperbarui.",
                   icon: "success",
                   timer: 3000,
-                  buttons: false
+                  timerProgressBar: true, // Timer dengan progres bar
+                  showConfirmButton: false // Tidak ada tombol
                 }).then(() => {
                   window.location.href = "manage_tahun.php";
                 });
@@ -145,12 +152,13 @@ if ($result->num_rows > 0) {
                 } else {
                   errorMessage = "Terjadi kesalahan saat memperbarui data.";
                 }
-                swal({
+                Swal.fire({
                   title: "Gagal!",
                   text: errorMessage,
                   icon: "error",
                   timer: 3000,
-                  buttons: false
+                  timerProgressBar: true,
+                  showConfirmButton: false
                 }).then(() => {
                   window.location.href = "manage_tahun.php";
                 });
@@ -161,29 +169,33 @@ if ($result->num_rows > 0) {
           <?php if (isset($_GET['messagedelete'])): ?>
             <script>
               let messagedelete = "<?= $_GET['messagedelete'] ?>";
+
               if (messagedelete === 'success') {
-                swal({
+                Swal.fire({
                   title: "Berhasil!",
                   text: "Data tahun berhasil dihapus.",
                   icon: "success",
                   timer: 3000,
-                  buttons: false
+                  timerProgressBar: true,
+                  showConfirmButton: false
                 }).then(() => {
                   window.location.href = "manage_tahun.php";
                 });
               } else if (messagedelete === 'error') {
-                swal({
+                Swal.fire({
                   title: "Gagal!",
                   text: "Terjadi kesalahan saat menghapus data.",
                   icon: "error",
                   timer: 3000,
-                  buttons: false
+                  timerProgressBar: true,
+                  showConfirmButton: false
                 }).then(() => {
                   window.location.href = "manage_tahun.php";
                 });
               }
             </script>
           <?php endif; ?>
+
 
           <!-- Modal Tambah Tahun -->
           <div class="modal fade" id="addYearModal" tabindex="-1" aria-labelledby="addYearModalLabel" aria-hidden="true">
