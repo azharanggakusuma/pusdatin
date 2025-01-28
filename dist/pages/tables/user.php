@@ -321,19 +321,23 @@ if ($result->num_rows > 0) {
                                     <table class="table table-borderless">
                                         <tbody>
                                             <tr>
-                                                <th scope="row" class="text-muted" style="width: 30%;">Nama</th>
+                                                <th scope="row" class="text-muted" style="width: 30%; text-align: left;">Nama</th>
+                                                <td style="width: 5%; text-align: center;">:</td>
                                                 <td id="viewName" class="fw-bold text-dark"></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row" class="text-muted">Username</th>
+                                                <th scope="row" class="text-muted" style="text-align: left;">Username</th>
+                                                <td style="text-align: center;">:</td>
                                                 <td id="viewUsername" class="fw-bold text-dark"></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row" class="text-muted">Password</th>
+                                                <th scope="row" class="text-muted" style="text-align: left;">Password</th>
+                                                <td style="text-align: center;">:</td>
                                                 <td id="viewPassword" class="fw-bold text-dark">••••••••••</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row" class="text-muted">Level</th>
+                                                <th scope="row" class="text-muted" style="text-align: left;">Level</th>
+                                                <td style="text-align: center;">:</td>
                                                 <td id="viewLevel" class="fw-bold text-dark"></td>
                                             </tr>
                                         </tbody>
