@@ -349,10 +349,13 @@ if ($result->num_rows > 0) {
                                                 <td><?= $index + 1 ?></td>
                                                 <td><?= htmlspecialchars($user['name']) ?></td>
                                                 <td><?= htmlspecialchars($user['username']) ?></td>
-                                                <td><?= htmlspecialchars($user['password']) ?></td>
+                                                <td>
+                                                    <span style="letter-spacing: 3px;">
+                                                        <?= str_repeat('•', min(strlen($user['password']), 10)) ?>
+                                                    </span>
+                                                </td>
                                                 <td><?= htmlspecialchars($user['level']) ?></td>
-
-                                                <td class="project-actions">
+                                                <td>
                                                     <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"
                                                         onclick="editUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
                                                         <i class="fas fa-pencil-alt"></i>
