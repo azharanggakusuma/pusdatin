@@ -12,7 +12,6 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Mpdf\Mpdf;
 
 // Ambil parameter jenis ekspor, kode desa, kecamatan, dan filter tahun dari URL
@@ -1628,7 +1627,7 @@ if ($type === 'pdf') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
