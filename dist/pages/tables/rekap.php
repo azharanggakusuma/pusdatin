@@ -1432,50 +1432,130 @@ if ($type === 'excel') {
 // ============== Export PDF (mPDF) ==============
 if ($type === 'pdf') {
     try {
-        // Gunakan setting A3 Landscape
-        $mpdf = new Mpdf(['format' => 'A3-L']);
+        // Inisialisasi mPDF dengan setting A4 Landscape dan margin yang sesuai
+        $mpdf = new Mpdf([
+            'format' => 'A4-L',
+            'margin_left' => 15,
+            'margin_right' => 15,
+            'margin_top' => 20,
+            'margin_bottom' => 20,
+            'margin_header' => 10,
+            'margin_footer' => 10
+        ]);
 
-        // Bangun HTML (satu tabel besar dengan multi-header).
-        // Di sini kita TIDAK memecah menjadi per-sheet, melainkan tetap digabung.
+        // Mulai membangun HTML untuk laporan
         $html = '
-            <h2 style="text-align:center;">Rekap Data</h2>
-            <table border="1" cellpadding="5" cellspacing="0" 
-                   style="border-collapse:collapse; width:100%; font-size:9px;">
-              <thead>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    font-size: 10pt;
+                    color: #333333;
+                }
+                h1 {
+                    text-align: center;
+                    font-size: 18pt;
+                    margin-bottom: 30px;
+                }
+                h2 {
+                    font-size: 14pt;
+                    color: #555555;
+                    margin-top: 40px;
+                    margin-bottom: 15px;
+                    border-bottom: 1px solid #dddddd;
+                    padding-bottom: 5px;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 20px;
+                }
+                th, td {
+                    border: 1px solid #dddddd;
+                    padding: 10px;
+                    vertical-align: top;
+                }
+                th {
+                    background-color: #f2f2f2;
+                    text-align: center;
+                    font-weight: bold;
+                }
+                tr:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+                .section {
+                    page-break-inside: avoid;
+                }
+                /* Responsive adjustments */
+                @media print {
+                    table {
+                        page-break-inside: auto;
+                    }
+                    tr {
+                        page-break-inside: avoid;
+                        page-break-after: auto;
+                    }
+                    thead {
+                        display: table-header-group;
+                    }
+                    tfoot {
+                        display: table-footer-group;
+                    }
+                }
+            </style>
+            <h1>Rekap Data Pusdatin</h1>
         ';
 
-        // Baris 1: nama grup
-        $html .= '<tr style="background-color:#d3d3d3; text-align:center;">';
-        foreach ($groupedColumns as $groupName => $cols) {
-            $colSpan = count($cols);
-            $html .= '<th colspan="' . $colSpan . '">' . htmlspecialchars($groupName) . '</th>';
+        // Tarik seluruh data ke array
+        $allData = [];
+        while ($rowData = mysqli_fetch_assoc($result)) {
+            $allData[] = $rowData;
         }
-        $html .= '</tr>';
 
-        // Baris 2: header kolom
-        $html .= '<tr style="background-color:#d3d3d3; text-align:center;">';
-        foreach ($groupedColumns as $groupName => $cols) {
-            foreach ($cols as $dbCol => $colHeader) {
+        // Iterasi setiap grup dan buat bagian terpisah
+        foreach ($groupedColumns as $groupName => $colsInGroup) {
+            $html .= '<div class="section">';
+            $html .= '<h2>' . htmlspecialchars($groupName) . '</h2>';
+            $html .= '<table>';
+            $html .= '<thead><tr>';
+
+            // Header tabel
+            foreach ($colsInGroup as $dbCol => $colHeader) {
                 $html .= '<th>' . htmlspecialchars($colHeader) . '</th>';
             }
-        }
-        $html .= '</tr>';
-        $html .= '</thead><tbody>';
+            $html .= '</tr></thead>';
+            $html .= '<tbody>';
 
-        // Isi data
-        mysqli_data_seek($result, 0); // kembalikan pointer ke awal
-        while ($row = mysqli_fetch_assoc($result)) {
-            $html .= '<tr>';
-            foreach ($groupedColumns as $grName => $cols) {
-                foreach ($cols as $dbCol => $colHeader) {
-                    $cellData = isset($row[$dbCol]) ? htmlspecialchars($row[$dbCol]) : '';
-                    $html .= '<td style="text-align:center;">' . $cellData . '</td>';
+            // Isi data
+            foreach ($allData as $rowArr) {
+                $html .= '<tr>';
+                foreach ($colsInGroup as $dbCol => $colHeader) {
+                    $cellData = isset($rowArr[$dbCol]) ? htmlspecialchars($rowArr[$dbCol]) : '-';
+                    // Tentukan apakah kolom tersebut berisi teks panjang
+                    $isTextColumn = in_array($dbCol, [
+                        'nama_desa', 'alamat_balai', 'alamat_website', 'alamat_email',
+                        'alamat_facebook', 'alamat_twitter', 'alamat_youtube', 'status_pemerintahan',
+                        'perlengkapan_keselamatan', 'lainnya_name', 'lainnya_status',
+                        'makanan_unggulan', 'non_makanan_unggulan', 'lainnya_nama_olahraga',
+                        'lainnya_kondisi_olahraga'
+                    ]);
+                    $textAlign = $isTextColumn ? 'left' : 'center';
+                    $html .= '<td style="text-align:' . $textAlign . '; word-wrap: break-word;">' . $cellData . '</td>';
                 }
+                $html .= '</tr>';
             }
-            $html .= '</tr>';
+
+            $html .= '</tbody></table>';
+            $html .= '</div>';
         }
 
-        $html .= '</tbody></table>';
+        // Tambahkan footer tanpa border dengan format "Generated on [Tanggal] Page X of Y"
+        $mpdf->SetHTMLFooter('
+            <div style="width: 100%; font-family: Arial, sans-serif; font-size: 9pt;">
+                <span style="float: right;">Page {PAGENO} of {nbpg}</span> &nbsp;
+                <span style="float: left;">(Generated on {DATE j-m-Y})</span>
+            </div>
+            <div style="clear: both;"></div>
+        ');
 
         // Generate PDF
         $mpdf->WriteHTML($html);
@@ -1486,7 +1566,6 @@ if ($type === 'pdf') {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
