@@ -308,6 +308,54 @@ if ($result->num_rows > 0) {
                         }
                     </script>
 
+                    <div class="modal fade" id="viewUserModal" tabindex="-1" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content shadow-sm rounded-3">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="viewUserModalLabel">Detail User</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="text-muted" style="width: 30%;">Nama</th>
+                                                <td id="viewName" class="fw-bold text-dark"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-muted">Username</th>
+                                                <td id="viewUsername" class="fw-bold text-dark"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-muted">Password</th>
+                                                <td id="viewPassword" class="fw-bold text-dark">••••••••••</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-muted">Level</th>
+                                                <td id="viewLevel" class="fw-bold text-dark"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function viewUser(name, username, password, level) {
+                            document.getElementById('viewName').textContent = name;
+                            document.getElementById('viewUsername').textContent = username;
+                            document.getElementById('viewPassword').textContent = '••••••••••'; // Tetap dalam format bullet
+                            document.getElementById('viewLevel').textContent = level;
+                        }
+                    </script>
+
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Manage Users</h3>
@@ -356,6 +404,11 @@ if ($result->num_rows > 0) {
                                                 </td>
                                                 <td><?= htmlspecialchars($user['level']) ?></td>
                                                 <td>
+                                                    <a class="btn btn-info btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#viewUserModal"
+                                                        onclick="viewUser('<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    &nbsp;
                                                     <a class="btn btn-warning btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"
                                                         onclick="editUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name']) ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['password']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
                                                         <i class="fas fa-pencil-alt"></i>
