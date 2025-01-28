@@ -2650,7 +2650,7 @@ if ($type === 'pdf') {
                 <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form id="exportForm" method="GET" action="">
+                            <form id="exportForm" method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exportModalLabel">Pilih Jenis Export</h5>
                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
@@ -2742,32 +2742,39 @@ if ($type === 'pdf') {
                         const queryString = new URLSearchParams(formData).toString();
                         const downloadUrl = form.action + '?' + queryString;
 
-                        // Show loading SweetAlert
+                        // Show SweetAlert2 with progress bar
                         Swal.fire({
                             title: 'Tunggu Sebentar...',
-                            text: 'Data sedang diproses untuk diekspor.',
+                            html: '<b>0%</b>',
                             allowOutsideClick: false,
                             didOpen: () => {
                                 Swal.showLoading();
+
+                                const progressElement = Swal.getHtmlContainer().querySelector('b');
+                                let progress = 0;
+
+                                // Simulate progress
+                                const progressInterval = setInterval(() => {
+                                    progress += Math.floor(Math.random() * 10) + 5; // Increment progress randomly between 5-14%
+                                    if (progress >= 100) {
+                                        progress = 100;
+                                        clearInterval(progressInterval);
+                                        // Initiate download
+                                        initiateDownload(downloadUrl);
+                                        // Show success message
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil',
+                                            text: 'Data berhasil diunduh.',
+                                            showConfirmButton: false,
+                                            timer: 2000,
+                                            timerProgressBar: true
+                                        });
+                                    }
+                                    progressElement.textContent = `${progress}%`;
+                                }, 500); // Update every 0.5 seconds
                             }
                         });
-
-                        // Initiate download
-                        initiateDownload(downloadUrl);
-
-                        // Listen for the download to start by checking for iframe load
-                        // This is a workaround since detecting download completion isn't straightforward
-                        // We'll assume the download starts shortly after the iframe is loaded
-                        setTimeout(() => {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: 'Data berhasil diunduh.',
-                                showConfirmButton: false,
-                                timer: 2000, // Alert will close after 2 seconds
-                                timerProgressBar: true
-                            });
-                        }, 3000); // Adjust the delay as needed based on server response time
                     }
 
                     document.getElementById('exportExcelBtn').addEventListener('click', function() {
@@ -2778,6 +2785,7 @@ if ($type === 'pdf') {
                         handleExport('pdf');
                     });
                 </script>
+
 
                 <?php
                 // Define Columns and Headers
