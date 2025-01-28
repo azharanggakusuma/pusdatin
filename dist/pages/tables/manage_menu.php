@@ -108,7 +108,7 @@ $menus = $conn->query($menu_query);
                 </button>
               </div>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0" style="overflow-x: auto;">
 
               <!-- Modal Tambah -->
               <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
@@ -318,9 +318,9 @@ $menus = $conn->query($menu_query);
                 </script>
               <?php endif; ?>
 
-              <table class="table table-striped table-hover align-middle">
+              <table class="table table-striped table-hover align-middle" style="table-layout: auto; width: 100%;">
                 <thead>
-                  <tr>
+                  <tr style="white-space: nowrap;">
                     <th>#</th>
                     <th>Menu Name</th>
                     <!--<th>Path</th>-->
@@ -381,7 +381,6 @@ $menus = $conn->query($menu_query);
                   });
                 </script>
               <?php endif; ?>
-
 
             </div>
             <!-- /.card-body -->

@@ -318,10 +318,10 @@ if ($result->num_rows > 0) {
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body p-0">
-                            <table class="table table-striped">
+                        <div class="card-body p-0" style="overflow-x: auto;">
+                            <table class="table table-striped" style="table-layout: auto; width: 100%;">
                                 <thead>
-                                    <tr>
+                                    <tr style="white-space: nowrap;">
                                         <th>
                                             #
                                         </th>

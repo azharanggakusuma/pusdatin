@@ -195,7 +195,6 @@ if ($result->num_rows > 0) {
             </script>
           <?php endif; ?>
 
-
           <!-- Modal Tambah Tahun -->
           <div class="modal fade" id="addYearModal" tabindex="-1" aria-labelledby="addYearModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -289,10 +288,10 @@ if ($result->num_rows > 0) {
                 </button>
               </div>
             </div>
-            <div class="card-body p-0">
-              <table class="table table-striped">
+            <div class="card-body p-0" style="overflow-x: auto;">
+              <table class="table table-striped" style="table-layout: auto; width: 100%;">
                 <thead>
-                  <tr>
+                  <tr style="white-space: nowrap;">
                     <th>#</th>
                     <th>Year</th>
                     <th>Actions</th>

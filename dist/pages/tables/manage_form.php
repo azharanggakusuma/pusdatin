@@ -160,7 +160,7 @@ $forms = [
                 </button>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow-x: auto;">
               <!-- Search Bar -->
               <div class="row mb-3">
                 <div class="col-md-6">
@@ -178,9 +178,9 @@ $forms = [
 
               <!-- Table -->
               <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
+                <table class="table table-striped table-hover align-middle" style="table-layout: auto; width: 100%;">
                   <thead>
-                    <tr>
+                    <tr style="white-space: nowrap;">
                       <th>#</th>
                       <th>User (Desa/Kelurahan)</th>
                       <th>Form Name</th>
@@ -357,7 +357,6 @@ $forms = [
           });
         </script>
       <?php endif; ?>
-
 
     </main>
 
