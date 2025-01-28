@@ -77,6 +77,8 @@ $menus = $conn->query($menu_query);
     <?php include('../../components/sidebar.php'); ?>
     <!--end::Sidebar--> <!--begin::App Main-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <main class="app-main"> <!--begin::App Content Header-->
       <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
@@ -228,23 +230,26 @@ $menus = $conn->query($menu_query);
               <?php if (isset($_GET['messageadd'])): ?>
                 <script>
                   let messageadd = "<?= $_GET['messageadd'] ?>";
+
                   if (messageadd === 'success') {
-                    swal({
+                    Swal.fire({
                       title: "Berhasil!",
                       text: "Menu berhasil ditambahkan.",
                       icon: "success",
                       timer: 3000,
-                      buttons: false
+                      timerProgressBar: true, // Menampilkan progres timer
+                      showConfirmButton: false // Tidak ada tombol
                     }).then(() => {
                       window.location.href = "manage_menu.php";
                     });
                   } else if (messageadd === 'error') {
-                    swal({
+                    Swal.fire({
                       title: "Gagal!",
                       text: "Terjadi kesalahan saat menambahkan menu.",
                       icon: "error",
                       timer: 3000,
-                      buttons: false
+                      timerProgressBar: true,
+                      showConfirmButton: false
                     }).then(() => {
                       window.location.href = "manage_menu.php";
                     });
@@ -252,27 +257,30 @@ $menus = $conn->query($menu_query);
                 </script>
               <?php endif; ?>
 
-              <!-- Notifikasi edit -->
+              <!-- Notifikasi Edit -->
               <?php if (isset($_GET['messageedit'])): ?>
                 <script>
                   let messageedit = "<?= $_GET['messageedit'] ?>";
+
                   if (messageedit === 'success') {
-                    swal({
+                    Swal.fire({
                       title: "Berhasil!",
                       text: "Menu berhasil diubah.",
                       icon: "success",
                       timer: 3000,
-                      buttons: false
+                      timerProgressBar: true,
+                      showConfirmButton: false
                     }).then(() => {
                       window.location.href = "manage_menu.php";
                     });
                   } else if (messageedit === 'error') {
-                    swal({
+                    Swal.fire({
                       title: "Gagal!",
                       text: "Terjadi kesalahan saat mengubah menu.",
                       icon: "error",
                       timer: 3000,
-                      buttons: false
+                      timerProgressBar: true,
+                      showConfirmButton: false
                     }).then(() => {
                       window.location.href = "manage_menu.php";
                     });
@@ -280,27 +288,30 @@ $menus = $conn->query($menu_query);
                 </script>
               <?php endif; ?>
 
-              <!-- Notifikasi delete -->
+              <!-- Notifikasi Delete -->
               <?php if (isset($_GET['messagedelete'])): ?>
                 <script>
                   let messagedelete = "<?= $_GET['messagedelete'] ?>";
+
                   if (messagedelete === 'success') {
-                    swal({
+                    Swal.fire({
                       title: "Berhasil!",
                       text: "Menu berhasil dihapus.",
                       icon: "success",
                       timer: 3000,
-                      buttons: false
+                      timerProgressBar: true,
+                      showConfirmButton: false
                     }).then(() => {
                       window.location.href = "manage_menu.php";
                     });
                   } else if (messagedelete === 'error') {
-                    swal({
+                    Swal.fire({
                       title: "Gagal!",
                       text: "Terjadi kesalahan saat menghapus menu.",
                       icon: "error",
                       timer: 3000,
-                      buttons: false
+                      timerProgressBar: true,
+                      showConfirmButton: false
                     }).then(() => {
                       window.location.href = "manage_menu.php";
                     });
@@ -325,7 +336,8 @@ $menus = $conn->query($menu_query);
                     <tr>
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $menu['name']; ?></td>
-                      <!--<td><?php //echo $menu['url']; ?></td>-->
+                      <!--<td><?php //echo $menu['url']; 
+                              ?></td>-->
                       <td>
                         <span class="badge <?php echo $menu['status'] ? 'bg-success' : 'bg-danger'; ?>">
                           <?php echo $menu['status'] ? 'Aktif' : 'Nonaktif'; ?>
@@ -359,17 +371,18 @@ $menus = $conn->query($menu_query);
 
               <?php if ($sweetalert_message): ?>
                 <script>
-                  // Menampilkan SweetAlert tanpa tombol
-                  swal({
+                  // Menampilkan SweetAlert2 tanpa tombol
+                  Swal.fire({
                     title: "Berhasil!",
-                    text: "<?php echo $sweetalert_message; ?>",
+                    text: "<?= $sweetalert_message; ?>",
                     icon: "success",
                     timer: 2000, // Menampilkan selama 2 detik
-                    buttons: false, // Menonaktifkan tombol
-                    className: "swal-modal"
+                    timerProgressBar: true, // Menampilkan progres timer
+                    showConfirmButton: false // Tidak ada tombol
                   });
                 </script>
               <?php endif; ?>
+
 
             </div>
             <!-- /.card-body -->
