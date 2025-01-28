@@ -496,8 +496,7 @@ if ($result->num_rows > 0) {
                                 </div>
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    <button type="button" class="btn btn-primary" onclick="printContent('printAllContent')">Cetak</button>
+                                    <button type="button" class="btn btn-primary" onclick="printContent('printAllContent')"><i class="fas fa-print"></i>&nbsp; Cetak</button>
                                 </div>
                             </div>
                         </div>
@@ -535,8 +534,7 @@ if ($result->num_rows > 0) {
                                 </div>
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                    <button type="button" class="btn btn-primary" onclick="printContent('printUserContent')">Cetak</button>
+                                    <button type="button" class="btn btn-primary" onclick="printContent('printUserContent')"><i class="fas fa-print"></i>&nbsp; Cetak</button>
                                 </div>
                             </div>
                         </div>
