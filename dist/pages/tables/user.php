@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head> <!--end::Head--> <!--begin::Body-->
 
@@ -106,22 +106,24 @@ if ($result->num_rows > 0) {
                         <script>
                             let messageadd = "<?= $_GET['messageadd'] ?>";
                             if (messageadd === 'success') {
-                                swal({
+                                Swal.fire({
                                     title: "Berhasil!",
                                     text: "Data user berhasil ditambahkan.",
                                     icon: "success",
-                                    timer: 3000,
-                                    buttons: false
+                                    timer: 3000, // Durasi swal 3 detik
+                                    timerProgressBar: true, // Menampilkan progres timer
+                                    showConfirmButton: false // Tidak ada tombol konfirmasi
                                 }).then(() => {
                                     window.location.href = "user.php";
                                 });
                             } else if (messageadd === 'error') {
-                                swal({
+                                Swal.fire({
                                     title: "Gagal!",
                                     text: "Terjadi kesalahan saat menambahkan data.",
                                     icon: "error",
-                                    timer: 3000,
-                                    buttons: false
+                                    timer: 3000, // Durasi swal 3 detik
+                                    timerProgressBar: true, // Menampilkan progres timer
+                                    showConfirmButton: false // Tidak ada tombol konfirmasi
                                 }).then(() => {
                                     window.location.href = "user.php";
                                 });
@@ -168,27 +170,29 @@ if ($result->num_rows > 0) {
                         </div>
                     </div>
 
-                    <!-- Notifikasi edit -->
+                    <!-- Notifikasi Edit -->
                     <?php if (isset($_GET['messageedit'])): ?>
                         <script>
                             let messageedit = "<?= $_GET['messageedit'] ?>";
                             if (messageedit === 'success') {
-                                swal({
+                                Swal.fire({
                                     title: "Berhasil!",
                                     text: "Data user berhasil diubah.",
                                     icon: "success",
-                                    timer: 3000,
-                                    buttons: false
+                                    timer: 3000, // Durasi swal 3 detik
+                                    timerProgressBar: true, // Menampilkan progres timer
+                                    showConfirmButton: false // Tidak ada tombol konfirmasi
                                 }).then(() => {
                                     window.location.href = "user.php";
                                 });
                             } else if (messageedit === 'error') {
-                                swal({
+                                Swal.fire({
                                     title: "Gagal!",
                                     text: "Terjadi kesalahan saat mengubah data.",
                                     icon: "error",
-                                    timer: 3000,
-                                    buttons: false
+                                    timer: 3000, // Durasi swal 3 detik
+                                    timerProgressBar: true, // Menampilkan progres timer
+                                    showConfirmButton: false // Tidak ada tombol konfirmasi
                                 }).then(() => {
                                     window.location.href = "user.php";
                                 });
@@ -245,28 +249,29 @@ if ($result->num_rows > 0) {
                         }
                     </script>
 
-
-                    <!-- Notifikasi delete -->
+                    <!-- Notifikasi Delete -->
                     <?php if (isset($_GET['messagedelete'])): ?>
                         <script>
                             let messagedelete = "<?= $_GET['messagedelete'] ?>";
                             if (messagedelete === 'success') {
-                                swal({
+                                Swal.fire({
                                     title: "Berhasil!",
                                     text: "Data user berhasil dihapus.",
                                     icon: "success",
-                                    timer: 3000,
-                                    buttons: false
+                                    timer: 3000, // Durasi swal 3 detik
+                                    timerProgressBar: true, // Menampilkan progres timer
+                                    showConfirmButton: false // Tidak ada tombol konfirmasi
                                 }).then(() => {
                                     window.location.href = "user.php";
                                 });
                             } else if (messagedelete === 'error') {
-                                swal({
+                                Swal.fire({
                                     title: "Gagal!",
                                     text: "Terjadi kesalahan saat menghapus data.",
                                     icon: "error",
-                                    timer: 3000,
-                                    buttons: false
+                                    timer: 3000, // Durasi swal 3 detik
+                                    timerProgressBar: true, // Menampilkan progres timer
+                                    showConfirmButton: false // Tidak ada tombol konfirmasi
                                 }).then(() => {
                                     window.location.href = "user.php";
                                 });
