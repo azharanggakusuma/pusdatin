@@ -2742,25 +2742,35 @@ if ($type === 'pdf') {
                         const queryString = new URLSearchParams(formData).toString();
                         const downloadUrl = form.action + '?' + queryString;
 
-                        // Show SweetAlert2 with progress bar
+                        // Show SweetAlert2 with a progress bar
                         Swal.fire({
                             title: 'Tunggu Sebentar...',
-                            html: '<b>0%</b>',
+                            html: `
+                                <p>Data sedang diproses untuk diekspor.</p>
+                                <div style="margin-top: 20px;">
+                                    <progress id="exportProgress" value="0" max="100" style="width: 100%; height: 20px;"></progress>
+                                    <p id="progressText" style="text-align: center; margin-top: 10px;">0%</p>
+                                </div>
+                            `,
                             allowOutsideClick: false,
+                            showConfirmButton: false,
                             didOpen: () => {
-                                Swal.showLoading();
-
-                                const progressElement = Swal.getHtmlContainer().querySelector('b');
-                                let progress = 0;
+                                const progress = Swal.getHtmlContainer().querySelector('#exportProgress');
+                                const progressText = Swal.getHtmlContainer().querySelector('#progressText');
+                                let progressValue = 0;
 
                                 // Simulate progress
                                 const progressInterval = setInterval(() => {
-                                    progress += Math.floor(Math.random() * 10) + 5; // Increment progress randomly between 5-14%
-                                    if (progress >= 100) {
-                                        progress = 100;
+                                    progressValue += Math.floor(Math.random() * 10) + 5; // Increment between 5-14%
+                                    if (progressValue >= 100) {
+                                        progressValue = 100;
                                         clearInterval(progressInterval);
+                                        progress.value = progressValue;
+                                        progressText.textContent = `${progressValue}%`;
+
                                         // Initiate download
                                         initiateDownload(downloadUrl);
+
                                         // Show success message
                                         Swal.fire({
                                             icon: 'success',
@@ -2770,8 +2780,10 @@ if ($type === 'pdf') {
                                             timer: 2000,
                                             timerProgressBar: true
                                         });
+                                    } else {
+                                        progress.value = progressValue;
+                                        progressText.textContent = `${progressValue}%`;
                                     }
-                                    progressElement.textContent = `${progress}%`;
                                 }, 500); // Update every 0.5 seconds
                             }
                         });
@@ -2785,7 +2797,6 @@ if ($type === 'pdf') {
                         handleExport('pdf');
                     });
                 </script>
-
 
                 <?php
                 // Define Columns and Headers
