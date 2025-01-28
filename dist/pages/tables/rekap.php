@@ -1231,7 +1231,7 @@ function sanitizeSheetName($name, $maxLength = 31)
  * 5. Export ke EXCEL atau PDF
  */
 
-// ================= Export Excel (Multi-Sheet dengan Daftar Sheet Berisi Link) =================
+// ================= Export Excel (Multi-Sheet dengan Daftar Data Berisi Link) =================
 if ($type === 'excel') {
     try {
         // Inisialisasi Spreadsheet
@@ -1245,16 +1245,16 @@ if ($type === 'excel') {
         }
 
         /**
-         * 6a. Membuat Sheet Indeks ("Daftar Sheet")
+         * 6a. Membuat Sheet Indeks ("Daftar Data")
          */
         $daftarSheet = $spreadsheet->createSheet();
-        $daftarSheet->setTitle('Daftar Sheet');
+        $daftarSheet->setTitle('Daftar Data');
 
-        // Header untuk Daftar Sheet
+        // Header untuk Daftar Data
         $daftarSheet->setCellValue('A1', 'No');
-        $daftarSheet->setCellValue('B1', 'Nama Sheet');
+        $daftarSheet->setCellValue('B1', 'Nama Data');
 
-        // Definisi Style untuk Header Daftar Sheet
+        // Definisi Style untuk Header Daftar Data
         $headerStyle = [
             'font' => ['bold' => true],
             'fill' => [
@@ -1272,12 +1272,12 @@ if ($type === 'excel') {
         $daftarSheet->getStyle("A1:B1")->applyFromArray($headerStyle);
 
         // Array untuk menyimpan nama sheet yang sudah ada untuk memastikan unik
-        $existingSheetNames = ['Daftar Sheet'];
+        $existingSheetNames = ['Daftar Data'];
 
         // Mapping grupName ke uniqueSheetName
         $sheetNameMap = [];
 
-        // Isi Daftar Sheet dengan nama grup dan hyperlink
+        // Isi Daftar Data dengan nama grup dan hyperlink
         $rowNum = 2;
         $no = 1;
         foreach ($groupedColumns as $groupName => $colsInGroup) {
@@ -1412,8 +1412,8 @@ if ($type === 'excel') {
         /**
          * 6c. Atur Sheet Indeks sebagai Sheet Aktif
          */
-        // Pastikan "Daftar Sheet" adalah sheet pertama (index 0)
-        $spreadsheet->setActiveSheetIndexByName('Daftar Sheet');
+        // Pastikan "Daftar Data" adalah sheet pertama (index 0)
+        $spreadsheet->setActiveSheetIndexByName('Daftar Data');
 
         /**
          * 6d. Output ke Browser
@@ -1581,12 +1581,12 @@ if ($type === 'pdf') {
                                     <i class="fas fa-filter"></i>&nbsp; Filter
                                 </button>
                                 <button type="button" class="btn btn-tool" data-toggle="modal"
-                                    data-target="#exportModal">
-                                    <i class="fas fa-download"></i>&nbsp; Export
-                                </button>
-                                <button type="button" class="btn btn-tool" data-toggle="modal"
                                     data-target="#previewModal">
                                     <i class="fas fa-table"></i> &nbsp; Preview
+                                </button>
+                                <button type="button" class="btn btn-tool" data-toggle="modal"
+                                    data-target="#exportModal">
+                                    <i class="fas fa-download"></i>&nbsp; Export
                                 </button>
                             </div>
                         </div>
