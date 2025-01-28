@@ -156,6 +156,7 @@ if ($result->num_rows > 0) {
                                         <div class="mb-3">
                                             <label for="level" class="form-label">Level</label>
                                             <select class="form-select" id="level" name="level" required>
+                                                <option value="" disabled selected>Pilih level</option>
                                                 <option value="admin">Admin</option>
                                                 <option value="user">User</option>
                                             </select>
