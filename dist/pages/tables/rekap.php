@@ -2609,8 +2609,8 @@ if ($type === 'pdf') {
                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="filter_tahun">Pilih Tahun:</label>
-                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                    <label for="filter_tahun">Pilih Tahun</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control form-select mt-2">
                                         <option value="" selected disabled>Pilih Tahun</option>
                                         <?php
                                         // Ambil tahun unik dari tabel user_progress
@@ -2653,8 +2653,8 @@ if ($type === 'pdf') {
                                 </div>
                                 <div class="modal-body">
                                     <!-- Filter Kecamatan -->
-                                    <label for="kode_kecamatan">Pilih Kecamatan:</label>
-                                    <select name="kode_kecamatan" id="kode_kecamatan" class="form-control mt-2 mb-3" onchange="loadDesa(this.value)">
+                                    <label for="kode_kecamatan">Pilih Kecamatan</label>
+                                    <select name="kode_kecamatan" id="kode_kecamatan" class="form-control form-select mt-2 mb-3" onchange="loadDesa(this.value)">
                                         <option value="">Semua Kecamatan</option>
                                         <?php
                                         $kecamatanResult = mysqli_query($conn, "SELECT DISTINCT kecamatan FROM tb_enumerator ORDER BY kecamatan ASC");
@@ -2665,15 +2665,15 @@ if ($type === 'pdf') {
                                     </select>
 
                                     <!-- Filter Desa -->
-                                    <label for="kode_desa">Pilih Desa:</label>
-                                    <select name="kode_desa" id="kode_desa" class="form-control mt-2 mb-3">
+                                    <label for="kode_desa">Pilih Desa</label>
+                                    <select name="kode_desa" id="kode_desa" class="form-control form-select mt-2 mb-3">
                                         <option value="">Semua Desa</option>
                                         <!-- Desa akan dimuat dinamis berdasarkan pilihan kecamatan -->
                                     </select>
 
                                     <!-- Filter Tahun -->
-                                    <label for="filter_tahun">Pilih Tahun:</label>
-                                    <select name="filter_tahun" id="filter_tahun" class="form-control mt-2">
+                                    <label for="filter_tahun">Pilih Tahun</label>
+                                    <select name="filter_tahun" id="filter_tahun" class="form-control form-select mt-2">
                                         <option value="">Semua Tahun</option>
                                         <?php
                                         $tahunResult = mysqli_query($conn, "SELECT DISTINCT tahun FROM tb_sk_pembentukan ORDER BY tahun DESC");
