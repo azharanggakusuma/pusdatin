@@ -57,7 +57,8 @@ if ($result->num_rows > 0) {
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <link rel="shortcut icon" href="../../img/kominfo.png" type="image/x-icon">
 </head>
 
@@ -85,8 +86,6 @@ if ($result->num_rows > 0) {
 
       <div class="app-content">
         <div class="container-fluid">
-
-          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
           <?php if (isset($_GET['messageadd'])): ?>
             <script>
