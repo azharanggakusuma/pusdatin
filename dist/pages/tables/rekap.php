@@ -579,6 +579,26 @@ $groupedColumns = [
         'jumlah_peraturan_kepala_desa'        => 'Jumlah Peraturan Kepala Desa',
         'keberadaan_kerjasama_antar_desa'              => 'Keberadaan Kerjasama Antar Desa',
         'keberadaan_kerjasama_desa_dengan_pihak_ketiga' => 'Keberadaan Kerjasama Desa dengan Pihak Ketiga',
+        // Tambahan
+        'keberadaan_pendamping_lokal_desa' => 'Keberadaan Pendamping Lokal Desa',
+        'keberadaan_kader_pembangunan_manusia' => 'Keberadaan Kader Pembangunan Manusia',
+        'pembinaan_kpm_dari_pemkab_kota'      => 'Pembinaan KPM dari Pemkab/Kota',
+        'pendapatan_asli_desa'                      => 'Pendapatan Asli Desa',
+        'dana_desa'                                  => 'Dana Desa',
+        'bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah' => 'Bagian dari Hasil Pajak Daerah dan Retribusi Daerah',
+        'alokasi_dana_desa'                          => 'Alokasi Dana Desa',
+        'bantuan_keuangan_dari_apbd_provinsi'        => 'Bantuan Keuangan dari APBD Provinsi',
+        'bantuan_keuangan_dari_apbd'                 => 'Bantuan Keuangan dari APBD',
+        'hibah_dan_sumbangan_dari_pihak_ketiga'      => 'Hibah dan Sumbangan dari Pihak Ketiga',
+        'lain_lain_pendapatan_desa_yang_sah'         => 'Lain-lain Pendapatan Desa yang Sah',
+        'bidang_penyelenggaraan_pemerintahan_desa'  => 'Bidang Penyelenggaraan Pemerintahan Desa',
+        'bidang_pelaksanaan_pembangunan_desa'       => 'Bidang Pelaksanaan Pembangunan Desa',
+        'bidang_pembinaan_kemasyarakatan'           => 'Bidang Pembinaan Kemasyarakatan',
+        'bidang_pemberdayaan_masyarakat'            => 'Bidang Pemberdayaan Masyarakat',
+        'bidang_tak_terduga'                        => 'Bidang Tak Terduga',
+        'status_keaktifan'   => 'Status Keaktifan BUMDes',
+        'status_badan_hukum' => 'Status Badan Hukum BUMDes',
+        'jumlah_paket_pengadaan_barang_dan_jasa' => 'Jumlah Paket Pengadaan Barang dan Jasa',
     ],
 ];
 
@@ -1243,7 +1263,32 @@ SELECT DISTINCT
     tb_peraturan_desa.jumlah_peraturan_kepala_desa,
 
     tb_kerjasama_desa.keberadaan_kerjasama_antar_desa,
-    tb_kerjasama_desa.keberadaan_kerjasama_desa_dengan_pihak_ketiga
+    tb_kerjasama_desa.keberadaan_kerjasama_desa_dengan_pihak_ketiga,
+
+    tb_pendamping_lokal_desa.keberadaan_pendamping_lokal_desa,
+
+    tb_kader_pembangunan_manusia.keberadaan_kader_pembangunan_manusia,
+    tb_kader_pembangunan_manusia.pembinaan_kpm_dari_pemkab_kota,
+
+    tb_realisasi_anggaran_desa.pendapatan_asli_desa,
+    tb_realisasi_anggaran_desa.dana_desa,
+    tb_realisasi_anggaran_desa.bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah,
+    tb_realisasi_anggaran_desa.alokasi_dana_desa,
+    tb_realisasi_anggaran_desa.bantuan_keuangan_dari_apbd_provinsi,
+    tb_realisasi_anggaran_desa.bantuan_keuangan_dari_apbd,
+    tb_realisasi_anggaran_desa.hibah_dan_sumbangan_dari_pihak_ketiga,
+    tb_realisasi_anggaran_desa.lain_lain_pendapatan_desa_yang_sah,
+
+    tb_realisasi_anggaran_belanja_desa.bidang_penyelenggaraan_pemerintahan_desa,
+    tb_realisasi_anggaran_belanja_desa.bidang_pelaksanaan_pembangunan_desa,
+    tb_realisasi_anggaran_belanja_desa.bidang_pembinaan_kemasyarakatan,
+    tb_realisasi_anggaran_belanja_desa.bidang_pemberdayaan_masyarakat,
+    tb_realisasi_anggaran_belanja_desa.bidang_tak_terduga,
+
+    tb_bumdes.status_keaktifan,
+    tb_bumdes.status_badan_hukum,
+
+    tb_pengadaan_barang_jasa.jumlah_paket_pengadaan_barang_dan_jasa
 
 FROM
     tb_enumerator
@@ -1284,6 +1329,37 @@ LEFT JOIN tb_peraturan_desa
 LEFT JOIN tb_kerjasama_desa
     ON tb_kerjasama_desa.desa_id = tb_enumerator.id_desa
    AND tb_kerjasama_desa.tahun   = filtered_user_progress.tahun
+
+/* Pendamping Lokal Desa */
+LEFT JOIN tb_pendamping_lokal_desa
+    ON tb_pendamping_lokal_desa.desa_id = tb_enumerator.id_desa
+   AND tb_pendamping_lokal_desa.tahun   = filtered_user_progress.tahun
+
+/* Kader Pembangunan Manusia */
+LEFT JOIN tb_kader_pembangunan_manusia
+    ON tb_kader_pembangunan_manusia.desa_id = tb_enumerator.id_desa
+   AND tb_kader_pembangunan_manusia.tahun   = filtered_user_progress.tahun
+
+/* Realisasi Anggaran Desa */
+LEFT JOIN tb_realisasi_anggaran_desa
+    ON tb_realisasi_anggaran_desa.desa_id = tb_enumerator.id_desa
+   AND tb_realisasi_anggaran_desa.tahun   = filtered_user_progress.tahun
+
+/* Realisasi Anggaran Belanja Desa */
+LEFT JOIN tb_realisasi_anggaran_belanja_desa
+    ON tb_realisasi_anggaran_belanja_desa.desa_id = tb_enumerator.id_desa
+   AND tb_realisasi_anggaran_belanja_desa.tahun   = filtered_user_progress.tahun
+
+/* BUMDes */
+LEFT JOIN tb_bumdes
+    ON tb_bumdes.desa_id = tb_enumerator.id_desa
+   AND tb_bumdes.tahun   = filtered_user_progress.tahun
+
+/* Pengadaan Barang dan Jasa */
+LEFT JOIN tb_pengadaan_barang_jasa
+    ON tb_pengadaan_barang_jasa.desa_id = tb_enumerator.id_desa
+   AND tb_pengadaan_barang_jasa.tahun   = filtered_user_progress.tahun
+
 ";
 
 // ==================== Tambahkan Filter (WHERE) ====================
