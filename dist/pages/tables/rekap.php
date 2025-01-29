@@ -1689,38 +1689,49 @@ if (!$result2) {
 // ==================== Menggabungkan Data dari Kedua Query ====================
 
 // Fetch data dari query1
-$data1 = [];
 while ($row = mysqli_fetch_assoc($result1)) {
     $kode = $row['kode_desa'];
-    $data1[$kode][$row['tahun']] = $row;
+    $tahun = $row['tahun'];
+    if (!isset($data1[$kode])) {
+        $data1[$kode] = [];
+    }
+    if (!isset($data1[$kode][$tahun])) {
+        $data1[$kode][$tahun] = [];
+    }
+    // Merge data dari query1
+    $data1[$kode][$tahun] = array_merge($data1[$kode][$tahun], $row);
+    // Pastikan 'periode_tahun' diatur
+    $data1[$kode][$tahun]['periode_tahun'] = $tahun;
 }
 
-// Fetch data dari query_baru dan merge dengan data1
+// Fetch data dari query_baru
 while ($row = mysqli_fetch_assoc($result2)) {
     $kode = $row['kode_desa'];
     $tahun = $row['tahun'];
-    if (isset($data1[$kode][$tahun])) {
-        // Merge data dari query_baru ke data1
-        foreach ($allColumns_query_baru as $col) {
-            $data1[$kode][$tahun][$col] = $row[$col];
-        }
-    } else {
-        // Jika kombinasi kode_desa dan tahun tidak ada di data1, tambahkan sebagai data baru
-        $data1[$kode][$tahun] = $row;
+    if (!isset($data1[$kode])) {
+        $data1[$kode] = [];
     }
-}
-
-// Cek jika tidak ada data setelah penggabungan
-if (empty($data1)) {
-    die("Tidak ada data yang ditemukan dengan filter yang diberikan.");
+    if (!isset($data1[$kode][$tahun])) {
+        $data1[$kode][$tahun] = [];
+    }
+    // Merge data dari query_baru
+    $data1[$kode][$tahun] = array_merge($data1[$kode][$tahun], $row);
+    // Pastikan 'periode_tahun' diatur
+    $data1[$kode][$tahun]['periode_tahun'] = $tahun;
 }
 
 // Atur $allData sebagai array gabungan
 $allData = [];
 foreach ($data1 as $desa => $tahunData) {
     foreach ($tahunData as $tahun => $data) {
+        // 'periode_tahun' sudah diatur saat penggabungan
         $allData[] = $data;
     }
+}
+
+// Cek jika tidak ada data setelah penggabungan
+if (empty($allData)) {
+    die("Tidak ada data yang ditemukan dengan filter yang diberikan.");
 }
 
 /**
@@ -1842,7 +1853,7 @@ if ($type === 'excel') {
         }
 
         /**
-         * 6b. Membuat Sheet-Group
+         * 6b. Membuat Sheet-Group dengan `Periode Tahun` sebagai Kolom Pertama (Kecuali "Data Desa")
          */
         foreach ($groupedColumns as $groupName => $colsInGroup) {
             // Buat sheet baru untuk grup
@@ -1850,8 +1861,18 @@ if ($type === 'excel') {
             $groupSheet = $spreadsheet->createSheet();
             $groupSheet->setTitle(substr($uniqueSheetName, 0, 31)); // Judul sheet (max 31 karakter)
 
-            // Tulis header (baris 1)
-            $currentCol = 1;
+            // Tentukan apakah sheet ini adalah "Data Desa"
+            $isDataDesa = ($groupName === 'Data Desa');
+
+            // Tulis header 'Periode Tahun' jika bukan "Data Desa"
+            if (!$isDataDesa) {
+                $groupSheet->setCellValue('A1', 'Periode Tahun');
+                $currentCol = 2; // Mulai dari kolom kedua
+            } else {
+                $currentCol = 1; // Mulai dari kolom pertama
+            }
+
+            // Tulis header grup
             foreach ($colsInGroup as $dbCol => $headerText) {
                 $colLetter = Coordinate::stringFromColumnIndex($currentCol);
                 $groupSheet->setCellValue($colLetter . '1', $headerText);
@@ -1874,12 +1895,25 @@ if ($type === 'excel') {
 
             // Terapkan style header
             $lastColLetter = Coordinate::stringFromColumnIndex($currentCol - 1);
-            $groupSheet->getStyle("A1:{$lastColLetter}1")->applyFromArray($groupHeaderStyle);
+            if (!$isDataDesa) {
+                // Termasuk 'A'1 untuk 'Periode Tahun'
+                $groupSheet->getStyle("A1:{$lastColLetter}1")->applyFromArray($groupHeaderStyle);
+            } else {
+                // Tanpa 'Periode Tahun' (karena sudah termasuk dalam grup)
+                $groupSheet->getStyle("A1:{$lastColLetter}1")->applyFromArray($groupHeaderStyle);
+            }
 
             // Isi data mulai dari baris 2
             $rowNumber = 2;
             foreach ($allData as $rowArr) {
-                $colIdx = 1;
+                if (!$isDataDesa) {
+                    // Tulis 'Periode Tahun' di kolom A
+                    $groupSheet->setCellValue('A' . $rowNumber, isset($rowArr['periode_tahun']) ? $rowArr['periode_tahun'] : '-');
+                    $colIdx = 2; // Mulai dari kolom kedua
+                } else {
+                    $colIdx = 1; // Mulai dari kolom pertama
+                }
+
                 foreach ($colsInGroup as $dbCol => $headerText) {
                     // Ambil nilai dari data gabungan
                     $value = isset($rowArr[$dbCol]) ? $rowArr[$dbCol] : '-';
@@ -1892,16 +1926,29 @@ if ($type === 'excel') {
 
             // Terapkan style tabel (borders dan alignment center)
             $lastRow = $rowNumber - 1;
-            $groupSheet->getStyle("A1:{$lastColLetter}{$lastRow}")->applyFromArray([
-                'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-                'alignment' => [
-                    'horizontal' => Alignment::HORIZONTAL_CENTER,
-                    'vertical'   => Alignment::VERTICAL_CENTER
-                ]
-            ]);
+            if (!$isDataDesa) {
+                // Termasuk kolom A untuk 'Periode Tahun'
+                $groupSheet->getStyle("A1:{$lastColLetter}{$lastRow}")->applyFromArray([
+                    'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+                    'alignment' => [
+                        'horizontal' => Alignment::HORIZONTAL_CENTER,
+                        'vertical'   => Alignment::VERTICAL_CENTER
+                    ]
+                ]);
+            } else {
+                // Tanpa kolom A
+                $groupSheet->getStyle("A1:{$lastColLetter}{$lastRow}")->applyFromArray([
+                    'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+                    'alignment' => [
+                        'horizontal' => Alignment::HORIZONTAL_CENTER,
+                        'vertical'   => Alignment::VERTICAL_CENTER
+                    ]
+                ]);
+            }
 
             // Auto-width kolom
-            for ($i = 1; $i <= count($colsInGroup); $i++) {
+            $totalColumns = count($colsInGroup) + (!$isDataDesa ? 1 : 0); // +1 jika ada 'Periode Tahun'
+            for ($i = 1; $i <= $totalColumns; $i++) {
                 $colLetter = Coordinate::stringFromColumnIndex($i);
                 $groupSheet->getColumnDimension($colLetter)->setAutoSize(true);
             }
