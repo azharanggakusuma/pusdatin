@@ -21,11 +21,11 @@ $kode_kecamatan = $_GET['kode_kecamatan'] ?? null;
 $filter_tahun = $_GET['filter_tahun'] ?? null;
 
 /**
- * 1. Berikut daftar kolom (field) yang sama persis dengan query SELECT kita.
- *    Urutannya mengikuti SELECT agar memudahkan mapping ke header.
+ * 1. Definisikan kolom dari kedua query
  */
-$allColumns = [
-    // Kolom 'tahun' akan kita ambil dari user_progress (alias: filtered_user_progress.tahun AS tahun).
+
+// Kolom dari query utama
+$allColumns_query = [
     'tahun',
     'kode_desa',
     'nama_desa',
@@ -95,8 +95,8 @@ $allColumns = [
     'nama_danau_2',
     'nama_danau_3',
     'nama_danau_4',
-    'keberadaan_pemukiman',
-    'jumlah_pemukiman',
+    'keberadaan_pemukiman_bantaran',
+    'jumlah_pemukiman_bantaran',
     'jumlah_embung',
     'lokasi_mata_air',
     'keberadaan_kumuh',
@@ -258,11 +258,36 @@ $allColumns = [
     'keberadaan_pos_polisi'
 ];
 
-/**
- * 2. Grouping kolom untuk multi-header. 
- *    Dibagi jadi beberapa "Bagian" (sesuai contoh awal).
- */
+// Kolom dari query baru
+$allColumns_query_baru = [
+    'tanah_bengkok',
+    'tanah_titi_sara',
+    'kebun_desa',
+    'sawah_desa',
+    'keberadaan_sistem_informasi_desa',
+    'keberadaan_sistem_keuangan_desa',
+    'jumlah_unit_usaha_bumdes',
+    'tanah_kas_desa_ulayat',
+    'tambatan_perahu',
+    'pasar_desa',
+    'bangunan_milik_desa',
+    'hutan_milik_desa',
+    'mata_air_milik_desa',
+    'tempat_wisata_pemandian_umum',
+    'aset_lainnya_milik_desa',
+    'ketersediaan_rpjmdes',
+    'tahun_awal_rpjmdes',
+    'tahun_akhir_rpjmdes',
+    'ketersediaan_rkpdes',
+    'jumlah_peraturan_yang_dimiliki_desa',
+    'jumlah_peraturan_kepala_desa',
+    'keberadaan_kerjasama_antar_desa',
+    'keberadaan_kerjasama_desa_dengan_pihak_ketiga'
+];
 
+/**
+ * 2. Grouping kolom untuk multi-header, termasuk kolom dari kedua query
+ */
 $groupedColumns = [
     'Data Desa' => [
         'tahun'                            => 'Periode Tahun',
@@ -529,13 +554,39 @@ $groupedColumns = [
         'jumlah_anggota_linmas'           => 'Jumlah anggota linmas/hansip di desa/kelurahan',
         'keberadaan_pos_polisi'           => 'Keberadaan pos polisi (termasuk kantor polisi) di desa/kelurahan',
     ],
+
+    'Keuangan dan Aset Desa' => [
+        'tanah_bengkok'                   => 'Tanah Bengkok',
+        'tanah_titi_sara'                 => 'Tanah Titi Sara',
+        'kebun_desa'                      => 'Kebun Desa',
+        'sawah_desa'                      => 'Sawah Desa',
+        'keberadaan_sistem_informasi_desa'  => 'Keberadaan Sistem Informasi Desa',
+        'keberadaan_sistem_keuangan_desa'   => 'Keberadaan Sistem Keuangan Desa',
+        'jumlah_unit_usaha_bumdes'           => 'Jumlah Unit Usaha BUMDes',
+        'tanah_kas_desa_ulayat'              => 'Tanah Kas Desa Ulayat',
+        'tambatan_perahu'                    => 'Tambatan Perahu',
+        'pasar_desa'                         => 'Pasar Desa',
+        'bangunan_milik_desa'                => 'Bangunan Milik Desa',
+        'hutan_milik_desa'                   => 'Hutan Milik Desa',
+        'mata_air_milik_desa'                => 'Mata Air Milik Desa',
+        'tempat_wisata_pemandian_umum'       => 'Tempat Wisata Pemandian Umum',
+        'aset_lainnya_milik_desa'            => 'Aset Lainnya Milik Desa',
+        'ketersediaan_rpjmdes'                => 'Ketersediaan RPJMDES',
+        'tahun_awal_rpjmdes'                  => 'Tahun Awal RPJMDES',
+        'tahun_akhir_rpjmdes'                 => 'Tahun Akhir RPJMDES',
+        'ketersediaan_rkpdes'                 => 'Ketersediaan RKPDes',
+        'jumlah_peraturan_yang_dimiliki_desa' => 'Jumlah Peraturan yang Dimiliki Desa',
+        'jumlah_peraturan_kepala_desa'        => 'Jumlah Peraturan Kepala Desa',
+        'keberadaan_kerjasama_antar_desa'              => 'Keberadaan Kerjasama Antar Desa',
+        'keberadaan_kerjasama_desa_dengan_pihak_ketiga' => 'Keberadaan Kerjasama Desa dengan Pihak Ketiga',
+    ],
 ];
 
-
 /**
- * 3. Query: Setiap tabel punya kolom tahun => 
- *    Pastikan "AND tb_namaTabel.tahun = filtered_user_progress.tahun"
+ * 3. Definisikan kedua query: $query (utama) dan $query_baru (tambahan)
  */
+
+// ==================== Query Utama ($query) ====================
 $query = "
 SELECT DISTINCT 
     /* Ambil tahun dari user_progress (alias: 'tahun') */
@@ -758,7 +809,7 @@ SELECT DISTINCT
     tb_fasilitas_olahraga.lainnya_nama,
     tb_fasilitas_olahraga.lainnya_kondisi,
 
-    /* Prasarana transportasi */
+    /* Prasarana Transportasi */
     tb_prasarana_transportasi.lalu_lintas,
     tb_prasarana_transportasi.jenis_permukaan_jalan,
     tb_prasarana_transportasi.jalan_darat_bisa_dilalui,
@@ -766,39 +817,39 @@ SELECT DISTINCT
     tb_prasarana_transportasi.operasional_angkutan_umum,
     tb_prasarana_transportasi.jam_operasi_angkutan_umum,
 
-    /* Internet transportasi */
+    /* Internet Transportasi */
     tb_internet_transportasi.keberadaan_internet,
 
-    /* Menara telepon */
+    /* Menara Telepon */
     tb_menara_telepon.jumlah_bts,
     tb_menara_telepon.jumlah_operator_telekomunikasi,
     tb_menara_telepon.sinyal_telepon,
     tb_menara_telepon.sinyal_internet,
 
-    /* Ketersediaan internet */
+    /* Ketersediaan Internet */
     tb_ketersediaan_internet.kondisi_komputer,
     tb_ketersediaan_internet.fasilitas_internet,
 
-    /* Kantor pos */
+    /* Kantor Pos */
     tb_keberadaan_kantor_pos.kantor_pos,
     tb_keberadaan_kantor_pos.layanan_pos_keliling,
     tb_keberadaan_kantor_pos.ekspedisi_swasta,
 
-    /* Sentra industri */
+    /* Sentra Industri */
     tb_sentra_industri.keberadaan,
     tb_sentra_industri.jumlah_sentra,
     tb_sentra_industri.produk_utama,
 
-    /* Produk unggulan */
+    /* Produk Unggulan */
     tb_produk_unggulan.keberadaan,
     tb_produk_unggulan.makanan_unggulan,
     tb_produk_unggulan.non_makanan_unggulan,
 
-    /* Pangkalan minyak */
+    /* Pangkalan Minyak */
     tb_pangkalan_minyak.keberadaan_minyak_tanah,
     tb_pangkalan_minyak.keberadaan_lpg,
 
-    /* Bank operasi */
+    /* Bank Operasi */
     tb_bank_operasi.bank_pemerintah,
     tb_bank_operasi.bank_swasta,
     tb_bank_operasi.bank_bpr,
@@ -813,7 +864,7 @@ SELECT DISTINCT
     tb_koperasi.toko_bumdesa,
     tb_koperasi.toko_lainnya,
 
-    /* Sarana ekonomi */
+    /* Sarana Ekonomi */
     tb_sarana_ekonomi.bmt_jumlah,
     tb_sarana_ekonomi.bmt_jarak,
     tb_sarana_ekonomi.bmt_kemudahan,
@@ -839,7 +890,7 @@ SELECT DISTINCT
     tb_sarana_ekonomi.salon_jarak,
     tb_sarana_ekonomi.salon_kemudahan,
 
-    /* Sarana prasarana */
+    /* Sarana Prasarana */
     tb_sarana_prasarana.kelompok_pertokoan_jumlah,
     tb_sarana_prasarana.kelompok_pertokoan_kemudahan,
     tb_sarana_prasarana.pasar_permanen_jumlah,
@@ -861,10 +912,10 @@ SELECT DISTINCT
     tb_sarana_prasarana.penginapan_jumlah,
     tb_sarana_prasarana.penginapan_kemudahan,
 
-    /* Perkelahian massal */
+    /* Perkelahian Massal */
     tb_perkelahian_massal.kejadian AS kejadian_perkelahian_massal,
 
-    /* Keamanan lingkungan */
+    /* Keamanan Lingkungan */
     tb_keamanan_lingkungan.pembangunan_pos_keamanan,
     tb_keamanan_lingkungan.pembentukan_regu_keamanan,
     tb_keamanan_lingkungan.penambahan_anggota_hansip,
@@ -874,7 +925,7 @@ SELECT DISTINCT
     /* Linmas */
     tb_linmas_poskamling.jumlah_anggota_linmas,
 
-    /* Pos polisi */
+    /* Pos Polisi */
     tb_keberadaan_pos_polisi.keberadaan_pos_polisi
 FROM
     tb_enumerator
@@ -1157,9 +1208,84 @@ LEFT JOIN tb_keberadaan_pos_polisi
    AND tb_keberadaan_pos_polisi.tahun   = filtered_user_progress.tahun
 ";
 
-/**
- * 4. Tambahkan filter (WHERE) berdasar kecamatan, desa, dan tahun (user_progress)
- */
+// ==================== Query Baru ($query_baru) ====================
+$query_baru = "
+SELECT DISTINCT 
+    /* Ambil tahun dari user_progress (alias: 'tahun') */
+    filtered_user_progress.tahun AS tahun,
+
+    tb_enumerator.kode_desa,
+
+    tb_tanah_kas_desa.tanah_bengkok,
+    tb_tanah_kas_desa.tanah_titi_sara,
+    tb_tanah_kas_desa.kebun_desa,
+    tb_tanah_kas_desa.sawah_desa,
+
+    tb_pemanfaatan_sistem.keberadaan_sistem_informasi_desa,
+    tb_pemanfaatan_sistem.keberadaan_sistem_keuangan_desa,
+
+    tb_badan_usaha_aset_desa.jumlah_unit_usaha_bumdes,
+    tb_badan_usaha_aset_desa.tanah_kas_desa_ulayat,
+    tb_badan_usaha_aset_desa.tambatan_perahu,
+    tb_badan_usaha_aset_desa.pasar_desa,
+    tb_badan_usaha_aset_desa.bangunan_milik_desa,
+    tb_badan_usaha_aset_desa.hutan_milik_desa,
+    tb_badan_usaha_aset_desa.mata_air_milik_desa,
+    tb_badan_usaha_aset_desa.tempat_wisata_pemandian_umum,
+    tb_badan_usaha_aset_desa.aset_lainnya_milik_desa,
+
+    tb_ketersediaan_rpjmdes_rkpdes.ketersediaan_rpjmdes,
+    tb_ketersediaan_rpjmdes_rkpdes.tahun_awal_rpjmdes,
+    tb_ketersediaan_rpjmdes_rkpdes.tahun_akhir_rpjmdes,
+    tb_ketersediaan_rpjmdes_rkpdes.ketersediaan_rkpdes,
+
+    tb_peraturan_desa.jumlah_peraturan_yang_dimiliki_desa,
+    tb_peraturan_desa.jumlah_peraturan_kepala_desa,
+
+    tb_kerjasama_desa.keberadaan_kerjasama_antar_desa,
+    tb_kerjasama_desa.keberadaan_kerjasama_desa_dengan_pihak_ketiga
+FROM
+    tb_enumerator
+
+/* JOIN user_progress sebagai sumber TAHUN */
+LEFT JOIN (
+    SELECT DISTINCT desa_id, tahun
+    FROM user_progress
+) AS filtered_user_progress
+    ON filtered_user_progress.desa_id = tb_enumerator.id_desa
+
+/* Tanah Kas Desa */
+LEFT JOIN tb_tanah_kas_desa
+    ON tb_tanah_kas_desa.desa_id = tb_enumerator.id_desa
+   AND tb_tanah_kas_desa.tahun   = filtered_user_progress.tahun
+
+/* Pemanfaatan Sistem */
+LEFT JOIN tb_pemanfaatan_sistem
+    ON tb_pemanfaatan_sistem.desa_id = tb_enumerator.id_desa
+   AND tb_pemanfaatan_sistem.tahun   = filtered_user_progress.tahun
+
+/* Badan Usaha dan Aset Desa */
+LEFT JOIN tb_badan_usaha_aset_desa
+    ON tb_badan_usaha_aset_desa.desa_id = tb_enumerator.id_desa
+   AND tb_badan_usaha_aset_desa.tahun   = filtered_user_progress.tahun
+
+/* Ketersediaan RPJMDES/RKPDes */
+LEFT JOIN tb_ketersediaan_rpjmdes_rkpdes
+    ON tb_ketersediaan_rpjmdes_rkpdes.desa_id = tb_enumerator.id_desa
+   AND tb_ketersediaan_rpjmdes_rkpdes.tahun   = filtered_user_progress.tahun
+
+/* Peraturan Desa */
+LEFT JOIN tb_peraturan_desa
+    ON tb_peraturan_desa.desa_id = tb_enumerator.id_desa
+   AND tb_peraturan_desa.tahun   = filtered_user_progress.tahun
+
+/* Kerjasama Desa */
+LEFT JOIN tb_kerjasama_desa
+    ON tb_kerjasama_desa.desa_id = tb_enumerator.id_desa
+   AND tb_kerjasama_desa.tahun   = filtered_user_progress.tahun
+";
+
+// ==================== Tambahkan Filter (WHERE) ====================
 $where = [];
 $params = [];
 $types = '';
@@ -1188,29 +1314,87 @@ if (!empty($filter_tahun)) {
 // Tambahkan syarat agar 'tahun' tidak NULL
 $where[] = "filtered_user_progress.tahun IS NOT NULL";
 
+// Buat kondisi WHERE
+$whereClause = "";
 if ($where) {
-    $query .= " WHERE " . implode(" AND ", $where);
+    $whereClause = " WHERE " . implode(" AND ", $where);
 }
 
+// Tambahkan WHERE ke kedua query
+$query .= $whereClause;
+$query_baru .= $whereClause;
 
-// Eksekusi query
-$stmt = mysqli_prepare($conn, $query);
-if (!$stmt) {
-    die("Failed to prepare the SQL statement: " . mysqli_error($conn));
+// ==================== Eksekusi Kedua Query ====================
+
+// Eksekusi query utama ($query)
+$stmt1 = mysqli_prepare($conn, $query);
+if (!$stmt1) {
+    die("Gagal menyiapkan pernyataan SQL untuk query1: " . mysqli_error($conn));
 }
 if ($params) {
-    mysqli_stmt_bind_param($stmt, $types, ...$params);
+    mysqli_stmt_bind_param($stmt1, $types, ...$params);
 }
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+mysqli_stmt_execute($stmt1);
+$result1 = mysqli_stmt_get_result($stmt1);
 
-if (!$result || mysqli_num_rows($result) == 0) {
+if (!$result1) {
+    die("Gagal mengeksekusi query1: " . mysqli_error($conn));
+}
+
+// Eksekusi query baru ($query_baru)
+$stmt2 = mysqli_prepare($conn, $query_baru);
+if (!$stmt2) {
+    die("Gagal menyiapkan pernyataan SQL untuk query_baru: " . mysqli_error($conn));
+}
+if ($params) {
+    mysqli_stmt_bind_param($stmt2, $types, ...$params);
+}
+mysqli_stmt_execute($stmt2);
+$result2 = mysqli_stmt_get_result($stmt2);
+
+if (!$result2) {
+    die("Gagal mengeksekusi query_baru: " . mysqli_error($conn));
+}
+
+// ==================== Menggabungkan Data dari Kedua Query ====================
+
+// Fetch data dari query1
+$data1 = [];
+while ($row = mysqli_fetch_assoc($result1)) {
+    $kode = $row['kode_desa'];
+    $data1[$kode][$row['tahun']] = $row;
+}
+
+// Fetch data dari query_baru dan merge dengan data1
+while ($row = mysqli_fetch_assoc($result2)) {
+    $kode = $row['kode_desa'];
+    $tahun = $row['tahun'];
+    if (isset($data1[$kode][$tahun])) {
+        // Merge data dari query_baru ke data1
+        foreach ($allColumns_query_baru as $col) {
+            $data1[$kode][$tahun][$col] = $row[$col];
+        }
+    } else {
+        // Jika kombinasi kode_desa dan tahun tidak ada di data1, tambahkan sebagai data baru
+        $data1[$kode][$tahun] = $row;
+    }
+}
+
+// Cek jika tidak ada data setelah penggabungan
+if (empty($data1)) {
     die("Tidak ada data yang ditemukan dengan filter yang diberikan.");
 }
 
+// Atur $allData sebagai array gabungan
+$allData = [];
+foreach ($data1 as $desa => $tahunData) {
+    foreach ($tahunData as $tahun => $data) {
+        $allData[] = $data;
+    }
+}
 
 /**
- * Fungsi untuk membersihkan nama sheet dari karakter ilegal dan memastikan panjang <=31
+ * 4. Definisikan Fungsi untuk Membersihkan Nama Sheet
  */
 function sanitizeSheetName($name, $maxLength = 31)
 {
@@ -1236,12 +1420,6 @@ if ($type === 'excel') {
         // Inisialisasi Spreadsheet
         $spreadsheet = new Spreadsheet();
         $spreadsheet->removeSheetByIndex(0); // Hapus sheet default
-
-        // Tarik seluruh data ke array
-        $allData = [];
-        while ($rowData = mysqli_fetch_assoc($result)) {
-            $allData[] = $rowData;
-        }
 
         /**
          * 6a. Membuat Sheet Indeks ("Daftar Data")
@@ -1337,24 +1515,14 @@ if ($type === 'excel') {
          * 6b. Membuat Sheet-Group
          */
         foreach ($groupedColumns as $groupName => $colsInGroup) {
-            // Tambahkan kolom 'tahun', 'kode_desa', 'nama_desa', dan 'kecamatan' sebagai kolom pertama
-            $finalCols = array_merge([
-                'tahun'      => 'Periode Tahun',
-                'kode_desa'  => 'Kode Desa',
-                'nama_desa'  => 'Nama Desa',
-                'kecamatan'  => 'Kecamatan'
-            ], $colsInGroup);
-
-            // Dapatkan uniqueSheetName dari mapping
-            $uniqueSheetName = $sheetNameMap[$groupName];
-
             // Buat sheet baru untuk grup
+            $uniqueSheetName = $sheetNameMap[$groupName];
             $groupSheet = $spreadsheet->createSheet();
             $groupSheet->setTitle(substr($uniqueSheetName, 0, 31)); // Judul sheet (max 31 karakter)
 
             // Tulis header (baris 1)
             $currentCol = 1;
-            foreach ($finalCols as $dbCol => $headerText) {
+            foreach ($colsInGroup as $dbCol => $headerText) {
                 $colLetter = Coordinate::stringFromColumnIndex($currentCol);
                 $groupSheet->setCellValue($colLetter . '1', $headerText);
                 $currentCol++;
@@ -1382,8 +1550,9 @@ if ($type === 'excel') {
             $rowNumber = 2;
             foreach ($allData as $rowArr) {
                 $colIdx = 1;
-                foreach ($finalCols as $dbCol => $headerText) {
-                    $value = isset($rowArr[$dbCol]) ? $rowArr[$dbCol] : '';
+                foreach ($colsInGroup as $dbCol => $headerText) {
+                    // Ambil nilai dari data gabungan
+                    $value = isset($rowArr[$dbCol]) ? $rowArr[$dbCol] : '-';
                     $colLetter = Coordinate::stringFromColumnIndex($colIdx);
                     $groupSheet->setCellValue($colLetter . $rowNumber, $value);
                     $colIdx++;
@@ -1402,7 +1571,7 @@ if ($type === 'excel') {
             ]);
 
             // Auto-width kolom
-            for ($i = 1; $i <= count($finalCols); $i++) {
+            for ($i = 1; $i <= count($colsInGroup); $i++) {
                 $colLetter = Coordinate::stringFromColumnIndex($i);
                 $groupSheet->getColumnDimension($colLetter)->setAutoSize(true);
             }
@@ -1504,13 +1673,9 @@ if ($type === 'pdf') {
             <h1>Rekap Data Pusdatin</h1>
         ';
 
-        // Tarik seluruh data ke array
-        $allData = [];
-        while ($rowData = mysqli_fetch_assoc($result)) {
-            $allData[] = $rowData;
-        }
-
-        // Iterasi setiap grup dan buat bagian terpisah
+        /**
+         * 7. Menambahkan Data ke HTML untuk PDF
+         */
         foreach ($groupedColumns as $groupName => $colsInGroup) {
             $html .= '<div class="section">';
             $html .= '<h2>' . htmlspecialchars($groupName) . '</h2>';
@@ -1546,6 +1711,31 @@ if ($type === 'pdf') {
                         'non_makanan_unggulan',
                         'lainnya_nama_olahraga',
                         'lainnya_kondisi_olahraga'
+                    ]) || in_array($dbCol, [
+                        // Tambahan kolom dari $query_baru
+                        'tanah_bengkok',
+                        'tanah_titi_sara',
+                        'kebun_desa',
+                        'sawah_desa',
+                        'keberadaan_sistem_informasi_desa',
+                        'keberadaan_sistem_keuangan_desa',
+                        'jumlah_unit_usaha_bumdes',
+                        'tanah_kas_desa_ulayat',
+                        'tambatan_perahu',
+                        'pasar_desa',
+                        'bangunan_milik_desa',
+                        'hutan_milik_desa',
+                        'mata_air_milik_desa',
+                        'tempat_wisata_pemandian_umum',
+                        'aset_lainnya_milik_desa',
+                        'ketersediaan_rpjmdes',
+                        'tahun_awal_rpjmdes',
+                        'tahun_akhir_rpjmdes',
+                        'ketersediaan_rkpdes',
+                        'jumlah_peraturan_yang_dimiliki_desa',
+                        'jumlah_peraturan_kepala_desa',
+                        'keberadaan_kerjasama_antar_desa',
+                        'keberadaan_kerjasama_desa_dengan_pihak_ketiga'
                     ]);
                     $textAlign = $isTextColumn ? 'left' : 'center';
                     $html .= '<td style="text-align:' . $textAlign . '; word-wrap: break-word;">' . $cellData . '</td>';
@@ -1575,6 +1765,7 @@ if ($type === 'pdf') {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
