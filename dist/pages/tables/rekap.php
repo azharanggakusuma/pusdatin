@@ -368,97 +368,84 @@ $allColumns_query_baru = [
     'titik_koordinat_lintang',
     'titik_koordinat_bujur',
 
-     // Tabel Potensi Wisata
-     'potensi_wisata_nama' => 'nama_potensi_wisata',
-     'potensi_wisata_jenis' => 'jenis_wisata',
-     'potensi_wisata_lat'   => 'titik_koordinat_lintang',
-     'potensi_wisata_lon'   => 'titik_koordinat_bujur',
- 
-     // Tabel Sekolah
-     'sekolah_nama'          => 'nama_sekolah',
-     'sekolah_jenjang'       => 'jenjang_pendidikan',
-     'sekolah_status'        => 'status_sekolah',
-     'sekolah_alamat'        => 'alamat_sekolah',
-     'sekolah_kecamatan'     => 'nama_kecamatan',
-     'sekolah_lat'           => 'koordinat_lintang',
-     'sekolah_lon'           => 'koordinat_bujur',
- 
-     // Tabel Pondok Pesantren
-     'pesantren_nama'        => 'nama_pesantren',
-     'pesantren_alamat'      => 'alamat_pesantren',
-     'pesantren_kecamatan'   => 'nama_kecamatan',
-     'pesantren_lat'         => 'koordinat_lintang',
-     'pesantren_lon'         => 'koordinat_bujur',
- 
-     // Tabel Rumah Sakit
-     'rumah_sakit_nama'      => 'nama_rumah_sakit',
-     'rumah_sakit_alamat'    => 'alamat_rumah_sakit',
-     'rumah_sakit_kecamatan' => 'nama_kecamatan',
-     'rumah_sakit_lat'       => 'koordinat_lintang',
-     'rumah_sakit_lon'       => 'koordinat_bujur',
- 
-     // Tabel Puskesmas
-     'puskesmas_nama'        => 'nama_puskesmas',
-     'puskesmas_alamat'      => 'alamat_puskesmas',
-     'puskesmas_kecamatan'   => 'nama_kecamatan',
-     'puskesmas_lat'         => 'koordinat_lintang',
-     'puskesmas_lon'         => 'koordinat_bujur',
- 
-     // Tabel Pustu
-     'pustu_nama'            => 'nama_pustu',
-     'pustu_alamat'          => 'alamat_pustu',
-     'pustu_kecamatan'       => 'nama_kecamatan',
-     'pustu_lat'             => 'koordinat_lintang',
-     'pustu_lon'             => 'koordinat_bujur',
- 
-     // Tabel Poliklinik
-     'poliklinik_nama'       => 'nama_poliklinik',
-     'poliklinik_alamat'     => 'alamat_poliklinik',
-     'poliklinik_kecamatan'  => 'nama_kecamatan',
-     'poliklinik_lat'        => 'koordinat_lintang',
-     'poliklinik_lon'        => 'koordinat_bujur',
- 
-     // Tabel Apotek
-     'apotek_nama'           => 'nama_apotek',
-     'apotek_alamat'         => 'alamat_apotek',
-     'apotek_kecamatan'      => 'nama_kecamatan',
-     'apotek_lat'            => 'koordinat_lintang',
-     'apotek_lon'            => 'koordinat_bujur',
- 
-     // Tabel Praktek Dokter
-     'dokter_nama'           => 'nama_praktek_dokter',
-     'dokter_alamat'         => 'alamat_praktek_dokter',
-     'dokter_kecamatan'      => 'nama_kecamatan',
-     'dokter_lat'            => 'koordinat_lintang',
-     'dokter_lon'            => 'koordinat_bujur',
- 
-     // Tabel Praktek Bidan
-     'bidan_nama'            => 'nama_praktek_bidan',
-     'bidan_alamat'          => 'alamat_praktek_bidan',
-     'bidan_kecamatan'       => 'nama_kecamatan',
-     'bidan_lat'             => 'koordinat_lintang',
-     'bidan_lon'             => 'koordinat_bujur',
- 
-     // Tabel Poskesdes
-     'poskesdes_nama'        => 'nama_poskesdes',
-     'poskesdes_alamat'      => 'alamat_poskesdes',
-     'poskesdes_kecamatan'   => 'nama_kecamatan',
-     'poskesdes_lat'         => 'koordinat_lintang',
-     'poskesdes_lon'         => 'koordinat_bujur',
- 
-     // Tabel Polindes
-     'polindes_nama'         => 'nama_polindes',
-     'polindes_alamat'       => 'alamat_polindes',
-     'polindes_kecamatan'    => 'nama_kecamatan',
-     'polindes_lat'          => 'koordinat_lintang',
-     'polindes_lon'          => 'koordinat_bujur',
- 
-     // Tabel Daftar Posyandu
-     'posyandu_nama'         => 'nama_posyandu',
-     'posyandu_alamat'       => 'alamat_posyandu',
-     'posyandu_kecamatan'    => 'nama_kecamatan',
-     'posyandu_lat'          => 'koordinat_lintang',
-     'posyandu_lon'          => 'koordinat_bujur',
+    'nama_potensi_wisata',
+    'jenis_wisata',
+    'titik_koordinat_lintang',
+    'titik_koordinat_bujur',
+
+    'nama_sekolah',
+    'jenjang_pendidikan',
+    'status_sekolah',
+    'alamat_sekolah',
+    'nama_kecamatan_sekolah',
+    'koordinat_lintang_sekolah',
+    'koordinat_bujur_sekolah',
+
+    'nama_pesantren',
+    'alamat_pesantren',
+    'nama_kecamatan_pesantren',
+    'koordinat_lintang_pesantren',
+    'koordinat_bujur_pesantren',
+
+    'nama_rumah_sakit',
+    'alamat_rumah_sakit',
+    'nama_kecamatan_rs',
+    'koordinat_lintang_rs',
+    'koordinat_bujur_rs',
+
+    'nama_puskesmas',
+    'alamat_puskesmas',
+    'nama_kecamatan_puskesmas',
+    'koordinat_lintang_puskesmas',
+    'koordinat_bujur_puskesmas',
+
+    'nama_pustu',
+    'alamat_pustu',
+    'nama_kecamatan_pustu',
+    'koordinat_lintang_pustu',
+    'koordinat_bujur_pustu',
+
+    'nama_poliklinik',
+    'alamat_poliklinik',
+    'nama_kecamatan_poliklinik',
+    'koordinat_lintang_poliklinik',
+    'koordinat_bujur_poliklinik',
+
+    'nama_apotek',
+    'alamat_apotek',
+    'nama_kecamatan_apotek',
+    'koordinat_lintang_apotek',
+    'koordinat_bujur_apotek',
+
+    'nama_praktek_dokter',
+    'alamat_praktek_dokter',
+    'nama_kecamatan_praktek_dokter',
+    'koordinat_lintang_praktek_dokter',
+    'koordinat_bujur_praktek_dokter',
+
+    'nama_praktek_bidan',
+    'alamat_praktek_bidan',
+    'nama_kecamatan_praktek_bidan',
+    'koordinat_lintang_praktek_bidan',
+    'koordinat_bujur_praktek_bidan',
+
+    'nama_poskesdes',
+    'alamat_poskesdes',
+    'nama_kecamatan_poskesdes',
+    'koordinat_lintang_poskesdes',
+    'koordinat_bujur_poskesdes',
+
+    'nama_polindes',
+    'alamat_polindes',
+    'nama_kecamatan_polindes',
+    'koordinat_lintang_polindes',
+    'koordinat_bujur_polindes',
+
+    'nama_posyandu',
+    'alamat_posyandu',
+    'nama_kecamatan_posyandu',
+    'koordinat_lintang_posyandu',
+    'koordinat_bujur_posyandu',
 ];
 
 /**
@@ -845,97 +832,84 @@ $groupedColumns = [
         'titik_koordinat_lintang'          => 'Titik Koordinat Lintang',
         'titik_koordinat_bujur'            => 'Titik Koordinat Bujur',
 
-        /* Tabel Potensi Wisata */
-        'potensi_wisata_nama'               => 'Nama Potensi Wisata',
-        'potensi_wisata_jenis'              => 'Jenis Wisata',
-        'potensi_wisata_lat'                => 'Koordinat Lintang Potensi Wisata',
-        'potensi_wisata_lon'                => 'Koordinat Bujur Potensi Wisata',
+        'nama_potensi_wisata'              => 'Nama Potensi Wisata',
+        'jenis_wisata'                     => 'Jenis Wisata',
+        'titik_koordinat_lintang'          => 'Titik Koordinat Lintang Potensi Wisata',
+        'titik_koordinat_bujur'            => 'Titik Koordinat Bujur Potensi Wisata',
 
-        /* Tabel Sekolah */
-        'sekolah_nama'                      => 'Nama Sekolah',
-        'sekolah_jenjang'                   => 'Jenjang Pendidikan',
-        'sekolah_status'                    => 'Status Sekolah',
-        'sekolah_alamat'                    => 'Alamat Sekolah',
-        'sekolah_kecamatan'                 => 'Nama Kecamatan Sekolah',
-        'sekolah_lat'                       => 'Koordinat Lintang Sekolah',
-        'sekolah_lon'                       => 'Koordinat Bujur Sekolah',
+        'nama_sekolah'                     => 'Nama Sekolah',
+        'jenjang_pendidikan'               => 'Jenjang Pendidikan',
+        'status_sekolah'                   => 'Status Sekolah',
+        'alamat_sekolah'                   => 'Alamat Sekolah',
+        'nama_kecamatan_sekolah'           => 'Nama Kecamatan Sekolah',
+        'koordinat_lintang_sekolah'        => 'Koordinat Lintang Sekolah',
+        'koordinat_bujur_sekolah'          => 'Koordinat Bujur Sekolah',
 
-        /* Tabel Pondok Pesantren */
-        'pesantren_nama'                    => 'Nama Pesantren',
-        'pesantren_alamat'                  => 'Alamat Pesantren',
-        'pesantren_kecamatan'               => 'Nama Kecamatan Pesantren',
-        'pesantren_lat'                     => 'Koordinat Lintang Pesantren',
-        'pesantren_lon'                     => 'Koordinat Bujur Pesantren',
+        'nama_pesantren'                   => 'Nama Pesantren',
+        'alamat_pesantren'                 => 'Alamat Pesantren',
+        'nama_kecamatan_pesantren'         => 'Nama Kecamatan Pesantren',
+        'koordinat_lintang_pesantren'      => 'Koordinat Lintang Pesantren',
+        'koordinat_bujur_pesantren'        => 'Koordinat Bujur Pesantren',
 
-        /* Tabel Rumah Sakit */
-        'rumah_sakit_nama'                  => 'Nama Rumah Sakit',
-        'rumah_sakit_alamat'                => 'Alamat Rumah Sakit',
-        'rumah_sakit_kecamatan'             => 'Nama Kecamatan Rumah Sakit',
-        'rumah_sakit_lat'                   => 'Koordinat Lintang Rumah Sakit',
-        'rumah_sakit_lon'                   => 'Koordinat Bujur Rumah Sakit',
+        'nama_rumah_sakit'                 => 'Nama Rumah Sakit',
+        'alamat_rumah_sakit'               => 'Alamat Rumah Sakit',
+        'nama_kecamatan_rs'                => 'Nama Kecamatan Rumah Sakit',
+        'koordinat_lintang_rs'             => 'Koordinat Lintang Rumah Sakit',
+        'koordinat_bujur_rs'               => 'Koordinat Bujur Rumah Sakit',
 
-        /* Tabel Puskesmas */
-        'puskesmas_nama'                    => 'Nama Puskesmas',
-        'puskesmas_alamat'                  => 'Alamat Puskesmas',
-        'puskesmas_kecamatan'               => 'Nama Kecamatan Puskesmas',
-        'puskesmas_lat'                     => 'Koordinat Lintang Puskesmas',
-        'puskesmas_lon'                     => 'Koordinat Bujur Puskesmas',
+        'nama_puskesmas'                   => 'Nama Puskesmas',
+        'alamat_puskesmas'                 => 'Alamat Puskesmas',
+        'nama_kecamatan_puskesmas'         => 'Nama Kecamatan Puskesmas',
+        'koordinat_lintang_puskesmas'      => 'Koordinat Lintang Puskesmas',
+        'koordinat_bujur_puskesmas'        => 'Koordinat Bujur Puskesmas',
 
-        /* Tabel Pustu */
-        'pustu_nama'                        => 'Nama Pustu',
-        'pustu_alamat'                      => 'Alamat Pustu',
-        'pustu_kecamatan'                   => 'Nama Kecamatan Pustu',
-        'pustu_lat'                         => 'Koordinat Lintang Pustu',
-        'pustu_lon'                         => 'Koordinat Bujur Pustu',
+        'nama_pustu'                       => 'Nama Pustu',
+        'alamat_pustu'                     => 'Alamat Pustu',
+        'nama_kecamatan_pustu'             => 'Nama Kecamatan Pustu',
+        'koordinat_lintang_pustu'          => 'Koordinat Lintang Pustu',
+        'koordinat_bujur_pustu'            => 'Koordinat Bujur Pustu',
 
-        /* Tabel Poliklinik */
-        'poliklinik_nama'                   => 'Nama Poliklinik',
-        'poliklinik_alamat'                 => 'Alamat Poliklinik',
-        'poliklinik_kecamatan'              => 'Nama Kecamatan Poliklinik',
-        'poliklinik_lat'                    => 'Koordinat Lintang Poliklinik',
-        'poliklinik_lon'                    => 'Koordinat Bujur Poliklinik',
+        'nama_poliklinik'                  => 'Nama Poliklinik',
+        'alamat_poliklinik'                => 'Alamat Poliklinik',
+        'nama_kecamatan_poliklinik'        => 'Nama Kecamatan Poliklinik',
+        'koordinat_lintang_poliklinik'     => 'Koordinat Lintang Poliklinik',
+        'koordinat_bujur_poliklinik'       => 'Koordinat Bujur Poliklinik',
 
-        /* Tabel Apotek */
-        'apotek_nama'                       => 'Nama Apotek',
-        'apotek_alamat'                     => 'Alamat Apotek',
-        'apotek_kecamatan'                  => 'Nama Kecamatan Apotek',
-        'apotek_lat'                        => 'Koordinat Lintang Apotek',
-        'apotek_lon'                        => 'Koordinat Bujur Apotek',
+        'nama_apotek'                      => 'Nama Apotek',
+        'alamat_apotek'                    => 'Alamat Apotek',
+        'nama_kecamatan_apotek'            => 'Nama Kecamatan Apotek',
+        'koordinat_lintang_apotek'         => 'Koordinat Lintang Apotek',
+        'koordinat_bujur_apotek'           => 'Koordinat Bujur Apotek',
 
-        /* Tabel Praktek Dokter */
-        'dokter_nama'                       => 'Nama Praktek Dokter',
-        'dokter_alamat'                     => 'Alamat Praktek Dokter',
-        'dokter_kecamatan'                  => 'Nama Kecamatan Praktek Dokter',
-        'dokter_lat'                        => 'Koordinat Lintang Praktek Dokter',
-        'dokter_lon'                        => 'Koordinat Bujur Praktek Dokter',
+        'nama_praktek_dokter'              => 'Nama Praktek Dokter',
+        'alamat_praktek_dokter'            => 'Alamat Praktek Dokter',
+        'nama_kecamatan_praktek_dokter'    => 'Nama Kecamatan Praktek Dokter',
+        'koordinat_lintang_praktek_dokter' => 'Koordinat Lintang Praktek Dokter',
+        'koordinat_bujur_praktek_dokter'   => 'Koordinat Bujur Praktek Dokter',
 
-        /* Tabel Praktek Bidan */
-        'bidan_nama'                        => 'Nama Praktek Bidan',
-        'bidan_alamat'                      => 'Alamat Praktek Bidan',
-        'bidan_kecamatan'                   => 'Nama Kecamatan Praktek Bidan',
-        'bidan_lat'                         => 'Koordinat Lintang Praktek Bidan',
-        'bidan_lon'                         => 'Koordinat Bujur Praktek Bidan',
+        'nama_praktek_bidan'               => 'Nama Praktek Bidan',
+        'alamat_praktek_bidan'             => 'Alamat Praktek Bidan',
+        'nama_kecamatan_praktek_bidan'     => 'Nama Kecamatan Praktek Bidan',
+        'koordinat_lintang_praktek_bidan'  => 'Koordinat Lintang Praktek Bidan',
+        'koordinat_bujur_praktek_bidan'    => 'Koordinat Bujur Praktek Bidan',
 
-        /* Tabel Poskesdes */
-        'poskesdes_nama'                    => 'Nama Poskesdes',
-        'poskesdes_alamat'                  => 'Alamat Poskesdes',
-        'poskesdes_kecamatan'               => 'Nama Kecamatan Poskesdes',
-        'poskesdes_lat'                     => 'Koordinat Lintang Poskesdes',
-        'poskesdes_lon'                     => 'Koordinat Bujur Poskesdes',
+        'nama_poskesdes'                   => 'Nama Poskesdes',
+        'alamat_poskesdes'                 => 'Alamat Poskesdes',
+        'nama_kecamatan_poskesdes'         => 'Nama Kecamatan Poskesdes',
+        'koordinat_lintang_poskesdes'      => 'Koordinat Lintang Poskesdes',
+        'koordinat_bujur_poskesdes'        => 'Koordinat Bujur Poskesdes',
 
-        /* Tabel Polindes */
-        'polindes_nama'                     => 'Nama Polindes',
-        'polindes_alamat'                   => 'Alamat Polindes',
-        'polindes_kecamatan'                => 'Nama Kecamatan Polindes',
-        'polindes_lat'                      => 'Koordinat Lintang Polindes',
-        'polindes_lon'                      => 'Koordinat Bujur Polindes',
+        'nama_polindes'                    => 'Nama Polindes',
+        'alamat_polindes'                  => 'Alamat Polindes',
+        'nama_kecamatan_polindes'          => 'Nama Kecamatan Polindes',
+        'koordinat_lintang_polindes'       => 'Koordinat Lintang Polindes',
+        'koordinat_bujur_polindes'         => 'Koordinat Bujur Polindes',
 
-        /* Tabel Daftar Posyandu */
-        'posyandu_nama'                     => 'Nama Posyandu',
-        'posyandu_alamat'                   => 'Alamat Posyandu',
-        'posyandu_kecamatan'                => 'Nama Kecamatan Posyandu',
-        'posyandu_lat'                      => 'Koordinat Lintang Posyandu',
-        'posyandu_lon'                      => 'Koordinat Bujur Posyandu',
+        'nama_posyandu'                    => 'Nama Posyandu',
+        'alamat_posyandu'                  => 'Alamat Posyandu',
+        'nama_kecamatan_posyandu'          => 'Nama Kecamatan Posyandu',
+        'koordinat_lintang_posyandu'       => 'Koordinat Lintang Posyandu',
+        'koordinat_bujur_posyandu'         => 'Koordinat Bujur Posyandu',
     ],
 ];
 
@@ -1694,96 +1668,96 @@ SELECT DISTINCT
     tb_tempat_peribadatan.titik_koordinat_bujur,
     
      /* Tabel Potensi Wisata */
-    tb_potensi_wisata.nama_potensi_wisata AS potensi_wisata_nama,
-    tb_potensi_wisata.jenis_wisata AS potensi_wisata_jenis,
-    tb_potensi_wisata.titik_koordinat_lintang AS potensi_wisata_lat,
-    tb_potensi_wisata.titik_koordinat_bujur AS potensi_wisata_lon,
+    tb_potensi_wisata.nama_potensi_wisata,
+    tb_potensi_wisata.jenis_wisata,
+    tb_potensi_wisata.titik_koordinat_lintang,
+    tb_potensi_wisata.titik_koordinat_bujur,
 
     /* Tabel Sekolah */
-    tb_sekolah.nama_sekolah AS sekolah_nama,
-    tb_sekolah.jenjang_pendidikan AS sekolah_jenjang,
-    tb_sekolah.status_sekolah AS sekolah_status,
-    tb_sekolah.alamat_sekolah AS sekolah_alamat,
-    tb_sekolah.nama_kecamatan AS sekolah_kecamatan,
-    tb_sekolah.koordinat_lintang AS sekolah_lat,
-    tb_sekolah.koordinat_bujur AS sekolah_lon,
+    tb_sekolah.nama_sekolah,
+    tb_sekolah.jenjang_pendidikan,
+    tb_sekolah.status_sekolah,
+    tb_sekolah.alamat_sekolah,
+    tb_sekolah.nama_kecamatan AS nama_kecamatan_sekolah,
+    tb_sekolah.koordinat_lintang AS koordinat_lintang_sekolah,
+    tb_sekolah.koordinat_bujur AS koordinat_bujur_sekolah,
 
     /* Tabel Pondok Pesantren */
-    tb_pondok_pesantren.nama_pesantren AS pesantren_nama,
-    tb_pondok_pesantren.alamat_pesantren AS pesantren_alamat,
-    tb_pondok_pesantren.nama_kecamatan AS pesantren_kecamatan,
-    tb_pondok_pesantren.koordinat_lintang AS pesantren_lat,
-    tb_pondok_pesantren.koordinat_bujur AS pesantren_lon,
+    tb_pondok_pesantren.nama_pesantren,
+    tb_pondok_pesantren.alamat_pesantren,
+    tb_pondok_pesantren.nama_kecamatan AS nama_kecamatan_pesantren,
+    tb_pondok_pesantren.koordinat_lintang AS koordinat_lintang_pesantren,
+    tb_pondok_pesantren.koordinat_bujur AS koordinat_bujur_pesantren,
 
     /* Tabel Rumah Sakit */
-    tb_rumah_sakit.nama_rumah_sakit AS rumah_sakit_nama,
-    tb_rumah_sakit.alamat_rumah_sakit AS rumah_sakit_alamat,
-    tb_rumah_sakit.nama_kecamatan AS rumah_sakit_kecamatan,
-    tb_rumah_sakit.koordinat_lintang AS rumah_sakit_lat,
-    tb_rumah_sakit.koordinat_bujur AS rumah_sakit_lon,
+    tb_rumah_sakit.nama_rumah_sakit,
+    tb_rumah_sakit.alamat_rumah_sakit,
+    tb_rumah_sakit.nama_kecamatan AS nama_kecamatan_rs,
+    tb_rumah_sakit.koordinat_lintang AS koordinat_lintang_rs,
+    tb_rumah_sakit.koordinat_bujur AS koordinat_bujur_rs,
 
     /* Tabel Puskesmas */
-    tb_puskesmas.nama_puskesmas AS puskesmas_nama,
-    tb_puskesmas.alamat_puskesmas AS puskesmas_alamat,
-    tb_puskesmas.nama_kecamatan AS puskesmas_kecamatan,
-    tb_puskesmas.koordinat_lintang AS puskesmas_lat,
-    tb_puskesmas.koordinat_bujur AS puskesmas_lon,
+    tb_puskesmas.nama_puskesmas,
+    tb_puskesmas.alamat_puskesmas,
+    tb_puskesmas.nama_kecamatan AS nama_kecamatan_puskesmas,
+    tb_puskesmas.koordinat_lintang AS koordinat_lintang_puskesmas,
+    tb_puskesmas.koordinat_bujur AS koordinat_bujur_puskesmas,
 
     /* Tabel Pustu */
-    tb_pustu.nama_pustu AS pustu_nama,
-    tb_pustu.alamat_pustu AS pustu_alamat,
-    tb_pustu.nama_kecamatan AS pustu_kecamatan,
-    tb_pustu.koordinat_lintang AS pustu_lat,
-    tb_pustu.koordinat_bujur AS pustu_lon,
+    tb_pustu.nama_pustu,
+    tb_pustu.alamat_pustu,
+    tb_pustu.nama_kecamatan AS nama_kecamatan_pustu,
+    tb_pustu.koordinat_lintang AS koordinat_lintang_pustu,
+    tb_pustu.koordinat_bujur AS koordinat_bujur_pustu,
 
     /* Tabel Poliklinik */
-    tb_poliklinik.nama_poliklinik AS poliklinik_nama,
-    tb_poliklinik.alamat_poliklinik AS poliklinik_alamat,
-    tb_poliklinik.nama_kecamatan AS poliklinik_kecamatan,
-    tb_poliklinik.koordinat_lintang AS poliklinik_lat,
-    tb_poliklinik.koordinat_bujur AS poliklinik_lon,
+    tb_poliklinik.nama_poliklinik,
+    tb_poliklinik.alamat_poliklinik,
+    tb_poliklinik.nama_kecamatan AS nama_kecamatan_poliklinik,
+    tb_poliklinik.koordinat_lintang AS koordinat_lintang_poliklinik,
+    tb_poliklinik.koordinat_bujur AS koordinat_bujur_poliklinik,
 
     /* Tabel Apotek */
-    tb_apotek.nama_apotek AS apotek_nama,
-    tb_apotek.alamat_apotek AS apotek_alamat,
-    tb_apotek.nama_kecamatan AS apotek_kecamatan,
-    tb_apotek.koordinat_lintang AS apotek_lat,
-    tb_apotek.koordinat_bujur AS apotek_lon,
+    tb_apotek.nama_apotek,
+    tb_apotek.alamat_apotek,
+    tb_apotek.nama_kecamatan AS nama_kecamatan_apotek,
+    tb_apotek.koordinat_lintang AS koordinat_lintang_apotek,
+    tb_apotek.koordinat_bujur AS koordinat_bujur_apotek,
 
     /* Tabel Praktek Dokter */
-    tb_praktek_dokter.nama_praktek_dokter AS dokter_nama,
-    tb_praktek_dokter.alamat_praktek_dokter AS dokter_alamat,
-    tb_praktek_dokter.nama_kecamatan AS dokter_kecamatan,
-    tb_praktek_dokter.koordinat_lintang AS dokter_lat,
-    tb_praktek_dokter.koordinat_bujur AS dokter_lon,
+    tb_praktek_dokter.nama_praktek_dokter,
+    tb_praktek_dokter.alamat_praktek_dokter,
+    tb_praktek_dokter.nama_kecamatan AS nama_kecamatan_praktek_dokter,
+    tb_praktek_dokter.koordinat_lintang AS koordinat_lintang_praktek_dokter,
+    tb_praktek_dokter.koordinat_bujur AS koordinat_bujur_praktek_dokter,
 
     /* Tabel Praktek Bidan */
-    tb_praktek_bidan.nama_praktek_bidan AS bidan_nama,
-    tb_praktek_bidan.alamat_praktek_bidan AS bidan_alamat,
-    tb_praktek_bidan.nama_kecamatan AS bidan_kecamatan,
-    tb_praktek_bidan.koordinat_lintang AS bidan_lat,
-    tb_praktek_bidan.koordinat_bujur AS bidan_lon,
+    tb_praktek_bidan.nama_praktek_bidan,
+    tb_praktek_bidan.alamat_praktek_bidan,
+    tb_praktek_bidan.nama_kecamatan AS nama_kecamatan_praktek_bidan,
+    tb_praktek_bidan.koordinat_lintang AS koordinat_lintang_praktek_bidan,
+    tb_praktek_bidan.koordinat_bujur AS koordinat_bujur_praktek_bidan,
 
     /* Tabel Poskesdes */
-    tb_poskesdes.nama_poskesdes AS poskesdes_nama,
-    tb_poskesdes.alamat_poskesdes AS poskesdes_alamat,
-    tb_poskesdes.nama_kecamatan AS poskesdes_kecamatan,
-    tb_poskesdes.koordinat_lintang AS poskesdes_lat,
-    tb_poskesdes.koordinat_bujur AS poskesdes_lon,
+    tb_poskesdes.nama_poskesdes,
+    tb_poskesdes.alamat_poskesdes,
+    tb_poskesdes.nama_kecamatan AS nama_kecamatan_poskesdes,
+    tb_poskesdes.koordinat_lintang AS koordinat_lintang_poskesdes,
+    tb_poskesdes.koordinat_bujur AS koordinat_bujur_poskesdes,
 
     /* Tabel Polindes */
-    tb_polindes.nama_polindes AS polindes_nama,
-    tb_polindes.alamat_polindes AS polindes_alamat,
-    tb_polindes.nama_kecamatan AS polindes_kecamatan,
-    tb_polindes.koordinat_lintang AS polindes_lat,
-    tb_polindes.koordinat_bujur AS polindes_lon,
+    tb_polindes.nama_polindes,
+    tb_polindes.alamat_polindes,
+    tb_polindes.nama_kecamatan AS nama_kecamatan_polindes,
+    tb_polindes.koordinat_lintang AS koordinat_lintang_polindes,
+    tb_polindes.koordinat_bujur AS koordinat_bujur_polindes,
 
     /* Tabel Daftar Posyandu */
-    tb_daftar_posyandu.nama_posyandu AS posyandu_nama,
-    tb_daftar_posyandu.alamat_posyandu AS posyandu_alamat,
-    tb_daftar_posyandu.nama_kecamatan AS posyandu_kecamatan,
-    tb_daftar_posyandu.koordinat_lintang AS posyandu_lat,
-    tb_daftar_posyandu.koordinat_bujur AS posyandu_lon
+    tb_daftar_posyandu.nama_posyandu,
+    tb_daftar_posyandu.alamat_posyandu,
+    tb_daftar_posyandu.nama_kecamatan AS nama_kecamatan_posyandu,
+    tb_daftar_posyandu.koordinat_lintang AS koordinat_lintang_posyandu,
+    tb_daftar_posyandu.koordinat_bujur AS koordinat_bujur_posyandu
 
 FROM
     tb_enumerator
