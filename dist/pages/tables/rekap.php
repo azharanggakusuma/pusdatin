@@ -600,6 +600,69 @@ $groupedColumns = [
         'status_badan_hukum' => 'Status Badan Hukum BUMDes',
         'jumlah_paket_pengadaan_barang_dan_jasa' => 'Jumlah Paket Pengadaan Barang dan Jasa',
     ],
+
+    'Perlindungan Sosial, Pembangunan, dan Pemberdayaan Masyarakat' => [
+        'penerima_pkh'             => 'Penerima PKH',
+        'penerima_blt_dana_desa'   => 'Penerima BLT Dana Desa',
+        'penerima_bpnt'            => 'Penerima BPNT',
+        'penerima_pbi_jk'          => 'Penerima PBI/JK',
+        'jumlah_sktm' => 'Jumlah SKTM',
+    ],
+
+    'Aparatur Pemerintahan Desa' => [
+        'nama_kepala_desa'       => 'Nama Kepala Desa',
+        'umur'                   => 'Umur Kepala Desa',
+        'jenis_kelamin'          => 'Jenis Kelamin Kepala Desa',
+        'pendidikan_terakhir'    => 'Pendidikan Terakhir Kepala Desa',
+        'tahun_mulai_menjabat'   => 'Tahun Mulai Menjabat Kepala Desa',
+        'skd_laki'           => 'SKD (Laki-laki)',
+        'skd_perempuan'     => 'SKD (Perempuan)',
+        'kaur_laki'         => 'KAUR (Laki-laki)',
+        'kaur_perempuan'    => 'KAUR (Perempuan)',
+        'kkk_laki'          => 'KKK (Laki-laki)',
+        'kkk_perempuan'     => 'KKK (Perempuan)',
+        'pk_laki'           => 'PK (Laki-laki)',
+        'pk_perempuan'      => 'PK (Perempuan)',
+        'staf_laki'         => 'Staf (Laki-laki)',
+        'staf_perempuan'    => 'Staf (Perempuan)',
+        'total_laki'        => 'Total Perangkat Desa (Laki-laki)',
+        'total_perempuan'   => 'Total Perangkat Desa (Perempuan)',
+        'tidak_sekolah_laki'       => 'Tidak Sekolah (Laki-laki)',
+        'tidak_sekolah_perempuan'  => 'Tidak Sekolah (Perempuan)',
+        'tidak_tamat_sd_laki'      => 'Tidak Tamat SD (Laki-laki)',
+        'tidak_tamat_sd_perempuan' => 'Tidak Tamat SD (Perempuan)',
+        'tamat_sd_laki'            => 'Tamat SD (Laki-laki)',
+        'tamat_sd_perempuan'       => 'Tamat SD (Perempuan)',
+        'smp_laki'                 => 'SMP (Laki-laki)',
+        'smp_perempuan'            => 'SMP (Perempuan)',
+        'smu_laki'                 => 'SMU (Laki-laki)',
+        'smu_perempuan'            => 'SMU (Perempuan)',
+        'd3_laki'                  => 'D3 (Laki-laki)',
+        'd3_perempuan'             => 'D3 (Perempuan)',
+        's1_laki'                  => 'S1 (Laki-laki)',
+        's1_perempuan'             => 'S1 (Perempuan)',
+        's2_laki'                  => 'S2 (Laki-laki)',
+        's2_perempuan'             => 'S2 (Perempuan)',
+        's3_laki'                  => 'S3 (Laki-laki)',
+        's3_perempuan'             => 'S3 (Perempuan)',
+        'total_laki'               => 'Total Pendidikan Perangkat Desa (Laki-laki)',
+        'total_perempuan'          => 'Total Pendidikan Perangkat Desa (Perempuan)',
+        'keberadaan_bpd'         => 'Keberadaan BPD',
+        'jumlah_laki'            => 'Jumlah Anggota BPD (Laki-laki)',
+        'jumlah_perempuan'       => 'Jumlah Anggota BPD (Perempuan)',
+        'jumlah_kegiatan'        => 'Jumlah Kegiatan BPD',
+    ],
+
+    'Lembaga Kemasyarakatan di Desa Kelurahan' => [
+        'jumlah_tim_penggerak_pkk'     => 'Jumlah Tim Penggerak PKK',
+        'jumlah_kader_pkk'             => 'Jumlah Kader PKK',
+        'jumlah_kelompok_pkk'          => 'Jumlah Kelompok PKK',
+        'jumlah_kelompok_dasa_wisma'   => 'Jumlah Kelompok Dasa/Wisma PKK',
+        'jumlah_karang_taruna' => 'Jumlah Karang Taruna',
+        'jumlah_posyandu' => 'Jumlah Posyandu',
+        'jumlah_anggota_laki'       => 'Jumlah Anggota Laki-laki LPMD',
+        'jumlah_anggota_perempuan'  => 'Jumlah Anggota Perempuan LPMD',
+    ],
 ];
 
 /**
@@ -1288,7 +1351,68 @@ SELECT DISTINCT
     tb_bumdes.status_keaktifan,
     tb_bumdes.status_badan_hukum,
 
-    tb_pengadaan_barang_jasa.jumlah_paket_pengadaan_barang_dan_jasa
+    tb_pengadaan_barang_jasa.jumlah_paket_pengadaan_barang_dan_jasa,
+
+    tb_penerima_bantuan_sosial.penerima_pkh,
+    tb_penerima_bantuan_sosial.penerima_blt_dana_desa,
+    tb_penerima_bantuan_sosial.penerima_bpnt,
+    tb_penerima_bantuan_sosial.penerima_pbi_jk,
+    tb_sktm.jumlah_sktm,
+
+    tb_kepala_desa.nama_kepala_desa,
+    tb_kepala_desa.umur,
+    tb_kepala_desa.jenis_kelamin,
+    tb_kepala_desa.pendidikan_terakhir,
+    tb_kepala_desa.tahun_mulai_menjabat,
+
+    tb_perangkat_desa.skd_laki,
+    tb_perangkat_desa.skd_perempuan,
+    tb_perangkat_desa.kaur_laki,
+    tb_perangkat_desa.kaur_perempuan,
+    tb_perangkat_desa.kkk_laki,
+    tb_perangkat_desa.kkk_perempuan,
+    tb_perangkat_desa.pk_laki,
+    tb_perangkat_desa.pk_perempuan,
+    tb_perangkat_desa.staf_laki,
+    tb_perangkat_desa.staf_perempuan,
+    tb_perangkat_desa.total_laki,
+    tb_perangkat_desa.total_perempuan,
+
+    tb_perangkat_desa_pendidikan.tidak_sekolah_laki,
+    tb_perangkat_desa_pendidikan.tidak_sekolah_perempuan,
+    tb_perangkat_desa_pendidikan.tidak_tamat_sd_laki,
+    tb_perangkat_desa_pendidikan.tidak_tamat_sd_perempuan,
+    tb_perangkat_desa_pendidikan.tamat_sd_laki,
+    tb_perangkat_desa_pendidikan.tamat_sd_perempuan,
+    tb_perangkat_desa_pendidikan.smp_laki,
+    tb_perangkat_desa_pendidikan.smp_perempuan,
+    tb_perangkat_desa_pendidikan.smu_laki,
+    tb_perangkat_desa_pendidikan.smu_perempuan,
+    tb_perangkat_desa_pendidikan.d3_laki,
+    tb_perangkat_desa_pendidikan.d3_perempuan,
+    tb_perangkat_desa_pendidikan.s1_laki,
+    tb_perangkat_desa_pendidikan.s1_perempuan,
+    tb_perangkat_desa_pendidikan.s2_laki,
+    tb_perangkat_desa_pendidikan.s2_perempuan,
+    tb_perangkat_desa_pendidikan.s3_laki,
+    tb_perangkat_desa_pendidikan.s3_perempuan,
+    tb_perangkat_desa_pendidikan.total_laki,
+    tb_perangkat_desa_pendidikan.total_perempuan,
+
+    tb_badan_permusyawaratan_desa.keberadaan_bpd,
+    tb_badan_permusyawaratan_desa.jumlah_laki,
+    tb_badan_permusyawaratan_desa.jumlah_perempuan,
+    tb_badan_permusyawaratan_desa.jumlah_kegiatan,
+
+    tb_data_pkk.jumlah_tim_penggerak_pkk,
+    tb_data_pkk.jumlah_kader_pkk,
+    tb_data_pkk.jumlah_kelompok_pkk,
+    tb_data_pkk.jumlah_kelompok_dasa_wisma,
+
+    tb_karang_taruna.jumlah_karang_taruna,
+    tb_posyandu.jumlah_posyandu,
+    tb_lpmd.jumlah_anggota_laki,
+    tb_lpmd.jumlah_anggota_perempuan
 
 FROM
     tb_enumerator
@@ -1359,6 +1483,56 @@ LEFT JOIN tb_bumdes
 LEFT JOIN tb_pengadaan_barang_jasa
     ON tb_pengadaan_barang_jasa.desa_id = tb_enumerator.id_desa
    AND tb_pengadaan_barang_jasa.tahun   = filtered_user_progress.tahun
+
+/* Penerima Bantuan Sosial */
+LEFT JOIN tb_penerima_bantuan_sosial
+    ON tb_penerima_bantuan_sosial.desa_id = tb_enumerator.id_desa
+   AND tb_penerima_bantuan_sosial.tahun   = filtered_user_progress.tahun
+
+/* SKTM */
+LEFT JOIN tb_sktm
+    ON tb_sktm.desa_id = tb_enumerator.id_desa
+   AND tb_sktm.tahun   = filtered_user_progress.tahun
+
+/* Kepala Desa */
+LEFT JOIN tb_kepala_desa
+    ON tb_kepala_desa.desa_id = tb_enumerator.id_desa
+   AND tb_kepala_desa.tahun   = filtered_user_progress.tahun
+
+/* Perangkat Desa */
+LEFT JOIN tb_perangkat_desa
+    ON tb_perangkat_desa.desa_id = tb_enumerator.id_desa
+   AND tb_perangkat_desa.tahun   = filtered_user_progress.tahun
+
+/* Pendidikan Perangkat Desa */
+LEFT JOIN tb_perangkat_desa_pendidikan
+    ON tb_perangkat_desa_pendidikan.desa_id = tb_enumerator.id_desa
+   AND tb_perangkat_desa_pendidikan.tahun   = filtered_user_progress.tahun
+
+/* Badan Permusyawaratan Desa */
+LEFT JOIN tb_badan_permusyawaratan_desa
+    ON tb_badan_permusyawaratan_desa.desa_id = tb_enumerator.id_desa
+   AND tb_badan_permusyawaratan_desa.tahun   = filtered_user_progress.tahun
+
+/* Data PKK */
+LEFT JOIN tb_data_pkk
+    ON tb_data_pkk.desa_id = tb_enumerator.id_desa
+   AND tb_data_pkk.tahun   = filtered_user_progress.tahun
+
+/* Karang Taruna */
+LEFT JOIN tb_karang_taruna
+    ON tb_karang_taruna.desa_id = tb_enumerator.id_desa
+   AND tb_karang_taruna.tahun   = filtered_user_progress.tahun
+
+/* Posyandu */
+LEFT JOIN tb_posyandu
+    ON tb_posyandu.desa_id = tb_enumerator.id_desa
+   AND tb_posyandu.tahun   = filtered_user_progress.tahun
+
+/* LPMD */
+LEFT JOIN tb_lpmd
+    ON tb_lpmd.desa_id = tb_enumerator.id_desa
+   AND tb_lpmd.tahun   = filtered_user_progress.tahun
 
 ";
 
