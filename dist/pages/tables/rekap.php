@@ -3310,8 +3310,8 @@ if ($type === 'pdf') {
                                         // Show success message
                                         Swal.fire({
                                             icon: 'success',
-                                            title: 'Berhasil',
-                                            text: 'Data berhasil diunduh.',
+                                            title: 'Selesai Diproses',
+                                            text: 'Data akan segera diunduh.',
                                             showConfirmButton: false,
                                             timer: 2000,
                                             timerProgressBar: true
