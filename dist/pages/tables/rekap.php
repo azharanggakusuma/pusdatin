@@ -361,7 +361,12 @@ $allColumns_query_baru = [
     'jumlah_karang_taruna',
     'jumlah_posyandu',
     'jumlah_anggota_laki',
-    'jumlah_anggota_perempuan'
+    'jumlah_anggota_perempuan',
+
+    'jenis_tempat_peribadatan',
+    'nama_tempat_peribadatan',
+    'titik_koordinat_lintang',
+    'titik_koordinat_bujur',
 ];
 
 /**
@@ -741,6 +746,12 @@ $groupedColumns = [
         'jumlah_posyandu' => 'Jumlah Posyandu',
         'jumlah_anggota_laki'       => 'Jumlah Anggota Laki-laki LPMD',
         'jumlah_anggota_perempuan'  => 'Jumlah Anggota Perempuan LPMD',
+    ],
+    'Data Lokasi Geospasial' => [
+        'jenis_tempat_peribadatan'         => 'Jenis Tempat Ibadah',
+        'nama_tempat_peribadatan'          => 'Nama Tempat Peribadatan',
+        'titik_koordinat_lintang'          => 'Titik Koordinat Lintang',
+        'titik_koordinat_bujur'            => 'Titik Koordinat Bujur',
     ],
 ];
 
@@ -1491,7 +1502,12 @@ SELECT DISTINCT
     tb_karang_taruna.jumlah_karang_taruna,
     tb_posyandu.jumlah_posyandu,
     tb_lpmd.jumlah_anggota_laki,
-    tb_lpmd.jumlah_anggota_perempuan
+    tb_lpmd.jumlah_anggota_perempuan,
+
+    tb_tempat_peribadatan.jenis_tempat_peribadatan,
+    tb_tempat_peribadatan.nama_tempat_peribadatan,
+    tb_tempat_peribadatan.titik_koordinat_lintang,
+    tb_tempat_peribadatan.titik_koordinat_bujur
 
 FROM
     tb_enumerator
@@ -1612,6 +1628,11 @@ LEFT JOIN tb_posyandu
 LEFT JOIN tb_lpmd
     ON tb_lpmd.desa_id = tb_enumerator.id_desa
    AND tb_lpmd.tahun   = filtered_user_progress.tahun
+
+/* Tempat Peribadatan */
+LEFT JOIN tb_tempat_peribadatan
+    ON tb_tempat_peribadatan.desa_id = tb_enumerator.id_desa
+   AND tb_tempat_peribadatan.tahun   = filtered_user_progress.tahun
 
 ";
 
