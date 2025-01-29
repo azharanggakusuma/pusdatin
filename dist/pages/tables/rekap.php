@@ -1244,6 +1244,7 @@ SELECT DISTINCT
 
     tb_kerjasama_desa.keberadaan_kerjasama_antar_desa,
     tb_kerjasama_desa.keberadaan_kerjasama_desa_dengan_pihak_ketiga
+
 FROM
     tb_enumerator
 
