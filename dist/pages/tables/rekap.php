@@ -1986,7 +1986,26 @@ if ($type === 'pdf') {
                         'jumlah_peraturan_yang_dimiliki_desa',
                         'jumlah_peraturan_kepala_desa',
                         'keberadaan_kerjasama_antar_desa',
-                        'keberadaan_kerjasama_desa_dengan_pihak_ketiga'
+                        'keberadaan_kerjasama_desa_dengan_pihak_ketiga',
+                        'keberadaan_pendamping_lokal_desa',
+                        'keberadaan_kader_pembangunan_manusia',
+                        'pembinaan_kpm_dari_pemkab_kota',
+                        'pendapatan_asli_desa',
+                        'dana_desa',
+                        'bagian_dari_hasil_pajak_daerah_dan_retribusi_daerah',
+                        'alokasi_dana_desa',
+                        'bantuan_keuangan_dari_apbd_provinsi',
+                        'bantuan_keuangan_dari_apbd',
+                        'hibah_dan_sumbangan_dari_pihak_ketiga',
+                        'lain_lain_pendapatan_desa_yang_sah',
+                        'bidang_penyelenggaraan_pemerintahan_desa',
+                        'bidang_pelaksanaan_pembangunan_desa',
+                        'bidang_pembinaan_kemasyarakatan',
+                        'bidang_pemberdayaan_masyarakat',
+                        'bidang_tak_terduga',
+                        'status_keaktifan',
+                        'status_badan_hukum',
+                        'jumlah_paket_pengadaan_barang_dan_jasa'
                     ]);
                     $textAlign = $isTextColumn ? 'left' : 'center';
                     $html .= '<td style="text-align:' . $textAlign . '; word-wrap: break-word;">' . $cellData . '</td>';
