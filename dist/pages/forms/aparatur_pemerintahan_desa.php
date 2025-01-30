@@ -343,7 +343,7 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                   </div>
                 </div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -573,7 +573,7 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                     </table>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -897,7 +897,7 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                     </table>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1043,7 +1043,7 @@ $previous_badan_permusyawaratan_desa = getPreviousYearData(
                   });
                 </script>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">

@@ -234,7 +234,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                   </div>
 
                   <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <div class="form-group mb-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="use_previous_bacaan" name="use_previous_bacaan" value="1">
@@ -362,7 +362,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                   </div>
 
                   <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <div class="form-group mb-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="use_previous_bidan" name="use_previous_bidan" value="1">
@@ -488,7 +488,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                   </div>
 
                   <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <div class="form-group mb-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="use_previous_dukun" name="use_previous_dukun" value="1">
@@ -645,7 +645,7 @@ $previous_klb_json = json_encode($previous_klb_data);
                         </tbody>
                       </table>
                     </div>
-                    <?php if ($level != 'admin'): ?>
+                    <?php if ($level != 'admin' && $tahun != 2024): ?>
                       <div class="form-group mb-3">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="use_previous_klb" name="use_previous_klb" value="1" onchange="fillPreviousData(this);">

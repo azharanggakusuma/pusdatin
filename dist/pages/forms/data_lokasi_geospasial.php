@@ -360,7 +360,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicForms" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -509,7 +509,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsWisata" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -630,7 +630,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 </div>
                 <div id="dynamicFormsSekolah" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -792,7 +792,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPesantren" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -936,7 +936,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsRumahSakit" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1111,7 +1111,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPuskesmas" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1286,7 +1286,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPustu" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1461,7 +1461,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPoliklinik" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1637,7 +1637,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsApotek" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1812,7 +1812,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPraktekDokter" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1987,7 +1987,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPraktekBidan" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -2162,7 +2162,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container untuk Form Dinamis -->
                 <div id="dynamicFormsPoskesdes" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -2337,7 +2337,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container for Dynamic Forms -->
                 <div id="dynamicFormsPolindes" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -2512,7 +2512,7 @@ $previous_daftar_posyandu = getPreviousYearData(
                 <!-- Container for Dynamic Forms -->
                 <div id="dynamicFormsPosyandu" class="mt-4"></div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">

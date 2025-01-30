@@ -512,7 +512,7 @@ $previous_olahraga_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_fas
                   </div>
                 </div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">

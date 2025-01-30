@@ -246,7 +246,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                     <?php endif; ?>
                   </div>
 
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -439,7 +439,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   </div>
                 </div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -721,7 +721,7 @@ $previous_ketenagakerjaan = getPreviousYearData(
                   </div>
                 </div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">

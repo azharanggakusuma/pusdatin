@@ -273,7 +273,7 @@ $previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_p
                       </table>
                     </div>
 
-                    <?php if ($level != 'admin'): ?>
+                    <?php if ($level != 'admin' && $tahun != 2024): ?>
                       <div class="form-group mb-3">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="use_previous_bencana" name="use_previous_bencana" value="1" onchange="fillPreviousData(this);">
@@ -461,7 +461,7 @@ $previous_peringatan_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_p
                     </div>
 
                     <!-- Checkbox to use previous year data -->
-                    <?php if ($level != 'admin'): ?>
+                    <?php if ($level != 'admin' && $tahun != 2024): ?>
                       <div class="form-group mb-3">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="use_previous_peringatan" name="use_previous_peringatan" value="1">

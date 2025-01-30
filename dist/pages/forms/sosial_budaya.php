@@ -340,7 +340,7 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
                   </script>
 
                   <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <div class="form-group mb-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="use_previous_ibadah" name="use_previous_ibadah" value="1">
@@ -583,7 +583,7 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
                   </div>
 
                   <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <div class="form-group mb-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="use_previous_disabilitas" name="use_previous_disabilitas" value="1">
@@ -744,7 +744,7 @@ $previous_ruang_publik_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb
                   <?php endif; ?>
 
                   <!-- Checkbox to use previous year data -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <div class="form-group mb-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="use_previous_ruang_publik" name="use_previous_ruang_publik" value="1">

@@ -403,7 +403,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                   </div>
                 </div>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3 mt-2">
                     <div class="form-check">
@@ -626,7 +626,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
 
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -818,7 +818,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3 mt-2">
                     <div class="form-check">
@@ -1001,7 +1001,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1167,7 +1167,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </p>
                   <?php endif; ?>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1355,7 +1355,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </div>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3 mt-2">
                     <div class="form-check">
@@ -1614,7 +1614,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                     </div>
                   </div>
                   <!-- /.col -->
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -1744,7 +1744,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -1877,7 +1877,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -2084,7 +2084,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       <?php endif; ?>
                     </div>
                   </div>
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -2268,7 +2268,7 @@ $previous_titik_koordinat_kantor_desa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3 mt-2">
                       <div class="form-check">

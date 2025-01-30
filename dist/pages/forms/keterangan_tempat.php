@@ -250,7 +250,7 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                 </div>
 
                 <!-- Checkbox to use previous year data -->
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <div class="form-group mb-3">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="use_previous_sk_pembentukan" name="use_previous_sk_pembentukan" value="1">
@@ -468,7 +468,7 @@ $previous_balai_desa_data = getPreviousYearData($conn, $user_id, $desa_id, 'tb_b
                 </div>
 
                 <!-- Checkbox to use previous year data -->
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <div class="form-group mb-3">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="use_previous_balai_desa" name="use_previous_balai_desa" value="1">

@@ -391,7 +391,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -500,7 +500,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -702,7 +702,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -824,7 +824,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -926,7 +926,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1027,7 +1027,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1114,7 +1114,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1231,7 +1231,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                   });
                 </script>
 
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1378,7 +1378,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1479,7 +1479,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if ($level != 'admin'): ?>
+                <?php if ($level != 'admin' && $tahun != 2024): ?>
                   <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                   <div class="form-group mb-3">
                     <div class="form-check">
@@ -1559,7 +1559,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                       </p>
                     <?php endif; ?>
                   </div>
-                  <?php if ($level != 'admin'): ?>
+                  <?php if ($level != 'admin' && $tahun != 2024): ?>
                     <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                     <div class="form-group mb-3">
                       <div class="form-check">
@@ -1642,7 +1642,7 @@ $previous_pengadaan_barang_jasa = getPreviousYearData(
                   <?php endif; ?>
                 </div>
               </div>
-              <?php if ($level != 'admin'): ?>
+              <?php if ($level != 'admin' && $tahun != 2024): ?>
                 <!-- Pilihan untuk menggunakan data tahun sebelumnya -->
                 <div class="form-group mb-3">
                   <div class="form-check">
